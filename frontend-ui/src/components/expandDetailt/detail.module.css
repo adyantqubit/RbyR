@@ -1,0 +1,533 @@
+@font-face {
+    font-family: "Rawson-Regular";
+    src: url(../../assets/font/RawsonAltRegular.woff);
+  }
+
+
+.container {
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    position: relative;
+    top:26vh;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 150px;
+    background-color: #f7f6f6;
+    overflow: hidden;
+  }
+  .container01 {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    
+  }
+  .container02 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  .image {
+    width: 55%;
+    height: auto;
+    object-fit: cover;
+    padding-top: 2%;
+    padding-left:12%;
+    padding-right: 12%;
+    padding-bottom: 12%;
+  }
+  .container03 {
+    flex: 0 0 auto;
+    width: 45%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .container04 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+    align-self: center;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .heading {
+    font-size: 24px;
+    line-height: 32px;
+    width: 70%;
+    letter-spacing: 1.2px;
+    margin-top: 4%; 
+    font-family: 'Rawson-Regular' !important;
+    font-weight: 500;
+  }
+  .text {
+    margin-top: 2.5%;
+    font-size: 16px;
+    line-height: 24px;
+    width: 60%;
+    font-family: 'Rawson-Regular' !important;
+    font-weight: 500;
+  }
+  .text01 {
+    margin-top: 2.5%;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: 2.5px;
+    font-family: 'Rawson-Regular';
+    font-weight: 500;
+  }
+  .container05 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    margin-top: 3%;
+    align-items: flex-start;
+  }
+  .radiobutton {
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  .radiobutton1 {
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  .radiobutton2 {
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  .radiobutton3 {
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  .text02 {
+    font-size: 1em;
+    font-family: Courier New;
+    margin-left: 20%;
+  }
+  .button {
+    color: #ffffff;
+    width: 200px;
+    height:50px;
+    font-size: 1em;
+    align-self: flex-start;
+    font-style: normal;
+    margin-top: 3%;
+    text-align: center;
+    font-family: Fira Sans;
+    font-weight: 400;
+    border-color: #ffffff;
+    border-width: 2px;
+    border-radius: 0px;
+    background-color: #000000;
+  }
+  .text03 {
+    margin-top: 2.5%;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 1.4px;
+    margin-bottom: 5px;
+    color: #323232;
+    font-family: 'Rawson-Regular';
+    font-weight: 500;
+    margin-top: 3%;
+  }
+  .text04 {
+    margin-top: 2.5%;
+
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1.2px;
+    color: #5a5a5a;
+    font-family: 'Rawson-Regular';
+    font-weight: 500;
+    margin: 0;
+  }
+  .container06 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+  }
+  .text05 {
+    font-size: 0.9em;
+    font-style: normal;
+    margin-top: 1%;
+    font-family: 'Rawson-Regular';
+    font-weight: 100;
+  }
+  .text06 {
+    font-size: 0.9em;
+    font-style: normal;
+    margin-top: 1%;
+    font-family: 'Rawson-Regular';
+    font-weight: 100;
+  }
+  .text07 {
+    font-size: 0.9em;
+    font-style: normal;
+    margin-top: 1%;
+    font-family: 'Rawson-Regular';
+    font-weight: 100;
+  }
+  .container07 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+  }
+  .text08 {
+    font-size: 0.8em;
+    font-style: normal;
+    margin-top: 1%;
+    font-family:'Rawson-Regular';
+    font-weight: 100;
+  }
+  .text09 {
+    font-size: 0.8em;
+    font-style: normal;
+    margin-top: 1%;
+    font-family: 'Rawson-Regular';
+    font-weight: 100;
+  }
+  .text10 {
+    font-size: 0.8em;
+    font-style: normal;
+    margin-top: 1%;
+    font-family: 'Rawson-Regular';
+    font-weight: 100;
+  }
+  .container08 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+  }
+  .text11 {
+    font-size: 0.8em;
+    font-style: normal;
+    margin-top: 1%;
+    font-family: 'Rawson-Regular';
+    font-weight: 100;
+  }
+  .text12 {
+    font-size: 0.8em;
+    font-style: normal;
+    margin-top: 1%;
+    font-family: 'Rawson-Regular';
+    font-weight: 100;
+  }
+  .text13 {
+    font-size: 0.8em;
+    font-style: normal;
+    margin-top: 1%;
+    font-family: 'Rawson-Regular';
+    font-weight: 100;
+  }
+  .text14 {
+    font-size: 1.4em;
+    font-style: normal;
+    margin-top: 3%;
+    font-family: 'Rawson-Regular';
+    font-weight: 400;
+  }
+  .text15 {
+    font-size: 1.2em;
+    font-style: normal;
+    margin-top: 0.5%;
+    font-family: 'Rawson-Regular';
+    font-weight: 150;
+  }
+  .container09 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+  }
+  .text16 {
+    font-size: 0.8em;
+    font-style: normal;
+    margin-top: 1%;
+    font-family: 'Rawson-Regular';
+    font-weight: 100;
+  }
+  .text17 {
+    font-size: 0.8em;
+    font-style: normal;
+    margin-top: 1%;
+    font-family: 'Rawson-Regular';
+    font-weight: 100;
+  }
+  .text18 {
+    font-size: 0.8em;
+    font-style: normal;
+    margin-top: 1%;
+    font-family: 'Rawson-Regular';
+    font-weight: 100;
+  }
+  .container10 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+  }
+  .text19 {
+    font-size: 0.8em;
+    font-style: normal;
+    margin-top: 1%;
+    font-family: Courier New;
+    font-weight: 100;
+  }
+  .text20 {
+    font-size: 0.8em;
+    font-style: normal;
+    margin-top: 1%;
+    font-family: 'Rawson-Regular';
+    font-weight: 100;
+  }
+  .text21 {
+    font-size: 0.8em;
+    font-style: normal;
+    margin-top: 1%;
+    font-family: 'Rawson-Regular';
+    font-weight: 100;
+  }
+  .container11 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: 'Rawson-Regular';
+  }
+  .text22 {
+    font-size: 0.8em;
+    font-style: normal;
+    margin-top: 1%;
+    font-family: 'Rawson-Regular';
+    font-weight: 100;
+  }
+  .text23 {
+    font-size: 0.8em;
+    font-style: normal;
+    margin-top: 1%;
+    font-family: 'Rawson-Regular';
+    font-weight: 100;
+  }
+  .text24 {
+    font-size: 0.8em;
+    font-style: normal;
+    margin-top: 1%;
+    font-family: 'Rawson-Regular';
+    font-weight: 100;
+  }
+  .text25 {
+    margin-top:15px;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 1.4px;
+    font-family: 'Rawson-Regular';
+    font-weight: 500;
+  }
+  .text26 {
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1.2px;
+    font-family: 'Rawson-Regular';
+    font-weight: 500;
+    margin: 0;
+  }
+  .text27 {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1.2px;
+    font-family: 'Rawson-Regular';
+    font-weight: 500;
+
+  }
+  .container12 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+  }
+  .textinput {
+    width: 200px;
+    height: 50px;
+  }
+  .contact-us {
+    color: rgb(255, 254, 254);
+    width: 25%;
+    height: 50px;
+    align-self: center;
+    background-color: rgb(16, 16, 16);
+  }
+  .container13 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    margin-top: 2%;
+    align-items: flex-start;
+  }
+  .text28 {
+    font-size: 1.4em;
+    font-style: normal;
+    font-weight: 300;
+  }
+  .container14 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+  }
+  .image1 {
+    flex: 0;
+    width: 100px;
+    align-self: flex-start;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .gal{
+    margin:0 70px;
+  }
+
+  .image_gallery {
+    /* Mobile first */
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .image_gallery .column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding:20px;
+  }
+  
+  .image_item .img {
+    width: 100%;
+    border-radius: 5px;
+    height: 100%;
+    object-fit: cover;
+    padding:2%;
+  }
+
+  .face:hover {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+  
+  @media only screen and (min-width: 800px) {
+    .image_gallery {
+        flex-direction: row;
+      }
+  
+      
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .image {
+        width: 55%;
+        height: 100%;
+        object-fit: cover;
+        padding-top: 3%;
+        padding-left:8%;
+        padding-right: 8%;
+        padding-bottom: 8%;
+      }
+      .container03 {
+        width: 40%;
+        height: auto;
+        
+      }
+
+  }
+
+
+
+
+
+  
+@media only screen and (max-width: 800px) {
+
+    .container {
+        width: 100%;
+        display: flex;
+        overflow: auto;
+        position: relative;
+        top:9vh;}
+
+    .container02 {
+        flex-direction: column;
+
+    }
+
+    .image {
+        height: auto;
+        width:100%;
+        padding-bottom: 2%;
+    }
+
+    .container03 {
+        margin-left:50px
+    }
+
+    .text {
+      margin-top: 2.5%;
+      font-size: 16px;
+      line-height: 24px;
+      width: 70vh;
+      font-family: 'Rawson-Regular' !important;
+      font-weight: 500;
+    }
+}
+

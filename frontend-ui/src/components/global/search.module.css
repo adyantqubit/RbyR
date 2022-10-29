@@ -1,0 +1,42 @@
+.search:focus{
+    outline: 0ch;
+}
+
+
+.slab{
+    min-height: 300px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    gap:20px;
+    justify-content: center;
+  }
+  
+  .item{
+     width: 280px;
+     height: auto;
+     margin-top: 10px;
+     margin-bottom: 10px;
+  }
+  
+  .price{
+    font-size: 1em;
+    text-align: end;
+    padding: 0%;
+    display: flex;
+    justify-content: center;
+    
+   }
+  
+   .title{
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1.2px;
+    word-break: normal;
+    display:flex;
+    text-align: center;
+    justify-content: center;
+  
+    font-family: 'Rawson-Regular' !important;
+   }
