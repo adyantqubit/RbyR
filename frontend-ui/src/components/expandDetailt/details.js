@@ -38,7 +38,7 @@ const Details = (props) => {
   const {con,setcon,setCartDrawer,openCartdrawer}=CartState()
   const [sizeCond,setSizecond]=useState(false)
   const [pushData,setPushData]=useState(false)
-  const{cart,setCart,like,setLike,CategoryProduct}=CartState()
+  const{cart,setCart,like,setLike,CategoryProduct,currency}=CartState()
   const [cartsaveApi,{isLoad}]=useCartUpdateMutation()
   const [saveLikeApi,{isLoading}]=useLikedUpdateMutation()
   const [notAvai,setNotAvai]=useState(false)
@@ -240,7 +240,7 @@ const Details = (props) => {
             <div className={styles['container04']}>
               <h1 className={styles['heading']}>{details.title}</h1>
               <h1 className={styles['text']}>{details.about}</h1>
-              <span className={styles['text01']}> ₹ {details.price}</span>
+              <span className={styles['text01']}> {currency.sign} {details.price*currency.value}</span>
               <div className={styles['container05']}>
                
             <div class={sizeCond?sty:"rating-container face"}>

@@ -33,9 +33,12 @@ const Cart= () => {
   return (
     <>
       
-    < BsCartFill style={{marginTop:"10px",fontSize:"20px",color:"#7c7c7c"}} onClick={openCart}/>
-    
-  
+    {/* < BsCartFill style={{marginTop:"10px",fontSize:"20px",color:"#7c7c7c"}} /> */}
+    <span style={{height:"20px",overflow:"hidden"}}>
+    <span class='badge badge-warning' id='lblCartCount'> 5 </span>
+    {/* <i class="fa" >&#xf07a;</i> */}
+    <i class="fa-solid fa-bag-shopping" style={{fontSize:"20px",position:"relative",bottom:"15px",color:"grey"}} onClick={openCart}></i>
+    </span>
       {/* <Button type="primary" onClick={showDrawer}>
         Open
       </Button> */}

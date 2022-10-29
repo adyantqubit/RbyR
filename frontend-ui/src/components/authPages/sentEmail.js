@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './login.css';
 import { Grid, TextField, Button, Box, Alert,Typography } from "@mui/material";
 import { useState } from 'react';
@@ -35,6 +35,9 @@ const SentEmail = () => {
     }
   }
 
+  useEffect(()=>{
+   console.log(error)
+  },[error])
 
   
   return (
@@ -45,13 +48,13 @@ const SentEmail = () => {
 			<div class="signu" style={{marginTop:"5vh"}}>
 				<form  id="password-reset-email-form" onSubmit={handleSubmit}>
 					<label class="labe" aria-hidden="true" style={{fontSize:"1.6rem"}}>Change Password</label>
-					{error ? <Alert severity="error" style={{margin:"0 50px"}}>{error.none_field_errors[0]}</Alert> : ""}
+					{error.non_field_errors? <Alert severity="error" style={{margin:"0 50px"}}>{error.non_field_errors[0]}</Alert> : ""}
                     {msg.msg ? <Alert severity="success" style={{margin:"0 49px",marginTop:"10px"}}>Sent Successfully</Alert> : ""}
 					
 					<input style={{marginBottom:"0"}} class="inpu" type="email" name="email" placeholder="Register Email" required=""/>
 					{error.email?<Typography style={{color:"red",paddingLeft:"70px",fontSize:"0.8rem"}}>{error.email[0]}</Typography>:" "}
 
-					<button class="butto" style={{backgroundColor:"black",}} type='submit'>Send Email</button>
+					<button class="butto" style={{backgroundColor:"purple",}} type='submit'>Send Email</button>
 				</form>
 			</div>
 	</div>

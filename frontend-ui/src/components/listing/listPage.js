@@ -22,7 +22,7 @@ import Sort from './sort';
 const ListPage = () => {
 
 
-  const {product,condition,like,setLike,cart,tempallpro,settemAllpro,setCart,CategoryProduct,setCategoryProduct,sortui,setSortUi,filterui,setfilterUi}=CartState()
+  const {product,condition,like,setLike,cart,tempallpro,settemAllpro,currency,setCurrency,setCart,CategoryProduct,setCategoryProduct,sortui,setSortUi,filterui,setfilterUi}=CartState()
   const [saveLikeApi,{isLoading}]=useLikedUpdateMutation()
   const [cartsaveApi,{isLoad}]=useCartUpdateMutation()
   let {access_token}=getToken();
@@ -129,7 +129,7 @@ return (
   <div className={style.item}>
     <img src={config.apiBaseURL+p.img_main} onClick={e=>openDetail(p.id)}></img>
     <div className={style.title} ><span>{p.title}</span></div>  
-    <div className={style.price} >₹ {p.price}</div>
+    <div className={style.price} >{currency.sign} {p.price*currency.value}</div>
   </div>
 
 )):""}

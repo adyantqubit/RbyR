@@ -20,6 +20,7 @@ import Cart from './cart';
 import { Profile } from './profile';
 import Search from './search';
 import Slideshow from './slideshow';
+import Converter from '../concepts/convertCurrency';
 
 
 
@@ -98,6 +99,7 @@ const Navbar = () => {
           <img src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" alt="Logo" onClick={openHome}/>
         </div>
           <nav className={style.navbar}>
+            <Converter/>
 
             <ul className={style.nav_links} style={{marginBottom:"3px",marginTop:"20px"}}>
             
@@ -141,7 +143,7 @@ const Navbar = () => {
                   <div><Search className={style.icons}/></div>
                   <div><BsWhatsapp className={style.icons}/></div>
                   <div><LikedDrawer /></div>
-                  <div ><Cart style={{display:"none"}}/></div>
+                  <div style={{height:"20px"}}><Cart style={{display:"none"}}/></div>
                   <div><Profile /></div>
                 </div>
 
