@@ -119,7 +119,7 @@ class SendPasswordResetEmailSerializer(serializers.Serializer):
             send_mail( subject, message, email_from, recipient_list )
             return attrs
         else:
-            raise ValidationErr('your are not a Register User') 
+            raise serializers.ValidationError("you are not register user")
             
  
         
