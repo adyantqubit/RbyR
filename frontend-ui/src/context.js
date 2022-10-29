@@ -37,7 +37,7 @@ const Context = ({ children }) => {
   const [htl,sethtl]=useState(false)
 
   const [currency,setCurrency]=useState({value:1,sign:"₹"});
-  const [to,setTo]=useState("inr")
+  const [to,setTo]=useState("INR")
  
   let {access_token,refresh_token}=getToken()
   const nav=useNavigate()

@@ -202,7 +202,7 @@ const Login = () => {
 					<NavLink to='/sendemail' style={{marginLeft:"50%",fontSize:"1rem"}} >Forgot Password ?</NavLink>
 
 					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button class="butto" type='submit'>Login</button>}
-					<label class="labe" style={{alingSelf:"bottom"}} htmlFor="ch" aria-hidden="true">Register</label>
+					<label class="labe" style={{}} htmlFor="ch" aria-hidden="true">Register</label>
 
 				</form>
 			</div>

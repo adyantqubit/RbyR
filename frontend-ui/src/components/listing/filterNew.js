@@ -227,7 +227,8 @@ function Sizemanipulation(){
 
          }): <div className={style.textdiv} >
          <span className={style.text} >Loading ...</span>
-         </div>}
+         </div>
+         }
 
 
        </div>

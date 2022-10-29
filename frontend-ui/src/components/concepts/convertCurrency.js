@@ -20,9 +20,9 @@ useEffect(() => {
 `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/inr.json`)
 .then((res) => {
 	const data={
-		'inr':[res.data["inr"].inr,"₹"],
-		'usd':[res.data["inr"].usd,"$"],
-		'gbp':[res.data['inr'].gbp,"£"]
+		'INR':[res.data["inr"].inr,"₹"],
+		'USD':[res.data["inr"].usd,"$"],
+		'GBP':[res.data['inr'].gbp,"£"]
 	}
 	setInfo(data);
 	

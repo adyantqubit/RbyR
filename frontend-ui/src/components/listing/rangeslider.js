@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import "./ratingSlider.css";
 import style from './listpage.module.css'
+import { CartState } from "../../context";
 
 
 const MultiRangeSlider = ({ min, max,minS,maxS,onChange }) => {
@@ -10,6 +11,7 @@ const MultiRangeSlider = ({ min, max,minS,maxS,onChange }) => {
   const minValRef = useRef(minS);
   const maxValRef = useRef(maxS);
   const range = useRef(null);
+  const {currency}=CartState()
 
   // Convert to percentage
   const getPercent = useCallback(
@@ -82,8 +84,8 @@ const MultiRangeSlider = ({ min, max,minS,maxS,onChange }) => {
       <div className="slider">
         <div className="slider__track" />
         <div ref={range} className="slider__range" />
-        <div className="slider__left-value">₹ {minVal}</div>
-        <div className="slider__right-value">₹  {maxVal}</div>
+        <div className="slider__left-value">{currency.sign} {(minVal*currency.value).toFixed(2).replace(/\.0+$/,'')}</div>
+        <div className="slider__right-value">{currency.sign} {(maxVal*currency.value).toFixed(2).replace(/\.0+$/,'')}</div>
       </div>
     </div>
     </>
