@@ -99,7 +99,7 @@ const Navbar = () => {
           <img src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" alt="Logo" onClick={openHome}/>
         </div>
           <nav className={style.navbar}>
-            <Converter/>
+            
 
             <ul className={style.nav_links} style={{marginBottom:"3px",marginTop:"20px"}}>
             
@@ -107,18 +107,18 @@ const Navbar = () => {
               <label htmlFor="checkbox_toggle" className={style.hamburger}>&#9776;</label>
               
               <div className={style.menu}>
-                
+              <Converter/>
                 <li style={{height:"40px"}}><a className={style.al} href="/">Home</a></li>
                 <li className={style.services} onMouseEnter={openc} onMouseLeave={closec}>
                   <span  className={style.al} href="/" style={{fontWeight:"450",fontSize:"16px"}}>Ethnic</span>
                 
                 
                   <ul className={style.dropdown}>
-                    <li  style={{padding:"0",width:"40px",margin:"20px 15px"}}><a className={style.al2} href="/listing/partywear" >Partywear</a></li>
-                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px"}}><a className={style.al2} href="/listing/casual">Casual</a></li>
-                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px"}}><a className={style.al2} href="/listing/kurti">Kurti</a></li>
-                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px"}}><a className={style.al2} href="/listing/weddingwear">Weddingwear</a></li>
-                    <li style={{padding:".1em",width:"auto",margin:"20px 15px"}}><a className={style.al2}  href="/listing/formal">Formal</a></li>
+                    <li  style={{padding:"0",width:"40px",margin:"20px 15px"}}><Link className={style.al2} to="/listing/partywear" >Partywear</Link></li>
+                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px"}}><Link className={style.al2} to="/listing/casual">Casual</Link></li>
+                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px"}}><Link className={style.al2} to="/listing/kurti">Kurti</Link></li>
+                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px"}}><Link className={style.al2} href="/listing/weddingwear">Weddingwear</Link></li>
+                    <li style={{padding:".1em",width:"auto",margin:"20px 15px"}}><Link className={style.al2}  href="/listing/formal">Formal</Link></li>
                   </ul>    
                 </li>
 

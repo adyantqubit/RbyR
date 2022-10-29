@@ -2,14 +2,21 @@
 width: 50px;
 height: 100%;
 position: relative;
-top:10px;
+top:2px;
 right:10vw;
 }
 .Dropdown-control{
-  height:35px
+  height:35px;
+  background:#323232;
+  color:white;
+  border:0;
 }
 
 .Dropdown-placeholder{
   height: 20px;
   padding-bottom: 2px;
+}
+
+.Dropdown-arrow{
+  margin-top: 5px;
 }

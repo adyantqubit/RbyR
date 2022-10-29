@@ -6,7 +6,7 @@ import Footer from '../global/footer'
 import Navbar from '../global/NavHeader'
 import { bounce } from 'react-animations';
 import { StyleSheet, css } from 'aphrodite';
-import ScrollToTop from "react-scroll-to-top";
+import { BackTop } from 'antd';
 
 // import projectStyles from '.style.module.css'
 import styles from './detail.module.css'
@@ -22,6 +22,9 @@ import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 import InnerImageZoom from 'react-inner-image-zoom';
 import Slider2 from './slider2'
 import Shake from 'react-reveal/Shake';
+import { Link, animateScroll as scroll } from "react-scroll";
+import ScrollButton from './top'
+
 
 const sty = StyleSheet.create({
   bounce: {
@@ -43,22 +46,22 @@ const Details = (props) => {
   const [saveLikeApi,{isLoading}]=useLikedUpdateMutation()
   const [notAvai,setNotAvai]=useState(false)
 
+ 
   useEffect(()=>{
-  console.log(openCartdrawer)
-  },[openCartdrawer])
+    gettingDetail()
+  },[])
+
+
 
   if(con==false){
     console.log("rerender")
-    gettingDetail()
-    window.scrollTo({
-      top: 0, 
-      behavior: 'smooth'
-      /* you can also use 'auto' behaviour
-         in place of 'smooth' */
-    });
+    gettingDetail()  
     setcon(true)
+    
   }
-  
+
+ 
+
 
   useEffect(()=>{
    console.log(details)
@@ -228,14 +231,15 @@ const Details = (props) => {
   return (
     <>
     <Navbar/>
-    {details?<div className={styles['container']}>
+
+    {details?<div id="scrolling" className={styles['container']}>
       <div className={styles['container01']}>
         <div className={styles['container02']}>
           <div className={styles['image']}>
           <InnerImageZoom 
           src={config.apiBaseURL+details.img_main} zoomSrc={config.apiBaseURL+details.img_main} />
           </div>
-         
+          
           <div className={styles['container03']}>
             <div className={styles['container04']}>
               <h1 className={styles['heading']}>{details.title}</h1>
@@ -364,6 +368,7 @@ const Details = (props) => {
                 <span className={styles['text09']}>-</span>
                 <span className={styles['text10']}>4 Weeks</span>
               </div>
+              <ScrollButton/>
               <div className={styles['container08']}>
                 <span className={styles['text11']}>Additional Charges for International Shipping</span>
               </div>
@@ -412,6 +417,8 @@ const Details = (props) => {
                 </div>
     
             </div>
+
+            
         </div>
 
 
@@ -420,15 +427,19 @@ const Details = (props) => {
            <Slider/>
         </div>
 
+        
+          
+
         {CategoryProduct&&CategoryProduct.length>0? <div style={{width:"80vw",height:"70vh",marginTop:"6%",zIndex:"0"}}>
         <div style={{fontSize:"1.3rem",marginBottom:"20px"}}>You May Also like</div>
-
            <Slider2/>
+           
         </div>:null}
-       
+        
     </div>:"loading"}
+    
 
-  
+    <ScrollButton/>
     <Footer/>
     <Below/>
     </>
