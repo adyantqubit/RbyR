@@ -1,0 +1,69 @@
+.ant-drawer-body{
+    padding: 0%;
+}
+
+.ant-popover-inner-content {
+    background-color: #7c7c7c;
+    
+}
+
+.ant-popover-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ant-btn-sm {
+    width:50%;
+    background:white;
+    color:black;
+}
+
+.anticon-exclamation-circle{
+    display:block;
+}
+
+.ant-popover-message-title{
+    color: white;
+}
+
+ .carousel-control-prev-icon {
+    background-color: white;
+    border-radius:30px;
+    width:3rem;
+    height:3rem;
+    opacity: 1;
+
+    background-image: url(../../assets/photos/right_paint.png);
+
+}
+
+.carousel-control-next-icon{
+    background-color: white;
+    border-radius:30px;
+    width:3rem;
+    height:3rem;
+    opacity: 1;
+
+    background-image: url(../../assets/photos/left_paint.png);
+
+}
+
+.carousel-control-prev-icon:hover,.carousel-control-next-icon:hover{
+opacity: 1;
+}
+
+.carousel-control-prev-icon::after,.carousel-control-next-icon::after{
+    opacity: 1;
+}
+
+ .carousel-control-prev-icon::before,.carousel-control-next-icon::before{
+    opacity: 1;
+ }
+
+ .carousel-control-prev-icon:focus,.carousel-control-next-icon:focus{
+     opacity: 1;
+ }    
+
+ .carousel-control-next, .carousel-control-prev{
+    opacity: 1;
+ }

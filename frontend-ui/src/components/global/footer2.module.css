@@ -1,0 +1,117 @@
+@font-face {
+    font-family: 'MyFont';
+    src: local('MyFont'), url(../../assets/font/RawsonAltRegular.woff) format('woff');
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+  }
+
+.App{
+    width:100%;
+    background-color: #323232;
+    height:auto;
+}
+.foottop{
+    width:220px;
+    height:230px;
+    background-color:#5a5a5a;
+    overflow: hidden;
+    
+}
+.row{
+    display:flex;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+    overflow: visible;
+   padding: 20px 10px;
+}
+
+.column1{
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    word-break:normal;
+}
+
+.column2{
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    word-break:normal;
+}
+
+.column3{
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    word-break:normal;
+}
+
+.column4{
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    word-break:normal;
+}
+
+.column5{
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    word-break:normal;
+}
+
+.heading{
+    color: #fff;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: 2px;
+    font-weight: 520;
+    font-family: 'MyFont';
+    margin: 0;
+}
+
+.span{
+    margin-top: 15px;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    font-family: 'MyFont';
+    font-weight: 500;
+    color: #fff;
+
+}
+
+.icon{
+    margin-top: 15px;
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+
+    .row{
+        display:flex;
+        flex-direction: row;
+        display: grid;
+        gap:1rem;
+        overflow: visible;
+       padding: 20px 10px;
+    }
+    .row{
+       
+      grid-template-columns: repeat(1, 1fr);
+       
+    }
+}

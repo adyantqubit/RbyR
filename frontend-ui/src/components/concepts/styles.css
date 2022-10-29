@@ -1,0 +1,162 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  #myImg {
+    max-width: 300px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  #myImg:hover {
+    opacity: 0.7;
+  }
+  
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+  }
+  
+  /* Modal Content (image) */
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+  
+  /* Caption of Modal Image */
+  #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+  }
+  
+  /* Add Animation */
+  .modal-content,
+  #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+  
+  @-webkit-keyframes zoom {
+    from {
+      -webkit-transform: scale(0);
+    }
+    to {
+      -webkit-transform: scale(1);
+    }
+  }
+  
+  @keyframes zoom {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  
+  /* The Close Button */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* 100% Image Width on Smaller Screens */
+  @media only screen and (max-width: 700px) {
+    .modal-content {
+      width: 100%;
+    }
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.App {
+height: 100vh;
+width: 100%;
+display: flex;
+align-items: center;
+flex-direction: column;
+padding-top: 120px;
+background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+.heading{
+font-family: 'Pacifico', cursive;
+font-size: 35px;
+}
+.container{
+height: 300px;
+width: 800px;
+display: flex;
+justify-content: space-around;
+align-items: center;
+}
+input{
+padding-left: 5px;
+font-size: 20px;
+height: 36px;
+}
+.middle,.right{
+width: 120px;
+}
+.switch{
+padding: 5px;
+margin-top: 25px;
+background-color: rgb(226, 252, 184);
+border-radius: 50%;
+cursor: pointer;
+}
+.result{
+box-sizing: border-box;
+width: 800px;
+padding-left: 30px;
+}
+button{
+width: 100px;
+height: 30px;
+font-weight: bold;
+font-size: 20px;
+border: 2px solid forestgreen;
+background-color: rgb(226, 252, 184);
+cursor: pointer;
+}
+p,h3, button, .switch{
+color: forestgreen;
+}
+p{
+font-size: 30px;
+}
+
+  

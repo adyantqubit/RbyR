@@ -1,0 +1,75 @@
+
+@font-face {
+    font-family: 'MyFont';
+    src: local('MyFont'), url(../../assets/font/RawsonAltRegular.woff) format('woff');
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+  }
+
+
+.contact{
+
+    position: relative;
+    top:25vh;
+    height: auto;
+    width:100%;
+    background:#323232;
+    padding-top: 100px;
+}
+
+.contain{
+   
+    height:auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 0 50px;
+    justify-content: space-around;
+    background:#323232;
+}
+
+.column{
+    height:auto;
+    width:500px;
+    background:#323232;
+    display: flex;
+    flex-direction: column;
+  
+}
+
+
+.head{
+    padding:0 20%;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 3px;
+    font-family: 'MyFont';
+    font-weight: 500;
+    margin: 0;
+    color: #fff;
+    margin-top: 5px;
+
+}
+
+.head2{
+    padding:0 20%;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 3px;
+    font-family: 'MyFont';
+    font-weight: 500;
+    
+    color: #fff;
+    margin-top: 5px;
+
+}
+
+.body{
+    padding:0 20%;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: 1px;
+    font-family: 'Rawson-Regular';
+    font-weight: 400;
+    color: #fff;
+}
