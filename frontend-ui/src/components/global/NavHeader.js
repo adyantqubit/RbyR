@@ -117,22 +117,22 @@ const Navbar = () => {
                     <li  style={{padding:"0",width:"40px",margin:"20px 15px"}}><Link className={style.al2} to="/listing/partywear" >Partywear</Link></li>
                     <li  style={{padding:".1em",width:"auto",margin:"20px 15px"}}><Link className={style.al2} to="/listing/casual">Casual</Link></li>
                     <li  style={{padding:".1em",width:"auto",margin:"20px 15px"}}><Link className={style.al2} to="/listing/kurti">Kurti</Link></li>
-                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px"}}><Link className={style.al2} href="/listing/weddingwear">Weddingwear</Link></li>
-                    <li style={{padding:".1em",width:"auto",margin:"20px 15px"}}><Link className={style.al2}  href="/listing/formal">Formal</Link></li>
+                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px"}}><Link className={style.al2} to="/listing/weddingwear">Weddingwear</Link></li>
+                    <li style={{padding:".1em",width:"auto",margin:"20px 15px"}}><Link className={style.al2}  to="/listing/formal">Formal</Link></li>
                   </ul>    
                 </li>
 
 
                 <li className={style.services} >
-                  <a  className={style.al} href="/listing/luxurypret">Luxury Pret</a>
+                  <Link  className={style.al} to="/listing/luxurypret">Luxury Pret</Link>
                 </li>
 
                 <li className={style.services} >
-                  <a  className={style.al} href="/listing/readytowear">Ready To wear</a>
+                  <Link  className={style.al} to="/listing/readytowear">Ready To wear</Link>
                 </li>
 
                 <li className={style.services} >
-                  <a  className={style.al} href="/listing/worldofrr">World of RbyR</a>
+                  <Link  className={style.al} to="/listing/worldofrr">World of RbyR</Link>
                 </li>
 
               

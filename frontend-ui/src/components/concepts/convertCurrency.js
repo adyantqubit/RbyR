@@ -36,6 +36,10 @@ useEffect(() => {
 	setOptions(Object.keys(info));
 }, [info])
 
+useEffect(()=>{
+  
+},[])
+
 function curencyvalue(e){
 	const data={
 		value:info[e][0],
