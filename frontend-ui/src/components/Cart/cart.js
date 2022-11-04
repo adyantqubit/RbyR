@@ -31,7 +31,7 @@ const text = 'are you sure to delete?';
 
 const CartSItem = (props) => {
 
- const {cart,setCart,CategoryProduct}=CartState()
+ const {cart,setCart,CategoryProduct,currency}=CartState()
  
  const [cartsaveApi,{isLoad}]=useCartUpdateMutation()
  let textInput = React.createRef();
@@ -166,6 +166,12 @@ const increament=(CartProduct)=>{
     cartSave(pro)
   };
 
+  const getTotalPrice=()=>{
+    var p=0;
+    cart.map(c=>p+=c.price*c.quantity)
+    return p
+  }
+
   return (
     <> 
     <Navbar/>
@@ -188,7 +194,7 @@ const increament=(CartProduct)=>{
                 </Popconfirm>
              </div>
 
-              <div style={{color:"black",marginLeft:"20px"}} className={style.price}> ₹ {pro.price}</div>
+              <div style={{color:"black",marginLeft:"20px"}} className={style.price}> {currency.sign} {pro.price*currency.value}</div>
               <div style={{color:"black",marginLeft:"20px",marginTop:"8px"}}>
                 <span className={style.size}>Size :</span>
                 <span className={style.showSize}> {pro.size}</span>  
@@ -237,7 +243,7 @@ const increament=(CartProduct)=>{
         
         <div className={style.subTotal}>
          <span style={{marginLeft:"15px",textTransform:"uppercase"}}>SubTotal</span>
-         <span style={{marginRight:"15px"}}>₹ 3000</span>
+         <span style={{marginRight:"15px"}}>{currency.sign} {getTotalPrice()*currency.value}</span>
 
         </div>
         <div className={style.subTotal}>
@@ -252,12 +258,12 @@ const increament=(CartProduct)=>{
 
         <div className={style.subTotal} style={{marginTop:"25px"}}>
          <span style={{marginLeft:"15px"}}>Total</span>
-         <span style={{fontSize: "20px",marginRight:"15px",fontSize: "21px",lineHeight: "32px",letterSpacing: "3px"}}>₹ 4000</span>
+         <span style={{fontSize: "20px",marginRight:"15px",fontSize: "21px",lineHeight: "32px",letterSpacing: "3px"}}>{currency.sign} {getTotalPrice()*currency.value}</span>
         </div>
 
          <div className={style.buttons} style={{flexDirection:"column",background:"white"}}>
             <button className={style.shopbtn1} style={{width:"100%"}}>Continue Shopping</button>
-            <buton className={style.shopbtn2} style={{width:"100%"}} onClick={e=>{nav('/checkOut')}}>Go To Checkout</buton>
+            <buton className={style.shopbtn2} style={{width:"100%"}} onClick={e=>{nav('/placeorder')}} >Go To Checkout</buton>
          </div>
       </div>
     </div>:null}

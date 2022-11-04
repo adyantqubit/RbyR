@@ -10,6 +10,12 @@ admin.site.register(Liked)
 admin.site.register(Cart)
 admin.site.register(Cart_buy)
 admin.site.register(HomeCard_img)
+admin.site.register(userbillingDetail)
+admin.site.register(usershippingDetail)
+admin.site.register(product_orders)
+admin.site.register(Transaction_history)
+
+
 
 
 

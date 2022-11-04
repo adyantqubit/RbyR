@@ -13,9 +13,10 @@ import Liked from './components/global/liked';
 import Details from './components/expandDetailt/details';
 import Contact from './components/footer pages/contact';
 import Terms from './components/footer pages/tac';
-import CheckOut from './components/checkOut/checkout';
 import CartSItem from './components/Cart/cart';
 import Converter from './components/concepts/convertCurrency';
+import Orderpage from './components/placeOrder/orderpage';
+import Billing from './components/placeOrder/billing';
 
 
 function App() {
@@ -34,14 +35,15 @@ function App() {
     <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
     <Route path="/like" element={<Liked/>} />
     <Route path='/listing/:category/detail/:id' element={<Details/>} />
-    <Route path="/checkOut" element={<CheckOut/>} />
 
 
     <Route path='/custom' element={<Contact/>} />
     <Route path='/terms' element={<Terms/>} />
   
     <Route path='/cart' element={<CartSItem/>} />
-    <Route path='/convert' element={<Converter/>}/>
+  
+    <Route path='/placeorder' element={access_token?<Orderpage/>:<Navigate to='/'/>}/>
+    <Route path='/billing' element={<Billing/>}/>
     </Routes>
     </>
   );

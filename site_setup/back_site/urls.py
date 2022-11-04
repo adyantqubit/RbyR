@@ -33,7 +33,11 @@ urlpatterns = [
     path('refresh/',gettingAccess.as_view(), name='token_refresh'),
     path('buyAll/',cartBuyAll.as_view()),
     path('increament/',CartSetting.as_view()),
-    path('cardimages/',cardImage.as_view())
+    path('cardimages/',cardImage.as_view()),
+    path('invoice_post/',Invoice.as_view()),
+    path('shpping_orderCheck/',shippingOrder.as_view()),
+    path('billing_orderCheck/',billingOrder.as_view()),
+    path('cart_delete/',CartDelete.as_view())
 
     
 

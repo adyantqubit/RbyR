@@ -94,3 +94,35 @@ export const CartQuantityApi2 = async ({data,access_token}) => {
       }).catch((err) => console.log("Failed to authenticate the user."));
   return response ? response.data : {};
 };
+
+
+export const invoiceApi = async (data,access_token) => {
+  const response = await API.post(`invoice_post/`,data, {
+        headers: { "Content-Type": "application/json",'authorization':`Bearer ${access_token}`},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+
+
+
+export const shpingcheckApi = async (data,access_token) => {
+  const response = await API.post(`shpping_orderCheck/`,data, {
+        headers: { "Content-Type": "application/json",'authorization':`Bearer ${access_token}`},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+
+export const billingcheckApi = async (data,access_token) => {
+  const response = await API.post(`billing_orderCheck/`,data, {
+        headers: { "Content-Type": "application/json",'authorization':`Bearer ${access_token}`},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+
+
+export const cartDeleteApi = async ({access}) => {
+  const response = await API.get(`cart_delete/`, {
+        headers: { "Content-Type": "application/json",'authorization':`Bearer ${access}`},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};

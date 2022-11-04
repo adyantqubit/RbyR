@@ -1,0 +1,255 @@
+@font-face {
+    font-family: 'MyFont';
+    src: local('MyFont'), url(../../assets/font/RawsonAltRegular.woff) format('woff');
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+  }
+
+.container{
+    display:flex;
+    flex-direction: column;
+    position: relative;
+    top:26vh;
+}
+
+.main{
+    width:100%;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+   
+}
+
+.payBox{
+    height:200px;
+    width:40%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.img{
+    padding:8px;
+    height:100%;
+}
+
+.payTitle{
+    padding: 8px;
+}
+
+.userinfoText{
+    color: #8c8c8c;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1.2px;
+    font-family: 'MyFont';
+}
+
+.userinfoText2{
+    color: black;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1.2px;
+    font-family: 'MyFont';
+}
+
+.invoice{
+    margin-top: 15px;
+    width:50%;
+    background-color: white;
+    border:1px solid black;
+}
+
+.head{
+    width:100%;
+    height:50px;
+    background-color: black;
+}
+
+
+.headIn{
+    font-size: 30px;
+    height:100%;
+    color:white;
+    font-family: 'MyFont';
+    text-align: center;
+    letter-spacing:2px;
+}
+
+.header{
+    width:100%;
+    
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.headerTexts{
+    width:200px;
+
+    background-color: white;
+    padding:5px;
+}
+
+.columnitem1head{
+    margin-top:5px;
+    font-family: 'MyFont';
+    font-weight: 400;
+    color:black;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 1.4px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.billingmain{
+    width:100%;
+}
+.billingheader{
+    width: 100%;
+
+    background-color: black;
+    margin-top: 30px;
+    display: flex;
+}
+
+.billingheader2{
+    width: 100%;
+    background-color: black;
+    display: flex;
+}
+
+.header1{
+    color:white;
+    width:50%;
+    display:flex;
+    justify-content:center;
+    border-right: 1px solid white;
+}
+
+.header2{
+    color:white;
+    width:25%;
+    display:flex;
+    justify-content:center;
+    border-right: 1px solid white;
+
+}
+
+.protitle{
+    color:black;
+    width:50%;
+    height: 100%;
+    display:flex;
+    padding-left: 10px;
+    padding: 5px;
+    word-break: break-all;
+    border-right: 1px solid black;
+}
+.protitle2{
+    color:black;
+    width:25%;
+    min-height: 100%;
+   
+    padding-left: 10px;
+    border-right: 1px solid black;
+    text-align: center;
+}
+
+.billingfooter{
+    width: 100%;
+
+    background-color: black;
+    margin-top: 30px;
+    display: flex;
+    justify-content: end ;
+}
+
+
+.billingtexts{
+    width: 100%;
+    margin-top: 8px;
+    color:black;
+    display: flex;
+    justify-content: end ;
+}
+
+
+.billingtexts2{
+    width: 30%;
+    margin-top: 8px;
+    color:black;
+    display: flex;
+    justify-content:space-between ;
+}
+
+.diffTotal{
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.bilingiTEMS{
+    width:100%;
+    display: flex;
+
+}
+
+.item1{
+    width:50%;
+    height:100%;
+    padding-left: 10px;
+    padding: 3px;
+    color:black;
+    border-right: 1px solid black;
+    word-break: break-all;
+}
+
+.item2{
+    width:25%;
+    min-height:100%;
+    background-color: white;
+    padding-left: 10px;
+    padding: 3px;
+    color:black;
+    border-right: 1px solid black;
+    text-align: center;
+
+}
+@media (max-width: 1100px) {
+    .invoice{
+        width:90%;
+
+    }
+    .payBox{
+        height:200px;
+        width:70%;
+    }
+}
+
+@media (max-width: 900px) {
+    .invoice{
+        width:90%;
+
+    }
+    .payBox{
+        height:200px;
+        width:70%;
+    }
+}
+
+@media (max-width: 768px) {
+    .invoice{
+        width:90%;
+
+    }
+    .payBox{
+        height:200px;
+        width:90%;
+    }
+}
