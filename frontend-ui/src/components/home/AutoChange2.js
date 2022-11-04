@@ -33,7 +33,7 @@ export  function ImageSwapper2() {
     return (
       <div>
 
-        <img style={{width:"400px",height:"500px",borderRadius:"10px"}} src={config.apiBaseURL+currentImage} />
+        <img style={{width:"100%",height:"500px",borderRadius:"10px"}} src={config.apiBaseURL+currentImage} />
 
       </div>
         

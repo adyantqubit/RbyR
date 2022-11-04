@@ -126,3 +126,28 @@ export const cartDeleteApi = async ({access}) => {
       }).catch((err) => console.log("Failed to authenticate the user."));
   return response ? response.data : {};
 };
+
+
+export const InvoiveGetApi = async ({access}) => {
+  const response = await API.get(`invoie_get/`, {
+        headers: { "Content-Type": "application/json",'authorization':`Bearer ${access}`},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+
+
+export const InvoiveSingleGetApi = async ({access,data}) => {
+  console.log(access)
+  const response = await API.put(`invoiesingle/`,data, {
+        headers: { "Content-Type": "application/json",'authorization':`Bearer ${access}`},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+
+
+export const TransactionGetApi = async ({access}) => {
+  const response = await API.get(`transaction_get/`, {
+        headers: { "Content-Type": "application/json",'authorization':`Bearer ${access}`},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};

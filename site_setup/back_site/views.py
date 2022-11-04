@@ -266,3 +266,43 @@ class CartDelete(APIView):
         else:
             return Response("nothing is listed")
         return Response({"done":"successfully"})
+    
+class Invoiceget(APIView):
+    renderer_classes=[UserRenderer]
+    permission_classes=[IsAuthenticated] 
+    def get(self,request):
+        serialize=6
+        if product_orders.objects.filter(user_no=request.user) is not None:
+            serialize=invoiceSerializer(product_orders.objects.filter(user_no=request.user),many=True)
+            print(serialize.data)
+        else:
+            return Response({})    
+        return Response(serialize.data)    
+    
+    
+class InvoiceSingleget(APIView):
+    renderer_classes=[UserRenderer]
+    permission_classes=[IsAuthenticated] 
+    def put(self,request):
+        serialize=6
+        if product_orders.objects.filter(user_no=request.user) is not None:
+            serialize=invoiceSerializer(product_orders.objects.filter(user_no=request.user,order_no=request.data['order']),many=True)
+            print(serialize.data)
+        else:
+            return Response({})    
+        return Response(serialize.data)        
+    
+    
+class transactionget(APIView):
+    renderer_classes=[UserRenderer]
+    permission_classes=[IsAuthenticated] 
+    def get(self,request):
+        serialize=6
+        pro=7
+        if Transaction_history.objects.filter(user_no=request.user) is not None:
+            serialize=transactionHistorySerialize(Transaction_history.objects.filter(user_no=request.user),many=True)
+            pro=product_orders.objects.filter(user_no=request.user).last()
+            print(serialize.data)
+        else:
+            return Response({})    
+        return Response({"response":serialize.data,"name":pro.billing_id.firstname+" "+pro.billing_id.lastname})    

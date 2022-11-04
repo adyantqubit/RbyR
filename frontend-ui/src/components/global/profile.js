@@ -51,18 +51,35 @@ console.log(userdata)
       {/* <img className={style.img} src="./assets/avatar.jpg" /> */}
       </div>
     <div className={style.menu}>
-      {localStorage.getItem('access_token')&&userdata?<h3 className={style.h3}>{userdata.name}<br /><span className={style.span}>{userdata.email}</span></h3>:<h3 className={style.h3}>You Are Not Logged In<br /><span className={style.span}>Login Or Register First</span></h3>}
+      {localStorage.getItem('access_token')&&userdata?
+      <h3 className={style.h3}>
+        {userdata.name}<br />
+        <span className={style.span}>{userdata.email}</span>
+        </h3>
+        :
+        <h3 className={style.h3}>You Are Not Logged In<br />
+        <span className={style.span}>Login Or Register First</span></h3>}
       <ul className={style.ul}>
        
-       {localStorage.getItem('access_token')?null:<li  className={style.l} style={{marginLeft:"-30px"}}>
+       {localStorage.getItem('access_token')?
+       null:
+       <li  className={style.l} style={{marginLeft:"-30px"}}>
         <BiLogIn className={style.img} style={{color:"red",height:"20px",width:"20px !important"}}/><Link to="/login" className={style.a}>Register/Login</Link>
         </li>} 
-        {localStorage.getItem('access_token')?<li className={style.l} style={{marginLeft:"-30px"}}>
-          <MdPublishedWithChanges className={style.img} style={{color:"black",height:"20px",width:"20px !important"}}/><Link to="/changePass" className={style.a}>Change Password</Link>
-        </li>:null}
+
         {localStorage.getItem('access_token')? <li className={style.l} style={{marginLeft:"-30px"}}>
-          <BiLogOut className={style.img} style={{color:"red",height:"20px",width:"20px !important"}}/><Link to="/" className={style.a} onClick={handleLogout}>Logout</Link>
+         <Link to="/profile" className={style.a}>MyOrders</Link>
         </li>:null}
+
+        {localStorage.getItem('access_token')?<li className={style.l} style={{marginLeft:"-30px"}}>
+        <Link to="/changePass" className={style.a}>Change Password</Link>
+        </li>:null}
+
+        {localStorage.getItem('access_token')? <li className={style.l} style={{marginLeft:"-30px"}}>
+         <Link to="/" className={style.a} onClick={handleLogout}>Logout</Link>
+        </li>:null}
+
+     
       </ul>
     </div>
     

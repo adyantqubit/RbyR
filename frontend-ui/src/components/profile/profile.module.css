@@ -1,0 +1,187 @@
+@font-face {
+    font-family: 'MyFont';
+    src: local('MyFont'), url(../../assets/font/RawsonAltRegular.woff) format('woff');
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+  }
+
+
+.Container{
+    position: relative;
+    top:26vh;
+    width:100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.centerContainer{
+
+    width:85%;
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+
+.containerHeader{
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.6px;
+    color:black;
+    display: flex;
+    justify-content: start;
+}
+
+.main{
+    width:100%;
+    display: flex;
+    
+}
+
+.column1{
+    width:30%;
+    min-height:100%;
+    display:flex;
+    flex-direction: column;
+    margin:10px;
+    padding: 8px;
+}
+
+.column2{
+    width:70%;
+    min-height:100%;
+    display:flex;
+    flex-direction: column;
+    margin:10px;
+    padding: 8px;
+}
+
+.column1header{
+  
+ width: 100%;
+ height: 40px;
+ font-size: 16px;
+ line-height: 24px;
+ letter-spacing: 1.4px;
+ display: flex;
+ justify-content: center;
+ flex-direction: column;
+ font-weight:500;
+}
+
+.column2header{
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 1.4px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: 500;
+}
+
+.column1text{
+    width: 100%;
+    height: 60px;
+    color:#8c8c8c;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 1.4px;
+    font-weight:500;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: rgba(180, 180, 180, 0.3) solid 0.9px;
+}
+
+.table{
+    width:100%;
+   background-color: white;
+    border: #323232 solid 1px;
+}
+
+.tablerowhead{
+    display:flex;
+    justify-content: space-between;
+}
+
+.rowheadText{
+    width:14%;
+    min-height: 40px;
+    text-align: center;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.rowText{
+    width:14%;
+    min-height: 40px;
+    text-align: center;
+    color: #7c7c7c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
+.userinfoText{
+    color: #8c8c8c;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1.2px;
+    font-family: 'MyFont';
+}
+
+.userinfoText2{
+    color: black;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1.2px;
+    font-family: 'MyFont';
+}
+
+.rowitem1{
+    width:50%;
+    min-height: 40px;
+    text-align: start;
+    color: #8c8c8c;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.rowitem2{
+    width:15%;
+    min-height: 40px;
+    text-align: center;
+    color: #8c8c8c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+}
+
+.totalBox{
+    width:100%;
+    height:200px;
+    display: flex;
+    justify-content: end;
+}
+
+.box{
+    width:200px;
+    height:100px;
+}
+
+.textlight1{
+    width:100%;
+    height:40px;
+    display:flex;
+    justify-content: space-around;
+}

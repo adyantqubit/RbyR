@@ -11,9 +11,6 @@ const Filter = () => {
   const{product,setCondition,setProduct,setcheck,checked1,checked2}= CartState()
   
 
-  
-
-
   return (
     <div style={{justifyContent:"centre",margin:"auto 0"}} >
     <Popup trigger={<button style={{border:"white"}} ><span style={{width:"30px",height:"30px",fontSize:"1.2rem",fontWeight:"400",letterSpacing:"1.5px",background:"aliceblue"}}>Filter by</span></button>} 

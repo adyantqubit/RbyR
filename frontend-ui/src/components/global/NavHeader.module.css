@@ -269,9 +269,7 @@ input[type=checkbox]:checked ~ .menu{
   
   .action .menu {
 	position: absolute;
-	right: 180px;
-    
-    
+  right: 0;
 	padding: 10px 20px;
 	background: #fff;
 	width: 200px;
@@ -288,19 +286,7 @@ input[type=checkbox]:checked ~ .menu{
     opacity: 1;
 
   }
-  
- 
-  
-  .action .menu::before {
-	content: "";
-	position: absolute;
-	top: -5px;
-	right: 28px;
-	width: 20px;
-	height: 20px;
-	background: #fff;
-	transform: rotate(45deg);
-  }
+
   
   .action .menu .h3 {
 	width: 100%;
@@ -324,6 +310,8 @@ input[type=checkbox]:checked ~ .menu{
 	border-top: 1px solid rgba(0, 0, 0, 0.05);
 	display: flex;
 	align-items: center;
+  text-decoration: none;
+
   }
   
   .action .menu .ul .l .img {
@@ -343,6 +331,11 @@ input[type=checkbox]:checked ~ .menu{
 	color: #555;
 	font-weight: 500;
 	transition: 0.5s;
+  text-decoration: none;
+  flex-wrap: nowrap;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 500;
   }
   
   .action .menu .ul .l:hover .a {

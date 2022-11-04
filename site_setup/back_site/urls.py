@@ -37,9 +37,12 @@ urlpatterns = [
     path('invoice_post/',Invoice.as_view()),
     path('shpping_orderCheck/',shippingOrder.as_view()),
     path('billing_orderCheck/',billingOrder.as_view()),
-    path('cart_delete/',CartDelete.as_view())
+    path('cart_delete/',CartDelete.as_view()),
+    path('invoie_get/',Invoiceget.as_view()),
+    path('invoiesingle/',InvoiceSingleget.as_view()),
+    path('transaction_get/',transactionget.as_view())
 
-    
+
 
 
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)   
