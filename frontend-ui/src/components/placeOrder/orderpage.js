@@ -1,0 +1,60 @@
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { CartState } from '../../context';
+import Navbar from '../global/NavHeader';
+import styles from './order.module.css'
+import Payment from './payment';
+import ProductListing from './productListing';
+import UserInfo from './userInfo'
+import UsserAdresses from './usserAdresses';
+
+
+const Orderpage = () => {
+  const{userdata,checkoutDetails,setCheckoutDetails,paymentflow,cart,setPaymentflow,shippingflow,setShipingflow}=CartState()
+  const nav=useNavigate()
+
+  return (
+    <>
+    <Navbar/>
+    <div style={{position:"relative",top:"26.5vh"}}>
+    <div className={styles.head}>
+     <span className={styles.headText}>{`< Back To Cart`}</span> 
+    </div>
+    <div className={styles.row} >
+       <div className={styles.column1} >
+              <UserInfo/>
+
+            {shippingflow?
+              <UsserAdresses />
+              :
+              <>
+              <hr style={{color:"black"}}></hr>
+
+              <div className={styles.upnextForm} >
+                2. SHIPPING INFO
+              </div>
+              <hr style={{color:"black"}}></hr>
+              </>
+            } 
+
+            {paymentflow?
+              <Payment/>
+              :
+              <>
+                 <div className={styles.upnextForm} >
+                 3. PAYMENT
+                </div>
+                <hr style={{color:"black"}}/>
+              </>
+           
+            }
+        
+        </div>
+        <ProductListing/>
+    </div>
+    </div>
+    </> 
+  )
+}
+
+export default Orderpage

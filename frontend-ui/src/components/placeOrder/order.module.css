@@ -1,0 +1,283 @@
+@font-face {
+    font-family: 'MyFont';
+    src: local('MyFont'), url(../../assets/font/RawsonAltRegular.woff) format('woff');
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+  }
+
+.head{
+    color: #8c8c8c;
+    height: 80px;
+    background-color: white;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 1.4px;
+    font-weight: 550;
+    display: flex;
+    font-family: 'MyFont';
+    flex-direction: column;
+    justify-content: center;
+    padding:0 7%;
+    cursor: pointer;
+}
+
+.headText{
+    border-bottom:1px solid #323232;
+    padding-bottom: 20px;
+}
+
+.row {
+    padding: 0 7%;
+    color: white;
+    background-color: WHITE;
+    display:flex;
+}
+
+.column1{
+    width:50%;
+    height: auto;
+    display:flex;
+    flex-direction: column;
+}
+
+.column2 {
+
+    width: 50%;
+    display: flex;
+    justify-content: end;
+}
+
+
+
+
+.columnitem1{
+    width:100%;
+}
+
+.columnitem1_1{
+    width:100%;
+}
+
+.columnitem1head{
+    margin-top: 15px;
+    font-family: 'MyFont';
+    font-weight: 400;
+    color:black;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 1.4px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.columnitem1content1{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.columnFirstName{
+    width:48%;
+    height:auto;
+    background-color: white;
+}
+
+.firstName{
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    color:black;
+    font-family: 'MyFont';
+}
+
+.firstInput{
+    width: 100%;
+    background: inherit;
+    height: 36px;
+    border: 1px solid rgba(140, 140, 140, 0.5);
+    padding: 0 8px;
+    font-size: 14px;
+    color: black;
+}
+
+.userInfoButton{
+    margin-top: 15px;
+    min-width: 250px;
+    font-size: 14px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    background-color: #323232;
+    color: white !important;
+    text-align: center;
+    opacity: 1;
+    font-family: 'MyFont';
+    position: relative;
+    font-weight: normal;
+    text-transform: uppercase;
+    padding: 10px 18px;
+    -webkit-transition: all 250ms ease 0s;
+    -o-transition: all 250ms ease 0s;
+    transition: all 250ms ease 0s;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #323232;
+    -webkit-border-image: initial;
+    -o-border-image: initial;
+    border-image: initial;
+    text-decoration: none;
+    border-radius: 0;
+}
+
+.usedetailShow{
+
+}
+
+.userinfoText{
+    color: #8c8c8c;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1.2px;
+    font-family: 'MyFont';
+}
+
+.userinfoText2{
+    color: black;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1.2px;
+    font-family: 'MyFont';
+}
+
+
+.columnitem2{
+    width:100%;
+    background-color: white;
+}
+
+.columnFullName{
+    width:100%;
+    height:auto;
+    background-color: white;
+    padding:5px;
+}
+
+.boxAddress{
+    width:100%;
+    border:1px solid black;
+    display: flex;
+}
+
+.addressInformation
+{
+width:80%;
+height: 100%;
+padding: 10px;
+  
+}
+
+.adressTick{
+    width:20%;
+    display: flex;
+    justify-content: center;
+}
+
+.columnitem3{
+    width:100%;
+}
+
+.boxpay{
+    margin-top: 10px;
+    width:60%;
+    border:1px solid black;
+    height:60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+}
+
+.upnextForm{
+width:100%;
+height:60px;
+
+margin-top:5px;
+color:black;
+display:flex;
+justify-content: center;
+flex-direction: column;
+letter-spacing: 1.2px;
+
+}
+
+.listHead{
+    width:80%;
+    height:100%;
+    justify-self:end;
+}
+
+.sub{
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1.2px;
+    color:black;
+    font-family: "MyFont";
+    font-weight: 500;
+}
+
+
+.cartBox{
+    width:100%;
+    display: flex;
+    
+}
+
+.img{
+    width:35%;
+    padding-left: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.productInfo{
+    display:flex;
+    flex-direction: column;
+    padding:10px;
+}
+
+.titlepro{
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1.2px;
+    font-family: 'MyFont';
+    color:black;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+
+
+    .row {
+        display:flex;
+        flex-direction: column;
+    }
+    
+    .column1{
+        width:100%;
+        height: auto;
+        display:flex;
+        flex-direction: column;
+    }
+    
+    .column2 {
+    
+        width: 100%;
+       
+    }
+
+    .column2 {
+        justify-content: start;
+    }
+  
+}

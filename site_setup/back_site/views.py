@@ -188,3 +188,81 @@ class cardImage(APIView):
               serialize=getCardSer(iamges.last())              
               return Response({"response":serialize.data})
              
+             
+class shippingOrder(APIView):
+    renderer_classes=[UserRenderer]
+    permission_classes=[IsAuthenticated]
+    def post(self,request):
+        shippingData=request.data
+        shippingData['user_id']=request.user.id
+        serialize2=shippingSerializer(data=shippingData)
+        try:
+         if serialize2.is_valid(raise_exception=True):
+            ship=serialize2.save()
+            return Response({"shipping_id":ship.id})
+        except:
+          ship=usershippingDetail.objects.get(street=request.data['street'],city=request.data['city'],number=request.data['number'],user_id=request.user)
+          return Response({"shipping_id":ship.id})
+        return Response(request.data)       
+    
+class billingOrder(APIView):
+    renderer_classes=[UserRenderer]
+    permission_classes=[IsAuthenticated]
+    def post(self,request):
+        billingData=request.data
+        billingData['user_id']=request.user.id
+        serialize2=billingSerializer(data=billingData)
+        try:
+         if serialize2.is_valid(raise_exception=True):
+            bill=serialize2.save()
+            return Response({"billing_id":bill.id})
+        except:
+          bill=userbillingDetail.objects.get(street=request.data['street'],city=request.data['city'],number=request.data['number'],user_id=request.user)
+          return Response({"billing_id":bill.id})
+        return Response(request.data)          
+             
+class Invoice(APIView):
+    renderer_classes=[UserRenderer]
+    permission_classes=[IsAuthenticated]
+    def post(self,request):           
+        
+        instanceshipping=usershippingDetail.objects.get(id=request.data['shipping_id'])
+        instancebilling=userbillingDetail.objects.get(id=request.data['billing_id'])
+        
+        num=40000
+        if Transaction_history.objects.all().last() is not None:
+          num=Transaction_history.objects.all().last().order_no+1;
+          
+        date=45  
+        cartdata=[];
+        for cart in request.data['cart']:
+            cartdata.append(cart)
+            data={
+                "order_no":num,
+                "user_no":request.user.id,
+                "billing_id":instancebilling.id,
+                "shipping_id":instanceshipping.id,
+                "product_id":cart['id'],
+                "quantity":cart['quantity'],
+                "price":cart['price'],
+                "size":cart['size'],
+                "payment_mode":request.data['payment']
+            }
+            serialize3=invoiceSerializer(data=data)
+            if serialize3.is_valid(raise_exception=True):
+                serialize3.save()          
+     
+        tran=Transaction_history.objects.create(order_no=num,payment_status="pending",user_no=request.user)   
+        return Response({"order_no":tran.order_no,'cart':cartdata})             
+    
+    
+class CartDelete(APIView):
+    renderer_classes=[UserRenderer]
+    permission_classes=[IsAuthenticated]  
+    def get(self,request):
+        print(request.user)
+        if Cart.objects.filter(user_no=request.user) is not None:
+            Cart.objects.filter(user_no=request.user).delete()
+        else:
+            return Response("nothing is listed")
+        return Response({"done":"successfully"})

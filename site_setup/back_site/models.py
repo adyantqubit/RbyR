@@ -1,6 +1,7 @@
 from distutils.command.upload import upload
 from email.policy import default
 from itertools import product
+from pyexpat import model
 from unicodedata import category
 from unittest.util import _MAX_LENGTH
 from django.db import models
@@ -190,3 +191,58 @@ class HomeCard_img(models.Model):
            width_field=None, max_length=100)
          category_top4=models.CharField(max_length=50,choices=category,default="casual")
          video_url=models.CharField(max_length=200,default="")
+         
+         
+class usershippingDetail(models.Model):
+     id=models.AutoField(primary_key=True)
+     user_id=models.ForeignKey(User,on_delete=models.CASCADE)
+     firstname=models.CharField(max_length=20)
+     lastname=models.CharField(max_length=20)
+     street=models.CharField(max_length=200)
+     houseno=models.CharField(max_length=20)
+     city=models.CharField(max_length=30)
+     state=models.CharField(max_length=30)
+     zipcode=models.CharField(max_length=20)
+     country=models.CharField(max_length=30)
+     number=models.CharField(max_length=15)
+     
+     
+class userbillingDetail(models.Model):
+     id=models.AutoField(primary_key=True)
+     user_id=models.ForeignKey(User,on_delete=models.CASCADE)
+     firstname=models.CharField(max_length=20)
+     lastname=models.CharField(max_length=20)
+     street=models.CharField(max_length=200)
+     houseno=models.CharField(max_length=20)
+     city=models.CharField(max_length=30)
+     state=models.CharField(max_length=30)
+     zipcode=models.CharField(max_length=20)
+     country=models.CharField(max_length=30)
+     number=models.CharField(max_length=15) 
+     
+         
+class product_orders(models.Model):
+    order_no=models.IntegerField()
+    user_no=models.ForeignKey(User,on_delete=models.CASCADE,blank=True)
+    
+    billing_id=models.ForeignKey(userbillingDetail,on_delete=models.CASCADE)  
+    shipping_id=models.ForeignKey(usershippingDetail,on_delete=models.CASCADE)
+    
+    product_id=models.ForeignKey(product_detail,on_delete=models.CASCADE)  
+    quantity=models.IntegerField()          
+    price=models.IntegerField()
+    size=models.CharField(max_length=20)
+    payment_mode=models.CharField(max_length=20,default="cod")
+    date=models.DateField(('purchase date'), null=False, blank=False, auto_now=True)
+    
+   
+
+status = (
+    ('paid','paid'),
+    ('pending','pending'),
+)    
+class Transaction_history(models.Model):
+    order_no=models.IntegerField()
+    payment_status=models.CharField(max_length=50,choices=status,default="pending")
+    user_no=models.ForeignKey(User,on_delete=models.CASCADE)    
+    

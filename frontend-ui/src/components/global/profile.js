@@ -11,11 +11,13 @@ import { unSetUserInfo } from '../../Redux-manage/features/userSlice'
 import { unSetUserToken } from '../../Redux-manage/features/authSlice'
 import { removeToken } from '../../Redux-manage/services/localStorageService'
 import { useGetLoggedUserQuery } from '../../Redux-manage/services/userAuthapi'
+import { CartState } from '../../context'
 
 
 
 export const Profile = () => {
     const dispatch= useDispatch();
+    const{userdata,setUserData}=CartState()
     const nav=useNavigate()
     const handleLogout = () => {
         dispatch(unSetUserInfo({email:"",name:""}))
@@ -27,11 +29,8 @@ export const Profile = () => {
 
 
 
-      const {data,isSuccess}=useGetLoggedUserQuery(localStorage.getItem('access_token'))
- const [userdata,setUserData]=useState({
-    email:"",
-    name:""
-  })
+ const {data,isSuccess}=useGetLoggedUserQuery(localStorage.getItem('access_token'))
+
 
   useEffect(()=>{
     if(data&&isSuccess)
