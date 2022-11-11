@@ -24,12 +24,10 @@ const ResetPassword = () => {
   
       const res=await resetPassword({actualData,id,token})
       if(res.error){
-        console.log(res.error.data.errors)
         setMsg({})
         setError(res.error.data.errors)
       }
       if(res.data){
-       console.log(res.data)
        setError({})
        setMsg(res.data)
       }   

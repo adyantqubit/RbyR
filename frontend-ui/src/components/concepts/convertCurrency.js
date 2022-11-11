@@ -19,6 +19,7 @@ useEffect(() => {
 	Axios.get(
 `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/inr.json`)
 .then((res) => {
+	
 	const data={
 		'INR':[res.data["inr"].inr,"₹"],
 		'USD':[res.data["inr"].usd,"$"],
@@ -32,7 +33,6 @@ useEffect(() => {
 // Calling the convert function whenever
 // a user switches the currency
 useEffect(() => {
-    console.log(info)
 	setOptions(Object.keys(info));
 }, [info])
 
@@ -45,19 +45,18 @@ function curencyvalue(e){
 		value:info[e][0],
 		sign:info[e][1]
 	}
-	console.log(data)
     setCurrency(data)	
 }
 
 return (
-        <>
+    
 		<div className="right">
 		<Dropdown options={options}
 					onChange={(e) => {curencyvalue(e.value);setTo(e.value)}}
 		value={to} placeholder="To" />
 		</div>
 	
-	</>
+
 );
 }
 

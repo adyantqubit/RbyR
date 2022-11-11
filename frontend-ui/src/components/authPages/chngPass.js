@@ -25,7 +25,6 @@ const ChngPass = () => {
 	  }
 	  const res=await changeUserPassword({actualData,access_token});
 	  if(res.error){
-		console.log(res.data)
 		setError(res.error.data.errors)
 	  }else{
 		const msg={
@@ -36,7 +35,6 @@ const ChngPass = () => {
 
 	  }
 	  if(res.data){
-		 console.log(res.data)
 		 setError(res.data)
 		 document.getElementById("password-change-form").reset();
 	  }

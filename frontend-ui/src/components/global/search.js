@@ -30,7 +30,6 @@ const Search= () => {
         .toLowerCase()
         .includes(searchField.toLowerCase())&&searchField.length>0
       ){
-        console.log(person)
         return person;
       }
     }

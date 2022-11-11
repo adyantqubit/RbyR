@@ -98,20 +98,20 @@ const Navbar = () => {
         <div className={style.logo}>
           <img src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" alt="Logo" onClick={openHome}/>
         </div>
+
           <nav className={style.navbar}>
             
-
             <ul className={style.nav_links} style={{marginBottom:"3px",marginTop:"20px"}}>
             
               <input type="checkbox" id="checkbox_toggle" />
               <label htmlFor="checkbox_toggle" className={style.hamburger}>&#9776;</label>
               
-              <div className={style.menu}>
+              <div style={{display:"flex",justifyContent:"space-around"}}>
               <Converter/>
+              <div className={style.menu}>
                 <li style={{height:"40px"}}><a className={style.al} href="/">Home</a></li>
                 <li className={style.services} onMouseEnter={openc} onMouseLeave={closec}>
                   <span  className={style.al} href="/" style={{fontWeight:"450",fontSize:"16px"}}>Ethnic</span>
-                
                 
                   <ul className={style.dropdown}>
                     <li  style={{padding:"0",width:"40px",margin:"20px 15px"}}><Link className={style.al2} to="/listing/partywear" >Partywear</Link></li>
@@ -134,7 +134,7 @@ const Navbar = () => {
                 <li className={style.services} >
                   <Link  className={style.al} to="/listing/worldofrr">World of RbyR</Link>
                 </li>
-
+                </div>
               
                 {/* {access_token?<li><a className={style.al} href="/changePass">Change Password</a></li>:<li><Link to="/login">Register/Login</Link></li>}
                 {access_token?<li><span  className={style.al}  onClick={handleLogout}>Logout</span></li>:null} */}

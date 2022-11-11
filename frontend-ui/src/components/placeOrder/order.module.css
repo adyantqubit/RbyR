@@ -74,12 +74,14 @@
 .columnitem1content1{
     width:100%;
     display:flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 5px;
 }
 
 .columnFirstName{
-    width:48%;
+    width:47%;
+    margin:8px;
     height:auto;
     background-color: white;
 }

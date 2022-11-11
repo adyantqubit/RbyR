@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { MdStackedLineChart } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
-import { cartDeleteApi } from '../../api/service'
+import config from '../../api/config'
+import { cartDeleteApi, getQrDetailApi } from '../../api/service'
 import { CartState } from '../../context'
 import { getToken } from '../../Redux-manage/services/localStorageService'
 import Navbar from '../global/NavHeader'
@@ -12,10 +14,10 @@ import styles from './billing.module.css'
 
 
 const Billing = () => {
-    var{userdata,checkoutDetails,setCheckoutDetails,cart}=CartState()
+    var{userdata,checkoutDetails,setCheckoutDetails,cart,setCart}=CartState()
     const nav=useNavigate()
     var [cond,setCon]=useState(false)
-    
+    var [onlineDetail,setonlineDetail]=useState({})
 
     // useEffect(()=>{
     // //   checkoutDetails=JSON.parse(sessionStorage.getItem('checkoutDetails'))
@@ -37,8 +39,7 @@ const Billing = () => {
       };
 
       useEffect(() => {
-        console.log(checkoutDetails)
-
+        qrDetails()
         window.onpopstate = e => {
           nav("/")
         };
@@ -48,9 +49,28 @@ const Billing = () => {
         deleteFromCart()
       },[]);
 
+      async function qrDetails(){
+        await getQrDetailApi().then(r=>{
+          try{
+            const data={
+              name:r.name,
+              account_number:r.account_number,
+              bank_name:r.bank_name,
+              qr_img:r.qr_img,
+              upi_id:r.upi_id
+            }
+            setonlineDetail(data)
+          }
+          catch{
+            setonlineDetail(null)
+          }
+        
+        })
+       }
+
       async function deleteFromCart(){ 
         var access=localStorage.getItem('access_token')
-        await cartDeleteApi({access}).then(r=>cart=[])
+        await cartDeleteApi({access}).then(r=>setCart([]))
       }     
 
   return (
@@ -59,16 +79,17 @@ const Billing = () => {
     <div className={styles.container}>
     <div className={styles.main} >
        {checkoutDetails.payment=="onlinepay"?
+        onlineDetail!=null?
        <div className={styles.payBox}>
-       <img src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1667477149/download_1_ixxa8k.png"
+       <img src={config.apiBaseURL+onlineDetail.qr_img}
        className={styles.img}/>
        <div className={styles.payTitle}>
-       <div ><span className={styles.userinfoText}>Name:</span><span className={styles.userinfoText2} > Rohan kansari</span ></div>
-       <div ><span className={styles.userinfoText}>Bank Name:</span><span className={styles.userinfoText2}> Rohan kansari</span></div>
-       <div ><span className={styles.userinfoText}>Account Number:</span><span className={styles.userinfoText2}> 76839484738394</span></div>
-       <div ><span className={styles.userinfoText}>UPI ID:</span><span className={styles.userinfoText2}> 6264170187@ybl</span></div>
+       <div ><span className={styles.userinfoText}>Name:</span><span className={styles.userinfoText2} >{onlineDetail.name}</span ></div>
+       <div ><span className={styles.userinfoText}>Bank Name:</span><span className={styles.userinfoText2}>{onlineDetail.bank_name}</span></div>
+       <div ><span className={styles.userinfoText}>Account Number:</span><span className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
+       <div ><span className={styles.userinfoText}>UPI ID:</span><span className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div>
        </div>
-      </div>   
+      </div>  : <div>The qr Code getting error</div>
        :
        null
        } 

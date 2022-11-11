@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react";
 import ReactDOM from "react-dom";
-
+import style from './card.module.css'
 import config from '../../api/config';
 import { getCardHomeImagesApi } from '../../api/service';
 
@@ -33,7 +33,7 @@ export  function ImageSwapper() {
     return (
       <div>
 
-        <img style={{width:"400px",height:"500px",borderRadius:"10px"}} src={config.apiBaseURL+currentImage} />
+        <img className={style.imgswap} src={config.apiBaseURL+currentImage} />
 
       </div>
         

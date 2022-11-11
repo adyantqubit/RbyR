@@ -33,7 +33,6 @@ const Payment = () => {
       setTickop(tickop)
       if(tickop==true){
       checkoutDetails['payment']="onlinepay"
-      console.log(document.getElementsByClassName('order_boxpay__5BlKK'))
       document.getElementsByClassName('order_boxpay__5BlKK')[0].style.border="1px solid black"
       document.getElementsByClassName('order_boxpay__5BlKK')[1].style.border="1px solid black"
       tick=false;
@@ -47,9 +46,7 @@ const Payment = () => {
     async function submitAll(){
         if(checkoutDetails['payment']&&checkoutDetails['payment'].length>0){
            checkoutDetails['cart']=cart
-           console.log(checkoutDetails)
            await invoiceApi(checkoutDetails,access_token).then(r=>{
-            console.log(r)
             checkoutDetails['orderno']=r.order_no
             })
            sessionStorage.setItem('checkoutDetails',JSON.stringify(checkoutDetails))

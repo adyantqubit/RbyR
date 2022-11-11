@@ -248,11 +248,41 @@ class Invoice(APIView):
                 "size":cart['size'],
                 "payment_mode":request.data['payment']
             }
+            
+            if(cart['size']=="Short"):
+               pro=product_detail.objects.get(id=cart['id'])
+               pro.S=pro.S-cart['quantity']
+               print(pro.S)
+               pro.save()
+            elif(cart['size']=="Medium"):
+               pro=product_detail.objects.get(id=cart['id'])
+               pro.M=pro.M-cart['quantity']
+               print(pro.M)
+               pro.save() 
+            elif(cart['size']=="Large"):
+                pro=product_detail.objects.get(id=cart['id'])
+                pro.L=pro.L-cart['quantity']
+                print(pro.L)
+                pro.save()
+            elif(cart['size']=="Extra Large"):
+                pro=product_detail.objects.get(id=cart['id'])
+                pro.XL=pro.XL-cart['quantity']
+                print(pro.XL)
+                pro.save()  
+            elif(cart['size']=="Extra Extra Large"):
+                pro=product_detail.objects.get(id=cart['id'])
+                pro.XXL=pro.XXL-cart['quantity']
+                print(pro.XXL)
+                pro.save()  
+                   
+            
             serialize3=invoiceSerializer(data=data)
             if serialize3.is_valid(raise_exception=True):
-                serialize3.save()          
+                serialize3.save()       
+                   
      
-        tran=Transaction_history.objects.create(order_no=num,payment_status="pending",user_no=request.user)   
+        tran=Transaction_history.objects.create(order_no=num,payment_status="pending",user_no=request.user)  
+        tran.save() 
         return Response({"order_no":tran.order_no,'cart':cartdata})             
     
     
@@ -266,3 +296,102 @@ class CartDelete(APIView):
         else:
             return Response("nothing is listed")
         return Response({"done":"successfully"})
+    
+class Invoiceget(APIView):
+    renderer_classes=[UserRenderer]
+    permission_classes=[IsAuthenticated] 
+    def get(self,request):
+        serialize=6
+        if product_orders.objects.filter(user_no=request.user) is not None:
+            serialize=invoiceSerializer(product_orders.objects.filter(user_no=request.user),many=True)
+        else:
+            return Response({})    
+        return Response(serialize.data)    
+    
+    
+class InvoiceSingleget(APIView):
+    renderer_classes=[UserRenderer]
+    permission_classes=[IsAuthenticated] 
+    def put(self,request):
+        serialize=6
+        if product_orders.objects.filter(user_no=request.user) is not None:
+            serialize=invoiceSerializer(product_orders.objects.filter(user_no=request.user,order_no=request.data['order']),many=True)
+        else:
+            return Response({})    
+        return Response(serialize.data)        
+    
+    
+class transactionget(APIView):
+    renderer_classes=[UserRenderer]
+    permission_classes=[IsAuthenticated] 
+    def get(self,request):
+        serialize=6
+        pro=7
+        prodata=[]
+        if Transaction_history.objects.filter(user_no=request.user) is not None:
+            serialize=transactionHistorySerialize(Transaction_history.objects.filter(user_no=request.user),many=True)
+            for data in serialize.data:
+                pro=product_orders.objects.filter(user_no=request.user,order_no=data['order_no']).last()
+                data['firstname']=pro.billing_id.firstname
+                data['lastname']=pro.billing_id.lastname
+                prodata.append(data)
+        else:
+            return Response({})    
+        
+        return Response({"response":prodata})    
+    
+    
+class ShippingGetApi(APIView):
+    renderer_classes=[UserRenderer]
+    permission_classes=[IsAuthenticated] 
+    def get(self,request):
+        serialize=6
+        if usershippingDetail.objects.filter(user_id=request.user) is not None:
+            serialize=shippingSerializer(usershippingDetail.objects.filter(user_id=request.user),many=True)
+        else:
+            return Response({})    
+        return Response(serialize.data)   
+    
+    
+    
+class ShippingUpdateApi(APIView):
+    renderer_classes=[UserRenderer]
+    permission_classes=[IsAuthenticated] 
+    def put(self,request):
+        serialize=6
+        ship=request.data
+        ship_instance=usershippingDetail.objects.get(id=ship['id'])  
+        ship_instance.firstname=ship['firstname']
+        ship_instance.lastname=ship['lastname']
+        ship_instance.state=ship['state']
+        ship_instance.city=ship['city']
+        ship_instance.houseno=ship['houseno']
+        ship_instance.street=ship['street']
+        ship_instance.zipcode=ship['country']
+        ship_instance.country=ship['zipcode']
+        ship_instance.number=ship['number']
+        ship_instance.save()
+        # if usershippingDetail.objects.filter(user_id=request.user) is not None:
+        #     serialize=shippingSerializer(,usershippingDetail.objects.filter(user_id=request.user),many=True)
+        # else:
+        #     return Response({})    
+        return Response({"msg":"successFully"}) 
+    
+    
+    
+    
+class ShippingDeleteApi(APIView):
+    renderer_classes=[UserRenderer]
+    permission_classes=[IsAuthenticated] 
+    def put(self,request):
+        usershippingDetail.objects.get(id=request.data).delete()
+        return Response({"msg":"successfully"})
+    
+class getQrDetails(APIView):
+      def get(self,request):
+       try:
+        serialize= QrDetailSerializer(Online_Qr.objects.all().last())  
+        print(serialize.data)
+        return Response(serialize.data)
+       except:
+           return Response({"error":"something went wrong"})

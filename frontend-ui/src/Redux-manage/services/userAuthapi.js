@@ -43,7 +43,6 @@ export const userAuthApi = createApi({
     }),
     changeUserPassword:builder.mutation({
         query:({actualData,access_token})=>{
-            console.log(actualData,access_token)
             return{
                 url:'changePass/',
                 method:'POST',

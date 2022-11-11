@@ -117,7 +117,7 @@ const nav=useNavigate();
 
          <div className={style.buttons} >
             <button className={style.shopbtn1} onClick={e=>setCartDrawer(false)}>Continue Shopping</button>
-            <buton className={style.shopbtn2} onClick={e=>{nav('/checkOut')}}>Go To Checkout</buton>
+            <buton className={style.shopbtn2} onClick={e=>{nav('/placeorder');setCartDrawer(false)}}>Go To Checkout</buton>
          </div>
       </div>
     </div>:null}

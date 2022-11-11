@@ -4,7 +4,9 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 # Register your models here.
 admin.site.register(Head_img)
-admin.site.register(product_detail)
+class ProductAdmin(admin.ModelAdmin):
+   list_display = ['category','title','S','M','L','XL','XXL','date']
+admin.site.register(product_detail,ProductAdmin)
 admin.site.register(image)
 admin.site.register(Liked)
 admin.site.register(Cart)
@@ -12,8 +14,12 @@ admin.site.register(Cart_buy)
 admin.site.register(HomeCard_img)
 admin.site.register(userbillingDetail)
 admin.site.register(usershippingDetail)
-admin.site.register(product_orders)
+class InvoiceAdmin(admin.ModelAdmin):
+    readonly_fields = ('date',)
+admin.site.register(product_orders,InvoiceAdmin)
+
 admin.site.register(Transaction_history)
+admin.site.register(Online_Qr)
 
 
 

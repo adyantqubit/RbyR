@@ -22,9 +22,12 @@
     font-size: 16px;
     line-height: 24px;
     font-weight: 500;
+    min-width:15%;
+    max-width:15%;
+    overflow: hidden;
     height: 80px;
     white-space: nowrap;
-  overflow: hidden;
+  
    }
 
    .al2{
@@ -59,6 +62,12 @@
     justify-content: center;
     background-color:  #323232;
     color: #fff;
+    width: 100%;
+   }
+
+   .nav_links{
+    min-width:100%;
+    max-width:100%;
    }
 
    .nav_links a {
@@ -91,7 +100,7 @@
    /* NAVBAR MENU */
    .menu {
     display: flex;
-    
+    max-width: 60%;
     font-size: 16px;
    }
    .menu li:hover {
@@ -113,6 +122,8 @@
    /* DROPDOWN MENU */
    .services {
     position: relative; 
+    max-width:30%;
+    overflow: hidden;
    }
    .dropdown {
     background-color: rgba(1, 139, 139,0);
@@ -134,8 +145,13 @@
    .dropdown li:hover {
     background-color: rgba(0,0,0,0);
    }
+
+   .services:hover{
+    overflow: visible;
+   }
    .services:hover .dropdown {
     display: block;
+    overflow: auto;
    }
 
 /*RESPONSIVE NAVBAR MENU STARTS*/
@@ -169,7 +185,7 @@ input[type=checkbox]{
     
     .contain{
         width: 100%;
-        display: flex;
+        display: none;
     }
 
     .logo{
@@ -269,9 +285,6 @@ input[type=checkbox]:checked ~ .menu{
   
   .action .menu {
 	position: absolute;
-	right: 180px;
-    
-    
 	padding: 10px 20px;
 	background: #fff;
 	width: 200px;
@@ -284,23 +297,12 @@ input[type=checkbox]:checked ~ .menu{
 
   .action:hover .menu{
     display: block;
-    top:160px;
+    top:150px;
+    right:0px;
     opacity: 1;
 
   }
-  
- 
-  
-  .action .menu::before {
-	content: "";
-	position: absolute;
-	top: -5px;
-	right: 28px;
-	width: 20px;
-	height: 20px;
-	background: #fff;
-	transform: rotate(45deg);
-  }
+
   
   .action .menu .h3 {
 	width: 100%;
@@ -324,6 +326,8 @@ input[type=checkbox]:checked ~ .menu{
 	border-top: 1px solid rgba(0, 0, 0, 0.05);
 	display: flex;
 	align-items: center;
+  text-decoration: none;
+
   }
   
   .action .menu .ul .l .img {
@@ -343,6 +347,11 @@ input[type=checkbox]:checked ~ .menu{
 	color: #555;
 	font-weight: 500;
 	transition: 0.5s;
+  text-decoration: none;
+  flex-wrap: nowrap;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 500;
   }
   
   .action .menu .ul .l:hover .a {

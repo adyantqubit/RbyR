@@ -259,4 +259,12 @@ class invoiceSerializer(serializers.ModelSerializer):
         fields="__all__"
         
         
+class transactionHistorySerialize(serializers.ModelSerializer):
+       class Meta:
+        model=Transaction_history
+        fields="__all__"     
           
+class QrDetailSerializer(serializers.ModelSerializer):
+         class Meta:
+           model=Online_Qr
+           fields="__all__"            

@@ -17,6 +17,11 @@ import CartSItem from './components/Cart/cart';
 import Converter from './components/concepts/convertCurrency';
 import Orderpage from './components/placeOrder/orderpage';
 import Billing from './components/placeOrder/billing';
+import { Profile } from './components/global/profile';
+import MyOrders from './components/profile/profile';
+import InsideOrder from './components/profile/insidevieworder';
+import ShippingProfile from './components/profile/shipping';
+import UserProfile from './components/profile/userPRofile';
 
 
 function App() {
@@ -39,11 +44,15 @@ function App() {
 
     <Route path='/custom' element={<Contact/>} />
     <Route path='/terms' element={<Terms/>} />
-  
+    <Route path='/profile' element={<MyOrders/>} />
+    <Route path='/insideorder/:orderid' element={<InsideOrder/>} />
+
     <Route path='/cart' element={<CartSItem/>} />
   
     <Route path='/placeorder' element={access_token?<Orderpage/>:<Navigate to='/'/>}/>
     <Route path='/billing' element={<Billing/>}/>
+    <Route path='/shippindprofile' element={<ShippingProfile/>}/>
+    <Route path='/userprofile' element={<UserProfile/>}/>
     </Routes>
     </>
   );

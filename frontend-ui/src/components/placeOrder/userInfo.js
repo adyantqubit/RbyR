@@ -69,17 +69,17 @@ const UserInfo = () => {
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='first'>FIRST NAME*</label>
                         {checkoutDetails.userInfo?
-                        <input className={styles.firstInput} type="text" name="first" defaultValue={checkoutDetails.userInfo.firstname}/>
+                        <input className={styles.firstInput} type="text" name="first" defaultValue={checkoutDetails.userInfo.firstname} required/>
                         :
-                        <input className={styles.firstInput} type="text" name="first" defaultValue={userdata.name.substring(0,hasWhiteSpace(userdata.name))}/>
+                        <input className={styles.firstInput} type="text" name="first" defaultValue={userdata.name.substring(0,hasWhiteSpace(userdata.name))} required/>
                         }
                     </div>
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='last'>LAST NAME*</label>
                         {checkoutDetails.userInfo?
-                        <input className={styles.firstInput} type="text" name="last" defaultValue={checkoutDetails.userInfo.lastname}/>
+                        <input className={styles.firstInput} type="text" name="last" defaultValue={checkoutDetails.userInfo.lastname} required/>
                         :
-                        <input className={styles.firstInput} type="text" name="last" defaultValue={userdata.name.substring(hasWhiteSpaceforLast(userdata.name),userdata.name.length)}/>
+                        <input className={styles.firstInput} type="text" name="last" defaultValue={userdata.name.substring(hasWhiteSpaceforLast(userdata.name),userdata.name.length)} required/>
                         }
                     </div>
                 </div>
@@ -87,9 +87,9 @@ const UserInfo = () => {
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='email'>Email ADDRESS*</label>
                         {checkoutDetails.userInfo?
-                        <input className={styles.firstInput} type="text" name="email" defaultValue={checkoutDetails.userInfo.email}/>
+                        <input className={styles.firstInput} type="text" name="email" defaultValue={checkoutDetails.userInfo.email} required/>
                         :
-                        <input className={styles.firstInput} type="email" name="email" defaultValue={userdata.email}/>
+                        <input className={styles.firstInput} type="email" name="email" defaultValue={userdata.email} required/>
                         }
                     </div>
                 </div>

@@ -50,7 +50,6 @@ const FilterNew = () => {
   setCategoryProduct([...filtered])
   setTempprice([...filtered])
   setTempsprice([...filtered])
-  console.log(filtered)
 
  }
 
@@ -118,7 +117,6 @@ function Sizemanipulation(){
         tempSize.splice(0,tempSize.length)
         tempSize.push(...temp)
         setTempSize([...tempSize])
-        console.log(tempSize)
       }else{
         var temp=tempSize.filter(t=>t[`${s}`]>0)
         tempSize.splice(0,tempSize.length)
@@ -128,7 +126,6 @@ function Sizemanipulation(){
       }
     })
   }
-  console.log(tempSize)
  }
 
  useEffect(()=>{

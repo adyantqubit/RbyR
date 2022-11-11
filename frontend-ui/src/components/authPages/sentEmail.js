@@ -23,21 +23,15 @@ const SentEmail = () => {
     const res=await sendPasswordResetEmail(actualData)
   
     if(res.error){
-      console.log(res)
       setMsg({})
       setError(res.error.data.errors)
     }
     if(res.data){
-     console.log(res.data)
      setError({})
      setMsg(res.data)
      document.getElementById('password-reset-email-form').reset()
     }
   }
-
-  useEffect(()=>{
-   console.log(error)
-  },[error])
 
   
   return (

@@ -3,7 +3,7 @@ import { CircularProgress } from '@mui/material';
 import { getToken } from '../../Redux-manage/services/localStorageService';
 import style from './listpage.module.css'
 import {AiOutlineHeart,AiFillHeart} from 'react-icons/ai'
-import { getCategoryProduct } from '../../api/service'
+import { getCategoryProduct, getQrDetailApi } from '../../api/service'
 import Filter from './filter';
 import { CartState } from '../../context';
 import { useCartUpdateMutation, useLikedUpdateMutation } from '../../Redux-manage/services/userAuthapi';
@@ -34,18 +34,15 @@ const ListPage = () => {
  const{category}=useParams()
  
  useEffect(()=>{
+ 
+
  catApi()
  window.scrollTo(0,0)
  },[])
 
- useEffect(()=>{
-  console.log(category)
-},[category])
- 
-
 
  const catApi=async()=>{
-  await getCategoryProduct(category).then(r=>{setCategoryProduct([...r.category]);settemAllpro([...r.category]);console.log(tempallpro)  })
+  await getCategoryProduct(category).then(r=>{setCategoryProduct([...r.category]);settemAllpro([...r.category]);console.log(r.category) })
  }
  
 
@@ -61,7 +58,6 @@ const ListPage = () => {
       item:product.id
     }
     const resp=await saveLikeApi({data,access_token});
-    console.log(resp);
     
         if(like.filter(l=>l.id===product.id).length>0){
           const p=like.filter(i=>i.id!==product.id)
@@ -84,7 +80,6 @@ const ListPage = () => {
         const p=cart.filter(i=>i.id!==product.id)
        
         setCart(p)
-        console.log(cart)
       }else{
         const cartData={
           id:product.id,
