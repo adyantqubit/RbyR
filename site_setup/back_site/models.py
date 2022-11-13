@@ -8,7 +8,9 @@ from django.db import models
 from django.contrib.postgres.fields import ArrayField
 from phone_field import PhoneField
 from django.core.validators import MinLengthValidator
+from django.utils.timezone import now
 
+import datetime
 
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
@@ -127,6 +129,9 @@ class product_detail(models.Model):
     L=models.IntegerField(default=30)
     XL=models.IntegerField(default=30)
     XXL=models.IntegerField(default=30)
+    date = models.DateTimeField(default=now, blank=True)
+    available=models.BooleanField(default=True)
+
 
     
     
@@ -246,3 +251,19 @@ class Transaction_history(models.Model):
     payment_status=models.CharField(max_length=50,choices=status,default="pending")
     user_no=models.ForeignKey(User,on_delete=models.CASCADE)    
     
+    
+class Online_Qr(models.Model):
+     qr_img=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+     name=models.CharField(max_length=100)
+     bank_name=models.CharField(max_length=100)
+     account_number=models.CharField(max_length=18)
+     upi_id=models.CharField(max_length=50)
+              
+class coupon(models.Model):
+    id=models.AutoField(primary_key=True)
+    promocode=models.CharField(max_length=10)
+    discount_percentage=models.IntegerField()
+    maximum_discount_price=models.IntegerField()               
+    expiry_date=models.DateField()
+    isActive=models.BooleanField(default=False)

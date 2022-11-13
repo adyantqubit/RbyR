@@ -7,6 +7,8 @@ import { CartState } from '../../context'
 import Footer from '../global/footer'
 import Navbar from '../global/NavHeader'
 import style from "./profile.module.css"
+import { Button, Modal } from 'antd';
+
 
 const InsideOrder = () => {
    const{orders,setOrder,product}=CartState()
@@ -19,7 +21,6 @@ const InsideOrder = () => {
      }
     await InvoiveSingleGetApi({access,data}).then(r=>
         {
-            console.log(r)
             setState(r)
         })
 
@@ -36,6 +37,20 @@ const InsideOrder = () => {
 
     return t;    
 }
+
+const [isModalOpen, setIsModalOpen] = useState(false);
+
+const showModal = () => {
+  setIsModalOpen(true);
+};
+
+const handleOk = () => {
+  setIsModalOpen(false);
+};
+
+const handleCancel = () => {
+  setIsModalOpen(false);
+};
 
   return (
     <>
@@ -56,7 +71,19 @@ const InsideOrder = () => {
             <div className={style.column2}>
             <div className={style.column2header}> MY ORDERS #{orderid}</div>
             <hr style={{color:"black"}}></hr>
-            <div ><span className={style.userinfoText}>Date:</span><span className={style.userinfoText2}> {states!=null&&states.length>0?states[0].date:null}</span></div>
+            <div>
+              <span className={style.userinfoText}>Date:</span><span className={style.userinfoText2}> {states!=null&&states.length>0?states[0].date:null}</span>
+            <>
+                      <Button type="primary" onClick={showModal}>
+                        Open Modal
+                      </Button>
+                      <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                        <p>Some contents...</p>
+                        <p>Some contents...</p>
+                        <p>Some contents...</p>
+                      </Modal>
+            </>
+            </div>
 
              <div className={style.table} style={{border:"1px solid white",marginTop:"20px"}}>
                   <div className={style.tablerowhead}>
@@ -95,7 +122,9 @@ const InsideOrder = () => {
                      <div className={style.textlight1}><span  className={style.userinfoText} style={{width:"50%"}}>Shipping</span><span  className={style.userinfoText2} style={{width:"50%"}}>0</span></div>
                      <div className={style.textlight1}><span  className={style.userinfoText} style={{width:"50%"}}>Tax</span><span  className={style.userinfoText2} style={{width:"50%"}}>0</span></div>
                      <hr style={{color:"black"}}></hr>
-                     <div className={style.textlight1}><span style={{fontWeight:"600",width:"50%"}}>Total</span><span style={{fontWeight:"600",width:"50%"}}>{getPrice()}</span></div>
+                     <div className={style.textlight1}>
+                      <span style={{fontWeight:"600",width:"50%"}}>Total</span><span style={{fontWeight:"600",width:"50%"}}>{getPrice()}</span>
+                     </div>
                    </div>
                 </div>
                   

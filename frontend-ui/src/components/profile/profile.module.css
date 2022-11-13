@@ -185,3 +185,19 @@
     display:flex;
     justify-content: space-around;
 }
+
+
+@media (max-width: 768px) {
+
+
+    .column1{
+       display: none;
+    }
+    
+    .column2{
+        width:100%;
+    
+    }
+
+
+}

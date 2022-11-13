@@ -40,9 +40,12 @@ urlpatterns = [
     path('cart_delete/',CartDelete.as_view()),
     path('invoie_get/',Invoiceget.as_view()),
     path('invoiesingle/',InvoiceSingleget.as_view()),
-    path('transaction_get/',transactionget.as_view())
-
-
-
-
+    path('transaction_get/',transactionget.as_view()),
+    path('shipping_get/',ShippingGetApi.as_view()),
+    path('shipping_update/',ShippingUpdateApi.as_view()),
+    path('shipping_delete/',ShippingDeleteApi.as_view()),
+    path('getQR/',getQrDetails.as_view()),
+    path('increament_stock_check/',IncrementCheck.as_view()),
+    
+    
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)   

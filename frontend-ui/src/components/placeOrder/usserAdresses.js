@@ -88,7 +88,6 @@ const handleSubmit = async(e) => {
         setCheckoutDetails(checkoutDetails)
         setCond(false)
         setPaymentflow(true)
-        console.log(checkoutDetails)
     })
     
 
@@ -97,7 +96,6 @@ const handleSubmit = async(e) => {
         setCheckoutDetails(checkoutDetails)
         setCond(false)
         setPaymentflow(true)
-        console.log(e)
     })
 }
 
@@ -335,25 +333,26 @@ const handleSubmit = async(e) => {
                 </span>
                 <span style={{alignSelf:"flex-end",fontSize:"13px",lineHeight:"20px",letterSpacing:"1px"}}></span>
             </div>
-            <div className={styles.columnitem1content1}>
-                    <div className={styles.columnFirstName}>
-                        <div className={styles.boxAddress}>
-                            <div className={styles.addressInformation}>
-                            <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.firstname} {checkoutDetails.billingData.lastname}</span></div>
-                            <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.street} </span><span className={styles.userinfoText2}>{checkoutDetails.billingData.houseno},</span></div>
-                            <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.city} - </span><span className={styles.userinfoText2}>{checkoutDetails.billingData.pincode},</span></div>
-                            <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.state} </span></div>
-                            <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.country} </span></div>
-                            <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.number} </span></div>
+                <div className={styles.columnitem1content1}>
+                        <div className={styles.columnFirstName}>
+                            <div className={styles.boxAddress}>
+                                <div className={styles.addressInformation}>
+                                <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.firstname} {checkoutDetails.billingData.lastname}</span></div>
+                                <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.street} </span><span className={styles.userinfoText2}>{checkoutDetails.billingData.houseno},</span></div>
+                                <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.city} - </span><span className={styles.userinfoText2}>{checkoutDetails.billingData.pincode},</span></div>
+                                <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.state} </span></div>
+                                <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.country} </span></div>
+                                <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.number} </span></div>
+                                </div>
+                                <div className={styles.adressTick}>
+                                <TiTick style={{fontSize:"25",color:"black",fontWeight:"20"}}/>    
+                                </div> 
                             </div>
-                            <div className={styles.adressTick}>
-                            <TiTick style={{fontSize:"25",color:"black",fontWeight:"20"}}/>    
-                            </div> 
                         </div>
+                        
                     </div>
-                    
-                </div>
-        </div>  }
+          </div>  
+        }
 </>  )
 }
 

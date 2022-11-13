@@ -7,9 +7,14 @@
     height:100%;
 }
 
+.dblock{
+    min-height:550px;
+    object-fit:cover;
+}
+
 @media (max-width: 768px) {
     .car{
-
+        display:none;
         position:relative;
         top:8.5vh;
         width:100%;

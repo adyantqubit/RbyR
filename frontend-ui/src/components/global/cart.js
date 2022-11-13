@@ -1,5 +1,5 @@
 import { Button, Drawer } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CartState } from '../../context';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import CartCard from './cartCard';
@@ -30,6 +30,36 @@ const Cart= () => {
     nav("/cart")
   }
 
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+  const [drawerwidth,setDrawerwidth]=useState(600)
+
+
+  useEffect(() => {
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
+    }
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, [window.innerWidth]);
+
+  function getWindowSize() {
+    const {innerWidth, innerHeight} = window;
+    return {innerWidth, innerHeight};
+  }
+
+  useEffect(()=>{
+    if(windowSize.innerWidth<500)
+     setDrawerwidth(380)
+   else if(windowSize.innerWidth<800)
+     setDrawerwidth(450)
+    else if(windowSize.innerWidth>800)
+    setDrawerwidth(600)
+  },[windowSize])
+
+
   return (
     <>
       
@@ -46,7 +76,7 @@ const Cart= () => {
       {/* <Button type="primary" onClick={showDrawer}>
         Open
       </Button> */}
-      <Drawer title={<span style={{width:"100%",display:"flex",justifyContent:"center",fontSize: "18px",lineHeight: "26px",letterSpacing: "2.5px"}}>Shopping cart</span>} width={600} placement="right" onClose={onClose} open={openCartdrawer} >
+      <Drawer title={<span style={{width:"100%",display:"flex",justifyContent:"center",fontSize: "18px",lineHeight: "26px",letterSpacing: "2.5px"}}>Shopping cart</span>} width={drawerwidth} placement="right" onClose={onClose} open={openCartdrawer} >
       <CartCard/>
 
       </Drawer>
@@ -117,7 +147,7 @@ const nav=useNavigate();
 
          <div className={style.buttons} >
             <button className={style.shopbtn1} onClick={e=>setCartDrawer(false)}>Continue Shopping</button>
-            <buton className={style.shopbtn2} onClick={e=>{nav('/checkOut')}}>Go To Checkout</buton>
+            <buton className={style.shopbtn2} onClick={e=>{nav('/placeorder');setCartDrawer(false)}}>Go To Checkout</buton>
          </div>
       </div>
     </div>:null}

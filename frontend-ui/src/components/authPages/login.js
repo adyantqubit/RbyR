@@ -39,7 +39,6 @@ const Login = () => {
 	
 		const res=await loginUser(actualData)
 		if(res.error){
-			console.log(res.error.data.errors)
 		  setError(res.error.data.errors)
 		}
 		if(res.data){
@@ -49,7 +48,6 @@ const Login = () => {
 		  window.location.reload(); 
 		  setCart([])
 		  setLike([])
-		  console.log(JSON.parse(localStorage.getItem("cart")))
 		  if(JSON.parse(localStorage.getItem("cart")))
 		  setCart([...JSON.parse(localStorage.getItem("cart"))])
 		  navigate('/')
@@ -67,7 +65,6 @@ const Login = () => {
 	  const [server_error,setServerError]=useState({});
 	  const [registerUser,{isLoading2}]=useRegisterUserMutation();
 	  const handleSubmit2 = async(e) => {
-		console.log(value)
 		e.preventDefault();
 		const data = new FormData(e.currentTarget);
 		const actualData = {
@@ -81,7 +78,6 @@ const Login = () => {
 	
 		const res=await registerUser(actualData)
 		if(res.error){
-			console.log(res.error.data.errors)
 		  setServerError(res.error.data.errors)
 		}
 		if(res.data){

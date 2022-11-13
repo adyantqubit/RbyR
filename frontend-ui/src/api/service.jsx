@@ -151,3 +151,33 @@ export const TransactionGetApi = async ({access}) => {
       }).catch((err) => console.log("Failed to authenticate the user."));
   return response ? response.data : {};
 };
+
+export const ShippingGetApi = async ({access}) => {
+  const response = await API.get(`shipping_get/`, {
+        headers: { "Content-Type": "application/json",'authorization':`Bearer ${access}`},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+
+
+export const ShippingUpdateApi = async ({access,billingData}) => {
+  const response = await API.put(`shipping_update/`,billingData ,{
+        headers: { "Content-Type": "application/json",'authorization':`Bearer ${access}`},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+
+export const ShippingDeleteApi = async ({access,id}) => {
+  const response = await API.put(`shipping_delete/`,id,{
+        headers: { "Content-Type": "application/json",'authorization':`Bearer ${access}`},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+
+
+export const getQrDetailApi=async () => {
+  const response = await API.get(`getQR/`, {
+        headers: { "Content-Type": "application/json"},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};

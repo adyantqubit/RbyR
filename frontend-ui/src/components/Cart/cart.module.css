@@ -1,0 +1,18 @@
+
+
+.main{
+    width:50%;
+    background:white
+}
+
+
+@media (max-width: 768px) {
+
+
+    .main{
+        width:100%;
+        background:white
+    }
+
+
+}

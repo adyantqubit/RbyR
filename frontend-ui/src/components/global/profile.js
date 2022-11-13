@@ -38,13 +38,10 @@ export const Profile = () => {
       email:data.email,
       name:data.name,
     })
-console.log(userdata)
   },[data,isSuccess])
 
   return (
     <>
-    
-
     <div className={style.action}>
     <div className={style.profile}>
       <FaUserCircle style={{width:"30px",hieght:"30px",color:"#7c7c7c"}} />

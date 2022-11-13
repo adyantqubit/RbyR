@@ -264,3 +264,7 @@ class transactionHistorySerialize(serializers.ModelSerializer):
         model=Transaction_history
         fields="__all__"     
           
+class QrDetailSerializer(serializers.ModelSerializer):
+         class Meta:
+           model=Online_Qr
+           fields="__all__"            

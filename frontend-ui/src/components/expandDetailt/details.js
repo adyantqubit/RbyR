@@ -54,7 +54,6 @@ const Details = (props) => {
 
 
   if(con==false){
-    console.log("rerender")
     gettingDetail()  
     setcon(true)
     
@@ -64,17 +63,14 @@ const Details = (props) => {
 
 
   useEffect(()=>{
-   console.log(details)
    var recents=JSON.parse(localStorage.getItem("recentview"))
    if(recents==null){
     localStorage.setItem("recentview",JSON.stringify([details]))
    }
-   console.log(recents)
 
    if(recents!=null&&recents.filter(r=>r.id===details.id).length==0)
    {
     recents.push(details)
-    console.log(recents)
    localStorage.setItem("recentview",JSON.stringify(recents))
    }
   
@@ -147,7 +143,6 @@ const Details = (props) => {
       size:`${size}`
      }
 
-   console.log(details)
    var access_token=localStorage.getItem("access_token")
   const resp=await cartsaveApi({data,access_token}).then(r=>console.log(r));
 
@@ -157,7 +152,6 @@ const Details = (props) => {
        
       }else{
         setCart([...cart,NewCartData])
-        console.log("add",cart)
         setCartDrawer(true)
       }
 
@@ -201,7 +195,6 @@ const Details = (props) => {
     }
     var access_token=localStorage.getItem('access_token')
     const resp=await saveLikeApi({data,access_token});
-    console.log(resp);
     
         if(like.filter(l=>l.id===product.id).length>0){
           const p=like.filter(i=>i.id!==product.id)
@@ -222,7 +215,6 @@ const Details = (props) => {
       }
     })
 
-    console.log(cart)
    return v;
   }
 

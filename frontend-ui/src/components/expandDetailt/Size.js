@@ -5,7 +5,6 @@ const Size = (props) => {
 
 
   const onChange=(value)=>{
- console.log(value)
   }
   return (
     <div class="rating-container">

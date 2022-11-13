@@ -15,7 +15,7 @@ import { CartQuantityApi } from '../../api/service';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { BsWindowSidebar } from 'react-icons/bs';
 import { DrawerFooter } from '../global/cart';
-
+import styles from './cart.module.css'
 import Msg from '../concepts/msgConfirm';
 import { Popconfirm,message } from 'antd';
 import Navbar from '../global/NavHeader';
@@ -23,6 +23,7 @@ import Footer2 from '../global/footer2';
 import Below from '../global/below';
 import Footer from '../global/footer';
 import Slider from '../expandDetailt/slider';
+import { increamentCheck } from '../../api/orderApis';
 
 
 const text = 'are you sure to delete?';
@@ -35,7 +36,7 @@ const CartSItem = (props) => {
  
  const [cartsaveApi,{isLoad}]=useCartUpdateMutation()
  let textInput = React.createRef();
- const[con,setcon]=useState(true)
+ var [con,setcon]=useState(true)
  const [sizeno,setSizeno]=useState(0)
 
 
@@ -79,40 +80,67 @@ if(AllCartProduct[index].quantity!=1){
 }
 }
 
+async function increamentApiMethodCall({CartProduct,data}){
+  
+  await increamentCheck(data).then(r=>{
+    if(r.success==true){
+    con=true;
+    console.log("present in stock",r)
+    }
+    else if(r.error){
+      document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
+      con =false;
+      console.log("stock is not present",r)
+    }
+    })
+} 
 
-const increament=(CartProduct)=>{
-  setcon(true)
+const increament=async (CartProduct)=>{
+  con=true;
 
   if(CartProduct.size=="Extra Extra Large"){
-    if(CartProduct.quantity>=CartProduct.XXL){
-      document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
-      setcon(false)
-    }
+
+    var data={id:CartProduct.id,
+      quantity:CartProduct.quantity,
+      size:"XXL"}
+    await increamentApiMethodCall({CartProduct,data})  
+
+    /* commented on 11/11/22  
+      purpose- becuse it check only from frontend only. if want to re-implement then just put size on if condition
+      becuse i am removing it from all if else condition
+    */
+    // if(CartProduct.quantity>CartProduct.XXL){
+    //   document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
+    //   con=false
+    // }
   }
   else if(CartProduct.size=="Extra Large"){
-    if(CartProduct.quantity>=CartProduct.XL){
-      document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
-      setcon(false)
-    }
+    var data={id:CartProduct.id,
+      quantity:CartProduct.quantity,
+      size:"XL"}
+    await increamentApiMethodCall({CartProduct,data})  
+
     }
   else if(CartProduct.size=="Large"){
-    if(CartProduct.quantity>=CartProduct.L)
-    {
-      document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
-      setcon(false)
-    }
+    var data={id:CartProduct.id,
+      quantity:CartProduct.quantity,
+      size:"L"}
+    await increamentApiMethodCall({CartProduct,data})  
+
   }
   else if(CartProduct.size=="Medium"){
-    if(CartProduct.quantity>=CartProduct.M){
-      document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
-      setcon(false)
-    }
+    var data={id:CartProduct.id,
+      quantity:CartProduct.quantity,
+      size:"M"}
+    await increamentApiMethodCall({CartProduct,data})  
+
   }
   else if(CartProduct.size=="Short"){
-    if(CartProduct.quantity>=CartProduct.S){
-      document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
-      setcon(false)
-    }
+    var data={id:CartProduct.id,
+      quantity:CartProduct.quantity,
+      size:"S"}
+    await increamentApiMethodCall({CartProduct,data})  
+
   }
 
   if(con){
@@ -121,9 +149,8 @@ const increament=(CartProduct)=>{
   AllCartProduct[index].quantity++
   setCart([...AllCartProduct])
   increamentApi(CartProduct)
-  console.log(CartProduct)
-
 }
+
 }
 
  const cartSave=async(product)=>{
@@ -137,7 +164,6 @@ const increament=(CartProduct)=>{
 
       if(cart.filter(l=>l.id===product.id).length>0){
        var p=cart.filter(i=>{if(i.id==product.id){if(i.size!=product.size)return i}else return i});
-       console.log("",p)
        setCart([...p])
        document.getElementById('style').style.display="none";
       
@@ -146,10 +172,6 @@ const increament=(CartProduct)=>{
       }
 
   }   
-
-  function onChange(value){
-     console.log(value)
-  }
 
   const nav=useNavigate()
   function openDetail(id){
@@ -176,7 +198,7 @@ const increament=(CartProduct)=>{
     <> 
     <Navbar/>
  <div style={{position:"relative",top:"26vh",width:"100%",background:"white",display:"flex",justifyContent:"center"}}>
-    <div style={{width:"50%",background:"white"}}>
+    <div className={styles.main}>
    
     <div style={{width:"100%",height:"80px",marginBottom:"50px",background:"white",display:"flex",flexDirection:"column",justifyContent:"center",fontSize:"18px",lineHeight:"26px",letterSpacing: "2.5px",fontWeight:"500",borderBottom:"1px solid black"}}>
     SHOPPING CART
@@ -221,7 +243,7 @@ const increament=(CartProduct)=>{
                             </div>
                         </div>           
                   </div>
-              <div id={`style${pro.id}${pro.size}`} style={{display:"flex",justifyContent:"end",margin:"0 5%",fontSize:".8rem",color:"red",textDecoration:"line-through",display:"none"}}>Out of stock
+              <div id={`style${pro.id}${pro.size}`} style={{display:"flex",justifyContent:"end",margin:"0 5%",fontSize:".8rem",color:"red",display:"none"}}>No more stock Available
                   </div>
  
           </div>

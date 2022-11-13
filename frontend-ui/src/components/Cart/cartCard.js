@@ -120,7 +120,6 @@ const increament=(CartProduct)=>{
   AllCartProduct[index].quantity++
   setCart([...AllCartProduct])
   increamentApi(CartProduct)
-  console.log(CartProduct)
 
 }
 }
@@ -136,7 +135,6 @@ const increament=(CartProduct)=>{
 
       if(cart.filter(l=>l.id===product.id).length>0){
        var p=cart.filter(i=>{if(i.id==product.id){if(i.size!=product.size)return i}else return i});
-       console.log("",p)
        setCart([...p])
        document.getElementById('style').style.display="none";
       
@@ -146,9 +144,7 @@ const increament=(CartProduct)=>{
 
   }   
 
-  function onChange(value){
-     console.log(value)
-  }
+ 
 
   const nav=useNavigate()
   function openDetail(id){

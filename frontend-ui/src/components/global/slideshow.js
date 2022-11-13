@@ -28,7 +28,7 @@ function Slideshow() {
    {pay.map((item)=>(
     <Carousel.Item >
    <a href={`listing/${item.category}`}> <img
-      className="d-block w-80"
+      className={style.dblock}
       // src={pay[0].src}
       src={config.apiBaseURL+item.src}
       alt="First slide"
