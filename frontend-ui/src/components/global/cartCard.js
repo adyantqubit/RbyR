@@ -16,7 +16,9 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { BsWindowSidebar } from 'react-icons/bs';
 import { DrawerFooter } from './cart';
 import Msg from '../concepts/msgConfirm';
-import { Popconfirm,message } from 'antd';
+import { Popconfirm,message, Modal } from 'antd';
+import { increamentCheck } from '../../api/orderApis';
+
 
 
 const text = 'are you sure to delete?';
@@ -29,8 +31,9 @@ const CartCard = (props) => {
  
  const [cartsaveApi,{isLoad}]=useCartUpdateMutation()
  let textInput = React.createRef();
- const[con,setcon]=useState(true)
+ var [con,setcon]=useState(true)
  const [sizeno,setSizeno]=useState(0)
+
 
 
 const decreament=(CartProduct)=>{
@@ -73,40 +76,90 @@ if(AllCartProduct[index].quantity!=1){
 }
 }
 
+const erro = (r) => {
+  Modal.error({
+    title: "No More stock Is Available"
+  });
 
-const increament=(CartProduct)=>{
-  setcon(true)
+};
+
+async function increamentApiMethodCall({CartProduct,data}){
+  
+  await increamentCheck(data).then(r=>{
+    if(r.success==true){
+    con=true;
+    console.log("present in stock",r)
+    }
+    else if(r.error){
+      document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
+      con =false;
+      erro(r)
+      console.log("stock is not present",r)
+    }
+    })
+} 
+
+async function increamentApiMethodCall({CartProduct,data}){
+  
+  await increamentCheck(data).then(r=>{
+    if(r.success==true){
+    con=true;
+    console.log("present in stock",r)
+    }
+    else if(r.error){
+      document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
+      con =false;
+      console.log("stock is not present",r)
+    }
+    })
+} 
+
+const increament= async (CartProduct)=>{
+  con=true;
 
   if(CartProduct.size=="Extra Extra Large"){
-    if(CartProduct.quantity>=CartProduct.XXL){
-      document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
-      setcon(false)
-    }
+
+    var data={id:CartProduct.id,
+      quantity:CartProduct.quantity,
+      size:"XXL"}
+    await increamentApiMethodCall({CartProduct,data})  
+
+    /* commented on 11/11/22  
+      purpose- becuse it check only from frontend only. if want to re-implement then just put size on if condition
+      becuse i am removing it from all if else condition
+    */
+    // if(CartProduct.quantity>CartProduct.XXL){
+    //   document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
+    //   con=false
+    // }
   }
   else if(CartProduct.size=="Extra Large"){
-    if(CartProduct.quantity>=CartProduct.XL){
-      document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
-      setcon(false)
-    }
+    var data={id:CartProduct.id,
+      quantity:CartProduct.quantity,
+      size:"XL"}
+    await increamentApiMethodCall({CartProduct,data})  
+
     }
   else if(CartProduct.size=="Large"){
-    if(CartProduct.quantity>=CartProduct.L)
-    {
-      document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
-      setcon(false)
-    }
+    var data={id:CartProduct.id,
+      quantity:CartProduct.quantity,
+      size:"L"}
+    await increamentApiMethodCall({CartProduct,data})  
+
   }
   else if(CartProduct.size=="Medium"){
-    if(CartProduct.quantity>=CartProduct.M){
-      document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
-      setcon(false)
-    }
+    var data={id:CartProduct.id,
+      quantity:CartProduct.quantity,
+      size:"M"}
+    await increamentApiMethodCall({CartProduct,data})  
+
   }
   else if(CartProduct.size=="Short"){
-    if(CartProduct.quantity>=CartProduct.S){
-      document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
-      setcon(false)
-    }
+    var data={id:CartProduct.id,
+      quantity:CartProduct.quantity,
+      size:"S"}
+    await increamentApiMethodCall({CartProduct,data})  
+
   }
 
   if(con){
@@ -161,15 +214,15 @@ const increament=(CartProduct)=>{
   {cart.length>0?cart.map(pro=>(
    
     <>
-    
-    <div  style={{width:"100%",height:"230px",marginBottom:"20px",paddingLeft:"15px", display:"flex"}}>
-    <img src={config.apiBaseURL+pro.img_main} style={{width:"30%",height:'230px'}} onClick={e=>openDetail(pro)}></img>
-     <div style={{width:"65%",display:"flex",flexDirection:"column"}}>
+
+    <div  style={{width:"100%",height:"auto",marginBottom:"20px",paddingLeft:"15px", display:"flex"}}>
+    <img src={config.apiBaseURL+pro.img_main} className={styles.column1} onClick={e=>openDetail(pro)}></img>
+     <div className={styles.column2} >
              <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}> 
-                <h3 className={styles.heading} style={{color:"black",fontSize: "18px",lineHeight: "26px",letterSpacing: "2.5px"}}>{pro.title}</h3>
+                <h3 className={styles.heading}>{pro.title}</h3>
                 {/* <span className={styles.delete} style={{fontSize:"32px",alignSelf:"start"}} onClick={e=>cartSave(pro)}>x</span> */}
-                <Popconfirm placement="bottomLeft" title={text} onConfirm={e=>confirm(pro)} okText="Yes" cancelText="No">
-                 <span className={styles.delete} style={{fontSize:"32px",alignSelf:"start"}} >x</span>
+                <Popconfirm placement="bottomLeft" title={text} onConfirm={e=>confirm(pro)} okText="OK" cancelText="Cancle">
+                 <span className={styles.delete} style={{fontSize:"28px",alignSelf:"start"}} >x</span>
                 </Popconfirm>
              </div>
 
@@ -200,7 +253,7 @@ const increament=(CartProduct)=>{
                             </div>
                         </div>           
                   </div>
-              <div id={`style${pro.id}${pro.size}`} style={{display:"flex",justifyContent:"end",margin:"0 5%",fontSize:".8rem",color:"red",textDecoration:"line-through",display:"none"}}>Out of stock
+              <div id={`style${pro.id}${pro.size}`} style={{display:"flex",justifyContent:"end",margin:"0 5%",fontSize:".8rem",color:"red",display:"none"}}>No More Stock Available
                   </div>
  
           </div>

@@ -1,13 +1,19 @@
 import { Button, Drawer } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CartState } from '../../context';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import CartCard from './cartCard';
 import style from './cartCard.module.css'
+import styles from '../Cart/cart.module.css'
+import { Modal, Space } from 'antd';
+
 import './cart.css'
 import { BsCartFill } from 'react-icons/bs';
 import { useCartBuyAllMutation } from '../../Redux-manage/services/userAuthapi';
 import { useNavigate } from 'react-router-dom';
+import { CouponCheck, TaxGet } from '../../api/orderApis';
+import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing';
+import { Typography } from '@mui/material';
 
 
 
@@ -30,6 +36,36 @@ const Cart= () => {
     nav("/cart")
   }
 
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+  const [drawerwidth,setDrawerwidth]=useState(600)
+
+
+  useEffect(() => {
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
+    }
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, [window.innerWidth]);
+
+  function getWindowSize() {
+    const {innerWidth, innerHeight} = window;
+    return {innerWidth, innerHeight};
+  }
+
+  useEffect(()=>{
+    if(windowSize.innerWidth<500)
+     setDrawerwidth(380)
+   else if(windowSize.innerWidth<800)
+     setDrawerwidth(450)
+    else if(windowSize.innerWidth>800)
+    setDrawerwidth(600)
+  },[windowSize])
+
+
   return (
     <>
       
@@ -46,7 +82,7 @@ const Cart= () => {
       {/* <Button type="primary" onClick={showDrawer}>
         Open
       </Button> */}
-      <Drawer title={<span style={{width:"100%",display:"flex",justifyContent:"center",fontSize: "18px",lineHeight: "26px",letterSpacing: "2.5px"}}>Shopping cart</span>} width={600} placement="right" onClose={onClose} open={openCartdrawer} >
+      <Drawer title={<span style={{width:"100%",display:"flex",justifyContent:"center",fontSize: "18px",lineHeight: "26px",letterSpacing: "2.5px"}}>Shopping cart</span>} width={drawerwidth} placement="right" onClose={onClose} open={openCartdrawer} >
       <CartCard/>
 
       </Drawer>
@@ -58,10 +94,11 @@ export default Cart;
 
 
 export function DrawerFooter(){
- const {cart,setCartDrawer}=CartState()
+ const {cart,setCartDrawer,currency,offer,setOffer,taxRate,setTaxRate}=CartState()
  const [UploadCartApi,{isLoading}]=useCartBuyAllMutation()
  const [cond,setCond]=useState([])
-
+ const [error,setError]=useState(null)
+ const [ShowCoupon,setCoupon]=useState(false)
 
 
 const getTotalPrice=()=>{
@@ -70,11 +107,22 @@ const getTotalPrice=()=>{
   return p
 }
 
+useEffect(()=>{
+  GetTAXapi()
+  },[])
+
 const getTotalQuantity=()=>{
   var q=0;
   cart.map(c=>q+=c.quantity);
   return q;
 }
+
+const erro = (r) => {
+  Modal.error({
+    title: r.error
+  });
+
+};
 
 const nav=useNavigate();
 
@@ -84,6 +132,38 @@ const nav=useNavigate();
   var access_token=localStorage.getItem('access_token')
    await UploadCartApi({data,access_token}).then(r=>console.log(r))
  }
+
+ async function ApplyPromo(){
+  var promocode=document.getElementsByClassName('promoCode')[0].value
+  if(promocode.length>0)
+  await CouponCheck(promocode).then(r=>{
+    if(r.error){
+      setError(r)
+       erro(r) 
+    }  
+    else{
+    setOffer(r)
+    setError(null)
+    setCoupon(true)
+  }
+  })
+
+}
+
+async function GetTAXapi(){
+  await TaxGet().then(r=>setTaxRate(r.tax_rate))
+}
+
+function resetCoupon(){
+  setOffer({discount_percentage: 0, maximum_discount_price: 1000, expiry_date: '2022-11-30'})
+  setCoupon(false)
+}
+
+useEffect(()=>{
+ console.log(afterColumnTotalOfferAdd(offer,cart,taxRate).coupon)
+},[offer,taxRate])
+
+
 
  return (
     <>
@@ -96,23 +176,47 @@ const nav=useNavigate();
        </div>
         
         <div className={style.subTotal}>
-         <span style={{marginLeft:"15px",textTransform:"uppercase"}}>SubTotal</span>
-         <span style={{marginRight:"15px"}}>₹ {getTotalPrice()}</span>
+         <span style={{marginLeft:"15px",textTransform:"uppercase",fontWeight:"600"}}>SubTotal</span>
+         <span style={{marginRight:"15px",fontWeight:"600"}}>₹ {getTotalPrice()}</span>
 
         </div>
         <div className={style.subTotal}>
-         <span style={{marginLeft:"15px"}}>Shipping</span>
-         <span style={{marginRight:"15px"}}>₹ 0</span>
+         <span style={{marginLeft:"15px",fontWeight:"600"}}>Shipping</span>
+         <span style={{marginRight:"15px",fontWeight:"600"}}>₹ {afterColumnTotalOfferAdd(offer,cart,taxRate).shipping}</span>
+        </div>
+
+        <div className={style.subTotal}>
+         <span style={{marginLeft:"15px",fontWeight:"600"}}>GST Charges</span>
+         <span style={{marginRight:"15px",fontWeight:"600"}}>₹ {afterColumnTotalOfferAdd(offer,cart,taxRate).tax}</span>
         </div>
 
         <div className={style.promo}>
-          <input type="text" style={{width:"70%",height:"40px",marginLeft:"15px",border:"1px solid #dfdbdb",outline:"#fff"}} placeholder="Have a promocode"></input>
-          <button className={style.shopbtn1} style={{marginRight:"15px"}}>Apply</button>
+         {!ShowCoupon? <> <input className="promoCode" type="text" style={{width:"60%",padding:"10px",height:"30px",marginLeft:"15px",border:"1px solid #dfdbdb",outline:"#fff"}} placeholder="Have a promocode" onChange={e=>setError(null)}></input>
+          <button className={style.apply} onClick={ApplyPromo}>Apply</button>
+          </>
+         :<>
+         <div className={styles.successMsg}>
+          <span><i class="fa fa-check"></i>
+          Applied</span>
+          <span>₹ {afterColumnTotalOfferAdd(offer,cart,taxRate).coupon} off 
+          <span style={{marginLeft:"10px",textDecoration:"underline",cursor:"pointer"}} onClick={resetCoupon}>Remove</span></span>
+        </div>
+       
+       </>
+        }
         </div>
 
+        {error!=null?<Typography style={{marginTop:"-10px",color:"red",fontSize:"14px",marginLeft:"15px"}}>{error.error}</Typography>:null}
+
+       {ShowCoupon?<div className={style.subTotal}>
+        <span style={{marginLeft:"15px",fontWeight:"600"}}>Coupon Discount</span>
+        <span style={{marginRight:"15px",fontWeight:"600"}}>- ₹ {afterColumnTotalOfferAdd(offer,cart,taxRate).coupon}</span>
+       </div>:null}
+        
+        <hr style={{color:"black"}}></hr>
         <div className={style.subTotal} style={{marginTop:"25px"}}>
-         <span style={{marginLeft:"15px"}}>Total</span>
-         <span style={{fontSize: "20px",marginRight:"15px",fontSize: "21px",lineHeight: "32px",letterSpacing: "3px"}}>₹ {getTotalPrice()}</span>
+         <span style={{marginLeft:"15px",fontWeight:"600"}}>Total</span>
+         <span style={{fontSize: "20px",fontWeight:"600",marginRight:"15px",fontSize: "21px",lineHeight: "32px",letterSpacing: "3px"}}>₹ {afterColumnTotalOfferAdd(offer,cart,taxRate).Grand}</span>
         </div>
 
          <div className={style.buttons} >

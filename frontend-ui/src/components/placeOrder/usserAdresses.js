@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import styles from './order.module.css'
 import {TiTick} from 'react-icons/ti'
 import Checkbox from "react-custom-checkbox";
@@ -7,7 +7,10 @@ import { CartState } from '../../context';
 import { Typography} from '@mui/material';
 import { billingcheckApi, shpingcheckApi } from '../../api/service';
 import { getToken } from '../../Redux-manage/services/localStorageService';
-
+import { Modal, notification } from 'antd';
+import Select from 'react-select'
+import countryList from 'react-select-country-list'
+import list from './data.json'
 
 
 const UsserAdresses = () => {
@@ -19,6 +22,40 @@ const {access_token}=getToken()
 const [error,setError]=useState({})
 const [checkFlow,setCheckFlow]=useState(false)
 
+var [ isAlertVisiblepin, setIsAlertVisiblepin ] = React.useState(false);
+var [ isAlertVisiblenum, setIsAlertVisiblenum ] = React.useState(false);
+var [numerror,setnumerror]=useState("")
+var [pinerror,setpinerror]=useState("")
+
+const [value, setValue] = useState("India")
+const options = countryList().getData()
+
+const changeHandler = value => {
+  setValue(value.target.value)
+}
+
+const handleButtonClickpin = (msg) => {
+    isAlertVisiblepin=true
+    setIsAlertVisiblepin(true);
+    pinerror=msg
+    setpinerror(pinerror)
+      setTimeout(() => {
+        isAlertVisiblepin=false
+         setIsAlertVisiblepin(false);
+         
+     }, 7000);
+}
+
+const handleButtonClicknum = (msg) => {
+    isAlertVisiblenum=true
+    setIsAlertVisiblenum(true);
+    numerror=msg;
+    setnumerror(msg)
+      setTimeout(() => {
+        isAlertVisiblenum=false
+         setIsAlertVisiblenum(false);
+     }, 5000);
+}
 
 const handleSubmit = async(e) => {
     e.preventDefault();
@@ -45,6 +82,22 @@ const handleSubmit = async(e) => {
         
     // }
 
+    if(data.get('pincode').length<6)
+    {  var dta=" * minimum 6 digit required"
+        handleButtonClickpin(dta)
+    }
+    else{
+        isAlertVisiblepin=false
+    }
+    if(data.get('number').length<10)
+    {
+        var dta=" * minimum 10 digit required"
+        handleButtonClicknum(dta)
+    }
+    else{
+        isAlertVisiblenum=false
+    }
+
 
     const shippingData={
         firstname:data.get('first'),
@@ -54,7 +107,7 @@ const handleSubmit = async(e) => {
         city:data.get('city'),
         state:data.get('state'),
         zipcode:data.get('pincode'),
-        country:data.get('country'),
+        country:value,
         number:data.get('number')
     }
 
@@ -77,14 +130,15 @@ const handleSubmit = async(e) => {
         }
     }
 
-  
+    if(!isAlertVisiblenum&&!isAlertVisiblepin){
     checkoutDetails['shippingData']=shippingData;
     checkoutDetails['billingData']=billingData;
     setCheckoutDetails(checkoutDetails)
-    
+    console.log(checkoutDetails)
 
     await shpingcheckApi(shippingData,access_token).then(e=>{
         checkoutDetails['shipping_id']=e.shipping_id;
+        console.log(e)
         setCheckoutDetails(checkoutDetails)
         setCond(false)
         setPaymentflow(true)
@@ -93,11 +147,78 @@ const handleSubmit = async(e) => {
 
     await billingcheckApi(billingData,access_token).then(e=>{
         checkoutDetails['billing_id']=e.billing_id;
+        console.log(e)
         setCheckoutDetails(checkoutDetails)
         setCond(false)
         setPaymentflow(true)
     })
+
 }
+}
+
+function validate(evt) {
+    var theEvent = evt || window.event;
+  
+    // Handle paste
+    if (theEvent.type === 'paste') {
+        key = evt.clipboardData.getData('text/plain');
+    } else {
+    // Handle key press
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+    }
+    var regex = /^[a-zA-Z@]+$/;
+    if( !regex.test(key) ) {
+      theEvent.returnValue = false;
+      if(theEvent.preventDefault) theEvent.preventDefault();
+    }
+  }
+
+function validatesPin(evt) {
+    var theEvent = evt || window.event;
+  
+    // Handle paste
+    if (theEvent.type === 'paste') {
+        key = evt.clipboardData.getData('text/plain');
+    } else {
+    // Handle key press
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+    }
+    var regex = /^0|[1-9]\d*$/	
+    if( !regex.test(key) ) {
+        theEvent.returnValue = false;
+        if(theEvent.preventDefault) theEvent.preventDefault();
+        var data="Please Enter Only Number"
+        handleButtonClickpin(data)
+      }
+   
+      console.log(key)
+  
+  }
+
+
+  function validatesNum(evt) {
+    var theEvent = evt || window.event;
+  
+    // Handle paste
+    if (theEvent.type === 'paste') {
+        key = evt.clipboardData.getData('text/plain');
+    } else {
+    // Handle key press
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+    }
+    var regex = /^0|[1-9]\d*$/	
+    if( !regex.test(key) ) {
+        theEvent.returnValue = false;
+        if(theEvent.preventDefault) theEvent.preventDefault();
+        var data="Please Enter Only Number"
+        handleButtonClicknum(data)
+      }
+
+      
+  }
 
   return (
 <>
@@ -110,12 +231,13 @@ const handleSubmit = async(e) => {
                         <label className={styles.firstName} htmlFor='first'>FIRST NAME *</label>
                         {checkoutDetails.shippingData?
                         <>
-                         <input className={styles.firstInput} name='first' defaultValue={checkoutDetails.shippingData.firstname} required/>
+                         <input className={styles.firstInput} name='first' onKeyPress={validate} defaultValue={checkoutDetails.shippingData.firstname} required/>
                          {/* {!checkFlow?<Typography style={{color:"red",fontSize:"13px"}}>This Field is required</Typography>:null} */}
                          </>
                          :        
                          <>
-                        <input className={styles.firstInput} name='first' required/>
+                        <input className={styles.firstInput} name='first' onKeyPress={validate} required/>
+
                         {/* {error.efirst?<Typography style={{color:"red",fontSize:"13px"}}>This Field is required</Typography>:null} */}
                         </>
                         }
@@ -142,9 +264,11 @@ const handleSubmit = async(e) => {
                     <div className={styles.columnFullName}>
                         <label className={styles.firstName} htmlFor='street'>House/Apartment number *</label>
                         {checkoutDetails.shippingData?
-                         <input className={styles.firstInput} name='flatno' defaultValue={checkoutDetails.shippingData.houseno} required/>
+                         <input className={styles.firstInput} name='flatno'  maxLength={10} defaultValue={checkoutDetails.shippingData.houseno} required/>
                         : 
-                        <input className={styles.firstInput} name='flatno' required/>
+                        <>
+                        <input className={styles.firstInput} name='flatno' maxLength={10}  required/>
+                        </>
                         }
                     </div>
                 </div>
@@ -169,25 +293,47 @@ const handleSubmit = async(e) => {
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='first'>Zip-code *</label>
                         {checkoutDetails.shippingData?
-                         <input className={styles.firstInput} name='pincode' defaultValue={checkoutDetails.shippingData.zipcode} required/>
-                        : 
-                        <input className={styles.firstInput} name='pincode' required/>}
+                        <> <input className={styles.firstInput} name='pincode' onKeyPress={validatesPin} maxLength={6} defaultValue={checkoutDetails.shippingData.zipcode} required/>
+                         {isAlertVisiblepin&&<span asp-validation-for="Code" class="text-danger col-sm-4">{pinerror} </span>}
+                         </>
+                         : 
+                         <>
+                        <input className={styles.firstInput} name='pincode' onKeyPress={validatesPin} maxLength={6} required/>
+                        {isAlertVisiblepin&&<span asp-validation-for="Code" class="text-danger col-sm-4">{pinerror}</span>}
+                        </>
+                        }
                     </div>
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='last'>Country *</label>
                         {checkoutDetails.shippingData?
-                         <input className={styles.firstInput} name='country' defaultValue={checkoutDetails.shippingData.country} required/>
+                         <select className={styles.firstInput} defaultValue={value} onChange={changeHandler}>
+                         {list.map(l=>{
+                             return <option value={l.label}>{l.label}</option>
+                         })}
+                         </select>
                         : 
-                        <input className={styles.firstInput} name='country' required/>}
+                        <select className={styles.firstInput} defaultValue={value} onChange={changeHandler}>
+                            {list.map(l=>{
+                                return <option value={l.label}>{l.label}</option>
+                            })}
+                            </select>
+                        // <input className={styles.firstInput} name='country' required/>}
+                       }
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFullName}>
                         <label className={styles.firstName} htmlFor='street'>Phone Number *</label>
                         {checkoutDetails.shippingData?
-                         <input className={styles.firstInput} name='number' defaultValue={checkoutDetails.shippingData.number} required/>
-                        : 
-                        <input className={styles.firstInput} name='number' required/>
+                        <>
+                         <input className={styles.firstInput} name='number' onKeyPress={validatesNum} maxlength={10} defaultValue={checkoutDetails.shippingData.number} required/>
+                         {isAlertVisiblenum&&<span asp-validation-for="Code" class="text-danger col-sm-4">{numerror}</span>}
+                         </>
+                         : 
+                         <>
+                        <input className={styles.firstInput} name='number' onKeyPress={validatesNum} maxLength={10} required/>
+                        {isAlertVisiblenum&&<span asp-validation-for="Code" class="text-danger col-sm-4">{numerror}</span>}
+                        </>
                         }
                     </div>
                 </div>
@@ -315,7 +461,7 @@ const handleSubmit = async(e) => {
                             <div className={styles.addressInformation}>
                             <div ><span className={styles.userinfoText}>{checkoutDetails.shippingData.firstname} {checkoutDetails.shippingData.lastname}</span></div>
                             <div ><span className={styles.userinfoText}>{checkoutDetails.shippingData.street} </span><span className={styles.userinfoText2}>{checkoutDetails.shippingData.houseno},</span></div>
-                            <div ><span className={styles.userinfoText}>{checkoutDetails.shippingData.city} - </span><span className={styles.userinfoText2}>{checkoutDetails.shippingData.pincode},</span></div>
+                            <div ><span className={styles.userinfoText}>{checkoutDetails.shippingData.city} - </span><span className={styles.userinfoText2}>{checkoutDetails.shippingData.zipcode},</span></div>
                             <div ><span className={styles.userinfoText}>{checkoutDetails.shippingData.state} </span></div>
                             <div ><span className={styles.userinfoText}>{checkoutDetails.shippingData.country} </span></div>
                             <div ><span className={styles.userinfoText}>{checkoutDetails.shippingData.number} </span></div>
@@ -339,7 +485,7 @@ const handleSubmit = async(e) => {
                                 <div className={styles.addressInformation}>
                                 <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.firstname} {checkoutDetails.billingData.lastname}</span></div>
                                 <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.street} </span><span className={styles.userinfoText2}>{checkoutDetails.billingData.houseno},</span></div>
-                                <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.city} - </span><span className={styles.userinfoText2}>{checkoutDetails.billingData.pincode},</span></div>
+                                <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.city} - </span><span className={styles.userinfoText2}>{checkoutDetails.billingData.zipcode},</span></div>
                                 <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.state} </span></div>
                                 <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.country} </span></div>
                                 <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.number} </span></div>

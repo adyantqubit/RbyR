@@ -45,5 +45,11 @@ urlpatterns = [
     path('shipping_update/',ShippingUpdateApi.as_view()),
     path('shipping_delete/',ShippingDeleteApi.as_view()),
     path('getQR/',getQrDetails.as_view()),
+    path('increament_stock_check/',IncrementCheck.as_view()),
+    path('Coupon_check/',CouponCheck.as_view()),
+    path('tax_get/',TaxGet.as_view()),
+    path('important_rule_get/',ImportantTextGet.as_view()),
 
+    
+    
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)   

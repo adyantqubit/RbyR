@@ -1,0 +1,35 @@
+import API from "./api";
+
+export const increamentCheck = async (data) => {
+    const response = await API.post(`increament_stock_check/`,data, {
+          headers: { "Content-Type": "application/json"},
+        }).catch((err) => console.log("Failed to authenticate the user."));
+    return response ? response.data : {};
+  };
+
+
+  export const CouponCheck = async (data) => {
+    const response = await API.post(`Coupon_check/`,data, {
+          headers: { "Content-Type": "application/json"},
+        }).catch((err) => console.log("Failed to authenticate the user."));
+    return response ? response.data : {};
+  }; 
+
+  
+  export const TaxGet = async () => {
+    const response = await API.get(`tax_get/`, {
+          headers: { "Content-Type": "application/json"},
+        }).catch((err) => console.log("Failed to authenticate the user."));
+    return response ? response.data : {};
+  }; 
+
+
+  export const ImpotantRuleGet = async () => {
+    const response = await API.get(`important_rule_get/`, {
+          headers: { "Content-Type": "application/json"},
+        }).catch((err) => console.log("Failed to authenticate the user."));
+    return response ? response.data : {};
+  }; 
+
+
+

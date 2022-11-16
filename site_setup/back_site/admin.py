@@ -20,6 +20,11 @@ admin.site.register(product_orders,InvoiceAdmin)
 
 admin.site.register(Transaction_history)
 admin.site.register(Online_Qr)
+admin.site.register(coupon)
+admin.site.register(Tax)
+admin.site.register(ImportantNoticeToBuy)
+
+
 
 
 

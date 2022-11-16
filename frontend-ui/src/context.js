@@ -57,8 +57,8 @@ const Context = ({ children }) => {
   const [openCartdrawer, setCartDrawer] = useState(false);
 
   var [orders,setOrder]=useState([])
-
-
+  var [offer,setOffer]=useState({discount_percentage: 0, maximum_discount_price: 1000, expiry_date: '2022-11-30'})
+  var [taxRate,setTaxRate]=useState(0)
 
   //product updation
   useEffect(()=>{
@@ -66,7 +66,8 @@ const Context = ({ children }) => {
     TokenManage()
     
     if(access_token){
-    setInterval(TokenManage,6000)}
+      TokenManage()
+    setInterval(TokenManage,360000)}
     if (JSON.parse(window.localStorage.getItem('cart'))&&(!localStorage.getItem('access_token')))
     setCart([...JSON.parse(window.localStorage.getItem('cart'))]) 
     if (JSON.parse(window.localStorage.getItem('cart'))&&(!localStorage.getItem('access_token')))
@@ -76,7 +77,6 @@ const Context = ({ children }) => {
   useEffect(()=>{
     cartApi()  
     likeGetApi()
-    
   },[product])
 
 
@@ -141,7 +141,9 @@ useEffect(()=>{
                   img_main:[...p][0].img_main,
                   quantity:lke.quantity,
                   category:[...p][0].category,
-                  size:lke.size
+                  size:lke.size,
+                  shipping_charges:[...p][0].shipping_charges,
+
                 }
                 
                 // if(cart.filter(i=>{if(i.id==cartData.id)if(i.size!=cartData.size)return i}).length==0)
@@ -203,7 +205,7 @@ useEffect(()=>{
    }
    //filter
   return (
-    <Cart.Provider value={{availablitySelect,setAvailablity,latestSelect,setLatestSelect,defaultShiping,setDefaultShipping,orders,setOrder,paymentflow,setPaymentflow,shippingflow,setShipingflow,checkoutDetails,setCheckoutDetails,userdata,setUserData,to,setTo,currency,setCurrency,sizeSelected,setSizeSelected,con,setcon,htl,sethtl,lth,setLth,tempsprice,setTempsprice,filterui,setfilterUi,maxValue,setmaxValue,minValue,setminValue,allCategoryAvai,setAllCategoryAvai,allColorAvai,setAllColorAvai,selectedColor,setSelectedColor,tempallpro,settemAllpro, sortui,setSortUi,product,cart,setCart,setProduct,setcheck,checked1,checked2, image,setImage,like,setLike,setCondition,condition,openLikedrawer, setLikeDrawer,openCartdrawer, setCartDrawer,CategoryProduct,setCategoryProduct}}>
+    <Cart.Provider value={{taxRate,setTaxRate,offer,setOffer,availablitySelect,setAvailablity,latestSelect,setLatestSelect,defaultShiping,setDefaultShipping,orders,setOrder,paymentflow,setPaymentflow,shippingflow,setShipingflow,checkoutDetails,setCheckoutDetails,userdata,setUserData,to,setTo,currency,setCurrency,sizeSelected,setSizeSelected,con,setcon,htl,sethtl,lth,setLth,tempsprice,setTempsprice,filterui,setfilterUi,maxValue,setmaxValue,minValue,setminValue,allCategoryAvai,setAllCategoryAvai,allColorAvai,setAllColorAvai,selectedColor,setSelectedColor,tempallpro,settemAllpro, sortui,setSortUi,product,cart,setCart,setProduct,setcheck,checked1,checked2, image,setImage,like,setLike,setCondition,condition,openLikedrawer, setLikeDrawer,openCartdrawer, setCartDrawer,CategoryProduct,setCategoryProduct}}>
       {children}
     </Cart.Provider>
   );

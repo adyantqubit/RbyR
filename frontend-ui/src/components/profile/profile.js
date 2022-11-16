@@ -97,6 +97,7 @@ const MyOrders = () => {
                   <div className={style.tablerowhead}>
                     <div className={style.rowText}>{o[0].order_no}</div>
                     <div className={style.rowText}>{o[0].date}</div>
+                    
                     <div className={style.rowText}>{tran[i].firstname} {tran[i].lastname}</div>
                     <div className={style.rowText}>{getPrice(o)}</div>
                     <div className={style.rowText}>{o[0].payment_mode}</div>

@@ -268,3 +268,18 @@ class QrDetailSerializer(serializers.ModelSerializer):
          class Meta:
            model=Online_Qr
            fields="__all__"            
+           
+class promocodeSerilizer(serializers.ModelSerializer):
+    class Meta:
+        model=coupon
+        fields="__all__"       
+        
+class TaxSerilizer(serializers.ModelSerializer):
+    class Meta:
+        model=Tax
+        fields="__all__"             
+           
+class ImportantNoticeSerilizer(serializers.ModelSerializer):
+    class Meta:
+        model=ImportantNoticeToBuy
+        fields="__all__"         

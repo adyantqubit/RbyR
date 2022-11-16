@@ -131,6 +131,7 @@ class product_detail(models.Model):
     XXL=models.IntegerField(default=30)
     date = models.DateTimeField(default=now, blank=True)
     available=models.BooleanField(default=True)
+    shipping_charges=models.IntegerField(default=100)
 
 
     
@@ -260,3 +261,20 @@ class Online_Qr(models.Model):
      account_number=models.CharField(max_length=18)
      upi_id=models.CharField(max_length=50)
               
+class coupon(models.Model):
+    id=models.AutoField(primary_key=True)
+    promocode=models.CharField(max_length=10)
+    discount_percentage=models.IntegerField()
+    maximum_discount_price=models.IntegerField()               
+    expiry_date=models.DateField()
+    isActive=models.BooleanField(default=False)
+    
+class Tax(models.Model):
+    tax_rate=models.IntegerField()    
+    
+    
+class ImportantNoticeToBuy(models.Model):
+    point1=models.CharField(max_length=200)
+    point2=models.CharField(max_length=200)
+    point3=models.CharField(max_length=200)    
+    

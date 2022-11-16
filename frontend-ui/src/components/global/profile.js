@@ -25,6 +25,8 @@ export const Profile = () => {
         removeToken()
         localStorage.clear()
         nav('/')
+        window.location.reload(false)
+
       }
 
 

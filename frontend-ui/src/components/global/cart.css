@@ -1,9 +1,17 @@
+@font-face {
+    font-family: 'MyFont';
+    src: local('MyFont'), url(../../assets/font/RawsonAltRegular.woff) format('woff');
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+  }
+  
+
 .ant-drawer-body{
     padding: 0%;
 }
 
 .ant-popover-inner-content {
-    background-color: #7c7c7c;
+    background-color: #8c8c8c;
     
 }
 
@@ -12,18 +20,75 @@
     justify-content: space-between;
 }
 
-.ant-btn-sm {
-    width:50%;
-    background:white;
-    color:black;
+.ant-btn .ant-btn-primary{
+    background:#5c5c5c;
+    color: white;   
+}
+
+
+.ant-modal-confirm .ant-modal-confirm-btns {
+    text-align: center;
+}
+
+.ant-btn-primary {
+    width:70%;
+    min-height: 35px;
+    background:#5c5c5c;
+    color:white;
+    font-size: 16px;
+    font-family: 'MyFont';
+    letter-spacing: 2px;
+    border: 0px solid white;
+}
+
+.ant-btn-primary:hover {
+    background:#5c5c5c;
+    color:white;
+}
+
+
+.ant-btn-default {
+    width:30%;
+    background:#5c5c5c;
+    color:white;
+    min-height: 35px;
+    font-size: 16px;
+    font-family: 'MyFont';
+    letter-spacing: 2px;
+    border: 0px solid white;
+
+}
+
+.ant-modal-content{
+    background-color: #8c8c8c;
+    color:white
+}
+
+.anticon-close-circle{
+    display:none;
+}
+
+.ant-modal-confirm-body .ant-modal-confirm-title{
+    color:white;
+    letter-spacing: 1.5px;
+}
+
+.ant-btn-default:hover {
+    background:#5c5c5c;
+    color:white;
 }
 
 .anticon-exclamation-circle{
-    display:block;
+    display:none;
 }
+
 
 .ant-popover-message-title{
     color: white;
+    margin-left: -15px;
+    font-size: 15px;
+    width:300px;
+
 }
 
  .carousel-control-prev-icon {
@@ -37,6 +102,10 @@
 
 }
 
+.react-multi-carousel-item{
+   margin-left:50px;
+   max-width: 300px;
+}
 .carousel-control-next-icon{
     background-color: white;
     border-radius:30px;

@@ -395,3 +395,51 @@ class getQrDetails(APIView):
         return Response(serialize.data)
        except:
            return Response({"error":"something went wrong"})
+       
+       
+class IncrementCheck(APIView):
+    def post(self,request):
+        try:
+           size=request.data['size']
+           quantity=request.data['quantity']+1
+           product_instance= product_detail.objects.get(id=request.data['id'])
+           from django.forms.models import model_to_dict
+           ff=model_to_dict(product_instance)
+           if quantity>ff.get(size):
+              return Response({"error":True})
+           else:
+              return Response({"success":True})
+        except:
+            return Response({"error":True})
+        
+        
+class CouponCheck(APIView):
+    def post(self,request):
+        try:
+         if coupon.objects.get(promocode=request.data) is not None:
+            if coupon.objects.get(promocode=request.data).expiry_date<datetime.date.today():
+                return Response({"error":"This Coupon is Expired"})
+            if coupon.objects.get(promocode=request.data).isActive==False:
+                return Response({"error":"This Coupon is Not Active"})
+            serialize= promocodeSerilizer(coupon.objects.get(promocode=request.data))
+            return Response(serialize.data)
+        except:
+         return Response({"error":"Coupon You Entered is not exist"})        
+     
+     
+class TaxGet(APIView):
+    def get(self,request):
+        if Tax.objects.last() is not None:
+            serialize=TaxSerilizer(Tax.objects.last())
+            return Response(serialize.data)
+        return Response({"tax_rate":1})     
+    
+class ImportantTextGet(APIView):
+    def get(self,request):
+      try:  
+       if ImportantNoticeToBuy.objects.last() is not None:
+            serialize=ImportantNoticeSerilizer(ImportantNoticeToBuy.objects.last())
+            return Response(serialize.data)
+      except:  
+       return Response({"error":"nothing Found"}) 
+          
