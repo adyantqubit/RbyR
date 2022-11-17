@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { CartState } from '../../context';
 import Navbar from '../global/NavHeader';
@@ -7,18 +7,19 @@ import Payment from './payment';
 import ProductListing from './productListing';
 import UserInfo from './userInfo'
 import UsserAdresses from './usserAdresses';
-
+import { useLocation } from 'react-router-dom'
 
 const Orderpage = () => {
   const{userdata,checkoutDetails,setCheckoutDetails,paymentflow,cart,setPaymentflow,shippingflow,setShipingflow}=CartState()
   const nav=useNavigate()
+
 
   return (
     <>
     <Navbar/>
     <div style={{position:"relative",top:"26.5vh"}}>
     <div className={styles.head}>
-     <span className={styles.headText}>{`< Back To Cart`}</span> 
+     <span className={styles.headText} onClick={e=> nav(-1)}>{`< Back To Cart`}</span> 
     </div>
     <div className={styles.row} >
        <div className={styles.column1} >

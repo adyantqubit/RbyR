@@ -49,6 +49,7 @@ urlpatterns = [
     path('Coupon_check/',CouponCheck.as_view()),
     path('tax_get/',TaxGet.as_view()),
     path('important_rule_get/',ImportantTextGet.as_view()),
+    path('cart_recheck/',CartRecheck.as_view())
 
     
     

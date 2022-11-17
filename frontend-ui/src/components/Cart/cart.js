@@ -17,7 +17,7 @@ import { BsWindowSidebar } from 'react-icons/bs';
 import { DrawerFooter } from '../global/cart';
 import styles from './cart.module.css'
 import Msg from '../concepts/msgConfirm';
-import { Popconfirm,message } from 'antd';
+import { Popconfirm,message, notification } from 'antd';
 import Navbar from '../global/NavHeader';
 import Footer2 from '../global/footer2';
 import Below from '../global/below';
@@ -25,7 +25,7 @@ import { Modal, Space } from 'antd';
 
 import Footer from '../global/footer';
 import Slider from '../expandDetailt/slider';
-import { CouponCheck, ImpotantRuleGet, increamentCheck, TaxGet } from '../../api/orderApis';
+import { cartStockRecheck, CouponCheck, ImpotantRuleGet, increamentCheck, TaxGet } from '../../api/orderApis';
 import { afterColumnTotalOfferAdd, columnSubtotal } from '../../Redux-manage/services/billing';
 import { Typography } from '@mui/material';
 
@@ -36,7 +36,7 @@ const text = 'Are you sure you would like to remove this item from the shopping 
 
 const CartSItem = (props) => {
 
- const {cart,setCart,CategoryProduct,currency,offer,setOffer,taxRate,setTaxRate}=CartState()
+ var {cart,setCart,CategoryProduct,currency,offer,setOffer,taxRate,setTaxRate,cartEnd,setCartEnd}=CartState()
  
  const [cartsaveApi,{isLoad}]=useCartUpdateMutation()
  let textInput = React.createRef();
@@ -45,6 +45,8 @@ const CartSItem = (props) => {
  const [error,setError]=useState(null)
  const [ShowCoupon,setCoupon]=useState(false)
  const [ImportantRules,setImportantRules]=useState(null)
+
+
 
 useEffect(()=>{
 GetTAXapi()
@@ -253,6 +255,22 @@ const increament=async (CartProduct)=>{
   },[offer,taxRate])
 
 
+  async function cartChecking(){
+    await cartStockRecheck(cart).then(r=>{
+      cartEnd=r.error
+       
+      cartEnd.map(c=>{
+        notification.error({
+          message: <div style={{fontSize:"18px",color:"white"}}>Out of stock</div>,
+          description:
+          `Product ${c.name} size ${c.size} is out of stock `,
+          style: { backgroundColor:"#D2042D",color:"white"},
+          duration:20
+        });
+      })
+    })
+  }
+
   return (
     <> 
     <Navbar/>
@@ -262,9 +280,62 @@ const increament=async (CartProduct)=>{
     <div className={styles.heading}>
     SHOPPING CART
     </div>
-  {cart.length>0?cart.map(pro=>(
+  {cart.length>0?cart.map(pro=>{
+
+   var result=0
+   if (cartEnd.length>0)
+    result=cartEnd.find(i=>i.id==pro.id)
+  
    
-    <div  style={{width:"100%",marginBottom:"20px",paddingLeft:"15px",display:"flex",background:"white"}}>
+    return (
+      <div>
+        {result?<div  style={{width:"100%",marginBottom:"20px",paddingLeft:"15px",display:"flex",background:'WHITE'}}>
+    
+    <img src={config.apiBaseURL+pro.img_main} className={styles.column1} onClick={e=>openDetail(pro)}></img>
+     <div className={styles.column2}>
+         
+    
+             <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}> 
+                <h3 className={style.heading} style={{width:"80%",color:"black",fontSize: "16px",lineHeight: "26px",letterSpacing: "2.5px"}}>{pro.title}</h3>
+                {/* <span className={style.delete} style={{fontSize:"32px",alignSelf:"start"}} onClick={e=>cartSave(pro)}>x</span> */}
+                <Popconfirm placement="bottomLeft" title={text} onConfirm={e=>confirm(pro)} okText="OK" cancelText="Cancel">
+                 <span className={style.delete} style={{fontSize:"25px",alignSelf:"start"}} >x</span>
+                </Popconfirm>
+             </div>
+
+              <div style={{color:"black",marginLeft:"20px"}} className={style.price}> {currency.sign} {pro.price*currency.value}</div>
+              <div style={{color:"black",marginLeft:"20px",marginTop:"8px"}}>
+                <span className={style.size}>Size :</span>
+                <span className={style.showSize}> {pro.size}</span>  
+              </div>
+              <div style={{color:"black",marginLeft:"20px",marginTop:"8px"}}>
+                <span className={style.shipping}>Standard Shiping:</span>
+                <span className={style.shipping}> 2 Weeks</span>  
+              </div>
+
+              <div style={{height:"100px",display:"flex",flexDirection:"column"}}></div>
+              <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
+                    <div style={{color:"black",alignSelf:"start",marginLeft:"20px",color:"#8c8c8c"}}> Quantity</div>
+                        <div style={{height:"20px",width:"100px",display:"flex",flexDirection:"row"}}>
+                            <div style={{height:"20px",width:"10px",marginRight:"10px"}}>
+                              <div className={styles.increament} onClick={e=>decreament(pro)}>
+                                <span style={{position:"relative",top:"-25px",right:"4px",cursor:"pointer",fontSize:"30px"}}>-</span>
+                              </div>
+                            </div>
+                            <input type="text" class="form-control" style={{width:"30px",height:"20px",border:"2px solid white",padding:"4px",textAlign:"center"}} value={pro.quantity} ref={textInput} />
+                            <div style={{height:"20px",width:"10px"}}>
+                                <div className={styles.increament} onClick={e=>increament(pro)}>
+                                  <span style={{position:"relative",top:"-18px",right:"5px",cursor:"pointer",fontSize:"20px"}}>+</span>
+                                </div>
+                            </div>
+                        </div>           
+                  </div>
+              <div id={`style${pro.id}${pro.size}`} style={{display:"flex",justifyContent:"end",margin:"0 5%",fontSize:".8rem",color:"red",display:"none"}}>No more stock Available
+                  </div>
+ 
+          </div>
+    </div>:<div  style={{width:"100%",marginBottom:"20px",paddingLeft:"15px",display:"flex",background:"white"}}>
+    
     <img src={config.apiBaseURL+pro.img_main} className={styles.column1} onClick={e=>openDetail(pro)}></img>
      <div className={styles.column2}>
              <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}> 
@@ -290,13 +361,13 @@ const increament=async (CartProduct)=>{
                     <div style={{color:"black",alignSelf:"start",marginLeft:"20px",color:"#8c8c8c"}}> Quantity</div>
                         <div style={{height:"20px",width:"100px",display:"flex",flexDirection:"row"}}>
                             <div style={{height:"20px",width:"10px",marginRight:"10px"}}>
-                              <div style={{height:"6px",textAlign:"center",border:"2px solid white",background:"#ededed",borderRadius:"5px",padding:"0.5rem"}} onClick={e=>decreament(pro)}>
+                              <div className={styles.increament} onClick={e=>decreament(pro)}>
                                 <span style={{position:"relative",top:"-25px",right:"4px",cursor:"pointer",fontSize:"30px"}}>-</span>
                               </div>
                             </div>
                             <input type="text" class="form-control" style={{width:"30px",height:"20px",border:"2px solid white",padding:"4px",textAlign:"center"}} value={pro.quantity} ref={textInput} />
                             <div style={{height:"20px",width:"10px"}}>
-                                <div style={{height:"6px",textAlign:"center",border:"2px solid white",borderRadius:"5px",background:"#ededed",padding:"0.5rem"}} onClick={e=>increament(pro)}>
+                                <div className={styles.increament} onClick={e=>increament(pro)}>
                                   <span style={{position:"relative",top:"-18px",right:"5px",cursor:"pointer",fontSize:"20px"}}>+</span>
                                 </div>
                             </div>
@@ -306,12 +377,14 @@ const increament=async (CartProduct)=>{
                   </div>
  
           </div>
+    </div>}
+      
     </div>
-
+    )
  
 
 
-  )):<div style={{fontSize:"20px",color:"#7c7c7c",height:"100%",display:"flex",justifyContent:"center"}}><span>Your Bag Is Empty</span></div>}   
+  }):<div style={{fontSize:"20px",color:"#7c7c7c",height:"100%",display:"flex",justifyContent:"center"}}><span>Your Bag Is Empty</span></div>}   
 
 {cart.length>0?
     <div className={style.footerCon} style={{width:"100%",background:"white"}}>
@@ -324,17 +397,16 @@ const increament=async (CartProduct)=>{
         
         <div className={style.subTotal}>
          <span style={{marginLeft:"15px",textTransform:"uppercase",fontWeight:"600"}}>SubTotal</span>
-         <span style={{marginRight:"15px",fontWeight:"600"}}>{currency.sign} {getTotalPrice()*currency.value}</span>
-
+         <span style={{marginRight:"15px",fontWeight:"600"}}>{currency.sign} {(afterColumnTotalOfferAdd(offer,cart,taxRate).subtotal*currency.value).toFixed(2)}</span>
         </div>
         <div className={style.subTotal}>
          <span style={{marginLeft:"15px",fontWeight:"600"}}>Shipping</span>
-         <span style={{marginRight:"15px",fontWeight:"600"}}>₹ {afterColumnTotalOfferAdd(offer,cart,taxRate).shipping}</span>
+         <span style={{marginRight:"15px",fontWeight:"600"}}>{currency.sign} {(afterColumnTotalOfferAdd(offer,cart,taxRate).shipping*currency.value).toFixed(2)}</span>
         </div>
 
         <div className={style.subTotal}>
          <span style={{marginLeft:"15px",fontWeight:"600"}}>GST Charges</span>
-         <span style={{marginRight:"15px",fontWeight:"600"}}>₹ {afterColumnTotalOfferAdd(offer,cart,taxRate).tax}</span>
+         <span style={{marginRight:"15px",fontWeight:"600"}}>{currency.sign} {(afterColumnTotalOfferAdd(offer,cart,taxRate).tax*currency.value).toFixed(2)}</span>
         </div>
 
         <div className={style.promo}>
@@ -345,7 +417,7 @@ const increament=async (CartProduct)=>{
          <div className={styles.successMsg}>
           <span><i class="fa fa-check"></i>
           Applied</span>
-          <span>₹ {afterColumnTotalOfferAdd(offer,cart,taxRate).coupon} off 
+          <span>{currency.sign} {(afterColumnTotalOfferAdd(offer,cart,taxRate).coupon*currency.value).toFixed(2)} off 
           <span style={{marginLeft:"10px",textDecoration:"underline",cursor:"pointer"}} onClick={resetCoupon}>Remove</span></span>
         </div>}
         </div>
@@ -353,18 +425,18 @@ const increament=async (CartProduct)=>{
 
         <div className={style.subTotal} style={{marginTop:"25px"}}>
          <span style={{marginLeft:"15px",fontWeight:"600"}}>Total</span>
-         <span style={{fontSize: "20px",fontWeight:"600",marginRight:"15px",fontSize: "21px",lineHeight: "32px",letterSpacing: "3px"}}>{currency.sign} {afterColumnTotalOfferAdd(offer,cart,taxRate).Grand}</span>
+         <span style={{fontSize: "20px",fontWeight:"600",marginRight:"15px",fontSize: "21px",lineHeight: "32px",letterSpacing: "3px"}}>{currency.sign} {(afterColumnTotalOfferAdd(offer,cart,taxRate).Grand*currency.value).toFixed(2)}</span>
         </div>
 
          <div className={style.buttons} style={{flexDirection:"column",background:"white"}}>
             <button className={style.shopbtn1} style={{width:"100%",margin:"5px"}} onClick={e=>nav('/')}>Continue Shopping</button>
-            <buton className={style.shopbtn2} style={{width:"100%",margin:"5px"}} onClick={e=>{nav('/placeorder')}} >Go To Checkout</buton>
+            <buton className={style.shopbtn2} style={{width:"100%",margin:"5px"}} onClick={e=>{cartChecking()}} >Go To Checkout</buton>
          </div>
       </div>
     </div>:null}
 
 {ImportantRules!=null?
-    <div style={{height:"300px",width:"100%",marginLeft:"15px"}}>
+    <div style={{height:"300px",width:"100%",marginLeft:"15px",marginBottom:'100px'}}>
       <h6 style={{fontSize:"14px",lineHeight: "22px",letterSpacing: "1.2px",marginLeft:"15px"}}>IMPORTANTS</h6>
       <ul style={{  listStyleType: "disc",listStylePosition:"outside"}}>
         <li style={{color:"#8c8c8c",fontSize:"13px",lineHeight:"20px",letterSpacing: "1px"}}>

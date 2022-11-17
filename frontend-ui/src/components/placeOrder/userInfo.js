@@ -6,6 +6,8 @@ import { CartState } from '../../context'
 const UserInfo = () => {
     const{userdata,checkoutDetails,setCheckoutDetails,shippingflow,setShipingflow}=CartState()
     const [cond,setCond]=useState(false)
+
+    checkoutDetails['userInfo']={"firstname":userdata.name.substring(0,hasWhiteSpace(userdata.name)),"lastname":userdata.name.substring(hasWhiteSpaceforLast(userdata.name),userdata.name.length),"email":userdata.email}
     function hasWhiteSpace(s) {
         var i=s.indexOf(' ');
         if(i==-1){
@@ -44,15 +46,20 @@ const UserInfo = () => {
 
   return (
   <>
-  {cond?
+  {true?
   <>
    {/* when user info is sibmitted then this will appear */}
    <div className={styles.columnitem1_1}>
         <div className={styles.columnitem1head}>
+            
             <span>1. USER DETAILS
             <TiTick style={{fontSize:"25px",color:"white",background:"black",borderRadius:"20px",marginLeft:"15px",position:"relative",bottom:"5px"}}/>    
             </span>
-            <span style={{alignSelf:"flex-end",fontSize:"13px",lineHeight:"20px",letterSpacing:"1px"}} onClick={e=>setCond(false)}>change</span>
+
+            {/* comment on 17/11/22-Rohan Kansari 
+                purpose - hide changable functionality */}
+            {/* <span style={{alignSelf:"flex-end",fontSize:"13px",lineHeight:"20px",letterSpacing:"1px"}} onClick={e=>setCond(false)}>change</span> */}
+        
         </div>
         <div className={styles.usedetailShow}>
             <div ><span className={styles.userinfoText}>Username:</span><span className={styles.userinfoText2}> {checkoutDetails.userInfo.firstname} {checkoutDetails.userInfo.lastname}</span></div>

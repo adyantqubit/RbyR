@@ -117,12 +117,6 @@ const getTotalQuantity=()=>{
   return q;
 }
 
-const erro = (r) => {
-  Modal.error({
-    title: r.error
-  });
-
-};
 
 const nav=useNavigate();
 
@@ -139,7 +133,7 @@ const nav=useNavigate();
   await CouponCheck(promocode).then(r=>{
     if(r.error){
       setError(r)
-       erro(r) 
+      
     }  
     else{
     setOffer(r)
@@ -177,17 +171,17 @@ useEffect(()=>{
         
         <div className={style.subTotal}>
          <span style={{marginLeft:"15px",textTransform:"uppercase",fontWeight:"600"}}>SubTotal</span>
-         <span style={{marginRight:"15px",fontWeight:"600"}}>₹ {getTotalPrice()}</span>
+         <span style={{marginRight:"15px",fontWeight:"600"}}>₹ {(getTotalPrice()).toFixed(2)}</span>
 
         </div>
         <div className={style.subTotal}>
          <span style={{marginLeft:"15px",fontWeight:"600"}}>Shipping</span>
-         <span style={{marginRight:"15px",fontWeight:"600"}}>₹ {afterColumnTotalOfferAdd(offer,cart,taxRate).shipping}</span>
+         <span style={{marginRight:"15px",fontWeight:"600"}}>₹ {(afterColumnTotalOfferAdd(offer,cart,taxRate).shipping).toFixed(2)}</span>
         </div>
 
         <div className={style.subTotal}>
          <span style={{marginLeft:"15px",fontWeight:"600"}}>GST Charges</span>
-         <span style={{marginRight:"15px",fontWeight:"600"}}>₹ {afterColumnTotalOfferAdd(offer,cart,taxRate).tax}</span>
+         <span style={{marginRight:"15px",fontWeight:"600"}}>₹ {(afterColumnTotalOfferAdd(offer,cart,taxRate).tax).toFixed(2)}</span>
         </div>
 
         <div className={style.promo}>
@@ -216,7 +210,7 @@ useEffect(()=>{
         <hr style={{color:"black"}}></hr>
         <div className={style.subTotal} style={{marginTop:"25px"}}>
          <span style={{marginLeft:"15px",fontWeight:"600"}}>Total</span>
-         <span style={{fontSize: "20px",fontWeight:"600",marginRight:"15px",fontSize: "21px",lineHeight: "32px",letterSpacing: "3px"}}>₹ {afterColumnTotalOfferAdd(offer,cart,taxRate).Grand}</span>
+         <span style={{fontSize: "20px",fontWeight:"600",marginRight:"15px",fontSize: "21px",lineHeight: "32px",letterSpacing: "3px"}}>₹ {(afterColumnTotalOfferAdd(offer,cart,taxRate).Grand).toFixed(2)}</span>
         </div>
 
          <div className={style.buttons} >

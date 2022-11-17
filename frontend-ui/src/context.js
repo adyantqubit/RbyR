@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { TaxGet } from "./api/orderApis";
 import { check2, getCart, getLike, LikeUpdate, regenaratingTokenApi } from "./api/service";
 import { unSetUserToken } from "./Redux-manage/features/authSlice";
 import { unSetUserInfo } from "./Redux-manage/features/userSlice";
@@ -37,7 +38,7 @@ const Context = ({ children }) => {
   const[tempsprice,setTempsprice]=useState([])
   const [sizeSelected,setSizeSelected]=useState([])
   const [checkoutDetails,setCheckoutDetails]=useState({})
-  const [shippingflow,setShipingflow]=useState(false)
+  const [shippingflow,setShipingflow]=useState(true)
   const [paymentflow,setPaymentflow]=useState(false)
   const [defaultShiping,setDefaultShipping]=useState([])
 
@@ -45,6 +46,7 @@ const Context = ({ children }) => {
   const [htl,sethtl]=useState(false)
   const[latestSelect,setLatestSelect]=useState(false)
   const[availablitySelect,setAvailablity]=useState(false)
+  var [cartEnd,setCartEnd]=useState([])
 
   const [currency,setCurrency]=useState({value:1,sign:"₹"});
   const [to,setTo]=useState("INR")
@@ -64,7 +66,8 @@ const Context = ({ children }) => {
   useEffect(()=>{
     productApi()
     TokenManage()
-    
+    GetTAXapi()
+
     if(access_token){
       TokenManage()
     setInterval(TokenManage,360000)}
@@ -87,6 +90,11 @@ useEffect(()=>{
  useEffect(()=>{
   window.localStorage.setItem('like',JSON.stringify(like))
 },[like])
+
+async function GetTAXapi(){
+  await TaxGet().then(r=>setTaxRate(r.tax_rate))
+
+}
 
 
   const productApi = async () => {
@@ -205,7 +213,7 @@ useEffect(()=>{
    }
    //filter
   return (
-    <Cart.Provider value={{taxRate,setTaxRate,offer,setOffer,availablitySelect,setAvailablity,latestSelect,setLatestSelect,defaultShiping,setDefaultShipping,orders,setOrder,paymentflow,setPaymentflow,shippingflow,setShipingflow,checkoutDetails,setCheckoutDetails,userdata,setUserData,to,setTo,currency,setCurrency,sizeSelected,setSizeSelected,con,setcon,htl,sethtl,lth,setLth,tempsprice,setTempsprice,filterui,setfilterUi,maxValue,setmaxValue,minValue,setminValue,allCategoryAvai,setAllCategoryAvai,allColorAvai,setAllColorAvai,selectedColor,setSelectedColor,tempallpro,settemAllpro, sortui,setSortUi,product,cart,setCart,setProduct,setcheck,checked1,checked2, image,setImage,like,setLike,setCondition,condition,openLikedrawer, setLikeDrawer,openCartdrawer, setCartDrawer,CategoryProduct,setCategoryProduct}}>
+    <Cart.Provider value={{cartEnd,setCartEnd,taxRate,setTaxRate,offer,setOffer,availablitySelect,setAvailablity,latestSelect,setLatestSelect,defaultShiping,setDefaultShipping,orders,setOrder,paymentflow,setPaymentflow,shippingflow,setShipingflow,checkoutDetails,setCheckoutDetails,userdata,setUserData,to,setTo,currency,setCurrency,sizeSelected,setSizeSelected,con,setcon,htl,sethtl,lth,setLth,tempsprice,setTempsprice,filterui,setfilterUi,maxValue,setmaxValue,minValue,setminValue,allCategoryAvai,setAllCategoryAvai,allColorAvai,setAllColorAvai,selectedColor,setSelectedColor,tempallpro,settemAllpro, sortui,setSortUi,product,cart,setCart,setProduct,setcheck,checked1,checked2, image,setImage,like,setLike,setCondition,condition,openLikedrawer, setLikeDrawer,openCartdrawer, setCartDrawer,CategoryProduct,setCategoryProduct}}>
       {children}
     </Cart.Provider>
   );

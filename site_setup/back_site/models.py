@@ -251,7 +251,11 @@ class Transaction_history(models.Model):
     order_no=models.IntegerField()
     payment_status=models.CharField(max_length=50,choices=status,default="pending")
     user_no=models.ForeignKey(User,on_delete=models.CASCADE)    
-    
+    coupon_discount=models.IntegerField()
+    shipping_price=models.IntegerField()
+    subtotal_price=models.IntegerField()
+    tax=models.IntegerField()
+    grand_total=models.IntegerField()
     
 class Online_Qr(models.Model):
      qr_img=models.ImageField(upload_to='None/', height_field=None,\

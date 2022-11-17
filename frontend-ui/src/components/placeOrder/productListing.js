@@ -1,10 +1,11 @@
 import React from 'react'
 import config from '../../api/config'
 import { CartState } from '../../context'
+import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing'
 import styles from './order.module.css'
 
 const ProductListing = () => {
-  const{userdata,checkoutDetails,setCheckoutDetails,cart,currency}=CartState()
+  const{userdata,checkoutDetails,setCheckoutDetails,cart,currency,offer,setOffer,taxRate,setTaxRate}=CartState()
   const getTotalPrice=()=>{
     var p=0;
     cart.map(c=>p+=c.price*c.quantity)
@@ -18,16 +19,25 @@ const ProductListing = () => {
         <hr style={{color:"black"}}></hr>
         <div style={{display:"flex",justifyContent:"space-between"}}>
           <div className={styles.sub}>Subtotal</div>
-          <div className={styles.sub}>{currency.sign}{getTotalPrice()*currency.value}</div>
+          {console.log(offer,cart,taxRate)}
+          <div className={styles.sub}>{currency.sign}{afterColumnTotalOfferAdd(offer,cart,taxRate).subtotal*currency.value}</div>
         </div>
         <div style={{display:"flex",justifyContent:"space-between",marginTop:"8px"}}>
           <div className={styles.sub}>Shipping</div>
-          <div className={styles.sub}>0</div>
+          <div className={styles.sub}>{currency.sign}{afterColumnTotalOfferAdd(offer,cart,taxRate).shipping*currency.value}</div>
+        </div>
+        <div style={{display:"flex",justifyContent:"space-between",marginTop:"8px"}}>
+          <div className={styles.sub}>Offer Discount</div>
+          <div className={styles.sub}>{currency.sign}{afterColumnTotalOfferAdd(offer,cart,taxRate).coupon*currency.value}</div>
+        </div>
+        <div style={{display:"flex",justifyContent:"space-between",marginTop:"8px"}}>
+          <div className={styles.sub}>GST Charges</div>
+          <div className={styles.sub}>{currency.sign}{afterColumnTotalOfferAdd(offer,cart,taxRate).tax*currency.value}</div>
         </div>
         <hr style={{color:"black"}}></hr>
         <div style={{marginTop:"-5px",display:"flex",justifyContent:"space-between"}}>
         <div className={styles.columnitem1head} style={{marginTop:"-5px"}}>TOTAL</div>
-        <div className={styles.columnitem1head} style={{marginTop:"-5px"}} >{currency.sign}{getTotalPrice()*currency.value}</div>
+        <div className={styles.columnitem1head} style={{marginTop:"-5px"}} >{currency.sign}{afterColumnTotalOfferAdd(offer,cart,taxRate).Grand*currency.value}</div>
         </div>
         <div className={styles.columnitem1head}>TOTAL ITEMS ({cart.length})</div>
         <hr style={{color:"black"}}></hr>

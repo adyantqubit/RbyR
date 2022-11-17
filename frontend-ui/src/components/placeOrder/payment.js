@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { invoiceApi } from '../../api/service';
 import { CartState } from '../../context';
+import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing';
 import { getToken } from '../../Redux-manage/services/localStorageService';
 import styles from './order.module.css'
 const Payment = () => {
-    const{userdata,checkoutDetails,setCheckoutDetails,cart}=CartState()
+    const{userdata,checkoutDetails,setCheckoutDetails,cart,offer,setOffer,taxRate,setTaxRate}=CartState()
     const nav=useNavigate()
     var[tick,setTick]=useState(false)
     var[tickop,setTickop]=useState(false)
@@ -46,6 +47,11 @@ const Payment = () => {
     async function submitAll(){
         if(checkoutDetails['payment']&&checkoutDetails['payment'].length>0){
            checkoutDetails['cart']=cart
+           checkoutDetails['CouponDiscount']=afterColumnTotalOfferAdd(offer,cart,taxRate).coupon
+           checkoutDetails['ShippingCharges']=afterColumnTotalOfferAdd(offer,cart,taxRate).shipping
+           checkoutDetails['SubTotal']=afterColumnTotalOfferAdd(offer,cart,taxRate).subtotal
+           checkoutDetails['tax']=afterColumnTotalOfferAdd(offer,cart,taxRate).tax
+           checkoutDetails['grand']=afterColumnTotalOfferAdd(offer,cart,taxRate).Grand
            await invoiceApi(checkoutDetails,access_token).then(r=>{
             checkoutDetails['orderno']=r.order_no
             })

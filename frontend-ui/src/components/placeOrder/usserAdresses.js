@@ -28,11 +28,16 @@ var [numerror,setnumerror]=useState("")
 var [pinerror,setpinerror]=useState("")
 
 const [value, setValue] = useState("India")
+const [value2, setValue2] = useState("India")
+
 const options = countryList().getData()
 
 const changeHandler = value => {
   setValue(value.target.value)
 }
+const changeHandler2 = value => {
+    setValue2(value.target.value)
+  }
 
 const handleButtonClickpin = (msg) => {
     isAlertVisiblepin=true
@@ -98,6 +103,24 @@ const handleSubmit = async(e) => {
         isAlertVisiblenum=false
     }
 
+    if(billingInfo){
+    if(data.get('pincodeb').length<6)
+    {  var dta=" * minimum 6 digit required"
+        handleButtonClickpin(dta)
+    }
+    else{
+        isAlertVisiblepin=false
+    }
+    if(data.get('numberb').length<10)
+    {
+        var dta=" * minimum 10 digit required"
+        handleButtonClicknum(dta)
+    }
+    else{
+        isAlertVisiblenum=false
+    }
+}
+
 
     const shippingData={
         firstname:data.get('first'),
@@ -125,7 +148,7 @@ const handleSubmit = async(e) => {
             city:data.get('cityb'),
             state:data.get('stateb'),
             zipcode:data.get('pincodeb'),
-            country:data.get('countryb'),
+            country:value2,
             number:data.get('numberb')
         }
     }
@@ -237,7 +260,6 @@ function validatesPin(evt) {
                          :        
                          <>
                         <input className={styles.firstInput} name='first' onKeyPress={validate} required/>
-
                         {/* {error.efirst?<Typography style={{color:"red",fontSize:"13px"}}>This Field is required</Typography>:null} */}
                         </>
                         }
@@ -416,25 +438,46 @@ function validatesPin(evt) {
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='first'>Zip-code *</label>
                         {checkoutDetails.billingData?
-                         <input className={styles.firstInput} name='pincodeb' defaultValue={checkoutDetails.billingData.zipcode} required/>
-                        : 
-                        <input className={styles.firstInput} name='pincodeb' required/>}
+                        <>
+                         <input className={styles.firstInput} name='pincodeb' onKeyPress={validatesPin} maxLength={6} defaultValue={checkoutDetails.billingData.zipcode} required/>
+                         {isAlertVisiblepin&&<span asp-validation-for="Code" class="text-danger col-sm-4">{pinerror} </span>}
+                         </>
+                         : 
+                         <>
+                        <input className={styles.firstInput} name='pincodeb' onKeyPress={validatesPin} maxLength={6} required/>
+                       {isAlertVisiblepin&&<span asp-validation-for="Code" class="text-danger col-sm-4">{pinerror} </span>}
+                       </>}
                     </div>
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='last'>Country *</label>
                         {checkoutDetails.billingData?
-                         <input className={styles.firstInput} name='countryb' defaultValue={checkoutDetails.billingData.country} required/>
+                         <select className={styles.firstInput} defaultValue={value2} onChange={changeHandler2}>
+                         {list.map(l=>{
+                             return <option value={l.label}>{l.label}</option>
+                         })}
+                         </select>
                         : 
-                        <input className={styles.firstInput} name='countryb' required/>}
+                        <select className={styles.firstInput} defaultValue={value2} onChange={changeHandler2}>
+                         {list.map(l=>{
+                             return <option value={l.label}>{l.label}</option>
+                         })}
+                         </select>
+                         }
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFullName}>
                         <label className={styles.firstName} htmlFor='street'>Phone Number *</label>
                         {checkoutDetails.billingData?
-                         <input className={styles.firstInput} name='numberb' defaultValue={checkoutDetails.billingData.number} required/>
-                        : 
-                        <input className={styles.firstInput} name='numberb' required/>
+                        <>
+                         <input className={styles.firstInput} name='numberb' onKeyPress={validatesNum} maxlength={10} defaultValue={checkoutDetails.billingData.number} required/>
+                         {isAlertVisiblenum&&<span asp-validation-for="Code" class="text-danger col-sm-4">{numerror}</span>}
+                         </>
+                         : 
+                         <>
+                        <input className={styles.firstInput} name='numberb' onKeyPress={validatesNum} maxlength={10} required/>
+                        {isAlertVisiblenum&&<span asp-validation-for="Code" class="text-danger col-sm-4">{numerror}</span>}
+                        </>
                         }
                     </div>
                 </div>

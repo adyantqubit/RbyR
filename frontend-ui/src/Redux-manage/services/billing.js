@@ -26,7 +26,7 @@ function afterColumnTotalOfferAdd(offer,cart,tax){
 
    var GrandTotal=temp+gst+shippingCharges-discountAmount
 
-    return {shipping:shippingCharges,tax:gst,coupon:discountAmount,Grand:GrandTotal}
+    return {subtotal:temp,shipping:shippingCharges,tax:gst,coupon:discountAmount,Grand:GrandTotal}
 }
 
 export {columnSubtotal,afterColumnTotalOfferAdd}

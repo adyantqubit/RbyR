@@ -31,5 +31,10 @@ export const increamentCheck = async (data) => {
     return response ? response.data : {};
   }; 
 
-
+  export const cartStockRecheck=async(data)=>{
+    const response = await API.post(`cart_recheck/`, data,{
+      headers: { "Content-Type": "application/json"},
+    }).catch((err) => console.log("Failed to authenticate the user."));
+return response ? response.data : {};
+  }
 

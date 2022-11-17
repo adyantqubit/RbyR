@@ -225,65 +225,73 @@ class Invoice(APIView):
     renderer_classes=[UserRenderer]
     permission_classes=[IsAuthenticated]
     def post(self,request):           
-        
-        instanceshipping=usershippingDetail.objects.get(id=request.data['shipping_id'])
-        instancebilling=userbillingDetail.objects.get(id=request.data['billing_id'])
-        
-        num=40000
-        if Transaction_history.objects.all().last() is not None:
-          num=Transaction_history.objects.all().last().order_no+1;
-          
-        date=45  
-        cartdata=[];
-        for cart in request.data['cart']:
-            cartdata.append(cart)
-            data={
-                "order_no":num,
-                "user_no":request.user.id,
-                "billing_id":instancebilling.id,
-                "shipping_id":instanceshipping.id,
-                "product_id":cart['id'],
-                "quantity":cart['quantity'],
-                "price":cart['price'],
-                "size":cart['size'],
-                "payment_mode":request.data['payment']
-            }
+        try:
+            instanceshipping=usershippingDetail.objects.get(id=request.data['shipping_id'])
+            instancebilling=userbillingDetail.objects.get(id=request.data['billing_id'])
             
-            if(cart['size']=="Short"):
-               pro=product_detail.objects.get(id=cart['id'])
-               pro.S=pro.S-cart['quantity']
-               print(pro.S)
-               pro.save()
-            elif(cart['size']=="Medium"):
-               pro=product_detail.objects.get(id=cart['id'])
-               pro.M=pro.M-cart['quantity']
-               print(pro.M)
-               pro.save() 
-            elif(cart['size']=="Large"):
-                pro=product_detail.objects.get(id=cart['id'])
-                pro.L=pro.L-cart['quantity']
-                print(pro.L)
-                pro.save()
-            elif(cart['size']=="Extra Large"):
-                pro=product_detail.objects.get(id=cart['id'])
-                pro.XL=pro.XL-cart['quantity']
-                print(pro.XL)
-                pro.save()  
-            elif(cart['size']=="Extra Extra Large"):
-                pro=product_detail.objects.get(id=cart['id'])
-                pro.XXL=pro.XXL-cart['quantity']
-                print(pro.XXL)
-                pro.save()  
-                   
+            num=40000
+            if Transaction_history.objects.all().last() is not None:
+             num=Transaction_history.objects.all().last().order_no+1;
             
-            serialize3=invoiceSerializer(data=data)
-            if serialize3.is_valid(raise_exception=True):
-                serialize3.save()       
-                   
-     
-        tran=Transaction_history.objects.create(order_no=num,payment_status="pending",user_no=request.user)  
-        tran.save() 
-        return Response({"order_no":tran.order_no,'cart':cartdata})             
+            date=45  
+            cartdata=[];
+            for cart in request.data['cart']:
+                cartdata.append(cart)
+                data={
+                    "order_no":num,
+                    "user_no":request.user.id,
+                    "billing_id":instancebilling.id,
+                    "shipping_id":instanceshipping.id,
+                    "product_id":cart['id'],
+                    "quantity":cart['quantity'],
+                    "price":cart['price'],
+                    "size":cart['size'],
+                    "payment_mode":request.data['payment']
+                }
+                
+                if(cart['size']=="Short"):
+                    pro=product_detail.objects.get(id=cart['id'])
+                    pro.S=pro.S-cart['quantity']
+                    print(pro.S)
+                    pro.save()
+                elif(cart['size']=="Medium"):
+                    pro=product_detail.objects.get(id=cart['id'])
+                    pro.M=pro.M-cart['quantity']
+                    print(pro.M)
+                    pro.save() 
+                elif(cart['size']=="Large"):
+                    pro=product_detail.objects.get(id=cart['id'])
+                    pro.L=pro.L-cart['quantity']
+                    print(pro.L)
+                    pro.save()
+                elif(cart['size']=="Extra Large"):
+                    pro=product_detail.objects.get(id=cart['id'])
+                    pro.XL=pro.XL-cart['quantity']
+                    print(pro.XL)
+                    pro.save()  
+                elif(cart['size']=="Extra Extra Large"):
+                    pro=product_detail.objects.get(id=cart['id'])
+                    pro.XXL=pro.XXL-cart['quantity']
+                    print(pro.XXL)
+                    pro.save()  
+                    
+                
+                serialize3=invoiceSerializer(data=data)
+                if serialize3.is_valid(raise_exception=True):
+                    serialize3.save()       
+                    
+        
+            tran=Transaction_history.objects.create( order_no=num,payment_status="pending"
+                                                    ,user_no=request.user
+                                                    ,coupon_discount=request.data['CouponDiscount']
+                                                    ,shipping_price=request.data['ShippingCharges']
+                                                    ,subtotal_price=request.data['SubTotal']
+                                                    ,tax=request.data['tax']
+                                                    ,grand_total=request.data['grand'] )  
+            tran.save() 
+            return Response({"order_no":tran.order_no,'cart':cartdata})   
+        except:
+            return Response({"error":"Facing issue on generating bill please contact to Admin"})          
     
     
 class CartDelete(APIView):
@@ -442,4 +450,34 @@ class ImportantTextGet(APIView):
             return Response(serialize.data)
       except:  
        return Response({"error":"nothing Found"}) 
+   
+class CartRecheck(APIView):
+    def post(self,request):
+        car=[]
+        for cart in request.data:
+            if(cart['size']=="Short"):
+                pro=product_detail.objects.get(id=cart['id'])
+                if cart['quantity']>pro.S:
+                    car.append({"id":pro.id,"size":"Short","name":pro.title})
+            elif(cart['size']=="Medium"):
+                pro=product_detail.objects.get(id=cart['id'])
+                if cart['quantity']>pro.M:
+                    car.append({"id":pro.id,"size":"Medium","name":pro.title})
+            elif(cart['size']=="Large"):
+                 pro=product_detail.objects.get(id=cart['id'])
+                 if cart['quantity']>pro.L:
+                    car.append({"id":pro.id,"size":"Large","name":pro.title})
+            elif(cart['size']=="Extra Large"):
+                 pro=product_detail.objects.get(id=cart['id'])
+                 if cart['quantity']>pro.XL:
+                    car.append({"id":pro.id,"size":"Extra Large","name":pro.title})
+            elif(cart['size']=="Extra Extra Large"):
+                 pro=product_detail.objects.get(id=cart['id'])
+                 if cart['quantity']>pro.XXL:
+                    car.append({"id":pro.id,"size":"Extra Extra Large","name":pro.title})  
+        
+        if len(car)>0:
+           return Response({"error":car})
+        else:
+            return Response({"Success":"go ahead"})               
           
