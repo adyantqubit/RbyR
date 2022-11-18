@@ -17,6 +17,75 @@ admin.site.register(usershippingDetail)
 class InvoiceAdmin(admin.ModelAdmin):
     readonly_fields = ('date',)
 admin.site.register(product_orders,InvoiceAdmin)
+#Added by Ashish on 06-11-2022
+#Reason - To Register FAQ Model 
+admin.site.register(FAQ)
+#End of code addition
+
+#Added by Ashish on 09-11-2022
+#Reason - To register contact us model
+admin.site.register(ContactUs)
+#End of code addition
+
+#Added by Ashish on 13-11-2022
+#Reason - To register TermsAndConditions model
+admin.site.register(TermAndCondition)
+#End of code addition
+
+#Added by Ashish on 13-11-2022
+#Reason - To register Privacy Policy model
+admin.site.register(PrivacyPolicy) 
+#End of code addition
+
+#Added by Ashish on 13-11-2022
+#Reason - To register Delivery and shipping policy model
+admin.site.register(DeliveryAndShippingPolicy) 
+#End of code addition
+
+#Added by Ashish on 14-11-2022
+#Reason - To register Refund policy model
+admin.site.register(RefundPolicy) 
+#End of code addition
+
+#Added by Ashish on 14-11-2022
+#Reason - To register Cancellation policy model
+admin.site.register(CancellationPolicy) 
+#End of code addition
+
+#Added by Ashish on 14-11-2022
+#Reason - To register Store Locator model
+admin.site.register(StoreLocator) 
+#End of code addition
+
+#Added by Ashish on 16-11-2022
+#Reason - To SocialLinks model
+admin.site.register(SocialLink) 
+#End of code addition
+
+#Added by Ashish on 16-11-2022
+#Reason - To register Bridal model
+admin.site.register(Bridal) 
+#End of code addition
+
+#Added by Ashish on 17-11-2022
+#Reason - To register BridalDetails model
+admin.site.register(BridalForm) 
+#End of code addition
+
+#Added by Ashish on 17-11-2022
+#Reason - To register Copyright model
+admin.site.register(Copyright) 
+#End of code addition
+
+#Added by Ashish on 17-11-2022
+#Reason - To register EmailSubscription model
+admin.site.register(EmailSubscription) 
+#End of code addition
+
+#Added by Rohan on 17-11-2022
+#Reason - To register InstagramCollection model
+admin.site.register(InstagramCollection) 
+#End of code addition
 
 admin.site.register(Transaction_history)
 admin.site.register(Online_Qr)

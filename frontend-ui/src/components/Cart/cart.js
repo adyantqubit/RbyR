@@ -265,7 +265,8 @@ const increament=async (CartProduct)=>{
           description:
           `Product ${c.name} size ${c.size} is out of stock `,
           style: { backgroundColor:"#D2042D",color:"white"},
-          duration:20
+          duration:20,
+          
         });
       })
     })
@@ -430,7 +431,7 @@ const increament=async (CartProduct)=>{
 
          <div className={style.buttons} style={{flexDirection:"column",background:"white"}}>
             <button className={style.shopbtn1} style={{width:"100%",margin:"5px"}} onClick={e=>nav('/')}>Continue Shopping</button>
-            <buton className={style.shopbtn2} style={{width:"100%",margin:"5px"}} onClick={e=>{cartChecking()}} >Go To Checkout</buton>
+            <buton className={style.shopbtn2} style={{width:"100%",margin:"5px"}} onClick={e=>{nav("/placeorder")}} >Go To Checkout</buton>
          </div>
       </div>
     </div>:null}

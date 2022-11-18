@@ -1,0 +1,64 @@
+
+/* // Created by Ashish on 06-11-2022
+// Reason - To have FAQ functionality */
+.faqContainer{
+    position: relative;
+    top:15vh;
+    height: auto;
+    width:100%;
+    background:#323232;
+    padding-top: 100px;
+}
+
+.row{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item{
+    width: 83%;
+    margin-bottom: 2vh;
+}
+
+.question{
+    width: 100%;
+    background-color: #6b6b6b;
+    padding: 14px;
+}
+
+.answer{
+    width: 100%;
+    background-color: #49494a;
+    padding: 14px;
+}
+
+.itemText{
+    font-size: 17px;
+    color: #fff;
+
+}
+
+.showAnswer{
+    display: block;
+}
+
+.hideAnswer{
+    display: none;
+}
+
+@media screen and (max-width:768px) {
+
+    .row{
+        flex-direction: column;
+    }
+    .item{
+        width: 96%;
+    }
+    .itemContent{
+        height: 70vh;
+    }
+   
+    
+}

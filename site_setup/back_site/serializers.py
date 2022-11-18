@@ -282,4 +282,108 @@ class TaxSerilizer(serializers.ModelSerializer):
 class ImportantNoticeSerilizer(serializers.ModelSerializer):
     class Meta:
         model=ImportantNoticeToBuy
-        fields="__all__"         
+        fields="__all__"                        
+
+#Added by Ashish on 06-11-2022
+#Reason - To have FAQ functionality
+class FAQSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=FAQ
+        fields=['question','answer']    
+#End of code addition              
+
+#Added by Ashish on 09-11-2022
+#Reason - To send contact us details to front end
+class ContactUsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=ContactUs
+        fields="__all__"
+#End of code addition        
+
+#Added by Ashish on 13-11-2022
+#Reason - To send T&C details to front end
+class TermAndConditionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=TermAndCondition
+        fields="__all__"
+#End of code addition 
+
+#Added by Ashish on 13-11-2022
+#Reason - To send Privacy Policy details to front end
+class PrivacyPolicySerializer(serializers.ModelSerializer):
+    class Meta:
+        model=PrivacyPolicy
+        fields="__all__"
+#End of code addition 
+
+#Added by Ashish on 13-11-2022
+#Reason - To send delivery and shipping policy details to front end
+class DeliveryAndShippingPolicySerializer(serializers.ModelSerializer):
+    class Meta:
+        model=DeliveryAndShippingPolicy
+        fields="__all__"
+#End of code addition 
+
+#Added by Ashish on 14-11-2022
+#Reason - To sendrefund policy details to front end
+class RefundPolicySerializer(serializers.ModelSerializer):
+    class Meta:
+        model=RefundPolicy
+        fields="__all__"
+#End of code addition 
+
+#Added by Ashish on 14-11-2022
+#Reason - To send cancellation policy details to front end
+class CancellationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=CancellationPolicy
+        fields="__all__"
+#End of code addition 
+
+#Added by Ashish on 15-11-2022
+#Reason - To send Store locator details to front end
+class StoreLocatorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=StoreLocator
+        fields="__all__"
+#End of code addition 
+
+
+#Added by Ashish on 16-11-2022
+#Reason - To send Social links to front end
+class SocialLinkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=SocialLink
+        fields="__all__"
+#End of code addition
+
+#Added by Ashish on 16-11-2022
+#Reason - To send Bridal to front end
+class BridalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Bridal
+        fields="__all__"
+#End of code addition
+
+#Added by Ashish on 17-11-2022
+#Reason - To get Bridal details from front end
+class BridalFormSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=BridalForm
+        fields="__all__"
+#End of code addition
+
+#Added by Ashish on 17-11-2022
+#Reason - To get Bridal details from front end
+class EmailSubscriptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=EmailSubscription
+        fields="__all__"
+#End of code addition
+
+#Added by Rohan on 17-11-2022
+#Reason - To get Instagram images and links
+class InstagramCollectionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=InstagramCollection
+        fields="__all__"

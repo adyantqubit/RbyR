@@ -6,19 +6,16 @@
                               'embedded-opentype', and 'svg' */
   }
 
-
-.contact{
-
+.container{
     position: relative;
-    top:25vh;
+    top:15vh;
     height: auto;
     width:100%;
     background:#323232;
     padding-top: 100px;
 }
 
-.contain{
-   
+.row{
     height:auto;
     width: 100%;
     display: flex;
@@ -26,20 +23,20 @@
     padding: 0 50px;
     justify-content: space-around;
     background:#323232;
+    padding:0 17%;
+   
 }
 
 .column{
     height:auto;
-    width:500px;
+    width:450px;
     background:#323232;
     display: flex;
     flex-direction: column;
-  
+    
 }
 
-
-.head{
-    padding:0 20%;
+.title{
     font-size: 24px;
     line-height: 32px;
     letter-spacing: 3px;
@@ -48,59 +45,74 @@
     margin: 0;
     color: #fff;
     margin-top: 5px;
-
 }
 
-.head2{
-    padding:0 20%;
-    font-size: 24px;
-    line-height: 32px;
+.subtitle{
+    margin-top: 15px;
+    font-size: 18px;
     letter-spacing: 3px;
     font-family: 'MyFont';
     font-weight: 500;
     color: #fff;
-    margin-top:40px;
-
+   
 }
 
-.body{
-    padding:0 20%;
-    font-size: 18px;
-    line-height: 26px;
+.form{
+    margin-top: 10vh;
+}
+.formInput{
+    border: 1px solid gray;
+}
+
+.formInputContainer{
+    width: 45%;
+}
+
+.itemButton{
+    width: 100%;
+    padding:9px 20px;
+    text-align:center;
+    background-color: #fff;
+    font-size: 15px;
     letter-spacing: 1px;
     font-family: 'Rawson-Regular';
-    font-weight: 400;
-    color: #fff;
+    color: #000;
 }
-
+.lbl{
+    color: #fff;
+    letter-spacing:1px;
+    font-weight:500;
+}
 @media screen and (max-width:768px) {
-    .contact{
+    .container{
         padding-top: 0px;
     }
-    .head{
-        margin-top:6vh;
+    .title{
+        margin-top:4vh;
         font-size: 14px;
         padding: 0 3%;
+        letter-spacing: 1px;
+        
     }
-    .head2{
-        margin-top:3vh;
-        font-size: 14px;
+    .subtitle{
+        margin-top: 5px;
+        font-size: 12px;
         padding: 0 3%;
-        width: 65%;
+        width: 100%;
+        letter-spacing: 1px;
     }
-    .body{
-        font-size: 13px;
-        padding: 0 3%;
-        line-height: 20px;
-        width: 65%;
-    }
-    .contain{
+    .row{
         flex-direction: column;
         padding: 0;
-        
     }
     .column{
         width: 100%;
+    }
+    .formInputContainer{
+        width: 100%;
+        padding-left: 5%;
+        padding-right: 5%;
+
     }
     .col1{
         order: 2;
@@ -109,5 +121,8 @@
         width: 100%;
         order: 1;
     }
-  
+    .lbl{
+       
+        font-weight: 400;
+    }
 }

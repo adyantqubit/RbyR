@@ -22,7 +22,13 @@ import MyOrders from './components/profile/profile';
 import InsideOrder from './components/profile/insidevieworder';
 import ShippingProfile from './components/profile/shipping';
 import UserProfile from './components/profile/userPRofile';
-
+import PrivacyPolicy from './components/footer pages/PrivacyPolicy';
+import DeliveryPolicy from './components/footer pages/DeliveryPolicy';
+import RefundPolicy from './components/footer pages/RefundPolicy';
+import CancellationPolicy from './components/footer pages/CancellationPolicy';
+import StoreLocator from './components/footer pages/StoreLocator';
+import FAQ from './components/footer pages/FAQ';
+import Bridal from './components/footer pages/bridal';
 
 function App() {
   
@@ -53,6 +59,14 @@ function App() {
     <Route path='/billing' element={<Billing/>}/>
     <Route path='/shippindprofile' element={<ShippingProfile/>}/>
     <Route path='/userprofile' element={<UserProfile/>}/>
+
+    <Route path='/privacy-policy' element={<PrivacyPolicy/>}/>
+    <Route path='/delivery-policy' element={<DeliveryPolicy/>}/>
+    <Route path='/refund-policy' element={<RefundPolicy/>}/>
+    <Route path='/cancellation-policy' element={<CancellationPolicy/>}/>
+    <Route path='/store-locator' element={<StoreLocator/>}/>
+    <Route path='/FAQ' element={<FAQ/>}/>
+    <Route path='/bridal' element={<Bridal/>} />
     </Routes>
     </>
   );

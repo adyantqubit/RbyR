@@ -481,3 +481,154 @@ class CartRecheck(APIView):
         else:
             return Response({"Success":"go ahead"})               
           
+          
+#Added by Ashish on 06-11-2022
+#Reason - To have FAQ functionality    
+class FAQView(APIView):
+    def get(self,request):
+        faqs = FAQ.objects.all().values()
+        faqList = {}
+        faqList['faqs'] = faqs
+        return Response(faqList)  
+#End of code addition
+
+#Added by Ashish on 09-11-2022
+#Reason - To send contact us details to front end
+class ContactUsView(APIView):
+    def get(self,request):
+        contactUsDetail = ContactUs.objects.all().values()
+        contactUsResponse = {}
+        contactUsResponse['contactUsDetail'] = contactUsDetail
+        return Response(contactUsDetail)
+#End of code addition  
+
+#Added by Ashish on 13-11-2022
+#Reason - To send T&C details to front end
+class TermAndConditionView(APIView):
+    def get(self,request):
+        TermAndConditionDetail = TermAndCondition.objects.all().values()
+        TermAndConditionResponse = {}
+        TermAndConditionResponse['TermAndConditionDetail'] = TermAndConditionDetail
+        return Response(TermAndConditionDetail)
+#End of code addition               
+
+#Added by Ashish on 13-11-2022
+#Reason - To send Privacy policy details to front end
+class PrivacyPolicyView(APIView):
+    def get(self,request):
+        PrivacyPolicyDetail = PrivacyPolicy.objects.all().values()
+        PrivacyPolicyResponse = {}
+        PrivacyPolicyResponse['PrivacyPolicyDetail'] = PrivacyPolicyDetail
+        return Response(PrivacyPolicyDetail)
+#End of code addition   
+
+#Added by Ashish on 13-11-2022
+#Reason - To send delivery and shipping policy details to front end
+class DeliveryAndShippingPolicyView(APIView):
+    def get(self,request):
+        DeliveryAndShippingPolicyDetail = DeliveryAndShippingPolicy.objects.all().values()
+        DeliveryAndShippingPolicyResponse = {}
+        DeliveryAndShippingPolicyResponse['DeliveryAndShippingPolicyDetail'] = DeliveryAndShippingPolicyDetail
+        return Response(DeliveryAndShippingPolicyDetail)
+#End of code addition  
+
+#Added by Ashish on 14-11-2022
+#Reason - To send refund policy details to front end
+class RefundPolicyView(APIView):
+    def get(self,request):
+        RefundPolicyDetail = RefundPolicy.objects.all().values()
+        RefundPolicyResponse = {}
+        RefundPolicyResponse['RefundPolicyDetail'] = RefundPolicyDetail
+        return Response(RefundPolicyDetail)
+#End of code addition  
+
+#Added by Ashish on 14-11-2022
+#Reason - To send cancellation policy details to front end
+class CancellationPolicyView(APIView):
+    def get(self,request):
+        CancellationPolicyDetail = CancellationPolicy.objects.all().values()
+        CancellationPolicyResponse = {}
+        CancellationPolicyResponse['CancellationPolicyDetail'] = CancellationPolicyDetail
+        return Response(CancellationPolicyDetail)
+#End of code addition  
+
+#Added by Ashish on 14-11-2022
+#Reason - To send Store locator details to front end
+class StoreLocatorView(APIView):
+    def get(self,request):
+        StoreLocatorDetail = StoreLocator.objects.all().values()
+        StoreLocatorResponse = {}
+        StoreLocatorResponse['StoreLocatorDetail'] = StoreLocatorDetail
+        return Response(StoreLocatorDetail)
+#End of code addition  
+
+#Added by Ashish on 16-11-2022
+#Reason - To send social links to front end
+class SocialLinkView(APIView):
+    def get(self,request):
+        SocialLinkDetail = SocialLink.objects.all().values()
+        SocialLinkResponse = {}
+        SocialLinkResponse['SocialLinkDetail'] = SocialLinkDetail
+        return Response(SocialLinkDetail)
+#End of code addition
+
+#Added by Ashish on 16-11-2022
+#Reason - To send bridal to front end
+class BridalView(APIView):
+    def get(self,request):
+        BridalDetail = Bridal.objects.all().values()
+        BridalResponse = {}
+        BridalResponse['BridalDetail'] = BridalDetail
+        return Response(BridalDetail)
+#End of code addition
+
+#Added by Ashish on 17-11-2022
+#Reason - To send bridal form details to front end
+class BridalFormView(APIView):
+    def post(self,request,format=None):
+        print("----------",request.data)
+        serializer=BridalFormSerializer(data=request.data)
+        print("----------",serializer)
+        if(serializer.is_valid(raise_exception=True)):
+            serializer.save()
+            return Response({'msg':'bridal details posted'},status=status.HTTP_200_OK)
+#End of code addition
+
+#Added by Ashish on 17-11-2022
+#Reason - To send copyright text to front end
+class CopyrightView(APIView):
+    def get(self,request):
+        CopyrightDetail = Copyright.objects.all().values()
+        return Response(CopyrightDetail)
+#End of code addition
+
+#Added by Ashish on 17-11-2022
+#Reason - To get EmailSubscription details  from ui end
+class EmailSubscriptionView(APIView):
+    def post(self,request,format=None):
+        print("----------",request.data)
+        email=EmailSubscription.objects.filter(email=request.data.get("email"))
+        print("backend----------",email)
+        if(email):
+            return Response({'error':'You have already subscribed to updates'},status=status.HTTP_200_OK)
+        else:
+            serializer=EmailSubscriptionSerializer(data=request.data)
+            print("----------",serializer)
+            if(serializer.is_valid(raise_exception=True)):
+                serializer.save()
+                return Response({'msg':'You have successfully subscribed to email updates'},status=status.HTTP_200_OK)
+#End of code addition
+
+
+#Added by Rohan on 17-11-2022
+#Reason-To Get instagram collections in ui
+
+class InstagrampostRetrive(APIView):
+    def get(self,request):
+        try:
+            if InstagramCollection.objects.last() is not None:
+              instagram=InstagramCollection.objects.last()
+              serialize=InstagramCollectionSerializer(instagram)
+              return Response(serialize.data)
+        except:
+            return Response({"error":"Nothing Found"})    

@@ -49,8 +49,73 @@ urlpatterns = [
     path('Coupon_check/',CouponCheck.as_view()),
     path('tax_get/',TaxGet.as_view()),
     path('important_rule_get/',ImportantTextGet.as_view()),
-    path('cart_recheck/',CartRecheck.as_view())
+    path('cart_recheck/',CartRecheck.as_view()),
 
+    #Added by Ashish on 06-11-2022
+    #Reason - To have FAQ functionality 
+    path('faq/',FAQView.as_view()),
+    #End of code addition
     
-    
+    #Added by Ashish on 09-11-2022
+    #Reason - To send contact us details to front end
+    path('contact-us/',ContactUsView.as_view()),
+    #End of code addition
+
+    #Added by Ashish on 13-11-2022
+    #Reason - To send T&C details to front end
+    path('terms-and-conditions/',TermAndConditionView.as_view()),
+    #End of code addition
+
+    #Added by Ashish on 13-11-2022
+    #Reason - To send T&C details to front end
+    path('privacy-policy/',PrivacyPolicyView.as_view()),
+    #End of code addition
+
+    #Added by Ashish on 13-11-2022
+    #Reason - To send delivery and shipping policy details to front end
+    path('delivery-and-shipping-policy/',DeliveryAndShippingPolicyView.as_view()),
+    #End of code addition
+
+    #Added by Ashish on 14-11-2022
+    #Reason - To send refund policy details to front end
+    path('refund-policy/',RefundPolicyView.as_view()),
+    #End of code addition
+
+    #Added by Ashish on 14-11-2022
+    #Reason - To send cancelllation policy details to front end
+    path('cancellation-policy/',CancellationPolicyView.as_view()),
+    #End of code addition
+
+    #Added by Ashish on 14-11-2022
+    #Reason - To send Store locator details to front end
+    path('store-locator/',StoreLocatorView.as_view()),
+    #End of code addition
+
+    #Added by Ashish on 16-11-2022
+    #Reason - To send socail links to front end
+    path('social-link/',SocialLinkView.as_view()),
+    #End of code addition
+
+    #Added by Ashish on 16-11-2022
+    #Reason - To send bridal details to front end
+    path('bridal/',BridalView.as_view()),
+    #End of code addition
+
+    #Added by Ashish on 17-11-2022
+    #Reason - To get bridal from front end
+    path('save-bridal-details/',BridalFormView.as_view()),
+    #End of code addition
+
+    #Added by Ashish on 17-11-2022
+    #Reason - To send copyright details to front end
+    path('copyright/',CopyrightView.as_view()),
+    #End of code addition
+
+    #Added by Ashish on 17-11-2022
+    #Reason - To get email from front end
+    path('save-email/',EmailSubscriptionView.as_view()),
+    #End of code addition
+
+    path('get-instagram-posts/',InstagrampostRetrive.as_view()),
+
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)   

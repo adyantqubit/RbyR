@@ -1,41 +1,75 @@
-import React from 'react'
-import Footer from '../global/footer'
-import Navbar from '../global/NavHeader'
-import style from './contact.module.css'
+import React, { Fragment, useEffect, useState } from "react";
+import Footer from "../global/footer";
+import Navbar from "../global/NavHeader";
+import style from "./contact.module.css";
+import { getContactUsDetail } from "../../api/service";
+import parse from "html-react-parser";
+import config from "../../api/config";
 
 const Contact = () => {
+  const [contactUs, setContactUs] = useState([]);
+
+  useEffect(() => {
+    getContactUs();
+  }, []);
+
+  const getContactUs = async () => {
+    const contactUsData = await getContactUsDetail();
+    if (contactUsData) {
+      setContactUs(contactUsData);
+    }
+  };
+
   return (
     <>
-    <Navbar/>
-    <div className={style.contact} >
+      <Navbar />
+      <div className={style.contact}>
+        {contactUs.length > 0 ? (
+          <>
+            {contactUs.map((contact) => {
+              return (
+                <div className={style.contain}>
+                  <div className={`${style.column} ${style.col1}`}>
+                    <span className={style.head}>
+                      {parse(contact.subtitle1)}
+                    </span>
+                    <span className={style.body}>
+                      {parse(contact.content1)}
+                    </span>
 
-            <div className={style.contain}>
+                    <span className={style.head2}>
+                      {parse(contact.subtitle2)}
+                    </span>
+                    <span className={style.body}>
+                      {parse(contact.content2)}
+                    </span>
 
-             <div className={style.column}>
-                <span className={style.head}>CONTACT US</span>
-                <span className={style.body}>For all queries, email us at: customercare@Raggarwal.com</span>
-             
-                <span className={style.head2} style={{marginTop:"40px"}}>FLAGSHIP STORE</span>
-                <span className={style.body}>The white Space Block, martox way, 544376, uxehen honkong,china</span>
-             
-                <span className={style.head2} style={{marginTop:"40px"}}>HEAD OFFICE</span>
-                <span className={style.body}>Town Place ,22 Road Heaven united place, sohaon, japan 766654</span>
-             </div>
-             <div className={style.column}>
-                <img src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665734636/contact_us_vx1uy6.jpg"></img>
-             </div>
+                    <span className={style.head2}>
+                      {parse(contact.subtitle3)}
+                    </span>
+                    <span className={style.body}>
+                      {parse(contact.content3)}
+                    </span>
+                  </div>
+                  <div className={`${style.column} ${style.col2}`}>
+                    <img style={{height:"60vh"}} src={config.apiBaseURL+contact.contactUsImage}></img>
+                  </div>
+                </div>
+              );
+            })}
+          </>
+        ) : (
+          <div>No Contact Detail is present</div>
+        )}
 
-            </div>
+        {/* </div> */}
 
-           <div style={{marginTop:"80px"}}>
-           <Footer />
-           </div>
-           
-    </div>
-    
+        <div style={{ marginTop: "80px" }}>
+          <Footer />
+        </div>
+      </div>
     </>
-    
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

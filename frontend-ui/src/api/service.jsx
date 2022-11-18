@@ -181,3 +181,141 @@ export const getQrDetailApi=async () => {
       }).catch((err) => console.log("Failed to authenticate the user."));
   return response ? response.data : {};
 };
+
+// Added by Ashish on 06-11-2022
+// Reason - To have FAQ functionality
+export const getFAQList = async () => {
+  const response = await API.get("faq/", {
+        headers: { "Content-Type": "application/json" },
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+// End of code addition
+
+// Added by Ashish on 09-11-2022
+// Reason - To have Contact us functionality
+export const getContactUsDetail = async () => {
+  const response = await API.get("contact-us/", {
+        headers: { "Content-Type": "application/json" },
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+// End of code addition
+
+// Added by Ashish on 13-11-2022
+// Reason - To have Contact us functionality
+export const getTermsAndConditionsDetail = async () => {
+  const response = await API.get("terms-and-conditions/", {
+        headers: { "Content-Type": "application/json" },
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+// End of code addition
+
+// Added by Ashish on 13-11-2022
+// Reason - To have Privacy Policy functionality
+export const getPrivacyPoliciesDetail = async () => {
+  const response = await API.get("privacy-policy/", {
+        headers: { "Content-Type": "application/json" },
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+// End of code addition
+
+// Added by Ashish on 13-11-2022
+// Reason - To have Privacy Policy functionality
+export const getDeliveryAndShippingPoliciesDetail = async () => {
+  const response = await API.get("delivery-and-shipping-policy/", {
+        headers: { "Content-Type": "application/json" },
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+// End of code addition
+
+// Added by Ashish on 14-11-2022
+// Reason - To have Refund Policy functionality
+export const getRefundPoliciesDetail = async () => {
+  const response = await API.get("refund-policy/", {
+        headers: { "Content-Type": "application/json" },
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+// End of code addition
+
+// Added by Ashish on 14-11-2022
+// Reason - To have cancellation Policy functionality
+export const getCancellationPoliciesDetail = async () => {
+  const response = await API.get("cancellation-policy/", {
+        headers: { "Content-Type": "application/json" },
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+// End of code addition
+
+// Added by Ashish on 14-11-2022
+// Reason - To have StoreLocator functionality
+export const getStoreLocatorDetail = async () => {
+  const response = await API.get("store-locator/", {
+        headers: { "Content-Type": "application/json" },
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+// End of code addition
+
+// Added by Ashish on 16-11-2022
+// Reason - To have StoreLocator functionality
+export const getBridalDetail = async () => {
+  const response = await API.get("bridal/", {
+        headers: { "Content-Type": "application/json" },
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+// End of code addition
+
+// Added by Ashish on 16-11-2022
+// Reason - To have social links functionality
+export const getSocialLinkDetail = async () => {
+  const response = await API.get("social-link/", {
+        headers: { "Content-Type": "application/json" },
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+// End of code addition
+
+// Added by Ashish on 17-11-2022
+// Reason - To have bridal functionality
+export const postBridalDetails = async (data) => {
+  const response = await API.post(`save-bridal-details/`,data, {
+        headers: { "Content-Type": "application/json"},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+// End of code addition
+
+// Added by Ashish on 17-11-2022
+// Reason - To have copyright text functionality
+export const getCopyrightDetails = async () => {
+  const response = await API.get("copyright/", {
+        headers: { "Content-Type": "application/json" },
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+// End of code addition
+
+// Added by Ashish on 17-11-2022
+// Reason - To have EmailSubscription functionality
+export const postEmailDetails = async (data) => {
+  const response = await API.post(`save-email/`,data, {
+        headers: { "Content-Type": "application/json"},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+// End of code addition
+
+
+export const InstagramCollections = async () => {
+  const response = await API.get(`get-instagram-posts/`, {
+        headers: { "Content-Type": "application/json"},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};

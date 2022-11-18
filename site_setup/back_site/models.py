@@ -282,3 +282,154 @@ class ImportantNoticeToBuy(models.Model):
     point2=models.CharField(max_length=200)
     point3=models.CharField(max_length=200)    
     
+#Added by Ashish on 06-11-2022
+#Reason - To have FAQ functionality
+class FAQ(models.Model):
+    qno=models.AutoField(primary_key=True)
+    question=models.CharField(max_length=255)
+    answer=models.TextField()
+
+    def __str__(self):
+        return f"{'Qusetion: ',self.question}, {'Answer: ',self.answer}"
+#End of code addition
+
+#Added by Ashish on 09-11-2022
+#Reason - To create contact us table
+class ContactUs(models.Model):
+    subtitle1=models.CharField(max_length=255)
+    content1=models.TextField()
+    subtitle2=models.CharField(max_length=255)
+    content2=models.TextField()
+    subtitle3=models.CharField(max_length=255)
+    content3=models.TextField()
+    contactUsImage=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100,default='None/a1.jpg')
+#End of code addition
+
+#Added by Ashish on 13-11-2022
+#Reason - To create T&C table
+class TermAndCondition(models.Model):
+    title1=models.CharField(max_length=255)
+    content1=models.TextField()
+    subtitle1=models.CharField(max_length=255)
+    content2=models.TextField()
+    subtitle2=models.CharField(max_length=255)
+    content3=models.TextField()
+    subtitle3=models.CharField(max_length=255)
+    content4=models.TextField()
+    subtitle4=models.CharField(max_length=255)
+    content5=models.TextField()
+#End of code addition
+
+#Added by Ashish on 13-11-2022
+#Reason - To create T&C table
+class PrivacyPolicy(models.Model):
+    title1=models.CharField(max_length=255)
+    content1=models.TextField()
+    subtitle1=models.CharField(max_length=255)
+    content2=models.TextField()
+    subtitle2=models.CharField(max_length=255)
+    content3=models.TextField()
+#End of code addition
+
+#Added by Ashish on 13-11-2022
+#Reason - To create T&C table
+class DeliveryAndShippingPolicy(models.Model):
+    title1=models.CharField(max_length=255)
+    content1=models.TextField()
+    title2=models.CharField(max_length=255)
+    content2=models.TextField()
+#End of code addition
+
+#Added by Ashish on 14-11-2022
+#Reason - To create Refund policy table
+class RefundPolicy(models.Model):
+    title1=models.CharField(max_length=255)
+    content1=models.TextField()
+    subtitle1=models.CharField(max_length=255)
+    content2=models.TextField()
+#End of code addition
+
+#Added by Ashish on 14-11-2022
+#Reason - To create Cancellation policy table
+class CancellationPolicy(models.Model):
+    title1=models.CharField(max_length=255)
+    content1=models.TextField()
+    subtitle1=models.CharField(max_length=255)
+    content2=models.TextField()
+#End of code addition
+
+#Added by Ashish on 14-11-2022
+#Reason - To create Store locator table
+class StoreLocator(models.Model):
+    city=models.CharField(max_length=255)
+    address=models.TextField()
+    phoneNumber=models.CharField(max_length=255)
+    email=models.CharField(max_length=255)
+    timing=models.CharField(max_length=255)
+    storeImage=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+#End of code addition
+
+#Added by Ashish on 16-11-2022
+#Reason - To create Social Links table
+class SocialLink(models.Model):
+    linkName=models.CharField(max_length=255)
+    link=models.CharField(max_length=255)
+#End of code addition
+
+#Added by Ashish on 16-11-2022
+#Reason - To create bridal table
+class Bridal(models.Model):
+    title=models.CharField(max_length=255)
+    subtitle1=models.TextField()
+    subtitle2=models.TextField()
+    bridalImage=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+#End of code addition
+
+#Added by Ashish on 17-11-2022
+#Reason - To create bridalDetails table
+class BridalForm(models.Model):
+    firstName=models.CharField(max_length=255)
+    lastName=models.CharField(max_length=255)
+    email=models.CharField(max_length=255)
+    contactNumber=models.CharField(max_length=255)
+    zipCode=models.CharField(max_length=255)
+    message=models.TextField()
+    dateOfWedding=models.DateTimeField()
+    termsAndCondition=models.BooleanField()
+#End of code addition
+
+#Added by Ashish on 17-11-2022
+#Reason - To create copyright text table
+class Copyright(models.Model):
+    title=models.CharField(max_length=255)
+#End of code addition
+
+#Added by Ashish on 17-11-2022
+#Reason - To have email subscription list in the table
+class EmailSubscription(models.Model):
+    email=models.CharField(max_length=255)
+    unsubscribe=models.BooleanField(default=False)
+#End of code addition
+
+#Added by Rohan on 17-11-2022
+#Reason - To get Intagram photos
+class InstagramCollection(models.Model):
+    instagram_home_link=models.CharField(max_length=255)
+    instagram_post1=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    instagram_post1_link=models.CharField(max_length=255)
+    instagram_post2=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    instagram_post2_link=models.CharField(max_length=255)
+    instagram_post3=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    instagram_post3_link=models.CharField(max_length=255)
+    instagram_post4=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    instagram_post4_link=models.CharField(max_length=255)
+    instagram_post5=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    instagram_post5_link=models.CharField(max_length=255)       

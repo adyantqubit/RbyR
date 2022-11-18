@@ -20,7 +20,6 @@
     "aphrodite": "^2.4.0",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.1",
-    "html-react-parser": "^3.0.4",
     "react": "^18.2.0",
     "react-animations": "^1.0.0",
     "react-bootstrap": "^2.5.0",
