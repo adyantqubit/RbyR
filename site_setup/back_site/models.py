@@ -133,9 +133,17 @@ class product_detail(models.Model):
     available=models.BooleanField(default=True)
     shipping_charges=models.IntegerField(default=100)
 
+    #Added by Ashish dewangan on 18-11-2022
+    #Reason - to have search functionality
+    #Jira issue no - RBYR -141
+    search_key=models.TextField(default="",blank=True)
 
-    
-    
+    def save(self,*args, **kwargs):
+        # self.productName_with_category =  self.product_name+self.category_name.category
+        strWithSpace =  self.title+self.category
+        self.search_key=strWithSpace.replace(" ", "")
+        super().save(*args,**kwargs) 
+    #End of code addition
     
 class image(models.Model):
     src=models.CharField(max_length=200)

@@ -118,4 +118,10 @@ urlpatterns = [
 
     path('get-instagram-posts/',InstagrampostRetrive.as_view()),
 
+    #Added by Ashish dewangan on 18-11-2022
+    #Reason - to have search functionality
+    #Jira issue no - RBYR -141
+    path('search-products/<query>',SearchProductView.as_view()),
+    #End of code addition
+
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)   

@@ -632,3 +632,48 @@ class InstagrampostRetrive(APIView):
               return Response(serialize.data)
         except:
             return Response({"error":"Nothing Found"})    
+#End of code addition
+
+#Added by Ashish dewangan on 18-11-2022
+#Reason - to have search functionality
+#Jira issue no - RBYR -141
+class SearchProductView(APIView):
+    def get(self,request,query):
+        # print("query----------------------",query.replace(" ",""))
+        AllProduct = product_detail.objects.all()
+        wordsArray= query.split()
+        import itertools
+        permutations=list(itertools.permutations(wordsArray))
+    
+        combinationArray=[]
+        combinationArrayOfHighestWordLength=[]
+        length=len(query.replace(" ",""))
+        # print("len--------------------------",length)
+        for permutation in permutations:
+            combination=""
+            for word in permutation:
+                combination =combination+word
+                combinationArray.append(combination)
+                
+        # print("combinationArray--------------------------",combinationArray) 
+        for w in combinationArray:
+            if(len(w)==length):
+                combinationArrayOfHighestWordLength.append(w)
+
+        # print("combinationArraywit len--------------------------",combinationArrayOfHighestWordLength)
+        resultSet={}
+        for data in combinationArrayOfHighestWordLength:
+            # print("data--------------------------",data) 
+            if(AllProduct.filter(search_key__icontains=data)):
+                resultSet=AllProduct.filter(search_key__icontains=data)
+        # print("product........",AllProduct)        
+        # print("result---------------",resultSet)
+        if(len(resultSet)==0):
+            for data in combinationArray:
+                # print("data--------------------------",data) 
+                if(AllProduct.filter(search_key__icontains=data)):
+                    resultSet=AllProduct.filter(search_key__icontains=data)
+
+        serializedData=product_serializer(resultSet,many=True)
+        return Response(serializedData.data)        
+#End of code addition

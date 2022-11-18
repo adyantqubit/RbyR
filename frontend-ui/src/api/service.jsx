@@ -319,3 +319,14 @@ export const InstagramCollections = async () => {
       }).catch((err) => console.log("Failed to authenticate the user."));
   return response ? response.data : {};
 };
+
+// Added by Ashish dewangan on 18-11-2022
+// Reason - to have cross button on search icon more width
+// Jira issue no - RBYR -141
+export const getSearchedProducts = async (parameter) => {
+  const response = await API.get(`search-products/${parameter}`, {
+        headers: { "Content-Type": "application/json"},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+// End of code addition
