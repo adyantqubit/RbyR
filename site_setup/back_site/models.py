@@ -254,6 +254,8 @@ class product_orders(models.Model):
 status = (
     ('paid','paid'),
     ('pending','pending'),
+    ('cancle','cancle'),
+
 )    
 class Transaction_history(models.Model):
     order_no=models.IntegerField()
@@ -264,6 +266,29 @@ class Transaction_history(models.Model):
     subtotal_price=models.IntegerField()
     tax=models.IntegerField()
     grand_total=models.IntegerField()
+    
+    def save(self,*args,**kwargs):
+        if (self.payment_status=="cancle"):
+          pros= product_orders.objects.filter(order_no=self.order_no)
+          for product in pros:
+             pro=product_detail.objects.get(id=product.product_id.id)
+             
+             if product.size=="Short":
+               pro.S+=product.quantity
+               pro.save()               
+             if product.size=="Medium":
+                   pro.M+=product.quantity
+                   pro.save()     
+             if product.size=="Large":
+                   pro.L+=product.quantity 
+                   pro.save()             
+             if product.size=="Extra Large" :
+                 pro.XL+=product.quantity
+                 pro.save()                
+             if product.size=="Extra Extra Large":
+                 pro.XXL+=product.quantity 
+                 pro.save()      
+        super().save(*args,**kwargs)          
     
 class Online_Qr(models.Model):
      qr_img=models.ImageField(upload_to='None/', height_field=None,\

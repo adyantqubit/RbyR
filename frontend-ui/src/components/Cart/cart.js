@@ -45,6 +45,7 @@ const CartSItem = (props) => {
  const [error,setError]=useState(null)
  const [ShowCoupon,setCoupon]=useState(false)
  const [ImportantRules,setImportantRules]=useState(null)
+ var [cartSuccess,setCartSuccess]=useState(false)
 
 
 
@@ -257,8 +258,9 @@ const increament=async (CartProduct)=>{
 
   async function cartChecking(){
     await cartStockRecheck(cart).then(r=>{
+
+      if(r.error){
       cartEnd=r.error
-       
       cartEnd.map(c=>{
         notification.error({
           message: <div style={{fontSize:"18px",color:"white"}}>Out of stock</div>,
@@ -269,8 +271,15 @@ const increament=async (CartProduct)=>{
           
         });
       })
+    }
+    else{
+      nav("/placeorder")
+    }
     })
+
+    return cartSuccess;
   }
+
 
   return (
     <> 
@@ -424,6 +433,11 @@ const increament=async (CartProduct)=>{
         </div>
         {error!=null?<Typography style={{marginTop:"-10px",color:"red",fontSize:"14px",marginLeft:"15px"}}>{error.error}</Typography>:null}
 
+        {ShowCoupon? <div className={style.subTotal}>
+         <span style={{marginLeft:"15px",fontWeight:"600"}}>Coupon Discount</span>
+         <span style={{marginRight:"15px",fontWeight:"600"}}>- {currency.sign} {(afterColumnTotalOfferAdd(offer,cart,taxRate).coupon*currency.value).toFixed(2)}</span>
+        </div>:null}
+
         <div className={style.subTotal} style={{marginTop:"25px"}}>
          <span style={{marginLeft:"15px",fontWeight:"600"}}>Total</span>
          <span style={{fontSize: "20px",fontWeight:"600",marginRight:"15px",fontSize: "21px",lineHeight: "32px",letterSpacing: "3px"}}>{currency.sign} {(afterColumnTotalOfferAdd(offer,cart,taxRate).Grand*currency.value).toFixed(2)}</span>
@@ -431,7 +445,8 @@ const increament=async (CartProduct)=>{
 
          <div className={style.buttons} style={{flexDirection:"column",background:"white"}}>
             <button className={style.shopbtn1} style={{width:"100%",margin:"5px"}} onClick={e=>nav('/')}>Continue Shopping</button>
-            <buton className={style.shopbtn2} style={{width:"100%",margin:"5px"}} onClick={e=>{nav("/placeorder")}} >Go To Checkout</buton>
+            
+            <buton className={style.shopbtn2} style={{width:"100%",margin:"5px"}} onClick={e=>cartChecking()} >Go To Checkout</buton>
          </div>
       </div>
     </div>:null}

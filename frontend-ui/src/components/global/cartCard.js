@@ -99,6 +99,8 @@ async function increamentApiMethodCall({CartProduct,data}){
     })
 } 
 
+
+
 async function increamentApiMethodCall({CartProduct,data}){
   
   await increamentCheck(data).then(r=>{
@@ -107,9 +109,9 @@ async function increamentApiMethodCall({CartProduct,data}){
     console.log("present in stock",r)
     }
     else if(r.error){
-      document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
+      // document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
       con =false;
-      console.log("stock is not present",r)
+      erro(r)
     }
     })
 } 
@@ -241,13 +243,13 @@ const increament= async (CartProduct)=>{
                     <div style={{color:"black",alignSelf:"start",marginLeft:"20px",color:"#8c8c8c"}}> Quantity</div>
                         <div style={{height:"20px",width:"100px",display:"flex",flexDirection:"row"}}>
                             <div style={{height:"20px",width:"10px",marginRight:"10px"}}>
-                              <div style={{height:"6px",textAlign:"center",border:"2px solid white",background:"#ededed",borderRadius:"5px",padding:"0.5rem"}} onClick={e=>decreament(pro)}>
+                              <div className={styles.increament} onClick={e=>decreament(pro)}>
                                 <span style={{position:"relative",top:"-25px",right:"4px",cursor:"pointer",fontSize:"30px"}}>-</span>
                               </div>
                             </div>
                             <input type="text" class="form-control" style={{width:"30px",height:"20px",border:"2px solid white",padding:"4px",textAlign:"center"}} value={pro.quantity} ref={textInput} />
                             <div style={{height:"20px",width:"10px"}}>
-                                <div style={{height:"6px",textAlign:"center",border:"2px solid white",borderRadius:"5px",background:"#ededed",padding:"0.5rem"}} onClick={e=>increament(pro)}>
+                                <div className={styles.increament} onClick={e=>increament(pro)}>
                                   <span style={{position:"relative",top:"-18px",right:"5px",cursor:"pointer",fontSize:"20px"}}>+</span>
                                 </div>
                             </div>

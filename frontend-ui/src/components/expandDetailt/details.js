@@ -24,6 +24,7 @@ import Slider2 from './slider2'
 import Shake from 'react-reveal/Shake';
 import { Link, animateScroll as scroll } from "react-scroll";
 import ScrollButton from './top'
+import { increamentCheck } from '../../api/orderApis'
 
 
 const sty = StyleSheet.create({
@@ -87,6 +88,21 @@ const Details = (props) => {
     setNotAvai(false)
   }
 
+//  checking from backend before adding to cart
+//   async function increament(details){
+
+//   var increamentData={id:details.id,
+//     quantity:1,
+//     size:`${size}`}
+//   await increamentCheck(increamentData).then(r=>{
+//     if(r.error){
+//       notAvai =true
+//       setNotAvai(true)
+//     }
+//   }
+//   )
+// }
+
  async function AddToCart(details){
     
    setPushData(false)
@@ -126,15 +142,12 @@ const Details = (props) => {
         saveCart(details)
       }
     }
-   
-   
   }
 
   async function saveCart(details){
     const data={
       product_no:details.id,
       size:`${size}`
-     
     }
 
      const NewCartData={
@@ -144,7 +157,7 @@ const Details = (props) => {
      }
 
    var access_token=localStorage.getItem("access_token")
-  const resp=await cartsaveApi({data,access_token}).then(r=>console.log(r));
+   const resp=await cartsaveApi({data,access_token}).then(r=>console.log(r));
 
       if(cart.filter(i=>{if(i.id==details.id)if(i.size==data.size)return i}).length>0){
        var p=cart.filter(i=>{if(i.id==details.id){if(i.size!=data.size)return i}else return i});
@@ -320,7 +333,7 @@ const Details = (props) => {
               <div style={{display:"flex",flexDirection:"row", width:"70%"}} >
              {check()?<button
                 className={` ${styles['button']} `}
-               onClick={e=>AddToCart(details)}>   
+               onClick={e=>saveCart(details)}>   
                 Remove From Bag
               </button>:<button
                 className={` ${styles['button']} `}

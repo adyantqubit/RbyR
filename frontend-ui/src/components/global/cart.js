@@ -1,4 +1,4 @@
-import { Button, Drawer } from 'antd';
+import { Button, Drawer, notification } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { CartState } from '../../context';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
@@ -11,7 +11,7 @@ import './cart.css'
 import { BsCartFill } from 'react-icons/bs';
 import { useCartBuyAllMutation } from '../../Redux-manage/services/userAuthapi';
 import { useNavigate } from 'react-router-dom';
-import { CouponCheck, TaxGet } from '../../api/orderApis';
+import { cartStockRecheck, CouponCheck, TaxGet } from '../../api/orderApis';
 import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing';
 import { Typography } from '@mui/material';
 
@@ -94,7 +94,7 @@ export default Cart;
 
 
 export function DrawerFooter(){
- const {cart,setCartDrawer,currency,offer,setOffer,taxRate,setTaxRate}=CartState()
+ var {cart,setCartDrawer,currency,offer,setOffer,taxRate,setTaxRate,cartEnd,setCartEnd}=CartState()
  const [UploadCartApi,{isLoading}]=useCartBuyAllMutation()
  const [cond,setCond]=useState([])
  const [error,setError]=useState(null)
@@ -159,6 +159,30 @@ useEffect(()=>{
 
 
 
+async function cartChecking(){
+  await cartStockRecheck(cart).then(r=>{
+
+    if(r.error){
+    cartEnd=r.error
+    cartEnd.map(c=>{
+      notification.error({
+        message: <div style={{fontSize:"18px",color:"white"}}>Out of stock</div>,
+        description:
+        `Product ${c.name} size ${c.size} is out of stock `,
+        style: { backgroundColor:"#D2042D",color:"white"},
+        duration:20,
+        
+      });
+    })
+  }
+  else{
+    setCartDrawer(false)
+    nav("/placeorder")
+  }
+  })
+}
+
+
  return (
     <>
     {cart.length>0?<div className={style.footerCon}>
@@ -215,7 +239,7 @@ useEffect(()=>{
 
          <div className={style.buttons} >
             <button className={style.shopbtn1} onClick={e=>setCartDrawer(false)}>Continue Shopping</button>
-            <buton className={style.shopbtn2} onClick={e=>{nav('/placeorder');setCartDrawer(false)}}>Go To Checkout</buton>
+            <buton className={style.shopbtn2} onClick={e=>{cartChecking()}}>Go To Checkout</buton>
          </div>
       </div>
     </div>:null}
