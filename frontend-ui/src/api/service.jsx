@@ -330,3 +330,14 @@ export const getSearchedProducts = async (parameter) => {
   return response ? response.data : {};
 };
 // End of code addition
+
+// Added by Ashish dewangan on 19-11-2022
+// Reason - to get logo and cover from backend
+// Jira issue no - RBYR -149
+export const getLogoAndCover = async () => {
+  const response = await API.get(`logo-and-cover/`, {
+        headers: { "Content-Type": "application/json"},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+// End of code addition

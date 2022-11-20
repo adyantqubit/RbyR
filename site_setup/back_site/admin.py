@@ -87,6 +87,11 @@ admin.site.register(EmailSubscription)
 admin.site.register(InstagramCollection) 
 #End of code addition
 
+#Added by Ashish on 19-11-2022
+#Reason - To register LogoAndCover model
+admin.site.register(LogoAndCover) 
+#End of code addition
+
 admin.site.register(Transaction_history)
 admin.site.register(Online_Qr)
 admin.site.register(coupon)

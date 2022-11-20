@@ -466,3 +466,20 @@ class InstagramCollection(models.Model):
     instagram_post5=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100)
     instagram_post5_link=models.CharField(max_length=255)       
+
+#Added by Ashish on 19-11-2022
+#Reason - To save logo and cover in the table
+class LogoAndCover(models.Model):
+    logo=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    cover1=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    cover2=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    cover3=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    cover4=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    cover5=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+#End of code addition

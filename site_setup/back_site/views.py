@@ -677,3 +677,14 @@ class SearchProductView(APIView):
         serializedData=product_serializer(resultSet,many=True)
         return Response(serializedData.data)        
 #End of code addition
+
+#Added by Ashish on 19-11-2022
+#Reason-To send logo and cover images to frontend
+class LogoAndCoverView(APIView):
+    def get(self,request):
+        LogoAndCoverDetail = LogoAndCover.objects.all().values()
+        LogoAndCoverResponse = {}
+        LogoAndCoverResponse['BLogoAndCoverDetail'] = LogoAndCoverDetail
+        return Response(LogoAndCoverDetail)
+        
+#End of code addition

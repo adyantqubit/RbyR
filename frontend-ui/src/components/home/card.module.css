@@ -1,93 +1,126 @@
 .container{
   width:100%;
+ 
   margin-top:150px;
   padding:0 100px;
+
 }
 .main{
     width:100%;
     display:flex;
     flex-direction:row;
     justify-content:space-around;
+    padding: 0px;
 }
-
+.cardli{
+    margin-top:60px;
+    width:33%;
+    /* border-radius:10px; */
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    position: relative;
+  
+}
 .imgswap{
     width:100%;
     height:500px;
-    border-radius:10px;
+    /* border-radius:10px; */
 }
-
-.video{
-    width:70%;
-     height:450px;
-    border-radius:20px;
-}
-
-.cardli{
-    width:33%;
-    border-radius:10px;
-    display:flex;
-    justify-content:center;
-}
-
 .text{
-    position:relative;
-    top:490px;
-    left:0px;
-    right:80px;
+    /* position:relative;
+    top:500px; */
+    position: absolute;
+    bottom:0px;
+    /* left:0px; */
+    /* right:80px; */
     width:100%;
-    background:rgba(0,0,0,0.7);
+    height:70px;
+    background:rgba(0,0,0,0.5);
     font-size:2rem;
     color:white;
     letter-spacing:2px;
     font-family:Rawson-regular;
-    font-weight:400;
     text-align:center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.linkText{
+    text-decoration:none;
+    color:white;
+    font-size:2rem;
+    text-transform:uppercase;
+   
+}
+.linkText:hover{
+    color:white;
 }
 
-@media (max-width: 1100px) {
+.video{
+    width:70%;
+    height:450px;
+    border-radius:20px;
+}
+
+
+
+
+@media (max-width: 768px) {
+    .container{
+        margin-top:20px;
+        padding:0;
+        
+      }
+      .main{
+        flex-direction:column;
+        padding: 0px;
+        
+        
+    }
+    .cardli{
+        width:100%;
+        overflow: hidden;
+        
+    }
+    
+    .imgswap{
+        width:100%;
+        height:500px;
+       
+    }
+    
+    .video{
+        width:100%;
+         height:300px;
+    }
+    
+}
+
+
+/* @media (max-width: 1100px) {
     .cardli{
         width:40%;
+        
     }
     .imgswap{
         width:100%;
         height:400px;
+      
     }
     .container{
         margin-top:150px;
-        padding:0
-      }
-      .video{
-        width:80%;
-         height:350px;
+        padding:0;
+      
     }
-
+    .video{
+        width:100%;
+        height:350px;
+        border-radius:0px;
+    }
     .text{
+        
         top:400px;
     }
-}
+} */
 
-@media (max-width: 768px) {
-    .cardli{
-        width:100%;
-    }
-    .main{
-        flex-direction:column;
-    }
-    .imgswap{
-        width:100%;
-        height:500px;
-    }
-    .container{
-        margin-top:20px;
-        padding:0
-      }
-
-      .video{
-        width:90%;
-         height:300px;
-    }
-
-    .text{
-        top:490px;
-    }
-}

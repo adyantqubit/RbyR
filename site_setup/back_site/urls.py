@@ -124,4 +124,9 @@ urlpatterns = [
     path('search-products/<query>',SearchProductView.as_view()),
     #End of code addition
 
+    #Added by Ashish on 19-11-2022
+    #Reason - To send logo and cover images to front end
+    path('logo-and-cover/',LogoAndCoverView.as_view()),
+    #End of code addition
+
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)   

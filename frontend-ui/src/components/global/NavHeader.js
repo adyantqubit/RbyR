@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import { FiMenu, FiX } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import style from './NavHeader.module.css';
-import { Button, CssBaseline, Grid, Typography } from '@mui/material';
+import { Button, CssBaseline, Grid, SliderThumb, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { unSetUserToken } from '../../Redux-manage/features/authSlice';
@@ -21,15 +21,18 @@ import { Profile } from './profile';
 import Search from './search';
 import Slideshow from './slideshow';
 import Converter from '../concepts/convertCurrency';
-
+import config from '../../api/config';
+import { getLogoAndCover } from "../../api/service";
 
 
 const Navbar = () => {
 
 	const[cl,setClass]=useState(false);
 	const [open, setOpen] = useState(false);
-
   const{access_token,refresh_token}= getToken()
+
+  const [logo, setLogo] = useState("https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg");
+ 
 
 
 	const handleClick = () => {
@@ -89,6 +92,17 @@ const Navbar = () => {
     nav("/cart")
   }
 
+  useEffect(() => {
+    getLogoAndCoverDetail();
+  }, []);
+
+  const getLogoAndCoverDetail = async () => {
+    
+    const coverAndLogoData = await getLogoAndCover();
+    if(coverAndLogoData){
+      setLogo(coverAndLogoData[0].logo);
+    }
+  };
 
 	return (
 		<>
@@ -96,7 +110,9 @@ const Navbar = () => {
       <div style={{background:"#000",color:"white",display:"flex",justifyContent:"center",fontSize:".8rem"}}>FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT <a href='https://wa.me/916264170187' style={{textDecoration:"none",outline:"none",color:"white",fontSize:".9rem"}}>+91 7865435434</a></div>
      
         <div className={style.logo}>
-          <img src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" alt="Logo" onClick={openHome}/>
+        {/* <img src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" alt="Logo" onClick={openHome}/> */}
+
+          <img src={config.apiBaseURL+logo}  alt="Logo" onClick={openHome}/>
         </div>
 
           <nav className={style.navbar}>
