@@ -156,7 +156,6 @@ const Details = (props) => {
       size:`${size}`
     }
 
-
    var access_token=localStorage.getItem("access_token")
    const resp=await cartsaveApi({data,access_token}).then(r=>console.log(r));
 

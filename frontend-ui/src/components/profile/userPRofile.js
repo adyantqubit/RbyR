@@ -8,8 +8,32 @@ import 'reactjs-popup/dist/index.css';
 import { getOptionsFromChildren } from '@mui/base'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from "../placeOrder/order.module.css"
+import { CartState } from '../../context'
 
 const UserProfile = () => {
+ var {userdata}=CartState()
+
+ function hasWhiteSpace(s) {
+  var i=s.indexOf(' ');
+  if(i==-1){
+      return s.length
+  }
+  else{
+      return i
+  }
+}
+
+function hasWhiteSpaceforLast(s) {
+  var i=s.indexOf(' ');
+  if(i==-1){
+      return 0;
+  }
+  else{
+      return i
+  }
+}
+
+
 
   return (
     <>
@@ -37,13 +61,13 @@ const UserProfile = () => {
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='first'>FIRST NAME*</label>
                      
-                        <input className={styles.firstInput} type="text" name="first" />
+                        <input className={styles.firstInput} type="text" defaultValue={userdata.name.substring(0,hasWhiteSpace(userdata.name))} name="first" />
                        
                     </div>
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='last'>LAST NAME*</label>
                    
-                        <input className={styles.firstInput} type="text" name="last" />
+                        <input className={styles.firstInput} type="text" defaultValue={userdata.name.substring(hasWhiteSpaceforLast(userdata.name),userdata.name.length)} name="last" />
                         
                     </div>
                 </div>
@@ -51,7 +75,7 @@ const UserProfile = () => {
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='email'>Email ADDRESS*</label>
                      
-                        <input className={styles.firstInput} type="email" name="email"/>
+                        <input className={styles.firstInput} type="email"  defaultValue={userdata.email} name="email"/>
                         
                     </div>
                 </div>

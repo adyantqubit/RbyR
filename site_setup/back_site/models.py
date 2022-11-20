@@ -219,6 +219,7 @@ class usershippingDetail(models.Model):
      zipcode=models.CharField(max_length=20)
      country=models.CharField(max_length=30)
      number=models.CharField(max_length=15)
+     isSelected=models.BooleanField(default=False)
      
      
 class userbillingDetail(models.Model):

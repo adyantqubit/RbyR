@@ -15,6 +15,24 @@
     
 }
 
+.ant-modal-footer{
+    display:flex;
+    flex-direction: row;
+}
+
+.ant-modal-header{
+    background-color: #8c8c8c;
+}
+
+.ant-modal-title{
+    color:white;
+    font-size: 22px;
+  line-height: 26px;
+  letter-spacing: 2.5px;
+  margin-left: 15px;
+   font-family: 'MyFont' !important;
+}
+
 .ant-popover-buttons {
     display: flex;
     justify-content: space-between;

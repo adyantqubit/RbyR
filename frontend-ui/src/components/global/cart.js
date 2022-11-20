@@ -111,6 +111,8 @@ useEffect(()=>{
   GetTAXapi()
   },[])
 
+  
+
 const getTotalQuantity=()=>{
   var q=0;
   cart.map(c=>q+=c.quantity);

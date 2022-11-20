@@ -78,14 +78,14 @@ const MyOrders = () => {
             <hr style={{color:"black"}}></hr>
 
              <div className={style.table}>
-                <div className={style.tablerowhead}>
+                <div className={style.tablerowheadtable}>
                   <div className={style.rowheadText}>Order ID</div>
                   <br style={{color:"blue"}}></br>
-                  <div className={style.rowheadText}>Date and time</div>
+                  <div className={`${style.rowheadText} ${style.rowtexthide}`}>Date and time</div>
 
-                  <div className={style.rowheadText}>Author</div>
+                  <div className={`${style.rowheadText} ${style.rowtexthide}`}>Author</div>
                   <div className={style.rowheadText}>Value</div>
-                  <div className={style.rowheadText}>Type</div>
+                  <div className={`${style.rowheadText} ${style.rowtexthide}`}>Type</div>
                   <div className={style.rowheadText}>Status</div>
                   <div className={style.rowheadText}></div>
                 </div>
@@ -94,19 +94,18 @@ const MyOrders = () => {
                 {orders&&orders.length>0&&tran!=null&&tran.length>0?
 
                 orders.map((o,i)=>
-                  <div className={style.tablerowhead}>
+                  <div className={style.tablerowheadtable}>
                     <div className={style.rowText}>{o[0].order_no}</div>
-                    <div className={style.rowText}>{o[0].date}</div>
+                    <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].date}</div>
                     
-                    <div className={style.rowText}>{tran[i].firstname} {tran[i].lastname}</div>
+                    <div className={`${style.rowText} ${style.rowtexthide}`}>{tran[i].firstname} {tran[i].lastname}</div>
                     <div className={style.rowText}>{getPrice(o)}</div>
-                    <div className={style.rowText}>{o[0].payment_mode}</div>
+                    <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].payment_mode}</div>
                     <div className={style.rowText}>{tran[i].payment_status}</div>
-                    <div className={style.rowText} onClick={e=>nav(`/insideorder/${o[0].order_no}`)}>...
+                    <div className={style.rowText} style={{textDecoration:"underline",color:"blue",fontSize:"14px",cursor:"pointer"}} onClick={e=>nav(`/insideorder/${o[0].order_no}`)}>View Order
                     </div>
                     
                   </div>)
-                
               :
               null
                 }

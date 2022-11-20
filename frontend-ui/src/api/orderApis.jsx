@@ -38,3 +38,14 @@ export const increamentCheck = async (data) => {
 return response ? response.data : {};
   }
 
+
+  export const shippingTick=async(data)=>{
+    const response = await API.post(`shipping_tick/`, data,{
+      headers: { "Content-Type": "application/json",'authorization':`Bearer ${localStorage.getItem('access_token')}`},
+    }).catch((err) => console.log("Failed to authenticate the user."));
+return response ? response.data : {};
+  }
+
+
+
+

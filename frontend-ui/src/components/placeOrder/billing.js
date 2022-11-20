@@ -57,13 +57,15 @@ const Billing = () => {
 
       useEffect(() => {
         qrDetails()
-        // window.onpopstate = e => {
-        //   nav("/")
-        // };
 
-        if(cart&&cart.length==0)
-        
-        deleteFromCart()
+        window.onpopstate = e => {
+          nav("/")
+        };
+
+        // if(cart&&cart.length==0)
+        //   nav("/")
+
+        deleteFromCart()  
       },[]);
 
       async function qrDetails(){
@@ -93,23 +95,26 @@ const Billing = () => {
     < >
     <Navbar/>
     <div className={styles.container} >
-    <div className={styles.main}>
-       {checkoutDetails.payment=="onlinepay"?
-        onlineDetail!=null?
-       <div className={styles.payBox}>
-       <img src={config.apiBaseURL+onlineDetail.qr_img}
-       className={styles.img}/>
-       <div className={styles.payTitle}>
-       <div ><span className={styles.userinfoText}>Name:</span><span className={styles.userinfoText2} >{onlineDetail.name}</span ></div>
-       <div ><span className={styles.userinfoText}>Bank Name:</span><span className={styles.userinfoText2}>{onlineDetail.bank_name}</span></div>
-       <div ><span className={styles.userinfoText}>Account Number:</span><span className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
-       <div ><span className={styles.userinfoText}>UPI ID:</span><span className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div>
-       </div>
-      </div>  : <div>The qr Code getting error</div>
-       :
-       null
-       } 
-    </div>
+     <div className={styles.main}>
+        {checkoutDetails.payment=="onlinepay"?
+          onlineDetail!=null?
+        <div className={styles.payBox}>
+        <img src={config.apiBaseURL+onlineDetail.qr_img}
+        className={styles.img}/>
+        <div className={styles.payTitle}>
+        <div >
+          <div ><span className={styles.userinfoText}>Name:</span><span className={styles.userinfoText2} >{onlineDetail.name}</span ></div>
+          <div ><span className={styles.userinfoText}>Bank Name:</span><span className={styles.userinfoText2}>{onlineDetail.bank_name}</span></div>
+          <div ><span className={styles.userinfoText}>Account Number:</span><span className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
+          <div ><span className={styles.userinfoText}>UPI ID:</span><span className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div>
+        </div>
+        <div style={{height:"60px",width:"100%"}}><span className={styles.userinfoText2} style={{lineBreak:"normal",wordBreak:'keep-all'}}> Please Confirm To admin After paying  at {storeLocatorDetails!=null? parse(storeLocatorDetails[0].phoneNumber):null}</span></div>
+        </div>
+        </div>  : <div>The qr Code getting error</div>
+        :
+        null
+        } 
+     </div>   
     <ReactToPrint
         trigger={() =><div style={{width:"100%",display:"flex",justifyContent:"center",background:"#f2f2f2"}}> <button className={style.shopbtn1} style={{width:"50%"}} onClick={e=>nav('/')}>Print this out</button> </div>}     
         content={() => componentRef.current}
@@ -126,7 +131,7 @@ const Billing = () => {
                 <div className={styles.headerTexts}>
                     <div className={styles.columnitem1head}>BILLING To</div>
                     <hr style={{color:"black"}}></hr>
-                    <div><span className={styles.userinfoText2} > {checkoutDetails.userInfo.firstname} {checkoutDetails.userInfo.lastname}</span></div>
+                    <div><span className={styles.userinfoText2} > {checkoutDetails.billingData.firstname} {checkoutDetails.billingData.lastname}</span></div>
                     <div><span className={styles.userinfoText2}> {checkoutDetails.billingData.street}, {checkoutDetails.billingData.houseno}</span><span className={styles.userinfoText2}> {checkoutDetails.billingData.city}, </span></div>
                     <div><span className={styles.userinfoText2}> {checkoutDetails.billingData.state}, </span><span className={styles.userinfoText2}> {checkoutDetails.billingData.country}, </span></div>
                     <div><span className={styles.userinfoText2}> {checkoutDetails.billingData.number}</span></div>
@@ -174,14 +179,14 @@ const Billing = () => {
                   </div>
                     )}
                
-                <div className={styles.billingfooter}>
+                <div className={styles.billingfooter}> 
                    <span className={`${styles.columnitem1head}`} style={{color:"white"}} >Subtotal -</span>
                    <span className={`${styles.columnitem1head} ${styles.header2}`} style={{borderRight:"1px solid black", whiteSpace:"nowrap"}}>{currency.sign} {(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).subtotal *currency.value).toFixed(2)}</span>
                 </div>
 
                 <div className={styles.billingtexts}>
                    <span className={`${styles.columnitem1head}`}  >Discount -</span>
-                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black"}} >{currency.sign} {(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).coupon *currency.value).toFixed(2)}</span>
+                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black"}} >{currency.sign} {checkoutDetails.CouponDiscount?checkoutDetails.CouponDiscount:(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).coupon *currency.value).toFixed(2)}</span>
                 </div>
                 <div className={styles.billingtexts}>
                    <span className={`${styles.columnitem1head}`}  >Shipping charges -</span>

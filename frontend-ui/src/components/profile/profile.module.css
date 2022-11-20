@@ -109,6 +109,16 @@
     justify-content: space-between;
 }
 
+.tablerowheadtable{
+    display:flex;
+    justify-content: space-between;
+}
+
+.tablerowhead2{
+    display:flex;
+    justify-content: space-between;
+}
+
 .rowheadText{
     width:14%;
     min-height: 40px;
@@ -139,6 +149,22 @@
     font-family: 'MyFont';
 }
 
+.userinfoText3{
+    color: #8c8c8c;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1.2px;
+    font-family: 'MyFont';
+}
+
+.userinfoTextHIDE{
+    display: none;
+    color: #8c8c8c;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1.2px;
+    font-family: 'MyFont';
+}
 .userinfoText2{
     color: black;
     font-size: 14px;
@@ -167,6 +193,16 @@
    
 }
 
+.rowitem3{
+    width:50%;
+    min-height: 40px;
+    text-align: start;
+    color: #8c8c8c;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .totalBox{
     width:100%;
     height:200px;
@@ -186,10 +222,63 @@
     justify-content: space-around;
 }
 
+.userInfoButton{
+     width:150px;
+    font-size: 14px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    background-color: #323232;
+    color: white !important;
+    text-align: center;
+    opacity: 1;
+    font-family: 'MyFont';
+    position: relative;
+    font-weight: normal;
+    text-transform: uppercase;
+    padding: 0 18px;
+    -webkit-transition: all 250ms ease 0s;
+    -o-transition: all 250ms ease 0s;
+    transition: all 250ms ease 0s;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #323232;
+    -webkit-border-image: initial;
+    -o-border-image: initial;
+    border-image: initial;
+    text-decoration: none;
+    border-radius: 0;
+}
+
+.imgresponsive{
+    width:30%;
+}
+
+.imgTitle{
+    margin-left:10px;
+    width:60%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+@media (max-width: 1000px) {
+.rowtexthide{
+    display: none;
+   }
+
+}
 
 @media (max-width: 768px) {
 
+    .tablerowhead{
+        display:flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 
+    .tablerowhead2{
+        display:none;
+    }
     .column1{
        display: none;
     }
@@ -199,5 +288,27 @@
     
     }
 
+    .rowitem3{
+        width:100%
+    }
 
+    .userinfoTextHIDE{
+        display: block;
+        width: 20%;
+    }
+    .rowitem2{
+        justify-content: start;
+        flex-direction: row;
+        padding-left: 15px;
+        width:100%;
+    }
+    .userinfoText3{
+        width:20%;
+    }
+
+   .box{
+    padding-top: 20px;
+   }
+
+   
 }

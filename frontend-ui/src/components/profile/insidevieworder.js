@@ -1,19 +1,30 @@
-import { getTableSortLabelUtilityClass } from '@mui/material'
+import { dividerClasses, getTableSortLabelUtilityClass } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import config from '../../api/config'
-import { InvoiveSingleGetApi } from '../../api/service'
+import { cartDeleteApi, getQrDetailApi, InvoiveSingleGetApi } from '../../api/service'
 import { CartState } from '../../context'
 import Footer from '../global/footer'
 import Navbar from '../global/NavHeader'
 import style from "./profile.module.css"
 import { Button, Modal } from 'antd';
+import styles from '../placeOrder/billing.module.css'
+import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing'
+import { useCartUpdateMutation } from '../../Redux-manage/services/userAuthapi'
+
 
 
 const InsideOrder = () => {
-   const{orders,setOrder,product}=CartState()
+   var {orders,setOrder,product,checkoutDetails,taxRate,offer,cart,setCart}=CartState()
    var{orderid}=useParams()
    var [states,setState]=useState([])
+   var [allData,setAllData]=useState(null)
+   var [onlineDetail,setonlineDetail]=useState(null)
+   const nav=useNavigate()
+   const [cartsaveApi,{isLoad}]=useCartUpdateMutation()
+
+
+
    async function invoiceapi(){
     var access=localStorage.getItem('access_token')
      var data={
@@ -21,12 +32,16 @@ const InsideOrder = () => {
      }
     await InvoiveSingleGetApi({access,data}).then(r=>
         {
-            setState(r)
+            setState(r.history)
+            allData=r
+            console.log(allData)
+            setAllData(allData)
         })
 
    }
    useEffect(()=>{
       invoiceapi()
+      qrDetails()
    },[])
 
    
@@ -52,6 +67,117 @@ const handleCancel = () => {
   setIsModalOpen(false);
 };
 
+async function qrDetails(){
+  await getQrDetailApi().then(r=>{
+    try{
+      const data={
+        name:r.name,
+        account_number:r.account_number,
+        bank_name:r.bank_name,
+        qr_img:r.qr_img,
+        upi_id:r.upi_id
+      }
+    setonlineDetail(data)
+    }
+    catch{
+      setonlineDetail(null)
+    }
+  })
+ }
+
+ async function cartAdd(){
+
+cart=[]
+setCart(cart)
+ 
+for (const details of allData.history) {
+
+  const NewCartData={
+    ...details,
+    quantity:1,
+    size:`${details.size}`
+   }
+
+  const data={
+    product_no:details.product_id,
+    size:`${details.size}`
+  }
+
+ var access_token=localStorage.getItem("access_token")
+ var access=localStorage.getItem("access_token")
+
+   await cartDeleteApi({access}).then(r=>console.log(r))
+ const resp=await cartsaveApi ({data,access_token}).then(r=>console.log(r));
+      
+      cart.push(NewCartData)
+      setCart(cart)
+     
+}
+
+
+nav("/cart")
+}
+
+
+ useEffect(()=>{
+if(allData!=null){
+   var billingData={
+    firstname:allData.shipping.firstname,
+    lastname:allData.shipping.lastname,
+    street:allData.shipping.street,
+    houseno:allData.shipping.houseno,
+    city:allData.shipping.city,
+    state:allData.shipping.state,
+    zipcode:allData.shipping.zipcode,
+    country:allData.shipping.country,
+    number:allData.shipping.number
+}
+
+
+
+
+ var shippingData={
+  firstname:allData.billing.firstname,
+  lastname:allData.billing.lastname,
+  street:allData.billing.street,
+  houseno:allData.billing.houseno,
+  city:allData.billing.city,
+  state:allData.billing.state,
+  zipcode:allData.billing.zipcode,
+  country:allData.billing.country,
+  number:allData.billing.number
+}
+checkoutDetails['shippingData']=shippingData;
+checkoutDetails['billingData']=billingData;
+checkoutDetails['userInfo']={
+  "firstname":allData.billing.firstname,
+  "lastname":allData.billing.lastname,
+  "email":"dummy"
+}
+console.log(checkoutDetails)
+
+var car=[]
+for (const produc of allData.history) {
+  var p= product.filter(p=>p.id==produc.product_id)[0]
+   var pro={...p,"size":produc.size,"quantity":produc.quantity}
+   car.push(pro)
+}
+
+
+
+           checkoutDetails['cart']=car
+           checkoutDetails['CouponDiscount']=allData.transaction.coupon_discount
+           checkoutDetails['ShippingCharges']=allData.transaction.shipping_price
+           checkoutDetails['SubTotal']=allData.transaction.subtotal_price
+           checkoutDetails['tax']=allData.transaction.tax
+           checkoutDetails['grand']=allData.transaction.grand_total
+           checkoutDetails['payment']=allData.history[0].payment_mode
+           checkoutDetails['orderno']=allData.history[0].order_no
+
+}
+ },[allData])
+
+
   return (
     <>
     <Navbar/>
@@ -66,27 +192,47 @@ const handleCancel = () => {
               <div className={style.column1text}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY SHIPPING DETAILS</Link></div>
               <div className={style.column1text}><Link to="/profile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY ORDERS</Link></div>
 
-
             </div>
             <div className={style.column2}>
-            <div className={style.column2header}> MY ORDERS #{orderid}</div>
+            <div style={{display:"flex",justifyContent:"space-between"}}>
+            <div className={style.column2header}>
+               MY ORDERS #{orderid}
+             </div>  
+            <div className={style.column2header} style={{whiteSpace:"nowrap",textAlign:'end',color:"#8c8c8cc",textDecoration:"underline",fontSize:"14px",cursor:"pointer"}}  onClick={cartAdd}>
+              REORDER
+            </div>
+             </div>
             <hr style={{color:"black"}}></hr>
-            <div>
-              <span className={style.userinfoText}>Date:</span><span className={style.userinfoText2}> {states!=null&&states.length>0?states[0].date:null}</span>
+            <div style={{width:"100%",display:"flex",justifyContent:"space-between"}}>
+              <span className={style.userinfoText}>Date: <span className={style.userinfoText2}> {states!=null&&states.length>0?states[0].date:null}</span></span>
             <>
-                      <Button type="primary" onClick={showModal}>
-                        Open Modal
+                      <Button type="primary" className={style.userInfoButton} onClick={showModal}>
+                        Online Pay 
                       </Button>
-                      <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                        <p>Some contents...</p>
-                        <p>Some contents...</p>
-                        <p>Some contents...</p>
+                      <Modal title="Scan To Pay" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                        <div style={{background:"white"}}>
+                          { onlineDetail!=null?
+                          <div className={styles.payBox}>
+                          <img src={config.apiBaseURL+onlineDetail.qr_img}
+                          className={styles.img}/>
+                            <div className={styles.payTitle}>
+                              <div>
+                              <div ><span className={styles.userinfoText}>Name:</span><span className={styles.userinfoText2} >{onlineDetail.name}</span ></div>
+                              <div ><span className={styles.userinfoText}>Bank Name:</span><span className={styles.userinfoText2}>{onlineDetail.bank_name}</span></div>
+                              <div ><span className={styles.userinfoText} style={{whiteSpace:"nowrap"}}>Account Number:</span><span className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
+                              <div ><span className={styles.userinfoText}>UPI ID:</span><span className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div>
+                              </div>
+                            </div>
+                          </div>  
+                          : <div>The qr Code getting error</div> 
+                          } 
+                      </div>
                       </Modal>
             </>
             </div>
 
              <div className={style.table} style={{border:"1px solid white",marginTop:"20px"}}>
-                  <div className={style.tablerowhead}>
+                  <div className={style.tablerowhead2}>
                     <div className={style.rowitem1} style={{justifyContent:"start",color:"black"}}>Product Name</div>
                     <div className={style.rowitem2} style={{color:"black"}}>price</div>
                     <div className={style.rowitem2} style={{color:"black"}}>Qty</div>
@@ -95,21 +241,20 @@ const handleCancel = () => {
                 <hr style={{color:"black"}}></hr>
 
 
-                    {states.map(s=>{
+                    {states.map((s,i)=>{
                         var p= product.filter(p=>p.id==s.product_id)[0]
                         
-                    return <div className={style.tablerowhead} style={{marginTop:"10px"}}>
-                    <div className={style.rowitem1}>
-                        <img src={config.apiBaseURL+p.img_main} style={{width:"30%"}}>
-                        </img>
-                        <span style={{marginLeft:"10px",minHeight:"100%",width:"60%",display:"flex",flexDirection:"column",justifyContent:"center"}}>
+                    return <div className={style.tablerowhead} style={i%2==0?{marginTop:"10px",background:"#f2f2f2"}:{marginTop:"10px"}}>
+                    <div className={style.rowitem3}>
+                        <img src={config.apiBaseURL+p.img_main} className={style.imgresponsive}/>
+                        <span className={style.imgTitle}>
                         {p.title} ({s.size})
                         </span>
                     </div>
-                    <div className={style.rowitem2}>{p.price}</div>
-                    <div className={style.rowitem2}>{s.quantity}</div>
-                    <div className={style.rowitem2}>{p.price*s.quantity}</div>
-
+                   
+                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} >Price :- </span><span className={style.userinfoText3} > {p.price}</span></div>
+                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} >Qunatity :- </span><span className={style.userinfoText3} > {s.quantity} </span></div>
+                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} >Total :-</span><span className={style.userinfoText3} > {p.price*s.quantity}</span></div>
                 </div>
                     }
                         )}
@@ -117,30 +262,66 @@ const handleCancel = () => {
 
 
                 <div className={style.totalBox} >
+                  {allData!=null?
                    <div className={style.box} style={{borderTop:"1px solid black"}}>
-                     <div className={style.textlight1}><span className={style.userinfoText} style={{width:"50%"}}>sub total</span><span  className={style.userinfoText2} style={{width:"50%"}}>{getPrice()}</span></div>
-                     <div className={style.textlight1}><span  className={style.userinfoText} style={{width:"50%"}}>Shipping</span><span  className={style.userinfoText2} style={{width:"50%"}}>0</span></div>
-                     <div className={style.textlight1}><span  className={style.userinfoText} style={{width:"50%"}}>Tax</span><span  className={style.userinfoText2} style={{width:"50%"}}>0</span></div>
-                     <hr style={{color:"black"}}></hr>
-                     <div className={style.textlight1}>
-                      <span style={{fontWeight:"600",width:"50%"}}>Total</span><span style={{fontWeight:"600",width:"50%"}}>{getPrice()}</span>
-                     </div>
+                   <div className={style.textlight1}><span className={style.userinfoText} style={{width:"50%",textAlign:"end"}}>sub total</span><span  className={style.userinfoText2} style={{width:"50%",textAlign:"end"}}>{allData.transaction.subtotal_price}</span></div>
+                   <div className={style.textlight1}><span  className={style.userinfoText} style={{width:"50%",textAlign:"end"}}>Shipping</span><span  className={style.userinfoText2} style={{width:"50%",textAlign:"end"}}>{allData.transaction.shipping_price}</span></div>
+                   <div className={style.textlight1}><span  className={style.userinfoText} style={{width:"50%",textAlign:"end"}}>Tax</span><span  className={style.userinfoText2} style={{width:"50%",textAlign:"end"}}>{allData.transaction.tax}</span></div>
+                   <div className={style.textlight1}><span  className={style.userinfoText} style={{width:"50%",textAlign:"end"}}>Coupon Discount</span><span  className={style.userinfoText2} style={{width:"50%",textAlign:"end"}}> - {allData.transaction.coupon_discount}</span></div>
+
+                   <hr style={{color:"black"}}></hr>
+                   <div className={style.textlight1}>
+                    <span style={{fontWeight:"600",width:"50%",textAlign:"end"}}>Total</span><span style={{fontWeight:"600",width:"50%",textAlign:"end"}}>{allData.transaction.grand_total}</span>
                    </div>
+                   <Button type="primary" className={style.userInfoButton} style={{width:"100%",marginTop:"15px"}} onClick={e=>nav("/billing")}>
+                      Get Invoice
+                    </Button>
+                 </div>:null}
+                  
                 </div>
                   
 
-{/*                 
-                  <div className={style.tablerowhead}>
-                    <div className={style.rowText}>Order ID</div>
-                    <div className={style.rowText}>Order ID</div>
-                    <div className={style.rowText}>Order ID</div>
-                    <div className={style.rowText}>Order ID</div>
-                    <div className={style.rowText}>Order ID</div>
-                    <div className={style.rowText}>Order ID</div>
-                    <div className={style.rowText}></div>
-                    
-                  </div> */}
-             </div>
+                <div style={{width:"100%",display:"flex",flexDirection:"row",justifyContent:"space-between",flexWrap:"wrap",marginTop:'100px'}}>  
+
+                  <div className={styles.addressInformation} style={{minWidth:"150px"}}>
+                      <div ><span className={styles.userinfoText} >Shipping Address</span></div>
+                      {allData!=null?<>
+                      <div ><span className={styles.userinfoText} style={{color:"black"}}>{allData.shipping.firstname} {allData.shipping.lastname}</span></div>
+                      <div ><span className={styles.userinfoText} style={{color:"black"}}>{allData.shipping.street} </span><span className={styles.userinfoText2} style={{color:"black"}}>{allData.shipping.houseno},</span></div>
+                      <div ><span className={styles.userinfoText} style={{color:"black"}}>{allData.shipping.city} - </span><span className={styles.userinfoText2} style={{color:"black"}}>{allData.shipping.zipcode},</span></div>
+                      <div ><span className={styles.userinfoText} style={{color:"black"}}>{allData.shipping.state} </span></div>
+                      </>
+                      :null}
+                      </div> 
+
+                  <div className={styles.addressInformation} style={{minWidth:"150px"}}>
+                  <div ><span className={styles.userinfoText} >Billing Address</span></div>
+
+                  {allData!=null?<>
+                      <div ><span className={styles.userinfoText} style={{color:"black"}}>{allData.billing.firstname} {allData.billing.lastname}</span></div>
+                      <div ><span className={styles.userinfoText} style={{color:"black"}}>{allData.billing.street} </span><span className={styles.userinfoText2} style={{color:"black"}}>{allData.billing.houseno},</span></div>
+                      <div ><span className={styles.userinfoText} style={{color:"black"}}>{allData.billing.city} - </span><span className={styles.userinfoText2} style={{color:"black"}}>{allData.billing.zipcode},</span></div>
+                      <div ><span className={styles.userinfoText} style={{color:"black"}}>{allData.billing.state} </span></div>
+                      </>
+                      :null}
+                  </div>
+
+                  <div className={styles.addressInformation} style={{minWidth:"150px"}}>
+                      <div ><span className={styles.userinfoText} >Shipping Method</span></div>
+                      <div style={{maxWidth:"150px"}}><span className={styles.userinfoText} style={{color:"black"}}>Standard shipping -</span><span className={styles.userinfoText2} style={{color:"black"}}>Standard shipping </span></div>
+                  </div>
+
+                  <div className={styles.addressInformation} style={{minWidth:"150px"}}>
+                  {allData!=null?<>
+                      <div ><span className={styles.userinfoText} >Payment Status</span></div>
+                      <div ><span className={styles.userinfoText} style={{color:"black"}}>{allData.history[0].payment_mode}-{allData.transaction.payment_status}</span></div>
+                      </>:null}
+                  </div>
+
+                  </div>
+              
+                </div>
+
             </div>
           </div>
         </div>

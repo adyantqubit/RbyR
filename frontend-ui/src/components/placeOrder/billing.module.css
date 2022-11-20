@@ -36,6 +36,9 @@
 
 .payTitle{
     padding: 8px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .userinfoText{

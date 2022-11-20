@@ -5,10 +5,12 @@ import Navbar from '../global/NavHeader'
 import style from "./profile.module.css"
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import { TiTick } from 'react-icons/ti'
 import { getOptionsFromChildren } from '@mui/base'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from "../placeOrder/order.module.css"
 import { CartState } from '../../context'
+import { shippingTick } from '../../api/orderApis'
 
 const ShippingProfile = () => {
 
@@ -28,9 +30,21 @@ const ShippingProfile = () => {
 
     // this functionality open and close editadress page
     function setAddress(s){
-        setCond(!cond)
+         shipTick(s.id)
+        // setCond(!cond)
         setDefaultShipping(s)
+      
     }
+
+    function jumpToEdit(){
+        setDefaultShipping(shippingAddress.filter(s=>s.isSelected==true)[0])
+        setCond(!cond)
+    }
+
+   async function shipTick(id){
+        await shippingTick(id).then(r=>setShippingAddress(r))
+    }
+
 
     async function handleSubmit(event,id){
         event.preventDefault();
@@ -78,7 +92,7 @@ const ShippingProfile = () => {
           <div className={style.containerHeader}>Homepage / My Account</div>
           <div className={style.main}>
             <div className={style.column1}>
-              <div className={style.column1header}>MY ACCOUNT</div>
+              <div className={style.column1header} >MY ACCOUNT</div>
               <hr style={{color:"black"}}></hr>
               <div className={style.column1text}><Link to="/userprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY PROFILE</Link></div>
               <div className={style.column1text}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY SHIPPING DETAILS</Link></div>
@@ -86,7 +100,7 @@ const ShippingProfile = () => {
 
             </div>
             <div className={style.column2}>
-            <div className={style.column2header}>SHIPPING DETAILS</div>
+            <div className={style.column2header} ><div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}><span>SHIPPING DETAILS</span><span className={styles.userinfoText} onClick={e=>jumpToEdit()}>Edit Configuration</span></div></div>
             <hr style={{color:"black"}}></hr>
 
             
@@ -98,10 +112,11 @@ const ShippingProfile = () => {
 
                 shippingAddress.map((s,i)=>(
                     <div className={styles.columnFirstName} onClick={e=>setAddress(s)}>
+                        {i+1}
                         <div className={styles.boxAddress}>
-                            {i+1}
+                           
                             <div className={styles.addressInformation}>
-                            <div ><span className={styles.userinfoText}>{s.firstname} {s.lastname}</span></div>
+                            <div ><span className={styles.userinfoText}> {s.firstname} {s.lastname}</span></div>
                             <div ><span className={styles.userinfoText}>{s.street} </span><span className={styles.userinfoText2}>{s.houseno},</span></div>
                             <div ><span className={styles.userinfoText}>{s.city} - </span><span className={styles.userinfoText2}>{s.zipcode},</span></div>
                             <div ><span className={styles.userinfoText}>{s.state} </span></div>
@@ -109,7 +124,8 @@ const ShippingProfile = () => {
                             <div ><span className={styles.userinfoText}>{s.number}</span></div>
                             </div>
                             <div className={styles.adressTick}>
-                            {/* <TiTick style={{fontSize:"25",color:"black",fontWeight:"20"}}/>     */}
+                            {/* <span className={styles.userinfoText2} style={{textDecoration:"underline"}}>Edit</span> */}
+                            {s.isSelected? <TiTick style={{fontSize:"25",color:"black",fontWeight:"20"}}/> :null}   
                             </div> 
                         </div>
                  </div>
@@ -187,9 +203,9 @@ const ShippingProfile = () => {
                 <div><button className={styles.userInfoButton} type='submit'>
                     ADD SHiPPING
                 </button>
-                <button className={styles.userInfoButton} style={{marginLeft:"10px"}} onClick={e=>shippingDelete(e,defaultShiping.id)}>
+                {/* <button className={styles.userInfoButton} style={{marginLeft:"10px"}} onClick={e=>shippingDelete(e,defaultShiping.id)}>
                     DELETE 
-                </button>
+                </button> */}
                 <span className={styles.userInfoButton} style={{marginLeft:"10px"}} onClick={setAddress}>
                     CANCLE
                 </span>
