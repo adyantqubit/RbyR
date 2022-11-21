@@ -98,6 +98,10 @@ admin.site.register(coupon)
 admin.site.register(Tax)
 admin.site.register(ImportantNoticeToBuy)
 
+#Added by Ashish on 21-11-2022
+#To have footer text in the table
+admin.site.register(FooterDescription) 
+#End of code addition
 
 
 

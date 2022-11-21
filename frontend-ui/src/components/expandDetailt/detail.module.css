@@ -87,12 +87,15 @@
   }
   .container05 {
     flex: 0 0 auto;
-    width: 100%;
+    width: 70%;
     height: auto;
     display: flex;
     margin-top: 3%;
     align-items: flex-start;
   }
+  /* .sizeSlection{
+    width:80%;
+  } */
   .radiobutton {
     margin-top: 5px;
     margin-left: 5px;

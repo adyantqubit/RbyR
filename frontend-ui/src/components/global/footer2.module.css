@@ -140,7 +140,17 @@
     letter-spacing: 1.7px;
     font-weight: 500;
 }
-
+.emailBox{
+    width: "50%";
+    height: 33px;
+    font-size:14px;
+}
+.emailBoxButton{
+    width: 20%;
+    height: 33px;
+    background: #626161;
+    border: 0px solid black;
+}
     
 
 @media (max-width: 768px) {
@@ -211,5 +221,9 @@
         font-size: 12px;
         letter-spacing: 1px;
         font-weight: 500;
+    }
+    .emailBoxButton{
+        width: 5%;
+        min-width: 33px;
     }
 }

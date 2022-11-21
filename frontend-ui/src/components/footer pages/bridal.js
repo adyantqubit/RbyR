@@ -82,7 +82,7 @@ const Bridal = () => {
             {bridalText.map((bridal) => {
               return (
                 <div className={style.row}>
-                  <div className={`${style.column} ${style.col1}`}>
+                  <div className={`${style.column} ${style.col1}`} style={{ maxHeight: "60vh",overflow:"auto" }}>
                     <span className={style.title}>{parse(bridal.title)}</span>
                     <span className={style.subtitle}>
                       {parse(bridal.subtitle1)}

@@ -131,4 +131,9 @@ urlpatterns = [
     path('logo-and-cover/',LogoAndCoverView.as_view()),
     #End of code addition
 
+	#Added by Ashish on 21-11-2022
+    #Reason - To send footer description to front end
+    path('footer-description/',FooterDescriptionView.as_view()),
+    #End of code addition
+
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)   

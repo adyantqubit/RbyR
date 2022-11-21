@@ -484,3 +484,16 @@ class LogoAndCover(models.Model):
     cover5=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100)
 #End of code addition
+
+#Added by Ashish on 21-11-2022
+#Reason - To have footer text in the table
+class FooterDescription(models.Model):
+    subtitle1=models.CharField(max_length=255)
+    content1=models.TextField()
+    subtitle2=models.CharField(max_length=255)
+    content2=models.TextField()
+    subtitle3=models.CharField(max_length=255)
+    content3=models.TextField()
+    subtitle4=models.CharField(max_length=255)
+    content4=models.TextField()
+#End of code addition

@@ -716,5 +716,13 @@ class LogoAndCoverView(APIView):
         LogoAndCoverResponse = {}
         LogoAndCoverResponse['BLogoAndCoverDetail'] = LogoAndCoverDetail
         return Response(LogoAndCoverDetail)
-        
+#End of code addition
+
+#Added by Ashish on 21-11-2022
+#Reason-To have footer text in the table
+class FooterDescriptionView(APIView):
+    def get(self,request):
+        footerDescriptionDetail = FooterDescription.objects.all().values()
+        print("----------------------------------",footerDescriptionDetail)
+        return Response(footerDescriptionDetail)
 #End of code addition

@@ -1,14 +1,15 @@
 import { style } from "@mui/system";
 import { Button, Drawer, message } from "antd";
 import React, { useState } from "react";
-import { BsSearch } from "react-icons/bs";
+import {  BsSearch } from "react-icons/bs";
+import {AiOutlineClosee} from 'react-icons/ai'
+import {GrClose} from 'react-icons/gr'
 import { useNavigate } from "react-router-dom";
 import config from "../../api/config";
 import { getSearchedProducts } from "../../api/service";
 import { CartState } from "../../context";
 import styles from "./search.module.css";
 import "./search.css"
-
 const Search = () => {
 
   const [open, setOpen] = useState(false);
@@ -29,7 +30,7 @@ const Search = () => {
   const searchProduct = async () => {
     var searchBox = document.getElementById("searchBox");
     const searchedData = await getSearchedProducts(searchBox.value);
-    if(searchedData.length>0){
+    if(searchedData){
       setFilteredPersons(searchedData);
       setMsg(null);
     }else{
@@ -62,8 +63,9 @@ const Search = () => {
       />
 
       <Drawer
-        width={window.innerWidth>768 ? "50%" : "100%"}
-        
+        width={window.innerWidth>768 ? 650 : "100%"}
+        closeIcon={<GrClose className="searchSVG"/>}
+       
         headerStyle={{ height: "200px", backgroundColor: "white" }}
         placement="right"
         onClose={onClose}
@@ -85,7 +87,7 @@ const Search = () => {
               borderBottom: "1px solid black",
             }}
           >
-            {/* <BsSearch
+            <BsSearch
             onClick={searchProduct}
               style={{
                 marginRight: "20px",
@@ -94,7 +96,7 @@ const Search = () => {
                 width:"1em",
                 height:"1em",
               }}
-            /> */}
+            />
             <input
               type="text"
               id="searchBox"
@@ -103,7 +105,7 @@ const Search = () => {
                 height: "50px",
                 border: "none",
                 fontFamily: "Arial, FontAwesome",
-                fontSize: "18px",
+                fontSize: "15px",
                 color: "#7c7c7c",
                 width: "80%",
                 paddingLeft:"10px"
@@ -112,7 +114,7 @@ const Search = () => {
               onKeyUp={searchProductAfterEnterPressed}
             ></input>
           </div>
-          <button onClick={searchProduct}>search</button>
+          {/* <button onClick={searchProduct}>search</button> */}
         </div>
 
         <div className={styles.slab}>
@@ -123,6 +125,7 @@ const Search = () => {
                   <div className={styles.item}>
                     <a href={`/listing/${p.category}/detail/${p.id}`}>
                       <img
+                        className={styles.searchedImage}
                         src={config.apiBaseURL + p.img_main}
                         onClick={(e) => openDetail(p)}
                       ></img>
@@ -130,6 +133,7 @@ const Search = () => {
                     <div className={styles.title}>
                       <span>{p.title}</span>
                     </div>
+                    <div className={styles.price}> {p.category}</div>
                     <div className={styles.price}>₹ {p.price}</div>
                   </div>
                 );

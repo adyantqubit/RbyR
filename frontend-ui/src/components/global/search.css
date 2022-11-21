@@ -1,7 +1,11 @@
 /* Created by Ashish dewangan on 18-11-2022
 Reason - to have cross button on search icon more width
 Jira issue no - RBYR -141 */
- svg{
-  width:1.5rem;
-  height:1.5rem;
+ .searchSVG{
+  width:1.1rem;
+  height:1.1rem;
+}
+.ant-drawer-close{
+  width: 100% !important;
+  text-align: right;
 }

@@ -1,0 +1,18 @@
+/* .ant-drawer-title{
+  width: 100%;
+  text-align: center;
+}
+.ant-drawer-close{
+  width: 10%; */
+/* } */
+.likeTitle{
+  width: 100% !important;
+  text-align: center !important;
+}
+.likeSVG{
+  width:2rem !important;
+  height:2rem !important;
+  color: black !important;
+  text-align: left !important;
+  margin-right: 100%;
+}

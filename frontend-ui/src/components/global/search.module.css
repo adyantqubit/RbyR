@@ -14,32 +14,49 @@
   }
   
   .item{
-     width: 280px;
+     width: 40%;
      height: auto;
      margin-top: 10px;
      margin-bottom: 10px;
   }
-  
+  .searchedImage{
+    height: auto;
+    width: 100%;
+  }
   .price{
     font-size: 1em;
     text-align: end;
     padding: 0%;
     display: flex;
     justify-content: center;
-    
+    font-weight: 600;
+    text-transform: capitalize;
+    word-wrap:break-word;
+    max-width: 100%;
+    overflow:auto;
+    margin-top: 5px;
+    color: black;
    }
   
    .title{
-    font-size: 14px;
+    font-size: 1rem;
     line-height: 22px;
     letter-spacing: 1.2px;
-    word-break: normal;
     display:flex;
     text-align: center;
     justify-content: center;
-  
+    font-weight: 600;
     font-family: 'Rawson-Regular' !important;
+    word-wrap:break-word;
+    max-width: 100%;
+    overflow:auto;
+    margin-top: 5px;
+    color: black;
    }
-
+   @media (max-width: 768px) {
+    .title,.price{
+      font-size: .7rem;
+    }
+   }
 
  

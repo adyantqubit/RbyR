@@ -54,7 +54,8 @@
     font-family: 'MyFont';
     font-weight: 500;
     color: #fff;
-   
+    word-wrap: break-word;
+    
 }
 
 .form{

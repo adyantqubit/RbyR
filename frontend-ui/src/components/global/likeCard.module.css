@@ -81,3 +81,68 @@
     width: auto;
     text-align: center;
   }
+  .wishContainer{
+    width: 90%;
+    height: 300px;
+    margin-top: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .wishImage{
+    width: 40%; 
+    height: 100%;
+  }
+  .wishItem{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+  }
+  .wishItemTitleContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .wishItemTitle{
+    color: black;
+    cursor:pointer;
+    font-size: 1rem;
+    padding-left: 20px;
+    width: 90%;
+    word-wrap: break-word;
+  }
+  .wishItemCancelButton{
+    width: 10%;
+    height: 32px;
+    padding-left: 2%;
+  }
+  .wishItemBodyContainer{
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    justify-content: flex-start;
+  }
+  .itemText{
+    color: black;
+    margin-left: 20px;
+    margin-top: 10px;
+    text-transform: capitalize;
+    font-weight: 500;   
+    word-wrap: break-word;             
+  }
+  .emptyWishList{
+    font-size: 20px;
+    color: #7c7c7c;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  @media (max-width: 768px) {
+    .wishContainer{
+      height:200px;
+    }
+  }

@@ -2,6 +2,7 @@ import style from "./footer2.module.css";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { TiSocialInstagram } from "react-icons/ti";
 import { FiArrowRight } from "react-icons/fi";
+import {IoChevronForwardOutline} from "react-icons/io5"
 import { Link, useNavigate } from "react-router-dom";
 import { getSocialLinkDetail, getCopyrightDetails,postEmailDetails } from "../../api/service";
 import { useEffect, useState } from "react";
@@ -202,13 +203,13 @@ function Footer() {
           >
             <input
               type="email"
-              style={{ width: "70%", height: "30px" }}
+              className={style.emailBox}
               placeholder="Enter Your Email"
               id="emailAddress"
             />
-            <button style={{ width: "25%", background: "#7c7c7c" }} onClick={subscribeToEmailUpdate}>
-              <FiArrowRight style={{ fontSize: "25px" }} 
-              
+            <button className={style.emailBoxButton} onClick={subscribeToEmailUpdate}>
+              <IoChevronForwardOutline  
+                style={{color:"white"}}
               />
             </button>
           </div>

@@ -341,3 +341,14 @@ export const getLogoAndCover = async () => {
   return response ? response.data : {};
 };
 // End of code addition
+
+// Added by Ashish dewangan on 21-11-2022
+// Reason - to get footer description from backend
+// Jira issue no - RBYR -149
+export const getFooterDescriptionDetail = async () => {
+  const response = await API.get(`footer-description/`, {
+        headers: { "Content-Type": "application/json"},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+// End of code addition

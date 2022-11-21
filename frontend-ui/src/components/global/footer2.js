@@ -11,6 +11,7 @@ import {
 } from "../../api/service";
 import { useEffect, useState } from "react";
 import { notification } from "antd";
+import {IoChevronForwardOutline} from "react-icons/io5";
 
 function Footer2() {
   const [socialLinks, setSocialLinks] = useState([]);
@@ -288,15 +289,15 @@ function Footer2() {
           >
             <input
               type="email"
-              style={{ width: "70%", height: "30px" }}
+              className={style.emailBox}
               placeholder="Enter Your Email"
               id="emailAddress"
             />
             <button
-              style={{ width: "25%", background: "#7c7c7c" }}
+           className={style.emailBoxButton}
               onClick={subscribeToEmailUpdate}
             >
-              <FiArrowRight style={{ fontSize: "25px" }} />
+              <IoChevronForwardOutline style={{ fontSize: "25px" }} />
             </button>
           </div>
         </div>
