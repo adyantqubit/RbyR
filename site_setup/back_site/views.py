@@ -638,9 +638,7 @@ class BridalView(APIView):
 #Reason - To send bridal form details to front end
 class BridalFormView(APIView):
     def post(self,request,format=None):
-        print("----------",request.data)
         serializer=BridalFormSerializer(data=request.data)
-        print("----------",serializer)
         if(serializer.is_valid(raise_exception=True)):
             serializer.save()
             return Response({'msg':'bridal details posted'},status=status.HTTP_200_OK)
@@ -738,7 +736,6 @@ class LogoAndCoverView(APIView):
         LogoAndCoverResponse = {}
         LogoAndCoverResponse['BLogoAndCoverDetail'] = LogoAndCoverDetail
         return Response(LogoAndCoverDetail)
-        
 #End of code addition
 
 #Added by Ashish on 21-11-2022
@@ -756,4 +753,14 @@ class WomenClothSizeChartView(APIView):
     def get(self,request):
         womenClothSizeChartDetail = WomenClothSizeChart.objects.all().values()
         return Response(womenClothSizeChartDetail)
+#End of code addition
+
+#Added by Ashish on 24-11-2022
+#Reason - To save custom tailored details
+class CustomTailoredFormView(APIView):
+    def post(self,request,format=None):
+        serializer=CustomTailoredFormSerializer(data=request.data)
+        if(serializer.is_valid(raise_exception=True)):
+            serializer.save()
+            return Response({'msg':'custom tailored details posted'},status=status.HTTP_200_OK)
 #End of code addition

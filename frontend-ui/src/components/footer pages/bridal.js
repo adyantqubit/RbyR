@@ -59,9 +59,10 @@ const Bridal = () => {
           onClick: () => {
           },
         });
+        bridalForm.resetFields();
       }else{
         notification.open({
-          message: 'Success',
+          message: 'Message',
           description:
             'Some problem occured while posting the data',
           onClick: () => {

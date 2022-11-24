@@ -1,7 +1,7 @@
 
-.ant-modal-content{
+/* .ant-modal-content{
   height: 80vh !important;
-}
+} */
 .ant-modal-header {
   color: white;
   padding: 5vh;
@@ -23,4 +23,7 @@
 .ant-modal-close-icon{
   color:  #a59f9f;
 
+}
+.ant-form-item{
+  margin-bottom: 10px;
 }

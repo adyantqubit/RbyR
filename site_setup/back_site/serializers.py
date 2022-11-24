@@ -387,3 +387,11 @@ class InstagramCollectionSerializer(serializers.ModelSerializer):
     class Meta:
         model=InstagramCollection
         fields="__all__"
+
+#Added by Ashish on 24-11-2022
+#Reason - To save custom tailored details
+class CustomTailoredFormSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=CustomTailoredForm
+        fields="__all__"
+#End of code addition        

@@ -109,10 +109,11 @@ admin.site.register(FooterDescription)
 admin.site.register(WomenClothSizeChart) 
 #End of code addition
 
-
-
-
-
+#Added by Ashish Dewangan on 24-11-2022
+#Reason - To save custom tailored details that will come from front end
+#Jira issue no - RBYR-193
+admin.site.register(CustomTailoredForm) 
+#End of code addition
  
 
 class UserModelAdmin(BaseUserAdmin):

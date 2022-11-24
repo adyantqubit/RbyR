@@ -363,3 +363,13 @@ export const getWomenSizeChartDetail = async () => {
   return response ? response.data : {};
 };
 // End of code addition
+
+// Added by Ashish on 24-11-2022
+// Reason - To send custom tailored request to backend
+export const postCustomTailoredDetails = async (data) => {
+  const response = await API.post(`save-custom-tailored-details/`,data, {
+        headers: { "Content-Type": "application/json"},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+// End of code addition

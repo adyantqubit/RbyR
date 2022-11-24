@@ -30,6 +30,8 @@ import { Link, animateScroll as scroll } from "react-scroll";
 import ScrollButton from "./top";
 import { increamentCheck } from "../../api/orderApis";
 import { getWomenSizeChartDetail } from "../../api/service";
+import CustomTailoredForm from "./CustomTailoredForm";
+import WomenSizeChart from "./WomenSizeChart";
 
 const sty = StyleSheet.create({
   bounce: {
@@ -58,7 +60,10 @@ const Details = (props) => {
   const [isWomenSizeChartVisible, setIsWomenSizeChartVisible] = useState(false);
   //End of code addition
 
+  // Added by Ashish Dewangan on 24-11-2022
+  // Reason - To display custom tailored form
   const [isCustomTailoredVisible,setIsCustomTailoredVisible] = useState(false);
+  // End of code addition
 
   useEffect(() => {
     gettingDetail();
@@ -114,6 +119,20 @@ const Details = (props) => {
   };
   // End of code addition
 
+  // Added by Ashish Dewangan on 24-11-2022
+  // Reason - To show custom tailored form
+  function showCustomTailoredForm() {
+    setIsCustomTailoredVisible(true);
+  }
+
+  const handleCustomTailoredOk = () => {
+    setIsCustomTailoredVisible(false);
+  };
+
+  const handleCustomTailoredCancel = () => {
+    setIsCustomTailoredVisible(false);
+  };
+  // End of code addition
   function onChange(value) {
     setSize(value);
     setPushData(false);
@@ -434,13 +453,32 @@ const Details = (props) => {
                         </>
                       )}
                     </div>
+
+                    {/* <span  className={styles["text02"]}>Custom Tailored</span> */}
+
+                    {/* Added by Ashish Dewangan on 24-11-2022
+                    Reason - To show custom tailored form */}
                     <span
                       className={styles["text02"]}
                       style={{ cursor: "pointer" }}
+                      onClick={showCustomTailoredForm}
                     >
                       Custom Tailored
                     </span>
-                    {/* <span  className={styles["text02"]}>Custom Tailored</span> */}
+                    <Modal
+                      style={{ top: 0 }}
+
+                      className={styles["modalStyleCustomTailored"]}
+                      footer={null}
+                      title="CUSTOM TAILORED"
+                      visible={isCustomTailoredVisible}
+                      onOk={handleCustomTailoredOk}
+                      onCancel={handleCustomTailoredCancel}
+                    >
+                      <CustomTailoredForm/>
+                    </Modal>
+                    {/* End of code addition */}
+
                     {/* Commented and modified by - Ashish Dewangan on 23-11-2022
                     Reason - to display size chart when we click on size chart text */}
                     {/* <span  className={styles["text02"]}>Size Chart</span> */}
@@ -452,7 +490,7 @@ const Details = (props) => {
                       Size Chart
                     </span>
                     <Modal
-                      style={{ top: 20, height: "100vh" }}
+                      style={{ top: 0 }}
                       className={styles["modalStyle"]}
                       footer={null}
                       title="SIZE GUIDE"
@@ -460,14 +498,15 @@ const Details = (props) => {
                       onOk={handleOk}
                       onCancel={handleCancel}
                     >
-                      <img
+                      {/* <img
                         style={{ width: "100%", height: "100%" }}
                         src={
                           womenSizeChart.length > 0
                             ? config.apiBaseURL + womenSizeChart
                             : "/women_size_chart.jpg"
                         }
-                      />
+                      /> */}
+                      <WomenSizeChart womenSizeChart={womenSizeChart} />
                     </Modal>
                     {/* End of code addition */}
                   </div>

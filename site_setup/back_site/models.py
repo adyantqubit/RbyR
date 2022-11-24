@@ -60,7 +60,6 @@ class User(AbstractBaseUser):
         verbose_name='email address',
         max_length=255,
         unique=True,
-        
     )
     name = models.CharField(max_length=200)
     contact_number=models.CharField(max_length=13, validators=[MinLengthValidator(13)])
@@ -514,3 +513,25 @@ class WomenClothSizeChart(models.Model):
     image=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100)
 #End of code addition           
+
+#Added by Ashish on 24-11-2022
+#Reason - To create custom tailored table
+class CustomTailoredForm(models.Model):
+    firstName=models.CharField(max_length=255)
+    lastName=models.CharField(max_length=255)
+    email=models.CharField(max_length=255)
+    contactNumber=models.CharField(max_length=255)
+    shoulder=models.CharField(max_length=255)
+    chest=models.CharField(max_length=255)
+    upperChest=models.CharField(max_length=255)
+    lowerChest=models.CharField(max_length=255)
+    dartPoint=models.CharField(max_length=255)
+    armhole=models.CharField(max_length=255)
+    armround=models.CharField(max_length=255)
+    waist=models.CharField(max_length=255)
+    lowerWaist=models.CharField(max_length=255)
+    hips=models.CharField(max_length=255)
+    length=models.CharField(max_length=255)
+    otherInstructions=models.TextField(default="")
+    
+#End of code addition

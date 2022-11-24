@@ -143,4 +143,10 @@ urlpatterns = [
     path('women-size-chart/',WomenClothSizeChartView.as_view()),
     #End of code addition
 
+    #Added by Ashish Dewangan on 24-11-2022
+    #Reason - To retrieve custom tailored details from front end
+    #Jira issue no - RBYR-193
+    path('save-custom-tailored-details/',CustomTailoredFormView.as_view()),
+    #End of code addition
+
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)   
