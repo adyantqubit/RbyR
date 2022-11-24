@@ -7,8 +7,10 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { getOptionsFromChildren } from '@mui/base'
 import { Link, useNavigate } from 'react-router-dom'
+import { CartState } from '../../context'
 
 const MyOrders = () => {
+  var {setshipEditCond,showEditable,setShowEditable,currency}=CartState()
      var [orders,setOrder]=useState([])
      var [tran,settran]=useState([])
      var [name,setName]=useState([])
@@ -63,13 +65,13 @@ const MyOrders = () => {
     <Navbar/>
     <div className={style.Container} style={{marginBottom:"26vh"}}>
         <div className={style.centerContainer}>
-          <div className={style.containerHeader}>Homepage / My Account</div>
+          <div className={style.containerHeader}><Link to="/"  className={style.containerHeader}>Homepage</Link> / My Account</div>
           <div className={style.main}>
             <div className={style.column1}>
               <div className={style.column1header}>MY ACCOUNT</div>
               <hr style={{color:"black"}}></hr>
-              <div className={style.column1text}><Link to="/userprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY PROFILE</Link></div>
-              <div className={style.column1text}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY SHIPPING DETAILS</Link></div>
+              <div className={style.column1text} onClick={e=>setShowEditable(!true)}><Link to="/userprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY PROFILE</Link></div>
+              <div className={style.column1text} onClick={e=>setshipEditCond(true)}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#8c8c8c"}} >MY SHIPPING DETAILS</Link></div>
               <div className={style.column1text}><Link to="/profile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY ORDERS</Link></div>
 
             </div>
@@ -83,9 +85,9 @@ const MyOrders = () => {
                   <br style={{color:"blue"}}></br>
                   <div className={`${style.rowheadText} ${style.rowtexthide}`}>Date and time</div>
 
-                  <div className={`${style.rowheadText} ${style.rowtexthide}`}>Author</div>
-                  <div className={style.rowheadText}>Value</div>
-                  <div className={`${style.rowheadText} ${style.rowtexthide}`}>Type</div>
+                  <div className={`${style.rowheadText} ${style.rowtexthide}`}>Name</div>
+                  <div className={style.rowheadText}>Price</div>
+                  <div className={`${style.rowheadText} ${style.rowtexthide}`}>Payment Type</div>
                   <div className={style.rowheadText}>Status</div>
                   <div className={style.rowheadText}></div>
                 </div>
@@ -99,10 +101,10 @@ const MyOrders = () => {
                     <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].date}</div>
                     
                     <div className={`${style.rowText} ${style.rowtexthide}`}>{tran[i].firstname} {tran[i].lastname}</div>
-                    <div className={style.rowText}>{getPrice(o)}</div>
+                    <div className={style.rowText}>{currency.sign}{(getPrice(o)*currency.value).toFixed(2)}</div>
                     <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].payment_mode}</div>
                     <div className={style.rowText}>{tran[i].payment_status}</div>
-                    <div className={style.rowText} style={{textDecoration:"underline",color:"blue",fontSize:"14px",cursor:"pointer"}} onClick={e=>nav(`/insideorder/${o[0].order_no}`)}>View Order
+                    <div className={style.rowText} style={{textDecoration:"underline",color:"blue",fontSize:"14px",cursor:"pointer",whiteSpace:"nowrap",overflow:"hidden",width:"80px"}} onClick={e=>nav(`/insideorder/${o[0].order_no}`)}>View Order
                     </div>
                     
                   </div>)

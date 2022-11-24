@@ -79,7 +79,7 @@ class UserLoginView(APIView):
                 token=get_tokens_for_user(user)
                 return Response({'token':token,'msg':'login successful'},status=status.HTTP_200_OK)   
             else:
-                return Response({'errors':{'none_field_errors':['email or password is not valid']}},status=status.HTTP_404_NOT_FOUND)     
+                return Response({'errors':{'none_field_errors':['Email or Password is not valid.']}},status=status.HTTP_404_NOT_FOUND)     
             
             
 class UserProfileView(APIView):
@@ -492,26 +492,48 @@ class CartRecheck(APIView):
           
 class ShippingTick(APIView):
     renderer_classes=[UserRenderer]
-    permission_classes=[IsAuthenticated] 
+    permission_classes=[IsAuthenticated]
+    def get(self,request):
+        try:
+           return Response(shippingSerializer(usershippingDetail.objects.filter(user_id=request.user),many=True).data)
+        except:
+            return Response({"error":"Nothing Found"})   
+          
     def post(self,request):
        try: 
-        if usershippingDetail.objects.get(id=request.data,user_id=request.user).isSelected==True:
-            data=usershippingDetail.objects.get(id=request.data)
-            data.isSelected=False
-            data.save()
-            return Response(shippingSerializer(usershippingDetail.objects.all(),many=True).data)
+        # if usershippingDetail.objects.get(id=request.data,user_id=request.user).isSelected==True:
+        #     data=usershippingDetail.objects.get(id=request.data)
+        #     data.isSelected=False
+        #     data.save()
+        #     return Response(shippingSerializer(usershippingDetail.objects.filter(user_id=request.user),many=True).data)
         if  usershippingDetail.objects.get(id=request.data,user_id=request.user).isSelected==False: 
             data2=usershippingDetail.objects.filter(user_id=request.user)
             for element in data2:
-                element.isSelected=False
+                element.isSelected=False  
                 element.save()
             data=usershippingDetail.objects.get(id=request.data)
             data.isSelected=True
             data.save()
-            return Response(shippingSerializer(usershippingDetail.objects.all(),many=True).data)
+            return Response(shippingSerializer(usershippingDetail.objects.filter(user_id=request.user),many=True).data)
+        return Response(shippingSerializer(usershippingDetail.objects.filter(user_id=request.user),many=True).data)
        except:              
         return Response({"error":"you are facing error on shipping"})          
           
+          
+class updateUser(APIView):
+       def post(self,request):
+          user= User.objects.get(id=request.user.id)
+          user.email=request.data['email']
+          user.name=request.data['firstname']+" "+request.data["lastname"]
+          
+          user.save()
+          
+          data={"name":user.name,"email":user.email}
+          return Response(data)    
+       
+       
+       
+       
 #Added by Ashish on 06-11-2022
 #Reason - To have FAQ functionality    
 class FAQView(APIView):
@@ -716,6 +738,7 @@ class LogoAndCoverView(APIView):
         LogoAndCoverResponse = {}
         LogoAndCoverResponse['BLogoAndCoverDetail'] = LogoAndCoverDetail
         return Response(LogoAndCoverDetail)
+        
 #End of code addition
 
 #Added by Ashish on 21-11-2022

@@ -2,12 +2,13 @@ import { dividerClasses, getTableSortLabelUtilityClass } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import config from '../../api/config'
-import { cartDeleteApi, getQrDetailApi, InvoiveSingleGetApi } from '../../api/service'
+import { cartDeleteApi, getQrDetailApi, getStoreLocatorDetail, InvoiveSingleGetApi } from '../../api/service'
 import { CartState } from '../../context'
 import Footer from '../global/footer'
 import Navbar from '../global/NavHeader'
 import style from "./profile.module.css"
 import { Button, Modal } from 'antd';
+import parse from 'html-react-parser'
 import styles from '../placeOrder/billing.module.css'
 import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing'
 import { useCartUpdateMutation } from '../../Redux-manage/services/userAuthapi'
@@ -15,7 +16,7 @@ import { useCartUpdateMutation } from '../../Redux-manage/services/userAuthapi'
 
 
 const InsideOrder = () => {
-   var {orders,setOrder,product,checkoutDetails,taxRate,offer,cart,setCart}=CartState()
+   var {orders,setOrder,product,checkoutDetails,currency,taxRate,offer,cart,setCart,setshipEditCond,setShowEditable}=CartState()
    var{orderid}=useParams()
    var [states,setState]=useState([])
    var [allData,setAllData]=useState(null)
@@ -24,6 +25,17 @@ const InsideOrder = () => {
    const [cartsaveApi,{isLoad}]=useCartUpdateMutation()
 
 
+   const [storeLocatorDetails, setStoreLocator] = useState(null);
+   useEffect(() => {
+     getStoreLocator();
+   }, []);
+ 
+   const getStoreLocator = async () => {
+     const storeLocatorData = await getStoreLocatorDetail();
+     if (storeLocatorData) {
+       setStoreLocator(storeLocatorData);
+     }
+   };
 
    async function invoiceapi(){
     var access=localStorage.getItem('access_token')
@@ -88,7 +100,10 @@ async function qrDetails(){
  async function cartAdd(){
 
 cart=[]
-setCart(cart)
+
+
+await cartDeleteApi({access}).then(r=>console.log(r))
+
  
 for (const details of allData.history) {
 
@@ -98,23 +113,22 @@ for (const details of allData.history) {
     size:`${details.size}`
    }
 
+
   const data={
     product_no:details.product_id,
     size:`${details.size}`
   }
 
+
  var access_token=localStorage.getItem("access_token")
  var access=localStorage.getItem("access_token")
 
-   await cartDeleteApi({access}).then(r=>console.log(r))
- const resp=await cartsaveApi ({data,access_token}).then(r=>console.log(r));
-      
-      cart.push(NewCartData)
-      setCart(cart)
+ cart.push(NewCartData)
+ const resp=await cartsaveApi ({data,access_token}).then(r=>console.log(r));   
      
 }
 
-
+setCart(cart)
 nav("/cart")
 }
 
@@ -162,9 +176,6 @@ for (const produc of allData.history) {
    var pro={...p,"size":produc.size,"quantity":produc.quantity}
    car.push(pro)
 }
-
-
-
            checkoutDetails['cart']=car
            checkoutDetails['CouponDiscount']=allData.transaction.coupon_discount
            checkoutDetails['ShippingCharges']=allData.transaction.shipping_price
@@ -183,13 +194,13 @@ for (const produc of allData.history) {
     <Navbar/>
     <div className={style.Container} style={{marginBottom:"26vh"}}>
         <div className={style.centerContainer}>
-          <div className={style.containerHeader}>Homepage / My Account</div>
+          <div className={style.containerHeader}><Link to="/"  className={style.containerHeader}>Homepage</Link> / My Account</div>
           <div className={style.main}>
             <div className={style.column1}>
               <div className={style.column1header}>MY ACCOUNT</div>
               <hr style={{color:"black"}}></hr>
-              <div className={style.column1text}><Link to="/userprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY PROFILE</Link></div>
-              <div className={style.column1text}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY SHIPPING DETAILS</Link></div>
+              <div className={style.column1text} onClick={e=>setShowEditable(!true)}><Link to="/userprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY PROFILE</Link></div>
+              <div className={style.column1text} onClick={e=>setshipEditCond(false)}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#8c8c8c"}} >MY SHIPPING DETAILS</Link></div>
               <div className={style.column1text}><Link to="/profile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY ORDERS</Link></div>
 
             </div>
@@ -222,7 +233,10 @@ for (const produc of allData.history) {
                               <div ><span className={styles.userinfoText} style={{whiteSpace:"nowrap"}}>Account Number:</span><span className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
                               <div ><span className={styles.userinfoText}>UPI ID:</span><span className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div>
                               </div>
+                              <div style={{height:"60px",width:"100%"}}><span className={styles.userinfoText2} style={{lineBreak:"normal",wordBreak:'keep-all'}}> Please Confirm To admin After paying  at {storeLocatorDetails!=null? parse(storeLocatorDetails[0].phoneNumber):null}</span></div>
+
                             </div>
+
                           </div>  
                           : <div>The qr Code getting error</div> 
                           } 
@@ -252,9 +266,9 @@ for (const produc of allData.history) {
                         </span>
                     </div>
                    
-                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} >Price :- </span><span className={style.userinfoText3} > {p.price}</span></div>
+                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} >Price :- </span><span className={style.userinfoText3} >{currency.sign} {(p.price*currency.value).toFixed(2)}</span></div>
                     <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} >Qunatity :- </span><span className={style.userinfoText3} > {s.quantity} </span></div>
-                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} >Total :-</span><span className={style.userinfoText3} > {p.price*s.quantity}</span></div>
+                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} >Total :-</span><span className={style.userinfoText3} >{currency.sign} {(p.price*s.quantity*currency.value).toFixed(2)}</span></div>
                 </div>
                     }
                         )}
@@ -264,14 +278,14 @@ for (const produc of allData.history) {
                 <div className={style.totalBox} >
                   {allData!=null?
                    <div className={style.box} style={{borderTop:"1px solid black"}}>
-                   <div className={style.textlight1}><span className={style.userinfoText} style={{width:"50%",textAlign:"end"}}>sub total</span><span  className={style.userinfoText2} style={{width:"50%",textAlign:"end"}}>{allData.transaction.subtotal_price}</span></div>
-                   <div className={style.textlight1}><span  className={style.userinfoText} style={{width:"50%",textAlign:"end"}}>Shipping</span><span  className={style.userinfoText2} style={{width:"50%",textAlign:"end"}}>{allData.transaction.shipping_price}</span></div>
-                   <div className={style.textlight1}><span  className={style.userinfoText} style={{width:"50%",textAlign:"end"}}>Tax</span><span  className={style.userinfoText2} style={{width:"50%",textAlign:"end"}}>{allData.transaction.tax}</span></div>
-                   <div className={style.textlight1}><span  className={style.userinfoText} style={{width:"50%",textAlign:"end"}}>Coupon Discount</span><span  className={style.userinfoText2} style={{width:"50%",textAlign:"end"}}> - {allData.transaction.coupon_discount}</span></div>
+                   <div className={style.textlight1}><span className={style.userinfoText} style={{width:"50%",textAlign:"end"}}>sub total</span><span  className={style.userinfoText2} style={{width:"50%",textAlign:"end"}}>{currency.sign}{(allData.transaction.subtotal_price*currency.value).toFixed(2)}</span></div>
+                   <div className={style.textlight1}><span  className={style.userinfoText} style={{width:"50%",textAlign:"end"}}>Shipping</span><span  className={style.userinfoText2} style={{width:"50%",textAlign:"end"}}>{currency.sign}{(allData.transaction.shipping_price*currency.value).toFixed(2)}</span></div>
+                   <div className={style.textlight1}><span  className={style.userinfoText} style={{width:"50%",textAlign:"end"}}>Tax</span><span  className={style.userinfoText2} style={{width:"50%",textAlign:"end"}}>{currency.sign}{(allData.transaction.tax*currency.value).toFixed(2)}</span></div>
+                   <div className={style.textlight1}><span  className={style.userinfoText} style={{width:"50%",textAlign:"end"}}>Coupon Discount</span><span  className={style.userinfoText2} style={{width:"50%",textAlign:"end"}}> - {currency.sign} {(allData.transaction.coupon_discount*currency.value).toFixed(2)}</span></div>
 
                    <hr style={{color:"black"}}></hr>
                    <div className={style.textlight1}>
-                    <span style={{fontWeight:"600",width:"50%",textAlign:"end"}}>Total</span><span style={{fontWeight:"600",width:"50%",textAlign:"end"}}>{allData.transaction.grand_total}</span>
+                    <span style={{fontWeight:"600",width:"50%",textAlign:"end"}}>Total</span><span style={{fontWeight:"600",width:"50%",textAlign:"end"}}>{currency.sign}{(allData.transaction.grand_total*currency.value).toFixed(2)}</span>
                    </div>
                    <Button type="primary" className={style.userInfoButton} style={{width:"100%",marginTop:"15px"}} onClick={e=>nav("/billing")}>
                       Get Invoice
@@ -281,9 +295,9 @@ for (const produc of allData.history) {
                 </div>
                   
 
-                <div style={{width:"100%",display:"flex",flexDirection:"row",justifyContent:"space-between",flexWrap:"wrap",marginTop:'100px'}}>  
+                <div style={{width:"100%",display:"flex",flexDirection:"row",justifyContent:"space-between",flexWrap:"wrap",marginTop:'100px',gap:"20px"}}>  
 
-                  <div className={styles.addressInformation} style={{minWidth:"150px"}}>
+                  <div className={styles.addressInformation} style={{minWidth:"150px",maxWidth:"150px"}}>
                       <div ><span className={styles.userinfoText} >Shipping Address</span></div>
                       {allData!=null?<>
                       <div ><span className={styles.userinfoText} style={{color:"black"}}>{allData.shipping.firstname} {allData.shipping.lastname}</span></div>
@@ -294,7 +308,7 @@ for (const produc of allData.history) {
                       :null}
                       </div> 
 
-                  <div className={styles.addressInformation} style={{minWidth:"150px"}}>
+                  <div className={styles.addressInformation} style={{minWidth:"150px",maxWidth:"150px"}}>
                   <div ><span className={styles.userinfoText} >Billing Address</span></div>
 
                   {allData!=null?<>
@@ -306,12 +320,12 @@ for (const produc of allData.history) {
                       :null}
                   </div>
 
-                  <div className={styles.addressInformation} style={{minWidth:"150px"}}>
+                  <div className={styles.addressInformation} style={{minWidth:"150px",maxWidth:"150px"}}>
                       <div ><span className={styles.userinfoText} >Shipping Method</span></div>
                       <div style={{maxWidth:"150px"}}><span className={styles.userinfoText} style={{color:"black"}}>Standard shipping -</span><span className={styles.userinfoText2} style={{color:"black"}}>Standard shipping </span></div>
                   </div>
 
-                  <div className={styles.addressInformation} style={{minWidth:"150px"}}>
+                  <div className={styles.addressInformation} style={{minWidth:"150px",maxWidth:"150px"}}>
                   {allData!=null?<>
                       <div ><span className={styles.userinfoText} >Payment Status</span></div>
                       <div ><span className={styles.userinfoText} style={{color:"black"}}>{allData.history[0].payment_mode}-{allData.transaction.payment_status}</span></div>
@@ -321,6 +335,9 @@ for (const produc of allData.history) {
                   </div>
               
                 </div>
+
+                <div style={{height:"60px",width:"100%",marginTop:"40px"}}><span className={styles.userinfoText2} style={{lineBreak:"normal",wordBreak:'keep-all'}}> Please Confirm To admin After paying  at {storeLocatorDetails!=null? parse(storeLocatorDetails[0].phoneNumber):null}</span></div>
+
 
             </div>
           </div>

@@ -25,7 +25,7 @@ import { Modal, Space } from 'antd';
 
 import Footer from '../global/footer';
 import Slider from '../expandDetailt/slider';
-import { cartStockRecheck, CouponCheck, ImpotantRuleGet, increamentCheck, TaxGet } from '../../api/orderApis';
+import { cartStockRecheck, CouponCheck, ImpotantRuleGet, increamentCheck, shippingTickGet, TaxGet } from '../../api/orderApis';
 import { afterColumnTotalOfferAdd, columnSubtotal } from '../../Redux-manage/services/billing';
 import { Typography } from '@mui/material';
 
@@ -36,7 +36,7 @@ const text = 'Are you sure you would like to remove this item from the shopping 
 
 const CartSItem = (props) => {
 
- var {cart,setCart,CategoryProduct,currency,offer,setOffer,taxRate,setTaxRate,cartEnd,setCartEnd}=CartState()
+ var {cart,setCart,CategoryProduct,checkoutDetails,currency,offer,setOffer,taxRate,setTaxRate,cartEnd,setCartEnd}=CartState()
  
  const [cartsaveApi,{isLoad}]=useCartUpdateMutation()
  let textInput = React.createRef();
@@ -273,11 +273,34 @@ const increament=async (CartProduct)=>{
       })
     }
     else{
+      DefaultShipping()
       nav("/placeorder")
     }
     })
 
     return cartSuccess;
+  }
+
+
+  async function DefaultShipping(){
+    await shippingTickGet().then(r=>r.map(s=>{
+      if(s.isSelected){
+        const shippingData={
+          firstname:s.firstname,
+          lastname:s.lastname,
+          street:s.street,
+          houseno:s.houseno,
+          city:s.city,
+          state:s.state,
+          zipcode:s.zipcode,
+          country:s.country,
+          number:s.number
+      }
+  
+      checkoutDetails['shippingData']=shippingData;
+      }
+    }
+    ))
   }
 
 

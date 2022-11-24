@@ -11,7 +11,7 @@ import './cart.css'
 import { BsCartFill } from 'react-icons/bs';
 import { useCartBuyAllMutation } from '../../Redux-manage/services/userAuthapi';
 import { useNavigate } from 'react-router-dom';
-import { cartStockRecheck, CouponCheck, TaxGet } from '../../api/orderApis';
+import { cartStockRecheck, CouponCheck, shippingTickGet, TaxGet } from '../../api/orderApis';
 import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing';
 import { Typography } from '@mui/material';
 
@@ -94,7 +94,7 @@ export default Cart;
 
 
 export function DrawerFooter(){
- var {cart,setCartDrawer,currency,offer,setOffer,taxRate,setTaxRate,cartEnd,setCartEnd}=CartState()
+ var {cart,setCartDrawer,currency,offer,setOffer,taxRate,setTaxRate,cartEnd,setCartEnd, checkoutDetails}=CartState()
  const [UploadCartApi,{isLoading}]=useCartBuyAllMutation()
  const [cond,setCond]=useState([])
  const [error,setError]=useState(null)
@@ -179,11 +179,33 @@ async function cartChecking(){
   }
   else{
     setCartDrawer(false)
+    DefaultShipping()
     nav("/placeorder")
   }
   })
 }
 
+
+async function DefaultShipping(){
+  await shippingTickGet().then(r=>r.map(s=>{
+    if(s.isSelected){
+      const shippingData={
+        firstname:s.firstname,
+        lastname:s.lastname,
+        street:s.street,
+        houseno:s.houseno,
+        city:s.city,
+        state:s.state,
+        zipcode:s.zipcode,
+        country:s.country,
+        number:s.number
+    }
+
+    checkoutDetails['shippingData']=shippingData;
+    }
+  }
+  ))
+}
 
  return (
     <>
@@ -197,7 +219,7 @@ async function cartChecking(){
         
         <div className={style.subTotal}>
          <span style={{marginLeft:"15px",textTransform:"uppercase",fontWeight:"600"}}>SubTotal</span>
-         <span style={{marginRight:"15px",fontWeight:"600"}}>₹ {(getTotalPrice()).toFixed(2)}</span>
+         <span style={{marginRight:"15px",fontWeight:"600"}}>{currency.sign} {(getTotalPrice()*currency.value).toFixed(2)}</span>
 
         </div>
         <div className={style.subTotal}>

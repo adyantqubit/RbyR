@@ -104,6 +104,8 @@ const Navbar = () => {
     }
   };
 
+  
+
 	return (
 		<>
 		<div className={style.contain} style={{borderBottom:"1px solid white"}}>

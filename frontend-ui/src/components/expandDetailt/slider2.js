@@ -48,7 +48,7 @@ const Slider2 = () => {
       <div className={style.card}>
         <div className={style.image} style={{position:"relative"}}>
           {/* <a href={"/listing/"+cart.category}> */}
-            <img className={style.img} src={config.apiBaseURL+cart.img_main} style={{height:"350px"}} onClick={e=>openDetail(cart)} />
+            <img className={style.img} src={config.apiBaseURL+cart.img_main} style={{width:"350px"}} onClick={e=>openDetail(cart)} />
             {/* </a> */}
           {/* {like.filter(l=>l.id===p.id).length>0?<AiFillHeart style={{position:"relative",marginTop:"-60px",left:"90%",height:"20px",width:"20px"}} onClick={e=>LikedSave(p)}/>:<AiOutlineHeart style={{position:"relative",marginTop:"-60px",left:"90%",height:"20px",width:"20px"}} onClick={e=>LikedSave(p)}/>} */}
         </div>

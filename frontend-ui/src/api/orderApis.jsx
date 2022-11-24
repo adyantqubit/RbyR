@@ -46,6 +46,22 @@ return response ? response.data : {};
 return response ? response.data : {};
   }
 
+  export const shippingTickGet=async()=>{
+    const response = await API.get(`shipping_tick/`,{
+      headers: { "Content-Type": "application/json",'authorization':`Bearer ${localStorage.getItem('access_token')}`},
+    }).catch((err) => console.log("Failed to authenticate the user."));
+return response ? response.data : {};
+  }
+
+  export const userUpdate=async(data)=>{
+    const response = await API.post(`User_update/`, data,{
+      headers: { "Content-Type": "application/json",'authorization':`Bearer ${localStorage.getItem('access_token')}`},
+    }).catch((err) => console.log("Failed to authenticate the user."));
+return response ? response.data : {};
+  }
+
+
+
 
 
 

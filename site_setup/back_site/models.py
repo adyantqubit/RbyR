@@ -60,9 +60,10 @@ class User(AbstractBaseUser):
         verbose_name='email address',
         max_length=255,
         unique=True,
+        
     )
     name = models.CharField(max_length=200)
-    contact_number=models.CharField(max_length=13, validators=[MinLengthValidator(10)])
+    contact_number=models.CharField(max_length=13, validators=[MinLengthValidator(13)])
     tc=models.BooleanField()
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)

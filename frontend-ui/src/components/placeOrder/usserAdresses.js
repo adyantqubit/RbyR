@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import styles from './order.module.css'
 import {TiTick} from 'react-icons/ti'
 import Checkbox from "react-custom-checkbox";
@@ -11,6 +11,7 @@ import { Modal, notification } from 'antd';
 import Select from 'react-select'
 import countryList from 'react-select-country-list'
 import list from './data.json'
+import { shippingTickGet } from '../../api/orderApis';
 
 
 const UsserAdresses = () => {
@@ -31,6 +32,7 @@ const [value, setValue] = useState("India")
 const [value2, setValue2] = useState("India")
 
 const options = countryList().getData()
+  
 
 const changeHandler = value => {
   setValue(value.target.value)

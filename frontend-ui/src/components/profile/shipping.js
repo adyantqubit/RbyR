@@ -11,12 +11,52 @@ import { Link, useNavigate } from 'react-router-dom'
 import styles from "../placeOrder/order.module.css"
 import { CartState } from '../../context'
 import { shippingTick } from '../../api/orderApis'
+import list from '../placeOrder/data.json'
+
+
+import {AiOutlineClose} from 'react-icons/ai'
 
 const ShippingProfile = () => {
 
-    const [shippingAddress,setShippingAddress]=useState([])
-    const {defaultShiping,setDefaultShipping}=CartState()
-    const [cond,setCond]=useState([])
+    const [shippingAddress,setShippingAddress,]=useState([])
+    const {defaultShiping,setDefaultShipping,shipEditcond,setshipEditCond,setShowEditable}=CartState()
+    var [ isAlertVisiblepin, setIsAlertVisiblepin ] = React.useState(false);
+var [ isAlertVisiblenum, setIsAlertVisiblenum ] = React.useState(false);
+var [numerror,setnumerror]=useState("")
+var [pinerror,setpinerror]=useState("")
+const [value, setValue] = useState("India")
+const [value2, setValue2] = useState("India")
+
+
+const changeHandler = value => {
+  setValue(value.target.value)
+}
+const changeHandler2 = value => {
+    setValue2(value.target.value)
+  }
+
+const handleButtonClickpin = (msg) => {
+    isAlertVisiblepin=true
+    setIsAlertVisiblepin(true);
+    pinerror=msg
+    setpinerror(pinerror)
+      setTimeout(() => {
+        isAlertVisiblepin=false
+         setIsAlertVisiblepin(false);
+         
+     }, 7000);
+}
+
+const handleButtonClicknum = (msg) => {
+    isAlertVisiblenum=true
+    setIsAlertVisiblenum(true);
+    numerror=msg;
+    setnumerror(msg)
+      setTimeout(() => {
+        isAlertVisiblenum=false
+         setIsAlertVisiblenum(false);
+     }, 5000);
+}
 
     useEffect(()=>{
        shippingDetails()
@@ -38,7 +78,7 @@ const ShippingProfile = () => {
 
     function jumpToEdit(){
         setDefaultShipping(shippingAddress.filter(s=>s.isSelected==true)[0])
-        setCond(!cond)
+        setshipEditCond(!shipEditcond)
     }
 
    async function shipTick(id){
@@ -58,20 +98,42 @@ const ShippingProfile = () => {
             city:data.get('cityb'),
             state:data.get('stateb'),
             zipcode:data.get('pincodeb'),
-            country:data.get('countryb'),
+            country:value,
             number:data.get('numberb')
         }
+
+        if(data.get('pincodeb').length<6)
+    {  var dta=" * minimum 6 digit required"
+        handleButtonClickpin(dta)
+    }
+    else{
+        isAlertVisiblepin=false
+    }
+    if(data.get('numberb').length<10)
+    {
+        var dta=" * minimum 10 digit required"
+        handleButtonClicknum(dta)
+    }
+    else{
+        isAlertVisiblenum=false
+    }
+
+
+    if(!isAlertVisiblenum&&!isAlertVisiblepin){
+
         var access=localStorage.getItem('access_token')
        await ShippingUpdateApi({access,billingData}).then(r=>{
         //if any response come this update shipping detail and re call shipping api to update new list
             if(r)
              {
-                setCond(!cond)
+                setshipEditCond(!shipEditcond)
                 shippingDetails()
              }
        })
     }
 
+}
+    
     async function shippingDelete(e,id){
         e.preventDefault();
         var access=localStorage.getItem('access_token')
@@ -79,33 +141,105 @@ const ShippingProfile = () => {
             {
                 console.log(r)
                 shippingDetails()
-                setCond(!cond)
+                setshipEditCond(!shipEditcond)
             }
             )
         }
 
+
+        function validate(evt) {
+            var theEvent = evt || window.event;
+          
+            // Handle paste
+            if (theEvent.type === 'paste') {
+                key = evt.clipboardData.getData('text/plain');
+            } else {
+            // Handle key press
+                var key = theEvent.keyCode || theEvent.which;
+                key = String.fromCharCode(key);
+            }
+            var regex = /^[a-zA-Z@]+$/;
+            if( !regex.test(key) ) {
+              theEvent.returnValue = false;
+              if(theEvent.preventDefault) theEvent.preventDefault();
+            }
+          }
+        
+        function validatesPin(evt) {
+            var theEvent = evt || window.event;
+          
+            // Handle paste
+            if (theEvent.type === 'paste') {
+                key = evt.clipboardData.getData('text/plain');
+            } else {
+            // Handle key press
+                var key = theEvent.keyCode || theEvent.which;
+                key = String.fromCharCode(key);
+            }
+            var regex = /^0|[1-9]\d*$/	
+            if( !regex.test(key) ) {
+                theEvent.returnValue = false;
+                if(theEvent.preventDefault) theEvent.preventDefault();
+                var data="Please Enter Only Number"
+                handleButtonClickpin(data)
+              }
+           
+              console.log(key)
+          
+          }
+        
+        
+          function validatesNum(evt) {
+            var theEvent = evt || window.event;
+          
+            // Handle paste
+            if (theEvent.type === 'paste') {
+                key = evt.clipboardData.getData('text/plain');
+            } else {
+            // Handle key press
+                var key = theEvent.keyCode || theEvent.which;
+                key = String.fromCharCode(key);
+            }
+            var regex = /^0|[1-9]\d*$/	
+            if( !regex.test(key) ) {
+                theEvent.returnValue = false;
+                if(theEvent.preventDefault) theEvent.preventDefault();
+                var data="Please Enter Only Number"
+                handleButtonClicknum(data)
+              }
+        
+              
+          }
+        
+    
   return (
     <>
     <Navbar/>
     <div className={style.Container} style={{marginBottom:"26vh"}}>
         <div className={style.centerContainer}>
-          <div className={style.containerHeader}>Homepage / My Account</div>
+          <div className={style.containerHeader}><Link to="/"  className={style.containerHeader}>Homepage</Link>/ My Account</div>
           <div className={style.main}>
             <div className={style.column1}>
               <div className={style.column1header} >MY ACCOUNT</div>
               <hr style={{color:"black"}}></hr>
-              <div className={style.column1text}><Link to="/userprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY PROFILE</Link></div>
-              <div className={style.column1text}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY SHIPPING DETAILS</Link></div>
+              <div className={style.column1text} onClick={e=>setShowEditable(!true)}><Link to="/userprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY PROFILE</Link></div>
+              <div className={style.column1text} onClick={e=>setshipEditCond(true)}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#8c8c8c"}} >MY SHIPPING DETAILS</Link></div>
               <div className={style.column1text}><Link to="/profile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY ORDERS</Link></div>
 
             </div>
             <div className={style.column2}>
-            <div className={style.column2header} ><div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}><span>SHIPPING DETAILS</span><span className={styles.userinfoText} onClick={e=>jumpToEdit()}>Edit Configuration</span></div></div>
+            <div className={style.column2header} >
+                <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
+                    <span>SHIPPING DETAILS</span>
+                    <span className={styles.userinfoText} onClick={e=>jumpToEdit()}>{shipEditcond?"Edit Configuration":null}
+                    </span>
+                </div>
+            </div>
             <hr style={{color:"black"}}></hr>
 
             
 
-            {cond?<div className={styles.columnitem1_1} style={{marginTop:"20px"}}>
+            {shipEditcond?<div className={styles.columnitem1_1} style={{marginTop:"20px"}}>
             <div className={styles.columnitem1content1}>
 
                 {shippingAddress!=null&&shippingAddress.length>0?
@@ -145,12 +279,12 @@ const ShippingProfile = () => {
                 <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='first'>FIRST NAME *</label>
       
-                        <input className={styles.firstInput} defaultValue={defaultShiping.firstname} name='firstb' required/>
+                        <input className={styles.firstInput} defaultValue={defaultShiping.firstname} onKeyPress={validate} name='firstb' required/>
                         
                     </div>
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='b'>LAST NAME *</label>
-                        <input className={styles.firstInput} name='lastb' defaultValue={defaultShiping.lastname} required/>
+                        <input className={styles.firstInput} name='lastb' onKeyPress={validate} defaultValue={defaultShiping.lastname} required/>
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
@@ -165,7 +299,7 @@ const ShippingProfile = () => {
                     <div className={styles.columnFullName}>
                         <label className={styles.firstName} htmlFor='street'>House/Apartment number *</label>
 
-                        <input className={styles.firstInput} name='flatnob' defaultValue={defaultShiping.houseno} required/>
+                        <input className={styles.firstInput} name='flatnob' maxLength={10} defaultValue={defaultShiping.houseno} required/>
                         
                     </div>
                 </div>
@@ -184,19 +318,37 @@ const ShippingProfile = () => {
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='first'>Zip-code *</label> 
-                        <input className={styles.firstInput} name='pincodeb' defaultValue={defaultShiping.zipcode} required/>
+                        <input className={styles.firstInput} name='pincodeb' onKeyPress={validatesPin} maxLength={6} defaultValue={defaultShiping.country} required/>
+                        {isAlertVisiblepin&&<span asp-validation-for="Code" class="text-danger col-sm-4">{pinerror} </span>}
+
                     </div>
                     <div className={styles.columnFirstName}>
-                        <label className={styles.firstName} htmlFor='last'>Country *</label>
-                        <input className={styles.firstInput} name='countryb'  defaultValue={defaultShiping.country} required/>
+                    <label className={styles.firstName} htmlFor='last'>Country *</label>
+                        {defaultShiping.zipcode? <select className={styles.firstInput} defaultValue={defaultShiping.zipcode} onChange={changeHandler}>
+                         {list.map(l=>{
+                             return <option value={l.label}>{l.label}</option>
+                         })}
+                         </select>
+                        : 
+                        <select className={styles.firstInput} defaultValue={defaultShiping.zipcode} onChange={changeHandler}>
+                            {list.map(l=>{
+                                return <option value={l.label}>{l.label}</option>
+                            })}
+                            </select>
+                        // <input className={styles.firstInput} name='country' required/>}
+                       }
+                        {/* <label className={styles.firstName} htmlFor='last'>Country *</label>
+                        <input className={styles.firstInput} name='countryb' defaultValue={defaultShiping.zipcode}  required/> */}
+
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFullName}>
                         <label className={styles.firstName} htmlFor='street'>Phone Number *</label>
                        
-                        <input className={styles.firstInput} name='numberb' defaultValue={defaultShiping.number} required/>
-                    
+                        <input className={styles.firstInput} name='numberb' onKeyPress={validatesNum} maxlength={10} defaultValue={defaultShiping.number} required/>
+                        {isAlertVisiblenum&&<span asp-validation-for="Code" class="text-danger col-sm-4">{numerror}</span>}
+
                     </div>
                 </div>
 
@@ -206,7 +358,7 @@ const ShippingProfile = () => {
                 {/* <button className={styles.userInfoButton} style={{marginLeft:"10px"}} onClick={e=>shippingDelete(e,defaultShiping.id)}>
                     DELETE 
                 </button> */}
-                <span className={styles.userInfoButton} style={{marginLeft:"10px"}} onClick={setAddress}>
+                <span className={styles.userInfoButton} style={{marginLeft:"10px"}} onClick={e=>setshipEditCond(true)}>
                     CANCLE
                 </span>
                 </div>

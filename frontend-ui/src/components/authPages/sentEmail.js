@@ -42,13 +42,15 @@ const SentEmail = () => {
 			<div class="signu" style={{marginTop:"5vh"}}>
 				<form  id="password-reset-email-form" onSubmit={handleSubmit}>
 					<label class="labe" aria-hidden="true" style={{fontSize:"1.6rem"}}>Change Password</label>
-					{error.non_field_errors? <Alert severity="error" style={{margin:"0 50px"}}>{error.non_field_errors[0]}</Alert> : ""}
-                    {msg.msg ? <Alert severity="success" style={{margin:"0 49px",marginTop:"10px"}}>Sent Successfully</Alert> : ""}
+					{error.non_field_errors? <Alert severity="error" style={{margin:"0 60px"}}>{error.non_field_errors[0]}</Alert> : ""}
+                    {msg.msg ? <Alert severity="success" style={{margin:"0 60px"}}>Sent Successfully,Please Check your 
+                    <a href="https://mail.google.com/" style={{fontSize:"16px",textDecoration:"underline",color:"blue"}}>Mail</a>
+                    </Alert> : ""}
 					
-					<input style={{marginBottom:"0"}} class="inpu" type="email" name="email" placeholder="Register Email" required=""/>
+					<input style={{marginBottom:"0"}} class="inpu" type="email" name="email" placeholder=" Registered Email" required=""/>
 					{error.email?<Typography style={{color:"red",paddingLeft:"70px",fontSize:"0.8rem"}}>{error.email[0]}</Typography>:" "}
 
-					<button class="butto" style={{backgroundColor:"purple",}} type='submit'>Send Email</button>
+					<button class="butto" style={{backgroundColor:"#573b8a",}} type='submit'>Send Email</button>
 				</form>
 			</div>
 	</div>

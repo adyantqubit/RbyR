@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { TaxGet } from "./api/orderApis";
+import { shippingTickGet, TaxGet } from "./api/orderApis";
 import { check2, getCart, getLike, LikeUpdate, regenaratingTokenApi } from "./api/service";
 import { unSetUserToken } from "./Redux-manage/features/authSlice";
 import { unSetUserInfo } from "./Redux-manage/features/userSlice";
@@ -41,12 +41,15 @@ const Context = ({ children }) => {
   const [shippingflow,setShipingflow]=useState(true)
   const [paymentflow,setPaymentflow]=useState(false)
   const [defaultShiping,setDefaultShipping]=useState([])
+  const [showEditable,setShowEditable]=useState(false)
+
 
   const [lth,setLth]=useState(false)
   const [htl,sethtl]=useState(false)
   const[latestSelect,setLatestSelect]=useState(false)
   const[availablitySelect,setAvailablity]=useState(false)
   var [cartEnd,setCartEnd]=useState([])
+  const [shipEditcond,setshipEditCond]=useState(true)
 
   const [currency,setCurrency]=useState({value:1,sign:"₹"});
   const [to,setTo]=useState("INR")
@@ -64,10 +67,16 @@ const Context = ({ children }) => {
 
   //product updation
   useEffect(()=>{
+ firstTimeLoadFunctions()
+  },[])
+
+  function firstTimeLoadFunctions(){
     productApi()
     TokenManage()
     GetTAXapi()
-
+    DefaultShipping()
+  
+  
     if(access_token){
       TokenManage()
     setInterval(TokenManage,360000)}
@@ -75,7 +84,9 @@ const Context = ({ children }) => {
     setCart([...JSON.parse(window.localStorage.getItem('cart'))]) 
     if (JSON.parse(window.localStorage.getItem('cart'))&&(!localStorage.getItem('access_token')))
     setLike([...JSON.parse(window.localStorage.getItem('like'))])
-  },[])
+  
+  }
+
 
   useEffect(()=>{
     cartApi()  
@@ -126,9 +137,6 @@ async function GetTAXapi(){
   }
   })
 }
-
-
-
   //product 
 
   //cart data
@@ -189,7 +197,30 @@ async function GetTAXapi(){
 
 
  
+//Default Shipping Get
 
+async function DefaultShipping(){
+  await shippingTickGet().then(r=>r.map(s=>{
+    if(s.isSelected){
+      const shippingData={
+        firstname:s.firstname,
+        lastname:s.lastname,
+        street:s.street,
+        houseno:s.houseno,
+        city:s.city,
+        state:s.state,
+        zipcode:s.zipcode,
+        country:s.country,
+        number:s.number
+    }
+
+    checkoutDetails['shippingData']=shippingData;
+    }
+  }
+  ))
+}
+
+//end shipping address get
 
 
 
@@ -213,7 +244,7 @@ async function GetTAXapi(){
    }
    //filter
   return (
-    <Cart.Provider value={{cartEnd,setCartEnd,taxRate,setTaxRate,offer,setOffer,availablitySelect,setAvailablity,latestSelect,setLatestSelect,defaultShiping,setDefaultShipping,orders,setOrder,paymentflow,setPaymentflow,shippingflow,setShipingflow,checkoutDetails,setCheckoutDetails,userdata,setUserData,to,setTo,currency,setCurrency,sizeSelected,setSizeSelected,con,setcon,htl,sethtl,lth,setLth,tempsprice,setTempsprice,filterui,setfilterUi,maxValue,setmaxValue,minValue,setminValue,allCategoryAvai,setAllCategoryAvai,allColorAvai,setAllColorAvai,selectedColor,setSelectedColor,tempallpro,settemAllpro, sortui,setSortUi,product,cart,setCart,setProduct,setcheck,checked1,checked2, image,setImage,like,setLike,setCondition,condition,openLikedrawer, setLikeDrawer,openCartdrawer, setCartDrawer,CategoryProduct,setCategoryProduct}}>
+    <Cart.Provider value={{firstTimeLoadFunctions,showEditable,setShowEditable,shipEditcond,setshipEditCond,cartEnd,setCartEnd,taxRate,setTaxRate,offer,setOffer,availablitySelect,setAvailablity,latestSelect,setLatestSelect,defaultShiping,setDefaultShipping,orders,setOrder,paymentflow,setPaymentflow,shippingflow,setShipingflow,checkoutDetails,setCheckoutDetails,userdata,setUserData,to,setTo,currency,setCurrency,sizeSelected,setSizeSelected,con,setcon,htl,sethtl,lth,setLth,tempsprice,setTempsprice,filterui,setfilterUi,maxValue,setmaxValue,minValue,setminValue,allCategoryAvai,setAllCategoryAvai,allColorAvai,setAllColorAvai,selectedColor,setSelectedColor,tempallpro,settemAllpro, sortui,setSortUi,product,cart,setCart,setProduct,setcheck,checked1,checked2, image,setImage,like,setLike,setCondition,condition,openLikedrawer, setLikeDrawer,openCartdrawer, setCartDrawer,CategoryProduct,setCategoryProduct}}>
       {children}
     </Cart.Provider>
   );

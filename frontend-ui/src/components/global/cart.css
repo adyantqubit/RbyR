@@ -77,6 +77,23 @@
 
 }
 
+
+.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root {
+    color:white !important;
+}
+
+.css-ahj2mt-MuiTypography-root{
+color:white
+}
+
+
+.ant-notification-center {
+    left: 50%;
+    bottom: 50% !important;
+    margin-right: 30%;
+    transform: translate(-50%, -50%);
+  }
+
 .ant-modal-content{
     background-color: #8c8c8c;
     color:white

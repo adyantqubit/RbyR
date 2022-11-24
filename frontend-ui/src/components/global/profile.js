@@ -12,19 +12,36 @@ import { unSetUserToken } from '../../Redux-manage/features/authSlice'
 import { removeToken } from '../../Redux-manage/services/localStorageService'
 import { useGetLoggedUserQuery } from '../../Redux-manage/services/userAuthapi'
 import { CartState } from '../../context'
+import { notification } from 'antd'
 
+import { Button, message } from 'antd';
 
 
 export const Profile = () => {
+
+  const [messageApi, contextHolder] = message.useMessage();
+
     const dispatch= useDispatch();
-    const{userdata,setUserData}=CartState()
+    const{userdata,setUserData,firstTimeLoadFunctions}=CartState()
     const nav=useNavigate()
     const handleLogout = () => {
         dispatch(unSetUserInfo({email:"",name:""}))
         dispatch(unSetUserToken({access_token:null}))
         removeToken()
         localStorage.clear()
+        notification.error({
+          message: <div style={{fontSize:"18px",color:"black"}}>Successfully Logged In. </div>,
+          description:
+          `Your Are Logged In`,
+          className:"custom-class",
+          style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"24vh"},
+          duration:5
+          ,key:1
+          });
+
         nav('/')
+        // firstTimeLoadFunctions()
+
         window.location.reload(false)
 
       }
@@ -70,9 +87,19 @@ export const Profile = () => {
          <Link to="/profile" className={style.a}>MyOrders</Link>
         </li>:null}
 
-        {localStorage.getItem('access_token')?<li className={style.l} style={{marginLeft:"-30px"}}>
-        <Link to="/changePass" className={style.a}>Change Password</Link>
+        {localStorage.getItem('access_token')? <li className={style.l} style={{marginLeft:"-30px"}}>
+         <Link to="/shippindprofile" className={style.a}>Shipping Details</Link>
         </li>:null}
+
+        {localStorage.getItem('access_token')? <li className={style.l} style={{marginLeft:"-30px"}}>
+         <Link to="/userprofile" className={style.a}>My Profile</Link>
+        </li>:null}
+
+        {/* {localStorage.getItem('access_token')?<li className={style.l} style={{marginLeft:"-30px"}}>
+        <Link to="/changePass" className={style.a}>Change Password</Link>
+        </li>:null} */}
+
+        {/* <div className={style.column1text}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY SHIPPING DETAILS</Link></div> */}
 
         {localStorage.getItem('access_token')? <li className={style.l} style={{marginLeft:"-30px"}}>
          <Link to="/" className={style.a} onClick={handleLogout}>Logout</Link>

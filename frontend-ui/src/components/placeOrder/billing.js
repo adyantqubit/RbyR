@@ -65,7 +65,6 @@ const Billing = () => {
         // if(cart&&cart.length==0)
         //   nav("/")
 
-        deleteFromCart()  
       },[]);
 
       async function qrDetails(){
@@ -86,10 +85,7 @@ const Billing = () => {
         })
        }
 
-      async function deleteFromCart(){ 
-        var access=localStorage.getItem('access_token')
-        await cartDeleteApi({access}).then(r=>setCart([]))
-      }     
+    
 
   return (
     < >
@@ -174,8 +170,8 @@ const Billing = () => {
                      <div className={styles.billingheader2} style={{marginTop:"5px",background:"white"}}>
                      <span className={styles.protitle} > {c.title} ({c.size})</span>
                      <span className={styles.protitle2} > {c.quantity}</span>
-                     <span className={styles.protitle2} > {c.price}</span>
-                     <span className={styles.protitle2} style={{borderRight:"1px solid white"}}> {c.price*c.quantity}</span>
+                     <span className={styles.protitle2} >{currency.sign} {(c.price*currency.value).toFixed(2)}</span>
+                     <span className={styles.protitle2} style={{borderRight:"1px solid white"}}> {currency.sign}{(c.price*c.quantity*currency.value).toFixed(2)}</span>
                   </div>
                     )}
                
@@ -186,7 +182,7 @@ const Billing = () => {
 
                 <div className={styles.billingtexts}>
                    <span className={`${styles.columnitem1head}`}  >Discount -</span>
-                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black"}} >{currency.sign} {checkoutDetails.CouponDiscount?checkoutDetails.CouponDiscount:(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).coupon *currency.value).toFixed(2)}</span>
+                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black"}} >- {currency.sign} {checkoutDetails.CouponDiscount?checkoutDetails.CouponDiscount:(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).coupon *currency.value).toFixed(2)}</span>
                 </div>
                 <div className={styles.billingtexts}>
                    <span className={`${styles.columnitem1head}`}  >Shipping charges -</span>

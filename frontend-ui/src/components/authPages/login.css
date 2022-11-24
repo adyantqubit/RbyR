@@ -13,7 +13,7 @@
 .mai{
 	margin-top: 30px;
 	width: 400px;
-	height: 70vh;
+	height: 550px;
 	background: red;
 	overflow: hidden;
 	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
@@ -25,7 +25,11 @@
 	position: relative;
 	width:100%;
 	height: 100%;
-    padding: 0;
+    padding:  0;
+	display: flex;
+	flex-direction: column;
+	justify-content:center;
+	padding-bottom: 8vh;
 }
 
 #ch{
@@ -46,7 +50,8 @@
 
 .inpu{
 	width: 70%;
-	height: 6vh;
+	height: 40px;
+	
 	background: #e0dede;
 	justify-content: center;
 	display: flex;
@@ -59,8 +64,10 @@
 }
 
 .inpu2{
-	width: 90%;
-	height: 6vh;
+	width: 70%;
+	padding-left:10px;
+	height: 35px;
+	margin-left: 15%;
 	background: #e0dede;
 	justify-content: center;
 	display: flex;
@@ -74,12 +81,12 @@
 
 .inpu3{
 	width: 70%;
-	height: 6vh;
+	height: 30px;
 	background: #181717;
 	justify-content: space-between;
 	display: flex;
 	
-	margin: 20px auto;
+	margin-left:15%;
 	
 	border: none;
 	outline: none;
@@ -88,7 +95,7 @@
 
 .inpu4{
 	width: 49%;
-	height: 6vh;
+	height: 30px;
 	background: #e0dede;
 	justify-content: center;
 	display: flex;
@@ -100,11 +107,12 @@
 
 .PhoneInput{
 	width:90%;
+
 }
 
 .PhoneInputInput{
 	width: 90%;
-	height: 6vh;
+	height: 30px;
 	background: #e0dede;
 	justify-content: center;
 	display: flex;
@@ -142,11 +150,11 @@
 }
 .logi{
 	width: 80%;
-	height: 500px;
+	height: 102%;
 	margin:0 auto;
 	background: #eee;
 	border-radius: 60% / 10%;
-	transform: translateY(-62vh);
+	transform: translateY(-90%);
 	transition: .8s ease-in-out;
 }
 .logi .labe{
@@ -161,12 +169,28 @@
 		top:10vh
     }
 
+	.mai{
+	
+		height: 82vh;
+
+	}
+
+	/* .logi{
+		width: 80%;
+		height: 100%;
+		margin:0 auto;
+		background: #eee;
+		border-radius: 60% / 10%;
+		transform: translateY(-50vh);
+		transition: .8s ease-in-out;
+	} */
+
 }
 
 
 
 #ch:checked ~ .logi{
-	transform: translateY(-10vh);
+	transform: translateY(-9vh);
 }
 
 #ch:checked ~ .logi .labe{

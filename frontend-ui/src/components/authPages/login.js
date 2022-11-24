@@ -7,23 +7,28 @@ import { useDispatch } from 'react-redux';
 import React,{useState,useEffect} from 'react'
 import Navbar from '../global/NavHeader'
 import './login.css'
-import { Alert } from 'antd';
+import { Alert } from '@mui/material';
 import Popup from 'reactjs-popup';
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
-
+import {AiFillEyeInvisible,AiFillEye} from "react-icons/ai"
 
 import { CartState } from '../../context';
+import { notification } from 'antd';
 
 const Login = () => {
-	const {setCart,setLike}=CartState()
+	const {setCart,setLike,firstTimeLoadFunctions}=CartState()
 	const [error, setError] = useState({})
 	let{access_token}=getToken()
 	const dispatch=useDispatch()
 	const navigate = useNavigate(); 
 	const [value, setValue] = useState()
-
-
+	const [showNewPass,setNewPass]=useState(false)
+	const [visiblepassReg,setVisiblePassreg]=useState(false)
+	const [showNewPass2,setNewPass2]=useState(false)
+	const [visiblepassReg2,setVisiblePassreg2]=useState(false)
+	const [showNewPass3,setNewPass3]=useState(false)
+	const [visiblepassReg3,setVisiblePassreg3]=useState(false)
 
 	//For login User
 	const[loginUser,{isLoading}]=useLoginUserMutation()
@@ -38,6 +43,8 @@ const Login = () => {
 		}
 	
 		const res=await loginUser(actualData)
+
+		console.log(res)
 		if(res.error){
 		  setError(res.error.data.errors)
 		}
@@ -45,12 +52,26 @@ const Login = () => {
 		  storeToken(res.data.token)
 		  let {access_token}=getToken();
 		  dispatch(setUserToken({access_token:access_token}))
-		  window.location.reload(); 
+		//   window.location.reload(); 
 		  setCart([])
 		  setLike([])
 		  if(JSON.parse(localStorage.getItem("cart")))
 		  setCart([...JSON.parse(localStorage.getItem("cart"))])
+		  notification.error({
+			message: <div style={{fontSize:"18px",color:"black"}}>Successfully Logged In. </div>,
+			description:
+			`Your Are Logged In`,
+			className:"custom-class",
+			style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"5vh"},
+			duration:5,
+			key:1
+		  });
+
+		  firstTimeLoadFunctions()
 		  navigate('/')
+		
+		  
+		  
 
 		}
 	  }
@@ -69,7 +90,7 @@ const Login = () => {
 		const data = new FormData(e.currentTarget);
 		const actualData = {
 		  name: data.get('txt'),
-		  email: data.get('email'),
+		  email: data.get('email').toLowerCase(),
 		  contact_number:value,
 		  password: data.get('pswd'),
 		  password2: data.get('pswd2'),
@@ -77,6 +98,8 @@ const Login = () => {
 		}
 	
 		const res=await registerUser(actualData)
+
+		console.log(res)
 		if(res.error){
 		  setServerError(res.error.data.errors)
 		}
@@ -123,62 +146,100 @@ const Login = () => {
 					<label class="labe" htmlFor="ch" aria-hidden="true">Sign up</label>
 					{/* {server_error.non_field_errors?<Alert severity='error'>{server_error.non_field_errors[0]}</Alert>:" "} */}
 
-					<span class="inpu"><input  class="inpu2" type="text" name="txt" placeholder="User name" required/>
-					<Popup trigger={<button style={{border:"white",background:"#e0dede"}} >{server_error.name?<i class="fa-solid fa-circle-exclamation" style={{color:"red",marginTop:"8px"}}/>:null}</button>} 
+                    <div style={{fontSize:"14px",color:"white",marginLeft:"15%"}}>Name</div>
+					<input  class="inpu2" type="text" name="txt" placeholder="User name" required/>
+
+					{/* <Popup trigger={<button style={{border:"white",background:"#e0dede"}} >{server_error.name?<i class="fa-solid fa-circle-exclamation" style={{color:"red",marginTop:"8px"}}/>:null}</button>} 
                     position="bottom center">
-                    {server_error.name?<Typography style={{color:"red",fontSize:"14px"}}>{server_error.name[0]}</Typography>:" "}
 					
 					</Popup>
-					</span>
+					</span> */}
+					<div style={{height:"20px"}}>
+					{server_error.name?<Typography style={{color:"red",fontSize:"14px",marginBottom:"10px",marginLeft:"15%"}}>{server_error.name[0]}</Typography>:" "}
 
+					</div>
 					
+                    <div style={{fontSize:"14px",color:"white",marginLeft:"15%"}}>Email</div>
+					<input class="inpu2"type="email" name="email" placeholder="Email" required/>
+					<div style={{height:"20px"}}>
+                    {server_error.email?<Typography style={{color:"red",fontSize:"14px",marginBottom:"10px",marginLeft:"15%"}}>{server_error.email[0]}</Typography>:" "}
 
-					<span class="inpu"><input class="inpu2"type="email" name="email" placeholder="Email" required/>
+					</div>
+
+					{/* {server_error.email?
 					<Popup trigger={<button style={{border:"white",background:"#e0dede"}} >{server_error.email?<i class="fa-solid fa-circle-exclamation" style={{color:"red",marginTop:"8px"}}/>:null}</button>} 
-                    position="bottom center">
+                     defaultOpen={true}
+					position="top right">
 					{server_error.email?<Typography style={{color:"red",fontSize:"14px"}}>{server_error.email[0]}</Typography>:" "}
-					</Popup>
-					</span>
+					</Popup>:null} */}
+					{/* </span> */}
 
-					<span class="inpu">
+					{/* <span class="inpu"> */}
+                    <div style={{fontSize:"14px",color:"white",marginLeft:"15%"}}>Phone Number</div>
 					<PhoneInput
+					international
 					placeholder="phone number"
 					value={value}
 					defaultCountry="IN"
-					onChange={setValue}   
+					style={{width:"70%",marginLeft:"15%"}}
+					onChange={e=>{setValue(e)}} 
 					limitMaxLength={10}
 					/>
-					{/* <input class="inpu2" type="tel" name="telphone" onKeyPress={validates} placeholder="888 888 8888" maxlength="10"  title="Ten digits code" required/>  */}
-					<Popup trigger={<button style={{border:"white",background:"#e0dede"}} >{server_error.contact_number?<i class="fa-solid fa-circle-exclamation" style={{color:"red",marginTop:"8px"}}/>:null}</button>} 
-                    position="bottom center">
-					{server_error.contact_number?<Typography style={{color:"red",fontSize:"14px"}}>{server_error.contact_number[0]}</Typography>:" "}
-					</Popup>
-					</span>
+					<div style={{minHeight:"20px"}}>
+					{server_error.contact_number?<Typography style={{color:"red",fontSize:"14px",marginLeft:"15%",width:"70%"}}>{server_error.contact_number[0]}</Typography>:" "}
+					</div>
 
+					{/* <input class="inpu2" type="tel" name="telphone" onKeyPress={validates} placeholder="888 888 8888" maxlength="10"  title="Ten digits code" required/> 
+					{server_error.contact_number?
+					<Popup trigger={<button style={{border:"white",background:"#e0dede"}} >{server_error.contact_number?<i class="fa-solid fa-circle-exclamation" style={{color:"red",marginTop:"8px"}}/>:null}</button>} 
+                    defaultOpen={true}
+					position="bottom right">
+					{server_error.contact_number?<Typography style={{color:"red",fontSize:"14px"}}>{server_error.contact_number[0]}</Typography>:" "}
+					</Popup>:null} */}
+					{/* </span> */}
+                    <div style={{fontSize:"14px",color:"white",marginLeft:"15%"}}>Password</div>
 					<span class="inpu3" style={{marginBottom:"0"}}>
-						<span class="inpu4"><input class="inpu4" type="password" name="pswd" placeholder="Password" required style={{width:"80%"}}/>
-							<Popup trigger={<button style={{border:"white",background:"#e0dede"}} >{server_error.name?<i class="fa-solid fa-circle-exclamation" style={{color:"red",marginTop:"8px"}}/>:null}</button>} 
-							position="bottom center">
+						<span class="inpu4">
+							<input class="inpu4" type={showNewPass2?"text":"password"} name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+						 required style={{width:"80%"}} 
+						 onChange={e=>{if(e.target.value.length>0)setVisiblePassreg2(true); else setVisiblePassreg2(false)}}/>
+						{/* {server_error.password?<Popup trigger={<button style={{border:"white",background:"#e0dede"}} >{server_error.password?<i class="fa-solid fa-circle-exclamation" style={{color:"red",marginTop:"8px"}}/>:null}</button>} 
+							defaultOpen={true}
+							position="top center">
 							{server_error.password?<Typography style={{color:"red",fontSize:"14px"}}>{server_error.password[0]}</Typography>:" "}
-							</Popup>
+							</Popup>:null} */}
+			            {visiblepassReg2?showNewPass2?<AiFillEye style={{marginTop:"5px"}} onClick={e=>setNewPass2(false)}/>:<AiFillEyeInvisible style={{marginTop:"5px"}} onClick={e=>setNewPass2(true)}/>:null}
 						</span>
 						<span class="inpu4">
-							<input class="inpu4" type="password" name="pswd2" placeholder="Confim Password"  required style={{width:"80%"}}/>
-							<Popup trigger={<button style={{border:"white",background:"#e0dede"}} >{server_error.name?<i class="fa-solid fa-circle-exclamation" style={{color:"red",marginTop:"8px"}}/>:null}</button>} 
-							position="bottom center">
+							<input class="inpu4" type={showNewPass?"text":"password"} name="pswd2" placeholder="Confim Password"   required style={{width:"80%"}} onChange={e=>{if(e.target.value.length>0)setVisiblePassreg(true); else setVisiblePassreg(false)}}/>
+							{/* {server_error.password2?<Popup trigger={<button style={{border:"white",background:"#e0dede"}} >{server_error.name?<i class="fa-solid fa-circle-exclamation" style={{color:"red",marginTop:"8px"}}/>:null}</button>} 
+							defaultOpen={true}
+							position="top center">
 							{server_error.password2?<Typography style={{color:"red",fontSize:"14px"}}>{server_error.password2[0]}</Typography>:" "}
-							</Popup>
+							</Popup>:null} */}
+			            {visiblepassReg?showNewPass?<AiFillEye style={{marginTop:"5px"}} onClick={e=>setNewPass(false)}/>:<AiFillEyeInvisible style={{marginTop:"5px"}} onClick={e=>setNewPass(true)}/>:null}
+
 						</span>
+
 					</span>
+					
+					{server_error.password?<Typography style={{color:"red",fontSize:"14px",marginLeft:"15%"}}>{server_error.password[0]}</Typography>:" "}
+
+					{server_error.tc?<span style={{color:"red",fontSize:"14px",marginLeft:"15%"}}>Check term and condition</span>:" "}
+
+
 					{/* {server_error.password2?<Typography style={{color:"red",paddingLeft:10,fontSize:10,position:"absolute",top:"310px",left:"150px",right:"0",fontSize:"0.8rem"}}>{server_error.password2[0]}</Typography>:" "} */}
 
 					<FormControlLabel style={{paddingLeft:"70px",color:"white"}} control={<Checkbox value={true} color="primary" name="tc" id="tc" />} label={<span style={{ fontSize: '0.8rem' }}>
+						{/* {server_error.tc?
 						<Popup trigger={<button style={{border:"white",background:"rgba(0,0,0,0)",marginRight:"10px"}} >{server_error.name?<i class="fa-solid fa-circle-exclamation" style={{color:"red",marginTop:"8px"}}/>:null}</button>} 
-							position="bottom center">
-							{server_error.tc?<span style={{color:"red",fontSize:"0.8rem"}}>check term and condition</span>:" "}
-						</Popup>
-						i agree to term and condition.   
+						defaultOpen={true}
+						position="top center">
+						{server_error.tc?<span style={{color:"red",fontSize:"0.8rem"}}>check term and condition</span>:" "}
+					</Popup>:null} */}
+						I agree to term and condition.   
 					</span>} />
+
 					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button style={{paddingTop:"0",marginTop:"0"}} class="butto" type='submit'>Sign up</button>}
 
 					
@@ -187,15 +248,19 @@ const Login = () => {
 
 			<div class="logi">
 				<form onSubmit={handleSubmit}>
+
 					<label class="labe" htmlFor="ch" aria-hidden="true">Login</label>
-					{error!=null&&error.none_field_errors?<Alert severity='error' style={{margin:"0 40px"}}>{error.none_field_errors[0]}</Alert>:" "}
+					{error.none_field_errors? <Alert severity="error"  style={{margin:"0 45px"}}>{error.none_field_errors[0]}</Alert>:" "}
 
 					<input class="inpu"type="email" style={{marginBottom:"0"}} name="email" placeholder="Email" required=""/>
-					{error!=null&&error.email?<Typography style={{color:"red",paddingLeft:"70px",fontSize:10}}>{error.email[0]}</Typography>:" "}
+					{error.email?<Typography style={{color:"red",paddingLeft:"50px",fontSize:"12px",}}>{error.email[0]}</Typography>:" "}
 
-					<input class="inpu"type="password" style={{marginBottom:"0"}} name="pswd" placeholder="Password" required=""/>
-					{error!=null&&error.password?<Typography style={{color:"red",paddingLeft:"70px",fontSize:10}}>{error.password[0]}</Typography>:" "}
-					<NavLink to='/sendemail' style={{marginLeft:"50%",fontSize:"1rem"}} >Forgot Password ?</NavLink>
+                    <span class="inpu3" style={{margin:"20px 0",marginLeft:"15%",background:"#e0dede"}}>
+					<input class="inpu4" type={showNewPass3?"text":"password"} style={{width:"90%"}} name="pswd" placeholder="Password" required="" onChange={e=>{if(e.target.value.length>0)setVisiblePassreg3(true); else setVisiblePassreg3(false)}}/>
+					{visiblepassReg3?showNewPass3?<AiFillEye style={{marginTop:"5px"}} onClick={e=>setNewPass3(false)}/>:<AiFillEyeInvisible style={{marginTop:"5px"}} onClick={e=>setNewPass3(true)}/>:null}
+					</span>
+					{error.password?<Typography style={{color:"red",paddingLeft:"50px",fontSize:"12px"}}>{error.password[0]}</Typography>:" "}
+					<NavLink to='/sendemail' style={{marginLeft:"50%",fontSize:"1em",color:"blue"}} >Forgot Password ?</NavLink>
 
 					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button class="butto" type='submit'>Login</button>}
 					<label class="labe" style={{}} htmlFor="ch" aria-hidden="true">Register</label>

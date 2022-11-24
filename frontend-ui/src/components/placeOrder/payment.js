@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { invoiceApi } from '../../api/service';
+import { cartDeleteApi, invoiceApi } from '../../api/service';
 import { CartState } from '../../context';
 import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing';
 import { getToken } from '../../Redux-manage/services/localStorageService';
 import styles from './order.module.css'
 const Payment = () => {
-    const{userdata,checkoutDetails,setCheckoutDetails,cart,offer,setOffer,taxRate,setTaxRate}=CartState()
+    const{userdata,checkoutDetails,setCheckoutDetails,cart,setCart,offer,setOffer,taxRate,setTaxRate}=CartState()
     const nav=useNavigate()
     var[tick,setTick]=useState(false)
     var[tickop,setTickop]=useState(false)
@@ -56,6 +56,7 @@ const Payment = () => {
             checkoutDetails['orderno']=r.order_no
             })
            sessionStorage.setItem('checkoutDetails',JSON.stringify(checkoutDetails))
+           deleteFromCart()  
            nav("/billing")
         }
         else{
@@ -64,6 +65,10 @@ const Payment = () => {
         }
     }
 
+    async function deleteFromCart(){ 
+      var access=localStorage.getItem('access_token')
+      await cartDeleteApi({access}).then(r=>setCart([]))
+    }  
   return (
     <div className={styles.columnitem3} style={{marginTop:"20px"}}>
           <div className={styles.columnitem1head}>3. PAYMENT</div>

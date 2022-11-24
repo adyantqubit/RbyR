@@ -51,6 +51,7 @@ urlpatterns = [
     path('important_rule_get/',ImportantTextGet.as_view()),
     path('cart_recheck/',CartRecheck.as_view()),
     path('shipping_tick/',ShippingTick.as_view()),
+    path('User_update/',updateUser.as_view()),
 
 
     #Added by Ashish on 06-11-2022

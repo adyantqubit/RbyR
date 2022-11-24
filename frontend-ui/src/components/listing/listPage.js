@@ -124,7 +124,7 @@ return (
   <div className={style.item}>
     <img src={config.apiBaseURL+p.img_main} onClick={e=>openDetail(p.id)}></img>
     <div className={style.title} ><span>{p.title}</span></div>  
-    <div className={style.price} >{currency.sign} {p.price*currency.value}</div>
+    <div className={style.price} >{currency.sign} {(p.price*currency.value).toFixed(2)}</div>
   </div>
 
 )):""}
