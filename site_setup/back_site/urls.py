@@ -149,4 +149,9 @@ urlpatterns = [
     path('save-custom-tailored-details/',CustomTailoredFormView.as_view()),
     #End of code addition
 
+    #Added by Ashish Dewangan on 24-11-2022
+    #Reason - To send whatsapp contact number to front end
+    path('whatsapp-contact-number/',WhatsappContactView.as_view()),
+    #End of code addition
+
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)   

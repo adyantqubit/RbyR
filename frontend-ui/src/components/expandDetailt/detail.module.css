@@ -21,7 +21,7 @@
     align-items: center;
     flex-direction: column;
     margin-bottom: 150px;
-    background-color: #f7f6f6;
+    background-color: #fcfcfc;
     overflow: hidden;
   }
   .container01 {
@@ -82,7 +82,7 @@
     line-height: 24px;
     width: 60%;
     font-family: 'Rawson-Regular' !important;
-    font-weight: 500;
+    font-weight: 600;
   }
   .text01 {
     margin-top: 2.5%;
@@ -90,15 +90,16 @@
     line-height: 26px;
     letter-spacing: 2.5px;
     font-family: 'Rawson-Regular';
-    font-weight: 500;
+    font-weight: 600;
   }
   .container05 {
     flex: 0 0 auto;
     width: 70%;
     height: auto;
     display: flex;
-    margin-top: 3%;
+   
     align-items: flex-start;
+    justify-content: space-between;
   }
   /* .sizeSlection{
     width:80%;
@@ -131,23 +132,11 @@
     font-size: 1em;
     font-family: Courier New;
     margin-left: 20%;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-family:  'Rawson-Regular';
   }
-  .button {
-    color: #ffffff;
-    width: 200px;
-    height:50px;
-    font-size: 1em;
-    align-self: flex-start;
-    font-style: normal;
-    margin-top: 3%;
-    text-align: center;
-    font-family: Fira Sans;
-    font-weight: 400;
-    border-color: #ffffff;
-    border-width: 2px;
-    border-radius: 0px;
-    background-color: #000000;
-  }
+
   .text03 {
     margin-top: 2.5%;
     font-size: 16px;
@@ -156,7 +145,7 @@
     margin-bottom: 5px;
     color: #323232;
     font-family: 'Rawson-Regular';
-    font-weight: 500;
+    font-weight: 600;
     margin-top: 3%;
   }
   .text04 {
@@ -177,26 +166,22 @@
     display: flex;
     align-items: flex-start;
   }
-  .text05 {
+  .textLabel {
+   
     font-size: 0.9em;
     font-style: normal;
-    margin-top: 1%;
     font-family: 'Rawson-Regular';
-    font-weight: 100;
+    font-weight: 600;
+    margin-right: 5px;
   }
-  .text06 {
+
+  .textDescription {
+   
     font-size: 0.9em;
-    font-style: normal;
-    margin-top: 1%;
+    letter-spacing: 1px;
+    color: #5a5a5a;
     font-family: 'Rawson-Regular';
-    font-weight: 100;
-  }
-  .text07 {
-    font-size: 0.9em;
-    font-style: normal;
-    margin-top: 1%;
-    font-family: 'Rawson-Regular';
-    font-weight: 100;
+    font-weight: 500;
   }
   .container07 {
     flex: 0 0 auto;
@@ -206,25 +191,42 @@
     align-items: flex-start;
   }
   .text08 {
-    font-size: 0.8em;
+    font-size: 0.9em;
     font-style: normal;
     margin-top: 1%;
     font-family:'Rawson-Regular';
-    font-weight: 100;
+    font-weight: 600;
+    margin-right: 5px;
   }
   .text09 {
-    font-size: 0.8em;
+    font-size: 0.9em;
     font-style: normal;
     margin-top: 1%;
     font-family: 'Rawson-Regular';
-    font-weight: 100;
+    font-weight: 600;
+    margin-right: 5px;
+  }
+  .customButtonContainer{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    justify-content:space-between;
+  }
+  .iconButtonsContainer{
+    display: flex;
+    flex-direction: row;
+    
+    height:45px;
+    align-items: center;
+    margin-top: 3%;
   }
   .text10 {
-    font-size: 0.8em;
+    font-size: 0.9em;
     font-style: normal;
     margin-top: 1%;
     font-family: 'Rawson-Regular';
     font-weight: 100;
+    margin-right: 5px;
   }
   .container08 {
     flex: 0 0 auto;
@@ -234,25 +236,30 @@
     align-items: flex-start;
   }
   .text11 {
-    font-size: 0.8em;
+    
+    font-size: 0.9em;
     font-style: normal;
     margin-top: 1%;
-    font-family: 'Rawson-Regular';
-    font-weight: 100;
+    font-family:'Rawson-Regular';
+    font-weight: 600;
+    margin-right: 5px;
   }
   .text12 {
-    font-size: 0.8em;
+    font-size: 0.9em;
     font-style: normal;
     margin-top: 1%;
     font-family: 'Rawson-Regular';
     font-weight: 100;
+    margin-right: 5px;
   }
   .text13 {
-    font-size: 0.8em;
+    font-size: 0.9em;
     font-style: normal;
     margin-top: 1%;
     font-family: 'Rawson-Regular';
     font-weight: 100;
+    margin-right: 5px;
+    
   }
   .text14 {
     font-size: 1.4em;
@@ -352,21 +359,40 @@
     font-family: 'Rawson-Regular';
     font-weight: 100;
   }
-  .text25 {
-    margin-top:15px;
+  .subtitle {
+    margin-top:20px;
+    /* margin-right: 10px; */
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 1.4px;
     font-family: 'Rawson-Regular';
-    font-weight: 500;
+    font-weight: 600;
   }
   .text26 {
     font-size: 14px;
     line-height: 22px;
-    letter-spacing: 1.2px;
+    letter-spacing: 1px;
     font-family: 'Rawson-Regular';
     font-weight: 500;
     margin: 0;
+  }
+  .customText{
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1px;
+    font-family: 'Rawson-Regular';
+    font-weight: 500;
+    margin: 0;
+ 
+  }
+  .textLink{
+    cursor: pointer;
+    border-bottom: 1px solid grey;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    color: #5a5a5a;
+    font-family: 'Rawson-Regular';
+    font-weight: 500;
   }
   .text27 {
     margin-top: 20px;
@@ -375,26 +401,66 @@
     letter-spacing: 1.2px;
     font-family: 'Rawson-Regular';
     font-weight: 500;
+    margin-right: 5px;
 
   }
-  .container12 {
+  .chatBoxContainer {
     flex: 0 0 auto;
     width: 100%;
+    margin-top: 20px;
     height: auto;
     display: flex;
     align-items: flex-start;
   }
-  .textinput {
+  .chatInputBox {
+    width: 45%;
+    height: 45px;
+    border: 1px solid rgb(177, 175, 175);
+    border-right: 0px solid rgb(177, 175, 175);
+    background-color: #fcfcfc;
+    padding:10px;
+  }
+  .chatInputBox:focus{
+    outline: none;
+  }
+  .button {
     width: 200px;
-    height: 50px;
-  }
-  .contact-us {
+    height:45px;
+    margin-top: 3%;
+    align-self: flex-start;
+    font-style: normal;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
     color: rgb(255, 254, 254);
-    width: 25%;
-    height: 50px;
-    align-self: center;
-    background-color: rgb(16, 16, 16);
+    background-color: rgb(58, 57, 57);
   }
+  .button:hover{
+    border:2px solid black;
+    background-color: #fafafa;
+    color: black;
+    transition: 500ms;
+  }
+  .chatButton {
+    width: 30%;
+    height: 45px;
+    font-style: normal;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    align-self: center;
+    color: rgb(255, 254, 254);
+    background-color: rgb(58, 57, 57);
+  }
+  
+  .chatButton:hover{
+    border:2px solid black;
+    background-color: #fafafa;
+    color: black;
+    transition: 500ms;
+  }
+
   .container13 {
     flex: 0 0 auto;
     width: 100%;
@@ -494,14 +560,14 @@
         padding-bottom: 8%;
       }
       .container03 {
-        width: 40%;
+        width: 50%;
         height: auto;
         
       }
 
   }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 768px) {
   .modalStyle{
     width: 90vw !important;
     /* height: 90vh !important; */
@@ -518,17 +584,13 @@
 
     .container02 {
         flex-direction: column;
-
+        width:100vw;
     }
 
     .image {
         height: auto;
-        width:100%;
-        padding-bottom: 2%;
-    }
-
-    .container03 {
-        margin-left:50px
+        width:100vw;
+        padding: 0;
     }
 
     .text {
@@ -538,6 +600,45 @@
       width: 70vh;
       font-family: 'Rawson-Regular' !important;
       font-weight: 500;
+    }
+    .container03{
+      width: 96vw;
+      margin-left: 2vw;
+      margin-right: 2vw;
+    }
+    .container04{
+      width: 100%;
+    }
+    .heading{
+      width: 100%;
+    }
+    .container05{
+      border-top: 2px solid #c4c0c0;
+      border-bottom: 2px solid #c4c0c0;
+      width: 100%;
+      align-items: center;
+      margin-top: 15px;
+    }
+    .chatInputBox{
+      width:60%;
+    }
+    .chatButton{
+      width: 40%;
+      border-color: rgb(58, 57, 57);
+    }
+    .customButtonContainer{
+      width: 100%;
+    }
+    .iconButtonsContainer{
+      border: 2px solid #323232;
+      width: 49%;
+      justify-content: center;
+    }
+    .button{
+      width: 49%;
+    }
+    .customSubtitle{
+      margin-top: 0;
     }
 }
 

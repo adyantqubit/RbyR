@@ -114,6 +114,11 @@ admin.site.register(WomenClothSizeChart)
 #Jira issue no - RBYR-193
 admin.site.register(CustomTailoredForm) 
 #End of code addition
+
+#Added by Ashish Dewangan on 24-11-2022
+#Reason - To send whatsapp contact number to front end
+admin.site.register(WhatsappContact) 
+#End of code addition
  
 
 class UserModelAdmin(BaseUserAdmin):

@@ -572,7 +572,6 @@ function CustomTailoredForm() {
               style={{
                 marginTop: "3vh",
                 marginBottom: "3vh",
-                
                 height: "5vh",
                 alignSelf: "center",
               }}

@@ -26,12 +26,16 @@ import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
 import InnerImageZoom from "react-inner-image-zoom";
 import Slider2 from "./slider2";
 import Shake from "react-reveal/Shake";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { animateScroll as scroll } from "react-scroll";
 import ScrollButton from "./top";
 import { increamentCheck } from "../../api/orderApis";
-import { getWomenSizeChartDetail } from "../../api/service";
+import {
+  getWomenSizeChartDetail,
+  getWhatsappContactDetail,
+} from "../../api/service";
 import CustomTailoredForm from "./CustomTailoredForm";
 import WomenSizeChart from "./WomenSizeChart";
+import { Link } from "react-router-dom";
 
 const sty = StyleSheet.create({
   bounce: {
@@ -62,12 +66,18 @@ const Details = (props) => {
 
   // Added by Ashish Dewangan on 24-11-2022
   // Reason - To display custom tailored form
-  const [isCustomTailoredVisible,setIsCustomTailoredVisible] = useState(false);
+  const [isCustomTailoredVisible, setIsCustomTailoredVisible] = useState(false);
+  // End of code addition
+
+  // Added by Ashish Dewangan on 24-11-2022
+  // Reason - To display whatsapp contact number
+  const [whatsappContactNumber, setWhatsappContactNumber] = useState(false);
   // End of code addition
 
   useEffect(() => {
     gettingDetail();
     getWomenSizeChart();
+    getWhatsappContactNumber();
   }, []);
 
   if (con == false) {
@@ -95,6 +105,16 @@ const Details = (props) => {
       setDetails({ ...r });
     });
   }
+
+  // Added by Ashish Dewangan on 24-11-2022
+  // Reason - To display whatsapp contact number
+  const getWhatsappContactNumber = async () => {
+    const whatsappContactNumberData = await getWhatsappContactDetail();
+    if (whatsappContactNumberData) {
+      setWhatsappContactNumber(whatsappContactNumberData[0].whatsappNmber);
+    }
+  };
+  // End of code modification
 
   // Added by Ashish Dewangan on 23-11-2022
   // Reason - To display size chart image
@@ -263,9 +283,26 @@ const Details = (props) => {
         }
       }
     });
-
     return v;
   }
+
+  // Added by Ashish on 24-11-2022
+  // Reason - To start whatsapp chat
+  function startChat() {
+    var chatBox = document.getElementById("chatBox");
+    if (chatBox.value) {
+      window.location =
+        "https://wa.me/" +
+        whatsappContactNumber +
+        "?text=Product : " +
+        details.title +
+        "  |   Category : " +
+        details.category +
+        "  |   Message : " +
+        chatBox.value;
+    }
+  }
+  // End of code addition
 
   return (
     <>
@@ -285,8 +322,8 @@ const Details = (props) => {
               <div className={styles["container03"]}>
                 <div className={styles["container04"]}>
                   <h1 className={styles["heading"]}>{details.title}</h1>
-                  <h1 className={styles["text"]}>{details.about}</h1>
-                  <span className={styles["text01"]}>
+                  <h1 className={styles["subtitle"]}>{details.about}</h1>
+                  <span className={styles["subtitle"]}>
                     {" "}
                     {currency.sign} {details.price * currency.value}
                   </span>
@@ -300,7 +337,10 @@ const Details = (props) => {
                           {" "}
                           <div class="rating">
                             <form class="rating-form">
-                              <label for={details.id}>
+                              <label
+                                for={details.id}
+                                className={`${styles.subtitle} ${styles.customSubtitle}`}
+                              >
                                 <input
                                   type="radio"
                                   name={details.id}
@@ -312,7 +352,10 @@ const Details = (props) => {
                                 <span class="span">S</span>
                               </label>
 
-                              <label for={details.id * 44}>
+                              <label
+                                for={details.id * 44}
+                                className={`${styles.subtitle} ${styles.customSubtitle}`}
+                              >
                                 <input
                                   type="radio"
                                   name={details.id}
@@ -324,7 +367,10 @@ const Details = (props) => {
                                 <span class="span">M</span>
                               </label>
 
-                              <label for={details.id * 88}>
+                              <label
+                                for={details.id * 88}
+                                className={`${styles.subtitle} ${styles.customSubtitle}`}
+                              >
                                 <input
                                   type="radio"
                                   name={details.id}
@@ -336,7 +382,10 @@ const Details = (props) => {
                                 <span class="span">L</span>
                               </label>
 
-                              <label for={details.id * 108}>
+                              <label
+                                for={details.id * 108}
+                                className={`${styles.subtitle} ${styles.customSubtitle}`}
+                              >
                                 <input
                                   type="radio"
                                   name={details.id}
@@ -348,7 +397,10 @@ const Details = (props) => {
                                 <span class="span">XL</span>
                               </label>
 
-                              <label for={details.id * 126}>
+                              <label
+                                for={details.id * 126}
+                                className={`${styles.subtitle} ${styles.customSubtitle}`}
+                              >
                                 <input
                                   type="radio"
                                   name={details.id}
@@ -376,7 +428,10 @@ const Details = (props) => {
                         <>
                           <div class="rating">
                             <form class="rating-form">
-                              <label for={details.id}>
+                              <label
+                                for={details.id}
+                                className={`${styles.subtitle} ${styles.customSubtitle}`}
+                              >
                                 <input
                                   type="radio"
                                   name={details.id}
@@ -388,7 +443,10 @@ const Details = (props) => {
                                 <span class="span">S</span>
                               </label>
 
-                              <label for={details.id * 44}>
+                              <label
+                                for={details.id * 44}
+                                className={`${styles.subtitle} ${styles.customSubtitle}`}
+                              >
                                 <input
                                   type="radio"
                                   name={details.id}
@@ -400,7 +458,10 @@ const Details = (props) => {
                                 <span class="span">M</span>
                               </label>
 
-                              <label for={details.id * 88}>
+                              <label
+                                for={details.id * 88}
+                                className={`${styles.subtitle} ${styles.customSubtitle}`}
+                              >
                                 <input
                                   type="radio"
                                   name={details.id}
@@ -412,7 +473,10 @@ const Details = (props) => {
                                 <span class="span">L</span>
                               </label>
 
-                              <label for={details.id * 108}>
+                              <label
+                                for={details.id * 108}
+                                className={`${styles.subtitle} ${styles.customSubtitle}`}
+                              >
                                 <input
                                   type="radio"
                                   name={details.id}
@@ -424,7 +488,10 @@ const Details = (props) => {
                                 <span class="span">XL</span>
                               </label>
 
-                              <label for={details.id * 126}>
+                              <label
+                                for={details.id * 126}
+                                className={`${styles.subtitle} ${styles.customSubtitle}`}
+                              >
                                 <input
                                   type="radio"
                                   name={details.id}
@@ -459,7 +526,7 @@ const Details = (props) => {
                     {/* Added by Ashish Dewangan on 24-11-2022
                     Reason - To show custom tailored form */}
                     <span
-                      className={styles["text02"]}
+                      className={`${styles.subtitle} ${styles.customSubtitle}`}
                       style={{ cursor: "pointer" }}
                       onClick={showCustomTailoredForm}
                     >
@@ -467,7 +534,6 @@ const Details = (props) => {
                     </span>
                     <Modal
                       style={{ top: 0 }}
-
                       className={styles["modalStyleCustomTailored"]}
                       footer={null}
                       title="CUSTOM TAILORED"
@@ -475,7 +541,7 @@ const Details = (props) => {
                       onOk={handleCustomTailoredOk}
                       onCancel={handleCustomTailoredCancel}
                     >
-                      <CustomTailoredForm/>
+                      <CustomTailoredForm />
                     </Modal>
                     {/* End of code addition */}
 
@@ -483,7 +549,7 @@ const Details = (props) => {
                     Reason - to display size chart when we click on size chart text */}
                     {/* <span  className={styles["text02"]}>Size Chart</span> */}
                     <span
-                      className={styles["text02"]}
+                     className={`${styles.subtitle} ${styles.customSubtitle}`}
                       style={{ cursor: "pointer" }}
                       onClick={showSizeChart}
                     >
@@ -511,55 +577,33 @@ const Details = (props) => {
                     {/* End of code addition */}
                   </div>
                   <div
+                     className={` ${styles["customButtonContainer"]} `}
                     style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      width: "70%",
+                    
                     }}
                   >
                     {check() ? (
                       <button
-                        style={{
-                          backgroundColor: "#323232",
-                          textTransform: "uppercase",
-                          fontFamily: "Rawson-Regular",
-                          fontSize: "15px",
-                          fontWeight: "600",
-                          letterSpacing: "1px",
-                        }}
                         className={` ${styles["button"]} `}
                         onClick={(e) => saveCart(details)}
                       >
-                        Remove From Bag
+                        REMOVE FROM BAG
                       </button>
                     ) : (
                       <button
-                        style={{
-                          backgroundColor: "#323232",
-                          textTransform: "uppercase",
-                          fontFamily: "Rawson-Regular",
-                          fontSize: "15px",
-                          fontWeight: "600",
-                          letterSpacing: "1px",
-                        }}
                         className={` ${styles["button"]} `}
                         onClick={(e) => AddToCart(details)}
                       >
-                        Add To Bag
+                        ADD TO BAG
                       </button>
                     )}
                     <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        marginLeft: "20%",
-                      }}
+                      className={` ${styles["iconButtonsContainer"]} `}
                     >
                       {like.filter((l) => l.id === details.id).length > 0 ? (
                         <AiFillHeart
                           style={{
                             color: "red",
-                            marginTop: "20px",
                             width: "25px",
                             height: "25px",
                           }}
@@ -568,18 +612,21 @@ const Details = (props) => {
                       ) : (
                         <AiOutlineHeart
                           style={{
-                            marginTop: "20px",
                             width: "25px",
                             height: "25px",
                           }}
                           onClick={(e) => LikedSave(details)}
                         />
                       )}
-                      <a href="https://wa.me/916264170187">
-                        {" "}
+                      {/* Commented and modified by Ashish Dewangan on 24-11-2022
+                      Reason - To have whatsapp chat functionality */}
+                      {/* <a href="https://wa.me/916264170187"></a> */}
+                      <a
+                        href={`https://wa.me/${whatsappContactNumber}?text=Product : ${details.title}  |  Category : ${details.category}`}
+                      >
+                        {/* End of code modification */}{" "}
                         <AiOutlineWhatsApp
                           style={{
-                            marginTop: "20px",
                             width: "25px",
                             height: "25px",
                             marginLeft: "10px",
@@ -588,32 +635,40 @@ const Details = (props) => {
                       </a>
                     </div>
                   </div>
-                  <h1 className={styles["text03"]}>ABOUT THE PRODUCT</h1>
+                  <h1 className={styles["subtitle"]}>ABOUT THE PRODUCT</h1>
                   <span className={styles["text04"]}>
                     {details.description}
                   </span>
                   <div className={styles["container06"]}>
-                    <span className={styles["text05"]}>Fabric</span>
-                    <span className={styles["text06"]}>:-</span>
-                    <span className={styles["text07"]}>{details.fabric}</span>
+                    <span className={styles["textLabel"]}>Fabric</span>
+                    <span className={styles["textLabel"]}>:</span>
+                    <span className={styles["textDescription"]}>
+                      {details.fabric}
+                    </span>
                   </div>
                   <div className={styles["container07"]}>
-                    <span className={styles["text08"]}>Color</span>
-                    <span className={styles["text09"]}>:</span>
-                    <span className={styles["text10"]}>{details.color}</span>
+                    <span className={styles["textLabel"]}>Color </span>
+                    <span className={styles["textLabel"]}> : </span>
+                    <span className={styles["textDescription"]}>
+                      {details.color}
+                    </span>
                   </div>
                   <div className={styles["container08"]}>
-                    <span className={styles["text11"]}>Country of Origin</span>
-                    <span className={styles["text12"]}>-</span>
-                    <span className={styles["text13"]}>{details.made_in}</span>
+                    <span className={styles["textLabel"]}>
+                      Country of Origin
+                    </span>
+                    <span className={styles["textLabel"]}>:</span>
+                    <span className={styles["textDescription"]}>
+                      {details.made_in}
+                    </span>
                   </div>
-                  <h1 className={styles["text03"]} onClick={check}>
+                  <h1 className={styles["subtitle"]} onClick={check}>
                     PRODUCT DETAILS
                   </h1>
                   <div className={styles["container06"]}>
-                    <span className={styles["text05"]}>Style Code </span>
-                    <span className={styles["text06"]}>:</span>
-                    <span className={styles["text07"]}>
+                    <span className={styles["textLabel"]}>Style Code </span>
+                    <span className={styles["textLabel"]}>:</span>
+                    <span className={styles["textDescription"]}>
                       {details.style_code}
                     </span>
                   </div>
@@ -644,21 +699,12 @@ const Details = (props) => {
 
                   {details.ready_to_ship == true ? (
                     <div className={styles["container07"]}>
-                      <span
-                        className={styles["text08"]}
-                        style={{ display: "inline-block", marginRight: "3px" }}
-                      >
+                      <span className={styles["textLabel"]}>
                         Ready to ship{" "}
                       </span>
+                      <span className={styles["textLabel"]}> : </span>
                       <span
-                        className={styles["text09"]}
-                        style={{ display: "inline-block", marginRight: "3px" }}
-                      >
-                        {" "}
-                        :{" "}
-                      </span>
-                      <span
-                        className={styles["text10"]}
+                        className={styles["textDescription"]}
                         style={{ display: "inline-block", marginRight: "3px" }}
                       >
                         {" " + details.ready_to_ship_days}
@@ -667,20 +713,20 @@ const Details = (props) => {
                   ) : (
                     <div className={styles["container07"]}>
                       <span
-                        className={styles["text08"]}
+                        className={styles["textLabel"]}
                         style={{ display: "inline-block", marginRight: "3px" }}
                       >
                         Standard Shipping{" "}
                       </span>
                       <span
-                        className={styles["text09"]}
+                        className={styles["textLabel"]}
                         style={{ display: "inline-block", marginRight: "3px" }}
                       >
                         {" "}
                         :{" "}
                       </span>
                       <span
-                        className={styles["text10"]}
+                        className={styles["textDescription"]}
                         style={{ display: "inline-block", marginRight: "3px" }}
                       >
                         {" " + details.shipping_days}
@@ -690,33 +736,84 @@ const Details = (props) => {
                   {/* End of code modification */}
                   <ScrollButton />
                   <div className={styles["container08"]}>
-                    <span className={styles["text11"]}>
+                    <span className={styles["textDescription"]}>
                       Additional Charges for International Shipping
                     </span>
                   </div>
-                  <h1 className={styles["text25"]}>FOR CUSTOMISATIONS</h1>
-                  <span className={styles["text26"]}>
-                    Submit your customisation details On{" "}
-                    <a
+                  <h1 className={styles["subtitle"]}>FOR CUSTOMISATIONS</h1>
+                  <span className={styles["textDescription"]}>
+                    <span
+                      onClick={showCustomTailoredForm}
+                      className={styles["textLink"]}
+                    >
+                      Submit
+                    </span>{" "}
+                    your customisation details
+                  </span>
+                  {/* Commented and modified by Ashish Dewangan on 24-11-2022
+                      Reason - To have whatsapp chat functionality */}
+                  {/* <a
                       href="https://wa.me/916264170187/dfdf"
                       style={{ fontSize: "1rem" }}
+                    > */}
+                  <span className={styles["textDescription"]}>
+                    {" "}
+                    or share the details on
+                    <a
+                      className={styles["textLink"]}
+                      style={{
+                        marginLeft: "3px",
+                        marginRight: "3px",
+                        // fontSize: "1em",
+                        // borderBottom:"1px solid grey",
+                      }}
+                      href={`https://wa.me/${whatsappContactNumber}?text=Product : ${details.title}  |  Category : ${details.category}`}
                     >
                       Whatsapp
                     </a>
+                    with us
+                    {/* End of code modification */}
                   </span>
-                  {/* <span className={styles['text27']}>Contact Us | Shipping Policy</span> */}
-                  {/* <div className={styles['container12']}>
-                <input
-                  type="text"
-                  placeholder="placeholder"
-                  className={` ${styles['textinput']} `}
-                />
-                <button
-                  className={` ${styles['contact-us']} `}
-                >
-                  Button
-                </button>
-              </div> */}
+                  <span className={styles["subtitle"]}>
+                    <Link
+                      to="/custom"
+                      className={styles["subtitle"]}
+                      style={{
+                        textDecoration: "none",
+                        letterSpacing: "1px",
+                        fontSize: "14px",
+                      }}
+                    >
+                      Contact Us | 
+                    </Link>
+
+                    <Link
+                      to="/delivery-policy"
+                      className={styles["subtitle"]}
+                      style={{
+                        textDecoration: "none",
+                        letterSpacing: "1px",
+                        fontSize: "14px",
+                      }}
+                    >
+                      Shipping Policy
+                    </Link>
+                  </span>
+                  <div className={styles["chatBoxContainer"]}>
+                    <input
+                      type="text"
+                      id="chatBox"
+                      placeholder="Know more about the product.."
+                      maxLength={100}
+                      className={` ${styles["chatInputBox"]} `}
+                    />
+                    <button
+                      className={` ${styles["chatButton"]} `}
+                      onClick={startChat}
+                    >
+                      CHAT WITH US
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

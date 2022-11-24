@@ -764,3 +764,11 @@ class CustomTailoredFormView(APIView):
             serializer.save()
             return Response({'msg':'custom tailored details posted'},status=status.HTTP_200_OK)
 #End of code addition
+
+#Added by Ashish on 24-11-2022
+#Reason - To send whatsapp contact number to frontend
+class WhatsappContactView(APIView):
+    def get(self,request):
+        WhatsappContactDetail = WhatsappContact.objects.all().values()
+        return Response(WhatsappContactDetail)
+#End of code addition

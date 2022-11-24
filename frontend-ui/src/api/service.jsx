@@ -373,3 +373,13 @@ export const postCustomTailoredDetails = async (data) => {
   return response ? response.data : {};
 };
 // End of code addition
+
+// Added by Ashish on 24-11-2022
+// Reason - To get whatsapp contact number from backend
+export const getWhatsappContactDetail = async () => {
+  const response = await API.get(`whatsapp-contact-number/`, {
+        headers: { "Content-Type": "application/json"},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+// End of code addition

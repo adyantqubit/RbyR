@@ -535,3 +535,9 @@ class CustomTailoredForm(models.Model):
     otherInstructions=models.TextField(default="")
     
 #End of code addition
+
+#Added by Ashish on 24-11-2022
+#Reason - To save whatsapp number in table
+class WhatsappContact(models.Model):
+    whatsappNmber=models.CharField(max_length=255)
+#End of code addition
