@@ -352,3 +352,14 @@ export const getFooterDescriptionDetail = async () => {
   return response ? response.data : {};
 };
 // End of code addition
+
+// Added by Ashish Dewangan on 23-11-2022
+// Reason - To save get chart image
+// Jira issue no - RBYR-193
+export const getWomenSizeChartDetail = async () => {
+  const response = await API.get(`women-size-chart/`, {
+        headers: { "Content-Type": "application/json"},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};
+// End of code addition

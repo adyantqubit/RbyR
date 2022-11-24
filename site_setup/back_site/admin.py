@@ -103,6 +103,11 @@ admin.site.register(ImportantNoticeToBuy)
 admin.site.register(FooterDescription) 
 #End of code addition
 
+#Added by Ashish Dewangan on 23-11-2022
+#Reason - To have size chart table at admin side
+#Jira issue no - RBYR-193
+admin.site.register(WomenClothSizeChart) 
+#End of code addition
 
 
 

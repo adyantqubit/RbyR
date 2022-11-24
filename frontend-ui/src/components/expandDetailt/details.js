@@ -6,11 +6,12 @@ import Footer from "../global/footer";
 import Navbar from "../global/NavHeader";
 import { bounce } from "react-animations";
 import { StyleSheet, css } from "aphrodite";
-import { BackTop } from "antd";
+import { BackTop, Modal } from "antd";
 
 // import projectStyles from '.style.module.css'
 import styles from "./detail.module.css";
 import "./detail.scss";
+import "./details.css";
 import Size from "./Size.css";
 import { message } from "antd";
 import { CartState } from "../../context";
@@ -28,6 +29,7 @@ import Shake from "react-reveal/Shake";
 import { Link, animateScroll as scroll } from "react-scroll";
 import ScrollButton from "./top";
 import { increamentCheck } from "../../api/orderApis";
+import { getWomenSizeChartDetail } from "../../api/service";
 
 const sty = StyleSheet.create({
   bounce: {
@@ -49,8 +51,18 @@ const Details = (props) => {
   const [saveLikeApi, { isLoading }] = useLikedUpdateMutation();
   const [notAvai, setNotAvai] = useState(false);
 
+  // Added by Ashish Dewangan on 23-11-2022
+  // Reason - To display size chart image
+  // Jira issue no - RBYR-193
+  const [womenSizeChart, setWomenSizeChart] = useState([]);
+  const [isWomenSizeChartVisible, setIsWomenSizeChartVisible] = useState(false);
+  //End of code addition
+
+  const [isCustomTailoredVisible,setIsCustomTailoredVisible] = useState(false);
+
   useEffect(() => {
     gettingDetail();
+    getWomenSizeChart();
   }, []);
 
   if (con == false) {
@@ -78,6 +90,29 @@ const Details = (props) => {
       setDetails({ ...r });
     });
   }
+
+  // Added by Ashish Dewangan on 23-11-2022
+  // Reason - To display size chart image
+  // Jira issue no - RBYR-193
+  const getWomenSizeChart = async () => {
+    const womenSizeChartData = await getWomenSizeChartDetail();
+    if (womenSizeChartData) {
+      setWomenSizeChart(womenSizeChartData[0].image);
+      // alert(JSON.stringify(womenSizeChartData))
+    }
+  };
+  function showSizeChart() {
+    setIsWomenSizeChartVisible(true);
+  }
+
+  const handleOk = () => {
+    setIsWomenSizeChartVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsWomenSizeChartVisible(false);
+  };
+  // End of code addition
 
   function onChange(value) {
     setSize(value);
@@ -237,7 +272,10 @@ const Details = (props) => {
                     {currency.sign} {details.price * currency.value}
                   </span>
                   <div className={styles["container05"]}>
-                    <div class={sizeCond ? sty : "rating-container face"} className={styles.sizeSlection}>
+                    <div
+                      class={sizeCond ? sty : "rating-container face"}
+                      className={styles.sizeSlection}
+                    >
                       {pushData ? (
                         <Shake>
                           {" "}
@@ -395,10 +433,43 @@ const Details = (props) => {
                           ) : null}
                         </>
                       )}
-                       
                     </div>
+                    <span
+                      className={styles["text02"]}
+                      style={{ cursor: "pointer" }}
+                    >
+                      Custom Tailored
+                    </span>
                     {/* <span  className={styles["text02"]}>Custom Tailored</span> */}
-                    <span  className={styles["text02"]}>Size Chart</span>
+                    {/* Commented and modified by - Ashish Dewangan on 23-11-2022
+                    Reason - to display size chart when we click on size chart text */}
+                    {/* <span  className={styles["text02"]}>Size Chart</span> */}
+                    <span
+                      className={styles["text02"]}
+                      style={{ cursor: "pointer" }}
+                      onClick={showSizeChart}
+                    >
+                      Size Chart
+                    </span>
+                    <Modal
+                      style={{ top: 20, height: "100vh" }}
+                      className={styles["modalStyle"]}
+                      footer={null}
+                      title="SIZE GUIDE"
+                      visible={isWomenSizeChartVisible}
+                      onOk={handleOk}
+                      onCancel={handleCancel}
+                    >
+                      <img
+                        style={{ width: "100%", height: "100%" }}
+                        src={
+                          womenSizeChart.length > 0
+                            ? config.apiBaseURL + womenSizeChart
+                            : "/women_size_chart.jpg"
+                        }
+                      />
+                    </Modal>
+                    {/* End of code addition */}
                   </div>
                   <div
                     style={{
@@ -507,11 +578,77 @@ const Details = (props) => {
                       {details.style_code}
                     </span>
                   </div>
-                  <div className={styles["container07"]}>
-                    <span className={styles["text08"]}>Standard Shipping</span>
-                    <span className={styles["text09"]}>-</span>
-                    <span className={styles["text10"]}>4 Weeks</span>
-                  </div>
+
+                  {/* Commented and modified by Ashish Dewangan on 23-11-2022
+                  Reason - To have standard shipping and ready to ship functionality */}
+                  {/* <div className={styles["container07"]}>
+                      <span
+                        className={styles["text08"]}
+                        style={{ display: "inline-block", marginRight: "3px" }}
+                      >
+                        Standard Shipping{" "}
+                      </span>
+                      <span
+                        className={styles["text09"]}
+                        style={{ display: "inline-block", marginRight: "3px" }}
+                      >
+                        {" "}
+                        :{" "}
+                      </span>
+                      <span
+                        className={styles["text10"]}
+                        style={{ display: "inline-block", marginRight: "3px" }}
+                      >
+                        {" " + details.shipping_days}
+                      </span>
+                    </div> */}
+
+                  {details.ready_to_ship == true ? (
+                    <div className={styles["container07"]}>
+                      <span
+                        className={styles["text08"]}
+                        style={{ display: "inline-block", marginRight: "3px" }}
+                      >
+                        Ready to ship{" "}
+                      </span>
+                      <span
+                        className={styles["text09"]}
+                        style={{ display: "inline-block", marginRight: "3px" }}
+                      >
+                        {" "}
+                        :{" "}
+                      </span>
+                      <span
+                        className={styles["text10"]}
+                        style={{ display: "inline-block", marginRight: "3px" }}
+                      >
+                        {" " + details.ready_to_ship_days}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className={styles["container07"]}>
+                      <span
+                        className={styles["text08"]}
+                        style={{ display: "inline-block", marginRight: "3px" }}
+                      >
+                        Standard Shipping{" "}
+                      </span>
+                      <span
+                        className={styles["text09"]}
+                        style={{ display: "inline-block", marginRight: "3px" }}
+                      >
+                        {" "}
+                        :{" "}
+                      </span>
+                      <span
+                        className={styles["text10"]}
+                        style={{ display: "inline-block", marginRight: "3px" }}
+                      >
+                        {" " + details.shipping_days}
+                      </span>
+                    </div>
+                  )}
+                  {/* End of code modification */}
                   <ScrollButton />
                   <div className={styles["container08"]}>
                     <span className={styles["text11"]}>
@@ -522,7 +659,7 @@ const Details = (props) => {
                   <span className={styles["text26"]}>
                     Submit your customisation details On{" "}
                     <a
-                      href="https://wa.me/916264170187"
+                      href="https://wa.me/916264170187/dfdf"
                       style={{ fontSize: "1rem" }}
                     >
                       Whatsapp
