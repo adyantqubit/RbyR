@@ -26,7 +26,7 @@ urlpatterns = [
     path('reset-password/<uid>/<token>/',UserPasswordResetView.as_view(),name="reset-password"),
     path('likedUpdate/',LikedUpdateView.as_view(),name="updateLike"),
     path('cartUpdate/',CartUpdateView.as_view(),name="updateLike"),
-    path('getCategoryProduct/<category>/',ProductSetting.as_view(),name="updateLike"),
+    path('getCategoryProduct/<category>/',ProductSetting.as_view()),
     path('car/',picget.as_view(),name="updateLike"),
     path('detail/<id>/',Givingdetail.as_view(),name="updateLike"),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
@@ -135,6 +135,12 @@ urlpatterns = [
 	#Added by Ashish on 21-11-2022
     #Reason - To send footer description to front end
     path('footer-description/',FooterDescriptionView.as_view()),
+    #End of code addition
+
+    #Added by Ashish Dewangan on 23-11-2022
+    #Reason - To send size chart image to front end
+    #Jira issue no - RBYR-193
+    path('women-size-chart/',WomenClothSizeChartView.as_view()),
     #End of code addition
 
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)   

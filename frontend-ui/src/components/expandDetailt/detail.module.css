@@ -3,6 +3,10 @@
     src: url(../../assets/font/RawsonAltRegular.woff);
   }
 
+  .modalStyle{
+    width: 40vw !important;
+    /* height: 90vh !important; */
+  }
 
 .container {
     width: 100%;
@@ -450,7 +454,6 @@
     perspective: 1000px;
   }
 
-
 @keyframes shake {
   10%, 90% {
     transform: translate3d(-1px, 0, 0);
@@ -495,13 +498,11 @@
 
   }
 
-
-
-
-
-  
 @media only screen and (max-width: 800px) {
-
+  .modalStyle{
+    width: 90vw !important;
+    /* height: 90vh !important; */
+  }
     .container {
         width: 100%;
         display: flex;

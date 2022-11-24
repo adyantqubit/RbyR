@@ -134,6 +134,14 @@ class product_detail(models.Model):
     available=models.BooleanField(default=True)
     shipping_charges=models.IntegerField(default=100)
 
+    #Added by Ashish dewangan on 23-11-2022
+    #Reason - to have shipping days and ready to wear functionality for product
+    #Jira issue no - RBYR -194
+    shipping_days=models.CharField(max_length=50,default="3-4 weaks")
+    ready_to_ship=models.BooleanField(default=False)
+    ready_to_ship_days=models.CharField(max_length=50,default="under 7 working days")
+    #End of code addition
+
     #Added by Ashish dewangan on 18-11-2022
     #Reason - to have search functionality
     #Jira issue no - RBYR -141
@@ -498,3 +506,11 @@ class FooterDescription(models.Model):
     subtitle4=models.CharField(max_length=255)
     content4=models.TextField()
 #End of code addition
+
+#Added by Ashish Dewangan on 23-11-2022
+#Reason - To save size chart image
+#Jira issue no - RBYR-193
+class WomenClothSizeChart(models.Model):
+    image=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+#End of code addition           

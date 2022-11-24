@@ -746,6 +746,14 @@ class LogoAndCoverView(APIView):
 class FooterDescriptionView(APIView):
     def get(self,request):
         footerDescriptionDetail = FooterDescription.objects.all().values()
-        print("----------------------------------",footerDescriptionDetail)
         return Response(footerDescriptionDetail)
+#End of code addition
+
+#Added by Ashish Dewangan on 23-11-2022
+#Reason - To save size chart image
+#Jira issue no - RBYR-193
+class WomenClothSizeChartView(APIView):
+    def get(self,request):
+        womenClothSizeChartDetail = WomenClothSizeChart.objects.all().values()
+        return Response(womenClothSizeChartDetail)
 #End of code addition
