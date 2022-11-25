@@ -139,6 +139,7 @@ color:white
 
 .react-multi-carousel-item{
    margin-left:50px;
+   margin-right:50px;
    max-width: 300px;
 }
 .carousel-control-next-icon{
@@ -192,4 +193,11 @@ opacity: 1;
       padding: 0 5px;
       vertical-align: top;
       margin-left: -10px; 
+  }
+
+  @media (max-width: 768px) {
+    .react-multi-carousel-item{
+        margin-left:0px;
+        max-width: 300px;
+     }
   }

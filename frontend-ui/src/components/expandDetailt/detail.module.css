@@ -20,7 +20,7 @@
     min-height: 100vh;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 150px;
+    margin-bottom: 180px;
     background-color: #fcfcfc;
     overflow: hidden;
   }
@@ -47,7 +47,7 @@
     padding-top: 2%;
     padding-left:12%;
     padding-right: 12%;
-    padding-bottom: 12%;
+    padding-bottom: 5%;
   }
   .container03 {
     flex: 0 0 auto;
@@ -580,7 +580,10 @@
         display: flex;
         overflow: auto;
         position: relative;
+        margin-bottom:50px;
         top:9vh;}
+
+    
 
     .container02 {
         flex-direction: column;
@@ -639,6 +642,20 @@
     }
     .customSubtitle{
       margin-top: 0;
+    }
+
+    .image_gallery {
+      /* Mobile first */
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    
+    .image_gallery .column {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      
     }
 }
 

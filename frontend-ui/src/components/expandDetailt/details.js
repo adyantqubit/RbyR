@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import config from "../../api/config";
-import { DetailApi } from "../../api/service";
+import { DetailApi, getCategoryProduct } from "../../api/service";
 import Footer from "../global/footer";
 import Navbar from "../global/NavHeader";
 import { bounce } from "react-animations";
@@ -51,7 +51,7 @@ const Details = (props) => {
   const { con, setcon, setCartDrawer, openCartdrawer } = CartState();
   const [sizeCond, setSizecond] = useState(false);
   const [pushData, setPushData] = useState(false);
-  const { cart, setCart, like, setLike, CategoryProduct, currency } =
+  const { cart, setCart, like, setLike, CategoryProduct, currency,setCategoryProduct,settemAllpro } =
     CartState();
   const [cartsaveApi, { isLoad }] = useCartUpdateMutation();
   const [saveLikeApi, { isLoading }] = useLikedUpdateMutation();
@@ -78,7 +78,18 @@ const Details = (props) => {
     gettingDetail();
     getWomenSizeChart();
     getWhatsappContactNumber();
+    catApi()
+    window.scrollTo(0,0)
   }, []);
+
+  const{category}=useParams()
+ 
+ 
+
+
+ const catApi=async()=>{
+  await getCategoryProduct(category).then(r=>{setCategoryProduct([...r.category]);settemAllpro([...r.category]);console.log(r.category) })
+ }
 
   if (con == false) {
     gettingDetail();
@@ -852,25 +863,29 @@ const Details = (props) => {
               </div>
             </div>
           </div>
-
+{/* 
           {CategoryProduct && CategoryProduct.length > 0 ? (
+
+          
+            
             <div
               style={{
                 width: "80vw",
-                height: "70vh",
+                height: "80vh",
                 marginTop: "6%",
                 zIndex: "0",
               }}
             >
               <div
                 style={{
-                  fontSize: "1.5rem",
-                  marginBottom: "20px",
-                  textTransform: "uppercase",
+                  fontSize: "20px",
                   lineHeight: "32px",
+                  letterSpacing: "3px",
+                  marginBottom: "20px",
+                 
                 }}
               >
-                You May Also like
+                YOU MAY ALSO LIKE
               </div>
               <Slider2 />
             </div>
@@ -878,25 +893,34 @@ const Details = (props) => {
           <div
             style={{
               width: "80vw",
-              height: "70vh",
+              height: "80vh",
               marginTop: "6%",
               zIndex: "0",
+              
             }}
           >
             <div
               style={{
-                fontSize: "1.5rem",
+                fontSize: "20px",
                 lineHeight: "32px",
                 letterSpacing: "3px",
-                marginBottom: "20px",
-                fontFamily: "Rawson-Regular",
-                marginLeft: "-10px",
+                marginBottom: "5vh",
+                // fontFamily: "Rawson-Regular",
+                // marginLeft: "-10px",
               }}
             >
               RECENTLY VIEWED PRODUCTS
             </div>
             <Slider />
+          </div> */}
+           
+         <div style={{width:"100%"}}>
+            
+             <Slider/>
+            <Slider2/>
           </div>
+
+
         </div>
       ) : (
         "loading"
