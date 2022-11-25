@@ -60,7 +60,8 @@ await ImpotantRuleGet().then(r=>setImportantRules(r))
 
 const erro = (r) => {
   Modal.error({
-    title: "No More Stock Available"
+    title: "No More Stock Available",
+    style:{top:"30vh"}
   });
 
 };
@@ -488,7 +489,7 @@ const increament=async (CartProduct)=>{
          {ImportantRules.point3}
         </li>
         <li style={{color:"#8c8c8c",fontSize:"13px",lineHeight:"20px",letterSpacing: "1px"}}>
-        Contact Us | Shipping Policy
+        <Link to="/custom" style={{color:"#8c8c8c",fontSize:"13px",lineHeight:"20px",letterSpacing: "1px"}}>Contact Us </Link> | <Link to="/delivery-policy" style={{color:"#8c8c8c",fontSize:"13px",lineHeight:"20px",letterSpacing: "1px"}}>Shipping Policy</Link>
         </li>
       </ul>
     </div>:null}

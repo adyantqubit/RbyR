@@ -4,11 +4,12 @@ import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useResetPasswordMutation } from "../../Redux-manage/services/userAuthapi";
 import Navbar from '../global/NavHeader'
+import { notification } from 'antd';
 
 
 const ResetPassword = () => {
     const navigate = useNavigate()
-    const [error, setError] = useState({})
+    const [error, setError] = useState(null)
     const [msg, setMsg] = useState({})
   
    const[resetPassword,{isLoading}]= useResetPasswordMutation()
@@ -28,8 +29,18 @@ const ResetPassword = () => {
         setError(res.error.data.errors)
       }
       if(res.data){
-       setError({})
+       setError(null)
+       notification.error({
+        message: <div style={{fontSize:"18px",color:"black"}}>Successfully Logged In. </div>,
+        description:
+        `Successfully Password Update`,
+        className:"custom-class",
+        style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"5vh"},
+        duration:5,
+        key:1
+        });
        setMsg(res.data)
+       navigate("/login")
       }   
     }
   return (
@@ -40,15 +51,15 @@ const ResetPassword = () => {
 			<div class="signu" style={{marginTop:"5vh"}}>
 				<form  id="password-change-form" onSubmit={handleSubmit}>
 					<label class="labe" aria-hidden="true" style={{fontSize:"1.6rem"}}>Change Password</label>
-					{error ? <Alert severity="error" style={{margin:"0 50px"}}>{error.non_field_errors}</Alert> : ""}
+					{error!=null ? <Alert severity="error" style={{margin:"0 60px"}}>{error.non_field_errors}</Alert> : ""}
                     {msg.msg ? <Alert severity="success"  style={{margin:"0 50px"}}>successfully changed</Alert> : ""}
 										
 
 					<input style={{marginBottom:"0"}} class="inpu" type="password" name="pswd" placeholder="Password" required=""/>
-					{error.password?<Typography style={{color:"red",paddingLeft:"70px",fontSize:10}}>{error.password[0]}</Typography>:" "}
+					{error!=null&&error.password?<Typography style={{color:"red",paddingLeft:"70px",fontSize:10}}>{error.password[0]}</Typography>:" "}
 
 					<input style={{marginBottom:"0"}} class="inpu" type="password" name="pswd2" placeholder="Confirm Password" required=""/>
-					{error.password2?<Typography style={{color:"red",paddingLeft:"70px",fontSize:10}}>{error.password2[0]}</Typography>:" "}
+					{error!=null&&error.password2?<Typography style={{color:"red",paddingLeft:"70px",fontSize:10}}>{error.password2[0]}</Typography>:" "}
 
 					<button class="butto" style={{backgroundColor:"black",}} type='submit'>Change</button>
 				</form>

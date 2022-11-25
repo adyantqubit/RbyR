@@ -101,6 +101,7 @@ async function qrDetails(){
 
 cart=[]
 
+var access=localStorage.getItem("access_token")
 
 await cartDeleteApi({access}).then(r=>console.log(r))
 
@@ -121,7 +122,6 @@ for (const details of allData.history) {
 
 
  var access_token=localStorage.getItem("access_token")
- var access=localStorage.getItem("access_token")
 
  cart.push(NewCartData)
  const resp=await cartsaveApi ({data,access_token}).then(r=>console.log(r));   

@@ -78,7 +78,9 @@ if(AllCartProduct[index].quantity!=1){
 
 const erro = (r) => {
   Modal.error({
-    title: "No More stock Is Available"
+    title: "No More stock Is Available",
+    style:{top:"30vh"}
+
   });
 
 };

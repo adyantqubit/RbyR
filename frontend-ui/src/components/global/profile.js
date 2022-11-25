@@ -19,7 +19,7 @@ import { Button, message } from 'antd';
 
 export const Profile = () => {
 
-  const [messageApi, contextHolder] = message.useMessage();
+  const [messageApi, contextHolder,setCart,setLike] = message.useMessage();
 
     const dispatch= useDispatch();
     const{userdata,setUserData,firstTimeLoadFunctions}=CartState()
@@ -28,11 +28,12 @@ export const Profile = () => {
         dispatch(unSetUserInfo({email:"",name:""}))
         dispatch(unSetUserToken({access_token:null}))
         removeToken()
+        
         localStorage.clear()
         notification.error({
           message: <div style={{fontSize:"18px",color:"black"}}>Successfully Logged In. </div>,
           description:
-          `Your Are Logged In`,
+          `You are Log out`,
           className:"custom-class",
           style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"24vh"},
           duration:5
@@ -40,7 +41,7 @@ export const Profile = () => {
           });
 
         nav('/')
-        // firstTimeLoadFunctions()
+        firstTimeLoadFunctions()
 
         window.location.reload(false)
 

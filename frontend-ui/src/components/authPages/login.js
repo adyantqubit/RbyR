@@ -2,7 +2,7 @@ import { Typography, CircularProgress,FormControlLabel, Checkbox, } from '@mui/m
 import {useLoginUserMutation,useRegisterUserMutation} from "../../Redux-manage/services/userAuthapi"
 import { getToken, storeToken } from '../../Redux-manage/services/localStorageService';
 import { setUserToken } from '../../Redux-manage/features/authSlice';
-import { useNavigate,NavLink } from 'react-router-dom';
+import { useNavigate,NavLink, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import React,{useState,useEffect} from 'react'
 import Navbar from '../global/NavHeader'
@@ -60,7 +60,7 @@ const Login = () => {
 		  notification.error({
 			message: <div style={{fontSize:"18px",color:"black"}}>Successfully Logged In. </div>,
 			description:
-			`Your Are Logged In`,
+			`You Are Logged In`,
 			className:"custom-class",
 			style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"5vh"},
 			duration:5,
@@ -237,7 +237,7 @@ const Login = () => {
 						position="top center">
 						{server_error.tc?<span style={{color:"red",fontSize:"0.8rem"}}>check term and condition</span>:" "}
 					</Popup>:null} */}
-						I agree to term and condition.   
+						<Link to="/term" style={{fontSize:"12px",color:"white",letterSpacing:"1.2px"}}> I agree to term and condition.</Link>   
 					</span>} />
 
 					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button style={{paddingTop:"0",marginTop:"0"}} class="butto" type='submit'>Sign up</button>}

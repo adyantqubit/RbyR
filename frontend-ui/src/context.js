@@ -123,7 +123,7 @@ async function GetTAXapi(){
     if(r.error){
       this.clearInterval()
       removeToken()
-
+      setLike([])
       window.location.reload()
       localStorage.clear()
     }

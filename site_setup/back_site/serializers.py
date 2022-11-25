@@ -112,7 +112,7 @@ class SendPasswordResetEmailSerializer(serializers.Serializer):
                 "body":"click to reset password"+link,
                 'to_email':user.email
             }
-            subject = 'Paasword Reset Link RbyR'
+            subject = 'Password Reset Link RbyR'
             message = f'Hi {user.name}, click this link to reset - '+link+''
             email_from = settings.EMAIL_HOST_USER
             recipient_list =[user.email,]
