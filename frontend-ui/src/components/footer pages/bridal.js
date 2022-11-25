@@ -94,7 +94,8 @@ const Bridal = () => {
                   </div>
                   <div className={`${style.column} ${style.col2}`}>
                     <img
-                      style={{ height: "60vh" }}
+                      className={style.bridalImg}
+                      
                       src={config.apiBaseURL + bridal.bridalImage}
                     ></img>
                   </div>

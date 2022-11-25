@@ -51,8 +51,16 @@ const Details = (props) => {
   const { con, setcon, setCartDrawer, openCartdrawer } = CartState();
   const [sizeCond, setSizecond] = useState(false);
   const [pushData, setPushData] = useState(false);
-  const { cart, setCart, like, setLike, CategoryProduct, currency,setCategoryProduct,settemAllpro } =
-    CartState();
+  const {
+    cart,
+    setCart,
+    like,
+    setLike,
+    CategoryProduct,
+    currency,
+    setCategoryProduct,
+    settemAllpro,
+  } = CartState();
   const [cartsaveApi, { isLoad }] = useCartUpdateMutation();
   const [saveLikeApi, { isLoading }] = useLikedUpdateMutation();
   const [notAvai, setNotAvai] = useState(false);
@@ -78,18 +86,19 @@ const Details = (props) => {
     gettingDetail();
     getWomenSizeChart();
     getWhatsappContactNumber();
-    catApi()
-    window.scrollTo(0,0)
+    catApi();
+    window.scrollTo(0, 0);
   }, []);
 
-  const{category}=useParams()
- 
- 
+  const { category } = useParams();
 
-
- const catApi=async()=>{
-  await getCategoryProduct(category).then(r=>{setCategoryProduct([...r.category]);settemAllpro([...r.category]);console.log(r.category) })
- }
+  const catApi = async () => {
+    await getCategoryProduct(category).then((r) => {
+      setCategoryProduct([...r.category]);
+      settemAllpro([...r.category]);
+      console.log(r.category);
+    });
+  };
 
   if (con == false) {
     gettingDetail();
@@ -336,7 +345,8 @@ const Details = (props) => {
                   <h1 className={styles["subtitle"]}>{details.about}</h1>
                   <span className={styles["subtitle"]}>
                     {" "}
-                    {currency.sign} {details.price * currency.value}
+                    {currency.sign}{" "}
+                    {(details.price * currency.value).toFixed(2)}
                   </span>
                   <div className={styles["container05"]}>
                     <div
@@ -560,7 +570,7 @@ const Details = (props) => {
                     Reason - to display size chart when we click on size chart text */}
                     {/* <span  className={styles["text02"]}>Size Chart</span> */}
                     <span
-                     className={`${styles.subtitle} ${styles.customSubtitle}`}
+                      className={`${styles.subtitle} ${styles.customSubtitle}`}
                       style={{ cursor: "pointer" }}
                       onClick={showSizeChart}
                     >
@@ -588,10 +598,8 @@ const Details = (props) => {
                     {/* End of code addition */}
                   </div>
                   <div
-                     className={` ${styles["customButtonContainer"]} `}
-                    style={{
-                    
-                    }}
+                    className={` ${styles["customButtonContainer"]} `}
+                    style={{}}
                   >
                     {check() ? (
                       <button
@@ -608,9 +616,7 @@ const Details = (props) => {
                         ADD TO BAG
                       </button>
                     )}
-                    <div
-                      className={` ${styles["iconButtonsContainer"]} `}
-                    >
+                    <div className={` ${styles["iconButtonsContainer"]} `}>
                       {like.filter((l) => l.id === details.id).length > 0 ? (
                         <AiFillHeart
                           style={{
@@ -795,7 +801,7 @@ const Details = (props) => {
                         fontSize: "14px",
                       }}
                     >
-                      Contact Us | 
+                      Contact Us |
                     </Link>
 
                     <Link
@@ -863,7 +869,7 @@ const Details = (props) => {
               </div>
             </div>
           </div>
-{/* 
+          {/* 
           {CategoryProduct && CategoryProduct.length > 0 ? (
 
           
@@ -913,14 +919,11 @@ const Details = (props) => {
             </div>
             <Slider />
           </div> */}
-           
-         <div style={{width:"100%"}}>
-            
-             <Slider/>
-            <Slider2/>
+
+          <div style={{ width: "100%" }}>
+            <Slider2 />
+            <Slider />
           </div>
-
-
         </div>
       ) : (
         "loading"

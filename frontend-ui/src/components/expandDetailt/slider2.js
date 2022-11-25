@@ -8,7 +8,7 @@ import { CartState } from "../../context";
 import style from "../listing/listpage.module.css";
 
 const Slider2 = () => {
-  const { CategoryProduct, con, setcon } = CartState();
+  const { CategoryProduct, con, setcon, currency } = CartState();
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -38,45 +38,62 @@ const Slider2 = () => {
     //  <Navigate to={`/listing/${id.category}/detail/${id.id}`}/>
   }
 
-  return (<>
-   
-      <div style={{display:"flex",flexDirection:"column",padding:"0 8%",margin:"50px 0"}}>
-       <div
-                style={{
-                  fontSize: "20px",
-                  lineHeight: "32px",
-                  letterSpacing: "3px",
-                  marginBottom: "20px",
-                  paddingLeft:"4%"
-                }}
-              >
-                RECENTLY VIEWED PRODUCTS
-              </div>
-    <Carousel responsive={responsive} style={{ width: "100%" }}>
-      {CategoryProduct
-        ? CategoryProduct.map((cart, i) => {
-            if (i != 0)
-              return (<>
-                <img
-                      className={style.img}
-                      src={config.apiBaseURL + cart.img_main}
-                      style={{ width: "350px" }}
-                      onClick={(e) => openDetail(cart)}
-                    />
-               
+  return (
+    <>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          padding: "0 8%",
+          margin: "50px 0",
+          marginBottom:"5vh"
+        }}
+      >
+        <div
+          style={{
+            fontSize: "20px",
+            lineHeight: "32px",
+            letterSpacing: "3px",
+            marginBottom: "20px",
+            paddingLeft: "4%",
+          }}
+        >
+          YOU MAY ALSO LIKE
+        </div>
+        <Carousel responsive={responsive} style={{ width: "100%" }}>
+          {CategoryProduct
+            ? CategoryProduct.map((cart, i) => {
+                if (i != 0)
+                  return (
+                    <>
+                      <img
+                        className={style.img}
+                        src={config.apiBaseURL + cart.img_main}
+                        style={{ width: "350px" }}
+                        onClick={(e) => openDetail(cart)}
+                      />
+                      <div
+                        style={{
+                          textAlign: "center",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        {cart.title}
+                      </div>
+                      <div style={{ textAlign: "center", fontWeight: "600" }}>
+                        {" "}
+                        {currency.sign}{" "}
+                        {(cart.price * currency.value).toFixed(2)}
+                      </div>
+                    </>
+                  );
+              })
+            : null}
 
-                
-                   <span>{cart.title}</span>
-                   </>
-              );
-          })
-        : null}
-
-      <div>.</div>
-    </Carousel>
-
-    </div>
-      </>
+          <div>.</div>
+        </Carousel>
+      </div>
+    </>
   );
 };
 

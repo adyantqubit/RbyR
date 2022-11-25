@@ -14,7 +14,7 @@
 }
 .cardli{
     margin-top:60px;
-    width:33%;
+    width:36%;
     /* border-radius:10px; */
     display:flex;
     flex-direction: column;
@@ -63,10 +63,28 @@
     border-radius:20px;
 }
 
+@media (max-width: 1200px) {
+    .container{
+        padding:0 50px;
+    }
+    .imgswap{
+        width:100%;
+        height:500px;
+       
+    }
+    .cardli{
+        width: 48%;
+    }
+}
+@media (max-width: 850px) {
+    .imgswap{
+        width:100%;
+        height:400px;
+       
+    }
+}
 
-
-
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .container{
         margin-top:20px;
         padding:0;

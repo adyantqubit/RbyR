@@ -57,7 +57,9 @@
     word-wrap: break-word;
     
 }
-
+.bridalImg{
+    height:60vh;
+}
 .form{
     margin-top: 10vh;
 }
@@ -91,14 +93,14 @@
     .title{
         margin-top:4vh;
         font-size: 14px;
-        padding: 0 3%;
+        padding: 0 2%;
         letter-spacing: 1px;
         
     }
     .subtitle{
         margin-top: 5px;
         font-size: 12px;
-        padding: 0 3%;
+        padding: 0 2%;
         width: 100%;
         letter-spacing: 1px;
     }
@@ -109,11 +111,13 @@
     .column{
         width: 100%;
     }
+    .bridalImg{
+        height:110vh;
+    }
     .formInputContainer{
         width: 100%;
-        padding-left: 5%;
-        padding-right: 5%;
-
+        padding-left: 2%;
+        padding-right: 2%;
     }
     .col1{
         order: 2;
@@ -125,5 +129,10 @@
     .lbl{
        
         font-weight: 400;
+    }
+}
+@media screen and (max-width:400px) {
+    .bridalImg{
+        height:60vh;
     }
 }

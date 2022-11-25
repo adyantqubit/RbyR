@@ -118,7 +118,7 @@ class product_detail(models.Model):
     img_sub3=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100,default="null") 
     like=models.IntegerField(default=0)
-    price=models.IntegerField()
+    price=models.DecimalField(decimal_places=2,max_digits=10)
     color=models.CharField(max_length=25,default="blue")
     description=models.CharField(max_length=300,default="Draped Halter Top With Cutout And Handkerchief Drape")
     fabric=models.CharField(max_length=50,default="Chiffon")

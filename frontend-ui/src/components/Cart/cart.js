@@ -337,7 +337,7 @@ const increament=async (CartProduct)=>{
                 </Popconfirm>
              </div>
 
-              <div style={{color:"black",marginLeft:"20px"}} className={style.price}> {currency.sign} {pro.price*currency.value}</div>
+              <div style={{color:"black",marginLeft:"20px"}} className={style.price}> {currency.sign} {(pro.price*currency.value).toFixed(2)}</div>
               <div style={{color:"black",marginLeft:"20px",marginTop:"8px"}}>
                 <span className={style.size}>Size :</span>
                 <span className={style.showSize}> {pro.size}</span>  
