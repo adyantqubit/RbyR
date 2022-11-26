@@ -15,9 +15,10 @@ import {AiFillEyeInvisible,AiFillEye} from "react-icons/ai"
 
 import { CartState } from '../../context';
 import { notification } from 'antd';
+import { GuestCartRequest } from '../../api/orderApis';
 
 const Login = () => {
-	const {setCart,setLike,firstTimeLoadFunctions}=CartState()
+	const {setCart,setLike,firstTimeLoadFunctions,cart}=CartState()
 	const [error, setError] = useState({})
 	let{access_token}=getToken()
 	const dispatch=useDispatch()
@@ -38,21 +39,26 @@ const Login = () => {
 		const data = new FormData(e.currentTarget);
 		
 		const actualData = {
-		  email: data.get('email'),
+		  email: data.get('email').toLowerCase(),
 		  password: data.get('pswd'),
 		}
 	
 		const res=await loginUser(actualData)
 
 		console.log(res)
+		
 		if(res.error){
 		  setError(res.error.data.errors)
 		}
+
+
 		if(res.data){
 		  storeToken(res.data.token)
 		  let {access_token}=getToken();
 		  dispatch(setUserToken({access_token:access_token}))
 		//   window.location.reload(); 
+		console.log(res.data.token.access)
+		await GuestCartRequest(cart).then(r=>localStorage.removeItem('cart'))
 		  setCart([])
 		  setLike([])
 		  if(JSON.parse(localStorage.getItem("cart")))

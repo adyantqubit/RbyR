@@ -19,9 +19,8 @@ const Payment = () => {
       setTick(tick)
       if(tick==true){
       checkoutDetails['payment']="cod"
-      document.getElementsByClassName('order_boxpay__5BlKK')[0].style.border="1px solid black"
-      document.getElementsByClassName('order_boxpay__5BlKK')[1].style.border="1px solid black"
-
+      document.getElementById('cash').style.border="1px solid black"
+      document.getElementById('online').style.border="1px solid black"
       tickop=false
       setTickop(tickop)
       }
@@ -34,8 +33,8 @@ const Payment = () => {
       setTickop(tickop)
       if(tickop==true){
       checkoutDetails['payment']="onlinepay"
-      document.getElementsByClassName('order_boxpay__5BlKK')[0].style.border="1px solid black"
-      document.getElementsByClassName('order_boxpay__5BlKK')[1].style.border="1px solid black"
+      document.getElementById('cash').style.border="1px solid black"
+      document.getElementById('online').style.border="1px solid black"
       tick=false;
       setTick(tick)  
       }
@@ -60,8 +59,8 @@ const Payment = () => {
            nav("/billing")
         }
         else{
-            document.getElementsByClassName('order_boxpay__5BlKK')[0].style.border="1px solid red"
-            document.getElementsByClassName('order_boxpay__5BlKK')[1].style.border="1px solid red"
+          document.getElementById('cash').style.border="1px solid red"
+          document.getElementById('online').style.border="1px solid red"
         }
     }
 
@@ -72,7 +71,7 @@ const Payment = () => {
   return (
     <div className={styles.columnitem3} style={{marginTop:"20px"}}>
           <div className={styles.columnitem1head}>3. PAYMENT</div>
-          <div className={styles.boxpay}>
+          <div className={styles.boxpay} id="cash">
           <div style={{display:"flex",justifyContent:"space-between"}} onClick={onSelect}>
             <span className={styles.userinfoText}>Cash On Dilevery</span>
           {tick?
@@ -82,7 +81,7 @@ const Payment = () => {
 
             </div>
           </div>
-          <div className={styles.boxpay}>
+          <div className={styles.boxpay} id="online">
           <div style={{display:"flex",justifyContent:"space-between"}} onClick={selectop}>
             <span className={styles.userinfoText}>Pay Online</span>
           {tickop?

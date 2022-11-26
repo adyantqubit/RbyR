@@ -157,7 +157,7 @@ urlpatterns = [
     #Added by Rohan kansari on 24-11-2022
     #reason- To consist data for guest user
     #jira issue -RBYR-208
-    # path("",)
+    path("cart_save_for_geust/",GeustCart.as_view()),
     #end of code Addition
 
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)   

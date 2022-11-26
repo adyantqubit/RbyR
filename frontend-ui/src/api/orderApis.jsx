@@ -61,7 +61,16 @@ return response ? response.data : {};
   }
 
 
+  // #Added by Rohan kansari on 25-11-2022
+  //   #reason- To consist data for guest user
+  //   #jira issue -RBYR-208
+  export const GuestCartRequest=async(data)=>{
+    const response = await API.post(`cart_save_for_geust/`, data,{
+      headers: { "Content-Type": "application/json",'authorization':`Bearer ${localStorage.getItem('access_token')}`},
+    }).catch((err) => console.log("Failed to authenticate the user."));
+return response ? response.data : {};
+  }
 
-
+//End of the code
 
 

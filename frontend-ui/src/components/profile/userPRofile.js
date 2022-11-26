@@ -70,7 +70,7 @@ const UserProfile = () => {
       notification.error({
         message: <div style={{fontSize:"18px",color:"black"}}>Successfully updated. </div>,
         description:
-        `Your Name,Email and Password updated`,
+        `Your User Credentials has been updated`,
         className:"custom-class",
         style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"24vh",marginRight:"10vw"},
         duration:5,
@@ -151,6 +151,7 @@ if (data.get('oldpswd')!=null){
               <div className={style.column1text}><Link to="/profile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY ORDERS</Link></div>
 
             </div>
+            
             <div className={style.column2}>
             <div className={style.column2header}>
               <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>

@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import { cartStockRecheck, CouponCheck, shippingTickGet, TaxGet } from '../../api/orderApis';
 import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing';
 import { Typography } from '@mui/material';
+import {MdOutlineArrowBack} from 'react-icons/md';
 
 
 
@@ -82,7 +83,15 @@ const Cart= () => {
       {/* <Button type="primary" onClick={showDrawer}>
         Open
       </Button> */}
-      <Drawer title={<span style={{width:"100%",display:"flex",justifyContent:"center",fontSize: "18px",lineHeight: "26px",letterSpacing: "2.5px"}}>Shopping cart</span>} width={drawerwidth} placement="right" onClose={onClose} open={openCartdrawer} >
+      <Drawer         title={<div className="likeTitle" style={{whiteSpace:"nowrap"}}>Shopping Cart</div>}
+        // title="Wishlist"
+        width={drawerwidth}
+        placement="right"
+        onClose={onClose}
+        closeIcon={<MdOutlineArrowBack className="likeSVG"/>}
+        open={openCartdrawer}
+        headerStyle={{ height: "200px", backgroundColor: "white" }}
+        style={{ display: "flex", justifyContent: "center" }} >
       <CartCard/>
 
       </Drawer>

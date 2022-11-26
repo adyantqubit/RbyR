@@ -17,7 +17,7 @@ const SentEmail = () => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const actualData = {
-      email: data.get('email'),
+      email: data.get('email').toLowerCase(),
     }
   
     const res=await sendPasswordResetEmail(actualData)

@@ -79,7 +79,7 @@ const MyOrders = () => {
             <div className={style.column2header}>MY ORDERS</div>
             <hr style={{color:"black"}}></hr>
 
-             <div className={style.table}>
+            {orders&&orders.length>0&&tran!=null&&tran.length>0? <div className={style.table}>
                 <div className={style.tablerowheadtable}>
                   <div className={style.rowheadText}>Order ID</div>
                   <br style={{color:"blue"}}></br>
@@ -93,9 +93,9 @@ const MyOrders = () => {
                 </div>
                 <hr style={{color:"black"}}></hr>
 
-                {orders&&orders.length>0&&tran!=null&&tran.length>0?
+                
 
-                orders.map((o,i)=>
+               { orders.map((o,i)=>
                   <div className={style.tablerowheadtable}>
                     <div className={style.rowText}>{o[0].order_no}</div>
                     <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].date}</div>
@@ -107,12 +107,14 @@ const MyOrders = () => {
                     <div className={style.rowText} style={{textDecoration:"underline",color:"blue",fontSize:"14px",cursor:"pointer",whiteSpace:"nowrap",overflow:"hidden",width:"80px"}} onClick={e=>nav(`/insideorder/${o[0].order_no}`)}>View Order
                     </div>
                     
-                  </div>)
-              :
-              null
-                }
+                  </div>)}
+                  
                 
+             </div>:
+             <div style={{width:"100%",height:"40%",display:"flex",justifyContent:"center",textAlign:"center"}}>
+               No History Found, <Link to="\" style={{fontSize:"14px",textDecoration:"underline",marginTop:"5px",marginLeft:"5px"}}>Continue Shopping</Link> 
              </div>
+               }
             </div>
           </div>
         </div>

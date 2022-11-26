@@ -772,3 +772,32 @@ class WhatsappContactView(APIView):
         WhatsappContactDetail = WhatsappContact.objects.all().values()
         return Response(WhatsappContactDetail)
 #End of code addition
+
+
+#Added by Rohan kansari on 24-11-2022
+    #reason- To consist data for guest user
+    #jira issue -RBYR-208
+class GeustCart(APIView):
+    def post(self,request):
+        for data in request.data:
+            if(data['size']=="Short"):
+                pro=product_detail.objects.get(id=data['id'])
+                Cart.objects.create(product_no=pro,size=data['size'],quantity=data['quantity'],user_no=request.user).save()
+            elif(data['size']=="Medium"):
+                pro=product_detail.objects.get(id=data['id'])
+                Cart.objects.create(product_no=pro,size=data['size'],quantity=data['quantity'],user_no=request.user).save()
+
+            elif(data['size']=="Large"):
+                 pro=product_detail.objects.get(id=data['id'])
+                 Cart.objects.create(product_no=pro,size=data['size'],quantity=data['quantity'],user_no=request.user).save()
+
+            elif(data['size']=="Extra Large"):
+                 pro=product_detail.objects.get(id=data['id'])
+                 Cart.objects.create(product_no=pro,size=data['size'],quantity=data['quantity'],user_no=request.user).save()
+            
+            elif(data['size']=="Extra Extra Large"):
+                 pro=product_detail.objects.get(id=data['id'])
+                 Cart.objects.create(product_no=pro,size=data['size'],quantity=data['quantity'],user_no=request.user).save() 
+        
+        return Response(request.data)
+    #end of code Addition

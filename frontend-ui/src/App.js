@@ -55,7 +55,7 @@ function App() {
 
     <Route path='/cart' element={<CartSItem/>} />
   
-    <Route path='/placeorder' element={access_token?<Orderpage/>:<Navigate to='/login'/>}/>
+    <Route path='/placeorder' element={localStorage.getItem("access_token")?<Orderpage/>:<Navigate to='/login'/>}/>
     <Route path='/billing' element={<Billing/>}/>
     <Route path='/shippindprofile' element={<ShippingProfile/>}/>
     <Route path='/userprofile' element={<UserProfile/>}/>
