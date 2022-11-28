@@ -247,6 +247,9 @@
 }
 
 @media (max-width: 768px) {
+    .container{
+        top:12vh;
+    }
     .invoice{
         width:90%;
 

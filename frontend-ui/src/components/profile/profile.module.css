@@ -9,6 +9,7 @@
 .Container{
     position: relative;
     top:27vh;
+    margin-bottom: 27vh;
     width:100%;
     background-color: white;
     display: flex;
@@ -292,6 +293,11 @@
 }
 
 @media (max-width: 768px) {
+
+    .Container{
+        top:12vh;
+        margin-bottom: 12vh;
+    }
 
     .tablerowhead{
         display:flex;

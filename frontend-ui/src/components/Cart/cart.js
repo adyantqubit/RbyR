@@ -308,7 +308,7 @@ const increament=async (CartProduct)=>{
   return (
     <> 
     <Navbar/>
- <div style={{position:"relative",top:"26vh",width:"100%",background:"white",display:"flex",justifyContent:"center"}}>
+ <div style={{position:"relative",top:"10vh",width:"100%",background:"white",display:"flex",justifyContent:"center"}}>
     <div className={styles.main}>
    
     <div className={styles.heading}>
@@ -380,7 +380,7 @@ const increament=async (CartProduct)=>{
                 </Popconfirm>
              </div>
 
-              <div style={{color:"black",marginLeft:"20px"}} className={style.price}> {currency.sign} {pro.price*currency.value}</div>
+              <div style={{color:"black",marginLeft:"20px"}} className={style.price}> {currency.sign} {(pro.price*currency.value).toFixed(2)}</div>
               <div style={{color:"black",marginLeft:"20px",marginTop:"8px"}}>
                 <span className={style.size}>Size :</span>
                 <span className={style.showSize}> {pro.size}</span>  
@@ -454,6 +454,7 @@ const increament=async (CartProduct)=>{
           <span>{currency.sign} {(afterColumnTotalOfferAdd(offer,cart,taxRate).coupon*currency.value).toFixed(2)} off 
           <span style={{marginLeft:"10px",textDecoration:"underline",cursor:"pointer"}} onClick={resetCoupon}>Remove</span></span>
         </div>}
+        
         </div>
         {error!=null?<Typography style={{marginTop:"-10px",color:"red",fontSize:"14px",marginLeft:"15px"}}>{error.error}</Typography>:null}
 
@@ -476,12 +477,12 @@ const increament=async (CartProduct)=>{
     </div>:null}
 
 {ImportantRules!=null?
-    <div style={{height:"300px",width:"100%",marginLeft:"15px",marginBottom:'100px'}}>
+    <div style={{height:"300px",width:"100%",marginLeft:"15px"}}>
       <h6 style={{fontSize:"14px",lineHeight: "22px",letterSpacing: "1.2px",marginLeft:"15px"}}>IMPORTANTS</h6>
       <ul style={{  listStyleType: "disc",listStylePosition:"outside"}}>
         <li style={{color:"#8c8c8c",fontSize:"13px",lineHeight:"20px",letterSpacing: "1px"}}>
           {ImportantRules.point1}
-        </li>
+        </li>   
         <li style={{color:"#8c8c8c",fontSize:"13px",lineHeight:"20px",letterSpacing: "1px"}}>
           {ImportantRules.point2}        
         </li>
@@ -499,10 +500,9 @@ const increament=async (CartProduct)=>{
     <div className={styles.sliderShow}>
 
      <div style={{width:"100%",display:"flex",justifyContent:'center',background:"white"}}>
-     <div style={{width:"80vw",height:"70vh",marginBottom:"50px",background:"white",zIndex:"0"}}>
+     <div style={{width:"100vw",height:"90vh",marginBottom:"50px",background:"white",zIndex:"0"}}>
      {JSON.parse(localStorage.getItem("recentview"))&&JSON.parse(localStorage.getItem("recentview")).length>0?
         <>
-        <div style={{fontSize:"1.3rem",marginBottom:"20px",color:"black"}}>Recently Viewed Product</div>
         <Slider/>
         </>
         :null

@@ -73,7 +73,7 @@ const Payment = () => {
           <div className={styles.columnitem1head}>3. PAYMENT</div>
           <div className={styles.boxpay} id="cash">
           <div style={{display:"flex",justifyContent:"space-between"}} onClick={onSelect}>
-            <span className={styles.userinfoText}>Cash On Dilevery</span>
+            <span className={styles.userinfoText}>Cash On Delivery</span>
           {tick?
           <i class="fa-solid fa-check" style={{color:"black"}}></i>
           :

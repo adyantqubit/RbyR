@@ -71,19 +71,19 @@ const Cart= () => {
     <>
       
     {/* < BsCartFill style={{marginTop:"10px",fontSize:"20px",color:"#7c7c7c"}} /> */}
-    <span style={{height:"20px",overflow:"hidden"}}>
+    <span style={{height:"20px"}} onClick={openCart}>
     {cart&&cart.length>0?<span class='badge badge-warning' id='lblCartCount'>{cart.length}</span>:null}
     {/* <i class="fa" >&#xf07a;</i> */}
     {cart&&cart.length>0?
-    <i class="fa-solid fa-bag-shopping" style={{fontSize:"20px",position:"relative",bottom:"15px",color:"grey"}} onClick={openCart}></i>
+    <i class="fa-solid fa-bag-shopping" style={{fontSize:"20px",position:"relative",color:"grey"}} ></i>
     :
-    <i class="fa-solid fa-bag-shopping" style={{fontSize:"20px",position:"relative",top:"10px",color:"grey"}} onClick={openCart}></i>
+    <i class="fa-solid fa-bag-shopping" style={{fontSize:"20px",position:"relative",color:"grey"}}></i>
 }
     </span>
       {/* <Button type="primary" onClick={showDrawer}>
         Open
       </Button> */}
-      <Drawer         title={<div className="likeTitle" style={{whiteSpace:"nowrap"}}>Shopping Cart</div>}
+      <Drawer title={<div className="likeTitle" style={{whiteSpace:"nowrap"}}>Shopping Cart</div>}
         // title="Wishlist"
         width={drawerwidth}
         placement="right"

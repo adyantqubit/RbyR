@@ -17,7 +17,7 @@ const Orderpage = () => {
   return (
     <>
     <Navbar/>
-    <div style={{position:"relative",top:"26.5vh"}}>
+    <div className={styles.responsive}>
     <div className={styles.head}>
      <span className={styles.headText} onClick={e=> nav(-1)}>{`< Back To Cart`}</span> 
     </div>

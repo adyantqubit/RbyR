@@ -215,7 +215,7 @@ const handleButtonClicknum = (msg) => {
   return (
     <>
     <Navbar/>
-    <div className={style.Container} style={{marginBottom:"26vh"}}>
+    <div className={style.Container}>
         <div className={style.centerContainer}>
           <div className={style.containerHeader}><Link to="/"  className={style.containerHeader}>Homepage</Link>/ My Account</div>
           <div className={style.main}>
@@ -231,8 +231,11 @@ const handleButtonClicknum = (msg) => {
             <div className={style.column2header} >
                 <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
                     <span>SHIPPING DETAILS</span>
-                    <span className={styles.userinfoText} onClick={e=>jumpToEdit()}>{shipEditcond?"Edit Configuration":null}
-                    </span>
+                   
+                    {shippingAddress!=null&&shippingAddress.length>0?
+                     <span className={styles.userinfoText} onClick={e=>jumpToEdit()}>{shipEditcond?"Edit Configuration":null}
+                    </span> :
+                    null}
                 </div>
             </div>
             <hr style={{color:"black"}}></hr>
@@ -265,7 +268,9 @@ const handleButtonClicknum = (msg) => {
                  </div>
                 ))
                 :
-            null
+                <div style={{width:"100%",height:"40%",display:"flex",justifyContent:"center",textAlign:"center"}}>
+                No Shipping History Found, 
+              </div>
                  }      
                 </div>
           </div>  
@@ -318,19 +323,19 @@ const handleButtonClicknum = (msg) => {
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='first'>Zip-code *</label> 
-                        <input className={styles.firstInput} name='pincodeb' onKeyPress={validatesPin} maxLength={6} defaultValue={defaultShiping.country} required/>
+                        <input className={styles.firstInput} name='pincodeb' onKeyPress={validatesPin} maxLength={6} defaultValue={defaultShiping.zipcode} required/>
                         {isAlertVisiblepin&&<span asp-validation-for="Code" class="text-danger col-sm-4">{pinerror} </span>}
 
                     </div>
                     <div className={styles.columnFirstName}>
                     <label className={styles.firstName} htmlFor='last'>Country *</label>
-                        {defaultShiping.zipcode? <select className={styles.firstInput} defaultValue={defaultShiping.zipcode} onChange={changeHandler}>
+                        {defaultShiping.zipcode? <select className={styles.firstInput} defaultValue={defaultShiping.country} onChange={changeHandler}>
                          {list.map(l=>{
                              return <option value={l.label}>{l.label}</option>
                          })}
                          </select>
                         : 
-                        <select className={styles.firstInput} defaultValue={defaultShiping.zipcode} onChange={changeHandler}>
+                        <select className={styles.firstInput} defaultValue={defaultShiping.country} onChange={changeHandler}>
                             {list.map(l=>{
                                 return <option value={l.label}>{l.label}</option>
                             })}
@@ -359,7 +364,7 @@ const handleButtonClicknum = (msg) => {
                     DELETE 
                 </button> */}
                 <span className={styles.userInfoButton} style={{marginLeft:"10px"}} onClick={e=>setshipEditCond(true)}>
-                    CANCLE
+                    CANCEL
                 </span>
                 </div>
                 </form>

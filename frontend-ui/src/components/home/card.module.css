@@ -68,15 +68,13 @@
 
 @media (max-width: 768px) {
     .container{
-        margin-top:20px;
+        margin-top:80px;
         padding:0;
         
       }
       .main{
         flex-direction:column;
-        padding: 0px;
-        
-        
+        padding: 0px;       
     }
     .cardli{
         width:100%;

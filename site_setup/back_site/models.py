@@ -263,7 +263,7 @@ class product_orders(models.Model):
 status = (
     ('paid','paid'),
     ('pending','pending'),
-    ('cancle','cancle'),
+    ('cancle','cancel'),
 
 )    
 class Transaction_history(models.Model):
@@ -291,7 +291,7 @@ class Transaction_history(models.Model):
              if product.size=="Large":
                    pro.L+=product.quantity 
                    pro.save()             
-             if product.size=="Extra Large" :
+             if product.size=="Extra Large":
                  pro.XL+=product.quantity
                  pro.save()                
              if product.size=="Extra Extra Large":

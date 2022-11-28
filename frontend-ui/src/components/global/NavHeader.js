@@ -22,7 +22,8 @@ import Search from './search';
 import Slideshow from './slideshow';
 import Converter from '../concepts/convertCurrency';
 import config from '../../api/config';
-import { getLogoAndCover } from "../../api/service";
+import { getLogoAndCover, getWhatsappContactDetail } from "../../api/service";
+import ShrinkHeader from './shrinkHeader';
 
 
 const Navbar = () => {
@@ -94,6 +95,7 @@ const Navbar = () => {
 
   useEffect(() => {
     getLogoAndCoverDetail();
+    getWhatsappContactNumber()
   }, []);
 
   const getLogoAndCoverDetail = async () => {
@@ -104,10 +106,19 @@ const Navbar = () => {
     }
   };
 
+  const [whatsappContactNumber, setWhatsappContactNumber] = useState(false);
+
+  const getWhatsappContactNumber = async () => {
+    const whatsappContactNumberData = await getWhatsappContactDetail();
+    if (whatsappContactNumberData) {
+      setWhatsappContactNumber(whatsappContactNumberData[0].whatsappNmber);
+    }
+  };
+
 	return (
 		<>
 		<div className={style.contain} style={{borderBottom:"1px solid white"}}>
-      <div style={{background:"#000",color:"white",display:"flex",justifyContent:"center",fontSize:".8rem"}}>FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT <a href='https://wa.me/916264170187' style={{textDecoration:"none",outline:"none",color:"white",fontSize:".9rem"}}>+91 7865435434</a></div>
+      <div style={{background:"#000",color:"white",display:"flex",justifyContent:"center",fontSize:".8rem"}}>FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT  <a href={`https://wa.me/${whatsappContactNumber}`} style={{textDecoration:"none",outline:"none",color:"white",fontSize:".9rem",marginLeft:'5px'}}>{whatsappContactNumber?whatsappContactNumber:" Not added"}</a></div>
      
         <div className={style.logo}>
         {/* <img src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" alt="Logo" onClick={openHome}/> */}
@@ -117,7 +128,7 @@ const Navbar = () => {
 
           <nav className={style.navbar}>
             
-            <ul className={style.nav_links} style={{marginBottom:"3px",marginTop:"20px"}}>
+            <ul className={style.nav_links} style={{marginBottom:"0px"}}>
             
               <input type="checkbox" id="checkbox_toggle" />
               <label htmlFor="checkbox_toggle" className={style.hamburger}>&#9776;</label>
@@ -130,11 +141,11 @@ const Navbar = () => {
                   <span  className={style.al} href="/" style={{fontWeight:"450",fontSize:"16px"}}>Ethnic</span>
                 
                   <ul className={style.dropdown}>
-                    <li  style={{padding:"0",width:"40px",margin:"20px 15px"}}><Link className={style.al2} to="/listing/partywear" >Partywear</Link></li>
-                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px"}}><Link className={style.al2} to="/listing/casual">Casual</Link></li>
-                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px"}}><Link className={style.al2} to="/listing/kurti">Kurti</Link></li>
-                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px"}}><Link className={style.al2} to="/listing/weddingwear">Weddingwear</Link></li>
-                    <li style={{padding:".1em",width:"auto",margin:"20px 15px"}}><Link className={style.al2}  to="/listing/formal">Formal</Link></li>
+                    <li  style={{padding:"0",width:"40px",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/partywear" >Partywear</Link></li>
+                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/casual">Casual</Link></li>
+                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/kurti">Kurti</Link></li>
+                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/weddingwear">Weddingwear</Link></li>
+                    <li style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2}  to="/listing/formal">Formal</Link></li>
                   </ul>    
                 </li>
 
@@ -157,9 +168,13 @@ const Navbar = () => {
 
                 <div className={style.system}>
                   <div><Search className={style.icons}/></div>
-                  <div><BsWhatsapp className={style.icons}/></div>
+                  <div>
+                    <a href={`https://wa.me/${whatsappContactNumber}`}>
+                      <BsWhatsapp className={style.icons}/>
+                    </a>
+                  </div>
                   <div><LikedDrawer /></div>
-                  <div style={{height:"20px"}}><Cart style={{display:"none"}}/></div>
+                  <div style={{position:"relative",top:"10px"}}><Cart/></div>
                   <div><Profile /></div>
                 </div>
 
@@ -172,7 +187,7 @@ const Navbar = () => {
           <div className={cl?style.drops:style.out}></div>
          
     </div>
-  
+  <ShrinkHeader/>
 	</>
 	);
 };

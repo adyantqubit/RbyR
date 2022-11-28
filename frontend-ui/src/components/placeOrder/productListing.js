@@ -37,7 +37,7 @@ const ProductListing = () => {
         <hr style={{color:"black"}}></hr>
         <div style={{marginTop:"-5px",display:"flex",justifyContent:"space-between"}}>
         <div className={styles.columnitem1head} style={{marginTop:"-5px"}}>TOTAL</div>
-        <div className={styles.columnitem1head} style={{marginTop:"-5px"}} >{currency.sign}{(afterColumnTotalOfferAdd(offer,cart,taxRate)*currency.value).toFixed(2)}</div>
+        <div className={styles.columnitem1head} style={{marginTop:"-5px"}} >{currency.sign}{(afterColumnTotalOfferAdd(offer,cart,taxRate).Grand*currency.value).toFixed(2)}</div>
         </div>
         <div className={styles.columnitem1head}>TOTAL ITEMS ({cart.length})</div>
         <hr style={{color:"black"}}></hr>

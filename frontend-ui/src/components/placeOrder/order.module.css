@@ -47,7 +47,10 @@
     justify-content: end;
 }
 
-
+.responsive{
+    position:relative;
+    top:26vh;
+}
 
 
 .columnitem1{
@@ -293,7 +296,11 @@ letter-spacing: 1.2px;
 }
 
 @media (max-width: 768px) {
-
+    .responsive{
+        position:relative;
+        top:12vh;
+    }
+    
 
     .row {
         display:flex;

@@ -237,7 +237,10 @@ const increament= async (CartProduct)=>{
               </div>
               <div style={{color:"black",marginLeft:"20px",marginTop:"8px"}}>
                 <span className={styles.shipping}>Standard Shiping:</span>
-                <span className={styles.shipping}> 2 Weeks</span>  
+                {pro.ready_to_ship?
+                <span className={styles.shipping}> {pro.ready_to_ship_days}</span>:
+                <span className={styles.shipping}> {pro.shipping_days} Weeks</span>}
+                  
               </div>
 
               <div style={{height:"100px",display:"flex",flexDirection:"column"}}></div>

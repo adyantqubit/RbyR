@@ -139,7 +139,7 @@ if (data.get('oldpswd')!=null){
   return (
     <>
     <Navbar/>
-    <div className={style.Container} style={{marginBottom:"26vh"}}>
+    <div className={style.Container} >
         <div className={style.centerContainer}>
           <div className={style.containerHeader}><Link to="/"  className={style.containerHeader}>Homepage</Link> / My Account</div>
           <div className={style.main}>
