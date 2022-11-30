@@ -4,7 +4,7 @@
 
 .ppContainer{
     position: relative;
-    top:15vh;
+    top:26vh;
     height: auto;
     width:100%;
     background:#323232;
@@ -66,6 +66,9 @@
 }
 
 @media screen and (max-width:768px) {
+    .ppContainer{
+        top:12vh;    
+    }
     .tacContainer{
         top:5vh;
     }

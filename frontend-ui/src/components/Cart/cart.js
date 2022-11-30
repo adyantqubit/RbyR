@@ -308,7 +308,7 @@ const increament=async (CartProduct)=>{
   return (
     <> 
     <Navbar/>
- <div style={{position:"relative",top:"10vh",width:"100%",background:"white",display:"flex",justifyContent:"center"}}>
+ <div className={styles.container}>
     <div className={styles.main}>
    
     <div className={styles.heading}>

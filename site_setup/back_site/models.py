@@ -97,11 +97,11 @@ category = (
     ('partywear','Party wear'),
     ('kurti', 'Kurti'),
     ('casual','Casual'),
-    ('weddingwear','Wedding Wear'),
+    ('wedding_wear','Wedding Wear'),
     ('formal','Formal'),
-    ('luxurypret','Luxury'),
-    ('readytowear','ready to wear'),
-    ('worldofrr','world of rr')
+    ('luxury_pret','Luxury pret'),
+    ('ready_to_wear','Ready To Wear'),
+    ('world_of_rbyr','World Of RBYR')
 )
 
 class product_detail(models.Model):

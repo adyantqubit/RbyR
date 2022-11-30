@@ -74,3 +74,15 @@ return response ? response.data : {};
 //End of the code
 
 
+// #Added By Rohan kansari
+//     #reason- Pagination functionality where it get one by one page data in each call
+//     #jira issue-RBYR233
+
+export const nextIndexPage=async(data)=>{
+  const response = await API.post(`page_indexing/`, data,{
+    headers: { "Content-Type": "application/json"},
+  }).catch((err) => console.log("Failed to authenticate the user."));
+return response ? response.data : {};
+}
+
+//End of the code

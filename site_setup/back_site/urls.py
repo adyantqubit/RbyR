@@ -159,5 +159,12 @@ urlpatterns = [
     #jira issue -RBYR-208
     path("cart_save_for_geust/",GeustCart.as_view()),
     #end of code Addition
+    
+     #Added By Rohan kansari
+    #reason- Pagination functionality where it give one by one page data in each call
+    #jira issue-RBYR233
+    path("page_indexing/",pageIndex.as_view()),
+    #end of code Addition
+
 
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)   

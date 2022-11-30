@@ -30,8 +30,8 @@ const Context = ({ children }) => {
   const [allCategoryAvai,setAllCategoryAvai]=useState([])
   const [allColorAvai,setAllColorAvai]=useState([])
   const [selectedColor,setSelectedColor]=useState([])
-  const [minValue,setminValue]=useState(0)
-  const [maxValue,setmaxValue]=useState(0)
+  const [minValue,setminValue]=useState(2000)
+  const [maxValue,setmaxValue]=useState(200000)
   const[sortui,setSortUi]=useState(false)
   const [tempallpro,settemAllpro]=useState([])
   const[filterui,setfilterUi]=useState(false)
@@ -225,7 +225,49 @@ async function DefaultShipping(){
 
 
 //filter
-  const navigate=useNavigate()
+  
+
+useEffect(()=>{
+
+  var filteredProducts=[]
+  
+  //color
+  if(selectedColor.length>0)
+  filteredProducts=tempallpro.filter(c=>selectedColor.includes(c.color.toLowerCase()))
+  
+  var tempSize=[]
+  console.log(selectedColor)
+  if(filteredProducts.length>0)
+   tempSize=filteredProducts;
+  else
+   tempSize=tempallpro
+  //size
+  if(sizeSelected.length>0)
+  sizeSelected.filter(s=>{
+       tempSize=tempSize.filter(c=>c[`${s}`]>0)
+       
+  })
+
+  console.log(tempSize)
+
+  console.log(maxValue,minValue)
+  // price
+  filteredProducts= tempSize.filter(c=>c.price>minValue&&c.price<maxValue)
+
+  if(filteredProducts.length>0)
+  setCategoryProduct(filteredProducts)
+  else
+  setCategoryProduct([...tempallpro])
+
+  // console.log(filteredProducts)
+
+},[tempallpro,selectedColor,sizeSelected,minValue,maxValue])
+
+
+
+
+
+
   const [checked1, setCheckBoxChecked] = useState(false);
   const [checked2,setCheckBoxChecked2]=useState(false);
   const setcheck=(e)=>{

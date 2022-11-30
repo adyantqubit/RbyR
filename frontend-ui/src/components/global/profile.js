@@ -85,7 +85,7 @@ export const Profile = () => {
         </li>} 
 
         {localStorage.getItem('access_token')? <li className={style.l} style={{marginLeft:"-30px"}}>
-         <Link to="/profile" className={style.a}>MyOrders</Link>
+         <Link to="/profile" className={style.a}>My Orders</Link>
         </li>:null}
 
         {localStorage.getItem('access_token')? <li className={style.l} style={{marginLeft:"-30px"}}>

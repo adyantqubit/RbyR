@@ -45,11 +45,11 @@ const FilterNew = () => {
   e.currentTarget.nextSibling.className= `${style.cross}`
   selectedColor.push(e.currentTarget.textContent.toLowerCase())
   setSelectedColor([...selectedColor])
-  setCategoryProduct([...tempallpro])
-  var filtered=tempallpro.filter(c=>selectedColor.includes(c.color))
-  setCategoryProduct([...filtered])
-  setTempprice([...filtered])
-  setTempsprice([...filtered])
+  // setCategoryProduct([...tempallpro])
+  // var filtered=tempallpro.filter(c=>selectedColor.includes(c.color))
+  // setCategoryProduct([...filtered])
+  // setTempprice([...filtered])
+  // setTempsprice([...filtered])
 
  }
 
@@ -60,24 +60,24 @@ const FilterNew = () => {
   setSelectedColor([...filtercolor])
   }
 
-  useEffect(()=>{
-    var filtered;
-    if(selectedColor&&selectedColor.length>0){
-     filtered=tempallpro.filter(c=>selectedColor.includes(c.color.toLowerCase()))
-    setCategoryProduct([...filtered])
-    setTempprice([...filtered])
-    setTempsprice([...filtered])
+  // useEffect(()=>{
+  //   var filtered;
+  //   if(selectedColor&&selectedColor.length>0){
+  //    filtered=tempallpro.filter(c=>selectedColor.includes(c.color.toLowerCase()))
+  //   setCategoryProduct([...filtered])
+  //   setTempprice([...filtered])
+  //   setTempsprice([...filtered])
 
-    }
-    else{
-      setCategoryProduct([...tempallpro])
-      setTempprice([...tempallpro])
-      setTempsprice([...tempallpro])
-     }
-     Sizemanipulation()
+  //   }
+  //   else{
+  //     setCategoryProduct([...tempallpro])
+  //     setTempprice([...tempallpro])
+  //     setTempsprice([...tempallpro])
+  //    }
+  //     Sizemanipulation()
 
   
-  },[selectedColor])
+  // },[selectedColor])
 
 //color filter end
 
@@ -87,10 +87,9 @@ const FilterNew = () => {
  function toggleselects(e){
   e.currentTarget.parentElement.className=`${style.value} ${style.sizediv}`
   e.currentTarget.nextSibling.className= `${style.cross}`
-  // sizeSelected.push(e.currentTarget.innerText)
   setSizeSelected([...sizeSelected,e.currentTarget.innerText])
-  var size=e.currentTarget.innerText;
-  setTempprice(CategoryProduct.filter(c=>c[`${size}`]>0)) 
+  // var size=e.currentTarget.innerText;
+  // setTempprice(CategoryProduct.filter(c=>c[`${size}`]>0)) 
  }
 
  function deleteclasss(e){
@@ -100,11 +99,11 @@ const FilterNew = () => {
   
  }
  
- useEffect(()=>{
+//  useEffect(()=>{
   
- Sizemanipulation()
+//  Sizemanipulation()
 
- },[sizeSelected])
+//  },[sizeSelected])
 
 
 function Sizemanipulation(){
@@ -128,24 +127,26 @@ function Sizemanipulation(){
   }
  }
 
- useEffect(()=>{
-    if(tempSize&&tempSize.length>0)
-    setCategoryProduct(tempSize)
+//  useEffect(()=>{
+//     if(tempSize&&tempSize.length>0)
+//     setCategoryProduct(tempSize)
     
   
- },[tempSize])
+//  },[tempSize])
  
 
  function setMinMAx(min,max){
     setmaxValue(max)
     setminValue(min)
-    var filtered=tempprice.filter(c=>c.price>min&&c.price<max)
-    setCategoryProduct([...filtered])
-    setTempsprice([...filtered])
+    // var filtered=tempprice.filter(c=>c.price>min&&c.price<max)
+    // setCategoryProduct([...filtered])
+    // setTempsprice([...filtered])
 
-    Sizemanipulation()
+    // Sizemanipulation()
     // console.log(minValue,maxValue)
  }
+
+
 
 
 
@@ -293,10 +294,10 @@ function Sizemanipulation(){
 
       <div className={style.filterbottomMainInnerItem}>
       <MultiRangeSlider
-      min={10000}
-      max={100000}
-      minS={minValue>0?minValue:10000}
-      maxS={maxValue>0?maxValue:100000}
+      min={2000}
+      max={200000}
+      minS={minValue>0?minValue:2000}
+      maxS={maxValue>0?maxValue:200000}
       onChange={({ min, max }) => {setMinMAx(min,max)}}
       />
       </div>

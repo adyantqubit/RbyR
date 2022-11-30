@@ -774,7 +774,7 @@ class WhatsappContactView(APIView):
 #End of code addition
 
 
-#Added by Rohan kansari on 24-11-2022
+#Added by Rohan kansari on 25-11-2022
     #reason- To consist data for guest user
     #jira issue -RBYR-208
 class GeustCart(APIView):
@@ -800,4 +800,24 @@ class GeustCart(APIView):
                  Cart.objects.create(product_no=pro,size=data['size'],quantity=data['quantity'],user_no=request.user).save() 
         
         return Response(request.data)
+    #end of code Addition
+    
+    
+    #Added By Rohan kansari
+    #reason- Pagination functionality where it give one by one page data in each call
+    #jira issue-RBYR233
+class pageIndex(APIView):
+    def post(self,request):
+        try:
+            products=product_detail.objects.filter(category=request.data['category'])
+            
+            from django.core.paginator import Paginator
+            p=Paginator(products,8)
+            
+            
+            pageno=request.data['pageIndex']
+            serialize=product_serializer(p.page(pageno).object_list,many=True)
+            return Response(serialize.data)
+        except:
+            return Response({"error":True})
     #end of code Addition

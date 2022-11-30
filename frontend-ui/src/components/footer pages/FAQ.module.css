@@ -3,7 +3,7 @@
 // Reason - To have FAQ functionality */
 .faqContainer{
     position: relative;
-    top:15vh;
+    top:26vh;
     height: auto;
     width:100%;
     background:#323232;
@@ -49,7 +49,9 @@
 }
 
 @media screen and (max-width:768px) {
-
+    .faqContainer{
+        top:15vh;
+    }
     .row{
         flex-direction: column;
     }

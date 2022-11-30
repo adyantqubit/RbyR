@@ -46,6 +46,16 @@
     border-bottom:1px solid black;
   }
 
+
+  .container{
+    position:relative;
+    top:26vh;
+    width:100%;
+    background:white;
+    display:flex;
+    justify-content:center;
+
+  }
 .increament{
   height:6px;
   text-align:center;
@@ -131,6 +141,10 @@ body {background: #333}
 
 @media (max-width: 768px) {
 
+  .container{
+    top:12vh;
+  }
+
    .summ{
     
     justify-content: center;
@@ -141,9 +155,7 @@ body {background: #333}
         background:white
     }
 
-    .sliderShow{
-     margin-top: 100px;
-    }
+    
 
     .heading{
       text-align: center;

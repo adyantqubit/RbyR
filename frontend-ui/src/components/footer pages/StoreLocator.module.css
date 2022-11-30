@@ -4,7 +4,7 @@
 
 .storeContainer{
     position: relative;
-    top:15vh;
+    top:26vh;
     height: auto;
     width:100%;
     background:#323232;
@@ -86,7 +86,10 @@ a:hover{
 }
 
 @media screen and (max-width:768px) {
-
+    .storeContainer{
+        top:12vh;
+        
+    }
     .row{
         flex-direction: column;
     }

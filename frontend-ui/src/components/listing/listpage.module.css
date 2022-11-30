@@ -1,7 +1,8 @@
 .Container{
   position: relative;
-  top: 26vh
-  
+  top: 26vh;
+  max-height: 80vh;
+  overflow: scroll;
 }
 
 @font-face {
@@ -56,7 +57,11 @@
   display: flex;
   flex-wrap: wrap;
   gap:20px;
+ 
   justify-content: center;
+}
+.Container::-webkit-scrollbar{
+ display:none;
 }
 
 .item{
@@ -329,8 +334,22 @@
 
 }
 
+.footerArange{
+  position: relative;
+  top:26vh;
+}
+
 
 @media (max-width: 768px) {
+  .footerArange{
+    top:12vh;
+  }
+  .Container{
+    position: relative;
+    top: 12vh;
+    max-height: 90vh;
+    overflow: scroll;
+  }
   .filterbottomMainInner{
     top: 50px;
     height: 100vh;
@@ -341,7 +360,7 @@
     height:100vh;
     background:white;
     position:fixed;
-    top:10vh;
+    top:12vh;
     right:10px;
     display:flex;
     flex-direction: column;
@@ -354,7 +373,7 @@
   height:13%;
   background:white;
   position:fixed;
-  top:10vh;
+  top:12vh;
   right:10px;
   display:flex;
   justify-content:center
@@ -364,7 +383,6 @@
 {
   width:40%;    
   height:auto;
-
 }
 
 .filterbottomMainInnerItem2
@@ -372,6 +390,7 @@
   width:40%;    
   height:auto;
   overflow-y:auto;
- 
 }
+
+
  }

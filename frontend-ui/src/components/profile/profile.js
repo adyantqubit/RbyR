@@ -86,10 +86,10 @@ const MyOrders = () => {
                   <div className={`${style.rowheadText} ${style.rowtexthide}`}>Date and time</div>
 
                   <div className={`${style.rowheadText} ${style.rowtexthide}`}>Name</div>
-                  <div className={style.rowheadText}>Price</div>
+                  <div className={`${style.rowheadText} ${style.rowtexthide}`}>Price</div>
                   <div className={`${style.rowheadText} ${style.rowtexthide}`}>Payment Type</div>
-                  <div className={style.rowheadText}>Status</div>
-                  <div className={style.rowheadText}></div>
+                  <div className={`${style.rowheadText} ${style.rowtexthide}`}>Status</div>
+                  <div className={`${style.rowheadText} ${style.rowtexthide}`}></div>
                 </div>
                 <hr style={{color:"black"}}></hr>
 
@@ -101,10 +101,10 @@ const MyOrders = () => {
                     <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].date}</div>
                     
                     <div className={`${style.rowText} ${style.rowtexthide}`}>{tran[i].firstname} {tran[i].lastname}</div>
-                    <div className={style.rowText}>{currency.sign}{(getPrice(o)*currency.value).toFixed(2)}</div>
+                    <div className={`${style.rowText} ${style.rowtexthide}`}>{currency.sign}{(getPrice(o)*currency.value).toFixed(2)}</div>
                     <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].payment_mode}</div>
-                    <div className={style.rowText}>{tran[i].payment_status}</div>
-                    <div className={style.rowText} style={{textDecoration:"underline",color:"blue",fontSize:"14px",cursor:"pointer",whiteSpace:"nowrap",overflow:"hidden",width:"80px"}} onClick={e=>nav(`/insideorder/${o[0].order_no}`)}>View Order
+                    <div className={`${style.rowText} ${style.rowtexthide}`}>{tran[i].payment_status}</div>
+                    <div className={style.rowText} style={{textDecoration:"underline",color:"blue",fontSize:"14px",cursor:"pointer",whiteSpace:"nowrap",overflow:"hidden",width:"80px",marginRight:"10px"}} onClick={e=>nav(`/insideorder/${o[0].order_no}`)}>View Order
                     </div>
                     
                   </div>)}

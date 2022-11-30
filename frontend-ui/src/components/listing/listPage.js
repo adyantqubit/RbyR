@@ -18,6 +18,7 @@ import 'react-rangeslider/lib/index.css'
 
 import FilterNew from './filterNew';
 import Sort from './sort';
+import { nextIndexPage } from '../../api/orderApis';
 
 const ListPage = () => {
 
@@ -27,97 +28,165 @@ const ListPage = () => {
   const [cartsaveApi,{isLoad}]=useCartUpdateMutation()
   let {access_token}=getToken();
   const nav=useNavigate();
-  
-
+  var [pageIndex,setPageIndex]=useState(0)
+  var [reload,setReload]=useState(true)
 
 
  const{category}=useParams()
  
  useEffect(()=>{
- 
-
- catApi()
- window.scrollTo(0,0)
+ PageLoad()
  },[])
+
+ useEffect(()=>{
+    if(reload==false)
+    PageLoad()
+ },[reload])
+
+ //Commented by Rohan
+ //reason- Navlinks are not working on reclick when when i am in this page.
+ //Jira issue- RBYR229
+
+//  useEffect(()=>{
+//     catApi()
+//  },[category])
+
+//end of the code
 
 
  const catApi=async()=>{
   await getCategoryProduct(category).then(r=>{setCategoryProduct([...r.category]);settemAllpro([...r.category]);console.log(r.category) })
  }
  
+//Commented By Rohan 
+//Reason - Garbage function no need to use like and cart functionality in list page
 
-  //Like Concept
+//   //Like Concept
 
-  const LikedSave=async(product)=>{
+//   const LikedSave=async(product)=>{
 
-    if(access_token){
+//     if(access_token){
       
-    }
+//     }
   
-    const data={
-      item:product.id
-    }
-    const resp=await saveLikeApi({data,access_token});
+//     const data={
+//       item:product.id
+//     }
+//     const resp=await saveLikeApi({data,access_token});
     
-        if(like.filter(l=>l.id===product.id).length>0){
-          const p=like.filter(i=>i.id!==product.id)
-          setLike(p)
-        }else{
-          setLike([...like,product])
-        }
-    }             
- //like
+//         if(like.filter(l=>l.id===product.id).length>0){
+//           const p=like.filter(i=>i.id!==product.id)
+//           setLike(p)
+//         }else{
+//           setLike([...like,product])
+//         }
+//     }             
+//  //like
 
 
- //cart
- const cartSave=async(product)=>{
+//  //cart
+//  const cartSave=async(product)=>{
   
-  const data={
-    product_no:product.id
-  }
-  const resp=await cartsaveApi({data,access_token});
-      if(cart.filter(l=>l.id===product.id).length>0){
-        const p=cart.filter(i=>i.id!==product.id)
+//   const data={
+//     product_no:product.id
+//   }
+//   const resp=await cartsaveApi({data,access_token});
+//       if(cart.filter(l=>l.id===product.id).length>0){
+//         const p=cart.filter(i=>i.id!==product.id)
        
-        setCart(p)
-      }else{
-        const cartData={
-          id:product.id,
-          title:product.title,
-          about:product.about,
-          price:product.price,
-          img_main:product.img_main,
-          quantity:1,
-          size:"Medium"
-        }
-        setCart([...cart,cartData])
-        localStorage.setItem('cart',JSON.stringify(cart))
-      }
-  }             
- //cart
+//         setCart(p)
+//       }else{
+//         const cartData={
+//           id:product.id,
+//           title:product.title,
+//           about:product.about,
+//           price:product.price,
+//           img_main:product.img_main,
+//           quantity:1,
+//           size:"Medium"
+//         }
+//         setCart([...cart,cartData])
+//         localStorage.setItem('cart',JSON.stringify(cart))
+//       }
+//   }             
+//  //cart
+
+//  var temp =1
+//End of Garbage code
+
 
 function openDetail(id){
   nav(`detail/${id}`)
 }
 
 
+
+const lestref=useRef()
+var [loading,setLoading]=useState(false)
+const handleScroll = (e) => {
+  var listHeight=lestref.current.scrollHeight
+  // console.log(`scrollHeight-${e.target.scrollHeight}, scrollTop-${e.target.scrollTop},client height-${e.target.clientHeight},footerHeight-${footerHeight}`)
+  //     const bottom = e.target.scrollHeight-e.target.clientHeight-footerHeight <e.target.scrollTop &&  e.target.scrollHeight-e.target.clientHeight-footerHeight+300>e.target.scrollTop;
+    
+  var bottom=e.target.scrollTop>listHeight-300;
+  
+  if (bottom&&reload) { 
+    setReload(false)
+    setLoading(true)
+    
+  }
+
+}
+
+async function PageLoad(){
+  pageIndex=pageIndex+1;
+  setPageIndex(pageIndex)
+  console.log(pageIndex)
+
+  const data={
+    "pageIndex":pageIndex,
+    "category":category
+
+  }
+
+  await nextIndexPage(data).then(r=>{
+    setTimeout(() => { 
+      if(r.error){
+        setReload(false);
+        setLoading(false);
+      }
+      if(r&&r.length>0){
+      console.log(CategoryProduct)  
+      setCategoryProduct([...CategoryProduct,...r])
+      settemAllpro([...tempallpro,...r])
+      setReload(true);
+      }
+     
+    }, 1000)
+  })
+}
+
+
+
+
 return (
 
   <>
-  <div className={style.Container} >
-<div className={style.bottom}></div>
-<div className={style.bottom} >
-     {CategoryProduct?
-     <>
-     <span className={style.TopContent} style={{paddingLeft:"80px"}}>{category}</span>
-     <span className={style.filter} style={{paddingRight:"40px",fontWeight:"600px"}}>
-      <span style={{paddingRight:"15px",color:"grey",cursor:"pointer"}}  onClick={e=>setSortUi(true)}>Sort by</span><span style={{cursor:"pointer"}}onClick={e=>setfilterUi(true)}>Filter BY</span>
-     </span>
-     </> :null}  
-  </div>
+  
+  <div className={style.Container} onScroll={handleScroll}>
+    <div className={style.bottom}></div>
+    <div className={style.bottom} >
+        {CategoryProduct?
+        <>
+        <span className={style.TopContent} style={{paddingLeft:"80px"}}>{category.split("_").join(" ")}</span>
+        <span className={style.filter} style={{paddingRight:"40px",fontWeight:"600px"}}>
+          <span style={{paddingRight:"15px",color:"grey",cursor:"pointer"}}  onClick={e=>setSortUi(true)}>Sort by</span><span style={{cursor:"pointer"}}onClick={e=>setfilterUi(true)}>Filter BY</span>
+        </span>
+        </> :null}  
+      </div>
 
 
-<div className={style.slab}>
+<div className={style.slab} ref={lestref}>
 
 {CategoryProduct?CategoryProduct.map((p,i)=>(
 
@@ -131,8 +200,7 @@ return (
 
 
 </div>
-<Footer/>
-<Below/>
+
 
 {sortui?
   <Sort/>:null
@@ -143,9 +211,23 @@ return (
 :null
 }
 
-
+{loading?
+  <div style={{width:"100%",background:"white"}}>
+<div class = "centered">
+	<div class = "blob-1"></div>
+	<div class = "blob-2"></div>
 </div>
- 
+</div>:null}
+
+
+<div  >
+<Footer/>
+<Below/>
+</div>
+</div>
+
+
+
   </>
  
   )
