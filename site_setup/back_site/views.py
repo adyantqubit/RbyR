@@ -689,7 +689,7 @@ class InstagrampostRetrive(APIView):
 #Jira issue no - RBYR -141
 class SearchProductView(APIView):
     def get(self,request,query):
-        print("query----------------------",query.replace(" ",""))
+        # print("query----------------------",query.replace(" ",""))
         AllProduct = product_detail.objects.all()
         wordsArray= query.split()
         import itertools

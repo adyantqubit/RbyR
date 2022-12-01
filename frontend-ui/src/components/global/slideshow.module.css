@@ -9,6 +9,7 @@
 
 .dblock{
     min-height:550px;
+    width: 100vw;
     object-fit:cover;
 }
 

@@ -34,7 +34,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    # 'admin_volt.apps.AdminVoltConfig',
+    'admin_volt.apps.AdminVoltConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -139,8 +139,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# import os
-# STATIC_ROOT=os.path.join(BASE_DIR,'static')
+import os
+STATIC_ROOT=os.path.join(BASE_DIR,'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
