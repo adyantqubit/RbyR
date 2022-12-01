@@ -23,13 +23,12 @@ import { nextIndexPage } from '../../api/orderApis';
 const ListPage = () => {
 
 
-  const {product,condition,like,setLike,cart,allColorAvai,tempallpro,settemAllpro,currency,setAllColorAvai,setCurrency,setCart,CategoryProduct,setCategoryProduct,sortui,setSortUi,filterui,setfilterUi}=CartState()
+  const {product,condition,like,setLike,reload,setReload,htl,lth,availablitySelect,latestSelect,cart,allColorAvai,tempallpro,settemAllpro,currency,setAllColorAvai,setCurrency,setCart,CategoryProduct,setCategoryProduct,sortui,setSortUi,filterui,setfilterUi}=CartState()
   const [saveLikeApi,{isLoading}]=useLikedUpdateMutation()
   const [cartsaveApi,{isLoad}]=useCartUpdateMutation()
   let {access_token}=getToken();
   const nav=useNavigate();
   var [pageIndex,setPageIndex]=useState(0)
-  var [reload,setReload]=useState(true)
 
 
  const{category}=useParams()
@@ -53,7 +52,7 @@ const ListPage = () => {
 
 useEffect(()=>{
   ApiReSet()
- },[category])
+ },[category,htl,lth,availablitySelect,latestSelect])
 
 //  useEffect(()=>{
 //   console.log("on page index call",reload,CategoryProduct)
@@ -72,8 +71,11 @@ async function ApiReSet(){
   setPageIndex(1)
   const data={
     "pageIndex":1,
-    "category":category
-
+    "category":category,
+    "lth":lth,
+    "htl":htl,
+    "latest":latestSelect,
+    "availablity":availablitySelect
   }
 
   await nextIndexPage(data).then(r=>{
@@ -170,7 +172,7 @@ const handleScroll = (e) => {
   //     const bottom = e.target.scrollHeight-e.target.clientHeight-footerHeight <e.target.scrollTop &&  e.target.scrollHeight-e.target.clientHeight-footerHeight+300>e.target.scrollTop;
     
   var bottom=e.target.scrollTop>listHeight-300;
-  
+  // setLoading(true)
   if (bottom&&reload) { 
     setReload(false)
     setLoading(true)
@@ -189,7 +191,11 @@ async function PageLoad(){
 async function Apicall(){
   const data={
     "pageIndex":pageIndex,
-    "category":category
+    "category":category,
+    "lth":lth,
+    "htl":htl,
+    "latest":latestSelect,
+    "availablity":availablitySelect
 
   }
 
@@ -208,7 +214,7 @@ async function Apicall(){
       setReload(true);
       }
      
-    }, 1000)
+    }, 200)
   })
 }
 

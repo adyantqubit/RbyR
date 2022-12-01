@@ -85,7 +85,7 @@ getWhatsappContactNumber()
 
   return (
     <div className={style.responsiveHeader}>
-      <div className={style.topText}>FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT <a href={`https://wa.me/${whatsappContactNumber}`} className={style.number} >+91 7865435434</a></div>
+      <div className={style.topText}>FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT <a href={`https://wa.me/${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} className={style.number} >+91 7865435434</a></div>
 
 
       <div className={style.headerContainer}>
@@ -104,7 +104,7 @@ getWhatsappContactNumber()
             </div>
             <div className={style.headerMenuitem} >
             <a
-            href={`https://wa.me/${whatsappContactNumber}`}
+            href={`https://wa.me/${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
             >
             <BsWhatsapp className={styles.icons} fontSize={24}/>
             </a>

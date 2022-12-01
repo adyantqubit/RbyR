@@ -204,23 +204,43 @@
   display:flex;
   justify-content:center;
   margin-top: -10px;
-  
+  overflow: scroll;
+  z-index: 50;
+
 }
+
+.filterbottomMain::-webkit-scrollbar{
+   display: none;
+}
+
+.filterbottomMainsort{
+
+  display:flex;
+  justify-content:center;
+  margin-top: -10px;
+  overflow: scroll;
+  z-index: 50;
+  height:10vh;
+
+}
+
 
 .filterbottomMainInner{
   position: relative;
   padding-top: 40px;
   height:60vh;
   width:90vw;
+  overflow: auto;
   display: flex;
   justify-content: space-between;
+
 }
 
 .filterbottomMainInnerSort{
   position: relative;
   padding-top: 40px;
-  height:25vh;
-  top:8vh;
+  height:26vh;
+  top:9vh;
   width:90vw;
   display: flex;
   justify-content: space-between;
@@ -353,12 +373,20 @@
 
 
 
+@media (max-width: 1100px) {
+
+ .filterbottomMainInnerSort{
+  position: relative;
+  padding-top: 40px;
+  height:26vh;
+  top:8vh;
+}
+
+}
+
 @media (max-width: 768px) {
   .containsSort{
-  
     top:25vh;
-   
-  
    }
   .footerArange{
     top:12vh;
@@ -370,19 +398,15 @@
     overflow: scroll;
   }
   .filterbottomMainInner{
-    top: 50px;
+    top: 12vh;
     height: 100vh;
     flex-wrap: wrap;
   }
 
   .filterbottomMainInnerSort{
-    position: relative;
-    padding-top: 10px;
-    height:22vh;
-    top:2vh;
-    width:90vw;
-    display: flex;
-    justify-content: space-between;
+    padding-top:0px;
+    height:10vh;
+    top:0vh;
   }
   .contains{
     width:100%;
@@ -393,9 +417,13 @@
     right:10px;
     display:flex;
     flex-direction: column;
-    justify-content:center
+    justify-content:center;
    }
 
+   
+   .iteminner{
+    margin-top:0px;
+   }
    
 .filterContain{
   width:100%;
@@ -422,4 +450,15 @@
 }
 
 
+ }
+
+
+ @media (max-width: 600px) {
+
+  .filterbottomMainInnerSort{
+    padding-top:0px;
+    height:20vh;
+    top:0vh;
+
+  }
  }

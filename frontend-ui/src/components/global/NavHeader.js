@@ -118,7 +118,7 @@ const Navbar = () => {
 	return (
 		<>
 		<div className={style.contain} style={{borderBottom:"1px solid white"}}>
-      <div style={{background:"#000",color:"white",display:"flex",justifyContent:"center",fontSize:".8rem"}}>FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT  <a href={`https://wa.me/${whatsappContactNumber}`} style={{textDecoration:"none",outline:"none",color:"white",fontSize:".9rem",marginLeft:'5px'}}>{whatsappContactNumber?whatsappContactNumber:" Not added"}</a></div>
+      <div style={{background:"#000",color:"white",display:"flex",justifyContent:"center",fontSize:".8rem"}}>FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT  <a href={`https://wa.me/${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} style={{textDecoration:"none",outline:"none",color:"white",fontSize:".9rem",marginLeft:'5px'}}>{whatsappContactNumber?whatsappContactNumber:" Not added"}</a></div>
      
         <div className={style.logo}>
         {/* <img src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" alt="Logo" onClick={openHome}/> */}
@@ -169,7 +169,7 @@ const Navbar = () => {
                 <div className={style.system}>
                   <div><Search className={style.icons}/></div>
                   <div>
-                    <a href={`https://wa.me/${whatsappContactNumber}`}>
+                    <a href={`https://wa.me/${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}>
                       <BsWhatsapp className={style.icons}/>
                     </a>
                   </div>

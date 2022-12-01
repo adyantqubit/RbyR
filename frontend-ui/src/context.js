@@ -64,6 +64,7 @@ const Context = ({ children }) => {
   var [orders,setOrder]=useState([])
   var [offer,setOffer]=useState({discount_percentage: 0, maximum_discount_price: 1000, expiry_date: '2022-11-30'})
   var [taxRate,setTaxRate]=useState(0)
+  var [reload,setReload]=useState(true)
 
   //product updation
   useEffect(()=>{
@@ -237,11 +238,6 @@ useEffect(()=>{
   filteredProducts=tempallpro.filter(c=>selectedColor.includes(c.color.toLowerCase()))
   
   var tempSize=[]
-  // console.log(selectedColor)
-  // if(filteredProducts.length>0)
-  //  tempSize=filteredProducts;
-  // else
-  //  tempSize=tempallpro
   tempSize=filteredProducts
   //size
   if(sizeSelected.length>0)
@@ -252,76 +248,39 @@ useEffect(()=>{
 
 
   // price
+  if(tempSize.length>0){
   filteredProducts= tempSize.filter(c=>c.price>minValue&&c.price<maxValue)
+  console.log(filteredProducts)
+  }
+  if(filteredProducts.length==0){
+   filteredProducts=tempallpro.filter(c=>c.price>minValue&&c.price<maxValue)
+   console.log(filteredProducts)
 
+  }
 
    var finalFilter=[]
-   if(selectedColor.length>0||sizeSelected.length>0||filteredProducts.length>0)
+
+
+   if(selectedColor.length>0||sizeSelected.length>0||filteredProducts.length>0||maxValue){
+    console.log(filteredProducts.length<3)
+   if(filteredProducts.length<3){
+    setReload(false)
+    finalFilter=filteredProducts
+   }else
    finalFilter=filteredProducts
+  
+  }
    else
    finalFilter=tempallpro
 
    setCategoryProduct([...finalFilter])
-  
-   var tempSorted=finalFilter
-
-
-   console.log(finalFilter)
-
-
-  //  var sortedProducts=[]
-  //  console.log(htl,lth,availablitySelect,latestSelect)
-  // // console.log(filteredProducts)
-  //  if (availablitySelect==true){
-  //   sortedProducts=finalFilter.filter(t=>t.available==true)
-  // }
-  // else{
-  //   sortedProducts=finalFilter
-  // }
-
-  
-  
-  // if(latestSelect==true){
-  // sortedProducts=sortedProducts.sort((a, b) =>
-  //   b.date.split('-').join().localeCompare(a.date.split('-').join()));
-  // }
  
 
-
-  // if(lth==true){
-  // sortedProducts=sortedProducts.sort((a,b)=>a.price-b.price)
-  // }
- 
+  console.log(maxValue,minValue)
 
 
-
-
-  // if(htl==true){
-  // sortedProducts=sortedProducts.sort((a,b)=>b.price-a.price)
-  // }
-  
-  // setCategoryProduct(sortedProducts)
-
-  // console.log(sortedProducts)
 
 },[tempallpro,selectedColor,sizeSelected,minValue,maxValue])
-
-
-// useEffect(()=>{
-// console.log(tempallpro)
-//  var temp=tempallpro;
-//   var sorted=[]
-  
-//   if(htl)
-//   sorted= temp.sort((a,b)=>a.price-b.price);
-
-//   if(sorted.length>0)
-//   setCategoryProduct([...sorted])
-//   else
-//   setCategoryProduct([...tempallpro])
-
-//   console.log(CategoryProduct.sort((a,b)=>a.price-b.price))
-// },[CategoryProduct,htl,lth,availablitySelect,latestSelect])
 
 
 
@@ -343,9 +302,10 @@ useEffect(()=>{
       setCategoryProduct([...CategoryProduct.sort(function(a,b){return a.price-b.price})]);
     }
    }
+
    //filter
   return (
-    <Cart.Provider value={{firstTimeLoadFunctions,showEditable,setShowEditable,shipEditcond,setshipEditCond,cartEnd,setCartEnd,taxRate,setTaxRate,offer,setOffer,availablitySelect,setAvailablity,latestSelect,setLatestSelect,defaultShiping,setDefaultShipping,orders,setOrder,paymentflow,setPaymentflow,shippingflow,setShipingflow,checkoutDetails,setCheckoutDetails,userdata,setUserData,to,setTo,currency,setCurrency,sizeSelected,setSizeSelected,con,setcon,htl,sethtl,lth,setLth,tempsprice,setTempsprice,filterui,setfilterUi,maxValue,setmaxValue,minValue,setminValue,allCategoryAvai,setAllCategoryAvai,allColorAvai,setAllColorAvai,selectedColor,setSelectedColor,tempallpro,settemAllpro, sortui,setSortUi,product,cart,setCart,setProduct,setcheck,checked1,checked2, image,setImage,like,setLike,setCondition,condition,openLikedrawer, setLikeDrawer,openCartdrawer, setCartDrawer,CategoryProduct,setCategoryProduct}}>
+    <Cart.Provider value={{reload,setReload,firstTimeLoadFunctions,showEditable,setShowEditable,shipEditcond,setshipEditCond,cartEnd,setCartEnd,taxRate,setTaxRate,offer,setOffer,availablitySelect,setAvailablity,latestSelect,setLatestSelect,defaultShiping,setDefaultShipping,orders,setOrder,paymentflow,setPaymentflow,shippingflow,setShipingflow,checkoutDetails,setCheckoutDetails,userdata,setUserData,to,setTo,currency,setCurrency,sizeSelected,setSizeSelected,con,setcon,htl,sethtl,lth,setLth,tempsprice,setTempsprice,filterui,setfilterUi,maxValue,setmaxValue,minValue,setminValue,allCategoryAvai,setAllCategoryAvai,allColorAvai,setAllColorAvai,selectedColor,setSelectedColor,tempallpro,settemAllpro, sortui,setSortUi,product,cart,setCart,setProduct,setcheck,checked1,checked2, image,setImage,like,setLike,setCondition,condition,openLikedrawer, setLikeDrawer,openCartdrawer, setCartDrawer,CategoryProduct,setCategoryProduct}}>
       {children}
     </Cart.Provider>
   );

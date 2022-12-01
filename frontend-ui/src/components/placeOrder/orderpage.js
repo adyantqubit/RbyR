@@ -12,7 +12,12 @@ import { useLocation } from 'react-router-dom'
 const Orderpage = () => {
   const{userdata,checkoutDetails,setCheckoutDetails,paymentflow,cart,setPaymentflow,shippingflow,setShipingflow}=CartState()
   const nav=useNavigate()
+ 
 
+  useEffect(()=>{
+    if(!localStorage.getItem("access_token"))
+     nav("/login")
+  },[])
 
   return (
     <>

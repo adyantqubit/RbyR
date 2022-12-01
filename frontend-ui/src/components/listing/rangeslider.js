@@ -50,6 +50,7 @@ const MultiRangeSlider = ({ min, max,minS,maxS,onChange }) => {
     <span className={style.categ} style={{marginLeft:"10px"}}>
             Price Range
         </span>
+     <form id="form_range_slider">  
     <div className="container">
 
     <input
@@ -79,6 +80,7 @@ const MultiRangeSlider = ({ min, max,minS,maxS,onChange }) => {
         style={{ zIndex: minVal > max - 100 && "5" }}
       />
 
+
        
 
       <div className="slider">
@@ -87,7 +89,9 @@ const MultiRangeSlider = ({ min, max,minS,maxS,onChange }) => {
         <div className="slider__left-value">{currency.sign} {(minVal*currency.value).toFixed(2).replace(/\.0+$/,'')}</div>
         <div className="slider__right-value">{currency.sign} {(maxVal*currency.value).toFixed(2).replace(/\.0+$/,'')}</div>
       </div>
+     
     </div>
+    </form> 
     </>
   );
 };

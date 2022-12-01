@@ -140,6 +140,7 @@ function Sizemanipulation(){
  function setMinMAx(min,max){
     setmaxValue(max)
     setminValue(min)
+    console.log(min,max)
     // var filtered=tempprice.filter(c=>c.price>min&&c.price<max)
     // setCategoryProduct([...filtered])
     // setTempsprice([...filtered])
@@ -150,20 +151,21 @@ function Sizemanipulation(){
 
 
 
-
+var[ mintemp,setmintemp]=useState(2000)
+var [maxtemp,setmaxtemp]=useState(200000);
 
   return (
     <div className={style.contains}>
 
 {/* header part */}
-<div className={style.filterContain}>
+<div className={style.filterContain} style={{zIndex:"50"}}>
    <div className={style.filterInner}>
       <div className={style.filterheader}>
         <div className={style.filterHeaderInner} >
           <span className={style.headtitle1}>FILTER BY</span>
           <span>
-            <span className={style.headtitle2}>clear All</span>
-            <span className={style.headtitle3} style={{marginLeft:"15px"}}>Apply filter</span>
+            <span className={style.headtitle2} onClick={e=>{setSelectedColor([]);setSizeSelected([]);closeSortPage();setMinMAx(2000,200000)}} style={{cursor:"pointer"}}>clear All</span>
+            <span className={style.headtitle3} style={{marginLeft:"15px",cursor:"pointer"}} onClick={closeSortPage}>Apply filter</span>
             <span style={{marginLeft:"15px",height:"50px",fontSize:"20px",cursor:"pointer"}} onClick={closeSortPage}>x</span>
           </span>
         </div>  
@@ -174,7 +176,7 @@ function Sizemanipulation(){
 </div>
 {/* header part end */}
 
-<div className={style.filterbottomMain} >
+<div className={style.filterbottomMain} style={{zIndex:"0"}}>
     <div className={style.filterbottomMainInner} >
      
      {/* div 1 */}
@@ -211,14 +213,14 @@ function Sizemanipulation(){
          {allColorAvai?allColorAvai.map(c=>{
 
       
-         if( selectedColor.includes(c)){
-          return <div className={`${style.textdiv} ${style.value}`} >
+         if( selectedColor.includes(c.toLowerCase())){
+          return <div className={`${style.textdiv} ${style.value}`} style={{width:"auto",whiteSpace:"nowrap"}} >
             <span className={style.text} onClick={toggleselect}>{c.toUpperCase()}</span>
              <span onClick={deleteclass} className={style.cross}>X</span>
              </div>
              }
          else{
-            return <div className={style.textdiv} >
+            return <div className={style.textdiv} style={{width:"auto",whiteSpace:"nowrap"}}>
             <span className={style.text} onClick={toggleselect}>{c.toUpperCase()}</span>
              <span onClick={deleteclass} className={style.block}>X</span>
              </div>
@@ -245,24 +247,24 @@ function Sizemanipulation(){
         
          <div className={style.iteminner}>
 
-            {sizeSelected.includes('S')?<div className={`${style.sizediv} ${style.value}`}>
+            {sizeSelected.includes('S')?<div className={`${style.sizediv} ${style.value}`} style={{width:"auto",whiteSpace:"nowrap"}}>
                 <span className={style.size} onClick={toggleselects}>S</span>
                 <span onClick={deleteclasss} className={style.cross}>X</span>
-            </div>:<div className={style.sizediv}>
+            </div>:<div className={style.sizediv} style={{width:"auto",whiteSpace:"nowrap"}}>
                 <span className={style.size} onClick={toggleselects}>S</span>
                 <span onClick={deleteclasss} className={style.block}>X</span>
             </div>}
 
-            {sizeSelected.includes('M')?<div className={`${style.sizediv} ${style.value}`}>
+            {sizeSelected.includes('M')?<div className={`${style.sizediv} ${style.value}`} style={{width:"auto",whiteSpace:"nowrap"}}>
                 <span className={style.size} onClick={toggleselects}>M</span>
                 <span onClick={deleteclasss} className={style.cross}>X</span>
-            </div>:<div className={style.sizediv}>
+            </div>:<div className={style.sizediv} >
                 <span className={style.size} onClick={toggleselects}>M</span>
                 <span onClick={deleteclasss} className={style.block}>X</span>
             </div>}
 
 
-            {sizeSelected.includes('L')?<div className={`${style.sizediv} ${style.value}`}>
+            {sizeSelected.includes('L')?<div className={`${style.sizediv} ${style.value}`} style={{width:"auto",whiteSpace:"nowrap"}}>
                 <span className={style.size} onClick={toggleselects}>L</span>
                 <span onClick={deleteclasss} className={style.cross}>X</span>
             </div>:<div className={style.sizediv}>
@@ -271,7 +273,7 @@ function Sizemanipulation(){
             </div>}
 
 
-            {sizeSelected.includes('XL')?<div className={`${style.sizediv} ${style.value}`}>
+            {sizeSelected.includes('XL')?<div className={`${style.sizediv} ${style.value}`} style={{width:"auto",whiteSpace:"nowrap"}}>
                 <span className={style.size} onClick={toggleselects}>XL</span>
                 <span onClick={deleteclasss} className={style.cross}>X</span>
             </div>:<div className={style.sizediv}>
@@ -279,7 +281,7 @@ function Sizemanipulation(){
                 <span onClick={deleteclasss} className={style.block}>X</span>
             </div>}
 
-            {sizeSelected.includes('XXL')?<div className={`${style.sizediv} ${style.value}`}>
+            {sizeSelected.includes('XXL')?<div className={`${style.sizediv} ${style.value}`} style={{width:"auto",whiteSpace:"nowrap"}}>
                 <span className={style.size} onClick={toggleselects}>XXL</span>
                 <span onClick={deleteclasss} className={style.cross}>X</span>
             </div>:<div className={style.sizediv}>
@@ -296,8 +298,8 @@ function Sizemanipulation(){
 
       <div className={style.filterbottomMainInnerItem}>
       <MultiRangeSlider
-      min={2000}
-      max={200000}
+      min={mintemp}
+      max={maxtemp}
       minS={minValue>0?minValue:2000}
       maxS={maxValue>0?maxValue:200000}
       onChange={({ min, max }) => {setMinMAx(min,max)}}

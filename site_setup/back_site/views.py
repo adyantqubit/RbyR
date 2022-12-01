@@ -809,7 +809,21 @@ class GeustCart(APIView):
 class pageIndex(APIView):
     def post(self,request):
         try:
-            products=product_detail.objects.filter(category=request.data['category'])
+            products=[]
+            if(request.data['lth']  and request.data['availablity']):
+                products=product_detail.objects.filter(category=request.data['category'],available=True).order_by("price")
+            elif(request.data['htl']  and request.data['availablity']):
+                products=product_detail.objects.filter(category=request.data['category'],available=True).order_by("-price")  
+            elif(request.data['latest'] and request.data['availablity']):
+                products=product_detail.objects.filter(category=request.data['category'],available=True).order_by('-date')
+            elif(request.data['htl']):
+                products=product_detail.objects.filter(category=request.data['category']).order_by("-price")
+            elif(request.data['lth']):   
+                products=product_detail.objects.filter(category=request.data['category']).order_by("price")
+            elif(request.data['latest']):   
+                products=product_detail.objects.filter(category=request.data['category']).order_by("-date")           
+            else:    
+                products=product_detail.objects.filter(category=request.data['category'])
             
             colors=[]
             for product in products:

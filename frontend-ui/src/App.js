@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import {Routes,Route,Navigate} from 'react-router-dom'
 import { Home } from './components/home/home';
@@ -31,8 +31,11 @@ import FAQ from './components/footer pages/FAQ';
 import Bridal from './components/footer pages/bridal';
 
 function App() {
-  
-  const {access_token}=getToken();
+  var access_token=0;
+  useEffect(()=>{
+     access_token=localStorage.getItem("access_token")
+
+  },[localStorage.getItem("access_token")])
   
   return (
     <>
@@ -54,8 +57,8 @@ function App() {
     <Route path='/insideorder/:orderid' element={<InsideOrder/>} />
 
     <Route path='/cart' element={<CartSItem/>} />
-  
-    <Route path='/placeorder' element={localStorage.getItem("access_token")?<Orderpage/>:<Navigate to='/login'/>}/>
+  {console.log(access_token)}
+    <Route path='/placeorder' element={<Orderpage/>}/>
     <Route path='/billing' element={<Billing/>}/>
     <Route path='/shippindprofile' element={<ShippingProfile/>}/>
     <Route path='/userprofile' element={<UserProfile/>}/>

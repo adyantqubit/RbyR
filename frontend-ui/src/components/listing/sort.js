@@ -10,6 +10,7 @@ const Sort = () => {
 
 
  function closeSortPage(){
+  console.log("hit")
   setSortUi(false)
  }
  
@@ -94,10 +95,10 @@ const Sort = () => {
    //end -- Rohan date-07-08-2022
 
   return (
-    <div className={style.containsSort} >
+    <div className={style.containsSort} style={{zIndex:"50"}}>
 
 {/* header part */}
-<div className={style.filterContain}>
+<div className={style.filterContain} >
    <div className={style.filterInner}>
       <div className={style.filterheader}>
         <div className={style.filterHeaderInner} >
@@ -114,44 +115,45 @@ const Sort = () => {
   </div>
 </div>
 {/* header part end */}
+ 
+ <div style={{width:"100%",height:"auto",padding:"0 5%"}}>
 
-<div className={style.filterbottomMain} >
     <div className={style.filterbottomMainInnerSort} >
 
     <div className={style.filterbottomMainInnerItem} style={{width:"100%"}}>
        
       
-        <div className={style.iteminner}> 
+        <div className={style.iteminner} > 
            
             {latestSelect?<div className={`${style.textdiv} ${style.value}`} style={{width:"auto",whiteSpace:"nowrap",display:"flex",justifyContent:"space-between"}}>
              <span className={style.text} onClick={e=>{deselectLatest()}} >Latest</span>
-             <span onClick={e=>{deselectLatest()}}className={style.cross}>✔</span>
+             <span onClick={e=>{deselectLatest();settemAllpro([]);setCategoryProduct([])} }className={style.cross}>✔</span>
             </div>:
-            <div className={style.textdiv} style={{width:"auto",whiteSpace:"nowrap"}}>
+            <div className={style.textdiv} style={{width:"auto",whiteSpace:"nowrap"}} onClick={e=>{settemAllpro([]);setCategoryProduct([])}}>
              <span className={style.text} onClick={e=>{selectLatest()}} >Latest</span>
             </div>
             }
 
          {availablitySelect?<div className={`${style.textdiv} ${style.value}`} style={{width:"auto",whiteSpace:"nowrap",display:"flex",justifyContent:"space-between"}}>
-             <span className={style.text} onClick={e=>{uncheckAvailablity()}} >Availablity</span>
+             <span className={style.text} onClick={e=>{uncheckAvailablity();settemAllpro([]);setCategoryProduct([])}} >Availablity</span>
              <span onClick={e=>{uncheckAvailablity()}}className={style.cross}>✔</span>
             </div>:
-            <div className={style.textdiv} style={{width:"auto",whiteSpace:"nowrap"}}>
+            <div className={style.textdiv} style={{width:"auto",whiteSpace:"nowrap"}} onClick={e=>{settemAllpro([]);setCategoryProduct([])}}>
              <span className={style.text} onClick={e=>{checkAvailablity()}} >Availablity</span>
             </div>
             }
             
             {lth?<div className={`${style.textdiv} ${style.value}`} style={{width:"auto",whiteSpace:"nowrap",display:"flex",justifyContent:"space-between"}}>
-             <span className={style.text} onClick={e=>{setLth(false);deleteclass(e)}} style={{color:'black'}}>PRICE: LOW TO HIGH</span>
-             <span onClick={e=>{setLth(false);deleteclass(e)}} className={style.cross}>✔</span>
-            </div>:<div className={style.textdiv} style={{width:"auto",whiteSpace:"nowrap"}}>
+             <span className={style.text} onClick={e=>{setLth(false);deleteclass(e);settemAllpro([]);setCategoryProduct([])}} style={{color:'black'}}>PRICE: LOW TO HIGH</span>
+             <span onClick={e=>{setLth(false);deleteclass(e);settemAllpro([]);setCategoryProduct([])}} className={style.cross}>✔</span>
+            </div>:<div className={style.textdiv} style={{width:"auto",whiteSpace:"nowrap"}} onClick={e=>{settemAllpro([]);setCategoryProduct([])}}>
              <span className={style.text} onClick={e=>{setLth(true);toggleselect(e)}} >PRICE: LOW TO HIGH</span>
             </div>}
             
             {htl?<div className={`${style.textdiv} ${style.value}`} style={{width:"auto",whiteSpace:"nowrap",display:"flex",justifyContent:"space-between"}}>
-             <span className={style.text} onClick={e=>{sethtl(false);deleteclass(e)}} style={{color:'black'}}>PRICE: HIGH TO LOW</span>
+             <span className={style.text} onClick={e=>{sethtl(false);deleteclass(e);settemAllpro([]);setCategoryProduct([])}} style={{color:'black'}}>PRICE: HIGH TO LOW</span>
              <span onClick={e=>{sethtl(false);deleteclass(e)}} className={style.cross}>✔</span>
-            </div>:<div className={style.textdiv} style={{width:"auto",whiteSpace:"nowrap"}}>
+            </div>:<div className={style.textdiv} style={{width:"auto",whiteSpace:"nowrap"}}  onClick={e=>{settemAllpro([]);setCategoryProduct([])}}>
              <span className={style.text}  onClick={e=>{sethtl(true);toggleselect2(e)}} >PRICE: HIGH TO LOW</span>
             </div>}
            
@@ -162,6 +164,7 @@ const Sort = () => {
       </div>
              
     </div>
+    
     </div>
 
 </div>
