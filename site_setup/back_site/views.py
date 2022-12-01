@@ -811,13 +811,20 @@ class pageIndex(APIView):
         try:
             products=product_detail.objects.filter(category=request.data['category'])
             
+            colors=[]
+            for product in products:
+                if product.color in colors:
+                  print("exist")
+                else:    
+                 colors.append(product.color)
+               
             from django.core.paginator import Paginator
             p=Paginator(products,8)
             
             
             pageno=request.data['pageIndex']
             serialize=product_serializer(p.page(pageno).object_list,many=True)
-            return Response(serialize.data)
+            return Response({"products":serialize.data,"colors":colors})
         except:
             return Response({"error":True})
     #end of code Addition

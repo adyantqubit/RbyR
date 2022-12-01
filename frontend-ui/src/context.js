@@ -231,16 +231,18 @@ useEffect(()=>{
 
   var filteredProducts=[]
   
+  console.log(tempallpro)
   //color
   if(selectedColor.length>0)
   filteredProducts=tempallpro.filter(c=>selectedColor.includes(c.color.toLowerCase()))
   
   var tempSize=[]
-  console.log(selectedColor)
-  if(filteredProducts.length>0)
-   tempSize=filteredProducts;
-  else
-   tempSize=tempallpro
+  // console.log(selectedColor)
+  // if(filteredProducts.length>0)
+  //  tempSize=filteredProducts;
+  // else
+  //  tempSize=tempallpro
+  tempSize=filteredProducts
   //size
   if(sizeSelected.length>0)
   sizeSelected.filter(s=>{
@@ -248,21 +250,78 @@ useEffect(()=>{
        
   })
 
-  console.log(tempSize)
 
-  console.log(maxValue,minValue)
   // price
   filteredProducts= tempSize.filter(c=>c.price>minValue&&c.price<maxValue)
 
-  if(filteredProducts.length>0)
-  setCategoryProduct(filteredProducts)
-  else
-  setCategoryProduct([...tempallpro])
 
-  // console.log(filteredProducts)
+   var finalFilter=[]
+   if(selectedColor.length>0||sizeSelected.length>0||filteredProducts.length>0)
+   finalFilter=filteredProducts
+   else
+   finalFilter=tempallpro
+
+   setCategoryProduct([...finalFilter])
+  
+   var tempSorted=finalFilter
+
+
+   console.log(finalFilter)
+
+
+  //  var sortedProducts=[]
+  //  console.log(htl,lth,availablitySelect,latestSelect)
+  // // console.log(filteredProducts)
+  //  if (availablitySelect==true){
+  //   sortedProducts=finalFilter.filter(t=>t.available==true)
+  // }
+  // else{
+  //   sortedProducts=finalFilter
+  // }
+
+  
+  
+  // if(latestSelect==true){
+  // sortedProducts=sortedProducts.sort((a, b) =>
+  //   b.date.split('-').join().localeCompare(a.date.split('-').join()));
+  // }
+ 
+
+
+  // if(lth==true){
+  // sortedProducts=sortedProducts.sort((a,b)=>a.price-b.price)
+  // }
+ 
+
+
+
+
+  // if(htl==true){
+  // sortedProducts=sortedProducts.sort((a,b)=>b.price-a.price)
+  // }
+  
+  // setCategoryProduct(sortedProducts)
+
+  // console.log(sortedProducts)
 
 },[tempallpro,selectedColor,sizeSelected,minValue,maxValue])
 
+
+// useEffect(()=>{
+// console.log(tempallpro)
+//  var temp=tempallpro;
+//   var sorted=[]
+  
+//   if(htl)
+//   sorted= temp.sort((a,b)=>a.price-b.price);
+
+//   if(sorted.length>0)
+//   setCategoryProduct([...sorted])
+//   else
+//   setCategoryProduct([...tempallpro])
+
+//   console.log(CategoryProduct.sort((a,b)=>a.price-b.price))
+// },[CategoryProduct,htl,lth,availablitySelect,latestSelect])
 
 
 

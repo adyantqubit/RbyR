@@ -55,7 +55,7 @@ display:none;
 
 .centered{
 width:30%;
-height:200px;
+height:250px;
   position: relative;
   top:15vh;
 margin-left:50%;
@@ -106,6 +106,6 @@ background:#323232;
 @media (max-width: 768px) {
 
   .centered{
-    top: 19vh;
+    top:12vh;
   }
 }

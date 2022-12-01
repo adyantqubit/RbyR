@@ -26,27 +26,27 @@ const Sort = () => {
 //color filter change start
 
  function toggleselect(e){
-  var filtered=CategoryProduct.sort((a,b)=>a.price-b.price)
-  setCategoryProduct([...filtered])
+  // var filtered=CategoryProduct.sort((a,b)=>a.price-b.price)
+  // setCategoryProduct([...filtered])
   sethtl(false)
   setLatestSelect(false)
 
  }
 
  function deleteclass(e){
-  if (availablitySelect==true){
-    setCategoryProduct([...tempsprice.filter(t=>t.available==true)])
-  }
-  else{
-    setCategoryProduct([...tempsprice])
+  // if (availablitySelect==true){
+  //   setCategoryProduct([...tempsprice.filter(t=>t.available==true)])
+  // }
+  // else{
+  //   setCategoryProduct([...tempsprice])
 
-  }
+  // }
   }
 
 
   function toggleselect2(e){
-    var filtered=CategoryProduct.sort((a,b)=>b.price-a.price)
-    setCategoryProduct([...filtered])
+    // var filtered=CategoryProduct.sort((a,b)=>b.price-a.price)
+    // setCategoryProduct([...filtered])
     setLth(false)
     setLatestSelect(false)
 
@@ -61,34 +61,34 @@ const Sort = () => {
 
    function selectLatest(){
     setLatestSelect(true)
-    console.log(CategoryProduct)
-    var sort= CategoryProduct.sort((a, b) =>
-    b.date.split('-').join().localeCompare(a.date.split('-').join()));
-    setCategoryProduct([...sort])
+    // console.log(CategoryProduct)
+    // var sort= CategoryProduct.sort((a, b) =>
+    // b.date.split('-').join().localeCompare(a.date.split('-').join()));
+    // setCategoryProduct([...sort])
     setLth(false)
     sethtl(false)
-    console.log(sort)
+    // console.log(sort)
    }
 
    function deselectLatest(){
     setLatestSelect(false)
-    if (availablitySelect==true){
-      setCategoryProduct([...tempsprice.filter(t=>t.available==true)])
-    }
-    else{
-      setCategoryProduct([...tempsprice])
+    // if (availablitySelect==true){
+    //   setCategoryProduct([...tempsprice.filter(t=>t.available==true)])
+    // }
+    // else{
+    //   setCategoryProduct([...tempsprice])
   
-    }
+    // }
    }
 
    function uncheckAvailablity(){
         setAvailablity(false)
-        setCategoryProduct(tempallpro)
+        // setCategoryProduct(tempallpro)
    }
    
    function checkAvailablity(){
     setAvailablity(true)
-    setCategoryProduct(CategoryProduct.filter(c=>c.available==true))
+    // setCategoryProduct(CategoryProduct.filter(c=>c.available==true))
    }
 
    //end -- Rohan date-07-08-2022
@@ -116,42 +116,42 @@ const Sort = () => {
 {/* header part end */}
 
 <div className={style.filterbottomMain} >
-    <div className={style.filterbottomMainInner} style={{height:"25vh",top:"8vh"}}>
+    <div className={style.filterbottomMainInnerSort} >
 
     <div className={style.filterbottomMainInnerItem} style={{width:"100%"}}>
        
       
         <div className={style.iteminner}> 
            
-            {latestSelect?<div className={`${style.textdiv} ${style.value}`} style={{width:"12%",display:"flex",justifyContent:"space-between"}}>
+            {latestSelect?<div className={`${style.textdiv} ${style.value}`} style={{width:"auto",whiteSpace:"nowrap",display:"flex",justifyContent:"space-between"}}>
              <span className={style.text} onClick={e=>{deselectLatest()}} >Latest</span>
              <span onClick={e=>{deselectLatest()}}className={style.cross}>✔</span>
             </div>:
-            <div className={style.textdiv} style={{width:"12%"}}>
+            <div className={style.textdiv} style={{width:"auto",whiteSpace:"nowrap"}}>
              <span className={style.text} onClick={e=>{selectLatest()}} >Latest</span>
             </div>
             }
 
-         {availablitySelect?<div className={`${style.textdiv} ${style.value}`} style={{width:"12%",display:"flex",justifyContent:"space-between"}}>
+         {availablitySelect?<div className={`${style.textdiv} ${style.value}`} style={{width:"auto",whiteSpace:"nowrap",display:"flex",justifyContent:"space-between"}}>
              <span className={style.text} onClick={e=>{uncheckAvailablity()}} >Availablity</span>
              <span onClick={e=>{uncheckAvailablity()}}className={style.cross}>✔</span>
             </div>:
-            <div className={style.textdiv} style={{width:"12%"}}>
+            <div className={style.textdiv} style={{width:"auto",whiteSpace:"nowrap"}}>
              <span className={style.text} onClick={e=>{checkAvailablity()}} >Availablity</span>
             </div>
             }
             
-            {lth?<div className={`${style.textdiv} ${style.value}`} style={{width:"15%",display:"flex",justifyContent:"space-between"}}>
+            {lth?<div className={`${style.textdiv} ${style.value}`} style={{width:"auto",whiteSpace:"nowrap",display:"flex",justifyContent:"space-between"}}>
              <span className={style.text} onClick={e=>{setLth(false);deleteclass(e)}} style={{color:'black'}}>PRICE: LOW TO HIGH</span>
              <span onClick={e=>{setLth(false);deleteclass(e)}} className={style.cross}>✔</span>
-            </div>:<div className={style.textdiv} style={{width:"15%"}}>
+            </div>:<div className={style.textdiv} style={{width:"auto",whiteSpace:"nowrap"}}>
              <span className={style.text} onClick={e=>{setLth(true);toggleselect(e)}} >PRICE: LOW TO HIGH</span>
             </div>}
             
-            {htl?<div className={`${style.textdiv} ${style.value}`} style={{width:"15%",display:"flex",justifyContent:"space-between"}}>
+            {htl?<div className={`${style.textdiv} ${style.value}`} style={{width:"auto",whiteSpace:"nowrap",display:"flex",justifyContent:"space-between"}}>
              <span className={style.text} onClick={e=>{sethtl(false);deleteclass(e)}} style={{color:'black'}}>PRICE: HIGH TO LOW</span>
              <span onClick={e=>{sethtl(false);deleteclass(e)}} className={style.cross}>✔</span>
-            </div>:<div className={style.textdiv} style={{width:"15%"}}>
+            </div>:<div className={style.textdiv} style={{width:"auto",whiteSpace:"nowrap"}}>
              <span className={style.text}  onClick={e=>{sethtl(true);toggleselect2(e)}} >PRICE: HIGH TO LOW</span>
             </div>}
            

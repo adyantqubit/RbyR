@@ -23,7 +23,7 @@ import { nextIndexPage } from '../../api/orderApis';
 const ListPage = () => {
 
 
-  const {product,condition,like,setLike,cart,tempallpro,settemAllpro,currency,setCurrency,setCart,CategoryProduct,setCategoryProduct,sortui,setSortUi,filterui,setfilterUi}=CartState()
+  const {product,condition,like,setLike,cart,allColorAvai,tempallpro,settemAllpro,currency,setAllColorAvai,setCurrency,setCart,CategoryProduct,setCategoryProduct,sortui,setSortUi,filterui,setfilterUi}=CartState()
   const [saveLikeApi,{isLoading}]=useLikedUpdateMutation()
   const [cartsaveApi,{isLoad}]=useCartUpdateMutation()
   let {access_token}=getToken();
@@ -34,25 +34,66 @@ const ListPage = () => {
 
  const{category}=useParams()
  
- useEffect(()=>{
- PageLoad()
- },[])
+//  useEffect(()=>{
+//   console.log("page load first time__",CategoryProduct)
+//  PageLoad()
+//  },[])
 
  useEffect(()=>{
-    if(reload==false)
-    PageLoad()
+  console.log("on reload change call___",reload,CategoryProduct)
+    if(reload==false){
+      PageLoad()
+      Apicall()
+    }
  },[reload])
 
- //Commented by Rohan
- //reason- Navlinks are not working on reclick when when i am in this page.
- //Jira issue- RBYR229
+//  Commented by Rohan
+//  reason- Navlinks are not working on reclick when when i am in this page.
+//  Jira issue- RBYR229
+
+useEffect(()=>{
+  ApiReSet()
+ },[category])
 
 //  useEffect(()=>{
-//     catApi()
-//  },[category])
+//   console.log("on page index call",reload,CategoryProduct)
+//   if(reload==false)
+//   Apicall()
 
-//end of the code
+//  },[pageIndex])
 
+// end of the code
+
+
+async function ApiReSet(){
+  console.log("On category change call-----------",CategoryProduct,reload)
+  setCategoryProduct([])
+  settemAllpro([])
+  setPageIndex(1)
+  const data={
+    "pageIndex":1,
+    "category":category
+
+  }
+
+  await nextIndexPage(data).then(r=>{
+    console.log("response from backend_______",r)
+    setTimeout(() => { 
+      if(r.error){
+        setReload(false);
+        setLoading(false);
+      }
+      if(r&&r.products.length>0){
+      console.log(CategoryProduct)  
+      setCategoryProduct([...r.products])
+      settemAllpro([...r.products])
+      setReload(true);
+      setAllColorAvai(r.colors)
+      }
+     
+    }, 1000)
+  })
+}
 
  const catApi=async()=>{
   await getCategoryProduct(category).then(r=>{setCategoryProduct([...r.category]);settemAllpro([...r.category]);console.log(r.category) })
@@ -133,9 +174,8 @@ const handleScroll = (e) => {
   if (bottom&&reload) { 
     setReload(false)
     setLoading(true)
-    
   }
-
+  
 }
 
 async function PageLoad(){
@@ -143,6 +183,10 @@ async function PageLoad(){
   setPageIndex(pageIndex)
   console.log(pageIndex)
 
+}
+
+
+async function Apicall(){
   const data={
     "pageIndex":pageIndex,
     "category":category
@@ -150,22 +194,23 @@ async function PageLoad(){
   }
 
   await nextIndexPage(data).then(r=>{
+    console.log("response from backend_______",r)
     setTimeout(() => { 
       if(r.error){
         setReload(false);
         setLoading(false);
       }
-      if(r&&r.length>0){
+      if(r&&r.products.length>0){
       console.log(CategoryProduct)  
-      setCategoryProduct([...CategoryProduct,...r])
-      settemAllpro([...tempallpro,...r])
+      setCategoryProduct([...CategoryProduct,...r.products])
+      settemAllpro([...tempallpro,...r.products])
+      setAllColorAvai(r.colors)
       setReload(true);
       }
      
     }, 1000)
   })
 }
-
 
 
 

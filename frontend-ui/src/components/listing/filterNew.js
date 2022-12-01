@@ -27,7 +27,7 @@ const FilterNew = () => {
     })
 
     tempallpro.map(c=>{
-        if(c.color&&!allColorAvai.includes(c.color.toLowerCase()))
+        if(c.color&&!allColorAvai.includes(c.color))
         {
             allColorAvai.push(c.color.toLowerCase())
             setAllColorAvai([...allColorAvai])
@@ -45,6 +45,8 @@ const FilterNew = () => {
   e.currentTarget.nextSibling.className= `${style.cross}`
   selectedColor.push(e.currentTarget.textContent.toLowerCase())
   setSelectedColor([...selectedColor])
+
+  console.log(selectedColor)
   // setCategoryProduct([...tempallpro])
   // var filtered=tempallpro.filter(c=>selectedColor.includes(c.color))
   // setCategoryProduct([...filtered])
