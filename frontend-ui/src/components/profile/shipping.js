@@ -211,6 +211,30 @@ const handleButtonClicknum = (msg) => {
               
           }
         
+          
+
+  function validateWhitespace(evt,id)
+  {var theEvent = evt || window.event;
+    var key=0
+    // Handle paste
+    if (theEvent.type === 'paste') {
+        key = evt.clipboardData.getData('text/plain');
+    } else {
+    // Handle key press
+        key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+    }
+
+    
+    var regex = /\s/	
+    if( document.getElementById(`${id}`).value.trim().length>0 || !regex.test(key) ) {
+        
+    }else{
+        theEvent.returnValue = false;
+        if(theEvent.preventDefault) theEvent.preventDefault();
+    }
+  }
+
     
   return (
     <>
@@ -295,16 +319,16 @@ const handleButtonClicknum = (msg) => {
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFullName}>
                         
-                        <label className={styles.firstName} htmlFor='street'>Street name *</label>
+                        <label className={styles.firstName}  htmlFor='street'>Street name *</label>
 
-                        <input className={styles.firstInput} name='streetb' defaultValue={defaultShiping.street} required/>
+                        <input className={styles.firstInput} id="street" onKeyPress={e=>validateWhitespace(e,"street")} name='streetb' defaultValue={defaultShiping.street} required/>
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFullName}>
                         <label className={styles.firstName} htmlFor='street'>House/Apartment number *</label>
 
-                        <input className={styles.firstInput} name='flatnob' maxLength={10} defaultValue={defaultShiping.houseno} required/>
+                        <input className={styles.firstInput} id="house" onKeyPress={e=>validateWhitespace(e,"house")} name='flatnob' maxLength={10} defaultValue={defaultShiping.houseno} required/>
                         
                     </div>
                 </div>
@@ -312,12 +336,12 @@ const handleButtonClicknum = (msg) => {
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='first'>City *</label>
 
-                        <input className={styles.firstInput} name='cityb' defaultValue={defaultShiping.city} required/>
+                        <input className={styles.firstInput} id="city" onKeyPress={e=>validateWhitespace(e,"city")} name='cityb' defaultValue={defaultShiping.city} required/>
                         
                     </div>
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='last'>State / Province</label>
-                        <input className={styles.firstInput} name='stateb' defaultValue={defaultShiping.state} required/>
+                        <input className={styles.firstInput} id="state" onKeyPress={e=>validateWhitespace(e,"state")}  name='stateb' defaultValue={defaultShiping.state} required/>
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
@@ -357,13 +381,14 @@ const handleButtonClicknum = (msg) => {
                     </div>
                 </div>
 
-                <div><button className={styles.userInfoButton} type='submit'>
+                <div style={{display:"flex",flexWrap:"wrap",gap:"10px"}}>
+                    <button className={styles.userInfoButton} type='submit'>
                     ADD SHiPPING
                 </button>
                 {/* <button className={styles.userInfoButton} style={{marginLeft:"10px"}} onClick={e=>shippingDelete(e,defaultShiping.id)}>
                     DELETE 
                 </button> */}
-                <span className={styles.userInfoButton} style={{marginLeft:"10px"}} onClick={e=>setshipEditCond(true)}>
+                <span className={styles.userInfoButton} onClick={e=>setshipEditCond(true)}>
                     CANCEL
                 </span>
                 </div>

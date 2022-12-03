@@ -24,7 +24,7 @@
 }
 .imgswap{
     width:100%;
-    height:500px;
+    /* height:500px; */
     /* border-radius:10px; */
 }
 .text{
@@ -84,7 +84,7 @@
     
     .imgswap{
         width:100%;
-        height:500px;
+       
        
     }
     

@@ -209,12 +209,12 @@ const Login = () => {
 							<input class="inpu4" type={showNewPass2?"text":"password"} name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
 						 required style={{width:"80%"}} 
 						 onChange={e=>{if(e.target.value.length>0)setVisiblePassreg2(true); else setVisiblePassreg2(false)}}/>
-						{/* {server_error.password?<Popup trigger={<button style={{border:"white",background:"#e0dede"}} >{server_error.password?<i class="fa-solid fa-circle-exclamation" style={{color:"red",marginTop:"8px"}}/>:null}</button>} 
+						 {/* {server_error.password?<Popup trigger={<button style={{border:"white",background:"#e0dede"}} >{server_error.password?<i class="fa-solid fa-circle-exclamation" style={{color:"red",marginTop:"8px"}}/>:null}</button>} 
 							defaultOpen={true}
 							position="top center">
 							{server_error.password?<Typography style={{color:"red",fontSize:"14px"}}>{server_error.password[0]}</Typography>:" "}
 							</Popup>:null} */}
-			            {visiblepassReg2?showNewPass2?<AiFillEye style={{marginTop:"5px"}} onClick={e=>setNewPass2(false)}/>:<AiFillEyeInvisible style={{marginTop:"5px"}} onClick={e=>setNewPass2(true)}/>:null}
+			             {visiblepassReg2?showNewPass2?<AiFillEye style={{marginTop:"5px"}} onClick={e=>setNewPass2(false)}/>:<AiFillEyeInvisible style={{marginTop:"5px"}} onClick={e=>setNewPass2(true)}/>:null}
 						</span>
 						<span class="inpu4">
 							<input class="inpu4" type={showNewPass?"text":"password"} name="pswd2" placeholder="Confim Password"   required style={{width:"80%"}} onChange={e=>{if(e.target.value.length>0)setVisiblePassreg(true); else setVisiblePassreg(false)}}/>

@@ -8,6 +8,8 @@ import ProductListing from './productListing';
 import UserInfo from './userInfo'
 import UsserAdresses from './usserAdresses';
 import { useLocation } from 'react-router-dom'
+import Footer from '../global/footer';
+import Below from '../global/below';
 
 const Orderpage = () => {
   const{userdata,checkoutDetails,setCheckoutDetails,paymentflow,cart,setPaymentflow,shippingflow,setShipingflow}=CartState()
@@ -57,6 +59,11 @@ const Orderpage = () => {
         
         </div>
         <ProductListing/>
+    </div>
+
+    <div className={styles.foot} >
+     <Footer/>
+     <Below/>
     </div>
     </div>
     </>   

@@ -146,6 +146,8 @@ const Navbar = () => {
                     <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/kurti">Kurti</Link></li>
                     <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/wedding_wear">Weddingwear</Link></li>
                     <li style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2}  to="/listing/formal">Formal</Link></li>
+                    <li style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2}  to="/listing/view_all">Veiw All</Link></li>
+
                   </ul>    
                 </li>
 

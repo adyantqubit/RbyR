@@ -109,56 +109,64 @@ function Footer2() {
             className={style.instagramLink}
             href={instagramCollections.instagram_post1_link}
           >
-            <div className={style.instagramItem}>
+
+            
+    {/* Added By Rohan kansari
+    reason- This div is not needed. style is not define for this div so i m replacing it.
+    jira issue-RBYR184 */}
+            {/* <div className={style.instagramItem}> */}
+
               <img
                 className={style.instagramImage}
                 src={instagramCollections.instagram_post1}
               ></img>
-            </div>
+            {/* </div> */}
           </a>
           <a
             className={style.instagramLink}
             href={instagramCollections.instagram_post2_link}
           >
-            <div className={style.instagramItem}>
+             {/* <div className={style.instagramItem}> */}
               <img
                 className={style.instagramImage}
                 src={instagramCollections.instagram_post2}
               ></img>
-            </div>
+            {/* </div> */}
           </a>
           <a
             className={style.instagramLink}
             href={instagramCollections.instagram_post3_link}
           >
-            <div className={style.instagramItem}>
+            {/* <div className={style.instagramItem}> */}
               <img
                 className={style.instagramImage}
                 src={instagramCollections.instagram_post3}
               ></img>
-            </div>
+            {/* </div> */}
           </a>
           <a
             className={style.instagramLink}
             href={instagramCollections.instagram_post4_link}
           >
-            <div className={style.instagramItem}>
+            {/* <div className={style.instagramItem}> */}
               <img
                 className={style.instagramImage}
                 src={instagramCollections.instagram_post4}
               ></img>
-            </div>
+            {/* </div> */}
           </a>
           <a
             className={style.instagramLink}
             href={instagramCollections.instagram_post5_link}
           >
-            <div className={style.instagramItem}>
+            {/* <div className={style.instagramItem}> */}
               <img
                 className={style.instagramImage}
                 src={instagramCollections.instagram_post5}
               ></img>
-            </div>
+            {/* </div> */}
+
+            {/* End of the code */}
           </a>
         </div>
       ) : null}

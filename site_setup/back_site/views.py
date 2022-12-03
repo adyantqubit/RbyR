@@ -810,21 +810,29 @@ class pageIndex(APIView):
     def post(self,request):
         try:
             products=[]
-            if(request.data['lth']  and request.data['availablity']):
-                products=product_detail.objects.filter(category=request.data['category'],available=True).order_by("price")
-            elif(request.data['htl']  and request.data['availablity']):
-                products=product_detail.objects.filter(category=request.data['category'],available=True).order_by("-price")  
-            elif(request.data['latest'] and request.data['availablity']):
-                products=product_detail.objects.filter(category=request.data['category'],available=True).order_by('-date')
-            elif(request.data['htl']):
-                products=product_detail.objects.filter(category=request.data['category']).order_by("-price")
-            elif(request.data['lth']):   
-                products=product_detail.objects.filter(category=request.data['category']).order_by("price")
-            elif(request.data['latest']):   
-                products=product_detail.objects.filter(category=request.data['category']).order_by("-date")           
-            else:    
+            print(request.data["category"])
+            if(request.data['category']=="view_all"):
+                products=product_detail.objects.filter(category="partywear")|product_detail.objects.filter(category="kurti")|product_detail.objects.filter(category="casual")|product_detail.objects.filter(category="wedding_wear")|product_detail.objects.filter(category="formal")
+            else:
                 products=product_detail.objects.filter(category=request.data['category'])
+                
+            if(request.data['lth']  and request.data['availablity']):
+                products= products.order_by("price")
+            elif(request.data['htl']  and request.data['availablity']):
+                products=products.order_by("-price")  
+            elif(request.data['latest'] and request.data['availablity']):
+                products=products.order_by('-date')
+            elif(request.data['htl']):
+                products=products.order_by("-price")
+            elif(request.data['lth']):   
+                products=products.order_by("price")
+            elif(request.data['latest']):   
+                products=products.order_by("-date")
+            elif(request.data['availablity']):   
+                products=products.filter(available=True)              
             
+            print(products.count())
+
             colors=[]
             for product in products:
                 if product.color in colors:

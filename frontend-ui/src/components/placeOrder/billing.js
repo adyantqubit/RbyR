@@ -11,6 +11,8 @@ import styles from './billing.module.css'
 import style from '../global/cartCard.module.css'
 import ReactToPrint from 'react-to-print';
 import parse from "html-react-parser";
+import Footer from '../global/footer'
+import Below from '../global/below'
 
 
 
@@ -216,6 +218,11 @@ const Billing = () => {
      <div style={{width:"100%",display:"flex",justifyContent:"center",background:"#f2f2f2"}}> <button className={style.shopbtn1} style={{width:"50%"}} onClick={e=>nav('/')}>Continue Shopping</button>
    
      </div>
+
+     <div className={styles.foot} >
+     <Footer/>
+     <Below/>
+    </div>
   </div >
     </>
    

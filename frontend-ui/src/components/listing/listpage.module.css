@@ -1,7 +1,7 @@
 .Container{
   position: relative;
-  top: 26vh;
-  max-height: 80vh;
+  top: 23vh;
+  max-height: 100vh;
   overflow: scroll;
 }
 
@@ -16,6 +16,10 @@
   height: 100px;
   width:100%;
   background-color: #fff;
+}
+
+.foot{
+  margin-top: 0px;
 }
 
 .TopContent{
@@ -110,7 +114,7 @@
   height:auto;
   background:white;
   position:fixed;
-  top:26vh;
+  top:23vh;
   right:10px;
   display:flex;
   flex-direction: column;
@@ -122,7 +126,7 @@
   height:80vh;
   background:white;
   position:fixed;
-  top:26vh;
+  top:23vh;
   right:10px;
   display:flex;
   flex-direction: column;
@@ -134,7 +138,7 @@
   height:13%;
   background:white;
   position:fixed;
-  top:26vh;
+  top:23vh;
   right:10px;
   display:flex;
   justify-content:center
@@ -236,12 +240,20 @@
 
 }
 
+.mainsort{
+  width:100%;
+  min-height:15vh;
+  padding-bottom: 20px;
+  padding:0 5%;
+  background:white;
+  position:relative;
+  top:15vh;
+  z-index: 80;
+}
+
 .filterbottomMainInnerSort{
-  position: relative;
-  padding-top: 40px;
-  height:26vh;
-  top:9vh;
-  width:90vw;
+ z-index: 91;
+  width:100vw;
   display: flex;
   justify-content: space-between;
 }
@@ -318,7 +330,7 @@
 .textdiv{
   height:auto;
   padding:5px 10px;
-  width:45%;
+  min-width:45%;
   margin: 3px;
   border-radius: 10px;
   background-color: #f8f8f8;
@@ -368,23 +380,18 @@
 
 .footerArange{
   position: relative;
-  top:26vh;
+  top:23vh;
 }
 
-
-
-@media (max-width: 1100px) {
-
- .filterbottomMainInnerSort{
-  position: relative;
-  padding-top: 40px;
-  height:26vh;
-  top:8vh;
-}
-
-}
 
 @media (max-width: 768px) {
+  .mainsort{
+    
+    top:0vh;
+  }
+.foot{
+  margin-top: -12vh;
+}
   .containsSort{
     top:25vh;
    }
@@ -403,11 +410,7 @@
     flex-wrap: wrap;
   }
 
-  .filterbottomMainInnerSort{
-    padding-top:0px;
-    height:10vh;
-    top:0vh;
-  }
+  
   .contains{
     width:100%;
     height:100vh;
@@ -452,13 +455,3 @@
 
  }
 
-
- @media (max-width: 600px) {
-
-  .filterbottomMainInnerSort{
-    padding-top:0px;
-    height:20vh;
-    top:0vh;
-
-  }
- }

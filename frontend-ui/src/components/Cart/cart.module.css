@@ -49,7 +49,7 @@
 
   .container{
     position:relative;
-    top:26vh;
+    top:23vh;
     width:100%;
     background:white;
     display:flex;
@@ -143,6 +143,10 @@ body {background: #333}
 
   .container{
     top:12vh;
+  }
+
+  .foot{
+    margin-top: -12vh;
   }
 
    .summ{

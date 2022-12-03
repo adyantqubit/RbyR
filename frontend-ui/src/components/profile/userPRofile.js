@@ -264,14 +264,14 @@ if (data.get('oldpswd')!=null){
                 
                 </>:null}
                
-                <div>
+                <div style={{display:"flex",flexWrap:"wrap",gap:"20px",alignItems:"end"}}>
                   <button className={styles.userInfoButton} type="submit">
                     UPDATE PROFILE
                 </button>
                 {/* <button className={styles.userInfoButton} style={{marginLeft:"10px"}} onClick={e=>shippingDelete(e,defaultShiping.id)}>
                     DELETE 
                 </button> */}
-                <span  style={{marginLeft:"10px",fontSize:"16px",letterSpacing:"1.7px",fontStyle:"bold",marginLeft:"50px",cursor:"pointer"}} onClick={e=>setShowEditable(false)}>
+                <span  style={{marginLeft:"10px",fontSize:"16px",letterSpacing:"1.7px",fontStyle:"bold",cursor:"pointer"}} onClick={e=>setShowEditable(false)}>
                     CANCEL
                 </span>
                 </div>

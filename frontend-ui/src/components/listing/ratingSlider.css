@@ -40,6 +40,7 @@
     color: #000;
     font-size: 12px;
     margin-top: 20px;
+
   }
   
   .slider__left-value {
@@ -61,7 +62,7 @@
     pointer-events: none;
     position: absolute;
     height: 0;
-    width: 200px;
+    width: 18%;
     outline: none;
   }
   
@@ -101,3 +102,9 @@
     position: relative;
   }
   
+
+  @media (max-width: 768px) {
+    .thumb {
+      width: 35%;
+    }
+  }

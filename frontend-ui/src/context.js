@@ -65,6 +65,7 @@ const Context = ({ children }) => {
   var [offer,setOffer]=useState({discount_percentage: 0, maximum_discount_price: 1000, expiry_date: '2022-11-30'})
   var [taxRate,setTaxRate]=useState(0)
   var [reload,setReload]=useState(true)
+  const[ selectedCategory,setCategorySelected]=useState([])
 
   //product updation
   useEffect(()=>{
@@ -230,9 +231,8 @@ async function DefaultShipping(){
 
 useEffect(()=>{
 
-  var filteredProducts=[]
+  var filteredProducts=tempallpro
   
-  console.log(tempallpro)
   //color
   if(selectedColor.length>0)
   filteredProducts=tempallpro.filter(c=>selectedColor.includes(c.color.toLowerCase()))
@@ -240,47 +240,52 @@ useEffect(()=>{
   var tempSize=[]
   tempSize=filteredProducts
   //size
+  
   if(sizeSelected.length>0)
   sizeSelected.filter(s=>{
        tempSize=tempSize.filter(c=>c[`${s}`]>0)
-       
   })
+    
+  
 
+  
 
   // price
   if(tempSize.length>0){
   filteredProducts= tempSize.filter(c=>c.price>minValue&&c.price<maxValue)
-  console.log(filteredProducts)
   }
-  if(filteredProducts.length==0){
-   filteredProducts=tempallpro.filter(c=>c.price>minValue&&c.price<maxValue)
-   console.log(filteredProducts)
-
+  else{
+   filteredProducts=filteredProducts.filter(c=>c.price>minValue&&c.price<maxValue)
   }
 
    var finalFilter=[]
 
 
    if(selectedColor.length>0||sizeSelected.length>0||filteredProducts.length>0||maxValue){
-    console.log(filteredProducts.length<3)
    if(filteredProducts.length<3){
     setReload(false)
     finalFilter=filteredProducts
-   }else
+   }
+   else
    finalFilter=filteredProducts
-  
-  }
+   }
    else
    finalFilter=tempallpro
 
+
+  //size
+  if(finalFilter.length>0){
+  if(selectedCategory.length>0)
+  selectedCategory.filter(s=>{
+       finalFilter=finalFilter.filter(c=>c.category.toLowerCase()==s.toLowerCase())
+  })
+    }
+   
+
    setCategoryProduct([...finalFilter])
- 
-
-  console.log(maxValue,minValue)
 
 
-
-},[tempallpro,selectedColor,sizeSelected,minValue,maxValue])
+},[tempallpro,selectedColor,sizeSelected,minValue,maxValue,selectedCategory])
 
 
 
@@ -305,7 +310,7 @@ useEffect(()=>{
 
    //filter
   return (
-    <Cart.Provider value={{reload,setReload,firstTimeLoadFunctions,showEditable,setShowEditable,shipEditcond,setshipEditCond,cartEnd,setCartEnd,taxRate,setTaxRate,offer,setOffer,availablitySelect,setAvailablity,latestSelect,setLatestSelect,defaultShiping,setDefaultShipping,orders,setOrder,paymentflow,setPaymentflow,shippingflow,setShipingflow,checkoutDetails,setCheckoutDetails,userdata,setUserData,to,setTo,currency,setCurrency,sizeSelected,setSizeSelected,con,setcon,htl,sethtl,lth,setLth,tempsprice,setTempsprice,filterui,setfilterUi,maxValue,setmaxValue,minValue,setminValue,allCategoryAvai,setAllCategoryAvai,allColorAvai,setAllColorAvai,selectedColor,setSelectedColor,tempallpro,settemAllpro, sortui,setSortUi,product,cart,setCart,setProduct,setcheck,checked1,checked2, image,setImage,like,setLike,setCondition,condition,openLikedrawer, setLikeDrawer,openCartdrawer, setCartDrawer,CategoryProduct,setCategoryProduct}}>
+    <Cart.Provider value={{selectedCategory,setCategorySelected,reload,setReload,firstTimeLoadFunctions,showEditable,setShowEditable,shipEditcond,setshipEditCond,cartEnd,setCartEnd,taxRate,setTaxRate,offer,setOffer,availablitySelect,setAvailablity,latestSelect,setLatestSelect,defaultShiping,setDefaultShipping,orders,setOrder,paymentflow,setPaymentflow,shippingflow,setShipingflow,checkoutDetails,setCheckoutDetails,userdata,setUserData,to,setTo,currency,setCurrency,sizeSelected,setSizeSelected,con,setcon,htl,sethtl,lth,setLth,tempsprice,setTempsprice,filterui,setfilterUi,maxValue,setmaxValue,minValue,setminValue,allCategoryAvai,setAllCategoryAvai,allColorAvai,setAllColorAvai,selectedColor,setSelectedColor,tempallpro,settemAllpro, sortui,setSortUi,product,cart,setCart,setProduct,setcheck,checked1,checked2, image,setImage,like,setLike,setCondition,condition,openLikedrawer, setLikeDrawer,openCartdrawer, setCartDrawer,CategoryProduct,setCategoryProduct}}>
       {children}
     </Cart.Provider>
   );

@@ -119,7 +119,7 @@ class SendPasswordResetEmailSerializer(serializers.Serializer):
             send_mail( subject, message, email_from, recipient_list )
             return attrs
         else:
-            raise serializers.ValidationError("you are not register user")
+            raise serializers.ValidationError("Entered Email-id is not registered.")
             
  
         
@@ -141,14 +141,14 @@ class UserPasswordResetSerializer(serializers.ModelSerializer):
           id=smart_str(urlsafe_base64_decode(uid))
           user=User.objects.get(id=id)
           if not PasswordResetTokenGenerator().check_token(user,token):
-             raise ValidationErr('Token is not Valid or Expired')
+             raise serializers.ValidationError('Token is not valid or expired')
           user.set_password(password)
           user.save()
           return attrs
       
         except DjangoUnicodeDecodeError as Identifier:
             PasswordResetTokenGenerator().check_token(user,token)
-            raise ValidationErr('Token is not valid or expired')
+            raise serializers.ValidationError('Token is not valid or expired')
 
 class LikeUpdateSerializer(serializers.ModelSerializer):
         class Meta:

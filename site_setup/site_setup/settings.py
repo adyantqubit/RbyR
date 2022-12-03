@@ -150,7 +150,6 @@ CORS_ORIGIN_ALLOW_ALL=True
 CORS_ALLOW_CREDENTIAL=True
 
 
-
 CORS_ORIGIN_WHITELIST = [
      'http://localhost:3000'
 ]
@@ -205,7 +204,7 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
-PASSWORD_RESET_TIMEOUT=900
+PASSWORD_RESET_TIMEOUT = 1800 # 30 mint, in seconds
 
 CORS_ALLOWED_ORIGINS=[
     "http://localhost:3000",

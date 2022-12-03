@@ -68,7 +68,7 @@ async function ApiReSet(){
   console.log("On category change call-----------",CategoryProduct,reload)
   setCategoryProduct([])
   settemAllpro([])
-  setPageIndex(1)
+  setPageIndex(0)
   const data={
     "pageIndex":1,
     "category":category,
@@ -85,7 +85,7 @@ async function ApiReSet(){
         setReload(false);
         setLoading(false);
       }
-      if(r&&r.products.length>0){
+      else{
       console.log(CategoryProduct)  
       setCategoryProduct([...r.products])
       settemAllpro([...r.products])
@@ -172,7 +172,7 @@ const handleScroll = (e) => {
   //     const bottom = e.target.scrollHeight-e.target.clientHeight-footerHeight <e.target.scrollTop &&  e.target.scrollHeight-e.target.clientHeight-footerHeight+300>e.target.scrollTop;
     
   var bottom=e.target.scrollTop>listHeight-300;
-  // setLoading(true)
+ 
   if (bottom&&reload) { 
     setReload(false)
     setLoading(true)
@@ -206,7 +206,7 @@ async function Apicall(){
         setReload(false);
         setLoading(false);
       }
-      if(r&&r.products.length>0){
+      else{
       console.log(CategoryProduct)  
       setCategoryProduct([...CategoryProduct,...r.products])
       settemAllpro([...tempallpro,...r.products])
@@ -228,12 +228,12 @@ return (
     <div className={style.bottom}></div>
     <div className={style.bottom} >
         {CategoryProduct?
-        <>
-        <span className={style.TopContent} style={{paddingLeft:"80px"}}>{category.split("_").join(" ")}</span>
-        <span className={style.filter} style={{paddingRight:"40px",fontWeight:"600px"}}>
+        <div style={{display:"flex",width:"100%",justifyContent:"space-between",flexWrap:"wrap"}}>
+        <span className={style.TopContent} style={{paddingLeft:"5%"}}>{category.split("_").join(" ")}</span>
+        <span className={style.filter} style={{paddingRight:"40px",height:"100%",fontWeight:"600px",whiteSpace:"nowrap"}}>
           <span style={{paddingRight:"15px",color:"grey",cursor:"pointer"}}  onClick={e=>setSortUi(true)}>Sort by</span><span style={{cursor:"pointer"}}onClick={e=>setfilterUi(true)}>Filter BY</span>
         </span>
-        </> :null}  
+        </div> :null}  
       </div>
 
 
@@ -271,7 +271,7 @@ return (
 </div>:null}
 
 
-<div  >
+<div  className={style.foot}>
 <Footer/>
 <Below/>
 </div>

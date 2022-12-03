@@ -46,7 +46,7 @@ const Payment = () => {
     async function submitAll(){
         if(checkoutDetails['payment']&&checkoutDetails['payment'].length>0){
            checkoutDetails['cart']=cart
-           checkoutDetails['CouponDiscount']=afterColumnTotalOfferAdd(offer,cart,taxRate).coupon
+          //  checkoutDetails['CouponDiscount']=afterColumnTotalOfferAdd(offer,cart,taxRate).coupon
            checkoutDetails['ShippingCharges']=afterColumnTotalOfferAdd(offer,cart,taxRate).shipping
            checkoutDetails['SubTotal']=afterColumnTotalOfferAdd(offer,cart,taxRate).subtotal
            checkoutDetails['tax']=afterColumnTotalOfferAdd(offer,cart,taxRate).tax

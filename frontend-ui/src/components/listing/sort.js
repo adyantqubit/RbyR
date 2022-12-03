@@ -116,7 +116,7 @@ const Sort = () => {
 </div>
 {/* header part end */}
  
- <div style={{width:"100%",height:"auto",padding:"0 5%"}}>
+ <div className={style.mainsort} >
 
     <div className={style.filterbottomMainInnerSort} >
 
@@ -125,35 +125,35 @@ const Sort = () => {
       
         <div className={style.iteminner} > 
            
-            {latestSelect?<div className={`${style.textdiv} ${style.value}`} style={{width:"auto",whiteSpace:"nowrap",display:"flex",justifyContent:"space-between"}}>
+            {latestSelect?<div className={`${style.textdiv} ${style.value}`} style={{minWidth:"0",width:"auto",whiteSpace:"nowrap",display:"flex",justifyContent:"space-between"}}>
              <span className={style.text} onClick={e=>{deselectLatest()}} >Latest</span>
              <span onClick={e=>{deselectLatest();settemAllpro([]);setCategoryProduct([])} }className={style.cross}>✔</span>
             </div>:
-            <div className={style.textdiv} style={{width:"auto",whiteSpace:"nowrap"}} onClick={e=>{settemAllpro([]);setCategoryProduct([])}}>
+            <div className={style.textdiv} style={{minWidth:"0",width:"auto",whiteSpace:"nowrap"}} onClick={e=>{settemAllpro([]);setCategoryProduct([])}}>
              <span className={style.text} onClick={e=>{selectLatest()}} >Latest</span>
             </div>
             }
 
-         {availablitySelect?<div className={`${style.textdiv} ${style.value}`} style={{width:"auto",whiteSpace:"nowrap",display:"flex",justifyContent:"space-between"}}>
+         {availablitySelect?<div className={`${style.textdiv} ${style.value}`} style={{minWidth:"0",width:"auto",whiteSpace:"nowrap",display:"flex",justifyContent:"space-between"}}>
              <span className={style.text} onClick={e=>{uncheckAvailablity();settemAllpro([]);setCategoryProduct([])}} >Availablity</span>
              <span onClick={e=>{uncheckAvailablity()}}className={style.cross}>✔</span>
             </div>:
-            <div className={style.textdiv} style={{width:"auto",whiteSpace:"nowrap"}} onClick={e=>{settemAllpro([]);setCategoryProduct([])}}>
+            <div className={style.textdiv} style={{minWidth:"0",width:"auto",whiteSpace:"nowrap"}} onClick={e=>{settemAllpro([]);setCategoryProduct([])}}>
              <span className={style.text} onClick={e=>{checkAvailablity()}} >Availablity</span>
             </div>
             }
             
-            {lth?<div className={`${style.textdiv} ${style.value}`} style={{width:"auto",whiteSpace:"nowrap",display:"flex",justifyContent:"space-between"}}>
+            {lth?<div className={`${style.textdiv} ${style.value}`} style={{minWidth:"0",width:"auto",whiteSpace:"nowrap",display:"flex",justifyContent:"space-between"}}>
              <span className={style.text} onClick={e=>{setLth(false);deleteclass(e);settemAllpro([]);setCategoryProduct([])}} style={{color:'black'}}>PRICE: LOW TO HIGH</span>
              <span onClick={e=>{setLth(false);deleteclass(e);settemAllpro([]);setCategoryProduct([])}} className={style.cross}>✔</span>
-            </div>:<div className={style.textdiv} style={{width:"auto",whiteSpace:"nowrap"}} onClick={e=>{settemAllpro([]);setCategoryProduct([])}}>
+            </div>:<div className={style.textdiv} style={{minWidth:"0",width:"auto",whiteSpace:"nowrap"}} onClick={e=>{settemAllpro([]);setCategoryProduct([])}}>
              <span className={style.text} onClick={e=>{setLth(true);toggleselect(e)}} >PRICE: LOW TO HIGH</span>
             </div>}
             
-            {htl?<div className={`${style.textdiv} ${style.value}`} style={{width:"auto",whiteSpace:"nowrap",display:"flex",justifyContent:"space-between"}}>
+            {htl?<div className={`${style.textdiv} ${style.value}`} style={{minWidth:"0",width:"auto",whiteSpace:"nowrap",display:"flex",justifyContent:"space-between"}}>
              <span className={style.text} onClick={e=>{sethtl(false);deleteclass(e);settemAllpro([]);setCategoryProduct([])}} style={{color:'black'}}>PRICE: HIGH TO LOW</span>
              <span onClick={e=>{sethtl(false);deleteclass(e)}} className={style.cross}>✔</span>
-            </div>:<div className={style.textdiv} style={{width:"auto",whiteSpace:"nowrap"}}  onClick={e=>{settemAllpro([]);setCategoryProduct([])}}>
+            </div>:<div className={style.textdiv} style={{minWidth:"0",width:"auto",whiteSpace:"nowrap"}}  onClick={e=>{settemAllpro([]);setCategoryProduct([])}}>
              <span className={style.text}  onClick={e=>{sethtl(true);toggleselect2(e)}} >PRICE: HIGH TO LOW</span>
             </div>}
            

@@ -154,7 +154,9 @@
     
 
 @media (max-width: 768px) {
-
+    .App{
+        margin-top: 12vh;
+    }
     .row{
         display:flex;
         flex-direction: row;

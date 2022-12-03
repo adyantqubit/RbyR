@@ -191,8 +191,9 @@ const increament=(CartProduct)=>{
                 <span className={style.showSize}> {pro.size}</span>  
               </div>
               <div style={{color:"black",marginLeft:"20px",marginTop:"8px"}}>
-                <span className={style.shipping}>Standard Shiping:</span>
-                <span className={style.shipping}> 2 Weeks</span>  
+              {/* {pro.ready_to_ship?
+                <span className={styles.shipping}> {pro.ready_to_ship_days}</span>:
+                <span className={styles.shipping}> {pro.shipping_days}</span>} */}
               </div>
 
               <div style={{height:"100px",display:"flex",flexDirection:"column"}}></div>

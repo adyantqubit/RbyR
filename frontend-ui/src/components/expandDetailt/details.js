@@ -639,7 +639,7 @@ const Details = (props) => {
                       Reason - To have whatsapp chat functionality */}
                       {/* <a href="https://wa.me/916264170187"></a> */}
                       <a
-                        href={`https://wa.me/${whatsappContactNumber}?text=Product : ${details.title}  |  Category : ${details.category}`}
+                        href={`https://wa.me/send?text=${window.location.href}`}
                       >
                         {/* End of code modification */}{" "}
                         <AiOutlineWhatsApp
@@ -920,18 +920,21 @@ const Details = (props) => {
             <Slider />
           </div> */}
 
-          <div style={{ width: "100%" }}>
+          <div style={{ width: "100%" ,zIndex:"1"}}>
             <Slider2 />
             <Slider />
           </div>
+          <div className={styles.foot}>
+      <Footer />
+      <Below />
+      </div>
         </div>
       ) : (
         "loading"
       )}
 
-      <ScrollButton />
-      <Footer />
-      <Below />
+      
+      
     </>
   );
 };

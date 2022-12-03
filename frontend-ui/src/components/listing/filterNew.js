@@ -5,11 +5,10 @@ import RangeSlider from './rangeslider';
 import MultiRangeSlider from './rangeslider';
 
 const FilterNew = () => {
-    const {sizeSelected,setSizeSelected,filterui,setfilterUi,CategoryProduct,setCategoryProduct,tempallpro,settemAllpro,maxValue,setmaxValue,minValue,setminValue,allCategoryAvai,setAllCategoryAvai,allColorAvai,setAllColorAvai,selectedColor,setSelectedColor,tempsprice,setTempsprice}=CartState()
+    const {selectedCategory,setCategorySelected,sizeSelected,setSizeSelected,filterui,setfilterUi,CategoryProduct,setCategoryProduct,tempallpro,settemAllpro,maxValue,setmaxValue,minValue,setminValue,allCategoryAvai,setAllCategoryAvai,allColorAvai,setAllColorAvai,selectedColor,setSelectedColor,tempsprice,setTempsprice}=CartState()
     const[tempprice,setTempprice]=useState([])
     const[tempSize,setTempSize]=useState([])
     const[tempSize2,setTempSize2]=useState([])
-
 
  function closeSortPage(){
   setfilterUi(false)
@@ -26,6 +25,7 @@ const FilterNew = () => {
         }
     })
 
+
     tempallpro.map(c=>{
         if(c.color&&!allColorAvai.includes(c.color))
         {
@@ -34,7 +34,14 @@ const FilterNew = () => {
             
         }
     })
+
+
  },[tempallpro])
+
+ useEffect(()=>{
+  console.log("-------------",allCategoryAvai,allColorAvai)
+
+ },[allCategoryAvai,allColorAvai])
 
 
 
@@ -60,6 +67,22 @@ const FilterNew = () => {
   e.currentTarget.className=`${style.block}`
   var filtercolor=selectedColor.filter(c=>c!=e.currentTarget.previousSibling.textContent.toLowerCase())
   setSelectedColor([...filtercolor])
+  }
+
+  
+ function toggleselectc(e){
+  e.currentTarget.parentElement.className=`${style.value} ${style.textdiv}`
+  e.currentTarget.nextSibling.className= `${style.cross}`
+  selectedCategory.push(e.currentTarget.textContent.toLowerCase())
+  setCategorySelected([...selectedCategory])
+
+ }
+
+ function deleteclassc(e){
+  e.currentTarget.parentElement.className=`${style.textdiv}`
+  e.currentTarget.className=`${style.block}`
+  var filtercolor=selectedCategory.filter(c=>c!=e.currentTarget.previousSibling.textContent.toLowerCase())
+  setCategorySelected([...filtercolor])
   }
 
   // useEffect(()=>{
@@ -177,7 +200,7 @@ var [maxtemp,setmaxtemp]=useState(200000);
 {/* header part end */}
 
 <div className={style.filterbottomMain} style={{zIndex:"0"}}>
-    <div className={style.filterbottomMainInner} >
+    <div className={style.filterbottomMainInner}  >
      
      {/* div 1 */}
       <div className={style.filterbottomMainInnerItem} >
@@ -187,11 +210,26 @@ var [maxtemp,setmaxtemp]=useState(200000);
       
         <div className={style.iteminner}>
             {allCategoryAvai?
-            allCategoryAvai.map(c=>(
-                <div className={style.textdiv}>
-                <span className={style.text}>{c}</span>
-                </div>
-                )): 
+            allCategoryAvai.map(c=>
+
+              { 
+                if( selectedCategory.includes(c.toLowerCase())){
+                  return <div className={`${style.textdiv} ${style.value}`} style={{width:"auto",whiteSpace:"nowrap"}} >
+                    <span className={style.text} onClick={toggleselectc}>{c.toUpperCase()}</span>
+                     <span onClick={deleteclassc} className={style.cross}>X</span>
+                     </div>
+                     }
+                 else{
+                    return <div className={style.textdiv} style={{width:"auto",whiteSpace:"nowrap"}}>
+                    <span className={style.text} onClick={toggleselectc}>{c.toUpperCase()}</span>
+                     <span onClick={deleteclassc} className={style.block}>X</span>
+                     </div>
+                 }
+              }
+                // <div className={style.textdiv} style={{width:"auto",whiteSpace:"nowrap"}}>
+                // <span className={style.text}>{c}</span>
+                // </div>
+                ): 
                 <div className={style.textdiv}>
                 <span className={style.text}>Loading please wait...</span>
                 </div>

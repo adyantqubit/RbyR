@@ -21,7 +21,7 @@ import { increamentCheck } from '../../api/orderApis';
 
 
 
-const text = 'are you sure to delete?';
+const text = 'Are you sure you would like to remove this item from the shopping cart?';
 
 
 
@@ -55,7 +55,6 @@ else if(CartProduct.size=="Large"){
   if(CartProduct.quantity<=CartProduct.L+1)
   {
     document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="none"; 
-    
   }
 }
 else if(CartProduct.size=="Medium"){
@@ -239,7 +238,7 @@ const increament= async (CartProduct)=>{
                 <span className={styles.shipping}>Standard Shiping:</span>
                 {pro.ready_to_ship?
                 <span className={styles.shipping}> {pro.ready_to_ship_days}</span>:
-                <span className={styles.shipping}> {pro.shipping_days} Weeks</span>}
+                <span className={styles.shipping}> {pro.shipping_days}</span>}
                   
               </div>
 

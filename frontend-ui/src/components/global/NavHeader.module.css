@@ -1,4 +1,11 @@
 /* UTILITIES */
+@font-face {
+  font-family: 'MyFont';
+  src: local('MyFont'), url(../../assets/font/RawsonAltRegular.woff) format('woff');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -55,7 +62,7 @@
     position:fixed;
     width: 100%;
     z-index: 50;
-    height: 26vh;
+    height: 23vh;
    }
 
 /* NAVBAR STYLING STARTS */
@@ -65,9 +72,10 @@
     align-items: flex-end;
     justify-content: center;
     background-color:  #323232;
+    border-bottom: .1em solid #7c7c7c;
     color: #fff;
     width: 100%;
-    height: 45%;
+    height: 30%;
    }
 
    .nav_links{
@@ -83,7 +91,7 @@
     background-color: #323232;
     text-align: center;
     font-size: 32px;
-    height: 46%;
+    height: 60%;
    }
 
    .logo img{
@@ -94,7 +102,7 @@
    .drops{
     background-color:rgba(90, 90, 90, .8);
     width:100vw;
-    height: 45vh;
+    height: 350px;
     position: absolute;
     z-index: 50;
    }
@@ -294,7 +302,7 @@ input[type=checkbox]:checked ~ .menu{
 	background: #fff;
 	width: 200px;
 	box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
-	border-radius: 15px;
+	border-radius: 3px;
 	transition: 0.5s;
 	display: none;
 	opacity: 0;
@@ -302,7 +310,7 @@ input[type=checkbox]:checked ~ .menu{
 
   .action:hover .menu{
     display: block;
-    top:25vh;
+    top:22.5vh;
     right:0px;
     opacity: 1;
 
@@ -328,6 +336,8 @@ input[type=checkbox]:checked ~ .menu{
   .action .menu .ul .l {
 	list-style: none;
 	padding: 16px 0;
+  font-family: "MyFont";
+  letter-spacing: 1.2px;
 	border-top: 1px solid rgba(0, 0, 0, 0.05);
 	display: flex;
 	align-items: center;

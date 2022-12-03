@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import config from '../../api/config'
 import { CartState } from '../../context'
 import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing'
@@ -11,6 +12,20 @@ const ProductListing = () => {
     cart.map(c=>p+=c.price*c.quantity)
     return p
   }
+
+  const nav=useNavigate()
+
+  useEffect(()=>{
+   console.log(checkoutDetails.CouponDiscount)
+  if(typeof checkoutDetails.CouponDiscount != 'undefined')
+   {
+
+   }
+   else
+   nav("/cart")
+  },[])
+
+  
   return (
     <div className={styles.column2}>
          
