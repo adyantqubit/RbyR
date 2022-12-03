@@ -372,7 +372,7 @@ class Transaction_history(models.Model):
     subtotal_price=models.IntegerField()
     tax=models.IntegerField()
     grand_total=models.IntegerField()
-    
+    date=models.DateField(default=datetime.date.today())
     def save(self,*args,**kwargs):
         if (self.payment_status=="cancle"):
           pros= product_orders.objects.filter(order_no=self.order_no)

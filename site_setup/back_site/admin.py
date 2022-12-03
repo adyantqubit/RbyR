@@ -614,11 +614,11 @@ class LogoAndCoverAdmin(admin.ModelAdmin):
 @admin.register(Transaction_history)
 class Transaction_historyAdmin(admin.ModelAdmin):
     list_display=("order_no","user_no","coupon_discount","shipping_price","subtotal_price"
-    ,"tax","grand_total","payment_status")
+    ,"tax","grand_total","payment_status","date")
     readonly_fields=("order_no","user_no","coupon_discount","shipping_price","subtotal_price"
     ,"tax","grand_total")
-    ordering=("order_no",)
-    list_filter=("payment_status",)
+    ordering=("order_no","date")
+    list_filter=("payment_status","date")
     search_fields=("user_no__name",)
     def has_add_permission(self, request):
         return False
