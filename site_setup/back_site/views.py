@@ -850,159 +850,147 @@ class pageIndex(APIView):
     #end of code Addition
 
 
+#Commented by Ashish on 04-12-2022 
+#Reason - Put these code in single method in template
+# #Added by Ashish on 01-12-2022
+# #Reason - To send todays orders to admin panel
+# class todaysOrdersView(APIView):
+#     def get(self,request):
+#         today=datetime.date.today()
+#         if Transaction_history.objects.filter(date=today) is not None:
+#             serialize=transactionHistorySerialize(Transaction_history.objects.filter(date=today).order_by("-payment_status"),many=True)
+#         else:
+#             return Response({})    
+#         return Response(serialize.data) 
+# #End of code addition
+
+# #Added by Ashish on 01-12-2022
+# #Reason - To send todays orders summary to admin panel
+# class todaysOrdersSummaryView(APIView):
+#     def get(self,request):
+#         today=datetime.date.today()
+#         totalOrders = Transaction_history.objects.filter(date=today).count()
+#         totalPendingOrders = Transaction_history.objects.filter(date=today,payment_status='pending').count()
+#         totalPaidOrders = Transaction_history.objects.filter(date=today,payment_status='paid').count()
+#         totalCancelledOrders = Transaction_history.objects.filter(date=today,payment_status='cancel').count()
+#         totalIncome = Transaction_history.objects.filter(date=today,payment_status='paid').aggregate(Sum("grand_total"))
+#         data=dict()
+#         data["totalOrders"]=totalOrders
+#         data["totalPendingOrders"]=totalPendingOrders
+#         data["totalPaidOrders"]=totalPaidOrders
+#         data["totalCancelledOrders"]=totalCancelledOrders
+#         data["totalRevenue"]=totalIncome["grand_total__sum"]
+#         return Response(data)    
+# #End of code addition
+
+# #Added by Ashish on 01-12-2022
+# #Reason - To send weekly orders to admin panel
+# class weeklyOrdersView(APIView):
+#     def get(self,request):
+#         today = datetime.date.today()
+#         weekDay=today.weekday()
+#         startOfTheWeek=today - timedelta(days=weekDay)
+#         serialize=transactionHistorySerialize(Transaction_history.objects.filter(date__gte=startOfTheWeek).order_by("-payment_status"),many=True)
+#         return Response(serialize.data) 
+# #End of code addition
+
+# #Added by Ashish on 01-12-2022
+# #Reason - To send weekly orders summary to admin panel
+# class weeklyOrdersSummaryView(APIView):
+#     def get(self,request):
+#         today = datetime.date.today()
+#         weekDay=today.weekday()
+#         startOfTheWeek=today - timedelta(days=weekDay)
+#         totalOrders=Transaction_history.objects.filter(date__gte=startOfTheWeek).count()
+#         totalPendingOrders = Transaction_history.objects.filter(date__gte=startOfTheWeek,payment_status='pending').count()
+#         totalPaidOrders = Transaction_history.objects.filter(date__gte=startOfTheWeek,payment_status='paid').count()
+#         totalCancelledOrders = Transaction_history.objects.filter(date__gte=startOfTheWeek,payment_status='cancel').count()
+#         totalIncome=Transaction_history.objects.filter(date__gte=startOfTheWeek,payment_status='paid').aggregate(Sum("grand_total"))
+#         data=dict()
+#         data["totalOrders"]=totalOrders
+#         data["totalPendingOrders"]=totalPendingOrders
+#         data["totalPaidOrders"]=totalPaidOrders
+#         data["totalCancelledOrders"]=totalCancelledOrders
+#         data["totalRevenue"]=totalIncome["grand_total__sum"]
+#         return Response(data)             
+# #End of code addition
 
 
+# #Added by Ashish on 01-12-2022
+# #Reason - To send monthly orders to admin panel
+# class monthlyOrdersView(APIView):
+#     def get(self,request):
+#         today = datetime.date.today()
+#         dayOfMonth=today.day
+#         startOfTheMonth=today - timedelta(days=(dayOfMonth-1))
+#         serialize=transactionHistorySerialize(Transaction_history.objects.filter(date__gte=startOfTheMonth).order_by("-payment_status"),many=True)
+#         return Response(serialize.data)  
+# #End of code addition
 
+# #Added by Ashish on 01-12-2022
+# #Reason - To send monthly orders summary to admin panel
+# class monthlyOrdersSummaryView(APIView):
+#     def get(self,request):
+#         today = datetime.date.today()
+#         dayOfMonth=today.day
+#         startOfTheMonth=today - timedelta(days=(dayOfMonth-1))
+#         totalOrders=Transaction_history.objects.filter(date__gte=startOfTheMonth).count()
+#         totalPendingOrders = Transaction_history.objects.filter(date__gte=startOfTheMonth,payment_status='pending').count()
+#         totalPaidOrders = Transaction_history.objects.filter(date__gte=startOfTheMonth,payment_status='paid').count()
+#         totalCancelledOrders = Transaction_history.objects.filter(date__gte=startOfTheMonth,payment_status='cancel').count()
+#         totalIncome=Transaction_history.objects.filter(date__gte=startOfTheMonth,payment_status='paid').aggregate(Sum("grand_total"))
+#         data=dict()
+#         data["totalOrders"]=totalOrders
+#         data["totalPendingOrders"]=totalPendingOrders
+#         data["totalPaidOrders"]=totalPaidOrders
+#         data["totalCancelledOrders"]=totalCancelledOrders
+#         data["totalRevenue"]=totalIncome["grand_total__sum"]
+#         return Response(data) 
+# #End of code addition
 
+# #Added by Ashish on 01-12-2022
+# #Reason - To send yearly orders to admin panel
+# class yearlyOrdersView(APIView):
+#     def get(self,request):
+#         today = datetime.date.today()
+#         thisYear=today.year
+#         serialize=transactionHistorySerialize(Transaction_history.objects.filter(date__year=thisYear).order_by("-payment_status"),many=True)
+#         return Response(serialize.data)  
+# #End of code addition
 
+# #Added by Ashish on 01-12-2022
+# #Reason - To send yearly orders summary to admin panel
+# class yearlyOrdersSummaryView(APIView):
+#     def get(self,request):
+#         today = datetime.date.today()
+#         thisYear=today.year
+#         totalOrders=Transaction_history.objects.filter(date__year=thisYear).count()
+#         totalPendingOrders = Transaction_history.objects.filter(date__year=thisYear,payment_status='pending').count()
+#         totalPaidOrders = Transaction_history.objects.filter(date__year=thisYear,payment_status='pending').count()
+#         totalCancelledOrders = Transaction_history.objects.filter(date__year=thisYear,payment_status='pending').count()
+#         totalIncome=Transaction_history.objects.filter(date__year=thisYear,payment_status='paid').aggregate(Sum("grand_total"))
+#         data=dict()
+#         data["totalOrders"]=totalOrders
+#         data["totalPendingOrders"]=totalPendingOrders
+#         data["totalPaidOrders"]=totalPaidOrders
+#         data["totalCancelledOrders"]=totalCancelledOrders
+#         data["totalRevenue"]=totalIncome["grand_total__sum"]
+#         return Response(data)
+# #End of code addition
 
+# #Added by Ashish on 01-12-2022
+# #Reason - To send pengin orders to admin panel
+# class pendingOrdersView(APIView):
+#     def get(self,request):
+#         serialize=transactionHistorySerialize(Transaction_history.objects.filter(payment_status='pending'),many=True)
+#         return Response(serialize.data) 
+# #End of code addition
 
-
-
-
-
-
-
-#Added by Ashish on 01-12-2022
-#Reason - To send todays orders to admin panel
-class todaysOrdersView(APIView):
-    def get(self,request):
-        today=datetime.date.today()
-        if Transaction_history.objects.filter(date=today) is not None:
-            serialize=transactionHistorySerialize(Transaction_history.objects.filter(date=today).order_by("-payment_status"),many=True)
-        else:
-            return Response({})    
-        return Response(serialize.data) 
-#End of code addition
-
-#Added by Ashish on 01-12-2022
-#Reason - To send todays orders summary to admin panel
-class todaysOrdersSummaryView(APIView):
-    def get(self,request):
-        today=datetime.date.today()
-        totalOrders = Transaction_history.objects.filter(date=today).count()
-        totalPendingOrders = Transaction_history.objects.filter(date=today,payment_status='pending').count()
-        totalPaidOrders = Transaction_history.objects.filter(date=today,payment_status='paid').count()
-        totalCancelledOrders = Transaction_history.objects.filter(date=today,payment_status='cancel').count()
-        totalIncome = Transaction_history.objects.filter(date=today,payment_status='paid').aggregate(Sum("grand_total"))
-        data=dict()
-        data["totalOrders"]=totalOrders
-        data["totalPendingOrders"]=totalPendingOrders
-        data["totalPaidOrders"]=totalPaidOrders
-        data["totalCancelledOrders"]=totalCancelledOrders
-        data["totalRevenue"]=totalIncome["grand_total__sum"]
-        return Response(data)    
-#End of code addition
-
-#Added by Ashish on 01-12-2022
-#Reason - To send weekly orders to admin panel
-class weeklyOrdersView(APIView):
-    def get(self,request):
-        today = datetime.date.today()
-        weekDay=today.weekday()
-        startOfTheWeek=today - timedelta(days=weekDay)
-        serialize=transactionHistorySerialize(Transaction_history.objects.filter(date__gte=startOfTheWeek).order_by("-payment_status"),many=True)
-        return Response(serialize.data) 
-#End of code addition
-
-#Added by Ashish on 01-12-2022
-#Reason - To send weekly orders summary to admin panel
-class weeklyOrdersSummaryView(APIView):
-    def get(self,request):
-        today = datetime.date.today()
-        weekDay=today.weekday()
-        startOfTheWeek=today - timedelta(days=weekDay)
-        totalOrders=Transaction_history.objects.filter(date__gte=startOfTheWeek).count()
-        totalPendingOrders = Transaction_history.objects.filter(date__gte=startOfTheWeek,payment_status='pending').count()
-        totalPaidOrders = Transaction_history.objects.filter(date__gte=startOfTheWeek,payment_status='paid').count()
-        totalCancelledOrders = Transaction_history.objects.filter(date__gte=startOfTheWeek,payment_status='cancel').count()
-        totalIncome=Transaction_history.objects.filter(date__gte=startOfTheWeek,payment_status='paid').aggregate(Sum("grand_total"))
-        data=dict()
-        data["totalOrders"]=totalOrders
-        data["totalPendingOrders"]=totalPendingOrders
-        data["totalPaidOrders"]=totalPaidOrders
-        data["totalCancelledOrders"]=totalCancelledOrders
-        data["totalRevenue"]=totalIncome["grand_total__sum"]
-        return Response(data)             
-#End of code addition
-
-
-#Added by Ashish on 01-12-2022
-#Reason - To send monthly orders to admin panel
-class monthlyOrdersView(APIView):
-    def get(self,request):
-        today = datetime.date.today()
-        dayOfMonth=today.day
-        startOfTheMonth=today - timedelta(days=(dayOfMonth-1))
-        serialize=transactionHistorySerialize(Transaction_history.objects.filter(date__gte=startOfTheMonth).order_by("-payment_status"),many=True)
-        return Response(serialize.data)  
-#End of code addition
-
-#Added by Ashish on 01-12-2022
-#Reason - To send monthly orders summary to admin panel
-class monthlyOrdersSummaryView(APIView):
-    def get(self,request):
-        today = datetime.date.today()
-        dayOfMonth=today.day
-        startOfTheMonth=today - timedelta(days=(dayOfMonth-1))
-        totalOrders=Transaction_history.objects.filter(date__gte=startOfTheMonth).count()
-        totalPendingOrders = Transaction_history.objects.filter(date__gte=startOfTheMonth,payment_status='pending').count()
-        totalPaidOrders = Transaction_history.objects.filter(date__gte=startOfTheMonth,payment_status='paid').count()
-        totalCancelledOrders = Transaction_history.objects.filter(date__gte=startOfTheMonth,payment_status='cancel').count()
-        totalIncome=Transaction_history.objects.filter(date__gte=startOfTheMonth,payment_status='paid').aggregate(Sum("grand_total"))
-        data=dict()
-        data["totalOrders"]=totalOrders
-        data["totalPendingOrders"]=totalPendingOrders
-        data["totalPaidOrders"]=totalPaidOrders
-        data["totalCancelledOrders"]=totalCancelledOrders
-        data["totalRevenue"]=totalIncome["grand_total__sum"]
-        return Response(data) 
-#End of code addition
-
-#Added by Ashish on 01-12-2022
-#Reason - To send yearly orders to admin panel
-class yearlyOrdersView(APIView):
-    def get(self,request):
-        today = datetime.date.today()
-        thisYear=today.year
-        serialize=transactionHistorySerialize(Transaction_history.objects.filter(date__year=thisYear).order_by("-payment_status"),many=True)
-        return Response(serialize.data)  
-#End of code addition
-
-#Added by Ashish on 01-12-2022
-#Reason - To send yearly orders summary to admin panel
-class yearlyOrdersSummaryView(APIView):
-    def get(self,request):
-        today = datetime.date.today()
-        thisYear=today.year
-        totalOrders=Transaction_history.objects.filter(date__year=thisYear).count()
-        totalPendingOrders = Transaction_history.objects.filter(date__year=thisYear,payment_status='pending').count()
-        totalPaidOrders = Transaction_history.objects.filter(date__year=thisYear,payment_status='pending').count()
-        totalCancelledOrders = Transaction_history.objects.filter(date__year=thisYear,payment_status='pending').count()
-        totalIncome=Transaction_history.objects.filter(date__year=thisYear,payment_status='paid').aggregate(Sum("grand_total"))
-        data=dict()
-        data["totalOrders"]=totalOrders
-        data["totalPendingOrders"]=totalPendingOrders
-        data["totalPaidOrders"]=totalPaidOrders
-        data["totalCancelledOrders"]=totalCancelledOrders
-        data["totalRevenue"]=totalIncome["grand_total__sum"]
-        return Response(data)
-#End of code addition
-
-#Added by Ashish on 01-12-2022
-#Reason - To send pengin orders to admin panel
-class pendingOrdersView(APIView):
-    def get(self,request):
-        serialize=transactionHistorySerialize(Transaction_history.objects.filter(payment_status='pending'),many=True)
-        return Response(serialize.data) 
-#End of code addition
-
-
-
-
-
-
-
-
-
- 
+# # # @authenticate
+# # def whatPage(request):
+# #     from django.shortcuts import render
+# #     return render(request,"what.html",{"name":"ddd"})
+# # def somePage(request):
+# #     from django.shortcuts import render
+# #     return render(request,"some.html")    
+#End of comment

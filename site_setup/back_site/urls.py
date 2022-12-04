@@ -168,66 +168,53 @@ urlpatterns = [
     #end of code Addition
 
 
+# Commented by Ashish Dewangan on 04-12-2022
+# Reason - These url are not required currently
+    # #Added by Ashish Dewangan on 01-12-2022
+    # #Reason - To send today's orders to admin panel
+    # path('todays-orders/',todaysOrdersView.as_view()),
+    # #End of code addition
 
+    # #Added by Ashish Dewangan on 01-12-2022
+    # #Reason - To send today's orders summary to admin panel
+    # path('todays-orders-summary/',todaysOrdersSummaryView.as_view()),
+    # #End of code addition
 
+    # #Added by Ashish Dewangan on 01-12-2022
+    # #Reason - To send one week orders to admin panel
+    # path('weekly-orders/',weeklyOrdersView.as_view()),
+    # #End of code addition
 
+    # #Added by Ashish Dewangan on 01-12-2022
+    # #Reason - To send one week orders summary to admin panel
+    # path('weekly-orders-summary/',weeklyOrdersSummaryView.as_view()),
+    # #End of code addition
 
+    # #Added by Ashish Dewangan on 01-12-2022
+    # #Reason - To send monthly orders to admin panel
+    # path('monthly-orders/',monthlyOrdersView.as_view()),
+    # #End of code addition
 
+    # #Added by Ashish Dewangan on 01-12-2022
+    # #Reason - To send monthly orders summary to admin panel
+    # path('monthly-orders-summary/',monthlyOrdersSummaryView.as_view()),
+    # #End of code addition
 
+    # #Added by Ashish Dewangan on 01-12-2022
+    # #Reason - To send yearly orders to admin panel
+    # path('yearly-orders/',yearlyOrdersView.as_view()),
+    # #End of code addition
 
+    # #Added by Ashish Dewangan on 01-12-2022
+    # #Reason - To send yearly orders summary to admin panel
+    # path('yearly-orders-summary/',yearlyOrdersSummaryView.as_view()),
+    # #End of code addition
 
-
-
-    #Added by Ashish Dewangan on 01-12-2022
-    #Reason - To send today's orders to admin panel
-    path('todays-orders/',todaysOrdersView.as_view()),
-    #End of code addition
-
-    #Added by Ashish Dewangan on 01-12-2022
-    #Reason - To send today's orders summary to admin panel
-    path('todays-orders-summary/',todaysOrdersSummaryView.as_view()),
-    #End of code addition
-
-    #Added by Ashish Dewangan on 01-12-2022
-    #Reason - To send one week orders to admin panel
-    path('weekly-orders/',weeklyOrdersView.as_view()),
-    #End of code addition
-
-    #Added by Ashish Dewangan on 01-12-2022
-    #Reason - To send one week orders summary to admin panel
-    path('weekly-orders-summary/',weeklyOrdersSummaryView.as_view()),
-    #End of code addition
-
-    #Added by Ashish Dewangan on 01-12-2022
-    #Reason - To send monthly orders to admin panel
-    path('monthly-orders/',monthlyOrdersView.as_view()),
-    #End of code addition
-
-    #Added by Ashish Dewangan on 01-12-2022
-    #Reason - To send monthly orders summary to admin panel
-    path('monthly-orders-summary/',monthlyOrdersSummaryView.as_view()),
-    #End of code addition
-
-    #Added by Ashish Dewangan on 01-12-2022
-    #Reason - To send yearly orders to admin panel
-    path('yearly-orders/',yearlyOrdersView.as_view()),
-    #End of code addition
-
-    #Added by Ashish Dewangan on 01-12-2022
-    #Reason - To send yearly orders summary to admin panel
-    path('yearly-orders-summary/',yearlyOrdersSummaryView.as_view()),
-    #End of code addition
-
-    #Added by Ashish Dewangan on 01-12-2022
-    #Reason - To send monthly orders to admin panel
-    path('pending-orders/',pendingOrdersView.as_view()),
-    #End of code addition
-
-
-
-
-
-
+    # #Added by Ashish Dewangan on 01-12-2022
+    # #Reason - To send monthly orders to admin panel
+    # path('pending-orders/',pendingOrdersView.as_view()),
+    # #End of code addition
+# End of comment
 
 
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)   

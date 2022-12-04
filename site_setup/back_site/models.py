@@ -55,6 +55,13 @@ def validate_discount(value):
         return value
     else:
         raise ValidationError("Discount percentage can not be more than 99.")       
+
+def validate_title(value):
+
+    if len(value)>0:
+        return value
+    else:
+        raise ValidationError("Title is required.") 
 #End of code addition
       
 # Create your models here.
@@ -622,9 +629,9 @@ class SocialLink(models.Model):
 #Added by Ashish on 16-11-2022
 #Reason - To create bridal table
 class Bridal(models.Model):
-    title=models.CharField(max_length=255)
-    subtitle1=models.TextField()
-    subtitle2=models.TextField()
+    title=models.CharField(max_length=255,validators=[validate_title])
+    subtitle1=models.TextField(default="",blank=True)
+    subtitle2=models.TextField(default="",blank=True)
     bridalImage=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100)
     #Added by Ashish Dewangan on 28-11-2022

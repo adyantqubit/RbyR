@@ -6,6 +6,5 @@ import back_site.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('back_site.urls'))
-
+    path('',include('back_site.urls')),
 ]

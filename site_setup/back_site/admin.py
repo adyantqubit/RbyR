@@ -157,6 +157,7 @@ class userbillingDetailAdmin(admin.ModelAdmin):
     ordering=("user_id",)
     list_filter=("city","state","country")
     search_fields=("firstname","lastname","city","state","country")
+    list_per_page=10
     def has_add_permission(self, request):
         return False
     def has_change_permission(self, request, obj=None) :
@@ -176,6 +177,7 @@ class usershippingDetailAdmin(admin.ModelAdmin):
     ordering=("user_id",)
     list_filter=("city","state","country")
     search_fields=("firstname","lastname","city","state","country")
+    list_per_page=10
     def has_add_permission(self, request):
         return False
     def has_change_permission(self, request, obj=None) :
@@ -197,6 +199,7 @@ class product_ordersAdmin(admin.ModelAdmin):
     list_filter=("date","payment_mode","price","user_no")
     search_fields=("product_id__title","user_no__name")
     ordering=("order_no",)
+    list_per_page=10
     def has_add_permission(self, request):
         return False
     def has_change_permission(self, request, obj=None):
@@ -516,6 +519,7 @@ class BridalFormAdmin(admin.ModelAdmin):
     ordering =("firstName",)
     search_fields=("firstName","contactNumber","lastName","email")
     list_filter=("dateOfWedding",)
+    list_per_page=10
     def has_add_permission(self, request):
         return False
     def has_change_permission(self, request, obj=None):
@@ -620,6 +624,7 @@ class Transaction_historyAdmin(admin.ModelAdmin):
     ordering=("order_no","date")
     list_filter=("payment_status","date")
     search_fields=("user_no__name",)
+    list_per_page=10
     def has_add_permission(self, request):
         return False
     def has_delete_permission(self, request, obj=None):
@@ -802,6 +807,7 @@ class UserModelAdmin(BaseUserAdmin):
     list_filter = ('is_admin',)
     ordering=("name",)
     search_fields=("name","email")
+    list_per_page=10
     fieldsets = (
         ('user Credentials', {'fields': ('email', 'password')}),
         ('Personal info', {'fields': ('name','tc','contact_number')}),

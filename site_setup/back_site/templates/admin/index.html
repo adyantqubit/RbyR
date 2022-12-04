@@ -1,0 +1,175 @@
+<!-- Created by Ashish Dewangan on 04-12-2022
+Reason - To show dashboard with revenue, todays orders and pending list -->
+
+{% extends 'admin/index.html' %}
+{% load admintemplates %}
+{% block content %}
+<div class="row">
+
+    {% getRevenue as revenueDetail %}
+    {% for revenue in revenueDetail %}
+    <div class="col-12 col-sm-6 col-xl-3 mb-4 row-3">
+        <div class="card border-0 shadow">
+            <div class="card-body">
+                <div class="row d-block d-xl-flex align-items-center">
+                    <div class=" d-sm-block">
+                        <h5 class="fw-extrabold mb-2">
+                            {{ revenue.title }}
+                        </h5>
+                        <div class="shadow "
+                            style="background-color: rgba(42, 202, 202, 0.8);padding:2px;margin-top: 3px;">
+                            <h6 class="fw-extrabold mb-2">Total Orders</h6>
+                            <h6 class="fw-extrabold mb-2">{{ revenue.totalOrders }}</h6>
+                        </div>
+                        <div class="shadow " style="background-color: rgba(0,255,0,.8);padding:2px;margin-top: 3px;">
+                            <h6 class="fw-extrabold mb-2">Completed Orders</h6>
+                            <h6 class="fw-extrabold mb-2">{{ revenue.totalPaidOrders }}</h6>
+                        </div>
+                        <div class="shadow x" style="background-color: rgba(255,255,0,.8);padding:2px;margin-top: 3px;">
+                            <h6 class="fw-extrabold mb-2">Pending Orders</h6>
+                            <h6 class="fw-extrabold mb-2">{{ revenue.totalPendingOrders }}</h6>
+                        </div>
+                        <div class="shadow " style="background-color: rgba(255,0,0,.7);padding:2px;margin-top: 3px;">
+                            <h6 class="fw-extrabold mb-2">Cancelled Orders</h6>
+                            <h6 class="fw-extrabold mb-2">{{ revenue.totalCancelledOrders }}</h6>
+                        </div>
+                        <h5 style="width:100%;padding-top:15px;border-bottom:5px solid grey"></h5>
+                        <h5 class="fw-extrabold mb-2">Total Revenue</h5>
+                        <h5 class="fw-extrabold mb-2">Rs. {{ revenue.totalRevenue }}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card border-0 shadow">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h2 class="fs-5 fw-bold mb-0"> Today's Orders </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <tbody>
+                        <tr>
+                            <th class="text-gray-900" scope="row">
+                                Order Number
+                            </th>
+                            <th class="text-gray-900" scope="row">
+                                Payment Status
+                            </th>
+                            <th class="text-gray-900" scope="row">
+                                User
+                            </th>
+                            <th class="text-gray-900" scope="row">
+                                Amount
+                            </th>
+                            <th class="text-gray-900" scope="row">
+                                Date
+                            </th>
+                        </tr>
+                        {% getTodaysOrders as todaysOrders %}
+                        {% if todaysOrders %}
+                        {% for todaysOrder in todaysOrders %}
+                        
+                        <tr>
+                            <td class="fw-bolder text-gray-500">
+                                <a href="back_site/transaction_history/{{todaysOrder.orderId}}/change/">{{ todaysOrder.orderData.order_no }}</a>
+                            </td>
+                            <td class="fw-bolder text-gray-500">
+                                {{todaysOrder.orderData.payment_status }}
+                            </td>
+                            <td class="fw-bolder text-gray-500">
+                                <a href="back_site/user/{{todaysOrder.userId}}/change/"> {{todaysOrder.orderData.user_no }}</a>
+                            </td>
+                            <td class="fw-bolder text-gray-500">
+                                Rs. {{ todaysOrder.orderData.grand_total }}
+                            </td>
+                            <td class="fw-bolder text-gray-500">
+                                {{ todaysOrder.orderData.date }}
+                            </td>
+                        </tr>
+                        
+                        {% endfor %}
+                        {% else %}
+                        <p>None available</p>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card border-0 shadow">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h2 class="fs-5 fw-bold mb-0"> Pending Orders </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <tbody>
+                        <tr>
+                            <th class="text-gray-900" scope="row">
+                                Order Number
+                            </th>
+                            <th class="text-gray-900" scope="row">
+                                Payment Status
+                            </th>
+                            <th class="text-gray-900" scope="row">
+                                User
+                            </th>
+                            <th class="text-gray-900" scope="row">
+                                Amount
+                            </th>
+                            <th class="text-gray-900" scope="row">
+                                Date
+                            </th>
+                        </tr>
+                        {% getPendingOrders as pendingOrders %}
+                        {% if pendingOrders %}
+                        {% for pendingOrder in pendingOrders %}
+                        
+                        <tr>
+                            <td class="fw-bolder text-gray-500">
+                                <a href="back_site/transaction_history/{{pendingOrder.orderId}}/change/">{{ pendingOrder.orderData.order_no }}</a>
+                            </td>
+                            <td class="fw-bolder text-gray-500">
+                                {{pendingOrder.orderData.payment_status }}
+                            </td>
+                            <td class="fw-bolder text-gray-500">
+                                <a href="back_site/user/{{pendingOrder.userId}}/change/"> {{pendingOrder.orderData.user_no }}</a>
+                            </td>
+                            <td class="fw-bolder text-gray-500">
+                                Rs. {{ pendingOrder.orderData.grand_total }}
+                            </td>
+                            <td class="fw-bolder text-gray-500">
+                                {{ pendingOrder.orderData.date }}
+                            </td>
+                        </tr>
+                        
+                        {% endfor %}
+                        {% else %}
+                        <p>None available</p>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -68,7 +68,11 @@ ROOT_URLCONF = 'site_setup.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # Commented and modifed by Ashish Dewangan on 05-12-2022
+        # Reason - To register cutom templates 
+        # 'DIRS': [],
+        'DIRS': ['back_site/templates',],
+        # End of code modification
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
