@@ -12,10 +12,11 @@ import { unSetUserToken } from '../../Redux-manage/features/authSlice'
 import { removeToken } from '../../Redux-manage/services/localStorageService'
 import { useGetLoggedUserQuery } from '../../Redux-manage/services/userAuthapi'
 import { CartState } from '../../context'
-import { notification } from 'antd'
+import { notification, Popconfirm } from 'antd'
 
 import { Button, message } from 'antd';
 
+const text = 'Are you sure you want to logout?';
 
 export const Profile = () => {
 
@@ -28,9 +29,7 @@ export const Profile = () => {
         dispatch(unSetUserInfo({email:"",name:""}))
         dispatch(unSetUserToken({access_token:null}))
         removeToken()
-        
         localStorage.clear()
-
         nav('/')
         firstTimeLoadFunctions()
         localStorage.setItem('logout',true);
@@ -41,7 +40,7 @@ export const Profile = () => {
 
 
  const {data,isSuccess}=useGetLoggedUserQuery(localStorage.getItem('access_token'))
-
+ const [logoutaction,seLogoutAction]=useState(false)
 
   useEffect(()=>{
     if(data&&isSuccess)
@@ -59,6 +58,8 @@ export const Profile = () => {
       {/* <img className={style.img} src="./assets/avatar.jpg" /> */}
       </div>
     <div className={style.menu}>
+    <Popconfirm placement="bottomLeft" title={text} onConfirm={e=>handleLogout()} onCancel={e=>seLogoutAction(false)} okText="OK" cancelText="Cancel" open={logoutaction}>
+    </Popconfirm>
       {localStorage.getItem('access_token')&&userdata?
       <h3 className={style.h3}>
         {userdata.name}<br />
@@ -94,7 +95,9 @@ export const Profile = () => {
         {/* <div className={style.column1text}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY SHIPPING DETAILS</Link></div> */}
 
         {localStorage.getItem('access_token')? <li className={style.l} style={{marginLeft:"-30px"}}>
-         <Link to="/" className={style.a} onClick={handleLogout}>Logout</Link>
+
+         <span className={style.a} onClick={e=>seLogoutAction(true)} >Logout</span>
+         
         </li>:null}
 
      

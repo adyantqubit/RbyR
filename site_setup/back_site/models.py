@@ -26,6 +26,12 @@ def validate_phone_number(value):
     else:
         raise ValidationError("Contact number can't be more than 13 digits.") 
 
+def validate_address(value):
+    if len(value)<=255:
+        return value
+    else:
+        raise ValidationError("Length of address can't be more than 255 characters.") 
+    
 def validate_zipcode(value):
     if len(str(value))==6:
         return value
@@ -355,6 +361,8 @@ class product_orders(models.Model):
     size=models.CharField(max_length=20)
     payment_mode=models.CharField(max_length=20,default="cod")
     date=models.DateField(('purchase date'), null=False, blank=False, auto_now=True)
+    selected_currency_sign=models.CharField(max_length=5)
+    selected_currency_value=models.FloatField()
     
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
@@ -596,11 +604,11 @@ class CancellationPolicy(models.Model):
 #Added by Ashish on 14-11-2022
 #Reason - To create Store locator table
 class StoreLocator(models.Model):
-    city=models.CharField(max_length=255)
-    address=models.TextField()
+    city=models.CharField(max_length=50)
+    address=models.TextField(validators=[validate_address])
     phoneNumber=models.IntegerField(validators=[validate_phone_number])
-    email=models.CharField(max_length=255)
-    timing=models.CharField(max_length=255)
+    email=models.CharField(max_length=50)
+    timing=models.CharField(max_length=50)
     storeImage=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100)
 #End of code addition

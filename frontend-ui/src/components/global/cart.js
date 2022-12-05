@@ -233,12 +233,12 @@ async function DefaultShipping(){
         </div>
         <div className={style.subTotal}>
          <span style={{marginLeft:"15px",fontWeight:"600"}}>Shipping</span>
-         <span style={{marginRight:"15px",fontWeight:"600"}}>₹ {(afterColumnTotalOfferAdd(offer,cart,taxRate).shipping).toFixed(2)}</span>
+         <span style={{marginRight:"15px",fontWeight:"600"}}>{currency.sign} {(afterColumnTotalOfferAdd(offer,cart,taxRate).shipping*currency.value).toFixed(2)}</span>
         </div>
 
         <div className={style.subTotal}>
          <span style={{marginLeft:"15px",fontWeight:"600"}}>GST Charges</span>
-         <span style={{marginRight:"15px",fontWeight:"600"}}>₹ {(afterColumnTotalOfferAdd(offer,cart,taxRate).tax).toFixed(2)}</span>
+         <span style={{marginRight:"15px",fontWeight:"600"}}>{currency.sign} {(afterColumnTotalOfferAdd(offer,cart,taxRate).tax*currency.value).toFixed(2)}</span>
         </div>
 
         <div className={style.promo}>
@@ -249,10 +249,9 @@ async function DefaultShipping(){
          <div className={styles.successMsg}>
           <span><i class="fa fa-check"></i>
           Applied</span>
-          <span>₹ {afterColumnTotalOfferAdd(offer,cart,taxRate).coupon} off 
+          <span>{currency.sign} {afterColumnTotalOfferAdd(offer,cart,taxRate).coupon*currency.value} off 
           <span style={{marginLeft:"10px",textDecoration:"underline",cursor:"pointer"}} onClick={resetCoupon}>Remove</span></span>
         </div>
-       
        </>
         }
         </div>
@@ -261,13 +260,13 @@ async function DefaultShipping(){
 
        {ShowCoupon?<div className={style.subTotal}>
         <span style={{marginLeft:"15px",fontWeight:"600"}}>Coupon Discount</span>
-        <span style={{marginRight:"15px",fontWeight:"600"}}>- ₹ {afterColumnTotalOfferAdd(offer,cart,taxRate).coupon}</span>
+        <span style={{marginRight:"15px",fontWeight:"600"}}>- {currency.sign} {afterColumnTotalOfferAdd(offer,cart,taxRate).coupon*currency.value}</span>
        </div>:null}
         
         <hr style={{color:"black"}}></hr>
         <div className={style.subTotal} style={{marginTop:"25px"}}>
          <span style={{marginLeft:"15px",fontWeight:"600"}}>Total</span>
-         <span style={{fontSize: "20px",fontWeight:"600",marginRight:"15px",fontSize: "21px",lineHeight: "32px",letterSpacing: "3px"}}>₹ {(afterColumnTotalOfferAdd(offer,cart,taxRate).Grand).toFixed(2)}</span>
+         <span style={{fontSize: "20px",fontWeight:"600",marginRight:"15px",fontSize: "21px",lineHeight: "32px",letterSpacing: "3px"}}>{currency.sign} {(afterColumnTotalOfferAdd(offer,cart,taxRate).Grand*currency.value).toFixed(2)}</span>
         </div>
 
          <div className={style.buttons} >

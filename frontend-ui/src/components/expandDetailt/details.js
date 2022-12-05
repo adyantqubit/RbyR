@@ -6,7 +6,7 @@ import Footer from "../global/footer";
 import Navbar from "../global/NavHeader";
 import { bounce } from "react-animations";
 import { StyleSheet, css } from "aphrodite";
-import { BackTop, Modal } from "antd";
+import { BackTop, Modal, notification } from "antd";
 
 // import projectStyles from '.style.module.css'
 import styles from "./detail.module.css";
@@ -200,11 +200,29 @@ const Details = (props) => {
   // }
 
   async function AddToCart(details) {
+   
+    
     setPushData(false);
     if (!size.length > 0) {
       setSizecond(true);
       setPushData(true);
     }
+    
+    if(details.available==false){
+      notification.error({
+        message: <div style={{fontSize:"18px",color:"black"}}>Not Available !</div>,
+        description:
+        `No More Stock Available`,
+        className:"custom-class",
+        style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"10vh"},
+        duration:2,
+        key:1
+        });
+        notAvai=true
+        setNotAvai(true)
+    }
+
+    if(!notAvai)
     if (size) {
       if (size == "Extra Extra Large") {
         if (details.XXL < 1) setNotAvai(true);

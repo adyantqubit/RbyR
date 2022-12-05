@@ -27,7 +27,6 @@ const MyOrders = () => {
         await InvoiveGetApi({access}).then(r=>
             {
                 var filtered=[];
-
                 r.filter(data=>{
                     if(!filtered[`${data.order_no}`])
                      filtered[`${data.order_no}`]=[data]
@@ -38,6 +37,8 @@ const MyOrders = () => {
                 orders=filtered;
                 setOrder(orders.reverse());
             })
+
+
     }
 
     async function tranget(){
@@ -94,14 +95,13 @@ const MyOrders = () => {
                 <hr style={{color:"black"}}></hr>
 
                 
-
                { orders.map((o,i)=>
                   <div className={style.tablerowheadtable}>
                     <div className={style.rowText}>{o[0].order_no}</div>
                     <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].date}</div>
                     
                     <div className={`${style.rowText} ${style.rowtexthide}`}>{tran[i].firstname} {tran[i].lastname}</div>
-                    <div className={`${style.rowText} ${style.rowtexthide}`}>{currency.sign}{(getPrice(o)*currency.value).toFixed(2)}</div>
+                    <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].selected_currency_sign}{(getPrice(o)*o[0].selected_currency_value).toFixed(2)}</div>
                     <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].payment_mode}</div>
                     <div className={`${style.rowText} ${style.rowtexthide}`}>{tran[i].payment_status}</div>
                     <div className={style.rowText} style={{textDecoration:"underline",color:"blue",fontSize:"14px",cursor:"pointer",whiteSpace:"nowrap",overflow:"hidden",width:"80px",marginRight:"10px"}} onClick={e=>nav(`/insideorder/${o[0].order_no}`)}>View Order

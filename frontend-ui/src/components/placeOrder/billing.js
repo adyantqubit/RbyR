@@ -29,6 +29,9 @@ const Billing = () => {
     const [storeLocatorDetails, setStoreLocator] = useState(null);
     useEffect(() => {
       getStoreLocator();
+      checkoutDetails=JSON.parse(sessionStorage.getItem('checkoutDetails'))
+      setCheckoutDetails(checkoutDetails)
+      console.log(JSON.parse(sessionStorage.getItem('checkoutDetails')))
     }, []);
   
     const getStoreLocator = async () => {
@@ -106,7 +109,7 @@ const Billing = () => {
           <div ><span className={styles.userinfoText}>Account Number:</span><span className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
           <div ><span className={styles.userinfoText}>UPI ID:</span><span className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div>
         </div>
-        <div style={{height:"60px",width:"100%"}}><span className={styles.userinfoText2} style={{lineBreak:"normal",wordBreak:'keep-all'}}> Please Confirm To admin After paying  at {storeLocatorDetails!=null? parse(storeLocatorDetails[0].phoneNumber):null}</span></div>
+        <div style={{height:"60px",width:"100%"}}><span className={styles.userinfoText2} style={{lineBreak:"normal",wordBreak:'keep-all'}}> Please Confirm To admin After paying  at {storeLocatorDetails!=null? parse("PHONE:"+storeLocatorDetails[0].phoneNumber):null}</span></div>
         </div>
         </div>  : <div>The qr Code getting error</div>
         :
@@ -146,7 +149,7 @@ const Billing = () => {
                {storeLocatorDetails!=null?
                <div className={styles.headerTexts}>
                <div className={styles.columnitem1head}>{parse(storeLocatorDetails[0].address)}</div>
-               <div><span className={styles.userinfoText}>{parse(storeLocatorDetails[0].phoneNumber)}</span></div>
+               <div><span className={styles.userinfoText}>{parse("PHONE:"+storeLocatorDetails[0].phoneNumber)}</span></div>
                <div><span className={styles.userinfoText}>{parse(storeLocatorDetails[0].email)}</span></div>
            </div>:null}
                 
@@ -163,7 +166,8 @@ const Billing = () => {
             <div className={styles.billingmain}>
                 <div className={styles.billingheader}>
                    <span className={`${styles.columnitem1head} ${styles.header1}`} > Item Description</span>
-                   <span className={`${styles.columnitem1head} ${styles.header2}`} > Quantity</span>
+                   <span className={`${styles.columnitem1head} ${styles.header2} ${styles.show}`} > Quantity</span>
+                   <span className={`${styles.columnitem1head} ${styles.header2} ${styles.show2}`} > Qty</span>
                    <span className={`${styles.columnitem1head} ${styles.header2}`} > Price</span>
                    <span className={`${styles.columnitem1head} ${styles.header2}`} style={{borderRight:"1px solid black"}}>Total</span>
 
@@ -171,28 +175,29 @@ const Billing = () => {
                 {checkoutDetails.cart.map(c=>
                      <div className={styles.billingheader2} style={{marginTop:"5px",background:"white"}}>
                      <span className={styles.protitle} > {c.title} ({c.size})</span>
-                     <span className={styles.protitle2} > {c.quantity}</span>
-                     <span className={styles.protitle2} >{currency.sign} {(c.price*currency.value).toFixed(2)}</span>
-                     <span className={styles.protitle2} style={{borderRight:"1px solid white"}}> {currency.sign}{(c.price*c.quantity*currency.value).toFixed(2)}</span>
+                     <span className={`${styles.protitle2} ${styles.show}`} > {c.quantity}</span>
+                     <span className={`${styles.protitle2} ${styles.show2}`} > {c.quantity}</span>
+                     <span className={styles.protitle2} >{checkoutDetails.currency_sign} {(c.price*checkoutDetails.currency_value).toFixed(2)}</span>
+                     <span className={styles.protitle2} style={{borderRight:"1px solid white",wordBreak:"normal"}}> {checkoutDetails.currency_sign}{(c.price*c.quantity*checkoutDetails.currency_value).toFixed(2)}</span>
                   </div>
                     )}
                
                 <div className={styles.billingfooter}> 
                    <span className={`${styles.columnitem1head}`} style={{color:"white"}} >Subtotal -</span>
-                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{borderRight:"1px solid black", whiteSpace:"nowrap"}}>{currency.sign} {(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).subtotal *currency.value).toFixed(2)}</span>
+                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{borderRight:"1px solid black", whiteSpace:"nowrap"}}>{checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).subtotal *checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
 
                 <div className={styles.billingtexts}>
                    <span className={`${styles.columnitem1head}`}  >Discount -</span>
-                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black"}} >- {currency.sign} {checkoutDetails.CouponDiscount?checkoutDetails.CouponDiscount:(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).coupon *currency.value).toFixed(2)}</span>
+                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black"}} >- {checkoutDetails.currency_sign} {checkoutDetails.CouponDiscount?checkoutDetails.CouponDiscount:(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).coupon *checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
                 <div className={styles.billingtexts}>
                    <span className={`${styles.columnitem1head}`}  >Shipping charges -</span>
-                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black"}} > {currency.sign} {(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).shipping *currency.value).toFixed(2)}</span>
+                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black"}} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).shipping *checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
                 <div className={styles.billingtexts}>
                    <span className={`${styles.columnitem1head}`}  >GST Charges -</span>
-                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black",whiteSpace:"nowrap"}} > {currency.sign} {(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).tax *currency.value).toFixed(2)}</span>
+                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black",whiteSpace:"nowrap"}} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).tax *checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
                 <div className={styles.billingtexts}>
                    <span className={`${styles.columnitem1head}`}  style={{color:"black",borderBottom:"1px solid black"}}></span>
@@ -201,7 +206,7 @@ const Billing = () => {
                
                    <div className={styles.billingtexts}>
                       <span className={`${styles.columnitem1head}`}  >Grand Total - </span>
-                      <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black",whiteSpace:"nowrap"}} > {currency.sign} {(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).Grand *currency.value).toFixed(2)}</span>
+                      <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black",whiteSpace:"nowrap"}} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).Grand *checkoutDetails.currency_value).toFixed(2)}</span>
                    </div>
                 
                 <div className={styles.billingheader} style={{height:"30px"}}>

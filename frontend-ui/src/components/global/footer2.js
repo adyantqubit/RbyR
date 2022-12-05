@@ -226,7 +226,7 @@ function Footer2() {
             onClick={(e) => nav("/Listing/worldofrr")}
             style={{ cursor: "pointer" }}
           >
-            RR EXCLUSIVE
+            RBYR EXCLUSIVE
           </span>
           <Link
             to="/store-locator"

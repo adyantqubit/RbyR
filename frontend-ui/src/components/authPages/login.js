@@ -68,8 +68,8 @@ const Login = () => {
 			description:
 			`You Are Logged In`,
 			className:"custom-class",
-			style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"5vh"},
-			duration:5,
+			style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"10vh"},
+			duration:2,
 			key:1
 		  });
 

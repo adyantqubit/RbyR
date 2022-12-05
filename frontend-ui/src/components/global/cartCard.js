@@ -13,10 +13,10 @@ import { display } from '@mui/system';
 import{TiDeleteOutline} from 'react-icons/ti'
 import { CartQuantityApi } from '../../api/service';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { BsWindowSidebar } from 'react-icons/bs';
+import { BsCurrencyBitcoin, BsWindowSidebar } from 'react-icons/bs';
 import { DrawerFooter } from './cart';
 import Msg from '../concepts/msgConfirm';
-import { Popconfirm,message, Modal } from 'antd';
+import { Popconfirm,message, Modal, notification } from 'antd';
 import { increamentCheck } from '../../api/orderApis';
 
 
@@ -27,7 +27,7 @@ const text = 'Are you sure you would like to remove this item from the shopping 
 
 const CartCard = (props) => {
 
- const {cart,setCart}=CartState()
+ const {cart,setCart,currency}=CartState()
  
  const [cartsaveApi,{isLoad}]=useCartUpdateMutation()
  let textInput = React.createRef();
@@ -94,7 +94,15 @@ async function increamentApiMethodCall({CartProduct,data}){
     else if(r.error){
       document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
       con =false;
-      erro(r)
+      notification.error({
+        message: <div style={{fontSize:"18px",color:"black"}}>Out Of Stock. </div>,
+        description:
+        `No More Stock Available`,
+        className:"custom-class",
+        style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"10vh"},
+        duration:2,
+        key:1
+        });
       console.log("stock is not present",r)
     }
     })
@@ -229,7 +237,7 @@ const increament= async (CartProduct)=>{
                 </Popconfirm>
              </div>
 
-              <div style={{color:"black",marginLeft:"20px"}} className={styles.price}> ₹ {pro.price}</div>
+              <div style={{color:"black",marginLeft:"20px"}} className={styles.price}> {currency.sign}{pro.price*currency.value}</div>
               <div style={{color:"black",marginLeft:"20px",marginTop:"8px"}}>
                 <span className={styles.size}>Size :</span>
                 <span className={styles.showSize}> {pro.size}</span>  

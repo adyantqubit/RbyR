@@ -6,7 +6,7 @@ import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing';
 import { getToken } from '../../Redux-manage/services/localStorageService';
 import styles from './order.module.css'
 const Payment = () => {
-    const{userdata,checkoutDetails,setCheckoutDetails,cart,setCart,offer,setOffer,taxRate,setTaxRate}=CartState()
+    const{userdata,checkoutDetails,setCheckoutDetails,currency,cart,setCart,offer,setOffer,taxRate,setTaxRate}=CartState()
     const nav=useNavigate()
     var[tick,setTick]=useState(false)
     var[tickop,setTickop]=useState(false)
@@ -51,8 +51,12 @@ const Payment = () => {
            checkoutDetails['SubTotal']=afterColumnTotalOfferAdd(offer,cart,taxRate).subtotal
            checkoutDetails['tax']=afterColumnTotalOfferAdd(offer,cart,taxRate).tax
            checkoutDetails['grand']=afterColumnTotalOfferAdd(offer,cart,taxRate).Grand
+           checkoutDetails['currency_sign']=currency.sign
+           checkoutDetails['currency_value']=currency.value
+           console.log(checkoutDetails)
            await invoiceApi(checkoutDetails,access_token).then(r=>{
             checkoutDetails['orderno']=r.order_no
+            console.log(r)
             })
            sessionStorage.setItem('checkoutDetails',JSON.stringify(checkoutDetails))
            deleteFromCart()  

@@ -25,8 +25,11 @@ import { CartState } from '../../context';
 import { unSetUserInfo } from '../../Redux-manage/features/userSlice';
 import { unSetUserToken } from '../../Redux-manage/features/authSlice';
 import { removeToken } from '../../Redux-manage/services/localStorageService';
-import { notification } from 'antd';
+import { notification, Popconfirm } from 'antd';
 import { getWhatsappContactDetail } from '../../api/service';
+
+const text = 'Are you sure you want to logout?';
+
 
 const ShrinkHeader = () => {
  const [menu,setMenu]=useState([...profile])   
@@ -63,25 +66,15 @@ getWhatsappContactNumber()
         dispatch(unSetUserInfo({email:"",name:""}))
         dispatch(unSetUserToken({access_token:null}))
         removeToken()
-        
         localStorage.clear()
-        notification.error({
-          message: <div style={{fontSize:"18px",color:"black"}}>Successfully Logged In. </div>,
-          description:
-          `You are Log out`,
-          className:"custom-class",
-          style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"24vh"},
-          duration:5
-          ,key:1
-          });
-
         nav('/')
         firstTimeLoadFunctions()
-
+        localStorage.setItem('logout',true);
         window.location.reload(false)
 
       }
 
+      const [logoutaction,seLogoutAction]=useState(false)
 
   return (
     <div className={style.responsiveHeader}>
@@ -195,7 +188,7 @@ getWhatsappContactNumber()
            
             <Link to={m.link} className={style.drawerMenu}>
               {m.name=="Logout"?
-             <div style={{ justifyContent: "space-between", width: "100%", display: "flex"}}  onClick={handleLogout}>
+             <div style={{ justifyContent: "space-between", width: "100%", display: "flex"}} onClick={e=>seLogoutAction(true)}>
               <span>{m.name}</span> <AiOutlineRight />
               </div>
               :<div style={{ justifyContent: "space-between", width: "100%", display: "flex"}}  >
@@ -206,7 +199,9 @@ getWhatsappContactNumber()
             </Link>
             </> 
             )}
-
+          
+          <Popconfirm placement="bottomLeft" title={text} onConfirm={e=>handleLogout()} onCancel={e=>seLogoutAction(false)} okText="OK" cancelText="Cancel" open={logoutaction}>
+    </Popconfirm>
           {/* <div className={style.drawerMenu}>
             Partywear
           </div>

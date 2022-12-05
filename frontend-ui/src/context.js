@@ -86,9 +86,9 @@ const Context = ({ children }) => {
         description:
           `You are Log out`,
         className: "custom-class",
-        style: { backgroundColor: "#8c8c8c", color: "black", marginTop: "24vh" },
-        duration: 5
-        , key: 1
+        style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"10vh"},
+        duration: 2,
+        key: 1
       });
     }
     if (access_token) {

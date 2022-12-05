@@ -247,7 +247,9 @@ class Invoice(APIView):
                     "quantity":cart['quantity'],
                     "price":cart['price'],
                     "size":cart['size'],
-                    "payment_mode":request.data['payment']
+                    "payment_mode":request.data['payment'],
+                    "selected_currency_sign":request.data['currency_sign'],
+                    "selected_currency_value":request.data['currency_value']
                 }
                 
                 if(cart['size']=="Short"):
@@ -819,7 +821,7 @@ class pageIndex(APIView):
             elif(request.data['htl']  and request.data['availablity']):
                 products=products.order_by("-price")  
             elif(request.data['latest'] and request.data['availablity']):
-                products=products.order_by('-date')
+                products=products.filter(available=True).order_by('-date')
             elif(request.data['htl']):
                 products=products.order_by("-price")
             elif(request.data['lth']):   
