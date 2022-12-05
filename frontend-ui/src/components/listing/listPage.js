@@ -68,7 +68,7 @@ async function ApiReSet(){
   console.log("On category change call-----------",CategoryProduct,reload)
   setCategoryProduct([])
   settemAllpro([])
-  setPageIndex(0)
+  setPageIndex(1)
   const data={
     "pageIndex":1,
     "category":category,
