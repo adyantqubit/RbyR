@@ -620,7 +620,7 @@ class Transaction_historyAdmin(admin.ModelAdmin):
     list_display=("order_no","user_no","coupon_discount","shipping_price","subtotal_price"
     ,"tax","grand_total","payment_status","date")
     readonly_fields=("order_no","user_no","coupon_discount","shipping_price","subtotal_price"
-    ,"tax","grand_total")
+    ,"tax","grand_total","date")
     ordering=("order_no","date")
     list_filter=("payment_status","date")
     search_fields=("user_no__name",)
