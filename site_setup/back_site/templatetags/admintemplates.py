@@ -75,8 +75,8 @@ def getRevenue():
     summary=dict()
     totalOrders=Transaction_history.objects.filter(date__year=thisYear).count()
     totalPendingOrders = Transaction_history.objects.filter(date__year=thisYear,payment_status='pending').count()
-    totalPaidOrders = Transaction_history.objects.filter(date__year=thisYear,payment_status='pending').count()
-    totalCancelledOrders = Transaction_history.objects.filter(date__year=thisYear,payment_status='pending').count()
+    totalPaidOrders = Transaction_history.objects.filter(date__year=thisYear,payment_status='paid').count()
+    totalCancelledOrders = Transaction_history.objects.filter(date__year=thisYear,payment_status='cancel').count()
     totalIncome=Transaction_history.objects.filter(date__year=thisYear,payment_status='paid').aggregate(Sum("grand_total"))
     summary["title"]="This Year's Revenue"
     summary["totalOrders"]=totalOrders

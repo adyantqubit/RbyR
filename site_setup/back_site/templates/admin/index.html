@@ -17,24 +17,24 @@ Reason - To show dashboard with revenue, todays orders and pending list -->
                             {{ revenue.title }}
                         </h5>
                         <div class="shadow "
-                            style="background-color: rgba(42, 202, 202, 0.8);padding:2px;margin-top: 3px;">
-                            <h6 class="fw-extrabold mb-2">Total Orders</h6>
-                            <h6 class="fw-extrabold mb-2">{{ revenue.totalOrders }}</h6>
+                            style="background-color: rgba(92, 228, 228, 0.688);padding:8px;">
+                            <h6 class="fw-extrabold mb-2" style="display: inline-block;width: 60%;">Total Orders</h6>
+                            <h6 class="fw-extrabold mb-2"  style="display: inline-block;width: 30%;text-align: right;">{{ revenue.totalOrders }}</h6>
                         </div>
-                        <div class="shadow " style="background-color: rgba(0,255,0,.8);padding:2px;margin-top: 3px;">
-                            <h6 class="fw-extrabold mb-2">Completed Orders</h6>
-                            <h6 class="fw-extrabold mb-2">{{ revenue.totalPaidOrders }}</h6>
+                        <div class="shadow " style="background-color: rgba(73, 211, 73, 0.8);padding:8px;">
+                            <h6 class="fw-extrabold mb-2" style="display: inline-block;width: 60%;">Completed Orders</h6>
+                            <h6 class="fw-extrabold mb-2" style="display: inline-block;width: 30%;text-align: right;">{{ revenue.totalPaidOrders }}</h6>
                         </div>
-                        <div class="shadow x" style="background-color: rgba(255,255,0,.8);padding:2px;margin-top: 3px;">
-                            <h6 class="fw-extrabold mb-2">Pending Orders</h6>
-                            <h6 class="fw-extrabold mb-2">{{ revenue.totalPendingOrders }}</h6>
+                        <div class="shadow x" style="background-color: rgba(235, 235, 121, 0.8);padding:8px;">
+                            <h6 class="fw-extrabold mb-2" style="display: inline-block;width: 60%;">Pending Orders</h6>
+                            <h6 class="fw-extrabold mb-2" style="display: inline-block;width: 30%;text-align: right;">{{ revenue.totalPendingOrders }}</h6>
                         </div>
-                        <div class="shadow " style="background-color: rgba(255,0,0,.7);padding:2px;margin-top: 3px;">
-                            <h6 class="fw-extrabold mb-2">Cancelled Orders</h6>
-                            <h6 class="fw-extrabold mb-2">{{ revenue.totalCancelledOrders }}</h6>
+                        <div class="shadow " style="background-color: rgba(227, 121, 121, 0.7);padding:8px;">
+                            <h6 class="fw-extrabold mb-2" style="display: inline-block;width: 60%;">Cancelled Orders</h6>
+                            <h6 class="fw-extrabold mb-2" style="display: inline-block;width: 30%;text-align: right;">{{ revenue.totalCancelledOrders }}</h6>
                         </div>
                         <h5 style="width:100%;padding-top:15px;border-bottom:5px solid grey"></h5>
-                        <h5 class="fw-extrabold mb-2">Total Revenue</h5>
+                        <h6 class="fw-extrabold mb-2">Total Revenue</h6>
                         <h5 class="fw-extrabold mb-2">Rs. {{ revenue.totalRevenue }}</h5>
                     </div>
                 </div>

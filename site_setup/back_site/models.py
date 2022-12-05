@@ -367,7 +367,7 @@ class product_orders(models.Model):
 status = (
     ('paid','paid'),
     ('pending','pending'),
-    ('cancle','cancel'),
+    ('cancel','cancel'),
 
 )    
 class Transaction_history(models.Model):
