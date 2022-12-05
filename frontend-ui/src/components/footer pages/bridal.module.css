@@ -15,6 +15,7 @@
     padding-top: 100px;
 }
 
+
 .row{
     height:auto;
     width: 100%;
@@ -58,7 +59,7 @@
     
 }
 .bridalImg{
-    height:60vh;
+    width:90%;
 }
 .form{
     margin-top: 10vh;
@@ -113,7 +114,8 @@
         width: 100%;
     }
     .bridalImg{
-        height:110vh;
+        margin-left: 2%;
+        width:96%;
     }
     .formInputContainer{
         width: 100%;

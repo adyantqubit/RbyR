@@ -30,19 +30,10 @@ export const Profile = () => {
         removeToken()
         
         localStorage.clear()
-        notification.error({
-          message: <div style={{fontSize:"18px",color:"black"}}>Successfully Logged In. </div>,
-          description:
-          `You are Log out`,
-          className:"custom-class",
-          style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"24vh"},
-          duration:5
-          ,key:1
-          });
 
         nav('/')
         firstTimeLoadFunctions()
-
+        localStorage.setItem('logout',true);
         window.location.reload(false)
 
       }

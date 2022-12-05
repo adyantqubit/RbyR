@@ -7,7 +7,7 @@ import { CartState } from "../../context";
 
 import style from "../listing/listpage.module.css";
 
-const Slider = () => {
+const Slider = ({scrollTop}) => {
   const { CategoryProduct, con, setcon, currency } = CartState();
   const responsive = {
     superLargeDesktop: {
@@ -31,8 +31,15 @@ const Slider = () => {
 
   const nav = useNavigate();
   function openDetail(id) {
+    console.log(window)
+    window.scrollTo({
+      top: 0, 
+      behavior: 'smooth'
+      /* you can also use 'auto' behaviour
+         in place of 'smooth' */
+    });
     nav(`/listing/${id.category}/detail/${id.id}`);
-    setcon(false);
+    // setcon(false);
     // window.location.reload(false)
 
     //  <Navigate to={`/listing/${id.category}/detail/${id.id}`}/>
@@ -67,7 +74,7 @@ const Slider = () => {
                         className={style.img}
                         src={config.apiBaseURL + cart.img_main}
                         style={{ width: "350px" }}
-                        onClick={(e) => openDetail(cart)}
+                        onClick={(e) => {openDetail(cart);scrollTop()}}
                       />
                       <div
                         style={{

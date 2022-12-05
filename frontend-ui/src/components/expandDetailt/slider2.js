@@ -7,7 +7,7 @@ import { CartState } from "../../context";
 
 import style from "../listing/listpage.module.css";
 
-const Slider2 = () => {
+const Slider2 = ({scrollTop}) => {
   const { CategoryProduct, con, setcon, currency } = CartState();
   const responsive = {
     superLargeDesktop: {
@@ -70,7 +70,7 @@ const Slider2 = () => {
                         className={style.img}
                         src={config.apiBaseURL + cart.img_main}
                         style={{ width: "350px" }}
-                        onClick={(e) => openDetail(cart)}
+                        onClick={(e) => {openDetail(cart);scrollTop()}}
                       />
                       <div
                         style={{

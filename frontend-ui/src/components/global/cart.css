@@ -137,11 +137,7 @@ color:white
 
 }
 
-.react-multi-carousel-item{
-   margin-left:50px;
-   margin-right:50px;
-   max-width: 300px;
-}
+
 .carousel-control-next-icon{
     background-color: white;
     border-radius:30px;
@@ -198,11 +194,22 @@ opacity: 1;
       margin-left: -15px; 
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 768px) {
+
     .react-multi-carousel-item{
-        margin-left:0px;
+        margin-left:10px;
+        margin-right:10px;
         max-width: 300px;
      }
+  }
+
+
+  @media (max-width: 768px) {
+    /* .react-multi-carousel-item{
+        margin-left:0px;
+        max-width: 300px;
+     } */
+
      .badge {
         
         left: 15px;

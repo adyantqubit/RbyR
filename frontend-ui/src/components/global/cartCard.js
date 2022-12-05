@@ -55,7 +55,7 @@ else if(CartProduct.size=="Large"){
   if(CartProduct.quantity<=CartProduct.L+1)
   {
     document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="none"; 
-  }
+  }     
 }
 else if(CartProduct.size=="Medium"){
   if(CartProduct.quantity<=CartProduct.M+1){

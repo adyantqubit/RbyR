@@ -30,6 +30,7 @@ import StoreLocator from './components/footer pages/StoreLocator';
 import FAQ from './components/footer pages/FAQ';
 import Bridal from './components/footer pages/bridal';
 
+
 function App() {
   var access_token=0;
   useEffect(()=>{
@@ -40,6 +41,7 @@ function App() {
   return (
     <>
     <Routes>
+      
     <Route path="/" element={ <Home/>} />
     <Route path="/Listing/:category" element={<Listing/>} />
     <Route path="/login" element={!access_token?<Login/>:<Navigate to="/"/>} />
@@ -57,7 +59,8 @@ function App() {
     <Route path='/insideorder/:orderid' element={<InsideOrder/>} />
 
     <Route path='/cart' element={<CartSItem/>} />
-  {console.log(access_token)}
+ 
+
     <Route path='/placeorder' element={<Orderpage/>}/>
     <Route path='/billing' element={<Billing/>}/>
     <Route path='/shippindprofile' element={<ShippingProfile/>}/>
@@ -70,6 +73,7 @@ function App() {
     <Route path='/store-locator' element={<StoreLocator/>}/>
     <Route path='/FAQ' element={<FAQ/>}/>
     <Route path='/bridal' element={<Bridal/>} />
+    
     </Routes>
     </>
   );

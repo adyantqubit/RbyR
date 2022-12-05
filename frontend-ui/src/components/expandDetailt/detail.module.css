@@ -19,12 +19,11 @@
     overflow: auto;
     position: relative;
     top:23vh;
-    min-height: 100vh;
     align-items: center;
     flex-direction: column;
     margin-bottom: 180px;
     background-color: #fcfcfc;
-    overflow: hidden;
+    
   }
   .container01 {
     width: 100%;

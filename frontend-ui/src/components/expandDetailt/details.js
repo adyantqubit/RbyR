@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import config from "../../api/config";
 import { DetailApi, getCategoryProduct } from "../../api/service";
 import Footer from "../global/footer";
@@ -27,7 +27,7 @@ import InnerImageZoom from "react-inner-image-zoom";
 import Slider2 from "./slider2";
 import Shake from "react-reveal/Shake";
 import { animateScroll as scroll } from "react-scroll";
-import ScrollButton from "./top";
+import ScrollButton from "../concepts/ScrollButton";
 import { increamentCheck } from "../../api/orderApis";
 import {
   getWomenSizeChartDetail,
@@ -46,6 +46,7 @@ const sty = StyleSheet.create({
 
 const Details = (props) => {
   const { id } = useParams();
+  const nav = useNavigate()
   const [details, setDetails] = useState([]);
   const [size, setSize] = useState("");
   const { con, setcon, setCartDrawer, openCartdrawer } = CartState();
@@ -87,7 +88,6 @@ const Details = (props) => {
     getWomenSizeChart();
     getWhatsappContactNumber();
     catApi();
-    window.scrollTo(0, 0);
   }, []);
 
   const { category } = useParams();
@@ -100,10 +100,13 @@ const Details = (props) => {
     });
   };
 
-  if (con == false) {
+
+  useEffect(() => {
     gettingDetail();
-    setcon(true);
-  }
+  }, [id])
+
+ 
+
 
   useEffect(() => {
     var recents = JSON.parse(localStorage.getItem("recentview"));
@@ -121,6 +124,8 @@ const Details = (props) => {
   }, [details]);
 
   async function gettingDetail() {
+
+
     await DetailApi(id).then((r) => {
       setDetails({ ...r });
     });
@@ -323,15 +328,23 @@ const Details = (props) => {
     }
   }
   // End of code addition
+  const scroller = useRef()
+  function scrolling(e) {
+    scroller.current.scrollTop = 0
+  }
+
 
   return (
-    <>
+
+    <div style={{ maxHeight: "150vh", overflow: "scroll" }} ref={scroller}>
+
+
       <Navbar />
 
       {details ? (
-        <div id="scrolling" className={styles["container"]}>
-          <div className={styles["container01"]}>
-            <div className={styles["container02"]}>
+        <div id="scrolling" className={styles["container"]} >
+          <div className={styles["container01"]} >
+            <div className={styles["container02"]} >
               <div className={styles["image"]}>
                 <InnerImageZoom
                   src={config.apiBaseURL + details.img_main}
@@ -751,7 +764,6 @@ const Details = (props) => {
                     </div>
                   )}
                   {/* End of code modification */}
-                  <ScrollButton />
                   <div className={styles["container08"]}>
                     <span className={styles["textDescription"]}>
                       Additional Charges for International Shipping
@@ -920,22 +932,25 @@ const Details = (props) => {
             <Slider />
           </div> */}
 
-          <div style={{ width: "100%" ,zIndex:"1"}}>
-            <Slider2 />
-            <Slider />
+          <div style={{ width: "100%", zIndex: "1" }} >
+            <Slider2 scrollTop={scrolling}/>
+            <Slider scrollTop={scrolling}/>
           </div>
+
           <div className={styles.foot}>
-      <Footer />
-      <Below />
-      </div>
+            <Footer />
+
+            <Below />
+
+          </div>
         </div>
       ) : (
         "loading"
       )}
 
-      
-      
-    </>
+    </div>
+
+
   );
 };
 
