@@ -236,19 +236,22 @@ const increament=async (CartProduct)=>{
 
   async function ApplyPromo(){
     var promocode=document.getElementsByClassName('promoCode')[0].value
-    console.log(promocode)
+    
+    if(promocode.length>0){
     await CouponCheck(promocode).then(r=>{
       if(r.error){
         setError(r)
-
+       console.log(r)
       }  
       else{
       setOffer(r)
       setError(null)
       setCoupon(true)
     }
-    })
-
+    })}
+    else{
+      setError({"error":"Please enter coupon code"})
+    }
   }
 
   async function GetTAXapi(){
@@ -313,7 +316,30 @@ const increament=async (CartProduct)=>{
     }
     ))
   }
+ 
 
+   
+  function validateWhitespace(evt,id)
+  {var theEvent = evt || window.event;
+    var key=0
+    // Handle paste
+    if (theEvent.type === 'paste') {
+        key = evt.clipboardData.getData('text/plain');
+    } else {
+    // Handle key press
+        key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+    }
+
+    
+    var regex = /\s/	
+    if( document.getElementById(`${id}`).value.trim().length>0 || !regex.test(key) ) {
+        
+    }else{
+        theEvent.returnValue = false;
+        if(theEvent.preventDefault) theEvent.preventDefault();
+    }
+  }
 
   return (
     <> 
@@ -458,7 +484,7 @@ const increament=async (CartProduct)=>{
         </div>
 
         <div className={style.promo}>
-         {!ShowCoupon? <> <input className="promoCode" type="text" style={{width:"90%",height:"35px",padding:"10px",marginLeft:"15px",border:"1px solid #dfdbdb",outline:"#fff"}} placeholder="Have a promocode" onChange={e=>setError(null)}></input>
+         {!ShowCoupon? <> <input className="promoCode" id="prormos" type="text" onKeyPress={e=>validateWhitespace(e,"prormos")}  style={{width:"90%",height:"35px",padding:"10px",marginLeft:"15px",border:"1px solid #dfdbdb",outline:"#fff"}} placeholder="Have a promocode" onChange={e=>setError(null)}></input>
           <button className={style.shopbtn1} style={{marginRight:"15px",marginTop:"0px",height:"35px",textAlign:"center",backgroundColor:"black",color:"white",letterSpacing:"2px",fontSize:"14px",fontWeight:"600"}} onClick={ApplyPromo}>Apply</button>
           </>
          :

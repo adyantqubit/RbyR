@@ -143,19 +143,44 @@ const nav=useNavigate();
  async function ApplyPromo(){
   
     var promocode=promos.current.value
-    console.log(promocode)
+    if(promocode.length>0){
     await CouponCheck(promocode).then(r=>{
       if(r.error){
         setError(r)
-
+       console.log(r)
       }  
       else{
       setOffer(r)
       setError(null)
       setCoupon(true)
     }
-    })
+    })}
+    else{
+      setError({"error":"Please enter coupon code"})
+    }
 
+  }
+
+  function validateWhitespace(evt,id)
+  {var theEvent = evt || window.event;
+    var key=0
+    // Handle paste
+    if (theEvent.type === 'paste') {
+        key = evt.clipboardData.getData('text/plain');
+    } else {
+    // Handle key press
+        key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+    }
+
+    
+    var regex = /\s/	
+    if( document.getElementById(`${id}`).value.trim().length>0 || !regex.test(key) ) {
+        
+    }else{
+        theEvent.returnValue = false;
+        if(theEvent.preventDefault) theEvent.preventDefault();
+    }
   }
 
 async function GetTAXapi(){
@@ -245,7 +270,7 @@ async function DefaultShipping(){
         </div>
 
         <div className={style.promo}>
-         {!ShowCoupon? <> <input className="promoCode" id="prormos" type="text" style={{width:"60%",padding:"10px",height:"30px",marginLeft:"15px",border:"1px solid #dfdbdb",outline:"#fff"}} placeholder="Have a promocode" ref={promos} onChange={e=>setError(null)}></input>
+         {!ShowCoupon? <> <input className="promoCode" id="prormos" type="text" onKeyPress={e=>validateWhitespace(e,"prormos")} style={{width:"60%",padding:"10px",height:"30px",marginLeft:"15px",border:"1px solid #dfdbdb",outline:"#fff"}} placeholder="Have a promocode" ref={promos} onChange={e=>setError(null)}></input>
           <button className={style.apply} onClick={ApplyPromo}>Apply</button>
           </>
          :<>

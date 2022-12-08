@@ -223,11 +223,11 @@ function Footer2() {
           <h1 className={style.heading}>THE COMPANY</h1>
           <span
             className={style.span}
-            onClick={(e) => nav("/Listing/worldofrr")}
+            onClick={(e) => nav("/Listing/world_of_rbyr")}
             style={{ cursor: "pointer" }}
           >
             RBYR EXCLUSIVE
-          </span>
+          </span>   
           <Link
             to="/store-locator"
             style={{ textDecoration: "none", color: "white" }}

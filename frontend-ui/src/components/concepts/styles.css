@@ -1,8 +1,8 @@
 .right{
 width: 50px;
-height: 100%;
+height: auto;
 position: relative;
-top:2px;
+bottom:0vh;   
 }
 .Dropdown-control{
   height:35px;
@@ -42,4 +42,14 @@ top:2px;
   to {
     opacity: 1;
   }
+}
+
+
+@media only screen and (max-width: 768px) {
+  .right{
+    width: 50px;
+    height: auto;
+    position: relative;
+    bottom:-1vh;   
+    }
 }

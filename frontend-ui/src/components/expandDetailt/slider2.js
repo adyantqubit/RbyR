@@ -1,6 +1,5 @@
-import React from "react";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import React from 'react'
+import Carousel from 'react-grid-carousel'
 import { Navigate, useNavigate } from "react-router-dom";
 import config from "../../api/config";
 import { CartState } from "../../context";
@@ -13,7 +12,7 @@ const Slider2 = ({scrollTop}) => {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 4,
+      items: 5,
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -60,16 +59,16 @@ const Slider2 = ({scrollTop}) => {
         >
           YOU MAY ALSO LIKE
         </div>
-        <Carousel responsive={responsive} style={{ width: "100%" }}>
+        <Carousel cols={4} rows={1} gap={10} style={{ width: "100%" }} >
           {CategoryProduct
             ? CategoryProduct.map((cart, i) => {
-                if (i != 0)
+                 
                   return (
-                    <>
+                    <Carousel.Item>
                       <img
                         className={style.img}
                         src={config.apiBaseURL + cart.img_main}
-                        style={{ width: "360px" }}
+                        style={{ width: "350px" }}
                         onClick={(e) => {openDetail(cart);scrollTop()}}
                       />
                       <div
@@ -85,12 +84,13 @@ const Slider2 = ({scrollTop}) => {
                         {currency.sign}{" "}
                         {(cart.price * currency.value).toFixed(2)}
                       </div>
-                    </>
+                    </Carousel.Item>
                   );
+
               })
             : null}
 
-          <div>.</div>
+          {/* <div>.</div> */}
         </Carousel>
       </div>
     </>

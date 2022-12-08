@@ -169,10 +169,8 @@ class picget(APIView):
     renderer_classes = [UserRenderer]
 
     def get(self, request):
-        ser = getPictureSer(Head_img.objects.filter(display_on="window"), many=True)
-        ser2 = getPictureSer(Head_img.objects.filter(display_on="Mobile"), many=True)
-
-        return Response({"j": ser.data,"h":ser2.data})
+        ser = getPictureSer(Head_img.objects.all(), many=True)
+        return Response({"j": ser.data})
 
 
 class Givingdetail(APIView):

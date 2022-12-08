@@ -126,9 +126,10 @@ const InsideOrder = () => {
       const resp = await cartsaveApi({ data, access_token }).then(r => console.log(r));
 
     }
-
+    
     setCart(cart)
     nav("/cart")
+
   }
 
 

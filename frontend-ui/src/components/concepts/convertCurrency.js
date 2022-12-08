@@ -96,10 +96,7 @@ function Converter() {
 						currencySave(e.value, e.data); CurrencySaverGet()
 					}
 					else{
-						var data=
-							info[e.value][2]
-
-						
+						var data=info[e.value][2]
 						localStorage.setItem("currency",data)
 					}
 				}}

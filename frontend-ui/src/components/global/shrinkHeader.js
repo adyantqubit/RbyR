@@ -27,6 +27,7 @@ import { unSetUserToken } from '../../Redux-manage/features/authSlice';
 import { removeToken } from '../../Redux-manage/services/localStorageService';
 import { notification, Popconfirm } from 'antd';
 import { getWhatsappContactDetail } from '../../api/service';
+import Converter from '../concepts/convertCurrency';
 
 const text = 'Are you sure you want to logout?';
 
@@ -88,10 +89,14 @@ getWhatsappContactNumber()
             <GiHamburgerMenu onClick={toggleDrawer} fontSize="30px" color='#7c7c7c' />
           </div>
           <div className={style.logo}>
+          <Converter/>    
            <Link to="/"><img alt="header" src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" className={style.img}></img></Link> 
           </div>
 
           <div className={style.headerMenu}>
+            {/* <div className={style.headerMenuitem} >
+             
+            </div> */}
             <div className={style.headerMenuitem} >
             <Search className={styles.icons} fontSize={24}/>
             </div>
@@ -131,31 +136,32 @@ getWhatsappContactNumber()
           </div>
 
           
-          <Link to="/" className={style.drawerMenu}>
+          <Link to="/" className={style.drawerMenu} onClick={toggleDrawer}>
             Home
           </Link>
           
             <div className={style.drawerMenu}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e=>{toggleDrawer2(); setMenu(menus)}}><span>Ethnic</span> <AiOutlineRight /></div>
             </div>
-          <Link to='/listing/luxurypret' className={style.drawerMenu}>
+          <Link to='/listing/luxurypret' className={style.drawerMenu} onClick={toggleDrawer}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span>Luxury Pret</span> </div>
           </Link>
-          <Link to='/listing/readytowear' className={style.drawerMenu}>
+          <Link to='/listing/readytowear' className={style.drawerMenu} onClick={toggleDrawer}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> Ready To wear</span> </div>
           </Link>
-          <Link to='/listing/worldofrr' className={style.drawerMenu}>
+          <Link to='/listing/worldofrr' className={style.drawerMenu} onClick={toggleDrawer}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> World of RbyR</span> </div>
           </Link>
-          <Link to='/custom' className={style.drawerMenu}>
+          <Link to='/custom' className={style.drawerMenu} onClick={toggleDrawer}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> Contact Us</span> </div>
           </Link>
           
-          <div className={style.drawerMenu}>
+          <div className={style.drawerMenu} >
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e=>{
                 if(localStorage.getItem("access_token")){
                     setMenu(profile)
                     toggleDrawer2()
+                    toggleDrawer()
                 }
                 else
                 nav("/login")
@@ -186,7 +192,7 @@ getWhatsappContactNumber()
 
           {menu.map(m=>     <>     
            
-            <Link to={m.link} className={style.drawerMenu}>
+            <Link to={m.link} className={style.drawerMenu} onClick={e => { toggleDrawer(); toggleDrawer2() }} >
               {m.name=="Logout"?
              <div style={{ justifyContent: "space-between", width: "100%", display: "flex"}} onClick={e=>seLogoutAction(true)}>
               <span>{m.name}</span> <AiOutlineRight />

@@ -263,18 +263,14 @@ class Cart(models.Model):
 #End of comment
        
    
-window_CHOICES = (
-    ('window', 'For Window'),
-    ('Mobile','For Mobile')
-) 
+   
 class Head_img(models.Model):
     src=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100)   
     label=models.CharField(max_length=100,default="slider")
     about=models.CharField(max_length=200,default="here you have to write something")
     category=models.CharField(max_length=50,choices=category,default="casual")
-    display_on=models.CharField(max_length=20,choices=window_CHOICES,default="window")
-    
+
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self):

@@ -1,5 +1,5 @@
-import React from "react";
-import Carousel from "react-multi-carousel";
+import React,{useState,useEffect} from 'react'
+import Carousel from 'react-grid-carousel'
 import "react-multi-carousel/lib/styles.css";
 import { Navigate, useNavigate } from "react-router-dom";
 import config from "../../api/config";
@@ -9,6 +9,25 @@ import style from "../listing/listpage.module.css";
 
 const Slider = ({scrollTop}) => {
   const { CategoryProduct, con, setcon, currency } = CartState();
+  const recentlyViews=[];
+  const [recentlyViewedProducts,setRecentlyViewedProducts]=useState([])
+
+
+  useEffect(()=>{
+    func();
+  },[])
+  function func(){
+    var storage=JSON.parse(localStorage.getItem("recentview"))
+    if(storage.length>1){
+      for(var i=0;i<storage.length;i++){
+        if(i>0)
+          recentlyViews.push(storage[i])
+      }
+      setRecentlyViewedProducts(recentlyViews)
+    }
+  }
+
+
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -63,13 +82,17 @@ const Slider = ({scrollTop}) => {
           
         </div>
 
-        <Carousel responsive={responsive}>
-          {JSON.parse(localStorage.getItem("recentview")) &&
-          JSON.parse(localStorage.getItem("recentview")).length > 0
-            ? JSON.parse(localStorage.getItem("recentview")).map((cart, i) => {
-                if (i != 0)
+        <Carousel cols={4} rows={1} gap={10} style={{ width: "100%" }}>
+          {/* {JSON.parse(localStorage.getItem("recentview")) &&
+          JSON.parse(localStorage.getItem("recentview")).length > 0 */}
+              
+
+          {recentlyViewedProducts
+         
+            ? recentlyViewedProducts.map((cart) => {
+               
                   return (
-                    <>
+                    <Carousel.Item>
                       <img
                         className={style.img}
                         src={config.apiBaseURL + cart.img_main}
@@ -89,12 +112,12 @@ const Slider = ({scrollTop}) => {
                         {currency.sign}{" "}
                         {(cart.price * currency.value).toFixed(2)}
                       </div>
-                    </>
+                    </Carousel.Item>
                   );
               })
             : null}
 
-          <div>.</div>
+          {/* <div>.</div> */}
         </Carousel>
       </div>
     </>

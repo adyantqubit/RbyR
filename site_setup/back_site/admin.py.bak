@@ -23,17 +23,15 @@ def short_title(obj):
 # admin.site.register(Head_img)
 @admin.register(Head_img)
 class Head_imgAdmin(admin.ModelAdmin):
-    list_display=("src","category","display_on")
-    # ordering=("display_on")
+    list_display=("label","src","about","category")
+    ordering=("label",)
     list_per_page=10
-    # def get_form(self, request, obj=None, **kwargs):
-    #     form = super(Head_imgAdmin, self).get_form(request, obj, **kwargs)
-    #     # form.base_fields['label'].widget.attrs['style'] = 'width: 100%;'
-    #     # form.base_fields['about'].widget.attrs['style'] = 'width: 100%;'
-    #     form.base_fields['category'].widget.attrs['style'] = 'width: 100%;'
-    #     # form.base_fields['display_on'].widget.attrs['style'] = 'width: 100%;'
-
-    #     return form
+    def get_form(self, request, obj=None, **kwargs):
+        form = super(Head_imgAdmin, self).get_form(request, obj, **kwargs)
+        form.base_fields['label'].widget.attrs['style'] = 'width: 100%;'
+        form.base_fields['about'].widget.attrs['style'] = 'width: 100%;'
+        form.base_fields['category'].widget.attrs['style'] = 'width: 100%;'
+        return form
 # End of code modification
 
 

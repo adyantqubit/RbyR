@@ -62,11 +62,12 @@ justify-content:center;
     height:100%;
     display:flex;
     padding-top:15px;
-    justify-content:end;
+    justify-content:center;
+    gap:20px
 }
 
 .headerMenu{
-    width:40%;
+    width:50%;
     height:100%;
     margin-right: 10px;
     display:flex;

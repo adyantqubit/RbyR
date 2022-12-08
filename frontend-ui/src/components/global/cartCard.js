@@ -120,10 +120,25 @@ async function increamentApiMethodCall({CartProduct,data}){
     else if(r.error){
       // document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
       con =false;
-      erro(r)
+      notification.error({
+        message: <div style={{fontSize:"18px",color:"black"}}>Out Of Stock. </div>,
+        description:
+        `No More Stock Available`,
+        className:"custom-class",
+        style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"0vh"},
+        duration:2,
+        key:1
+        });
+      con =false;
+      console.log("stock is not present",r)
     }
+
     })
-} 
+    }
+    
+
+
+
 
 const increament= async (CartProduct)=>{
   con=true;
