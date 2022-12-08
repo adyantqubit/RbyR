@@ -99,7 +99,7 @@ async function increamentApiMethodCall({CartProduct,data}){
         description:
         `No More Stock Available`,
         className:"custom-class",
-        style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"10vh"},
+        style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"0vh"},
         duration:2,
         key:1
         });

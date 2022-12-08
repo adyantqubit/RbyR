@@ -52,7 +52,7 @@ const Context = ({ children }) => {
   var [cartEnd, setCartEnd] = useState([])
   const [shipEditcond, setshipEditCond] = useState(true)
 
-  const [currency, setCurrency] = useState({ value: 1, sign: "₹" });
+  const [currency, setCurrency] = useState({name:"INR", value: 1, sign: "₹" });
   const [to, setTo] = useState("INR")
 
   let { access_token, refresh_token } = getToken()
@@ -92,8 +92,9 @@ const Context = ({ children }) => {
       });
     }
     if (access_token) {
-      TokenManage()
       setInterval(TokenManage, 360000)
+
+      
     }
     if (JSON.parse(window.localStorage.getItem('cart')) && (!localStorage.getItem('access_token')))
       setCart([...JSON.parse(window.localStorage.getItem('cart'))])
@@ -130,19 +131,24 @@ const Context = ({ children }) => {
   }
 
 
-  async function TokenManage() {
+  async function TokenManage(int) {
     const data = {
       "refresh": localStorage.getItem('refresh_token')
     }
     await regenaratingTokenApi(data).then(r => {
       if (r.error) {
-        this.clearInterval()
+
+       
         removeToken()
         setLike([])
-        window.location.reload()
-        localStorage.clear()
+        console.log("token error ---------------")
+        this.clearInterval()
+        window.location.reload(false)
+        
+        
       }
       else {
+        console.log("token succesfully ---------------")
         const token = {
           access: r.access,
           refresh: r.refresh
@@ -259,9 +265,6 @@ const Context = ({ children }) => {
       })
 
 
-
-
-
     // price
     if (tempSize.length > 0) {
       filteredProducts = tempSize.filter(c => c.price > minValue && c.price < maxValue)
@@ -272,10 +275,11 @@ const Context = ({ children }) => {
 
     var finalFilter = []
 
-
+    console.log(filteredProducts.length)
     if (selectedColor.length > 0 || sizeSelected.length > 0 || filteredProducts.length > 0 || maxValue) {
-      if (filteredProducts.length < 3) {
-        setReload(false)
+      if (filteredProducts.length < 8) {
+        console.log("page index re hit")
+        setReload(!reload)    
         finalFilter = filteredProducts
       }
       else

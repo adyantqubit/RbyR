@@ -13,7 +13,7 @@ const Slider2 = ({scrollTop}) => {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 5,
+      items: 4,
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -69,7 +69,7 @@ const Slider2 = ({scrollTop}) => {
                       <img
                         className={style.img}
                         src={config.apiBaseURL + cart.img_main}
-                        style={{ width: "350px" }}
+                        style={{ width: "360px" }}
                         onClick={(e) => {openDetail(cart);scrollTop()}}
                       />
                       <div

@@ -236,6 +236,7 @@ const increament=async (CartProduct)=>{
 
   async function ApplyPromo(){
     var promocode=document.getElementsByClassName('promoCode')[0].value
+    console.log(promocode)
     await CouponCheck(promocode).then(r=>{
       if(r.error){
         setError(r)

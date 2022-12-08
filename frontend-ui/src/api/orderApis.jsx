@@ -85,4 +85,20 @@ export const nextIndexPage=async(data)=>{
 return response ? response.data : {};
 }
 
+
 //End of the code
+
+
+export const CurrencySaver=async(data)=>{
+  const response = await API.post(`currency_saver/`, data,{
+    headers: { "Content-Type": "application/json",'authorization':`Bearer ${localStorage.getItem('access_token')}`},
+  }).catch((err) => console.log("Failed to authenticate the user."));
+return response ? response.data : {};
+}
+
+export const CurrencySaverGetter=async()=>{
+  const response = await API.get(`currency_saver/`,{
+    headers: { "Content-Type": "application/json",'authorization':`Bearer ${localStorage.getItem('access_token')}`},
+  }).catch((err) => console.log("Failed to authenticate the user."));
+return response ? response.data : {};
+}

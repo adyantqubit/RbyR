@@ -166,7 +166,7 @@ const Billing = () => {
             <div className={styles.billingmain}>
                 <div className={styles.billingheader}>
                    <span className={`${styles.columnitem1head} ${styles.header1}`} > Item Description</span>
-                   <span className={`${styles.columnitem1head} ${styles.header2} ${styles.show}`} > Quantity</span>
+                   <span className={`${styles.columnitem1head} ${styles.header2} ${styles.show}`}  style={{"textAlign":"center"}}> Quantity</span>
                    <span className={`${styles.columnitem1head} ${styles.header2} ${styles.show2}`} > Qty</span>
                    <span className={`${styles.columnitem1head} ${styles.header2}`} > Price</span>
                    <span className={`${styles.columnitem1head} ${styles.header2}`} style={{borderRight:"1px solid black"}}>Total</span>

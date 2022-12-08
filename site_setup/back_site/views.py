@@ -10,850 +10,976 @@ from .serializers import *
 from rest_framework import status
 from django.contrib.auth import authenticate
 from back_site.renderers import UserRenderer
-from rest_framework_simplejwt.tokens import RefreshToken,AccessToken
+from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from rest_framework.permissions import IsAuthenticated
-import random  
-import string  
+import random
+import string
 from django.core import serializers
 import jwt
 from site_setup.settings import SIMPLE_JWT
 from django.utils.timezone import timedelta
 from django.db.models.functions import TruncMonth
-from django.db.models import Sum,Avg
-
-def specific_string():  
-    sample_string = 'pqrstuvwxydjlkfdsjk'  
-    result = ''.join((random.choice(sample_string)) for x in range(10))  
-    print(" Randomly generated string is: ", result) 
+from django.db.models import Sum, Avg
 
 
-#generating token for auth by jwt
+def specific_string():
+    sample_string = 'pqrstuvwxydjlkfdsjk'
+    result = ''.join((random.choice(sample_string)) for x in range(10))
+    print(" Randomly generated string is: ", result)
+
+
+# generating token for auth by jwt
 def get_tokens_for_user(user):
     refresh = RefreshToken.for_user(user)
-    
 
     return {
         'refresh': str(refresh),
         'access': str(refresh.access_token),
     }
-    
-
-    
 
 
 # Create your views here.
 
 
 class User2API(APIView,):
-    def get(self,request):
-        datap=product_detail.objects.all()
-        datai=image.objects.all()
-        serializers1=product_serializer(datap,many=True)
-        serializers2=image_serializer(datai,many=True)
-        return Response({"product":serializers1.data,"image":serializers2.data})
-        
-        
+    def get(self, request):
+        datap = product_detail.objects.all()
+        datai = image.objects.all()
+        serializers1 = product_serializer(datap, many=True)
+        serializers2 = image_serializer(datai, many=True)
+        return Response({"product": serializers1.data, "image": serializers2.data})
+
+
 class UserRegistrationView(APIView):
-      renderer_classes=[UserRenderer]
-      def post(self,request,format=None):
-          
-        serializer=UserRegistrationSerializer(data=request.data)
+    renderer_classes = [UserRenderer]
+
+    def post(self, request, format=None):
+
+        serializer = UserRegistrationSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-              user=serializer.save()
-              token=get_tokens_for_user(user)
-              return Response({'token':token,'msg':'registration successfully done'},status=status.HTTP_201_CREATED)
-              
-        return Response(serializer.errors,status=status.HTTP_404_NOT_FOUND)     
-      
-      
-      
+            user = serializer.save()
+            token = get_tokens_for_user(user)
+            return Response({'token': token, 'msg': 'registration successfully done'}, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
+
+
 class UserLoginView(APIView):
-    renderer_classes=[UserRenderer]
-    def post(self,request,format=None):
-        serializer=UserLoginSerializer(data=request.data)
-        if(serializer.is_valid(raise_exception=True)):
-            email=serializer.data.get('email')
-            password=serializer.data.get('password')
-            user= authenticate(email=email,password=password)
-            
+    renderer_classes = [UserRenderer]
+
+    def post(self, request, format=None):
+        serializer = UserLoginSerializer(data=request.data)
+        if (serializer.is_valid(raise_exception=True)):
+            email = serializer.data.get('email')
+            password = serializer.data.get('password')
+            user = authenticate(email=email, password=password)
+
             if user is not None:
-                token=get_tokens_for_user(user)
-                return Response({'token':token,'msg':'login successful'},status=status.HTTP_200_OK)   
+                token = get_tokens_for_user(user)
+                return Response({'token': token, 'msg': 'login successful'}, status=status.HTTP_200_OK)
             else:
-                return Response({'errors':{'none_field_errors':['Email or Password is not valid.']}},status=status.HTTP_404_NOT_FOUND)     
-            
-            
+                return Response({'errors': {'none_field_errors': ['Email or Password is not valid.']}}, status=status.HTTP_404_NOT_FOUND)
+
+
 class UserProfileView(APIView):
-    renderer_classes=[UserRenderer]
-    permission_classes=[IsAuthenticated]
-    def get(self,request,format=None):
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, format=None):
         print(request.user)
-        serializer=UserProfileSerializer(request.user)
-        return Response(serializer.data,status=status.HTTP_200_OK)
-              
-              
+        serializer = UserProfileSerializer(request.user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
 class UserChangePasswordView(APIView):
-    renderer_classes=[UserRenderer]
-    permission_classes=[IsAuthenticated]
-    def post(self,request):
-        serializer=UserChangePasswordSerializer(data=request.data,context={'user':request.user,'oldPass':request.data['oldPass']})     
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        serializer = UserChangePasswordSerializer(data=request.data, context={
+                                                  'user': request.user, 'oldPass': request.data['oldPass']})
         if serializer.is_valid(raise_exception=True):
-           return Response({'msg':'password change successfully'},status=status.HTTP_200_OK)
-        return Response(serializer.errors,status=status.HTTP_400_)  
-    
-    
+            return Response({'msg': 'password change successfully'}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_)
+
+
 class SendPasswordResetEmailView(APIView):
-    renderer_classes=[UserRenderer]
-    def post(self,request,format=None):
-         serailizer=SendPasswordResetEmailSerializer(data=request.data)
-         if serailizer.is_valid(raise_exception=True):
-            return Response({'msg':'Password Reset Link send. Please check your email'},status=status.HTTP_200_OK)          
-         return Response({"error":serailizer.errors})  
+    renderer_classes = [UserRenderer]
+
+    def post(self, request, format=None):
+        serailizer = SendPasswordResetEmailSerializer(data=request.data)
+        if serailizer.is_valid(raise_exception=True):
+            return Response({'msg': 'Password Reset Link send. Please check your email'}, status=status.HTTP_200_OK)
+        return Response({"error": serailizer.errors})
+
 
 class UserPasswordResetView(APIView):
-    renderer_classes=[UserRenderer]
-    def post(self,request,uid,token,format=None):
-        serializer=UserPasswordResetSerializer(data=request.data,context={'uid':uid,'token':token})
+    renderer_classes = [UserRenderer]
+
+    def post(self, request, uid, token, format=None):
+        serializer = UserPasswordResetSerializer(
+            data=request.data, context={'uid': uid, 'token': token})
         if serializer.is_valid(raise_exception=True):
-            return Response({'msg':'Password Reset Successfully'},status=status.HTTP_200_OK)          
-        return Response(serializer.errors,status=status.HTTP_400_) 
-    
-    
+            return Response({'msg': 'Password Reset Successfully'}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_)
+
+
 class LikedUpdateView(APIView):
-    renderer_classes=[UserRenderer]
-    permission_classes=[IsAuthenticated]
-    def post(self,request):
-        serialize=LikeUpdateSerializer(data=request.data,context={"user":request.user}) 
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        serialize = LikeUpdateSerializer(
+            data=request.data, context={"user": request.user})
         if serialize.is_valid(raise_exception=True):
-            return Response({'msg':"Successful"})  
-    def get(self,request):
-        data =giveLikedDataSerializer(Liked.objects.filter(user_no=request.user),many=True)
-        return Response({"liked":data.data})
-    
-    
+            return Response({'msg': "Successful"})
+
+    def get(self, request):
+        data = giveLikedDataSerializer(
+            Liked.objects.filter(user_no=request.user), many=True)
+        return Response({"liked": data.data})
+
+
 class CartUpdateView(APIView):
-    renderer_classes=[UserRenderer]
-    permission_classes=[IsAuthenticated]
-    def post(self,request):
-        serialize=CartUpdateSerializer(data=request.data,context={"user":request.user}) 
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        serialize = CartUpdateSerializer(
+            data=request.data, context={"user": request.user})
         if serialize.is_valid(raise_exception=True):
-           return Response({'msg':"Successful"})  
-        
-    def get(self,request):
-        data =giveCartdDataSerializer(Cart.objects.filter(user_no=request.user),many=True)
-        return Response({"cart":data.data})
-        
+            return Response({'msg': "Successful"})
+
+    def get(self, request):
+        data = giveCartdDataSerializer(
+            Cart.objects.filter(user_no=request.user), many=True)
+        return Response({"cart": data.data})
+
+
 class ProductSetting(APIView):
-        renderer_classes=[UserRenderer]
-        def get(self,request,category):
-            cart=product_detail.objects.filter(category=category)
-            serializers1=product_serializer(cart,many=True)
-            return Response({"category":serializers1.data})
-        
+    renderer_classes = [UserRenderer]
+
+    def get(self, request, category):
+        cart = product_detail.objects.filter(category=category)
+        serializers1 = product_serializer(cart, many=True)
+        return Response({"category": serializers1.data})
+
+
 class picget(APIView):
-        renderer_classes=[UserRenderer]
-        def get(self,request):
-            ser=getPictureSer(Head_img.objects.all(),many=True)
-            return Response({"j":ser.data})
-        
+    renderer_classes = [UserRenderer]
+
+    def get(self, request):
+        ser = getPictureSer(Head_img.objects.all(), many=True)
+        return Response({"j": ser.data})
+
+
 class Givingdetail(APIView):
-        renderer_classes=[UserRenderer]
-        def get(self,request,id):
-            ser=product_serializer(product_detail.objects.get(id=id))
-            return Response(ser.data)
-        
-        
+    renderer_classes = [UserRenderer]
+
+    def get(self, request, id):
+        ser = product_serializer(product_detail.objects.get(id=id))
+        return Response(ser.data)
+
+
 class gettingAccess(APIView):
-    def post(self,request):
+    def post(self, request):
         try:
-          tokens = jwt.decode(request.data['refresh'],SIMPLE_JWT['SIGNING_KEY'], algorithms=["HS256"])
-          return Response(get_tokens_for_user(User.objects.get(id=tokens['user_id'])))  
+            tokens = jwt.decode(
+                request.data['refresh'], SIMPLE_JWT['SIGNING_KEY'], algorithms=["HS256"])
+            return Response(get_tokens_for_user(User.objects.get(id=tokens['user_id'])))
         except:
-          return Response({"error":"expired"})        
-      
-      
+            return Response({"error": "expired"})
+
+
 class cartBuyAll(APIView):
-    def post(self,request):
-        return Response(request.data)      
-    
+    def post(self, request):
+        return Response(request.data)
+
+
 class CartSetting(APIView):
-    def post(self,request):
-        car= Cart.objects.get(user_no=request.user,product_no=product_detail.objects.get(id=request.data["id"]),size=request.data['size'])
-        car.quantity=request.data['quantity']
+    def post(self, request):
+        car = Cart.objects.get(user_no=request.user, product_no=product_detail.objects.get(
+            id=request.data["id"]), size=request.data['size'])
+        car.quantity = request.data['quantity']
         car.save()
-        return Response({"success":car.quantity})    
+        return Response({"success": car.quantity})
+
 
 class cardImage(APIView):
-    def get(self,request):
-              iamges=HomeCard_img.objects.all()
-              serialize=getCardSer(iamges.last())              
-              return Response({"response":serialize.data})
-             
-             
+    def get(self, request):
+        iamges = HomeCard_img.objects.all()
+        serialize = getCardSer(iamges.last())
+        return Response({"response": serialize.data})
+
+
 class shippingOrder(APIView):
-    renderer_classes=[UserRenderer]
-    permission_classes=[IsAuthenticated]
-    def post(self,request):
-        shippingData=request.data
-        shippingData['user_id']=request.user.id
-        serialize2=shippingSerializer(data=shippingData)
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        shippingData = request.data
+        shippingData['user_id'] = request.user.id
+        serialize2 = shippingSerializer(data=shippingData)
         try:
-         if serialize2.is_valid(raise_exception=True):
-            ship=serialize2.save()
-            return Response({"shipping_id":ship.id})
+            if serialize2.is_valid(raise_exception=True):
+                ship = serialize2.save()
+                return Response({"shipping_id": ship.id})
         except:
-          ship=usershippingDetail.objects.get(street=request.data['street'],city=request.data['city'],number=request.data['number'],user_id=request.user)
-          return Response({"shipping_id":ship.id})
-        return Response(request.data)       
-    
+            ship = usershippingDetail.objects.get(
+                street=request.data['street'], city=request.data['city'], number=request.data['number'], user_id=request.user)
+            return Response({"shipping_id": ship.id})
+        return Response(request.data)
+
+
 class billingOrder(APIView):
-    renderer_classes=[UserRenderer]
-    permission_classes=[IsAuthenticated]
-    def post(self,request):
-        billingData=request.data
-        billingData['user_id']=request.user.id
-        serialize2=billingSerializer(data=billingData)
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        billingData = request.data
+        billingData['user_id'] = request.user.id
+        serialize2 = billingSerializer(data=billingData)
         try:
-         if serialize2.is_valid(raise_exception=True):
-            bill=serialize2.save()
-            return Response({"billing_id":bill.id})
+            if serialize2.is_valid(raise_exception=True):
+                bill = serialize2.save()
+                return Response({"billing_id": bill.id})
         except:
-          bill=userbillingDetail.objects.get(street=request.data['street'],city=request.data['city'],number=request.data['number'],user_id=request.user)
-          return Response({"billing_id":bill.id})
-        return Response(request.data)          
-             
+            bill = userbillingDetail.objects.get(
+                street=request.data['street'], city=request.data['city'], number=request.data['number'], user_id=request.user)
+            return Response({"billing_id": bill.id})
+        return Response(request.data)
+
+
 class Invoice(APIView):
-    renderer_classes=[UserRenderer]
-    permission_classes=[IsAuthenticated]
-    def post(self,request):           
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
         try:
-            instanceshipping=usershippingDetail.objects.get(id=request.data['shipping_id'])
-            instancebilling=userbillingDetail.objects.get(id=request.data['billing_id'])
-            
-            num=40000
+            instanceshipping = usershippingDetail.objects.get(
+                id=request.data['shipping_id'])
+            instancebilling = userbillingDetail.objects.get(
+                id=request.data['billing_id'])
+
+            num = 40000
             if Transaction_history.objects.all().last() is not None:
-             num=Transaction_history.objects.all().last().order_no+1;
-            
-            date=45  
-            cartdata=[];
+                num = Transaction_history.objects.all().last().order_no+1
+
+            date = 45
+            cartdata = []
             for cart in request.data['cart']:
                 cartdata.append(cart)
-                data={
-                    "order_no":num,
-                    "user_no":request.user.id,
-                    "billing_id":instancebilling.id,
-                    "shipping_id":instanceshipping.id,
-                    "product_id":cart['id'],
-                    "quantity":cart['quantity'],
-                    "price":cart['price'],
-                    "size":cart['size'],
-                    "payment_mode":request.data['payment'],
-                    "selected_currency_sign":request.data['currency_sign'],
-                    "selected_currency_value":request.data['currency_value']
+                data = {
+                    "order_no": num,
+                    "user_no": request.user.id,
+                    "billing_id": instancebilling.id,
+                    "shipping_id": instanceshipping.id,
+                    "product_id": cart['id'],
+                    "quantity": cart['quantity'],
+                    "price": cart['price'],
+                    "size": cart['size'],
+                    "payment_mode": request.data['payment'],
+                    "selected_currency_sign": request.data['currency_sign'],
+                    "selected_currency_value": request.data['currency_value']
                 }
-                
-                if(cart['size']=="Short"):
-                    pro=product_detail.objects.get(id=cart['id'])
-                    pro.S=pro.S-cart['quantity']
+
+                if (cart['size'] == "Short"):
+                    pro = product_detail.objects.get(id=cart['id'])
+                    pro.S = pro.S-cart['quantity']
                     print(pro.S)
                     pro.save()
-                elif(cart['size']=="Medium"):
-                    pro=product_detail.objects.get(id=cart['id'])
-                    pro.M=pro.M-cart['quantity']
+                elif (cart['size'] == "Medium"):
+                    pro = product_detail.objects.get(id=cart['id'])
+                    pro.M = pro.M-cart['quantity']
                     print(pro.M)
-                    pro.save() 
-                elif(cart['size']=="Large"):
-                    pro=product_detail.objects.get(id=cart['id'])
-                    pro.L=pro.L-cart['quantity']
+                    pro.save()
+                elif (cart['size'] == "Large"):
+                    pro = product_detail.objects.get(id=cart['id'])
+                    pro.L = pro.L-cart['quantity']
                     print(pro.L)
                     pro.save()
-                elif(cart['size']=="Extra Large"):
-                    pro=product_detail.objects.get(id=cart['id'])
-                    pro.XL=pro.XL-cart['quantity']
+                elif (cart['size'] == "Extra Large"):
+                    pro = product_detail.objects.get(id=cart['id'])
+                    pro.XL = pro.XL-cart['quantity']
                     print(pro.XL)
-                    pro.save()  
-                elif(cart['size']=="Extra Extra Large"):
-                    pro=product_detail.objects.get(id=cart['id'])
-                    pro.XXL=pro.XXL-cart['quantity']
+                    pro.save()
+                elif (cart['size'] == "Extra Extra Large"):
+                    pro = product_detail.objects.get(id=cart['id'])
+                    pro.XXL = pro.XXL-cart['quantity']
                     print(pro.XXL)
-                    pro.save()  
-                    
-                
-                serialize3=invoiceSerializer(data=data)
+                    pro.save()
+
+                serialize3 = invoiceSerializer(data=data)
                 if serialize3.is_valid(raise_exception=True):
-                    serialize3.save()       
-                    
-        
-            tran=Transaction_history.objects.create( order_no=num,payment_status="pending"
-                                                    ,user_no=request.user
-                                                    ,coupon_discount=request.data['CouponDiscount']
-                                                    ,shipping_price=request.data['ShippingCharges']
-                                                    ,subtotal_price=request.data['SubTotal']
-                                                    ,tax=request.data['tax']
-                                                    ,grand_total=request.data['grand'] )  
-            tran.save() 
-            return Response({"order_no":tran.order_no,'cart':cartdata})   
+                    serialize3.save()
+
+            tran = Transaction_history.objects.create(order_no=num, payment_status="pending", user_no=request.user, coupon_discount=request.data['CouponDiscount'], shipping_price=request.data[
+                                                      'ShippingCharges'], subtotal_price=request.data['SubTotal'], tax=request.data['tax'], grand_total=request.data['grand'])
+            tran.save()
+            return Response({"order_no": tran.order_no, 'cart': cartdata})
         except:
-            return Response({"error":"Facing issue on generating bill please contact to Admin"})          
-    
-    
+            return Response({"error": "Facing issue on generating bill please contact to Admin"})
+
+
 class CartDelete(APIView):
-    renderer_classes=[UserRenderer]
-    permission_classes=[IsAuthenticated]  
-    def get(self,request):
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
         print(request.user)
         if Cart.objects.filter(user_no=request.user) is not None:
             Cart.objects.filter(user_no=request.user).delete()
         else:
             return Response("nothing is listed")
-        return Response({"done":"successfully"})
-    
+        return Response({"done": "successfully"})
+
+
 class Invoiceget(APIView):
-    renderer_classes=[UserRenderer]
-    permission_classes=[IsAuthenticated] 
-    def get(self,request):
-        serialize=6
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serialize = 6
         if product_orders.objects.filter(user_no=request.user) is not None:
-            serialize=invoiceSerializer(product_orders.objects.filter(user_no=request.user),many=True)
-        else:
-            return Response({})    
-        return Response(serialize.data)    
-    
-    
-class InvoiceSingleget(APIView):
-    renderer_classes=[UserRenderer]
-    permission_classes=[IsAuthenticated] 
-    def put(self,request):
-        serialize=6
-        if product_orders.objects.filter(user_no=request.user) is not None:
-            serialize=invoiceSerializer(product_orders.objects.filter(user_no=request.user,order_no=request.data['order']),many=True)
+            serialize = invoiceSerializer(
+                product_orders.objects.filter(user_no=request.user), many=True)
         else:
             return Response({})
-        
-        shipping=serialize.data[0]['shipping_id']
-        billing=serialize.data[0]['billing_id']
-        orderno=serialize.data[0]['order_no']
+        return Response(serialize.data)
 
-        shippingSeri= shippingSerializer(usershippingDetail.objects.get(id=shipping))
-        billingSeri=billingSerializer(userbillingDetail.objects.get(id=billing))
-        transactionSeri=transactionHistorySerialize(Transaction_history.objects.get(order_no=orderno))
-        return Response({"history":serialize.data,"shipping":shippingSeri.data,"billing":billingSeri.data,"transaction":transactionSeri.data})        
-    
-    
+
+class InvoiceSingleget(APIView):
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request):
+        serialize = 6
+        if product_orders.objects.filter(user_no=request.user) is not None:
+            serialize = invoiceSerializer(product_orders.objects.filter(
+                user_no=request.user, order_no=request.data['order']), many=True)
+        else:
+            return Response({})
+
+        shipping = serialize.data[0]['shipping_id']
+        billing = serialize.data[0]['billing_id']
+        orderno = serialize.data[0]['order_no']
+
+        shippingSeri = shippingSerializer(
+            usershippingDetail.objects.get(id=shipping))
+        billingSeri = billingSerializer(
+            userbillingDetail.objects.get(id=billing))
+        transactionSeri = transactionHistorySerialize(
+            Transaction_history.objects.get(order_no=orderno))
+        return Response({"history": serialize.data, "shipping": shippingSeri.data, "billing": billingSeri.data, "transaction": transactionSeri.data})
+
+
 class transactionget(APIView):
-    renderer_classes=[UserRenderer]
-    permission_classes=[IsAuthenticated] 
-    def get(self,request):
-        serialize=6
-        pro=7
-        prodata=[]
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serialize = 6
+        pro = 7
+        prodata = []
         if Transaction_history.objects.filter(user_no=request.user) is not None:
-            serialize=transactionHistorySerialize(Transaction_history.objects.filter(user_no=request.user),many=True)
+            serialize = transactionHistorySerialize(
+                Transaction_history.objects.filter(user_no=request.user), many=True)
             for data in serialize.data:
-                pro=product_orders.objects.filter(user_no=request.user,order_no=data['order_no']).last()
-                data['firstname']=pro.billing_id.firstname
-                data['lastname']=pro.billing_id.lastname
+                pro = product_orders.objects.filter(
+                    user_no=request.user, order_no=data['order_no']).last()
+                data['firstname'] = pro.billing_id.firstname
+                data['lastname'] = pro.billing_id.lastname
                 prodata.append(data)
         else:
-            return Response({})    
-        
-        return Response({"response":prodata})    
-    
-    
+            return Response({})
+
+        return Response({"response": prodata})
+
+
 class ShippingGetApi(APIView):
-    renderer_classes=[UserRenderer]
-    permission_classes=[IsAuthenticated] 
-    def get(self,request):
-        serialize=6
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serialize = 6
         if usershippingDetail.objects.filter(user_id=request.user) is not None:
-            serialize=shippingSerializer(usershippingDetail.objects.filter(user_id=request.user),many=True)
+            serialize = shippingSerializer(
+                usershippingDetail.objects.filter(user_id=request.user), many=True)
         else:
-            return Response({})    
-        return Response(serialize.data)   
-    
-    
-    
+            return Response({})
+        return Response(serialize.data)
+
+
 class ShippingUpdateApi(APIView):
-    renderer_classes=[UserRenderer]
-    permission_classes=[IsAuthenticated] 
-    def put(self,request):
-        serialize=6
-        ship=request.data
-        ship_instance=usershippingDetail.objects.get(id=ship['id'])  
-        ship_instance.firstname=ship['firstname']
-        ship_instance.lastname=ship['lastname']
-        ship_instance.state=ship['state']
-        ship_instance.city=ship['city']
-        ship_instance.houseno=ship['houseno']
-        ship_instance.street=ship['street']
-        ship_instance.zipcode=ship['country']
-        ship_instance.country=ship['zipcode']
-        ship_instance.number=ship['number']
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request):
+        serialize = 6
+        ship = request.data
+        ship_instance = usershippingDetail.objects.get(id=ship['id'])
+        ship_instance.firstname = ship['firstname']
+        ship_instance.lastname = ship['lastname']
+        ship_instance.state = ship['state']
+        ship_instance.city = ship['city']
+        ship_instance.houseno = ship['houseno']
+        ship_instance.street = ship['street']
+        ship_instance.zipcode = ship['country']
+        ship_instance.country = ship['zipcode']
+        ship_instance.number = ship['number']
         ship_instance.save()
         # if usershippingDetail.objects.filter(user_id=request.user) is not None:
         #     serialize=shippingSerializer(,usershippingDetail.objects.filter(user_id=request.user),many=True)
         # else:
-        #     return Response({})    
-        return Response({"msg":"successFully"}) 
-    
-    
-    
-    
+        #     return Response({})
+        return Response({"msg": "successFully"})
+
+
 class ShippingDeleteApi(APIView):
-    renderer_classes=[UserRenderer]
-    permission_classes=[IsAuthenticated] 
-    def put(self,request):
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request):
         usershippingDetail.objects.get(id=request.data).delete()
-        return Response({"msg":"successfully"})
-    
+        return Response({"msg": "successfully"})
+
+
 class getQrDetails(APIView):
-      def get(self,request):
-       try:
-        serialize= QrDetailSerializer(Online_Qr.objects.all().last())  
-        print(serialize.data)
-        return Response(serialize.data)
-       except:
-           return Response({"error":"something went wrong"})
-       
-       
+    def get(self, request):
+        try:
+            serialize = QrDetailSerializer(Online_Qr.objects.all().last())
+            print(serialize.data)
+            return Response(serialize.data)
+        except:
+            return Response({"error": "something went wrong"})
+
+
 class IncrementCheck(APIView):
-    def post(self,request):
+    def post(self, request):
         try:
-           size=request.data['size']
-           quantity=request.data['quantity']+1
-           product_instance= product_detail.objects.get(id=request.data['id'])
-           from django.forms.models import model_to_dict
-           ff=model_to_dict(product_instance)
-           if quantity>ff.get(size):
-              return Response({"error":True})
-           else:
-              return Response({"success":True})
+            size = request.data['size']
+            quantity = request.data['quantity']+1
+            product_instance = product_detail.objects.get(
+                id=request.data['id'])
+            from django.forms.models import model_to_dict
+            ff = model_to_dict(product_instance)
+            if quantity > ff.get(size):
+                return Response({"error": True})
+            else:
+                return Response({"success": True})
         except:
-            return Response({"error":True})
-        
-        
+            return Response({"error": True})
+
+
 class CouponCheck(APIView):
-    def post(self,request):
+    def post(self, request):
         try:
-         if coupon.objects.get(promocode=request.data) is not None:
-            if coupon.objects.get(promocode=request.data).expiry_date<datetime.date.today():
-                return Response({"error":"This Coupon is Expired"})
-            if coupon.objects.get(promocode=request.data).isActive==False:
-                return Response({"error":"This Coupon is Not Active"})
-            serialize= promocodeSerilizer(coupon.objects.get(promocode=request.data))
-            return Response(serialize.data)
+            if coupon.objects.get(promocode=request.data) is not None:
+                if coupon.objects.get(promocode=request.data).expiry_date < datetime.date.today():
+                    return Response({"error": "This Coupon is Expired"})
+                if coupon.objects.get(promocode=request.data).isActive == False:
+                    return Response({"error": "This Coupon is Not Active"})
+                serialize = promocodeSerilizer(
+                    coupon.objects.get(promocode=request.data))
+                return Response(serialize.data)
         except:
-         return Response({"error":"Coupon You Entered is not exist"})        
-     
-     
+            return Response({"error": "Coupon You Entered is not exist"})
+
+
 class TaxGet(APIView):
-    def get(self,request):
+    def get(self, request):
         if Tax.objects.last() is not None:
-            serialize=TaxSerilizer(Tax.objects.last())
+            serialize = TaxSerilizer(Tax.objects.last())
             return Response(serialize.data)
-        return Response({"tax_rate":1})     
-    
+        return Response({"tax_rate": 1})
+
+
 class ImportantTextGet(APIView):
-    def get(self,request):
-      try:  
-       if ImportantNoticeToBuy.objects.last() is not None:
-            serialize=ImportantNoticeSerilizer(ImportantNoticeToBuy.objects.last())
-            return Response(serialize.data)
-      except:  
-       return Response({"error":"nothing Found"}) 
-   
-class CartRecheck(APIView):
-    def post(self,request):
-        car=[]
-        for cart in request.data:
-            if(cart['size']=="Short"):
-                pro=product_detail.objects.get(id=cart['id'])
-                if cart['quantity']>pro.S:
-                    car.append({"id":pro.id,"size":"Short","name":pro.title})
-            elif(cart['size']=="Medium"):
-                pro=product_detail.objects.get(id=cart['id'])
-                if cart['quantity']>pro.M:
-                    car.append({"id":pro.id,"size":"Medium","name":pro.title})
-            elif(cart['size']=="Large"):
-                 pro=product_detail.objects.get(id=cart['id'])
-                 if cart['quantity']>pro.L:
-                    car.append({"id":pro.id,"size":"Large","name":pro.title})
-            elif(cart['size']=="Extra Large"):
-                 pro=product_detail.objects.get(id=cart['id'])
-                 if cart['quantity']>pro.XL:
-                    car.append({"id":pro.id,"size":"Extra Large","name":pro.title})
-            elif(cart['size']=="Extra Extra Large"):
-                 pro=product_detail.objects.get(id=cart['id'])
-                 if cart['quantity']>pro.XXL:
-                    car.append({"id":pro.id,"size":"Extra Extra Large","name":pro.title})  
-        
-        if len(car)>0:
-           return Response({"error":car})
-        else:
-            return Response({"Success":"go ahead"})               
-          
-          
-class ShippingTick(APIView):
-    renderer_classes=[UserRenderer]
-    permission_classes=[IsAuthenticated]
-    def get(self,request):
+    def get(self, request):
         try:
-           return Response(shippingSerializer(usershippingDetail.objects.filter(user_id=request.user),many=True).data)
+            if ImportantNoticeToBuy.objects.last() is not None:
+                serialize = ImportantNoticeSerilizer(
+                    ImportantNoticeToBuy.objects.last())
+                return Response(serialize.data)
         except:
-            return Response({"error":"Nothing Found"})   
-          
-    def post(self,request):
-       try: 
-        # if usershippingDetail.objects.get(id=request.data,user_id=request.user).isSelected==True:
-        #     data=usershippingDetail.objects.get(id=request.data)
-        #     data.isSelected=False
-        #     data.save()
-        #     return Response(shippingSerializer(usershippingDetail.objects.filter(user_id=request.user),many=True).data)
-        if  usershippingDetail.objects.get(id=request.data,user_id=request.user).isSelected==False: 
-            data2=usershippingDetail.objects.filter(user_id=request.user)
-            for element in data2:
-                element.isSelected=False  
-                element.save()
-            data=usershippingDetail.objects.get(id=request.data)
-            data.isSelected=True
-            data.save()
-            return Response(shippingSerializer(usershippingDetail.objects.filter(user_id=request.user),many=True).data)
-        return Response(shippingSerializer(usershippingDetail.objects.filter(user_id=request.user),many=True).data)
-       except:              
-        return Response({"error":"you are facing error on shipping"})          
-          
-          
+            return Response({"error": "nothing Found"})
+
+
+class CartRecheck(APIView):
+    def post(self, request):
+        car = []
+        for cart in request.data:
+            if (cart['size'] == "Short"):
+                pro = product_detail.objects.get(id=cart['id'])
+                if cart['quantity'] > pro.S:
+                    car.append(
+                        {"id": pro.id, "size": "Short", "name": pro.title})
+            elif (cart['size'] == "Medium"):
+                pro = product_detail.objects.get(id=cart['id'])
+                if cart['quantity'] > pro.M:
+                    car.append(
+                        {"id": pro.id, "size": "Medium", "name": pro.title})
+            elif (cart['size'] == "Large"):
+                pro = product_detail.objects.get(id=cart['id'])
+                if cart['quantity'] > pro.L:
+                    car.append(
+                        {"id": pro.id, "size": "Large", "name": pro.title})
+            elif (cart['size'] == "Extra Large"):
+                pro = product_detail.objects.get(id=cart['id'])
+                if cart['quantity'] > pro.XL:
+                    car.append(
+                        {"id": pro.id, "size": "Extra Large", "name": pro.title})
+            elif (cart['size'] == "Extra Extra Large"):
+                pro = product_detail.objects.get(id=cart['id'])
+                if cart['quantity'] > pro.XXL:
+                    car.append(
+                        {"id": pro.id, "size": "Extra Extra Large", "name": pro.title})
+
+        if len(car) > 0:
+            return Response({"error": car})
+        else:
+            return Response({"Success": "go ahead"})
+
+
+class ShippingTick(APIView):
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        try:
+            return Response(shippingSerializer(usershippingDetail.objects.filter(user_id=request.user), many=True).data)
+        except:
+            return Response({"error": "Nothing Found"})
+
+    def post(self, request):
+        try:
+            # if usershippingDetail.objects.get(id=request.data,user_id=request.user).isSelected==True:
+            #     data=usershippingDetail.objects.get(id=request.data)
+            #     data.isSelected=False
+            #     data.save()
+            #     return Response(shippingSerializer(usershippingDetail.objects.filter(user_id=request.user),many=True).data)
+            if usershippingDetail.objects.get(id=request.data, user_id=request.user).isSelected == False:
+                data2 = usershippingDetail.objects.filter(user_id=request.user)
+                for element in data2:
+                    element.isSelected = False
+                    element.save()
+                data = usershippingDetail.objects.get(id=request.data)
+                data.isSelected = True
+                data.save()
+                return Response(shippingSerializer(usershippingDetail.objects.filter(user_id=request.user), many=True).data)
+            return Response(shippingSerializer(usershippingDetail.objects.filter(user_id=request.user), many=True).data)
+        except:
+            return Response({"error": "you are facing error on shipping"})
+
+
 class updateUser(APIView):
-       def post(self,request):
-          user= User.objects.get(id=request.user.id)
-          user.email=request.data['email']
-          user.name=request.data['firstname']+" "+request.data["lastname"]
-          
-          user.save()
-          
-          data={"name":user.name,"email":user.email}
-          return Response(data)    
-       
-       
-       
-       
-#Added by Ashish on 06-11-2022
-#Reason - To have FAQ functionality    
+    def post(self, request):
+        user = User.objects.get(id=request.user.id)
+        user.email = request.data['email']
+        user.name = request.data['firstname']+" "+request.data["lastname"]
+
+        user.save()
+
+        data = {"name": user.name, "email": user.email}
+        return Response(data)
+
+
+# Added by Ashish on 06-11-2022
+# Reason - To have FAQ functionality
 class FAQView(APIView):
-    def get(self,request):
+    def get(self, request):
         faqs = FAQ.objects.all().values()
         faqList = {}
         faqList['faqs'] = faqs
-        return Response(faqList)  
-#End of code addition
+        return Response(faqList)
+# End of code addition
 
-#Added by Ashish on 09-11-2022
-#Reason - To send contact us details to front end
+# Added by Ashish on 09-11-2022
+# Reason - To send contact us details to front end
+
+
 class ContactUsView(APIView):
-    def get(self,request):
+    def get(self, request):
         contactUsDetail = ContactUs.objects.all().values()
         contactUsResponse = {}
         contactUsResponse['contactUsDetail'] = contactUsDetail
         return Response(contactUsDetail)
-#End of code addition  
+# End of code addition
 
-#Added by Ashish on 13-11-2022
-#Reason - To send T&C details to front end
+# Added by Ashish on 13-11-2022
+# Reason - To send T&C details to front end
+
+
 class TermAndConditionView(APIView):
-    def get(self,request):
+    def get(self, request):
         TermAndConditionDetail = TermAndCondition.objects.all().values()
         TermAndConditionResponse = {}
         TermAndConditionResponse['TermAndConditionDetail'] = TermAndConditionDetail
         return Response(TermAndConditionDetail)
-#End of code addition               
+# End of code addition
 
-#Added by Ashish on 13-11-2022
-#Reason - To send Privacy policy details to front end
+# Added by Ashish on 13-11-2022
+# Reason - To send Privacy policy details to front end
+
+
 class PrivacyPolicyView(APIView):
-    def get(self,request):
+    def get(self, request):
         PrivacyPolicyDetail = PrivacyPolicy.objects.all().values()
         PrivacyPolicyResponse = {}
         PrivacyPolicyResponse['PrivacyPolicyDetail'] = PrivacyPolicyDetail
         return Response(PrivacyPolicyDetail)
-#End of code addition   
+# End of code addition
 
-#Added by Ashish on 13-11-2022
-#Reason - To send delivery and shipping policy details to front end
+# Added by Ashish on 13-11-2022
+# Reason - To send delivery and shipping policy details to front end
+
+
 class DeliveryAndShippingPolicyView(APIView):
-    def get(self,request):
+    def get(self, request):
         DeliveryAndShippingPolicyDetail = DeliveryAndShippingPolicy.objects.all().values()
         DeliveryAndShippingPolicyResponse = {}
         DeliveryAndShippingPolicyResponse['DeliveryAndShippingPolicyDetail'] = DeliveryAndShippingPolicyDetail
         return Response(DeliveryAndShippingPolicyDetail)
-#End of code addition  
+# End of code addition
 
-#Added by Ashish on 14-11-2022
-#Reason - To send refund policy details to front end
+# Added by Ashish on 14-11-2022
+# Reason - To send refund policy details to front end
+
+
 class RefundPolicyView(APIView):
-    def get(self,request):
+    def get(self, request):
         RefundPolicyDetail = RefundPolicy.objects.all().values()
         RefundPolicyResponse = {}
         RefundPolicyResponse['RefundPolicyDetail'] = RefundPolicyDetail
         return Response(RefundPolicyDetail)
-#End of code addition  
+# End of code addition
 
-#Added by Ashish on 14-11-2022
-#Reason - To send cancellation policy details to front end
+# Added by Ashish on 14-11-2022
+# Reason - To send cancellation policy details to front end
+
+
 class CancellationPolicyView(APIView):
-    def get(self,request):
+    def get(self, request):
         CancellationPolicyDetail = CancellationPolicy.objects.all().values()
         CancellationPolicyResponse = {}
         CancellationPolicyResponse['CancellationPolicyDetail'] = CancellationPolicyDetail
         return Response(CancellationPolicyDetail)
-#End of code addition  
+# End of code addition
 
-#Added by Ashish on 14-11-2022
-#Reason - To send Store locator details to front end
+# Added by Ashish on 14-11-2022
+# Reason - To send Store locator details to front end
+
+
 class StoreLocatorView(APIView):
-    def get(self,request):
+    def get(self, request):
         StoreLocatorDetail = StoreLocator.objects.all().values()
         StoreLocatorResponse = {}
         StoreLocatorResponse['StoreLocatorDetail'] = StoreLocatorDetail
         return Response(StoreLocatorDetail)
-#End of code addition  
+# End of code addition
 
-#Added by Ashish on 16-11-2022
-#Reason - To send social links to front end
+# Added by Ashish on 16-11-2022
+# Reason - To send social links to front end
+
+
 class SocialLinkView(APIView):
-    def get(self,request):
+    def get(self, request):
         SocialLinkDetail = SocialLink.objects.all().values()
         SocialLinkResponse = {}
         SocialLinkResponse['SocialLinkDetail'] = SocialLinkDetail
         return Response(SocialLinkDetail)
-#End of code addition
+# End of code addition
 
-#Added by Ashish on 16-11-2022
-#Reason - To send bridal to front end
+# Added by Ashish on 16-11-2022
+# Reason - To send bridal to front end
+
+
 class BridalView(APIView):
-    def get(self,request):
+    def get(self, request):
         BridalDetail = Bridal.objects.all().values()
         BridalResponse = {}
         BridalResponse['BridalDetail'] = BridalDetail
         return Response(BridalDetail)
-#End of code addition
+# End of code addition
 
-#Added by Ashish on 17-11-2022
-#Reason - To send bridal form details to front end
+# Added by Ashish on 17-11-2022
+# Reason - To send bridal form details to front end
+
+
 class BridalFormView(APIView):
-    def post(self,request,format=None):
-        serializer=BridalFormSerializer(data=request.data)
-        if(serializer.is_valid(raise_exception=True)):
+    def post(self, request, format=None):
+        serializer = BridalFormSerializer(data=request.data)
+        if (serializer.is_valid(raise_exception=True)):
             serializer.save()
-            return Response({'msg':'bridal details posted'},status=status.HTTP_200_OK)
-#End of code addition
+            return Response({'msg': 'bridal details posted'}, status=status.HTTP_200_OK)
+# End of code addition
 
-#Added by Ashish on 17-11-2022
-#Reason - To send copyright text to front end
+# Added by Ashish on 17-11-2022
+# Reason - To send copyright text to front end
+
+
 class CopyrightView(APIView):
-    def get(self,request):
+    def get(self, request):
         CopyrightDetail = Copyright.objects.all().values()
         return Response(CopyrightDetail)
-#End of code addition
+# End of code addition
 
-#Added by Ashish on 17-11-2022
-#Reason - To get EmailSubscription details  from ui end
+# Added by Ashish on 17-11-2022
+# Reason - To get EmailSubscription details  from ui end
+
+
 class EmailSubscriptionView(APIView):
-    def post(self,request,format=None):
-        email=EmailSubscription.objects.filter(email=request.data.get("email"))
-        if(email):
-            return Response({'error':'You have already subscribed to updates'},status=status.HTTP_200_OK)
+    def post(self, request, format=None):
+        email = EmailSubscription.objects.filter(
+            email=request.data.get("email"))
+        if (email):
+            return Response({'error': 'You have already subscribed to updates'}, status=status.HTTP_200_OK)
         else:
-            serializer=EmailSubscriptionSerializer(data=request.data)
-            if(serializer.is_valid(raise_exception=True)):
+            serializer = EmailSubscriptionSerializer(data=request.data)
+            if (serializer.is_valid(raise_exception=True)):
                 serializer.save()
-                return Response({'msg':'You have successfully subscribed to email updates'},status=status.HTTP_200_OK)
-#End of code addition
+                return Response({'msg': 'You have successfully subscribed to email updates'}, status=status.HTTP_200_OK)
+# End of code addition
 
 
-#Added by Rohan on 17-11-2022
-#Reason-To Get instagram collections in ui
+# Added by Rohan on 17-11-2022
+# Reason-To Get instagram collections in ui
 
 class InstagrampostRetrive(APIView):
-    def get(self,request):
+    def get(self, request):
         try:
             if InstagramCollection.objects.last() is not None:
-              instagram=InstagramCollection.objects.last()
-              serialize=InstagramCollectionSerializer(instagram)
-              return Response(serialize.data)
+                instagram = InstagramCollection.objects.last()
+                serialize = InstagramCollectionSerializer(instagram)
+                return Response(serialize.data)
         except:
-            return Response({"error":"Nothing Found"})    
-#End of code addition
+            return Response({"error": "Nothing Found"})
+# End of code addition
 
-#Added by Ashish dewangan on 18-11-2022
-#Reason - to have search functionality
-#Jira issue no - RBYR -141
+# Added by Ashish dewangan on 18-11-2022
+# Reason - to have search functionality
+# Jira issue no - RBYR -141
+
+
 class SearchProductView(APIView):
-    def get(self,request,query):
+    def get(self, request, query):
         # print("query----------------------",query.replace(" ",""))
         AllProduct = product_detail.objects.all()
-        wordsArray= query.split()
+        wordsArray = query.split()
         import itertools
-        permutations=list(itertools.permutations(wordsArray))
-    
-        combinationArray=[]
-        combinationArrayOfHighestWordLength=[]
-        length=len(query.replace(" ",""))
+        permutations = list(itertools.permutations(wordsArray))
+
+        combinationArray = []
+        combinationArrayOfHighestWordLength = []
+        length = len(query.replace(" ", ""))
         # print("len--------------------------",length)
         for permutation in permutations:
-            combination=""
+            combination = ""
             for word in permutation:
-                combination =combination+word
+                combination = combination+word
                 combinationArray.append(combination)
-                
-        # print("combinationArray--------------------------",combinationArray) 
+
+        # print("combinationArray--------------------------",combinationArray)
         for w in combinationArray:
-            if(len(w)==length):
+            if (len(w) == length):
                 combinationArrayOfHighestWordLength.append(w)
 
         # print("combinationArraywit len--------------------------",combinationArrayOfHighestWordLength)
-        resultSet={}
+        resultSet = {}
         for data in combinationArrayOfHighestWordLength:
-            # print("data--------------------------",data) 
-            if(AllProduct.filter(search_key__icontains=data)):
-                resultSet=AllProduct.filter(search_key__icontains=data)
-        # print("product........",AllProduct)        
+            # print("data--------------------------",data)
+            if (AllProduct.filter(search_key__icontains=data)):
+                resultSet = AllProduct.filter(search_key__icontains=data)
+        # print("product........",AllProduct)
         # print("result---------------",resultSet)
-        if(len(resultSet)==0):
+        if (len(resultSet) == 0):
             for data in combinationArray:
-                # print("data--------------------------",data) 
-                if(AllProduct.filter(search_key__icontains=data)):
-                    resultSet=AllProduct.filter(search_key__icontains=data)
+                # print("data--------------------------",data)
+                if (AllProduct.filter(search_key__icontains=data)):
+                    resultSet = AllProduct.filter(search_key__icontains=data)
 
-        serializedData=product_serializer(resultSet,many=True)
-        return Response(serializedData.data)        
-#End of code addition
+        serializedData = product_serializer(resultSet, many=True)
+        return Response(serializedData.data)
+# End of code addition
 
-#Added by Ashish on 19-11-2022
-#Reason-To send logo and cover images to frontend
+# Added by Ashish on 19-11-2022
+# Reason-To send logo and cover images to frontend
+
+
 class LogoAndCoverView(APIView):
-    def get(self,request):
+    def get(self, request):
         LogoAndCoverDetail = LogoAndCover.objects.all().values()
         LogoAndCoverResponse = {}
         LogoAndCoverResponse['BLogoAndCoverDetail'] = LogoAndCoverDetail
         return Response(LogoAndCoverDetail)
-#End of code addition
+# End of code addition
 
-#Added by Ashish on 21-11-2022
-#Reason-To have footer text in the table
+# Added by Ashish on 21-11-2022
+# Reason-To have footer text in the table
+
+
 class FooterDescriptionView(APIView):
-    def get(self,request):
+    def get(self, request):
         footerDescriptionDetail = FooterDescription.objects.all().values()
         return Response(footerDescriptionDetail)
-#End of code addition
+# End of code addition
 
-#Added by Ashish Dewangan on 23-11-2022
-#Reason - To save size chart image
-#Jira issue no - RBYR-193
+# Added by Ashish Dewangan on 23-11-2022
+# Reason - To save size chart image
+# Jira issue no - RBYR-193
+
+
 class WomenClothSizeChartView(APIView):
-    def get(self,request):
+    def get(self, request):
         womenClothSizeChartDetail = WomenClothSizeChart.objects.all().values()
         return Response(womenClothSizeChartDetail)
-#End of code addition
+# End of code addition
 
-#Added by Ashish on 24-11-2022
-#Reason - To save custom tailored details
+# Added by Ashish on 24-11-2022
+# Reason - To save custom tailored details
+
+
 class CustomTailoredFormView(APIView):
-    def post(self,request,format=None):
-        serializer=CustomTailoredFormSerializer(data=request.data)
-        if(serializer.is_valid(raise_exception=True)):
+    def post(self, request, format=None):
+        serializer = CustomTailoredFormSerializer(data=request.data)
+        if (serializer.is_valid(raise_exception=True)):
             serializer.save()
-            return Response({'msg':'custom tailored details posted'},status=status.HTTP_200_OK)
-#End of code addition
+            return Response({'msg': 'custom tailored details posted'}, status=status.HTTP_200_OK)
+# End of code addition
 
-#Added by Ashish on 24-11-2022
-#Reason - To send whatsapp contact number to frontend
+# Added by Ashish on 24-11-2022
+# Reason - To send whatsapp contact number to frontend
+
+
 class WhatsappContactView(APIView):
-    def get(self,request):
+    def get(self, request):
         WhatsappContactDetail = WhatsappContact.objects.all().values()
         return Response(WhatsappContactDetail)
-#End of code addition
+# End of code addition
 
 
-#Added by Rohan kansari on 25-11-2022
-    #reason- To consist data for guest user
-    #jira issue -RBYR-208
+# Added by Rohan kansari on 25-11-2022
+    # reason- To consist data for guest user
+    # jira issue -RBYR-208
 class GeustCart(APIView):
-    def post(self,request):
+    def post(self, request):
         for data in request.data:
-            if(data['size']=="Short"):
-                pro=product_detail.objects.get(id=data['id'])
-                Cart.objects.create(product_no=pro,size=data['size'],quantity=data['quantity'],user_no=request.user).save()
-            elif(data['size']=="Medium"):
-                pro=product_detail.objects.get(id=data['id'])
-                Cart.objects.create(product_no=pro,size=data['size'],quantity=data['quantity'],user_no=request.user).save()
+            if (data['size'] == "Short"):
+                pro = product_detail.objects.get(id=data['id'])
+                Cart.objects.create(
+                    product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()
+            elif (data['size'] == "Medium"):
+                pro = product_detail.objects.get(id=data['id'])
+                Cart.objects.create(
+                    product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()
 
-            elif(data['size']=="Large"):
-                 pro=product_detail.objects.get(id=data['id'])
-                 Cart.objects.create(product_no=pro,size=data['size'],quantity=data['quantity'],user_no=request.user).save()
+            elif (data['size'] == "Large"):
+                pro = product_detail.objects.get(id=data['id'])
+                Cart.objects.create(
+                    product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()
 
-            elif(data['size']=="Extra Large"):
-                 pro=product_detail.objects.get(id=data['id'])
-                 Cart.objects.create(product_no=pro,size=data['size'],quantity=data['quantity'],user_no=request.user).save()
-            
-            elif(data['size']=="Extra Extra Large"):
-                 pro=product_detail.objects.get(id=data['id'])
-                 Cart.objects.create(product_no=pro,size=data['size'],quantity=data['quantity'],user_no=request.user).save() 
-        
+            elif (data['size'] == "Extra Large"):
+                pro = product_detail.objects.get(id=data['id'])
+                Cart.objects.create(
+                    product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()
+
+            elif (data['size'] == "Extra Extra Large"):
+                pro = product_detail.objects.get(id=data['id'])
+                Cart.objects.create(
+                    product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()
+
         return Response(request.data)
-    #end of code Addition
-    
-    
-    #Added By Rohan kansari
-    #reason- Pagination functionality where it give one by one page data in each call
-    #jira issue-RBYR233
+    # end of code Addition
+
+    # Added By Rohan kansari
+    # reason- Pagination functionality where it give one by one page data in each call
+    # jira issue-RBYR233
+
+
 class pageIndex(APIView):
-    def post(self,request):
+    def post(self, request):
         try:
-            products=[]
+            products = []
             print(request.data["category"])
-            if(request.data['category']=="view_all"):
-                products=product_detail.objects.filter(category="partywear")|product_detail.objects.filter(category="kurti")|product_detail.objects.filter(category="casual")|product_detail.objects.filter(category="wedding_wear")|product_detail.objects.filter(category="formal")
+            if (request.data['category'] == "view_all"):
+                products = product_detail.objects.filter(category="partywear") | product_detail.objects.filter(category="kurti") | product_detail.objects.filter(
+                    category="casual") | product_detail.objects.filter(category="wedding_wear") | product_detail.objects.filter(category="formal")
             else:
-                products=product_detail.objects.filter(category=request.data['category'])
-                
-            if(request.data['lth']  and request.data['availablity']):
-                products= products.order_by("price")
-            elif(request.data['htl']  and request.data['availablity']):
-                products=products.order_by("-price")  
-            elif(request.data['latest'] and request.data['availablity']):
-                products=products.filter(available=True).order_by('-date')
-            elif(request.data['htl']):
-                products=products.order_by("-price")
-            elif(request.data['lth']):   
-                products=products.order_by("price")
-            elif(request.data['latest']):   
-                products=products.order_by("-date")
-            elif(request.data['availablity']):   
-                products=products.filter(available=True)              
-            
+                products = product_detail.objects.filter(
+                    category=request.data['category'])
+
+            if (request.data['lth'] and request.data['availablity']):
+                products = products.filter(available=True).order_by("price")
+            elif (request.data['htl'] and request.data['availablity']):
+                products = products.filter(available=True).order_by("-price")
+            elif (request.data['latest'] and request.data['availablity']):
+                products = products.filter(available=True).order_by('-date')
+            elif (request.data['htl']):
+                products = products.order_by("-price")
+            elif (request.data['lth']):
+                products = products.order_by("price")
+            elif (request.data['latest']):
+                products = products.order_by("-date")
+            elif (request.data['availablity']):
+                products = products.filter(available=True)
+
             print(products.count())
 
-            colors=[]
+            colors = []
             for product in products:
                 if product.color in colors:
-                  print("exist")
-                else:    
-                 colors.append(product.color)
-               
+                    print("exist")
+                else:
+                    colors.append(product.color)
+
             from django.core.paginator import Paginator
-            p=Paginator(products,8)
-            
-            
-            pageno=request.data['pageIndex']
-            serialize=product_serializer(p.page(pageno).object_list,many=True)
-            return Response({"products":serialize.data,"colors":colors})
+            p = Paginator(products, 8)
+
+            pageno = request.data['pageIndex']
+            serialize = product_serializer(
+                p.page(pageno).object_list, many=True)
+            return Response({"products": serialize.data, "colors": colors})
         except:
-            return Response({"error":True})
-    #end of code Addition
+            return Response({"error": True})
+    # end of code Addition
 
 
-#Commented by Ashish on 04-12-2022 
-#Reason - Put these code in single method in template
+# Added By Rohan kansari
+# reason- Adding Currency saver
+# jira issue-RBYR233
+class Currency(APIView):
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+    
+    def get(self,request):
+        user = User.objects.get(id=request.user.id)
+        try:
+            serialize =CurrencySerializer(CurrencySelected.objects.get(user=user))
+            return Response(serialize.data)
+        except:
+            CurrencySelected.objects.create(
+                user=user,currency="INR", currency_sign="₹", currency_value="1.0").save()
+        return Response(request.data)
+
+    def post(self, request):
+        user = User.objects.get(id=request.user.id)
+
+        try:
+            currency = CurrencySelected.objects.get(user=user)
+            currency.currency=request.data['name']
+            currency.currency_sign = request.data['sign']
+            currency.currency_value = request.data['value']
+            currency.save()
+            print(currency.currency_sign)
+        except:
+            CurrencySelected.objects.create(
+                user=user,currency=request.data['currency'],currency_sign=request.data['sign'], currency_value=request.data['value']).save()
+        return Response(request.data)
+
+# end of code Addition
+
+# Commented by Ashish on 04-12-2022
+# Reason - Put these code in single method in template
 # #Added by Ashish on 01-12-2022
 # #Reason - To send todays orders to admin panel
 # class todaysOrdersView(APIView):
@@ -862,8 +988,8 @@ class pageIndex(APIView):
 #         if Transaction_history.objects.filter(date=today) is not None:
 #             serialize=transactionHistorySerialize(Transaction_history.objects.filter(date=today).order_by("-payment_status"),many=True)
 #         else:
-#             return Response({})    
-#         return Response(serialize.data) 
+#             return Response({})
+#         return Response(serialize.data)
 # #End of code addition
 
 # #Added by Ashish on 01-12-2022
@@ -882,7 +1008,7 @@ class pageIndex(APIView):
 #         data["totalPaidOrders"]=totalPaidOrders
 #         data["totalCancelledOrders"]=totalCancelledOrders
 #         data["totalRevenue"]=totalIncome["grand_total__sum"]
-#         return Response(data)    
+#         return Response(data)
 # #End of code addition
 
 # #Added by Ashish on 01-12-2022
@@ -893,7 +1019,7 @@ class pageIndex(APIView):
 #         weekDay=today.weekday()
 #         startOfTheWeek=today - timedelta(days=weekDay)
 #         serialize=transactionHistorySerialize(Transaction_history.objects.filter(date__gte=startOfTheWeek).order_by("-payment_status"),many=True)
-#         return Response(serialize.data) 
+#         return Response(serialize.data)
 # #End of code addition
 
 # #Added by Ashish on 01-12-2022
@@ -914,7 +1040,7 @@ class pageIndex(APIView):
 #         data["totalPaidOrders"]=totalPaidOrders
 #         data["totalCancelledOrders"]=totalCancelledOrders
 #         data["totalRevenue"]=totalIncome["grand_total__sum"]
-#         return Response(data)             
+#         return Response(data)
 # #End of code addition
 
 
@@ -926,7 +1052,7 @@ class pageIndex(APIView):
 #         dayOfMonth=today.day
 #         startOfTheMonth=today - timedelta(days=(dayOfMonth-1))
 #         serialize=transactionHistorySerialize(Transaction_history.objects.filter(date__gte=startOfTheMonth).order_by("-payment_status"),many=True)
-#         return Response(serialize.data)  
+#         return Response(serialize.data)
 # #End of code addition
 
 # #Added by Ashish on 01-12-2022
@@ -947,7 +1073,7 @@ class pageIndex(APIView):
 #         data["totalPaidOrders"]=totalPaidOrders
 #         data["totalCancelledOrders"]=totalCancelledOrders
 #         data["totalRevenue"]=totalIncome["grand_total__sum"]
-#         return Response(data) 
+#         return Response(data)
 # #End of code addition
 
 # #Added by Ashish on 01-12-2022
@@ -957,7 +1083,7 @@ class pageIndex(APIView):
 #         today = datetime.date.today()
 #         thisYear=today.year
 #         serialize=transactionHistorySerialize(Transaction_history.objects.filter(date__year=thisYear).order_by("-payment_status"),many=True)
-#         return Response(serialize.data)  
+#         return Response(serialize.data)
 # #End of code addition
 
 # #Added by Ashish on 01-12-2022
@@ -985,7 +1111,7 @@ class pageIndex(APIView):
 # class pendingOrdersView(APIView):
 #     def get(self,request):
 #         serialize=transactionHistorySerialize(Transaction_history.objects.filter(payment_status='pending'),many=True)
-#         return Response(serialize.data) 
+#         return Response(serialize.data)
 # #End of code addition
 
 # # # @authenticate
@@ -994,5 +1120,5 @@ class pageIndex(APIView):
 # #     return render(request,"what.html",{"name":"ddd"})
 # # def somePage(request):
 # #     from django.shortcuts import render
-# #     return render(request,"some.html")    
-#End of comment
+# #     return render(request,"some.html")
+# End of comment

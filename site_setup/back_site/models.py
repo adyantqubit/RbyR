@@ -833,3 +833,14 @@ class WhatsappContact(models.Model):
     #End of code addition
 #End of code addition
 
+
+
+#Added by Rohan on 7-12-2022
+#Reason - To save Currency 
+class CurrencySelected(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    currency=models.CharField(max_length=10)
+    currency_sign=models.CharField(max_length=5)
+    currency_value=models.FloatField()
+#End of code addition
+#End of code addition

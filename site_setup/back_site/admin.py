@@ -137,6 +137,13 @@ class CartAdmin(admin.ModelAdmin):
 # End of comment
 
 
+#Added by Rohan 7/12/22 
+# reason to save currency
+@admin.register(CurrencySelected)
+class CurrencySelectedAdmin(admin.ModelAdmin):
+    list_display=("user","currency","currency_value","currency_sign")
+#end of code
+
 # Commented and modified by Ashish Dewangan on 27-11-2022
 # Reason - To customize admin panel
 # admin.site.register(HomeCard_img)

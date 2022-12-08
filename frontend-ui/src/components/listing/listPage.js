@@ -15,6 +15,7 @@ import Slider from 'react-rangeslider'
  
 // To include the default styles
 import 'react-rangeslider/lib/index.css'
+import NavHeader from '../global/NavHeader'
 
 import FilterNew from './filterNew';
 import Sort from './sort';
@@ -23,7 +24,7 @@ import { nextIndexPage } from '../../api/orderApis';
 const ListPage = () => {
 
 
-  const {product,condition,like,setLike,reload,setReload,htl,lth,availablitySelect,latestSelect,cart,allColorAvai,tempallpro,settemAllpro,currency,setAllColorAvai,setCurrency,setCart,CategoryProduct,setCategoryProduct,sortui,setSortUi,filterui,setfilterUi}=CartState()
+  var {product,condition,like,setLike,reload,setReload,htl,lth,availablitySelect,latestSelect,cart,allColorAvai,tempallpro,settemAllpro,currency,setAllColorAvai,setCurrency,setCart,CategoryProduct,setCategoryProduct,sortui,setSortUi,filterui,setfilterUi}=CartState()
   const [saveLikeApi,{isLoading}]=useLikedUpdateMutation()
   const [cartsaveApi,{isLoad}]=useCartUpdateMutation()
   let {access_token}=getToken();
@@ -34,11 +35,11 @@ const ListPage = () => {
  const{category}=useParams()
  
 //  useEffect(()=>{
-//   console.log("page load first time__",CategoryProduct)
-//  PageLoad()
+//  setReload(true)
 //  },[])
 
  useEffect(()=>{
+  
   console.log("on reload change call___",reload,CategoryProduct)
     if(reload==false){
       PageLoad()
@@ -51,6 +52,7 @@ const ListPage = () => {
 //  Jira issue- RBYR229
 
 useEffect(()=>{
+  setReload(true)
   ApiReSet()
  },[category,htl,lth,availablitySelect,latestSelect])
 
@@ -66,40 +68,51 @@ useEffect(()=>{
 
 async function ApiReSet(){
   console.log("On category change call-----------",CategoryProduct,reload)
+  setPageIndex(0)
   setCategoryProduct([])
   settemAllpro([])
-  setPageIndex(1)
-  const data={
-    "pageIndex":1,
-    "category":category,
-    "lth":lth,
-    "htl":htl,
-    "latest":latestSelect,
-    "availablity":availablitySelect
-  }
+  
+  
+  console.log(pageIndex)
+  // const data={
+  //   "pageIndex":1,
+  //   "category":category,
+  //   "lth":lth,
+  //   "htl":htl,
+  //   "latest":latestSelect,
+  //   "availablity":availablitySelect
+  // }
 
-  await nextIndexPage(data).then(r=>{
-    console.log("response from backend_______",r)
-    setTimeout(() => { 
-      if(r.error){
-        setReload(false);
-        setLoading(false);
-      }
-      else{
-      console.log(CategoryProduct)  
-      setCategoryProduct([...r.products])
-      settemAllpro([...r.products])
-      setReload(true);
-      setAllColorAvai(r.colors)
-      }
+  // await nextIndexPage(data).then(r=>{
+  //   console.log("response from backend_______",r)
+  //   setTimeout(() => { 
+  //     if(r.error){
+  //       setReload(false);
+  //       setLoading(false);
+  //       console.log("api reset false statement")
+
+  //     }
+  //     else{
+  //     setCategoryProduct([...r.products])
      
-    }, 1000)
-  })
+
+  //     console.log("api reset true statement")
+  //     settemAllpro([...r.products])
+  //     setAllColorAvai(r.colors)
+    
+  //     setReload(true);
+
+  //     }
+     
+  //   }, 1000)
+  // })
 }
 
  const catApi=async()=>{
   await getCategoryProduct(category).then(r=>{setCategoryProduct([...r.category]);settemAllpro([...r.category]);console.log(r.category) })
  }
+
+
  
 //Commented By Rohan 
 //Reason - Garbage function no need to use like and cart functionality in list page
@@ -166,6 +179,8 @@ function openDetail(id){
 
 const lestref=useRef()
 var [loading,setLoading]=useState(false)
+var [oldscroll,setoldScroll]=useState(0)
+var [showOptions,setShowOptions]=useState(false)
 const handleScroll = (e) => {
   var listHeight=lestref.current.scrollHeight
   // console.log(`scrollHeight-${e.target.scrollHeight}, scrollTop-${e.target.scrollTop},client height-${e.target.clientHeight},footerHeight-${footerHeight}`)
@@ -176,7 +191,21 @@ const handleScroll = (e) => {
   if (bottom&&reload) { 
     setReload(false)
     setLoading(true)
+    console.log("inside scroll call")
   }
+
+  console.log("----------",e.target.scrollTop,oldscroll)
+
+  if(oldscroll<e.target.scrollTop){
+    setShowOptions(true)
+    setoldScroll(e.target.scrollTop)
+  }
+  else{
+    setShowOptions(false)
+    setoldScroll(e.target.scrollTop)
+  }
+  
+
   
 }
 
@@ -184,6 +213,7 @@ async function PageLoad(){
   pageIndex=pageIndex+1;
   setPageIndex(pageIndex)
   console.log(pageIndex)
+  console.log("page load hit")
 
 }
 
@@ -199,6 +229,8 @@ async function Apicall(){
 
   }
 
+  console.log("next page call",pageIndex)
+
   await nextIndexPage(data).then(r=>{
     console.log("response from backend_______",r)
     setTimeout(() => { 
@@ -207,6 +239,8 @@ async function Apicall(){
         setLoading(false);
       }
       else{
+        console.log(r.products.filter(r=> {console.log(CategoryProduct.findIndex(c=>{return c.id!=r.id}))})  )
+
       console.log(CategoryProduct)  
       setCategoryProduct([...CategoryProduct,...r.products])
       settemAllpro([...tempallpro,...r.products])
@@ -223,18 +257,37 @@ async function Apicall(){
 return (
 
   <>
-  
-  <div className={style.Container} onScroll={handleScroll}>
+ 
+ {/* {showOptions?<NavHeader/>:null} */}
+  <NavHeader/>
+  <div className={style.Container} 
+  // style={showOptions?{"top":"12vh"}:{"top":"0"}}
+  onScroll={handleScroll}>
     <div className={style.bottom}></div>
     <div className={style.bottom} >
         {CategoryProduct?
         <div style={{display:"flex",width:"100%",justifyContent:"space-between",flexWrap:"wrap"}}>
         <span className={style.TopContent} style={{paddingLeft:"5%"}}>{category.split("_").join(" ")}</span>
-        <span className={style.filter} style={{paddingRight:"40px",height:"100%",fontWeight:"600px",whiteSpace:"nowrap"}}>
-          <span style={{paddingRight:"15px",color:"grey",cursor:"pointer"}}  onClick={e=>setSortUi(true)}>Sort by</span><span style={{cursor:"pointer"}}onClick={e=>setfilterUi(true)}>Filter BY</span>
+        <span  className={`${style.filter} ${style.sortfilterres}`} style={{paddingRight:"40px",height:"100%",fontWeight:"600px",whiteSpace:"nowrap"}}>
+          <span  style={{paddingRight:"15px",color:"grey",cursor:"pointer"}}  onClick={e=>setSortUi(true)}>Sort by</span><span style={{cursor:"pointer"}} onClick={e=>setfilterUi(true)}>Filter BY</span>
         </span>
-        </div> :null}  
+        </div> 
+        :null}  
       </div>
+
+      {showOptions?<div className={style.filterContainres} style={{ zIndex: "0" }}>
+        <div className={style.filterInner}>
+          <div className={style.filterheader}>
+            <div className={style.filterHeaderInner} style={{margin:"10px 0"}}>
+              <button className={style.shopbtn1}
+                style={{background:"white"}}
+                onClick={e=>setSortUi(true)}>SORT</button>
+              <button className={style.shopbtn1}
+              onClick={e=>setfilterUi(true)}>FILTER</button>
+            </div>
+          </div>
+         </div>
+       </div> :null}
 
 
 <div className={style.slab} ref={lestref}>

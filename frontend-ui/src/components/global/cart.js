@@ -1,5 +1,5 @@
 import { Button, Drawer, notification } from 'antd';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { CartState } from '../../context';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import CartCard from './cartCard';
@@ -138,22 +138,25 @@ const nav=useNavigate();
    await UploadCartApi({data,access_token}).then(r=>console.log(r))
  }
 
- async function ApplyPromo(){
-  var promocode=document.getElementsByClassName('promoCode')[0].value
-  if(promocode.length>0)
-  await CouponCheck(promocode).then(r=>{
-    if(r.error){
-      setError(r)
-      
-    }  
-    else{
-    setOffer(r)
-    setError(null)
-    setCoupon(true)
-  }
-  })
+ const promos=useRef()
 
-}
+ async function ApplyPromo(){
+  
+    var promocode=promos.current.value
+    console.log(promocode)
+    await CouponCheck(promocode).then(r=>{
+      if(r.error){
+        setError(r)
+
+      }  
+      else{
+      setOffer(r)
+      setError(null)
+      setCoupon(true)
+    }
+    })
+
+  }
 
 async function GetTAXapi(){
   await TaxGet().then(r=>setTaxRate(r.tax_rate))
@@ -242,7 +245,7 @@ async function DefaultShipping(){
         </div>
 
         <div className={style.promo}>
-         {!ShowCoupon? <> <input className="promoCode" type="text" style={{width:"60%",padding:"10px",height:"30px",marginLeft:"15px",border:"1px solid #dfdbdb",outline:"#fff"}} placeholder="Have a promocode" onChange={e=>setError(null)}></input>
+         {!ShowCoupon? <> <input className="promoCode" id="prormos" type="text" style={{width:"60%",padding:"10px",height:"30px",marginLeft:"15px",border:"1px solid #dfdbdb",outline:"#fff"}} placeholder="Have a promocode" ref={promos} onChange={e=>setError(null)}></input>
           <button className={style.apply} onClick={ApplyPromo}>Apply</button>
           </>
          :<>
@@ -255,7 +258,7 @@ async function DefaultShipping(){
        </>
         }
         </div>
-
+        
         {error!=null?<Typography style={{marginTop:"-10px",color:"red",fontSize:"14px",marginLeft:"15px"}}>{error.error}</Typography>:null}
 
        {ShowCoupon?<div className={style.subTotal}>

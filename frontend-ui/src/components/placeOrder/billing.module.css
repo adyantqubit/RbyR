@@ -149,7 +149,8 @@
 
 .protitle{
     color:black;
-    max-width:40%;
+    min-width:40%;
+    max-width: 40%;
     height: 100%;
     display:flex;
     padding-left: 10px;

@@ -395,3 +395,8 @@ class CustomTailoredFormSerializer(serializers.ModelSerializer):
         model=CustomTailoredForm
         fields="__all__"
 #End of code addition        
+
+class CurrencySerializer(serializers.ModelSerializer):
+    class Meta:
+        model=CurrencySelected
+        fields="__all__"

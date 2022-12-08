@@ -166,6 +166,11 @@ urlpatterns = [
     #jira issue-RBYR233
     path("page_indexing/",pageIndex.as_view()),
     #end of code Addition
+    
+    #Added byr ROhan date-7/12/22
+    #Reason-Currency saving
+    path("currency_saver/",Currency.as_view()),
+    #end of code Addition
 
 
 # Commented by Ashish Dewangan on 04-12-2022

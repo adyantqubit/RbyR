@@ -24,6 +24,7 @@ import Converter from '../concepts/convertCurrency';
 import config from '../../api/config';
 import { getLogoAndCover, getWhatsappContactDetail } from "../../api/service";
 import ShrinkHeader from './shrinkHeader';
+import { CartState } from '../../context';
 
 
 const Navbar = () => {
@@ -33,7 +34,7 @@ const Navbar = () => {
   const{access_token,refresh_token}= getToken()
 
   const [logo, setLogo] = useState("https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg");
- 
+  const {setReload}=CartState()
 
 
 	const handleClick = () => {
