@@ -115,3 +115,71 @@ def getPendingOrders():
         singlePendingOrderDetails["userId"]=user.id
         AllPendingOrdersDetails.append(singlePendingOrderDetails)
     return AllPendingOrdersDetails 
+
+
+@register.simple_tag
+def getPieChartData():
+    today=datetime.date.today()
+    thisYear=today.year
+    weekDay=today.weekday()
+    startOfTheWeek=today - timedelta(days=weekDay)
+    dayOfMonth=today.day
+    startOfTheMonth=today - timedelta(days=(dayOfMonth-1))
+    data=dict()
+    summaryLabels=["Pending Orders","Completed Orders","Cancelled Orders"]
+    
+    totalPendingOrders = Transaction_history.objects.filter(date=today,payment_status='pending').count()
+    totalPaidOrders = Transaction_history.objects.filter(date=today,payment_status='paid').count()
+    totalCancelledOrders = Transaction_history.objects.filter(date=today,payment_status='cancel').count()
+    summaryScore=[]
+    summaryScore.append(totalPendingOrders)
+    summaryScore.append(totalPaidOrders)
+    summaryScore.append(totalCancelledOrders)
+    summaryData=dict()
+    summaryData["scores"]=summaryScore
+    summaryData["labels"]=summaryLabels
+    data["today"]=summaryData
+
+    totalPendingOrders = Transaction_history.objects.filter(date__gte=startOfTheWeek,payment_status='pending').count()
+    totalPaidOrders = Transaction_history.objects.filter(date__gte=startOfTheWeek,payment_status='paid').count()
+    totalCancelledOrders = Transaction_history.objects.filter(date__gte=startOfTheWeek,payment_status='cancel').count()
+    summaryScore=[]
+    summaryScore.append(totalPendingOrders)
+    summaryScore.append(totalPaidOrders)
+    summaryScore.append(totalCancelledOrders)
+    summaryData=dict()
+    summaryData["scores"]=summaryScore
+    summaryData["labels"]=summaryLabels
+    data["thisWeek"]=summaryData
+
+    totalPendingOrders = Transaction_history.objects.filter(date__gte=startOfTheMonth,payment_status='pending').count()
+    totalPaidOrders = Transaction_history.objects.filter(date__gte=startOfTheMonth,payment_status='paid').count()
+    totalCancelledOrders = Transaction_history.objects.filter(date__gte=startOfTheMonth,payment_status='cancel').count()
+    summaryScore=[]
+    summaryScore.append(totalPendingOrders)
+    summaryScore.append(totalPaidOrders)
+    summaryScore.append(totalCancelledOrders)
+    summaryData=dict()
+    summaryData["scores"]=summaryScore
+    summaryData["labels"]=summaryLabels
+    data["thisMonth"]=summaryData
+
+    totalPendingOrders = Transaction_history.objects.filter(date__year=thisYear,payment_status='pending').count()
+    totalPaidOrders = Transaction_history.objects.filter(date__year=thisYear,payment_status='paid').count()
+    totalCancelledOrders = Transaction_history.objects.filter(date__year=thisYear,payment_status='cancel').count()
+    summaryScore=[]
+    summaryScore.append(totalPendingOrders)
+    summaryScore.append(totalPaidOrders)
+    summaryScore.append(totalCancelledOrders)
+    summaryData=dict()
+    summaryData["scores"]=summaryScore
+    summaryData["labels"]=summaryLabels
+    data["thisYear"]=summaryData
+    return data
+
+# @register.simple_tag
+# def getThisYearsOrders():
+#     today = datetime.date.today()
+#     thisYear=today.year
+#     data=Transaction_history.objects.filter(date__year=thisYear).order_by("-payment_status")
+#     return data     

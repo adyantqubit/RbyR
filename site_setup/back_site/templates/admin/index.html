@@ -45,6 +45,73 @@ Reason - To show dashboard with revenue, todays orders and pending list -->
 </div>
 
 
+
+
+<div class="row">
+    <div class="col-12 col-sm-6 col-xl-3 mb-4 row-3">
+        <div class="card border-0 shadow">
+            <div class="card" style="padding-top:15px;padding-bottom:15px;">
+                <div class="row d-block d-xl-flex align-items-center">
+                    <div class=" d-sm-block">
+                        <div id="container" >
+                            <h6 style="text-align: center;">Today's Orders</h6>
+                            <canvas id="todaysChart" >
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-xl-3 mb-4 row-3">
+        <div class="card border-0 shadow">
+            <div class="card" style="padding-top:15px;padding-bottom:15px;">
+                <div class="row d-block d-xl-flex align-items-center">
+                    <div class=" d-sm-block">
+                        <div id="container" >
+                            <h6 style="text-align: center;">This Week's Orders</h6>
+                            <canvas id="thisWeeksChart">
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-xl-3 mb-4 row-3">
+        <div class="card border-0 shadow">
+            <div class="card" style="padding-top:15px;padding-bottom:15px;">
+                <div class="row d-block d-xl-flex align-items-center">
+                    <div class=" d-sm-block">
+                        <div id="container" >
+                            <h6 style="text-align: center;">This month's Orders</h6>
+                            <canvas id="thisMonthsChart">
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-xl-3 mb-4 row-3" >
+        <div class="card border-0 shadow" >
+            <div class="card" style="padding-top:15px;padding-bottom:15px;">
+                <div class="row d-block d-xl-flex align-items-center" >
+                    <div class="d-sm-block" >
+                        <div id="container" >
+                            <h6 style="text-align: center;">This Year's Orders</h6>
+                            <canvas id="thisYearsChart"  >
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <div class="row">
     <div class="col-12 mb-4">
         <div class="card border-0 shadow">
@@ -78,7 +145,6 @@ Reason - To show dashboard with revenue, todays orders and pending list -->
                         {% getTodaysOrders as todaysOrders %}
                         {% if todaysOrders %}
                         {% for todaysOrder in todaysOrders %}
-                        
                         <tr>
                             <td class="fw-bolder text-gray-500">
                                 <a href="back_site/transaction_history/{{todaysOrder.orderId}}/change/">{{ todaysOrder.orderData.order_no }}</a>
@@ -96,10 +162,11 @@ Reason - To show dashboard with revenue, todays orders and pending list -->
                                 {{ todaysOrder.orderData.date }}
                             </td>
                         </tr>
-                        
                         {% endfor %}
                         {% else %}
-                        <p>None available</p>
+                        <tr>
+                        <td>None available</td>
+                        </tr>
                         {% endif %}
                     </tbody>
                 </table>
@@ -162,7 +229,9 @@ Reason - To show dashboard with revenue, todays orders and pending list -->
                         
                         {% endfor %}
                         {% else %}
-                        <p>None available</p>
+                        <tr>
+                        <td>None available</td>
+                        </tr>
                         {% endif %}
                     </tbody>
                 </table>
@@ -172,4 +241,106 @@ Reason - To show dashboard with revenue, todays orders and pending list -->
 </div>
 
 
+
+
+{% block scripts %}
+{% getPieChartData as pieChartData %}
+{% with labels=pieChartData.thisYear.labels thisyearsScore=pieChartData.thisYear.scores todaysScores=pieChartData.today.scores thisWeeksScores=pieChartData.thisWeek.scores thisMonthsScores=pieChartData.thisMonth.scores %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    // jquery function
+    
+    $(document).ready(function(){
+        var todaysChartctx = document.getElementById('todaysChart').getContext('2d');
+        var todaysChart = new Chart(todaysChartctx, {
+            type: 'pie',
+            data: {
+                labels: [{% for label in labels %} "{{ label }}" , {% endfor %}],
+                datasets: [{
+                    label: 'This years order',
+                    data: [{% for score in todaysScores %} {{ score }} , {% endfor %} ],
+                    backgroundColor: [
+                        'rgba(235, 235, 121, 0.8)', 'rgba(73, 211, 73, 0.8)', 'rgba(227, 121, 121, 0.7)'
+                    ],
+                }],
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        var thisWeeksChartctx = document.getElementById('thisWeeksChart').getContext('2d');
+        var thisWeeksChart = new Chart(thisWeeksChartctx, {
+            type: 'pie',
+            data: {
+                labels: [{% for label in labels %} "{{ label }}" , {% endfor %}],
+                datasets: [{
+                    label: 'This years order',
+                    data: [{% for score in thisWeeksScores %} {{ score }} , {% endfor %} ],
+                    backgroundColor: [
+                        'rgba(235, 235, 121, 0.8)', 'rgba(73, 211, 73, 0.8)', 'rgba(227, 121, 121, 0.7)'
+                    ],
+                }],
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        var thisMonthsChartctx = document.getElementById('thisMonthsChart').getContext('2d');
+        var thisMonthsChart = new Chart(thisMonthsChartctx, {
+            type: 'pie',
+            data: {
+                labels: [{% for label in labels %} "{{ label }}" , {% endfor %}],
+                datasets: [{
+                    label: 'This years order',
+                    data: [{% for score in thisMonthsScores %} {{ score }} , {% endfor %} ],
+                    backgroundColor: [
+                        'rgba(235, 235, 121, 0.8)', 'rgba(73, 211, 73, 0.8)', 'rgba(227, 121, 121, 0.7)'
+                    ],
+                }],
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        var thisYearsChartctx = document.getElementById('thisYearsChart').getContext('2d');
+        var thisYearsChart = new Chart(thisYearsChartctx, {
+            type: 'pie',
+            data: {
+                labels: [{% for label in labels %} "{{ label }}" , {% endfor %}],
+                datasets: [{
+                    label: 'This years order',
+                    data: [{% for score in thisyearsScore %} {{ score }} , {% endfor %} ],
+                    backgroundColor: [
+                        'rgba(235, 235, 121, 0.8)', 'rgba(73, 211, 73, 0.8)', 'rgba(227, 121, 121, 0.7)'
+                    ],
+                }],
+            },
+            options: {
+                responsive: true
+            }
+        });
+        // $("#thisYearsChart").click(
+        //     function(evt){
+        //         var activePoints = thisYearsChart.getElementsAtEvent(evt);
+        //         if(thisYearsChart.data.labels[activePoints[0]["_index"]]=="Cancelled Orders" ){
+        //             alert("Cancelled "+ thisYearsChart.data.datasets[0].data[activePoints[0]["_index"]])
+        //         }
+        //         if(thisYearsChart.data.labels[activePoints[0]["_index"]]=="Completed Orders"){
+        //             alert("Completed "+ thisYearsChart.data.datasets[0].data[activePoints[0]["_index"]])
+        //         }
+        //         if(thisYearsChart.data.labels[activePoints[0]["_index"]]=="Pending Orders" ){
+        //             alert("Pending "+ thisYearsChart.data.datasets[0].data[activePoints[0]["_index"]])
+        //         }
+        //     }
+        // );
+    });
+
+    
+    </script>
+{% endwith %}
+{% endblock scripts %}
 {% endblock %}
