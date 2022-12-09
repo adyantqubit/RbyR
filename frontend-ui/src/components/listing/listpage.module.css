@@ -1,6 +1,7 @@
 .Container{
-  position: relative;
-  top: 23vh;
+  /* position: relative;
+  top: 23vh; */
+  padding-top:23vh;
   max-height: 100vh;
   overflow: scroll;
 }
@@ -100,9 +101,9 @@
 
  @media (max-width: 768px) {
   .Container{
-    position: relative;
-    top: 8vh
-    
+    /* position: relative;
+    top: 8vh */
+    padding-top:12vh
   }
  }
 
@@ -476,9 +477,8 @@
     top:12vh;
   }
   .Container{
-    position: relative;
-    top: 12vh;
-    max-height: 90vh;
+   
+    max-height: 100vh;
     overflow: scroll;
   }
   .filterbottomMainInner{

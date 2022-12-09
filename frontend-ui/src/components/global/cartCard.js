@@ -223,7 +223,7 @@ const increament= async (CartProduct)=>{
   const nav=useNavigate()
   function openDetail(id){
     nav(`/listing/${id.category}/detail/${id.id}`)
-    window.location.reload(false)
+    // window.location.reload(false)
   }
 
 
@@ -247,7 +247,7 @@ const increament= async (CartProduct)=>{
              <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}> 
                 <h3 className={styles.heading}>{pro.title}</h3>
                 {/* <span className={styles.delete} style={{fontSize:"32px",alignSelf:"start"}} onClick={e=>cartSave(pro)}>x</span> */}
-                <Popconfirm placement="bottomLeft" title={text} onConfirm={e=>confirm(pro)} okText="OK" cancelText="Cancle">
+                <Popconfirm placement="bottomLeft" title={text} onConfirm={e=>confirm(pro)} okText="OK" cancelText="Cancel">
                  <span className={styles.delete} style={{fontSize:"28px",alignSelf:"start"}} >x</span>
                 </Popconfirm>
              </div>

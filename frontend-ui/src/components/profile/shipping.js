@@ -28,6 +28,10 @@ const [value, setValue] = useState("India")
 const [value2, setValue2] = useState("India")
 
 
+useEffect(()=>{
+    window.scrollTo(0,0)
+},[])
+
 const changeHandler = value => {
   setValue(value.target.value)
 }
@@ -235,11 +239,13 @@ const handleButtonClicknum = (msg) => {
     }
   }
 
+
+    
     
   return (
-    <>
+    <div className={style.scrolling} >
     <Navbar/>
-    <div className={style.Container}>
+    <div className={style.Container} >
         <div className={style.centerContainer}>
           <div className={style.containerHeader}><Link to="/"  className={style.containerHeader}>Homepage</Link>/ My Account</div>
           <div className={style.main}>
@@ -400,10 +406,16 @@ const handleButtonClicknum = (msg) => {
             </div>
           </div>
         </div>
-      
+        
     </div>
+
+    <div className={style.foot}>
+
     <Footer/>
-    </>
+
+    </div>
+
+    </div>
   )
 }
 

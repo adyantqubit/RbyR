@@ -18,7 +18,7 @@ const Slider = ({scrollTop}) => {
   },[])
   function func(){
     var storage=JSON.parse(localStorage.getItem("recentview"))
-    if(storage.length>1){
+    if(storage&&storage.length>1){
       for(var i=0;i<storage.length;i++){
         if(i>0)
           recentlyViews.push(storage[i])
@@ -50,7 +50,7 @@ const Slider = ({scrollTop}) => {
 
   const nav = useNavigate();
   function openDetail(id) {
-    console.log(window)
+    // console.log(window)
     window.scrollTo({
       top: 0, 
       behavior: 'smooth'

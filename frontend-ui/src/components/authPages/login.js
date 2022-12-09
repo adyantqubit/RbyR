@@ -231,7 +231,7 @@ const Login = () => {
 					
 					{server_error.password?<Typography style={{color:"red",fontSize:"14px",marginLeft:"15%"}}>{server_error.password[0]}</Typography>:" "}
 
-					{server_error.tc?<span style={{color:"red",fontSize:"14px",marginLeft:"15%"}}>Check term and condition</span>:" "}
+					{server_error.tc?<span style={{color:"red",fontSize:"14px",marginLeft:"15%"}}>Please accept terms and conditions</span>:" "}
 
 
 					{/* {server_error.password2?<Typography style={{color:"red",paddingLeft:10,fontSize:10,position:"absolute",top:"310px",left:"150px",right:"0",fontSize:"0.8rem"}}>{server_error.password2[0]}</Typography>:" "} */}
@@ -243,7 +243,7 @@ const Login = () => {
 						position="top center">
 						{server_error.tc?<span style={{color:"red",fontSize:"0.8rem"}}>check term and condition</span>:" "}
 					</Popup>:null} */}
-						<Link to="/terms" style={{fontSize:"12px",color:"white",letterSpacing:"1.2px"}}> I agree to term and condition.</Link>   
+						<Link to="/terms" style={{fontSize:"12px",color:"white",letterSpacing:"1.2px"}}> I agree to terms and conditions.</Link>   
 					</span>} />
 
 					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button style={{paddingTop:"0",marginTop:"0"}} class="butto" type='submit'>Sign up</button>}

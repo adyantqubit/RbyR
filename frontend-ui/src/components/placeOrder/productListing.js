@@ -23,6 +23,8 @@ const ProductListing = () => {
    }
    else
    nav("/cart")
+
+
   },[])
 
   

@@ -3,7 +3,9 @@ const menus=[
     {"name":"Casual","link":"/Listing/casual"},
     {"name":"Kurti","link":"/Listing/kurti"},
     {"name":"Formal","link":"/Listing/formal"},
-    {"name":"Wedding Wear","link":"/Listing/wedding_wear"}
+    {"name":"Wedding Wear","link":"/Listing/wedding_wear"},
+    {"name":"View All","link":"/listing/view_all"}
+
 ]
 
 const profile=[

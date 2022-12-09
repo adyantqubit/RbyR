@@ -52,6 +52,8 @@ const CartSItem = (props) => {
 useEffect(()=>{
 GetTAXapi()
 ruleText()
+
+// document.getElementById("scrolled").scrollTop=0
 },[])
 
 async function ruleText(){
@@ -216,7 +218,7 @@ const increament=async (CartProduct)=>{
   const nav=useNavigate()
   function openDetail(id){
     nav(`/listing/${id.category}/detail/${id.id}`)
-    window.location.reload(false)
+    // window.location.reload(false)
   }
 
 
@@ -289,6 +291,7 @@ const increament=async (CartProduct)=>{
       checkoutDetails['CouponDiscount']=afterColumnTotalOfferAdd(offer,cart,taxRate).coupon
       DefaultShipping()
       nav("/placeorder")
+
     }
     })
 
@@ -320,7 +323,8 @@ const increament=async (CartProduct)=>{
 
    
   function validateWhitespace(evt,id)
-  {var theEvent = evt || window.event;
+  {
+    var theEvent = evt || window.event;
     var key=0
     // Handle paste
     if (theEvent.type === 'paste') {
@@ -341,21 +345,23 @@ const increament=async (CartProduct)=>{
     }
   }
 
+  
+
   return (
     <> 
     <Navbar/>
- <div className={styles.container}>
+ <div className={styles.container} >
     <div className={styles.main}>
    
     <div className={styles.heading}>
     SHOPPING CART
     </div>
-  {cart.length>0?cart.map(pro=>{
+    {cart.length>0?cart.map(pro=>{
 
-   var result=0
-   if (cartEnd.length>0)
-    result=cartEnd.find(i=>i.id==pro.id)
-  
+      var result=0
+      if (cartEnd.length>0)
+        result=cartEnd.find(i=>i.id==pro.id)
+      
    
     return (
       <div>
@@ -458,9 +464,9 @@ const increament=async (CartProduct)=>{
  
 
 
-  }):<div style={{fontSize:"20px",color:"#7c7c7c",height:"100%",display:"flex",justifyContent:"center"}}><span>Your Bag Is Empty</span></div>}   
+   }):<div style={{fontSize:"20px",color:"#7c7c7c",height:"100%",display:"flex",justifyContent:"center"}}><span>Your Bag Is Empty</span></div>}   
 
-{cart.length>0?
+    {cart.length>0?
     <div className={style.footerCon} style={{width:"100%",background:"white"}}>
       {/* <span>Total:</span><span>{getTotalPrice()}</span><span>Qty:</span><span>{getTotalQuantity()}</span><button onClick={BuyAll}>Buy ALl</button> */}
       <div className={style.inner} >
@@ -516,7 +522,7 @@ const increament=async (CartProduct)=>{
       </div>
     </div>:null}
 
-{ImportantRules!=null?
+   {ImportantRules!=null?
     <div style={{height:"300px",width:"100%",marginLeft:"15px"}}>
       <h6 style={{fontSize:"14px",lineHeight: "22px",letterSpacing: "1.2px",marginLeft:"15px"}}>IMPORTANTS</h6>
       <ul style={{  listStyleType: "disc",listStylePosition:"outside"}}>
@@ -553,7 +559,7 @@ const increament=async (CartProduct)=>{
     <Footer/>
     <Below/>
     </div>
-    </div>
+  </div>
     </>
   )
 }

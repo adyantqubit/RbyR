@@ -16,15 +16,24 @@
 .container {
     width: 100%;
     display: flex;
-    overflow: auto;
-    position: relative;
-    top:23vh;
+   
+    /* position: relative;
+    top:23vh; */
+    padding-top:23vh;
+    max-height: 100vh;
+    overflow: scroll;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 180px;
     background-color: #fcfcfc;
     
   }
+
+  .container::-webkit-scrollbar{
+  display:none;
+  }
+
+
+
   .container01 {
     width: 100%;
     height: auto;
@@ -582,10 +591,9 @@
     .container {
         width: 100%;
         display: flex;
-        overflow: auto;
-        position: relative;
         margin-bottom:50px;
-        top:12vh;}
+        padding-top:12vh;
+      }
 
     
 

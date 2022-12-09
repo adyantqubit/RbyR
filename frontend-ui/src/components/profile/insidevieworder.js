@@ -192,11 +192,12 @@ const InsideOrder = () => {
     sessionStorage.setItem('checkoutDetails', JSON.stringify(checkoutDetails))
   }, [allData])
 
+      
 
   return (
-    <>
+    <div className={style.scrolling} >
       <Navbar />
-      <div className={style.Container} >
+      <div className={style.Container}>
         <div className={style.centerContainer}>
           <div className={style.containerHeader}><Link to="/" className={style.containerHeader}>Homepage</Link> / My Account</div>
           <div className={style.main}>
@@ -348,8 +349,10 @@ const InsideOrder = () => {
         </div>
 
       </div>
+      <div className={style.foot}>
       <Footer />
-    </>
+      </div>
+    </div>
 
   )
 }

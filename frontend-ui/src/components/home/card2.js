@@ -26,7 +26,7 @@ const CArd2 = () => {
             > */}
               {/* <div className={style.text}>{iamges.category_top3}</div> */}
               <div className={style.text}><a className={style.linkText}  href={`listing/${iamges.category_top3}`}>{iamges.category_top3}</a></div>
-              <a href={`listing/${iamges.category_top3}`}>
+              <Link to={`listing/${iamges.category_top3}`}>
                 {/* <div> */}
                   <img
                     alt=""
@@ -35,7 +35,7 @@ const CArd2 = () => {
                   />
                 {/* </div> */}
 
-              </a>
+              </Link>
 
             {/* </div> */}
           </li>
@@ -48,7 +48,7 @@ const CArd2 = () => {
               > */}
               {/* <div className={style.text}>{iamges.category_top4}</div> */}
               <div className={style.text}><a className={style.linkText}  href={`listing/${iamges.category_top4}`}>{iamges.category_top4}</a></div>
-                <a href={`listing/${iamges.category_top4}`}>
+                <Link to={`listing/${iamges.category_top4}`}>
                   {/* <div> */}
                     <img
                       alt=""
@@ -57,7 +57,7 @@ const CArd2 = () => {
                     />
                   {/* </div> */}
 
-                </a>
+                </Link>
 
               {/* </div> */}
             {/* </div> */}

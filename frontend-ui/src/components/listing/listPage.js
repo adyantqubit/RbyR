@@ -34,9 +34,9 @@ const ListPage = () => {
 
  const{category}=useParams()
  
-//  useEffect(()=>{
-//  setReload(true)
-//  },[])
+ useEffect(()=>{
+ window.scrollTo(0,0)
+ },[])
 
  useEffect(()=>{
   
@@ -45,6 +45,9 @@ const ListPage = () => {
       PageLoad()
       Apicall()
     }
+
+
+
  },[reload])
 
 //  Commented by Rohan
@@ -54,6 +57,8 @@ const ListPage = () => {
 useEffect(()=>{
   setReload(true)
   ApiReSet()
+  document.getElementById('scrolled').scrollTop=0
+
  },[category,htl,lth,availablitySelect,latestSelect])
 
 //  useEffect(()=>{
@@ -177,12 +182,12 @@ function openDetail(id){
 
 
 
-const lestref=useRef()
+const lastref=useRef()
 var [loading,setLoading]=useState(false)
 var [oldscroll,setoldScroll]=useState(0)
 var [showOptions,setShowOptions]=useState(false)
 const handleScroll = (e) => {
-  var listHeight=lestref.current.scrollHeight
+  var listHeight=lastref.current.scrollHeight
   // console.log(`scrollHeight-${e.target.scrollHeight}, scrollTop-${e.target.scrollTop},client height-${e.target.clientHeight},footerHeight-${footerHeight}`)
   //     const bottom = e.target.scrollHeight-e.target.clientHeight-footerHeight <e.target.scrollTop &&  e.target.scrollHeight-e.target.clientHeight-footerHeight+300>e.target.scrollTop;
     
@@ -261,6 +266,7 @@ return (
  {/* {showOptions?<NavHeader/>:null} */}
   <NavHeader/>
   <div className={style.Container} 
+  id="scrolled"
   // style={showOptions?{"top":"12vh"}:{"top":"0"}}
   onScroll={handleScroll}>
     <div className={style.bottom}></div>
@@ -290,7 +296,7 @@ return (
        </div> :null}
 
 
-<div className={style.slab} ref={lestref}>
+<div className={style.slab} ref={lastref}>
 
 {CategoryProduct?CategoryProduct.map((p,i)=>(
 

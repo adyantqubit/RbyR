@@ -32,6 +32,8 @@ const Billing = () => {
       checkoutDetails=JSON.parse(sessionStorage.getItem('checkoutDetails'))
       setCheckoutDetails(checkoutDetails)
       console.log(JSON.parse(sessionStorage.getItem('checkoutDetails')))
+
+      window.scrollTo(0,0)
     }, []);
   
     const getStoreLocator = async () => {
@@ -90,12 +92,13 @@ const Billing = () => {
         })
        }
 
-    
 
+
+  
   return (
     < >
     <Navbar/>
-    <div className={styles.container} >
+    <div className={styles.container} id="scrolled" >
      <div className={styles.main}>
         {checkoutDetails.payment=="onlinepay"?
           onlineDetail!=null?
@@ -119,6 +122,7 @@ const Billing = () => {
     <ReactToPrint
         trigger={() =><div style={{width:"100%",display:"flex",justifyContent:"center",background:"#f2f2f2"}}> <button className={style.shopbtn1} style={{width:"50%"}} onClick={e=>nav('/')}>Print this out</button> </div>}     
         content={() => componentRef.current}
+        
       />
 
     <div className={styles.main}  >
@@ -177,8 +181,8 @@ const Billing = () => {
                      <span className={styles.protitle} > {c.title} ({c.size})</span>
                      <span className={`${styles.protitle2} ${styles.show}`} > {c.quantity}</span>
                      <span className={`${styles.protitle2} ${styles.show2}`} > {c.quantity}</span>
-                     <span className={styles.protitle2} >{checkoutDetails.currency_sign} {(c.price*checkoutDetails.currency_value).toFixed(2)}</span>
-                     <span className={styles.protitle2} style={{borderRight:"1px solid white",wordBreak:"normal"}}> {checkoutDetails.currency_sign}{(c.price*c.quantity*checkoutDetails.currency_value).toFixed(2)}</span>
+                     <span className={styles.protitle2} >{checkoutDetails.currency_sign}{(c.price*checkoutDetails.currency_value).toFixed(2)}</span>
+                     <span className={styles.protitle2} style={{borderRight:"1px solid white",paddingLeft:"5px"}}> {checkoutDetails.currency_sign} {(c.price*c.quantity*checkoutDetails.currency_value).toFixed(2)}</span>
                   </div>
                     )}
                
@@ -189,24 +193,24 @@ const Billing = () => {
 
                 <div className={styles.billingtexts}>
                    <span className={`${styles.columnitem1head}`}  >Discount -</span>
-                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black"}} >- {checkoutDetails.currency_sign} {checkoutDetails.CouponDiscount?checkoutDetails.CouponDiscount:(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).coupon *checkoutDetails.currency_value).toFixed(2)}</span>
+                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black",width:"auto"}} >- {checkoutDetails.currency_sign} {checkoutDetails.CouponDiscount?checkoutDetails.CouponDiscount:(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).coupon *checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
                 <div className={styles.billingtexts}>
                    <span className={`${styles.columnitem1head}`}  >Shipping charges -</span>
-                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black"}} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).shipping *checkoutDetails.currency_value).toFixed(2)}</span>
+                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black",width:"auto"}} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).shipping *checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
                 <div className={styles.billingtexts}>
                    <span className={`${styles.columnitem1head}`}  >GST Charges -</span>
-                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black",whiteSpace:"nowrap"}} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).tax *checkoutDetails.currency_value).toFixed(2)}</span>
+                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black",whiteSpace:"nowrap",width:"auto"}} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).tax *checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
                 <div className={styles.billingtexts}>
                    <span className={`${styles.columnitem1head}`}  style={{color:"black",borderBottom:"1px solid black"}}></span>
-                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black",borderBottom:"1px solid black"}} ></span>
+                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black",borderBottom:"1px solid black",width:"50%"}} ></span>
                 </div>
                
                    <div className={styles.billingtexts}>
                       <span className={`${styles.columnitem1head}`}  >Grand Total - </span>
-                      <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black",whiteSpace:"nowrap"}} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).Grand *checkoutDetails.currency_value).toFixed(2)}</span>
+                      <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black",whiteSpace:"nowrap",width:"auto"}} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).Grand *checkoutDetails.currency_value).toFixed(2)}</span>
                    </div>
                 
                 <div className={styles.billingheader} style={{height:"30px"}}>

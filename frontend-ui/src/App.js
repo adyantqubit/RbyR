@@ -29,6 +29,7 @@ import CancellationPolicy from './components/footer pages/CancellationPolicy';
 import StoreLocator from './components/footer pages/StoreLocator';
 import FAQ from './components/footer pages/FAQ';
 import Bridal from './components/footer pages/bridal';
+import { height } from '@mui/system';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
      access_token=localStorage.getItem("access_token")
 
   },[localStorage.getItem("access_token")])
+
   
   return (
     <>
@@ -48,7 +50,7 @@ function App() {
     <Route path="/changePass" element={access_token?<ChngPass/>:<Navigate to="/login"/>}/>
     <Route path="/logout" element={access_token?"":<Navigate to="/login"/>} />
     <Route path="/sendemail" element={!access_token?<SentEmail/>:<Navigate to="/"/>}/>
-    <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
+    <Route path="/reset-password/:id/:token" element={<ResetPassword  />} />
     <Route path="/like" element={<Liked/>} />
     <Route path='/listing/:category/detail/:id' element={<Details/>} />
 
@@ -61,7 +63,7 @@ function App() {
     <Route path='/cart' element={<CartSItem/>} />
  
 
-    <Route path='/placeorder' element={<Orderpage/>}/>
+    <Route path='/placeorder' element={<Orderpage />}/>
     <Route path='/billing' element={<Billing/>}/>
     <Route path='/shippindprofile' element={<ShippingProfile/>}/>
     <Route path='/userprofile' element={<UserProfile/>}/>

@@ -40,6 +40,11 @@ const UserProfile = () => {
   const [showNewPass3,setNewPass3]=useState(false)
 	const [visiblepassReg3,setVisiblePassreg3]=useState(false)
 
+
+  useEffect(()=>{
+window.scrollTo(0,0)
+  },[])
+
   const handleSubmit = async(event,userData) => {
 	  event.preventDefault();
 	  const data = new FormData(event.currentTarget);
@@ -136,8 +141,11 @@ if (data.get('oldpswd')!=null){
     })
  }
 
+
+  
+
   return (
-    <>
+    <div className={style.scrolling} >
     <Navbar/>
     <div className={style.Container} >
         <div className={style.centerContainer}>
@@ -287,8 +295,12 @@ if (data.get('oldpswd')!=null){
         </div>
       
     </div>
+
+    <div className={style.foot}>
     <Footer/>
-    </>
+    </div>
+
+    </div>
   )
 }
 

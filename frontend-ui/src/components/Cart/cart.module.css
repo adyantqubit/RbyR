@@ -48,8 +48,9 @@
 
 
   .container{
-    position:relative;
-    top:23vh;
+    /* position:relative;
+    top:23vh; */
+    padding-top:23vh;
     width:100%;
     background:white;
     display:flex;
@@ -142,7 +143,7 @@ body {background: #333}
 @media (max-width: 768px) {
 
   .container{
-    top:12vh;
+    padding-top:12vh;
   }
 
   .foot{

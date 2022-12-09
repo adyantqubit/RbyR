@@ -49,9 +49,15 @@
 }
 
 .responsive{
-    position:relative;
-    top:23vh;
+    /* position:relative; */
+    padding-top:23vh;
+    max-height: 100vh;
+    overflow: scroll;
     
+}
+
+.responsive::-webkit-scrollbar{
+display:none;
 }
 
 
@@ -298,15 +304,17 @@ letter-spacing: 1.2px;
 }
 
 @media (max-width: 768px) {
+    .userInfoButton{
+        min-width: 100%;
+    }
     .foot{
        margin-top:-12vh;
     }
     .responsive{
-        position:relative;
-        top:12vh;
+        /* position:relative; */
+        padding-top:12vh;
     }
     
-
     .row {
         display:flex;
         flex-direction: column;

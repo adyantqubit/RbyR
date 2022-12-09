@@ -159,12 +159,13 @@ getWhatsappContactNumber()
           <div className={style.drawerMenu} >
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e=>{
                 if(localStorage.getItem("access_token")){
-                    setMenu(profile)
+                    setMenu(profile);
                     toggleDrawer2()
-                    toggleDrawer()
                 }
-                else
+                else{
                 nav("/login")
+                toggleDrawer()
+              }
             }}>
                <span> My Account</span><AiOutlineRight />
             </div>
@@ -192,12 +193,12 @@ getWhatsappContactNumber()
 
           {menu.map(m=>     <>     
            
-            <Link to={m.link} className={style.drawerMenu} onClick={e => { toggleDrawer(); toggleDrawer2() }} >
+            <Link to={m.link} className={style.drawerMenu} >
               {m.name=="Logout"?
-             <div style={{ justifyContent: "space-between", width: "100%", display: "flex"}} onClick={e=>seLogoutAction(true)}>
+             <div style={{ justifyContent: "space-between", width: "100%", display: "flex"}} onClick={e=>{seLogoutAction(true);}}>
               <span>{m.name}</span> <AiOutlineRight />
               </div>
-              :<div style={{ justifyContent: "space-between", width: "100%", display: "flex"}}  >
+              :<div style={{ justifyContent: "space-between", width: "100%", display: "flex"}}  onClick={e => { toggleDrawer(); toggleDrawer2() }} >
                 <span>{m.name}</span> <AiOutlineRight />
               </div>}
               

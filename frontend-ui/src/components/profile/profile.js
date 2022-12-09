@@ -19,6 +19,7 @@ const MyOrders = () => {
      useEffect(() => {
       orderget()
       tranget()
+      window.scrollTo(0,0)
      }, [])
      
 
@@ -61,8 +62,12 @@ const MyOrders = () => {
         }
 
 
+        
+
+
+
   return (
-    <>
+    <div className={style.scrolling} >
     <Navbar/>
     <div className={style.Container} >
         <div className={style.centerContainer}>
@@ -119,9 +124,16 @@ const MyOrders = () => {
           </div>
         </div>
       
+
     </div>
+
+    <div className={style.foot}>
+
     <Footer/>
-    </>
+
+    </div>
+
+    </div>
   )
 }
 

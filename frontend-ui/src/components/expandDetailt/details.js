@@ -93,6 +93,14 @@ const Details = (props) => {
   const { category } = useParams();
 
   const catApi = async () => {
+    if(category=="view_all")
+    await getCategoryProduct("partywear").then((r) => {
+      setCategoryProduct([...r.category]);
+      settemAllpro([...r.category]);
+      console.log(r.category);
+    });
+
+    else
     await getCategoryProduct(category).then((r) => {
       setCategoryProduct([...r.category]);
       settemAllpro([...r.category]);
@@ -121,6 +129,9 @@ const Details = (props) => {
       recents.push(details);
       localStorage.setItem("recentview", JSON.stringify(recents));
     }
+
+   window.scrollTo(0,0)
+
   }, [details]);
 
   async function gettingDetail() {
@@ -348,19 +359,23 @@ const Details = (props) => {
   // End of code addition
   const scroller = useRef()
   function scrolling(e) {
+    console.log()
     scroller.current.scrollTop = 0
   }
+
+ 
+
+
 
 
   return (
 
-    <div style={{ maxHeight: "150vh", overflow: "scroll" }} ref={scroller}>
-
+    <div style={{ maxHeight: "150vh", overflow: "scroll" }} id="scrolling"  >
 
       <Navbar />
 
       {details ? (
-        <div id="scrolling" className={styles["container"]} >
+        <div  className={styles["container"]} ref={scroller}>
           <div className={styles["container01"]} >
             <div className={styles["container02"]} >
               <div className={styles["image"]}>
@@ -369,6 +384,7 @@ const Details = (props) => {
                   zoomSrc={config.apiBaseURL + details.img_main}
                 />
               </div>
+              {/* {scroller.current.scrollTop?:null} */}
 
               <div className={styles["container03"]}>
                 <div className={styles["container04"]}>
