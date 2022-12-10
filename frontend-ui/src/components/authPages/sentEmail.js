@@ -44,7 +44,7 @@ const SentEmail = () => {
 					<label class="labe" aria-hidden="true" style={{fontSize:"1.6rem"}}>Change Password</label>
 					{error.non_field_errors? <Alert severity="error" style={{margin:"0 60px"}}>{error.non_field_errors[0]}</Alert> : ""}
                     {msg.msg ? <Alert severity="success" style={{margin:"0 60px"}}>Sent Successfully,Please Check your 
-                    <a href="https://mail.google.com/" style={{fontSize:"16px",textDecoration:"underline",color:"blue"}}>Mail</a>
+                    <a href="https://mail.google.com/" style={{fontSize:"16px",textDecoration:"underline",color:"blue"}}> Mail</a>
                     </Alert> : ""}
 					
 					<input style={{marginBottom:"0"}} class="inpu" type="email" name="email" placeholder=" Registered Email" required=""/>

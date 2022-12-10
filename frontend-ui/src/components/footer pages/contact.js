@@ -52,7 +52,7 @@ const Contact = () => {
                     </span>
                   </div>
                   <div className={`${style.column} ${style.col2}`}>
-                    <img style={{height:"60vh"}} src={config.apiBaseURL+contact.contactUsImage}></img>
+                    <img  src={config.apiBaseURL+contact.contactUsImage}></img>
                   </div>
                 </div>
               );

@@ -2,12 +2,35 @@
 /* // Created by Ashish on 06-11-2022
 // Reason - To have FAQ functionality */
 .faqContainer{
-    position: relative;
-    top:23vh;
+    /* position: relative;
+    top:23vh; */
     height: auto;
     width:100%;
     background:#323232;
-    padding-top: 100px;
+    padding-top: 27vh;
+    max-height: 100vh;
+    overflow-y: scroll;
+}
+
+
+.faqContainer::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.faqContainer::-webkit-scrollbar
+{
+	width: 5px;
+	background-color: #F5F5F5;
+}
+
+.faqContainer::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
 }
 
 .row{
@@ -50,7 +73,7 @@
 
 @media screen and (max-width:768px) {
     .faqContainer{
-        top:15vh;
+        padding-top:15vh;
     }
     .row{
         flex-direction: column;

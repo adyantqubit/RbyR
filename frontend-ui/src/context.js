@@ -71,6 +71,7 @@ const Context = ({ children }) => {
   //product updation
   useEffect(() => {
     firstTimeLoadFunctions()
+    
   }, [])
 
   function firstTimeLoadFunctions() {

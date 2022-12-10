@@ -86,6 +86,10 @@
 
 }
 
+.span:hover{
+    text-decoration: underline;
+}
+
 .icon{
     margin-top: 15px;
     width:100%;

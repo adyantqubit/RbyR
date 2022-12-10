@@ -9,6 +9,7 @@ const RefundPolicy = () => {
   const [refundPolicies, setRefundPolicies] = useState([]);
   useEffect(() => {
     getRefundPolicies();
+    window.scrollTo(0,0)
   }, []);
 
   const getRefundPolicies = async () => {

@@ -10,6 +10,7 @@ const StoreLocator = () => {
   const [storeLocatorDetails, setStoreLocator] = useState([]);
   useEffect(() => {
     getStoreLocator();
+    window.scrollTo(0,0)
   }, []);
 
   const getStoreLocator = async () => {

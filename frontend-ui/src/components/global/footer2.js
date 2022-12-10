@@ -12,6 +12,7 @@ import {
 import { useEffect, useState } from "react";
 import { notification } from "antd";
 import {IoChevronForwardOutline} from "react-icons/io5";
+import config from "../../api/config";
 
 function Footer2() {
   const [socialLinks, setSocialLinks] = useState([]);
@@ -118,7 +119,7 @@ function Footer2() {
 
               <img
                 className={style.instagramImage}
-                src={instagramCollections.instagram_post1}
+                src={config.apiBaseURL+ instagramCollections.instagram_post1}
               ></img>
             {/* </div> */}
           </a>
@@ -129,7 +130,7 @@ function Footer2() {
              {/* <div className={style.instagramItem}> */}
               <img
                 className={style.instagramImage}
-                src={instagramCollections.instagram_post2}
+                src={ config.apiBaseURL+ instagramCollections.instagram_post2}
               ></img>
             {/* </div> */}
           </a>
@@ -140,7 +141,7 @@ function Footer2() {
             {/* <div className={style.instagramItem}> */}
               <img
                 className={style.instagramImage}
-                src={instagramCollections.instagram_post3}
+                src={ config.apiBaseURL+ instagramCollections.instagram_post3}
               ></img>
             {/* </div> */}
           </a>
@@ -151,7 +152,7 @@ function Footer2() {
             {/* <div className={style.instagramItem}> */}
               <img
                 className={style.instagramImage}
-                src={instagramCollections.instagram_post4}
+                src={config.apiBaseURL+ instagramCollections.instagram_post4}
               ></img>
             {/* </div> */}
           </a>
@@ -162,7 +163,7 @@ function Footer2() {
             {/* <div className={style.instagramItem}> */}
               <img
                 className={style.instagramImage}
-                src={instagramCollections.instagram_post5}
+                src={config.apiBaseURL+ instagramCollections.instagram_post5}
               ></img>
             {/* </div> */}
 
@@ -175,10 +176,10 @@ function Footer2() {
       <div className={style.row}>
         <div className={style.column1}>
           <h1 className={style.heading}>CUSTOMER CARE</h1>
-          <a href="/custom" style={{ textDecoration: "none", color: "white" }}>
+          <Link to="/custom" style={{ textDecoration: "none", color: "white" }}>
             {" "}
             <span className={style.span}>Contact Us</span>
-          </a>
+          </Link>
           <Link to="/terms" style={{ textDecoration: "none", color: "white" }}>
             {" "}
             <span className={style.span}>Term and Conditions</span>

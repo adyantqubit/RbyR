@@ -93,7 +93,7 @@ function Footer() {
           </a>
           <Link to="/terms" style={{ textDecoration: "none", color: "white" }}>
             {" "}
-            <span className={style.span}>Term and Conditions</span>
+            <span className={style.span}>Terms and Conditions</span>
           </Link>
           <Link to="/FAQ" style={{ textDecoration: "none", color: "white" }}>
             {" "}
@@ -138,7 +138,7 @@ function Footer() {
             to="/store-locator"
             style={{ textDecoration: "none", color: "white" }}
           >
-            <span className={style.span}>Store Locator</span>
+            <span className={style.span} >Store Locator</span>
           </Link>
         </div>
 

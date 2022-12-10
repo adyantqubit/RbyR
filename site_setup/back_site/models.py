@@ -391,7 +391,9 @@ class Transaction_history(models.Model):
     subtotal_price=models.IntegerField()
     tax=models.IntegerField()
     grand_total=models.IntegerField()
-    date=models.DateField(default=datetime.date.today())
+    #Commented by Rohan 10/12/22
+    # I make change on datefield to auto not before i am using today() function so while migrating transactiona history date changes
+    date=models.DateField(('ordered date'), null=False, blank=False, auto_now=True)
     def save(self,*args,**kwargs):
         if (self.payment_status=="cancle"):
           pros= product_orders.objects.filter(order_no=self.order_no)

@@ -150,16 +150,16 @@ getWhatsappContactNumber()
             Home
           </Link>
           
-            <div className={style.drawerMenu}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e=>{toggleDrawer2(); setMenu(menus)}}><span>ETHNIC</span> <AiOutlineRight /></div>
-            </div>
+          <div className={style.drawerMenu}>
+             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e=>{toggleDrawer2(); setMenu(menus)}}><span>ETHNIC</span> <AiOutlineRight /></div>
+          </div>
           <Link to='/listing/luxury_pret' className={style.drawerMenu} onClick={toggleDrawer}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span>LUXURY PRET</span> </div>
           </Link>
           <Link to='/listing/ready_to_wear' className={style.drawerMenu} onClick={toggleDrawer}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> READY TO WEAR</span> </div>
           </Link>
-          <Link to='/listing/world_of_rr' className={style.drawerMenu} onClick={toggleDrawer}>
+          <Link to='/listing/world_of_rbyr' className={style.drawerMenu} onClick={toggleDrawer}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> WORLD OF RBYR</span> </div>
           </Link>
           <Link to='/custom' className={style.drawerMenu} onClick={toggleDrawer}>
@@ -210,33 +210,20 @@ getWhatsappContactNumber()
               <span>{m.name}</span> <AiOutlineRight />
               </div>
               :<div style={{ justifyContent: "space-between", width: "100%", display: "flex"}}  onClick={e => { toggleDrawer(); toggleDrawer2() }} >
-                <span>{m.name}</span> <AiOutlineRight />
+                <span style={{color:"#f2f2f2",letterSpacing:"1.2px"}}>{m.name}</span> <AiOutlineRight />
               </div>}
               
                 
             </Link>
             </> 
             )}
-           <div style={{ justifyContent: "space-between", width: "80%"}}  onClick={e => { toggleDrawer(); toggleDrawer2() }} >
+          
+           <div style={{ justifyContent: "space-between", width: "80%"}} >
            <span style={{textAlign:"center",color:"#9c9c9c"}}>Username-{userdata.name} Email-{userdata.email}</span>
             </div>
-          <Popconfirm placement="bottomLeft" title={text} onConfirm={e=>handleLogout()} onCancel={e=>seLogoutAction(false)} okText="OK" cancelText="Cancel" open={logoutaction}>
+            <Popconfirm placement="bottomLeft" title={text} onConfirm={e=>handleLogout()} onCancel={e=>seLogoutAction(false)} okText="OK" cancelText="Cancel" open={logoutaction}>
     </Popconfirm>
-          {/* <div className={style.drawerMenu}>
-            Partywear
-          </div>
-          <div className={style.drawerMenu}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} ><span>Casual</span> <AiOutlineRight /></div>
-          </div>
-          <div className={style.drawerMenu}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span>Kurti</span> </div>
-          </div>
-          <div className={style.drawerMenu}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> Wedding wear</span> </div>
-          </div>
-          <div className={style.drawerMenu}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> Formal</span> </div>
-          </div> */}
+      
         </div>
       </Drawer>
     </div>

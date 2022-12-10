@@ -201,7 +201,7 @@ const handleScroll = (e) => {
 
   console.log("----------",e.target.scrollTop,oldscroll)
 
-  if(oldscroll<e.target.scrollTop){
+  if(oldscroll>e.target.scrollTop){
     setShowOptions(true)
     setoldScroll(e.target.scrollTop)
   }
@@ -281,8 +281,8 @@ return (
         :null}  
       </div>
 
-      {showOptions?<div className={style.filterContainres} style={{ zIndex: "0" }}>
-        <div className={style.filterInner}>
+      <div className={style.filterContainres} style={{ zIndex:"0",height:showOptions?"10%":"0",transition:"all .2s ease-out" }}>
+        <div className={style.filterInner} >
           <div className={style.filterheader}>
             <div className={style.filterHeaderInner} style={{margin:"10px 0"}}>
               <button className={style.shopbtn1}
@@ -292,7 +292,7 @@ return (
             </div>
           </div>
          </div>
-       </div> :null}
+       </div> 
 
 
 <div className={style.slab} ref={lastref}>
