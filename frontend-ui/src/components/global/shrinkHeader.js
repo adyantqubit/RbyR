@@ -205,7 +205,7 @@ getWhatsappContactNumber()
           {menu.map(m=>     <>     
            
             <Link to={m.link} className={style.drawerMenu} >
-              {m.name=="Logout"?
+              {m.name=="LOGOUT"?
              <div style={{ justifyContent: "space-between", width: "100%", display: "flex"}} onClick={e=>{seLogoutAction(true);}}>
               <span>{m.name}</span> <AiOutlineRight />
               </div>
