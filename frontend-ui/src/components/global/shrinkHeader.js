@@ -28,6 +28,7 @@ import { removeToken } from '../../Redux-manage/services/localStorageService';
 import { notification, Popconfirm } from 'antd';
 import { getWhatsappContactDetail } from '../../api/service';
 import Converter from '../concepts/convertCurrency';
+import { useGetLoggedUserQuery } from '../../Redux-manage/services/userAuthapi';
 
 const text = 'Are you sure you want to logout?';
 
@@ -45,7 +46,7 @@ const nav=useNavigate()
 
   const toggleDrawer2 = () => {
     setIsOpen2((prevState) => !prevState)
-
+    seLogoutAction(false)
   }
 
   useEffect(()=>{
@@ -76,6 +77,15 @@ getWhatsappContactNumber()
       }
 
       const [logoutaction,seLogoutAction]=useState(false)
+      const {data,isSuccess}=useGetLoggedUserQuery(localStorage.getItem('access_token'))
+
+      useEffect(()=>{
+        if(data&&isSuccess)
+        setUserData({
+          email:data.email,
+          name:data.name,
+        })
+      },[data,isSuccess])
 
   return (
     <div className={style.responsiveHeader}>
@@ -141,19 +151,19 @@ getWhatsappContactNumber()
           </Link>
           
             <div className={style.drawerMenu}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e=>{toggleDrawer2(); setMenu(menus)}}><span>Ethnic</span> <AiOutlineRight /></div>
+            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e=>{toggleDrawer2(); setMenu(menus)}}><span>ETHNIC</span> <AiOutlineRight /></div>
             </div>
-          <Link to='/listing/luxurypret' className={style.drawerMenu} onClick={toggleDrawer}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span>Luxury Pret</span> </div>
+          <Link to='/listing/luxury_pret' className={style.drawerMenu} onClick={toggleDrawer}>
+            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span>LUXURY PRET</span> </div>
           </Link>
-          <Link to='/listing/readytowear' className={style.drawerMenu} onClick={toggleDrawer}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> Ready To wear</span> </div>
+          <Link to='/listing/ready_to_wear' className={style.drawerMenu} onClick={toggleDrawer}>
+            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> READY TO WEAR</span> </div>
           </Link>
-          <Link to='/listing/worldofrr' className={style.drawerMenu} onClick={toggleDrawer}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> World of RbyR</span> </div>
+          <Link to='/listing/world_of_rr' className={style.drawerMenu} onClick={toggleDrawer}>
+            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> WORLD OF RBYR</span> </div>
           </Link>
           <Link to='/custom' className={style.drawerMenu} onClick={toggleDrawer}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> Contact Us</span> </div>
+            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> CONTACT US</span> </div>
           </Link>
           
           <div className={style.drawerMenu} >
@@ -167,7 +177,7 @@ getWhatsappContactNumber()
                 toggleDrawer()
               }
             }}>
-               <span> My Account</span><AiOutlineRight />
+               <span> MY ACCOUNT</span><AiOutlineRight />
             </div>
           </div>
         </div>
@@ -191,6 +201,7 @@ getWhatsappContactNumber()
 
           </div>
 
+          
           {menu.map(m=>     <>     
            
             <Link to={m.link} className={style.drawerMenu} >
@@ -206,7 +217,9 @@ getWhatsappContactNumber()
             </Link>
             </> 
             )}
-          
+           <div style={{ justifyContent: "space-between", width: "80%"}}  onClick={e => { toggleDrawer(); toggleDrawer2() }} >
+           <span style={{textAlign:"center",color:"#9c9c9c"}}>Username-{userdata.name} Email-{userdata.email}</span>
+            </div>
           <Popconfirm placement="bottomLeft" title={text} onConfirm={e=>handleLogout()} onCancel={e=>seLogoutAction(false)} okText="OK" cancelText="Cancel" open={logoutaction}>
     </Popconfirm>
           {/* <div className={style.drawerMenu}>

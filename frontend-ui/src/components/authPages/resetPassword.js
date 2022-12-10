@@ -1,7 +1,7 @@
 
 
 import React from 'react'
-import { Alert,Typography } from "@mui/material";
+import { Alert,CircularProgress,Typography } from "@mui/material";
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useResetPasswordMutation } from "../../Redux-manage/services/userAuthapi";
@@ -17,6 +17,7 @@ const ResetPassword = () => {
 	const [visiblepassReg,setVisiblePassreg]=useState(false)
 	const [showNewPass2,setNewPass2]=useState(false)
 	const [visiblepassReg2,setVisiblePassreg2]=useState(false)
+
   
    const[resetPassword,{isLoading}]= useResetPasswordMutation()
    const{id,token}=useParams()
@@ -40,7 +41,7 @@ const ResetPassword = () => {
 
        setError(null)
        notification.error({
-        message: <div style={{fontSize:"18px",color:"black"}}>Successfully Logged In. </div>,
+        message: <div style={{fontSize:"18px",color:"black"}}>Successfully Password Udated. </div>,
         description:
         `Successfully Password Update`,
         className:"custom-class",
@@ -82,7 +83,7 @@ const ResetPassword = () => {
             </span>
 					{/* <input style={{marginBottom:"0"}} class="inpu" type="password" name="pswd2" placeholder="Confirm Password" required=""/> */}
 
-					<button class="butto" style={{backgroundColor:"black",}} type='submit'>Change</button>
+					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button class="butto" style={{backgroundColor:"black",}} type='submit'>Change</button>}
 				</form>
 			</div>
 	</div>

@@ -162,7 +162,6 @@
   background:white;
   position:fixed;
   top:23vh;
-  right:10px;
   display:none;
   justify-content:center
 }
@@ -355,8 +354,8 @@
 .textdiv{
   height:auto;
   padding:5px 10px;
-  min-width:45%;
-  margin: 3px;
+  min-width:48%;
+  margin: 2px;
   border-radius: 10px;
   background-color: #f8f8f8;
 }
@@ -365,11 +364,12 @@
 .sizediv{
   height:auto;
   padding:5px 10px;
-  width:20%;
+  min-width:20%;
+  
   margin: 3px;
   border-radius: 10px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: #f8f8f8;
 }
 
@@ -414,9 +414,12 @@
 
 .shopbtn1{
   width: 50%;
-  height: 40px;
+  height: 30px;
   text-align: center;
   padding:4px 0;
+  background-color: white;
+  font-family: "MyFont";
+  letter-spacing: 1.2px;
   margin:5px;
 }
 
@@ -428,9 +431,11 @@
 
 .shopbtn2{
   width: 50%;
-  height: 40px;
+  height: 30px;
   text-align: center;
   padding:4px 0;
+  font-family: "MyFont";
+  letter-spacing: 1.2px;
   background-color: #000;
   color:white;
   margin:5px;
@@ -528,7 +533,7 @@
   display:flex;
   top:auto;
   bottom: 0vh !important;
-  height: 10%;
+  height: 8%;
 
  }
 

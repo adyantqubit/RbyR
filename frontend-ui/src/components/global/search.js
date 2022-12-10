@@ -30,10 +30,14 @@ const Search = () => {
   const searchProduct = async () => {
     var searchBox = document.getElementById("searchBox");
     const searchedData = await getSearchedProducts(searchBox.value);
-    if(searchedData){
+    if(searchedData&&searchedData.length>0){
       setFilteredPersons(searchedData);
       setMsg(null);
+      console.log(searchedData)
+
     }else{
+
+      console.log(searchedData)
       setMsg("Result not found!");
       setFilteredPersons([]);
     }

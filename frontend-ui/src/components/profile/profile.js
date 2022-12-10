@@ -103,7 +103,7 @@ const MyOrders = () => {
                { orders.map((o,i)=>
                   <div className={style.tablerowheadtable}>
                     <div className={style.rowText}>{o[0].order_no}</div>
-                    <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].date}</div>
+                    <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].date.split("-").reverse().join("-")}</div>
                     
                     <div className={`${style.rowText} ${style.rowtexthide}`}>{tran[i].firstname} {tran[i].lastname}</div>
                     <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].selected_currency_sign}{(getPrice(o)*o[0].selected_currency_value).toFixed(2)}</div>

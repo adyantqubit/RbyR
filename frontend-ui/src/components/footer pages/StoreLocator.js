@@ -30,21 +30,21 @@ const StoreLocator = () => {
                 return (
                   <div className={style.column}>
                     <div className={style.item}>
-                      <div className={style.itemTitle}>{parse(storeLocatorDetail.city)}</div>
+                      <div className={style.itemTitle}>{parse(""+storeLocatorDetail.city)}</div>
                       <div className={style.itemContent}>
                         <img className={style.itemImage} src={config.apiBaseURL+storeLocatorDetail.storeImage}/>
                         <div className={style.itemBody}>
                           <div className={style.itemText}>
-                          {parse(storeLocatorDetail.address)}
+                          {parse(""+storeLocatorDetail.address)}
                           </div>
                           <div className={style.itemText}>
-                          {parse(storeLocatorDetail.phoneNumber)}
+                          {parse(""+storeLocatorDetail.phoneNumber)}
                           </div>
                           <div className={style.itemText}>
-                          {parse(storeLocatorDetail.email)}
+                          {parse(""+storeLocatorDetail.email)}
                           </div>
                           <div className={style.itemText}>
-                          {parse(storeLocatorDetail.timing)}
+                          {parse(""+storeLocatorDetail.timing)}
                           </div>
                           <div className={style.itemButton}><a className={style.itemButton} href={`https://www.google.com/maps/search/?api=1&query=${storeLocatorDetail.address.replace( /(<([^>]+)>)/ig, '')}`}>GET DIRECTIONS</a></div>
                         </div>

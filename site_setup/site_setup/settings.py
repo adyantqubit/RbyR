@@ -155,12 +155,14 @@ CORS_ALLOW_CREDENTIAL=True
 
 
 CORS_ORIGIN_WHITELIST = [
-     'http://localhost:3000'
+     "http://localhost:3000",
+    # "http://192.168.1.16:3000",
 ]
 
 # Django project settings.py
 AUTH_USER_MODEL= 'back_site.User'
-
+CSRF_COOKIE_SECURE = True 
+CSRF_COOKIE_HTTPONLY = True
 # Email Confiuration
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST = 'smtp.gmail.com'
@@ -212,5 +214,5 @@ PASSWORD_RESET_TIMEOUT = 1800 # 30 mint, in seconds
 
 CORS_ALLOWED_ORIGINS=[
     "http://localhost:3000",
-    "http://127.0.0.1:3000",
+    # "http://192.168.1.16:3000",
 ]

@@ -258,11 +258,11 @@ const Login = () => {
 					<label class="labe" htmlFor="ch" aria-hidden="true">Login</label>
 					{error.none_field_errors? <Alert severity="error"  style={{margin:"0 45px"}}>{error.none_field_errors[0]}</Alert>:" "}
 
-					<input class="inpu"type="email" style={{marginBottom:"0"}} name="email" placeholder="Email" required=""/>
+					<input class="inpu"type="email" style={{marginBottom:"0"}} name="email" placeholder="E-mail*" required=""/>
 					{error.email?<Typography style={{color:"red",paddingLeft:"50px",fontSize:"12px",}}>{error.email[0]}</Typography>:" "}
 
                     <span class="inpu3" style={{margin:"20px 0",marginLeft:"15%",background:"#e0dede"}}>
-					<input class="inpu4" type={showNewPass3?"text":"password"} style={{width:"90%"}} name="pswd" placeholder="Password" required="" onChange={e=>{if(e.target.value.length>0)setVisiblePassreg3(true); else setVisiblePassreg3(false)}}/>
+					<input class="inpu4" type={showNewPass3?"text":"password"} style={{width:"90%"}} name="pswd" placeholder="Password*" required="" onChange={e=>{if(e.target.value.length>0)setVisiblePassreg3(true); else setVisiblePassreg3(false)}}/>
 					{visiblepassReg3?showNewPass3?<AiFillEye style={{marginTop:"5px"}} onClick={e=>setNewPass3(false)}/>:<AiFillEyeInvisible style={{marginTop:"5px"}} onClick={e=>setNewPass3(true)}/>:null}
 					</span>
 					{error.password?<Typography style={{color:"red",paddingLeft:"50px",fontSize:"12px"}}>{error.password[0]}</Typography>:" "}

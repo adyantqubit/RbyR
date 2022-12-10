@@ -106,9 +106,9 @@ const InsideOrder = () => {
 
 
     for (const details of allData.history) {
-
+      var detail=product.filter(p=>p.id==details.product_id)[0]
       const NewCartData = {
-        ...details,
+        ...detail,
         quantity: 1,
         size: `${details.size}`
       }
@@ -185,6 +185,7 @@ const InsideOrder = () => {
       checkoutDetails['orderno'] = allData.history[0].order_no
       checkoutDetails['currency_sign'] = allData.history[0].selected_currency_sign
       checkoutDetails['currency_value'] = allData.history[0].selected_currency_value
+      checkoutDetails['date']=allData.history[0].date
     }
 
 
@@ -220,7 +221,7 @@ const InsideOrder = () => {
               </div>
               <hr style={{ color: "black" }}></hr>
               <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-                <span className={style.userinfoText}>Date: <span className={style.userinfoText2}> {states != null && states.length > 0 ? states[0].date : null}</span></span>
+                <span className={style.userinfoText}>Date: <span className={style.userinfoText2}> {states != null && states.length > 0 ? states[0].date.split("-").reverse().join("-") : null}</span></span>
                 <>
                   <Button type="primary" className={style.userInfoButton} onClick={showModal}>
                     Online Pay
@@ -265,7 +266,7 @@ const InsideOrder = () => {
 
                   return <div className={style.tablerowhead} style={i % 2 == 0 ? { marginTop: "10px", background: "#f2f2f2" } : { marginTop: "10px" }}>
                     <div className={style.rowitem3}>
-                      <img src={config.apiBaseURL + p.img_main} className={style.imgresponsive} />
+                      <img src={p.img_main? config.apiBaseURL + p.img_main:null} className={style.imgresponsive} />
                       <span className={style.imgTitle}>
                         {p.title} ({s.size})
                       </span>

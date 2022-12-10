@@ -266,13 +266,13 @@ const FilterNew = () => {
 
 
                 if (selectedColor.includes(c.toLowerCase())) {
-                  return <div className={`${style.textdiv} ${style.value}`} style={{ width: "auto", whiteSpace: "nowrap" }} >
+                  return <div className={`${style.textdiv} ${style.value}`} style={{whiteSpace: "nowrap" }} >
                     <span className={style.text} onClick={toggleselect}>{c.toUpperCase()}</span>
                     <span onClick={deleteclass} className={style.cross}>X</span>
                   </div>
                 }
                 else {
-                  return <div className={style.textdiv} style={{ width: "auto", whiteSpace: "nowrap" }}>
+                  return <div className={style.textdiv} style={{whiteSpace: "nowrap" }}>
                     <span className={style.text} onClick={toggleselect}>{c.toUpperCase()}</span>
                     <span onClick={deleteclass} className={style.block}>X</span>
                   </div>

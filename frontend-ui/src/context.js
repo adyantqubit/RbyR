@@ -179,6 +179,9 @@ const Context = ({ children }) => {
               category: [...p][0].category,
               size: lke.size,
               shipping_charges: [...p][0].shipping_charges,
+              ready_to_ship_days:[...p][0].ready_to_ship_days,
+              shipping_days:[...p][0].shipping_days,
+              ready_to_ship:[...p][0].ready_to_ship
 
             }
 

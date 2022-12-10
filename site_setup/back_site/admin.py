@@ -23,7 +23,7 @@ def short_title(obj):
 # admin.site.register(Head_img)
 @admin.register(Head_img)
 class Head_imgAdmin(admin.ModelAdmin):
-    list_display=("src","category","display_on")
+    list_display=("id","src","category","display_on")
     # ordering=("display_on")
     list_per_page=10
     # def get_form(self, request, obj=None, **kwargs):

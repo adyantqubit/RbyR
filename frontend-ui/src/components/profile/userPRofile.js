@@ -110,6 +110,8 @@ function hasWhiteSpaceforLast(s) {
 
  async function updateProfie(event){
   event.preventDefault();
+  setShowEditable(false)
+  window.scrollTo(0,0)
 
   var data = new FormData(event.currentTarget);
   
@@ -136,7 +138,6 @@ if (data.get('oldpswd')!=null){
         style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"24vh",marginRight:"10vw"},
         duration:5,
       });
-      setShowEditable(false)
 
     })
  }
@@ -164,7 +165,7 @@ if (data.get('oldpswd')!=null){
             <div className={style.column2header}>
               <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
                     <span>USER DETAILS</span>
-                    <span className={styles.userinfoText} style={{cursor:"pointer"}} onClick={e=>setShowEditable(true)}>{!showEditable?"EDIT YOUR PROFILE":null} 
+                    <span className={`${styles.userinfoText} ${style.hovers}`} style={{cursor:"pointer"}} onClick={e=>setShowEditable(true)}>{!showEditable?"EDIT YOUR PROFILE":null} 
                     </span>
               </div>
             </div>
@@ -199,7 +200,7 @@ if (data.get('oldpswd')!=null){
                 </div>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFirstName}>
-                        <label className={styles.firstName} htmlFor='email'>Email ADDRESS*</label>
+                        <label className={styles.firstName} htmlFor='email'>EMAIl ADDRESS*</label>
                      
                         <input className={styles.firstInput} type="email"  defaultValue={userdata.email} name="email" required/>
                         

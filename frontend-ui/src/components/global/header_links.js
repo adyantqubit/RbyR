@@ -1,18 +1,18 @@
 const menus=[
-    {"name":"Partywear","link":"/Listing/partywear"},
-    {"name":"Casual","link":"/Listing/casual"},
-    {"name":"Kurti","link":"/Listing/kurti"},
-    {"name":"Formal","link":"/Listing/formal"},
-    {"name":"Wedding Wear","link":"/Listing/wedding_wear"},
-    {"name":"View All","link":"/listing/view_all"}
+    {"name":"PARTYWEAR","link":"/Listing/partywear"},
+    {"name":"CASUAL","link":"/Listing/casual"},
+    {"name":"KURTI","link":"/Listing/kurti"},
+    {"name":"FORMAL","link":"/Listing/formal"},
+    {"name":"WEDDING WEAR","link":"/Listing/wedding_wear"},
+    {"name":"VIEW ALL","link":"/listing/view_all"}
 
 ]
 
 const profile=[
-    {"name":"Profile","link":"/userprofile"},
-    {"name":"Shipping Details","link":"/shippindprofile"},
-    {"name":"My Order","link":"/profile"},
-    {"name":"Logout","link":"/"}
+    {"name":"PROFILE","link":"/userprofile"},
+    {"name":"SHIPPING DETAILS","link":"/shippindprofile"},
+    {"name":"MY ORDERS","link":"/profile"},
+    {"name":"LOGOUT","link":"/"}
 ]
 
 export {menus,profile}

@@ -12,6 +12,10 @@
 
 }
 
+.hovers:hover{
+    color:black;
+}
+
 
 .Container{
     /* position: relative; */

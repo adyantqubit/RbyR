@@ -286,8 +286,7 @@ return (
           <div className={style.filterheader}>
             <div className={style.filterHeaderInner} style={{margin:"10px 0"}}>
               <button className={style.shopbtn1}
-                style={{background:"white"}}
-                onClick={e=>setSortUi(true)}>SORT</button>
+                onClick={e=>setSortUi(true)}>SORT BY</button>
               <button className={style.shopbtn1}
               onClick={e=>setfilterUi(true)}>FILTER</button>
             </div>

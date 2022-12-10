@@ -271,13 +271,13 @@ const increament= async (CartProduct)=>{
                         <div style={{height:"20px",width:"100px",display:"flex",flexDirection:"row"}}>
                             <div style={{height:"20px",width:"10px",marginRight:"10px"}}>
                               <div className={styles.increament} onClick={e=>decreament(pro)}>
-                                <span style={{position:"relative",top:"-25px",right:"4px",cursor:"pointer",fontSize:"30px"}}>-</span>
+                              <span style={{position:"relative",top:"-26px",right:"6px",cursor:"pointer",fontSize:"30px"}}>-</span>
                               </div>
                             </div>
                             <input type="text" class="form-control" style={{width:"30px",height:"20px",border:"2px solid white",padding:"4px",textAlign:"center"}} value={pro.quantity} ref={textInput} />
                             <div style={{height:"20px",width:"10px"}}>
                                 <div className={styles.increament} onClick={e=>increament(pro)}>
-                                  <span style={{position:"relative",top:"-18px",right:"5px",cursor:"pointer",fontSize:"20px"}}>+</span>
+                                <span style={{position:"relative",top:"-18px",right:"6.5px",cursor:"pointer",fontSize:"20px"}}>+</span>
                                 </div>
                             </div>
                         </div>           

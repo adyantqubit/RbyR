@@ -133,6 +133,10 @@ body {background: #333}
     .column1{
       width:40%;
     }
+
+    .img{
+      max-height: 280px;
+    }
   
     .column2{
       width:55%;

@@ -53,6 +53,7 @@ const Payment = () => {
            checkoutDetails['grand']=afterColumnTotalOfferAdd(offer,cart,taxRate).Grand
            checkoutDetails['currency_sign']=currency.sign
            checkoutDetails['currency_value']=currency.value
+           checkoutDetails['date']=new Date().toISOString().slice(0, 10)
            console.log(checkoutDetails)
            await invoiceApi(checkoutDetails,access_token).then(r=>{
             checkoutDetails['orderno']=r.order_no

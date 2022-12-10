@@ -145,16 +145,16 @@ const Billing = () => {
                 <div className={styles.headerTexts}>
                     <div className={styles.columnitem1head}>BILLING DETAILS</div>
                     <hr style={{color:"black"}}></hr>
-                    <div><span className={styles.userinfoText}> Invoice Date: </span><span className={styles.userinfoText2}>{new Date().toISOString().slice(0, 10)}</span></div>
+                    <div><span className={styles.userinfoText}> Invoice Date: </span><span className={styles.userinfoText2}>{checkoutDetails.date.split("-").reverse().join("-")}</span></div>
                     <div><span className={styles.userinfoText}>Order No:</span><span className={styles.userinfoText2}>{checkoutDetails.orderno}</span></div>
-                    <div><span className={styles.userinfoText}>Payment Mode:</span><span className={styles.userinfoText2}>{checkoutDetails.payment}</span></div>
+                    <div><span className={styles.userinfoText}>Payment Mode:</span><span className={styles.userinfoText2}>{checkoutDetails.payment.toUpperCase()}</span></div>
                 </div>
 
                {storeLocatorDetails!=null?
                <div className={styles.headerTexts}>
-               <div className={styles.columnitem1head}>{parse(storeLocatorDetails[0].address)}</div>
+               <div className={styles.columnitem1head}>{parse(""+storeLocatorDetails[0].address)}</div>
                <div><span className={styles.userinfoText}>{parse("PHONE:"+storeLocatorDetails[0].phoneNumber)}</span></div>
-               <div><span className={styles.userinfoText}>{parse(storeLocatorDetails[0].email)}</span></div>
+               <div><span className={styles.userinfoText}>{parse(""+storeLocatorDetails[0].email)}</span></div>
            </div>:null}
                 
             </div>
@@ -193,7 +193,7 @@ const Billing = () => {
 
                 <div className={styles.billingtexts}>
                    <span className={`${styles.columnitem1head}`}  >Discount -</span>
-                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black",width:"auto"}} >- {checkoutDetails.currency_sign} {checkoutDetails.CouponDiscount?checkoutDetails.CouponDiscount:(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).coupon *checkoutDetails.currency_value).toFixed(2)}</span>
+                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{color:"black",width:"auto"}} > {checkoutDetails.currency_sign} {checkoutDetails.CouponDiscount?checkoutDetails.CouponDiscount:(afterColumnTotalOfferAdd(offer,checkoutDetails.cart,taxRate).coupon *checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
                 <div className={styles.billingtexts}>
                    <span className={`${styles.columnitem1head}`}  >Shipping charges -</span>
