@@ -7,6 +7,7 @@ import { CartState } from '../../context';
 import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing';
 import { getToken } from '../../Redux-manage/services/localStorageService';
 import styles from './order.module.css'
+import {IoMdCheckmark} from 'react-icons/io'
 const Payment = () => {
     var{userdata,checkoutDetails,setCheckoutDetails,cartEnd,currency,cart,setCart,offer,setOffer,taxRate,setTaxRate}=CartState()
     const nav=useNavigate()
@@ -120,7 +121,7 @@ const Payment = () => {
           <div style={{display:"flex",justifyContent:"space-between"}} onClick={onSelect}>
             <span className={styles.userinfoText}>Cash On Delivery</span>
           {tick?
-          <i class="fa-solid fa-check" style={{color:"black"}}></i>
+          <IoMdCheckmark style={{fontSize:"25",color:"black",fontWeight:"20",backgroundColor:"white",border:"none"}}/>
           :
             null}
 
@@ -130,7 +131,7 @@ const Payment = () => {
           <div style={{display:"flex",justifyContent:"space-between"}} onClick={selectop}>
             <span className={styles.userinfoText}>Pay Online</span>
           {tickop?
-          <i class="fa-solid fa-check" style={{color:"black"}}></i>
+          <IoMdCheckmark style={{fontSize:"25",color:"black",fontWeight:"20",backgroundColor:"white",border:"none"}}/>
           :
             null}
 

@@ -216,7 +216,7 @@ const InsideOrder = () => {
                 <div className={style.column2header}>
                   MY ORDERS #{orderid}
                 </div>
-                <div className={style.column2header} style={{ whiteSpace: "nowrap", textAlign: 'end', color: "#8c8c8cc", textDecoration: "underline", fontSize: "14px", cursor: "pointer" }} onClick={cartAdd}>
+                <div className={style.column2header1} style={{ whiteSpace: "nowrap", textAlign: 'end', color: "#8c8c8cc", textDecoration: "underline", fontSize: "14px", cursor: "pointer" }} onClick={cartAdd}>
                   REORDER
                 </div>
               </div>

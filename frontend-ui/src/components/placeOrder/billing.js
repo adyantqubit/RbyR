@@ -93,6 +93,12 @@ const Billing = () => {
 
 
 
+  // Added by Ashish Dewangan on 11-12-2022
+  // Reason - To navigate to homepage when we click on continue shopping
+       const goToHomePage =()=>{
+        nav('/')
+       }
+  // End of comment
   return (
     < >
       <Navbar />
@@ -228,9 +234,9 @@ const Billing = () => {
           </div> : null}
         </div>
 
-        <div style={{ width: "100%", display: "flex", justifyContent: "center", background: "#f2f2f2" }}> <button className={style.shopbtn1} style={{ width: "50%" }} onClick={e => nav('/')}>Continue Shopping</button>
-
-        </div>
+        {/* <div style={{width:"100%",display:"flex",justifyContent:"center",background:"#f2f2f2"}}> <button className={style.shopbtn1} style={{width:"50%"}} onClick={e=>nav('/')}>Continue Shopping</button> */}
+     <div style={{width:"100%",display:"flex",justifyContent:"center",background:"#f2f2f2"}}> <button className={style.shopbtn1} style={{width:"50%"}} onClick={goToHomePage}>Continue Shopping</button>
+     </div>
 
         <div className={styles.foot} >
           <Footer />

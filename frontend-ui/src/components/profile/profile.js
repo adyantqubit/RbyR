@@ -48,7 +48,6 @@ const MyOrders = () => {
             await TransactionGetApi({access}).then(r=>
                 
                 {
-                  console.log(r)
                  settran(r.response.reverse())
                  setName(r.name)
                 })
@@ -64,7 +63,12 @@ const MyOrders = () => {
         }
 
 
-        
+      // Added by Ashish Dewangan on 11-12-2022
+      // Reason - To navigate to homepage when we click on continue shopping
+          const goToHomePage =()=>{
+            nav('/')
+          }
+      // End of comment
 
 
 
@@ -119,8 +123,11 @@ const MyOrders = () => {
                 
              </div>:
              <div style={{width:"100%",height:"40%",display:"flex",justifyContent:"center",textAlign:"center"}}>
-               No History Found, <Link to="\" style={{fontSize:"14px",textDecoration:"underline",marginTop:"5px",marginLeft:"5px"}}>Continue Shopping</Link> 
+               {/* No History Found, <Link to="\" style={{fontSize:"14px",textDecoration:"underline",marginTop:"5px",marginLeft:"5px"}}>Continue Shopping</Link>  */}
+              <div style={{height:"50px",display:"flex",alignItems:"center"}}> No History Found,</div>
+               <button className={style.shopbtn1} style={{width:"50%",height:"50px",marginLeft:"10px"}} onClick={goToHomePage}>Continue Shopping</button>
              </div>
+             
                }
             </div>
           </div>

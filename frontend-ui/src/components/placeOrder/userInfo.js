@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styles from './order.module.css'
 import {TiTick} from 'react-icons/ti'
+import {IoIosCheckmarkCircle} from 'react-icons/io'
 import { CartState } from '../../context'
 
 const UserInfo = () => {
@@ -53,7 +54,7 @@ const UserInfo = () => {
         <div className={styles.columnitem1head}>
             
             <span>1. USER DETAILS
-            <TiTick style={{fontSize:"25px",color:"white",background:"black",borderRadius:"20px",marginLeft:"15px",position:"relative",bottom:"5px"}}/>    
+            <IoIosCheckmarkCircle style={{fontSize:"37px",color:"black",background:"white",marginLeft:"15px",position:"relative",bottom:"5px"}}/>    
             </span>
 
             {/* comment on 17/11/22-Rohan Kansari 

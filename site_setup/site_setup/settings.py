@@ -150,18 +150,18 @@ STATIC_ROOT=os.path.join(BASE_DIR,'static')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CORS_ORIGIN_ALLOW_ALL=True
-CORS_ALLOW_CREDENTIAL=True
+# CORS_ORIGIN_ALLOW_ALL=True
+# CORS_ALLOW_CREDENTIAL=True
 
 
 CORS_ORIGIN_WHITELIST = [
      "http://localhost:3000",
-    #  "http://192.168.1.5:3000",
+     "http://192.168.1.5:3000",
 ]
 
 # Django project settings.py
 AUTH_USER_MODEL= 'back_site.User'
-CSRF_COOKIE_SECURE = False 
+CSRF_COOKIE_SECURE = False
 CSRF_COOKIE_HTTPONLY = True
 # Email Confiuration
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -178,6 +178,7 @@ EMAIL_HOST_PASSWORD = 'dvzgndsfzrxpbchx'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+# CSRF_TRUSTED_ORIGINS=['https://*.192.168.1.5']
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=20),
@@ -214,5 +215,5 @@ PASSWORD_RESET_TIMEOUT = 1800 # 30 mint, in seconds
 
 CORS_ALLOWED_ORIGINS=[
     "http://localhost:3000",
-    # "http://192.168.1.5:3000",
+    "http://192.168.1.5:3000",
 ]

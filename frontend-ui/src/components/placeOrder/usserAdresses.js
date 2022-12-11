@@ -1,6 +1,8 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react'
 import styles from './order.module.css'
 import {TiTick} from 'react-icons/ti'
+import {IoIosCheckmarkCircle} from 'react-icons/io'
+import {IoMdCheckmark} from 'react-icons/io'
 import Checkbox from "react-custom-checkbox";
 import * as Icon from "react-icons/fi";
 import { CartState } from '../../context';
@@ -519,7 +521,7 @@ function validatesPin(evt) {
         <div className={styles.columnitem1_1} style={{marginTop:"20px"}}>
             <div className={styles.columnitem1head}>
                 <span>2. SHIPPING INFO
-                <TiTick style={{fontSize:"25px",color:"white",background:"black",borderRadius:"20px",marginLeft:"15px",position:"relative",bottom:"5px"}}/>    
+                <IoIosCheckmarkCircle style={{fontSize:"37px",color:"black",background:"white",marginLeft:"15px",position:"relative",bottom:"5px"}}/>    
                 </span>
                 <span style={{alignSelf:"flex-end",fontSize:"13px",lineHeight:"20px",letterSpacing:"1px"}} onClick={e=>setCond(true)}>change</span>
             </div>
@@ -535,7 +537,8 @@ function validatesPin(evt) {
                             <div ><span className={styles.userinfoText}>{checkoutDetails.shippingData.number} </span></div>
                             </div>
                             <div className={styles.adressTick}>
-                            <TiTick style={{fontSize:"25",color:"black",fontWeight:"20"}}/>    
+                            <IoMdCheckmark style={{fontSize:"25",color:"black",fontWeight:"20",backgroundColor:"white",border:"none"}}/>
+                                
                             </div> 
                         </div>
                     </div>
@@ -543,7 +546,7 @@ function validatesPin(evt) {
                 </div>
                 <div className={styles.columnitem1head}>
                 <span> BILLING ADDRESS
-                <TiTick style={{fontSize:"25px",color:"white",background:"black",borderRadius:"20px",marginLeft:"15px",position:"relative",bottom:"5px"}}/>    
+                <IoIosCheckmarkCircle style={{fontSize:"37px",color:"black",background:"white",marginLeft:"15px",position:"relative",bottom:"5px"}}/>    
                 </span>
                 <span style={{alignSelf:"flex-end",fontSize:"13px",lineHeight:"20px",letterSpacing:"1px"}}></span>
             </div>
@@ -559,7 +562,7 @@ function validatesPin(evt) {
                                 <div ><span className={styles.userinfoText}>{checkoutDetails.billingData.number} </span></div>
                                 </div>
                                 <div className={styles.adressTick}>
-                                <TiTick style={{fontSize:"25",color:"black",fontWeight:"20"}}/>    
+                                <IoMdCheckmark style={{fontSize:"25",color:"black",fontWeight:"20",backgroundColor:"white",border:"none"}}/>    
                                 </div> 
                             </div>
                         </div>

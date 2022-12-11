@@ -15,7 +15,10 @@
 .hovers:hover{
     color:black;
 }
-
+.shopbtn1:hover{
+    background-color: #323232;
+    color: white;
+}
 
 .Container{
     /* position: relative; */

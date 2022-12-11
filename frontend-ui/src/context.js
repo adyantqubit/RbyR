@@ -25,7 +25,6 @@ const Context = ({ children }) => {
     email: "",
     name: ""
   })
-  
 
 
   // use in filter new js file inside listing component
@@ -95,6 +94,8 @@ const Context = ({ children }) => {
     }
     if (access_token) {
       setInterval(TokenManage, 360000)
+
+      
     }
     if (JSON.parse(window.localStorage.getItem('cart')) && (!localStorage.getItem('access_token')))
       setCart([...JSON.parse(window.localStorage.getItem('cart'))])
