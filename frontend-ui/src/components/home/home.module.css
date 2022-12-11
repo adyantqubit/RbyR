@@ -1,0 +1,8 @@
+.home{
+    max-height: 100vh;
+    overflow: scroll;
+}
+
+.home::-webkit-scrollbar{
+    display: none;
+}

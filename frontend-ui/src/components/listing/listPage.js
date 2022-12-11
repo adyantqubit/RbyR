@@ -24,7 +24,7 @@ import { nextIndexPage } from '../../api/orderApis';
 const ListPage = () => {
 
 
-  var {product,condition,like,setLike,reload,setReload,htl,lth,availablitySelect,latestSelect,cart,allColorAvai,tempallpro,settemAllpro,currency,setAllColorAvai,setCurrency,setCart,CategoryProduct,setCategoryProduct,sortui,setSortUi,filterui,setfilterUi}=CartState()
+  var {product,condition,like,setLike,setAllCategoryAvai,reload,setReload,htl,lth,availablitySelect,latestSelect,cart,allColorAvai,tempallpro,settemAllpro,currency,setAllColorAvai,setCurrency,setCart,CategoryProduct,setCategoryProduct,sortui,setSortUi,filterui,setfilterUi}=CartState()
   const [saveLikeApi,{isLoading}]=useLikedUpdateMutation()
   const [cartsaveApi,{isLoad}]=useCartUpdateMutation()
   let {access_token}=getToken();
@@ -78,7 +78,7 @@ async function ApiReSet(){
   settemAllpro([])
   
   
-  console.log(pageIndex)
+
   // const data={
   //   "pageIndex":1,
   //   "category":category,
@@ -111,6 +111,11 @@ async function ApiReSet(){
      
   //   }, 1000)
   // })
+}
+
+function scrollTop(){
+  console.log("top")
+  document.getElementById('scrolled').scrollTop=0
 }
 
  const catApi=async()=>{
@@ -244,9 +249,9 @@ async function Apicall(){
         setLoading(false);
       }
       else{
-        console.log(r.products.filter(r=> {console.log(CategoryProduct.findIndex(c=>{return c.id!=r.id}))})  )
-
+     
       console.log(CategoryProduct)  
+      setAllCategoryAvai([...r.categories])
       setCategoryProduct([...CategoryProduct,...r.products])
       settemAllpro([...tempallpro,...r.products])
       setAllColorAvai(r.colors)
@@ -316,7 +321,7 @@ return (
 }
 
 {filterui?
-  <FilterNew/>
+  <FilterNew scrolling={scrollTop}/>
 :null
 }
 

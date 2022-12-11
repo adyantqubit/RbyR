@@ -4,7 +4,7 @@ import style from './listpage.module.css'
 import RangeSlider from './rangeslider';
 import MultiRangeSlider from './rangeslider';
 
-const FilterNew = () => {
+const FilterNew = ({scrolling}) => {
   const { selectedCategory, setCategorySelected, sizeSelected, setSizeSelected, filterui, setfilterUi, CategoryProduct, setCategoryProduct, tempallpro, settemAllpro, maxValue, setmaxValue, minValue, setminValue, allCategoryAvai, setAllCategoryAvai, allColorAvai, setAllColorAvai, selectedColor, setSelectedColor, tempsprice, setTempsprice } = CartState()
   const [tempprice, setTempprice] = useState([])
   const [tempSize, setTempSize] = useState([])
@@ -16,13 +16,13 @@ const FilterNew = () => {
 
   useEffect(() => {
     setTempprice([...tempallpro])
-    tempallpro.map(c => {
-      if (c.category && !allCategoryAvai.includes(c.category)) {
-        allCategoryAvai.push(c.category)
-        setAllCategoryAvai([...allCategoryAvai])
+    // tempallpro.map(c => {
+    //   if (c.category && !allCategoryAvai.includes(c.category)) {
+    //     allCategoryAvai.push(c.category)
+    //     setAllCategoryAvai([...allCategoryAvai])
 
-      }
-    })
+    //   }
+    // }) 
 
 
     tempallpro.map(c => {
@@ -206,7 +206,7 @@ const FilterNew = () => {
                 setSizeSelected([]); 
                 closeSortPage(); 
                 setMinMAx(2000, 200000) }}>CLEAR</button>
-              <button className={style.shopbtn2} onClick={closeSortPage}>APPLY</button>
+              <button className={style.shopbtn2} onClick={e=>{closeSortPage(); scrolling()}}>APPLY</button>
             </div>
           </div>
 

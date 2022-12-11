@@ -34,7 +34,7 @@ const Navbar = () => {
   const{access_token,refresh_token}= getToken()
 
   const [logo, setLogo] = useState("https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg");
-  const {setReload}=CartState()
+  const {setReload,setCategorySelected}=CartState()
 
 
 	const handleClick = () => {
@@ -142,27 +142,27 @@ const Navbar = () => {
                   <span  className={style.al} href="/" style={{fontWeight:"450",fontSize:"16px"}}>Ethnic</span>
                 
                   <ul className={style.dropdown}>
-                    <li  style={{padding:"0",width:"40px",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/partywear" >Partywear</Link></li>
-                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/casual">Casual</Link></li>
-                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/kurti">Kurti</Link></li>
-                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/wedding_wear">Weddingwear</Link></li>
-                    <li style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2}  to="/listing/formal">Formal</Link></li>
-                    <li style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2}  to="/listing/view_all">View All</Link></li>
+                    <li  style={{padding:"0",width:"40px",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/partywear" onClick={e=>setCategorySelected([])} >Partywear</Link></li>
+                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/casual" onClick={e=>setCategorySelected([])}>Casual</Link></li>
+                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/kurti" onClick={e=>setCategorySelected([])}>Kurti</Link></li>
+                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/wedding_wear"onClick={e=>setCategorySelected([])}>Weddingwear</Link></li>
+                    <li style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2}  to="/listing/formal" onClick={e=>setCategorySelected([])}>Formal</Link></li>
+                    <li style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2}  to="/listing/view_all" onClick={e=>setCategorySelected([])}>View All</Link></li>
 
                   </ul>    
                 </li>
 
 
                 <li className={style.services} >
-                  <Link  className={style.al} to="/listing/luxury_pret">Luxury Pret</Link>
+                  <Link  className={style.al} to="/listing/luxury_pret" onClick={e=>setCategorySelected([])}>Luxury Pret</Link>
                 </li>
 
                 <li className={style.services} >
-                  <Link  className={style.al} to="/listing/ready_to_wear">Ready To wear</Link>
+                  <Link  className={style.al} to="/listing/ready_to_wear" onClick={e=>setCategorySelected([])}>Ready To wear</Link>
                 </li>
 
                 <li className={style.services} >
-                  <Link  className={style.al} to="/listing/world_of_rbyr">World of RbyR</Link>
+                  <Link  className={style.al} to="/listing/world_of_rbyr" onClick={e=>setCategorySelected([])}>World of RbyR</Link>
                 </li>
                 </div>
               

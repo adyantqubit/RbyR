@@ -279,12 +279,12 @@ function validatesPin(evt) {
                         <label className={styles.firstName} htmlFor='first'>FIRST NAME *</label>
                         {checkoutDetails.shippingData?
                         <>
-                         <input className={styles.firstInput} name='first' onKeyPress={validate} defaultValue={checkoutDetails.shippingData.firstname} required/>
+                         <input className={styles.firstInput} name='first' maxLength={19} onKeyPress={validate} defaultValue={checkoutDetails.shippingData.firstname} required/>
                          {/* {!checkFlow?<Typography style={{color:"red",fontSize:"13px"}}>This Field is required</Typography>:null} */}
                          </>
                          :        
                          <>
-                        <input className={styles.firstInput} name='first' onKeyPress={validate} required/>
+                        <input className={styles.firstInput} maxLength={19} name='first' onKeyPress={validate} required/>
                         {/* {error.efirst?<Typography style={{color:"red",fontSize:"13px"}}>This Field is required</Typography>:null} */}
                         </>
                         }
@@ -292,9 +292,9 @@ function validatesPin(evt) {
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='b'>LAST NAME *</label>
                         {checkoutDetails.shippingData?
-                         <input className={styles.firstInput} name='last' onKeyPress={validate} defaultValue={checkoutDetails.shippingData.lastname} required/>
+                         <input className={styles.firstInput} name='last' maxLength={19} onKeyPress={validate} defaultValue={checkoutDetails.shippingData.lastname} required/>
                         : 
-                        <input className={styles.firstInput} name='last' onKeyPress={validate} required/>}
+                        <input className={styles.firstInput} name='last' maxLength={19} onKeyPress={validate} required/>}
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
@@ -302,9 +302,9 @@ function validatesPin(evt) {
                         
                         <label className={styles.firstName} htmlFor='street'>Street name *</label>
                         {checkoutDetails.shippingData?
-                         <input className={styles.firstInput} id="street" onKeyPress={e=>validateWhitespace(e,"street")} name='street' defaultValue={checkoutDetails.shippingData.street} required/>
+                         <input className={styles.firstInput} id="street" maxLength={180} onKeyPress={e=>validateWhitespace(e,"street")} name='street' defaultValue={checkoutDetails.shippingData.street} required/>
                         : 
-                        <input className={styles.firstInput} id="street" onKeyPress={e=>validateWhitespace(e,"street")} name='street' required/>}
+                        <input className={styles.firstInput} id="street" maxLength={180} onKeyPress={e=>validateWhitespace(e,"street")} name='street' required/>}
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
@@ -323,17 +323,17 @@ function validatesPin(evt) {
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='first'>City *</label>
                         {checkoutDetails.shippingData?
-                         <input className={styles.firstInput} id="city" onKeyPress={e=>validateWhitespace(e,"city")} name='city' defaultValue={checkoutDetails.shippingData.city} required/>
+                         <input className={styles.firstInput} id="city" maxLength={29} onKeyPress={e=>validateWhitespace(e,"city")} name='city' defaultValue={checkoutDetails.shippingData.city} required/>
                         : 
-                        <input className={styles.firstInput} id="city" onKeyPress={e=>validateWhitespace(e,"city")} name='city' required/>
+                        <input className={styles.firstInput} id="city" maxLength={29} onKeyPress={e=>validateWhitespace(e,"city")} name='city' required/>
                         }
                     </div>
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='last'>State / Province</label>
                         {checkoutDetails.shippingData?
-                         <input className={styles.firstInput} id="state" onKeyPress={e=>validateWhitespace(e,"state")} name='state' defaultValue={checkoutDetails.shippingData.state} required/>
+                         <input className={styles.firstInput} id="state" maxLength={29} onKeyPress={e=>validateWhitespace(e,"state")} name='state' defaultValue={checkoutDetails.shippingData.state} required/>
                         : 
-                        <input className={styles.firstInput} id="state" onKeyPress={e=>validateWhitespace(e,"state")} name='state' required/>}
+                        <input className={styles.firstInput} id="state" maxLength={29} onKeyPress={e=>validateWhitespace(e,"state")} name='state' required/>}
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
@@ -409,17 +409,17 @@ function validatesPin(evt) {
                 <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='first'>FIRST NAME *</label>
                         {checkoutDetails.billingData?
-                         <input className={styles.firstInput} name='firstb'  onKeyPress={validate} defaultValue={checkoutDetails.billingData.firstname} required/>
+                         <input className={styles.firstInput} name='firstb' maxLength={19}  onKeyPress={validate} defaultValue={checkoutDetails.billingData.firstname} required/>
                         :        
-                        <input className={styles.firstInput} name='firstb' onKeyPress={validate} required/>
+                        <input className={styles.firstInput} name='firstb' maxLength={19} onKeyPress={validate} required/>
                         }
                     </div>
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='b'>LAST NAME *</label>
                         {checkoutDetails.billingData?
-                         <input className={styles.firstInput} name='lastb' onKeyPress={validate} defaultValue={checkoutDetails.billingData.lastname} required/>
+                         <input className={styles.firstInput} name='lastb' maxLength={19} onKeyPress={validate} defaultValue={checkoutDetails.billingData.lastname} required/>
                         : 
-                        <input className={styles.firstInput} name='lastb' onKeyPress={validate} required/>}
+                        <input className={styles.firstInput} name='lastb' maxLength={19} onKeyPress={validate} required/>}
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
@@ -427,18 +427,18 @@ function validatesPin(evt) {
                         
                         <label className={styles.firstName} htmlFor='street'>Street name *</label>
                         {checkoutDetails.billingData?
-                         <input className={styles.firstInput} name='streetb'  id="streetb" onKeyPress={e=>validateWhitespace(e,"streetb")}  defaultValue={checkoutDetails.billingData.street} required/>
+                         <input className={styles.firstInput} name='streetb' maxLength={180}  id="streetb" onKeyPress={e=>validateWhitespace(e,"streetb")}  defaultValue={checkoutDetails.billingData.street} required/>
                         : 
-                        <input className={styles.firstInput} name='streetb'  id="streetb" onKeyPress={e=>validateWhitespace(e,"streetb")}  required/>}
+                        <input className={styles.firstInput} name='streetb'maxLength={180}  id="streetb" onKeyPress={e=>validateWhitespace(e,"streetb")}  required/>}
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFullName}>
                         <label className={styles.firstName} htmlFor='street'>House/Apartment number *</label>
                         {checkoutDetails.billingData?
-                         <input className={styles.firstInput} name='flatnob'  id="flatb" onKeyPress={e=>validateWhitespace(e,"flatb")}  defaultValue={checkoutDetails.billingData.houseno} required/>
+                         <input className={styles.firstInput} name='flatnob' maxLength={19}  id="flatb" onKeyPress={e=>validateWhitespace(e,"flatb")}  defaultValue={checkoutDetails.billingData.houseno} required/>
                         : 
-                        <input className={styles.firstInput} name='flatnob'  id="flatb" onKeyPress={e=>validateWhitespace(e,"flatb")}  required/>
+                        <input className={styles.firstInput} name='flatnob' maxLength={19} id="flatb" onKeyPress={e=>validateWhitespace(e,"flatb")}  required/>
                         }
                     </div>
                 </div>
@@ -446,17 +446,17 @@ function validatesPin(evt) {
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='first'>City *</label>
                         {checkoutDetails.billingData?
-                         <input className={styles.firstInput} name='cityb'  id="cityb" onKeyPress={e=>validateWhitespace(e,"cityb")}  defaultValue={checkoutDetails.billingData.city} required/>
+                         <input className={styles.firstInput} name='cityb' maxLength={19}  id="cityb" onKeyPress={e=>validateWhitespace(e,"cityb")}  defaultValue={checkoutDetails.billingData.city} required/>
                         : 
-                        <input className={styles.firstInput} name='cityb'  id="cityb" onKeyPress={e=>validateWhitespace(e,"cityb")}  required/>
+                        <input className={styles.firstInput} name='cityb' maxLength={19} id="cityb" onKeyPress={e=>validateWhitespace(e,"cityb")}  required/>
                         }
                     </div>
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='last'>State / Province</label>
                         {checkoutDetails.billingData?
-                         <input className={styles.firstInput} name='stateb'  id="stateb" onKeyPress={e=>validateWhitespace(e,"stateb")}  defaultValue={checkoutDetails.billingData.state} required/>
+                         <input className={styles.firstInput} name='stateb' maxLength={29} id="stateb" onKeyPress={e=>validateWhitespace(e,"stateb")}  defaultValue={checkoutDetails.billingData.state} required/>
                         : 
-                        <input className={styles.firstInput} name='stateb'  id="stateb" onKeyPress={e=>validateWhitespace(e,"stateb")}  required/>}
+                        <input className={styles.firstInput} name='stateb' maxLength={29} id="stateb" onKeyPress={e=>validateWhitespace(e,"stateb")}  required/>}
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>

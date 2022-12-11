@@ -207,7 +207,7 @@ const InsideOrder = () => {
               <div className={style.column1header}>MY ACCOUNT</div>
               <hr style={{ color: "black" }}></hr>
               <div className={style.column1text} onClick={e => setShowEditable(!true)}><Link to="/userprofile" style={{ textDecoration: "none", color: "#8c8c8c" }}>MY PROFILE</Link></div>
-              <div className={style.column1text} onClick={e => setshipEditCond(false)}><Link to="/shippindprofile" style={{ textDecoration: "none", color: "#8c8c8c" }} >MY SHIPPING DETAILS</Link></div>
+              <div className={style.column1text} onClick={e => setshipEditCond(true)}><Link to="/shippindprofile" style={{ textDecoration: "none", color: "#8c8c8c" }} >MY SHIPPING DETAILS</Link></div>
               <div className={style.column1text}><Link to="/profile" style={{ textDecoration: "none", color: "#8c8c8c" }}>MY ORDERS</Link></div>
 
             </div>
@@ -216,7 +216,7 @@ const InsideOrder = () => {
                 <div className={style.column2header}>
                   MY ORDERS #{orderid}
                 </div>
-                <div className={style.column2header1} style={{ whiteSpace: "nowrap", textAlign: 'end', color: "#8c8c8cc", textDecoration: "underline", fontSize: "14px", cursor: "pointer" }} onClick={cartAdd}>
+                <div className={style.column2header} style={{ whiteSpace: "nowrap", textAlign: 'end', color: "#8c8c8cc", textDecoration: "underline", fontSize: "14px", cursor: "pointer" }} onClick={cartAdd}>
                   REORDER
                 </div>
               </div>
@@ -262,12 +262,14 @@ const InsideOrder = () => {
                 <hr style={{ color: "black" }}></hr>
 
 
-                {states.map((s, i) => {
+                {states?.map((s, i) => {
                   var p = product.filter(p => p.id == s.product_id)[0]
-
+                  if((typeof p)==='undefined'){
+                   console.log("something went wrong")
+                  }else
                   return <div className={style.tablerowhead} style={i % 2 == 0 ? { marginTop: "10px", background: "#f2f2f2" } : { marginTop: "10px" }}>
                     <div className={style.rowitem3}>
-                      <img src={p.img_main? config.apiBaseURL + p.img_main:null} className={style.imgresponsive} />
+                      <img src={(typeof p.img_main)==='undefined'?null: config.apiBaseURL + p.img_main} className={style.imgresponsive} />
                       <span className={style.imgTitle}>
                         {p.title} ({s.size})
                       </span>

@@ -3,21 +3,21 @@
 //reason - this header work for mobile screens and big header hide below 768px
 //jira story point - rbyr222
 
-import {React, useEffect, useState} from 'react'
+import { React, useEffect, useState } from 'react'
 import Drawer from 'react-modern-drawer'
 import { GiHamburgerMenu } from 'react-icons/gi'
-import { BsSearch } from "react-icons/bs";
+import { CgProfile } from "react-icons/cg";
 //import styles 👇
 import 'react-modern-drawer/dist/index.css'
 import style from './shrinkHeader.module.css'
 import { AiOutlineRight, AiOutlineClose } from 'react-icons/ai'
 import { RiArrowLeftLine } from 'react-icons/ri'
-import {BsWhatsapp} from 'react-icons/bs'
+import { BsWhatsapp } from 'react-icons/bs'
 import Search from './search';
 import styles from './NavHeader.module.css'
 import Cart from './cart';
 
-import {profile,menus} from './header_links.js'
+import { profile, menus } from './header_links.js'
 import { Link, useNavigate } from 'react-router-dom';
 import LikeDrawer from './liked';
 import { useDispatch } from 'react-redux';
@@ -34,8 +34,8 @@ const text = 'Are you sure you want to logout?';
 
 
 const ShrinkHeader = () => {
- const [menu,setMenu]=useState([...profile])   
-const nav=useNavigate()
+  const [menu, setMenu] = useState([...profile])
+  const nav = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleDrawer = () => {
@@ -49,9 +49,9 @@ const nav=useNavigate()
     seLogoutAction(false)
   }
 
-  useEffect(()=>{
-getWhatsappContactNumber()
-  },[])
+  useEffect(() => {
+    getWhatsappContactNumber()
+  }, [])
 
   const [whatsappContactNumber, setWhatsappContactNumber] = useState(false);
 
@@ -62,30 +62,30 @@ getWhatsappContactNumber()
     }
   };
 
-  const dispatch= useDispatch();
-    const{userdata,setUserData,firstTimeLoadFunctions}=CartState()
-    const handleLogout = () => {
-        dispatch(unSetUserInfo({email:"",name:""}))
-        dispatch(unSetUserToken({access_token:null}))
-        removeToken()
-        localStorage.clear()
-        nav('/')
-        firstTimeLoadFunctions()
-        localStorage.setItem('logout',true);
-        window.location.reload(false)
+  const dispatch = useDispatch();
+  const { userdata, setUserData, firstTimeLoadFunctions,setCategorySelected } = CartState()
+  const handleLogout = () => {
+    dispatch(unSetUserInfo({ email: "", name: "" }))
+    dispatch(unSetUserToken({ access_token: null }))
+    removeToken()
+    localStorage.clear()
+    nav('/')
+    firstTimeLoadFunctions()
+    localStorage.setItem('logout', true);
+    window.location.reload(false)
 
-      }
+  }
 
-      const [logoutaction,seLogoutAction]=useState(false)
-      const {data,isSuccess}=useGetLoggedUserQuery(localStorage.getItem('access_token'))
+  const [logoutaction, seLogoutAction] = useState(false)
+  const { data, isSuccess } = useGetLoggedUserQuery(localStorage.getItem('access_token'))
 
-      useEffect(()=>{
-        if(data&&isSuccess)
-        setUserData({
-          email:data.email,
-          name:data.name,
-        })
-      },[data,isSuccess])
+  useEffect(() => {
+    if (data && isSuccess)
+      setUserData({
+        email: data.email,
+        name: data.name,
+      })
+  }, [data, isSuccess])
 
   return (
     <div className={style.responsiveHeader}>
@@ -99,8 +99,8 @@ getWhatsappContactNumber()
             <GiHamburgerMenu onClick={toggleDrawer} fontSize="30px" color='#7c7c7c' />
           </div>
           <div className={style.logo}>
-          <Converter/>    
-           <Link to="/"><img alt="header" src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" className={style.img}></img></Link> 
+            <Converter />
+            <Link to="/"><img alt="header" src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" className={style.img}></img></Link>
           </div>
 
           <div className={style.headerMenu}>
@@ -108,22 +108,22 @@ getWhatsappContactNumber()
              
             </div> */}
             <div className={style.headerMenuitem} >
-            <Search className={styles.icons} fontSize={24}/>
+              <Search className={styles.icons} fontSize={24} />
             </div>
             <div className={style.headerMenuitem} >
-            <a
-            href={`https://wa.me/${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
-            >
-            <BsWhatsapp className={styles.icons} fontSize={24}/>
-            </a>
+              <a
+                href={`https://wa.me/${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
+              >
+                <BsWhatsapp className={styles.icons} fontSize={24} />
+              </a>
             </div>
             <div className={style.headerMenuitem} >
-            <LikeDrawer/>
+              <LikeDrawer />
             </div>
             <div className={style.headerMenuitem}  >
-            <Cart style={{display:"none"}}/>
+              <Cart style={{ display: "none" }} />
             </div>
-            
+
           </div>
         </div>
       </div>
@@ -145,39 +145,39 @@ getWhatsappContactNumber()
 
           </div>
 
-          
+
           <Link to="/" className={style.drawerMenu} onClick={toggleDrawer}>
             Home
           </Link>
-          
+
           <div className={style.drawerMenu}>
-             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e=>{toggleDrawer2(); setMenu(menus)}}><span>ETHNIC</span> <AiOutlineRight /></div>
+            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer2(); setMenu(menus) }}><span>ETHNIC</span> <AiOutlineRight /></div>
           </div>
-          <Link to='/listing/luxury_pret' className={style.drawerMenu} onClick={toggleDrawer}>
+          <Link to='/listing/luxury_pret' className={style.drawerMenu} onClick={e=>{toggleDrawer();setCategorySelected([])}}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span>LUXURY PRET</span> </div>
           </Link>
-          <Link to='/listing/ready_to_wear' className={style.drawerMenu} onClick={toggleDrawer}>
+          <Link to='/listing/ready_to_wear' className={style.drawerMenu} onClick={e=>{toggleDrawer();setCategorySelected([])}}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> READY TO WEAR</span> </div>
           </Link>
-          <Link to='/listing/world_of_rbyr' className={style.drawerMenu} onClick={toggleDrawer}>
+          <Link to='/listing/world_of_rbyr' className={style.drawerMenu} onClick={e=>{toggleDrawer();setCategorySelected([])}}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> WORLD OF RBYR</span> </div>
           </Link>
           <Link to='/custom' className={style.drawerMenu} onClick={toggleDrawer}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> CONTACT US</span> </div>
           </Link>
-          
+
           <div className={style.drawerMenu} >
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e=>{
-                if(localStorage.getItem("access_token")){
-                    setMenu(profile);
-                    toggleDrawer2()
-                }
-                else{
+            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => {
+              if (localStorage.getItem("access_token")) {
+                setMenu(profile);
+                toggleDrawer2()
+              }
+              else {
                 nav("/login")
                 toggleDrawer()
               }
             }}>
-               <span> MY ACCOUNT</span><AiOutlineRight />
+              <span> MY ACCOUNT</span><AiOutlineRight />
             </div>
           </div>
         </div>
@@ -201,29 +201,33 @@ getWhatsappContactNumber()
 
           </div>
 
-          
-          {menu.map(m=>     <>     
-           
-            <Link to={m.link} className={style.drawerMenu} >
-              {m.name=="LOGOUT"?
-             <div style={{ justifyContent: "space-between", width: "100%", display: "flex"}} onClick={e=>{seLogoutAction(true);}}>
-              <span>{m.name}</span> <AiOutlineRight />
-              </div>
-              :<div style={{ justifyContent: "space-between", width: "100%", display: "flex"}}  onClick={e => { toggleDrawer(); toggleDrawer2() }} >
-                <span style={{color:"#f2f2f2",letterSpacing:"1.2px"}}>{m.name}</span> <AiOutlineRight />
-              </div>}
-              
-                
-            </Link>
-            </> 
-            )}
-          
-           <div style={{ justifyContent: "space-between", width: "80%"}} >
-           <span style={{textAlign:"center",color:"#9c9c9c"}}>Username-{userdata.name} Email-{userdata.email}</span>
+          {menu.filter(f=>f.name=="LOGOUT").length>0?
+          <Link to="" className={style.drawerMenu} >
+            <div style={{ width: "100%"}} >
+              <div style={{ color: "#BABABA", letterSpacing: "1.2px",width:"100%",textAlign:"center" }}> <CgProfile style={{margin:"0 10px 0 0"}}/>{userdata.name}</div> 
+              <div style={{ color: "#7c7c7c", letterSpacing: "1.2px",width:"100%",textAlign:"center"}}>{userdata.email}</div>
             </div>
-            <Popconfirm placement="bottomLeft" title={text} onConfirm={e=>handleLogout()} onCancel={e=>seLogoutAction(false)} okText="OK" cancelText="Cancel" open={logoutaction}>
-    </Popconfirm>
-      
+          </Link>:null}
+
+          {menu.map(m => <>
+
+            <Link to={m.link} className={style.drawerMenu} >
+              {m.name == "LOGOUT" ?
+                <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { seLogoutAction(true); }}>
+                  <span>{m.name}</span> <AiOutlineRight />
+                </div>
+                : <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer(); toggleDrawer2(); setCategorySelected([]) }} >
+                  <span style={{ color: "#f2f2f2", letterSpacing: "1.2px" }}>{m.name}</span> <AiOutlineRight />
+                </div>}
+
+            </Link>
+          </>
+          )}
+
+
+          <Popconfirm placement="bottomLeft" title={text} onConfirm={e => handleLogout()} onCancel={e => seLogoutAction(false)} okText="OK" cancelText="Cancel" open={logoutaction}>
+          </Popconfirm>
+
         </div>
       </Drawer>
     </div>

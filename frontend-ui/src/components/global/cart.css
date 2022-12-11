@@ -173,6 +173,23 @@ opacity: 1;
     left:-2% !important;
  }
 
+ @media print {
+    body * {
+      visibility: hidden;
+    }
+    #section-to-print, #section-to-print * {
+      visibility: visible;
+      -webkit-print-color-adjust: exact !important;
+
+    }
+    #section-to-print {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+  
+
  .bhRnqO {
     right:-2% !important;
  }

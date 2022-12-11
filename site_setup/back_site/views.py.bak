@@ -933,13 +933,6 @@ class pageIndex(APIView):
                     print("exist")
                 else:
                     colors.append(product.color)
-                    
-            categories=[]
-            for product in products:
-                if product.category in categories:   
-                    print("exist")
-                else:
-                    categories.append(product.category)         
 
             from django.core.paginator import Paginator
             p = Paginator(products, 8)
@@ -947,7 +940,7 @@ class pageIndex(APIView):
             pageno = request.data['pageIndex']
             serialize = product_serializer(
                 p.page(pageno).object_list, many=True)
-            return Response({"products": serialize.data, "colors": colors,"categories":categories})
+            return Response({"products": serialize.data, "colors": colors})
         except:
             return Response({"error": True})
     # end of code Addition

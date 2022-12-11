@@ -161,7 +161,7 @@ CORS_ORIGIN_WHITELIST = [
 
 # Django project settings.py
 AUTH_USER_MODEL= 'back_site.User'
-CSRF_COOKIE_SECURE = False 
+CSRF_COOKIE_SECURE = True 
 CSRF_COOKIE_HTTPONLY = True
 # Email Confiuration
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

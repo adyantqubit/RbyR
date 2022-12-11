@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import './login.css';
-import { Grid, TextField, Button, Box, Alert,Typography } from "@mui/material";
+import { Grid, TextField, Button, Box, Alert,Typography, CircularProgress } from "@mui/material";
 import { useState } from 'react';
 import { useSendPasswordResetEmailMutation } from "../../Redux-manage/services/userAuthapi";
 import Navbar from '../global/NavHeader';
@@ -48,10 +48,15 @@ const SentEmail = () => {
                     <a href="https://mail.google.com/" style={{fontSize:"16px",textDecoration:"underline",color:"blue"}}> Mail</a>
                     </Alert> : ""}
 					
-					<input style={{marginBottom:"0"}} class="inpu" type="email" name="email" placeholder=" Registered Email" required=""/>
+					<input style={{marginBottom:"0"}} class="inpu" type="email" name="email" placeholder=" Registered Email" required="" onChange={e=>setMsg({})}/>
 					{error.email?<Typography style={{color:"red",paddingLeft:"70px",fontSize:"0.8rem"}}>{error.email[0]}</Typography>:" "}
 
-					<button class="butto" style={{backgroundColor:"#573b8a",}} type='submit'>Send Email</button>
+					{isLoading?
+          <span class="butto" style={{backgroundColor:"#000000",textAlign:"center",padding:"8px 0",cursor:"not-allowed"}} >Send Email</span>
+          :
+          <button class="butto" style={{backgroundColor:"#573b8a",}} type='submit'>Send Email</button>}
+
+					
 				</form>
 			</div>
 	</div>

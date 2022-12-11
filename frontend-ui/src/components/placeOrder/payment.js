@@ -1,12 +1,14 @@
+import { notification } from 'antd';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { cartStockRecheck } from '../../api/orderApis';
 import { cartDeleteApi, invoiceApi } from '../../api/service';
 import { CartState } from '../../context';
 import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing';
 import { getToken } from '../../Redux-manage/services/localStorageService';
 import styles from './order.module.css'
 const Payment = () => {
-    const{userdata,checkoutDetails,setCheckoutDetails,currency,cart,setCart,offer,setOffer,taxRate,setTaxRate}=CartState()
+    var{userdata,checkoutDetails,setCheckoutDetails,cartEnd,currency,cart,setCart,offer,setOffer,taxRate,setTaxRate}=CartState()
     const nav=useNavigate()
     var[tick,setTick]=useState(false)
     var[tickop,setTickop]=useState(false)
@@ -43,6 +45,29 @@ const Payment = () => {
 
     }
 
+    async function cartChecking(){
+      await cartStockRecheck(cart).then(r=>{
+    
+        if(r.error){
+          console.log("error occurs")
+        cartEnd=r.error
+        cartEnd.map(c=>{
+          notification.error({
+            message: <div style={{fontSize:"18px",color:"white"}}>Out of stock</div>,
+            description:
+            `Product ${c.name} size ${c.size} is out of stock `,
+            style: { backgroundColor:"#D2042D",color:"white"},
+            duration:20,
+          });
+        })
+      }
+      else{
+        console.log("all done")
+        submitAll()
+      }
+      })
+    }
+
     async function submitAll(){
         if(checkoutDetails['payment']&&checkoutDetails['payment'].length>0){
            checkoutDetails['cart']=cart
@@ -55,13 +80,28 @@ const Payment = () => {
            checkoutDetails['currency_value']=currency.value
            checkoutDetails['date']=new Date().toISOString().slice(0, 10)
            console.log(checkoutDetails)
+
+
            await invoiceApi(checkoutDetails,access_token).then(r=>{
+
+            if(r.error){
+              notification.error({
+                message: <div style={{fontSize:"18px",color:"white"}}>Sorry! Something went wrong. </div>,
+                description:
+                `Facing issue on generating bill please contact to Admin `,
+                style: { backgroundColor:"#D2042D",color:"white"},
+                duration:20,
+              });
+            }else{
             checkoutDetails['orderno']=r.order_no
             console.log(r)
+            sessionStorage.setItem('checkoutDetails',JSON.stringify(checkoutDetails))
+              deleteFromCart()  
+              nav("/billing")
+            }
+
             })
-           sessionStorage.setItem('checkoutDetails',JSON.stringify(checkoutDetails))
-           deleteFromCart()  
-           nav("/billing")
+           
         }
         else{
           document.getElementById('cash').style.border="1px solid red"
@@ -96,7 +136,7 @@ const Payment = () => {
 
             </div>
           </div>
-          <button className={styles.userInfoButton} onClick={submitAll}>
+          <button className={styles.userInfoButton} onClick={e=>cartChecking()}>
             PLACE YOUR ORDER
           </button>
     </div>  )

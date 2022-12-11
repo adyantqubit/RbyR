@@ -29,7 +29,7 @@ import {
 
 const UserProfile = () => {
   notification.destroy()
- var {userdata,setUserData,shipEditcond,showEditable,setShowEditable}=CartState()
+ var {userdata,setUserData,shipEditcond,showEditable,setShowEditable,setshipEditCond}=CartState()
   var [changepass,setChangepass]=useState(false)
 	const [error, setError] = useState({});
 	const [changeUserPassword]=useChangeUserPasswordMutation()
@@ -157,7 +157,7 @@ if (data.get('oldpswd')!=null){
               <div className={style.column1header}>MY ACCOUNT</div>
               <hr style={{color:"black"}}></hr>
               <div className={style.column1text} onClick={e=>setShowEditable(!true)}><Link to="/userprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY PROFILE</Link></div>
-              <div className={style.column1text}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY SHIPPING DETAILS</Link></div>
+              <div className={style.column1text} onClick={e=>setshipEditCond(true)}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY SHIPPING DETAILS</Link></div>
               <div className={style.column1text}><Link to="/profile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY ORDERS</Link></div>
 
             </div>
@@ -284,6 +284,7 @@ if (data.get('oldpswd')!=null){
                   </div>
                 
                 </div>
+                
             </form>
     </>}
        

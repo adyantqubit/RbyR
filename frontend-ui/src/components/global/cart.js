@@ -210,13 +210,13 @@ async function cartChecking(){
         `Product ${c.name} size ${c.size} is out of stock `,
         style: { backgroundColor:"#D2042D",color:"white"},
         duration:20,
-        
       });
     })
   }
   else{
     setCartDrawer(false)
     DefaultShipping()
+    checkoutDetails['CouponDiscount']=afterColumnTotalOfferAdd(offer,cart,taxRate).coupon
     nav("/placeorder")
   }
   })

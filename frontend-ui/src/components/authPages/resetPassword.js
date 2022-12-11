@@ -52,6 +52,7 @@ const ResetPassword = () => {
         key:1
         });
        setMsg(res.data)
+       navigate("/")
        navigate("/login")
       }   
     }

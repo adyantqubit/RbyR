@@ -25,6 +25,7 @@ const Context = ({ children }) => {
     email: "",
     name: ""
   })
+  
 
 
   // use in filter new js file inside listing component
@@ -94,8 +95,6 @@ const Context = ({ children }) => {
     }
     if (access_token) {
       setInterval(TokenManage, 360000)
-
-      
     }
     if (JSON.parse(window.localStorage.getItem('cart')) && (!localStorage.getItem('access_token')))
       setCart([...JSON.parse(window.localStorage.getItem('cart'))])
@@ -277,9 +276,19 @@ const Context = ({ children }) => {
       filteredProducts = filteredProducts.filter(c => c.price > minValue && c.price < maxValue)
     }
 
-    var finalFilter = []
 
-    console.log(filteredProducts.length)
+      
+
+     console.log(selectedCategory)
+      if (selectedCategory.length > 0)
+        selectedCategory.filter(s => {
+        filteredProducts= filteredProducts.filter(c => c.category.toLowerCase() == s.toLowerCase())
+        })             
+    
+    console.log(filteredProducts)
+    var finalFilter = []
+  
+    
     if (selectedColor.length > 0 || sizeSelected.length > 0 || filteredProducts.length > 0 || maxValue) {
       if (filteredProducts.length < 8) {
         console.log("page index re hit")
@@ -293,13 +302,8 @@ const Context = ({ children }) => {
       finalFilter = tempallpro
 
 
-    //size
-    if (finalFilter.length > 0) {
-      if (selectedCategory.length > 0)
-        selectedCategory.filter(s => {
-          finalFilter = finalFilter.filter(c => c.category.toLowerCase() == s.toLowerCase())
-        })
-    }
+    //category
+    
 
 
     setCategoryProduct([...finalFilter])

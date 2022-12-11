@@ -21,10 +21,10 @@ from django.contrib.auth.models import (
 #Added by Ashish on 30-11-2022
 #Reason - To add custom validation on admin site
 def validate_phone_number(value):
-    if len(str(value))<=15:
+    if len(str(value))<=13:
         return value
     else:
-        raise ValidationError("Contact number can't be more than 15 digits.") 
+        raise ValidationError("Contact number can't be more than 13 digits.") 
 
 def validate_address(value):
     if len(value)<=255:

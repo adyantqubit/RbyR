@@ -10,6 +10,7 @@ import CArd2 from "./card2";
 import Chat from "../expandDetailt/chat";
 import Footer2 from "../global/footer2";
 import { getLogoAndCover } from "../../api/service";
+import style from './home.module.css'
 import { notification } from "antd";
 export const Home = () => {
   // const [logoAndCover, setLogoAndCover] = useState([]);
@@ -26,7 +27,7 @@ export const Home = () => {
   // };
   notification.destroy()
   return (
-    <>
+    <div className={style.home}>
       <NavHeader/>
       <Slideshow />
 
@@ -37,6 +38,6 @@ export const Home = () => {
       <Below />
       
       {/* <Chat/> */}
-    </>
+    </div>
   );
 };

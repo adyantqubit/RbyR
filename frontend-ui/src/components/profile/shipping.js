@@ -12,6 +12,8 @@ import styles from "../placeOrder/order.module.css"
 import { CartState } from '../../context'
 import { shippingTick } from '../../api/orderApis'
 import list from '../placeOrder/data.json'
+
+
 import {AiOutlineClose} from 'react-icons/ai'
 import { notification } from 'antd';
 
@@ -25,6 +27,7 @@ var [numerror,setnumerror]=useState("")
 var [pinerror,setpinerror]=useState("")
 const [value, setValue] = useState("India")
 const [value2, setValue2] = useState("India")
+
 
 
 useEffect(()=>{
@@ -262,7 +265,8 @@ const handleButtonClicknum = (msg) => {
                     <span>SHIPPING DETAILS</span>
                    
                     {shippingAddress!=null&&shippingAddress.length>0?
-                     <span className={styles.userinfoText} onClick={e=>jumpToEdit()}>{shipEditcond?"Edit Configuration":null}
+                     <span className={styles.userinfoText} onClick={e=>jumpToEdit()}>
+                        {shipEditcond&&shippingAddress.filter(s=>s.isSelected==true).length>0?"Edit Configuration":null}
                     </span> :
                     null}
                 </div>

@@ -32,6 +32,9 @@ const Login = () => {
 	const [showNewPass3,setNewPass3]=useState(false)
 	const [visiblepassReg3,setVisiblePassreg3]=useState(false)
 
+
+	
+
 	//For login User
 	const[loginUser,{isLoading}]=useLoginUserMutation()
 	const handleSubmit = async(e) => {
@@ -54,6 +57,7 @@ const Login = () => {
 
 
 		if(res.data){
+
 		  storeToken(res.data.token)
 		  let {access_token}=getToken();
 		  dispatch(setUserToken({access_token:access_token}))
@@ -75,7 +79,7 @@ const Login = () => {
 		  });
 
 		  firstTimeLoadFunctions()
-		  navigate('/')
+		  navigate(-1)
 		
 		  
 		  
@@ -95,6 +99,10 @@ const Login = () => {
 	  const handleSubmit2 = async(e) => {
 		e.preventDefault();
 		const data = new FormData(e.currentTarget);
+
+		if(value.length<7){
+           setServerError({"contact_number":["Minimum 7 digits are require."]})
+		}else{
 		const actualData = {
 		  name: data.get('txt'),
 		  email: data.get('email').toLowerCase(),
@@ -111,10 +119,20 @@ const Login = () => {
 		  setServerError(res.error.data.errors)
 		}
 		if(res.data){
+			notification.error({
+				message: <div style={{fontSize:"18px",color:"black"}}>Successfully Logged In. </div>,
+				description:
+				`You Are Logged In`,
+				className:"custom-class",
+				style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"10vh"},
+				duration:2,
+				key:1
+			  });
 		  storeToken(res.data.token)
 		  navigate('/')
 	
 		}
+	}
 	  }
 
 	  function validates(evt) {
@@ -191,6 +209,7 @@ const Login = () => {
 					style={{width:"70%",marginLeft:"15%"}}
 					onChange={e=>{setValue(e)}} 
 					limitMaxLength={10}
+				
 					/>
 					<div style={{minHeight:"20px"}}>
 					{server_error.contact_number?<Typography style={{color:"red",fontSize:"14px",marginLeft:"15%",width:"70%"}}>{server_error.contact_number[0]}</Typography>:" "}
@@ -263,7 +282,7 @@ const Login = () => {
 					{error.email?<Typography style={{color:"red",paddingLeft:"50px",fontSize:"12px",}}>{error.email[0]}</Typography>:" "}
 
                     <span class="inpu3" style={{margin:"20px 0",marginLeft:"15%",background:"#e0dede"}}>
-					<input class="inpu4" type={showNewPass3?"text":"password"} style={{width:"90%"}} name="pswd" placeholder="Password *" required="" onChange={e=>{if(e.target.value.length>0)setVisiblePassreg3(true); else setVisiblePassreg3(false)}}/>
+					<input class="inpu4" type={showNewPass3?"text":"password"} style={{width:"90%",background:"rgba(0,0,0,0)"}} name="pswd" placeholder="Password *" required="" onChange={e=>{if(e.target.value.length>0)setVisiblePassreg3(true); else setVisiblePassreg3(false)}}/>
 					{visiblepassReg3?showNewPass3?<AiFillEye style={{marginTop:"5px"}} onClick={e=>setNewPass3(false)}/>:<AiFillEyeInvisible style={{marginTop:"5px"}} onClick={e=>setNewPass3(true)}/>:null}
 					</span>
 					{error.password?<Typography style={{color:"red",paddingLeft:"50px",fontSize:"12px"}}>{error.password[0]}</Typography>:" "}
