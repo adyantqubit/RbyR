@@ -28,6 +28,7 @@ import {
 } from '@ant-design/icons';
 
 const UserProfile = () => {
+  notification.destroy()
  var {userdata,setUserData,shipEditcond,showEditable,setShowEditable}=CartState()
   var [changepass,setChangepass]=useState(false)
 	const [error, setError] = useState({});
@@ -273,18 +274,16 @@ if (data.get('oldpswd')!=null){
                 
                 </>:null}
                
-                <div style={{display:"flex",flexWrap:"wrap",gap:"20px",alignItems:"end"}}>
-                  <button className={styles.userInfoButton} type="submit">
-                    UPDATE PROFILE
-                </button>
-                {/* <button className={styles.userInfoButton} style={{marginLeft:"10px"}} onClick={e=>shippingDelete(e,defaultShiping.id)}>
-                    DELETE 
-                </button> */}
-                <span  style={{marginLeft:"10px",fontSize:"16px",letterSpacing:"1.7px",fontStyle:"bold",cursor:"pointer"}} onClick={e=>setShowEditable(false)}>
-                    CANCEL
-                </span>
-                </div>
                 
+                <div className={styles.cancelButtonWithSubmit}>
+                    <button className={styles.userInfoButton} style={{width:"48%"}} type="submit">
+                      UPDATE PROFILE
+                  </button>
+                  <div  style={{fontSize:"16px",letterSpacing:"1.7px",fontStyle:"bold",cursor:"pointer",width:"50%",textAlign:"center",marginTop:"10px"}} onClick={e=>setShowEditable(false)}>
+                      CANCEL
+                  </div>
+                
+                </div>
             </form>
     </>}
        

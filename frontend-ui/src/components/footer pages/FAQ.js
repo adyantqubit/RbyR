@@ -7,12 +7,12 @@ import Footer from "../global/footer";
 import Navbar from "../global/NavHeader";
 import style from "./FAQ.module.css";
 import parse from "html-react-parser";
-
+import { notification } from 'antd';
 
 const FAQ = () => {
-
+  notification.destroy()
   const [FAQs,setFAQs]=useState([])
-
+  
   useEffect(()=>{
     getFAQs()
   },[])

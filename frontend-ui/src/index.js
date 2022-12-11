@@ -7,13 +7,14 @@ import { store } from './Redux-manage/app/store'
 import './index.css';
 import {BrowserRouter} from 'react-router-dom'
 import Context from './context';
+import { notification } from 'antd';
 
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
-  
+   
     <BrowserRouter>
     <Provider store={store}>
       <Context>

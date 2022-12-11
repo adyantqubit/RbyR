@@ -75,7 +75,7 @@ const Slider = ({scrollTop}) => {
             lineHeight: "32px",
             letterSpacing: "3px",
             marginBottom: "20px",
-            paddingLeft: "4%",
+            
           }}
         >
           RECENTLY VIEWED PRODUCTS

@@ -4,9 +4,10 @@ import { Grid, TextField, Button, Box, Alert,Typography } from "@mui/material";
 import { useState } from 'react';
 import { useSendPasswordResetEmailMutation } from "../../Redux-manage/services/userAuthapi";
 import Navbar from '../global/NavHeader';
-
+import { notification } from 'antd';
 
 const SentEmail = () => {
+  notification.destroy()
     const [error, setError] = useState({})
   const [msg, setMsg] = useState({})
 

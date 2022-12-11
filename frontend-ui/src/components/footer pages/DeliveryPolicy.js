@@ -5,8 +5,9 @@ import style1 from "./contact.module.css";
 import style from "./DeliveryPolicy.module.css";
 import { getDeliveryAndShippingPoliciesDetail } from "../../api/service";
 import parse from "html-react-parser";
-
+import { notification } from 'antd';
 const DeliveryPolicy = () => {
+  notification.destroy()
   const [deliveryAndShippingPolicies, setDeliveryAndShippingPolicies] =
     useState([]);
   useEffect(() => {

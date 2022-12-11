@@ -25,10 +25,10 @@ import config from '../../api/config';
 import { getLogoAndCover, getWhatsappContactDetail } from "../../api/service";
 import ShrinkHeader from './shrinkHeader';
 import { CartState } from '../../context';
-
+import { notification } from 'antd';
 
 const Navbar = () => {
-
+  notification.destroy()
 	const[cl,setClass]=useState(false);
 	const [open, setOpen] = useState(false);
   const{access_token,refresh_token}= getToken()

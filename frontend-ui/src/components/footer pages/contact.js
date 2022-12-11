@@ -5,8 +5,9 @@ import style from "./contact.module.css";
 import { getContactUsDetail } from "../../api/service";
 import parse from "html-react-parser";
 import config from "../../api/config";
-
+import { notification } from 'antd';
 const Contact = () => {
+  notification.destroy()
   const [contactUs, setContactUs] = useState([]);
 
   useEffect(() => {

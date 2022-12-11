@@ -12,10 +12,11 @@ import parse from 'html-react-parser'
 import styles from '../placeOrder/billing.module.css'
 import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing'
 import { useCartUpdateMutation } from '../../Redux-manage/services/userAuthapi'
-
+import { notification } from 'antd';
 
 
 const InsideOrder = () => {
+  notification.destroy()
   var { orders, setOrder, product, checkoutDetails, currency, taxRate, offer, cart, setCart, setshipEditCond, setShowEditable } = CartState()
   var { orderid } = useParams()
   var [states, setState] = useState([])
@@ -215,7 +216,7 @@ const InsideOrder = () => {
                 <div className={style.column2header}>
                   MY ORDERS #{orderid}
                 </div>
-                <div className={style.column2header} style={{ whiteSpace: "nowrap", textAlign: 'end', color: "#8c8c8cc", textDecoration: "underline", fontSize: "14px", cursor: "pointer" }} onClick={cartAdd}>
+                <div className={style.column2header1} style={{ whiteSpace: "nowrap", textAlign: 'end', color: "#8c8c8cc", textDecoration: "underline", fontSize: "14px", cursor: "pointer" }} onClick={cartAdd}>
                   REORDER
                 </div>
               </div>

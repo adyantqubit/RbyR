@@ -4,8 +4,9 @@ import Navbar from "../global/NavHeader";
 import style from "./RefundPolicy.module.css";
 import { getRefundPoliciesDetail } from "../../api/service";
 import parse from "html-react-parser";
-
+import { notification } from 'antd';
 const RefundPolicy = () => {
+  notification.destroy()
   const [refundPolicies, setRefundPolicies] = useState([]);
   useEffect(() => {
     getRefundPolicies();

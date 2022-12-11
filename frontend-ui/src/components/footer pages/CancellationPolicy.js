@@ -4,8 +4,9 @@ import Navbar from "../global/NavHeader";
 import style from "./CancellationPolicy.module.css";
 import { getCancellationPoliciesDetail } from "../../api/service";
 import parse from "html-react-parser";
-
+import { notification } from 'antd';
 const CancellationPolicy = () => {
+  notification.destroy()
   const [cancellationPolicies, setCancellationPolicies] = useState([]);
   useEffect(() => {
     getCancellationPolicies();

@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 import style from '../global/cartCard.module.css'
 import { useCartUpdateMutation, useGetLikedProductQuery } from '../../Redux-manage/services/userAuthapi'
 import { CartState } from '../../context'
@@ -30,12 +29,12 @@ import { afterColumnTotalOfferAdd, columnSubtotal } from '../../Redux-manage/ser
 import { Typography } from '@mui/material';
 
 
+import { blue } from '@mui/material/colors';
+
 const text = 'Are you sure you would like to remove this item from the shopping cart?';
 
-
-
 const CartSItem = (props) => {
-
+notification.destroy()
  var {cart,setCart,CategoryProduct,checkoutDetails,currency,offer,setOffer,taxRate,setTaxRate,cartEnd,setCartEnd}=CartState()
  
  const [cartsaveApi,{isLoad}]=useCartUpdateMutation()
@@ -48,10 +47,10 @@ const CartSItem = (props) => {
  var [cartSuccess,setCartSuccess]=useState(false)
 
 
-
 useEffect(()=>{
 GetTAXapi()
 ruleText()
+notification.destroy()
 
 // document.getElementById("scrolled").scrollTop=0
 },[])
@@ -395,15 +394,15 @@ const increament=async (CartProduct)=>{
               <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
                     <div style={{color:"black",alignSelf:"start",marginLeft:"20px",color:"#8c8c8c"}}> Quantity</div>
                         <div style={{height:"20px",width:"100px",display:"flex",flexDirection:"row"}}>
-                            <div style={{height:"20px",width:"10px",marginRight:"10px"}}>
+                            <div style={{width:"20px",marginRight:"10px"}}>
                               <div className={styles.increament} onClick={e=>decreament(pro)}>
-                              <span style={{position:"relative",top:"-26px",right:"6px",cursor:"pointer",fontSize:"30px"}}>-</span>
+                              <div style={{cursor:"pointer",height:"auto"}}>-</div>
                               </div>
                             </div>
-                            <input type="text" class="form-control" style={{width:"30px",height:"20px",border:"2px solid white",padding:"4px",textAlign:"center"}} value={pro.quantity} ref={textInput} />
-                            <div style={{height:"20px",width:"10px"}}>
+                            <input type="text" class="form-control" style={{width:"30px",height:"20px",border:"none",padding:"4px",textAlign:"center"}} value={pro.quantity} ref={textInput} />
+                            <div style={{width:"20px"}}>
                                 <div className={styles.increament} onClick={e=>increament(pro)}>
-                                <span style={{position:"relative",top:"-18px",right:"7px",cursor:"pointer",fontSize:"20px"}}>+</span>
+                                <div style={{cursor:"pointer",height:"auto"}}>+</div>
                                 </div>
                             </div>
                         </div>           
@@ -440,15 +439,15 @@ const increament=async (CartProduct)=>{
               <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
                     <div style={{color:"black",alignSelf:"start",marginLeft:"20px",color:"#8c8c8c"}}> Quantity</div>
                         <div style={{height:"20px",width:"100px",display:"flex",flexDirection:"row"}}>
-                            <div style={{height:"20px",width:"10px",marginRight:"10px"}}>
+                            <div style={{width:"20px",height:"100%"}}>
                               <div className={styles.increament} onClick={e=>decreament(pro)}>
-                                <span style={{position:"relative",top:"-26px",right:"6px",cursor:"pointer",fontSize:"30px"}}>-</span>
+                                <div style={{cursor:"pointer",height:"auto"}}>-</div>
                               </div>
                             </div>
-                            <input type="text" class="form-control" style={{width:"30px",height:"20px",border:"2px solid white",padding:"4px",textAlign:"center"}} value={pro.quantity} ref={textInput} />
-                            <div style={{height:"20px",width:"10px"}}>
+                            <input type="text" class="form-control" style={{width:"30px",height:"100%",border:"none",padding:"4px",textAlign:"center"}} value={pro.quantity} ref={textInput} />
+                            <div style={{width:"20px",height:"100%"}}>
                                 <div className={styles.increament} onClick={e=>increament(pro)}>
-                                  <span style={{position:"relative",top:"-18px",right:"7px",cursor:"pointer",fontSize:"20px"}}>+</span>
+                                  <div style={{cursor:"pointer",height:"auto"}}>+</div>
                                 </div>
                             </div>
                         </div>           

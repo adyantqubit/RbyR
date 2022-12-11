@@ -8,8 +8,9 @@ import 'reactjs-popup/dist/index.css';
 import { getOptionsFromChildren } from '@mui/base'
 import { Link, useNavigate } from 'react-router-dom'
 import { CartState } from '../../context'
-
+import { notification } from 'antd';
 const MyOrders = () => {
+  notification.destroy()
   var {setshipEditCond,showEditable,setShowEditable,currency}=CartState()
      var [orders,setOrder]=useState([])
      var [tran,settran]=useState([])

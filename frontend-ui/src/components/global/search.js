@@ -10,8 +10,9 @@ import { getSearchedProducts } from "../../api/service";
 import { CartState } from "../../context";
 import styles from "./search.module.css";
 import "./search.css"
+import { notification } from "antd";
 const Search = () => {
-
+  notification.destroy()
   const [open, setOpen] = useState(false);
   const { product } = CartState();
 

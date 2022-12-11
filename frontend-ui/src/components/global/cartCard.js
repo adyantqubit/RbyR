@@ -269,15 +269,15 @@ const increament= async (CartProduct)=>{
               <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
                     <div style={{color:"black",alignSelf:"start",marginLeft:"20px",color:"#8c8c8c"}}> Quantity</div>
                         <div style={{height:"20px",width:"100px",display:"flex",flexDirection:"row"}}>
-                            <div style={{height:"20px",width:"10px",marginRight:"10px"}}>
+                            <div style={{width:"20px"}}>
                               <div className={styles.increament} onClick={e=>decreament(pro)}>
-                              <span style={{position:"relative",top:"-26px",right:"6px",cursor:"pointer",fontSize:"30px"}}>-</span>
+                              <div style={{cursor:"pointer",height:"auto"}}>-</div>
                               </div>
                             </div>
-                            <input type="text" class="form-control" style={{width:"30px",height:"20px",border:"2px solid white",padding:"4px",textAlign:"center"}} value={pro.quantity} ref={textInput} />
-                            <div style={{height:"20px",width:"10px"}}>
+                            <input type="text" class="form-control" style={{width:"30px",height:"20px",border:"none",padding:"4px",textAlign:"center"}} value={pro.quantity} ref={textInput} />
+                            <div style={{width:"20px"}}>
                                 <div className={styles.increament} onClick={e=>increament(pro)}>
-                                <span style={{position:"relative",top:"-18px",right:"6.5px",cursor:"pointer",fontSize:"20px"}}>+</span>
+                                <div style={{cursor:"pointer",height:"auto"}}>+</div>
                                 </div>
                             </div>
                         </div>           

@@ -13,13 +13,11 @@ import ReactToPrint from 'react-to-print';
 import parse from "html-react-parser";
 import Footer from '../global/footer'
 import Below from '../global/below'
-
-
-
-
+import { notification } from 'antd';
 
 
 const Billing = () => {
+  notification.destroy()
     var{userdata,checkoutDetails,setCheckoutDetails,cart,setCart,currency,offer,setOffer,taxRate,setTaxRate}=CartState()
     const nav=useNavigate()
     var [cond,setCon]=useState(false)

@@ -5,9 +5,10 @@ import ListPage from './listPage'
 import {BsFillChatTextFill} from'react-icons/bs'
 import Chat from '../expandDetailt/chat'
 import Footer2 from '../global/footer2'
-
+import { notification } from 'antd';
 
 export const Listing  = () => {
+  notification.destroy()
   return (
     <>
     {/* <NavHeader/> */}

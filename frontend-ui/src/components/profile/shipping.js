@@ -12,12 +12,11 @@ import styles from "../placeOrder/order.module.css"
 import { CartState } from '../../context'
 import { shippingTick } from '../../api/orderApis'
 import list from '../placeOrder/data.json'
-
-
 import {AiOutlineClose} from 'react-icons/ai'
+import { notification } from 'antd';
 
 const ShippingProfile = () => {
-
+    notification.destroy()
     const [shippingAddress,setShippingAddress,]=useState([])
     const {defaultShiping,setDefaultShipping,shipEditcond,setshipEditCond,setShowEditable}=CartState()
     var [ isAlertVisiblepin, setIsAlertVisiblepin ] = React.useState(false);

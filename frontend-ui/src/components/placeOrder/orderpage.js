@@ -10,8 +10,9 @@ import UsserAdresses from './usserAdresses';
 import { useLocation } from 'react-router-dom'
 import Footer from '../global/footer';
 import Below from '../global/below';
-
+import { notification } from 'antd';
 const Orderpage = (props) => {
+  notification.destroy()
   const { userdata, checkoutDetails, setCheckoutDetails, paymentflow, cart, setPaymentflow, shippingflow, setShipingflow } = CartState()
   const nav = useNavigate()
 

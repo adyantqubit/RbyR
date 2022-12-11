@@ -96,7 +96,12 @@ display:none;
     height:auto;
     background-color: white;
 }
-
+.cancelButtonWithSubmit{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    width:100%;
+}
 .firstName{
     font-size: 13px;
     line-height: 20px;
@@ -143,6 +148,7 @@ border-color: white;
     margin-top: 15px;
     min-width: 250px;
     font-size: 14px;
+    width: 50%;
     cursor: pointer;
     letter-spacing: 2px;
     background-color: #323232;
@@ -166,6 +172,10 @@ border-color: white;
     text-decoration: none;
     border-radius: 0;
 }
+.userInfoButton:hover{
+    background-color: #828282;
+}
+
 
 .usedetailShow{
 
@@ -346,5 +356,9 @@ letter-spacing: 1.2px;
         width:100%;
         height:100%;                                                              
         justify-self:end;
+    }
+    .cancelButtonWithSubmit{
+        flex-direction: column;
+
     }
 }

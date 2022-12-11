@@ -54,7 +54,7 @@ const Slider2 = ({scrollTop}) => {
             lineHeight: "32px",
             letterSpacing: "3px",
             marginBottom: "20px",
-            paddingLeft: "4%",
+            
           }}
         >
           YOU MAY ALSO LIKE

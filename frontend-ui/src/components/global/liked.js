@@ -6,7 +6,10 @@ import LikeCard from "./likeCard";
 import { AiFillHeart } from "react-icons/ai";
 import {MdOutlineArrowBack} from 'react-icons/md';
 import "./liked.css"
+import { notification } from 'antd';
+
 const LikeDrawer = () => {
+  notification.destroy()
   const { openLikedrawer, setLikeDrawer } = CartState();
 
   const showDrawer = () => {

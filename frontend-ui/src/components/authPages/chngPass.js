@@ -6,10 +6,11 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getToken } from '../../Redux-manage/services/localStorageService';
 import { useChangeUserPasswordMutation } from '../../Redux-manage/services/userAuthapi';
-
+import { notification } from 'antd';
 
 
 const ChngPass = () => {
+	notification.destroy()
 	const [error, setError] = useState({});
 	const [changeUserPassword]=useChangeUserPasswordMutation()
 	let{access_token}=getToken()

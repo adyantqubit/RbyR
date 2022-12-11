@@ -156,7 +156,7 @@ CORS_ALLOW_CREDENTIAL=True
 
 CORS_ORIGIN_WHITELIST = [
      "http://localhost:3000",
-    # "http://192.168.1.16:3000",
+    #  "http://192.168.1.5:3000",
 ]
 
 # Django project settings.py
@@ -214,5 +214,5 @@ PASSWORD_RESET_TIMEOUT = 1800 # 30 mint, in seconds
 
 CORS_ALLOWED_ORIGINS=[
     "http://localhost:3000",
-    # "http://192.168.1.16:3000",
+    # "http://192.168.1.5:3000",
 ]

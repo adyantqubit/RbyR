@@ -18,6 +18,7 @@ import { notification } from 'antd';
 import { GuestCartRequest } from '../../api/orderApis';
 
 const Login = () => {
+	notification.destroy()
 	const {setCart,setLike,firstTimeLoadFunctions,cart}=CartState()
 	const [error, setError] = useState({})
 	let{access_token}=getToken()

@@ -9,7 +9,9 @@ import Navbar from '../global/NavHeader'
 import { notification } from 'antd';
 import {AiFillEye,AiFillEyeInvisible} from 'react-icons/ai'
 
+
 const ResetPassword = () => {
+  notification.destroy()
     const navigate = useNavigate()
     const [error, setError] = useState(null)
     const [msg, setMsg] = useState({})

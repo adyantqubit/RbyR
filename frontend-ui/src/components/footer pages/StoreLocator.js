@@ -5,8 +5,9 @@ import style from "./StoreLocator.module.css";
 import parse from "html-react-parser";
 import { getStoreLocatorDetail } from "../../api/service";
 import config from "../../api/config";
-
+import { notification } from 'antd';
 const StoreLocator = () => {
+  notification.destroy()
   const [storeLocatorDetails, setStoreLocator] = useState([]);
   useEffect(() => {
     getStoreLocator();

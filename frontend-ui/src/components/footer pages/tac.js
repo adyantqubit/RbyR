@@ -4,9 +4,9 @@ import Navbar from "../global/NavHeader";
 import style from "./tac.module.css";
 import { getTermsAndConditionsDetail } from "../../api/service";
 import parse from "html-react-parser";
-
+import { notification } from 'antd';
 const Terms = () => {
-
+notification.destroy()
   const [termsAndConditions, setTermsAndConditions] = useState([]);
 
   useEffect(() => {

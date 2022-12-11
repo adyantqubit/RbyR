@@ -44,7 +44,9 @@ const sty = StyleSheet.create({
   },
 });
 
+
 const Details = (props) => {
+  notification.destroy()
   const { id } = useParams();
   const nav = useNavigate()
   const [details, setDetails] = useState([]);

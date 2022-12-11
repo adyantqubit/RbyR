@@ -21,6 +21,7 @@ import {
   
 } from "antd";
 const Bridal = () => {
+  notification.destroy()
   const {TextArea} = Input;
   const [bridalText, setBridalText] = useState([]);
   const [bridalForm] = Form.useForm();

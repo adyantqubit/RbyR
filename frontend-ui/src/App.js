@@ -30,9 +30,10 @@ import StoreLocator from './components/footer pages/StoreLocator';
 import FAQ from './components/footer pages/FAQ';
 import Bridal from './components/footer pages/bridal';
 import { height } from '@mui/system';
-
+import { notification } from 'antd';
 
 function App() {
+  notification.destroy()
   var access_token=0;
   useEffect(()=>{
      access_token=localStorage.getItem("access_token")
@@ -44,7 +45,7 @@ function App() {
     <>
     <Routes>
       
-    <Route path="/" element={ <Home/>} />
+    <Route path="/" element={ <Home />} />
     <Route path="/Listing/:category" element={<Listing/>} />
     <Route path="/login" element={!access_token?<Login/>:<Navigate to="/"/>} />
     <Route path="/changePass" element={access_token?<ChngPass/>:<Navigate to="/login"/>}/>
