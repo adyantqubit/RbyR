@@ -104,7 +104,8 @@ class SendPasswordResetEmailSerializer(serializers.Serializer):
             print("encoded --",uid)
             token=PasswordResetTokenGenerator().make_token(user)
             print('Password reset token--',token)
-            link='http://localhost:3000/reset-password/'+uid+'/'+token
+            from site_setup.settings import Base_url
+            link= Base_url+'/reset-password/'+uid+'/'+token
             print("passwordn reset link",link)
             #Send Email
             data={

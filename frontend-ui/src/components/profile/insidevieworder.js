@@ -255,6 +255,7 @@ const InsideOrder = () => {
               <div className={style.table} style={{ border: "1px solid white", marginTop: "20px" }}>
                 <div className={style.tablerowhead2}>
                   <div className={style.rowitem1} style={{ justifyContent: "start", color: "black" }}>Product Name</div>
+                  <div className={style.rowitem2} style={{ color: "black" }}>Status</div>
                   <div className={style.rowitem2} style={{ color: "black" }}>price</div>
                   <div className={style.rowitem2} style={{ color: "black" }}>Qty</div>
                   <div className={style.rowitem2} style={{ color: "black" }}>SubTotal</div>
@@ -274,7 +275,7 @@ const InsideOrder = () => {
                         {p.title} ({s.size})
                       </span>
                     </div>
-
+                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto"}}  >Order Status:- </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >{s.order_status}</span></div>
                     <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >Price :- </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >{s.selected_currency_sign} {(s.price * s.selected_currency_value).toFixed(2)}</span></div>
                     <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >Qunatity :- </span><span className={style.userinfoText3} > {s.quantity} </span></div>
                     <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >Total :-</span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >{s.selected_currency_sign} {(p.price * s.quantity * s.selected_currency_value).toFixed(2)}</span></div>

@@ -12,6 +12,8 @@ import styles from "../placeOrder/order.module.css"
 import { CartState } from '../../context'
 import { shippingTick } from '../../api/orderApis'
 import list from '../placeOrder/data.json'
+
+
 import {AiOutlineClose} from 'react-icons/ai'
 import { notification } from 'antd';
 
@@ -25,6 +27,7 @@ var [numerror,setnumerror]=useState("")
 var [pinerror,setpinerror]=useState("")
 const [value, setValue] = useState("India")
 const [value2, setValue2] = useState("India")
+
 
 
 useEffect(()=>{

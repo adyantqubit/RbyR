@@ -145,10 +145,10 @@ const Navbar = () => {
                     <li  style={{padding:"0",width:"40px",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/partywear" onClick={e=>setCategorySelected([])} >Partywear</Link></li>
                     <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/casual" onClick={e=>setCategorySelected([])}>Casual</Link></li>
                     <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/kurti" onClick={e=>setCategorySelected([])}>Kurti</Link></li>
-                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/wedding_wear"onClick={e=>setCategorySelected([])}>Weddingwear</Link></li>
+                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/wedding_wear"onClick={e=>setCategorySelected([])}>Wedding Wear</Link></li>
                     <li style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2}  to="/listing/formal" onClick={e=>setCategorySelected([])}>Formal</Link></li>
                     <li style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2}  to="/listing/view_all" onClick={e=>setCategorySelected([])}>View All</Link></li>
-
+    
                   </ul>    
                 </li>
 

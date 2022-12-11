@@ -267,13 +267,13 @@ const FilterNew = ({scrolling}) => {
 
                 if (selectedColor.includes(c.toLowerCase())) {
                   return <div className={`${style.textdiv} ${style.value}`} style={{whiteSpace: "nowrap" }} >
-                    <span className={style.text} onClick={toggleselect}>{c.toUpperCase()}</span>
+                    <div className={style.text} onClick={toggleselect}>{c.toUpperCase()}</div>
                     <span onClick={deleteclass} className={style.cross}>X</span>
                   </div>
                 }
                 else {
                   return <div className={style.textdiv} style={{whiteSpace: "nowrap" }}>
-                    <span className={style.text} onClick={toggleselect}>{c.toUpperCase()}</span>
+                    <div className={style.text} onClick={toggleselect}>{c.toUpperCase()}</div>
                     <span onClick={deleteclass} className={style.block}>X</span>
                   </div>
                 }

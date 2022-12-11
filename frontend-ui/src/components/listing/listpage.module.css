@@ -326,6 +326,7 @@
 }
 
 .text{
+  width:70%;
   font-size: 13px;
   line-height: 20px;
   letter-spacing: 1px;
@@ -356,6 +357,7 @@
   margin: 2px;
   border-radius: 10px;
   background-color: #f8f8f8;
+  display:flex;
 }
 
 

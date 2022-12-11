@@ -353,6 +353,17 @@ class userbillingDetail(models.Model):
     class Meta:
             verbose_name_plural = "User's Billing Details"
     #End of code addition
+    
+order_status=(
+    ("proccessing","Proccessing"),
+    ("accepted","Accepted"),
+    ("out_for_shipping","Out for Shipping"),
+    ("shipped","shipped"),
+    ("arrived","Arrived"),
+    ("out_for_delivery","Out For Delivery"),
+    ("delivered","Delivered"),
+    ("cancel","Cancel")
+)
          
 class product_orders(models.Model):
     order_no=models.IntegerField()
@@ -367,6 +378,8 @@ class product_orders(models.Model):
     date=models.DateField(('purchase date'), null=False, blank=False, auto_now=True)
     selected_currency_sign=models.CharField(max_length=5)
     selected_currency_value=models.FloatField()
+    order_status=models.CharField(max_length=50,choices=order_status,default="proccessing",blank=True,null=True)
+
     
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
@@ -382,6 +395,8 @@ status = (
     ('cancel','cancel'),
 
 )    
+
+
 class Transaction_history(models.Model):
     order_no=models.IntegerField()
     payment_status=models.CharField(max_length=50,choices=status,default="pending")
@@ -391,6 +406,7 @@ class Transaction_history(models.Model):
     subtotal_price=models.IntegerField()
     tax=models.IntegerField()
     grand_total=models.IntegerField()
+
     #Commented by Rohan 10/12/22
     # I make change on datefield to auto not before i am using today() function so while migrating transactiona history date changes
     date=models.DateField(('ordered date'), null=False, blank=False, auto_now=True)
@@ -850,3 +866,6 @@ class CurrencySelected(models.Model):
     currency_value=models.FloatField()
 #End of code addition
 #End of code addition
+
+
+

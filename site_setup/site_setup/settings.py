@@ -142,6 +142,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+Base_url="http://127.0.0.1:8000/"
+
 
 import os
 STATIC_ROOT=os.path.join(BASE_DIR,'static')
