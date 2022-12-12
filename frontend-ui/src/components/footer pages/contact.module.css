@@ -14,7 +14,7 @@
     height: auto;
     width:100%;
     background:#323232;
-    padding-top: 27vh;
+    padding-top: 35vh;
     max-height: 100vh;
     overflow-y: scroll;
 }
@@ -46,14 +46,14 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    padding: 0 50px;
-    justify-content: space-around;
+    justify-content: center;
+    gap:100px;
     background:#323232;
 }
 
 .column{
     height:auto;
-    width:500px;
+    width:35%;
     background:#323232;
     display: flex;
     flex-direction: column;

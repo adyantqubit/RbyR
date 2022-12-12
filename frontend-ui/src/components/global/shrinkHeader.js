@@ -147,7 +147,7 @@ const ShrinkHeader = () => {
 
 
           <Link to="/" className={style.drawerMenu} onClick={toggleDrawer}>
-            Home
+            HOME
           </Link>
 
           <div className={style.drawerMenu}>

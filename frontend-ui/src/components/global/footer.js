@@ -133,8 +133,17 @@ function Footer() {
 
         <div className={style.column3}>
           <h1 className={style.heading}>THE COMPANY</h1>
-          <span className={style.span} onClick={e=>nav('/Listing/world_of_rbyr')} style={{cursor:"pointer"}}>RBYR EXCLUSIVE</span>
-          <Link
+          <Link to="/Listing/world_of_rbyr"
+            style={{ textDecoration: "none", color: "white" }}
+           >
+            <span
+            className={style.span}
+            
+          >
+            RBYR EXCLUSIVE
+          </span> 
+           </Link>
+                      <Link
             to="/store-locator"
             style={{ textDecoration: "none", color: "white" }}
           >

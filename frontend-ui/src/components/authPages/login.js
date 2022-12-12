@@ -263,7 +263,7 @@ const Login = () => {
 						position="top center">
 						{server_error.tc?<span style={{color:"red",fontSize:"0.8rem"}}>check term and condition</span>:" "}
 					</Popup>:null} */}
-						<Link to="/terms" style={{fontSize:"12px",color:"white",letterSpacing:"1.2px"}}> I agree to terms and conditions.</Link>   
+						<Link to="/terms" style={{fontSize:"12px",color:"white",letterSpacing:"1.2px"}}> I accept terms and conditions.</Link>   
 					</span>} />
 
 					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button style={{paddingTop:"0",marginTop:"0"}} class="butto" type='submit'>Sign up</button>}
@@ -278,15 +278,15 @@ const Login = () => {
 					<label class="labe" htmlFor="ch" aria-hidden="true">Login</label>
 					{error.none_field_errors? <Alert severity="error"  style={{margin:"0 45px"}}>{error.none_field_errors[0]}</Alert>:" "}
 
-					<input class="inpu"type="email" style={{marginBottom:"0"}} name="email" placeholder="E-mail *" required=""/>
+					<input class="inpu"type="email" style={{marginBottom:"0"}} name="email" placeholder="E-mail*" required=""/>
 					{error.email?<Typography style={{color:"red",paddingLeft:"50px",fontSize:"12px",}}>{error.email[0]}</Typography>:" "}
 
                     <span class="inpu3" style={{margin:"20px 0",marginLeft:"15%",background:"#e0dede"}}>
-					<input class="inpu4" type={showNewPass3?"text":"password"} style={{width:"90%",background:"rgba(0,0,0,0)"}} name="pswd" placeholder="Password *" required="" onChange={e=>{if(e.target.value.length>0)setVisiblePassreg3(true); else setVisiblePassreg3(false)}}/>
+					<input class="inpu4" type={showNewPass3?"text":"password"} style={{width:"90%",background:"rgba(0,0,0,0)"}} name="pswd" placeholder="Password*" required="" onChange={e=>{if(e.target.value.length>0)setVisiblePassreg3(true); else setVisiblePassreg3(false)}}/>
 					{visiblepassReg3?showNewPass3?<AiFillEye style={{marginTop:"5px"}} onClick={e=>setNewPass3(false)}/>:<AiFillEyeInvisible style={{marginTop:"5px"}} onClick={e=>setNewPass3(true)}/>:null}
 					</span>
 					{error.password?<Typography style={{color:"red",paddingLeft:"50px",fontSize:"12px"}}>{error.password[0]}</Typography>:" "}
-					<NavLink to='/sendemail' style={{marginLeft:"50%",fontSize:"1em",color:"blue"}} class="underlineput">Forgot Password ?</NavLink>
+					<Link to='/sendemail' style={{marginLeft:"50%",fontSize:"1em",color:"blue"}} class="underlineput">Forgot Password ?</Link>
 
 					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button class="butto" type='submit'>Login</button>}
 					<label style={{width:"100%",textAlign:"center"}}>OR</label>

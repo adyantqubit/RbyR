@@ -139,15 +139,15 @@ const Navbar = () => {
               <div className={style.menu}>
                 <li style={{height:"40px"}}><a className={style.al} href="/">Home</a></li>
                 <li className={style.services} onMouseEnter={openc} onMouseLeave={closec}>
-                  <span  className={style.al} href="/" style={{fontWeight:"450",fontSize:"16px"}}>Ethnic</span>
+                  <span  className={style.al} href="/" style={{fontWeight:"450",fontSize:"16px"}}>ETHNIC</span>
                 
                   <ul className={style.dropdown}>
-                    <li  style={{padding:"0",width:"40px",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/partywear" onClick={e=>setCategorySelected([])} >Partywear</Link></li>
-                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/casual" onClick={e=>setCategorySelected([])}>Casual</Link></li>
-                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/kurti" onClick={e=>setCategorySelected([])}>Kurti</Link></li>
-                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2} to="/listing/wedding_wear"onClick={e=>setCategorySelected([])}>Wedding Wear</Link></li>
-                    <li style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2}  to="/listing/formal" onClick={e=>setCategorySelected([])}>Formal</Link></li>
-                    <li style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none"}}><Link className={style.al2}  to="/listing/view_all" onClick={e=>setCategorySelected([])}>View All</Link></li>
+                    <li  style={{padding:"0",width:"40px",margin:"20px 15px",border:"none",whiteSpace:"nowrap"}}><Link className={style.al2} to="/listing/partywear" onClick={e=>setCategorySelected([])} >PARTY WEAR</Link></li>
+                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none",whiteSpace:"nowrap"}}><Link className={style.al2} to="/listing/casual" onClick={e=>setCategorySelected([])}>CASUAL</Link></li>
+                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none",whiteSpace:"nowrap"}}><Link className={style.al2} to="/listing/kurti" onClick={e=>setCategorySelected([])}>KURTI</Link></li>
+                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none",whiteSpace:"nowrap"}}><Link className={style.al2} to="/listing/wedding_wear"onClick={e=>setCategorySelected([])}>WEDDING WEAR</Link></li>
+                    <li style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none",whiteSpace:"nowrap"}}><Link className={style.al2}  to="/listing/formal" onClick={e=>setCategorySelected([])}>FORMAL</Link></li>
+                    <li style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none",whiteSpace:"nowrap"}}><Link className={style.al2}  to="/listing/view_all" onClick={e=>setCategorySelected([])}>VIEW ALL</Link></li>
     
                   </ul>    
                 </li>
