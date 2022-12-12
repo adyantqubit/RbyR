@@ -15,7 +15,7 @@ import { TiDeleteOutline } from "react-icons/ti";
 import { useNavigate } from "react-router-dom";
 
 const LikeCard = (props) => {
-  const { like, setLike } = CartState();
+  const { like, setLike,currency } = CartState();
   let { access_token } = getToken();
   const [saveLikeApi, { isLoading }] = useLikedUpdateMutation();
 
@@ -68,7 +68,7 @@ const LikeCard = (props) => {
                 </div>
                 <div className={style.wishItemBodyContainer}>
                   <div className={style.itemText}>{l.category}</div>
-                  <div className={style.itemText}> ₹ {l.price}</div>
+                  <div className={style.itemText}> {currency.sign} {(l.price*currency.value).toFixed(2)}</div>
                 </div>
               </div>
             </div>

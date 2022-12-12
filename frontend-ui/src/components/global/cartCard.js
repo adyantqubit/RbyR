@@ -265,7 +265,8 @@ const increament= async (CartProduct)=>{
                   
               </div>
 
-              <div style={{height:"100px",display:"flex",flexDirection:"column"}}></div>
+              <div className={styles.gaping} ></div>
+
               <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
                     <div style={{color:"black",alignSelf:"start",marginLeft:"20px",color:"#8c8c8c"}}> Quantity</div>
                         <div style={{height:"20px",width:"100px",display:"flex",flexDirection:"row"}}>

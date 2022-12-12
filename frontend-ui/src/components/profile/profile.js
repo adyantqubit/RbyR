@@ -91,7 +91,7 @@ const MyOrders = () => {
             <div className={style.column2header}>MY ORDERS</div>
             <hr style={{color:"black"}}></hr>
 
-            {orders&&orders.length>0&&tran!=null&&tran.length>0? <div className={style.table}>
+            {orders.length>0&&tran.length>0? <div className={style.table}>
                 <div className={style.tablerowheadtable}>
                   <div className={style.rowheadText}>Order ID</div>
                   <br style={{color:"blue"}}></br>
@@ -123,9 +123,10 @@ const MyOrders = () => {
                 
              </div>:
              <div style={{width:"100%",height:"40%",display:"flex",justifyContent:"center",textAlign:"center"}}>
-               {/* No History Found, <Link to="\" style={{fontSize:"14px",textDecoration:"underline",marginTop:"5px",marginLeft:"5px"}}>Continue Shopping</Link>  */}
-              <div style={{height:"50px",display:"flex",alignItems:"center"}}> No History Found,</div>
-               <button className={style.shopbtn1} style={{width:"50%",height:"50px",marginLeft:"10px"}} onClick={goToHomePage}>Continue Shopping</button>
+               {/* No History Found, <Link to="\" >Continue Shopping</Link>  */}
+              <div style={{height:"50px",display:"flex",alignItems:"center"}}> No History Found,
+              <span style={{fontSize:"14px",textDecoration:"underline",marginTop:"5px",marginLeft:"5px",cursor:"pointer",color:"blue"}} onClick={goToHomePage}>Continue Shopping</span></div>
+               {/* <button className={style.shopbtn1} style={{width:"50%",height:"50px",marginLeft:"10px"}} onClick={goToHomePage}>Continue Shopping</button> */}
              </div>
              
                }

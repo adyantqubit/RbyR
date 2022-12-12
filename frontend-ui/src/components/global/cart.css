@@ -55,6 +55,7 @@
     color:white;
     font-size: 16px;
     font-family: 'MyFont';
+    border: none;
     letter-spacing: 2px;
     border: 0px solid white;
 }
@@ -62,6 +63,13 @@
 .ant-btn-primary:hover {
     background:#5c5c5c;
     color:white;
+    border: none;
+}
+
+.ant-btn:focus{
+    background-color: #5c5c5c;
+    color:white;
+    border: none;
 }
 
 

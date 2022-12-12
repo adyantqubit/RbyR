@@ -299,7 +299,7 @@
     cursor: pointer;
     letter-spacing: 2px;
     background-color: #323232;
-    color: white !important;
+    /* color: white !important; */
     text-align: center;
     opacity: 1;
     font-family: 'MyFont';

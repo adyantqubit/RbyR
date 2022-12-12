@@ -13,7 +13,7 @@ import ReactToPrint from 'react-to-print';
 import parse from "html-react-parser";
 import Footer from '../global/footer'
 import Below from '../global/below'
-import { notification } from 'antd';
+import { Button, notification } from 'antd';
 
 
 const Billing = () => {
@@ -235,8 +235,12 @@ const Billing = () => {
         </div>
 
         {/* <div style={{width:"100%",display:"flex",justifyContent:"center",background:"#f2f2f2"}}> <button className={style.shopbtn1} style={{width:"50%"}} onClick={e=>nav('/')}>Continue Shopping</button> */}
-     <div style={{width:"100%",display:"flex",justifyContent:"center",background:"#f2f2f2"}}> <button className={style.shopbtn1} style={{width:"50%"}} onClick={goToHomePage}>Continue Shopping</button>
-     </div>
+     <div style={{width:"100%",display:"flex",justifyContent:"center",background:"#f2f2f2"}}> 
+     <Button type="primary" className={style.userInfoButton} onClick={goToHomePage}>
+     Continue Shopping
+    </Button>
+     {/* <div className={style.shopbtn1} style={{width:"50%"}} onClick={}></div> */}
+     </div> 
 
         <div className={styles.foot} >
           <Footer />

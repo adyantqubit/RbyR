@@ -279,7 +279,8 @@ const increament=async (CartProduct)=>{
         notification.error({
           message: <div style={{fontSize:"18px",color:"white"}}>Out of stock</div>,
           description:
-          `Product ${c.name} size ${c.size} is out of stock `,
+          <span>Product ${c.name} size ${c.size} is out of stock <br/> 
+          Please move this item  to Wishlist.</span>,
           style: { backgroundColor:"#D2042D",color:"white"},
           duration:20,
           
@@ -435,7 +436,7 @@ const increament=async (CartProduct)=>{
                 <span className={style.shipping}> {pro.shipping_days}</span>}
               </div>
 
-              <div style={{height:"100px",display:"flex",flexDirection:"column"}}></div>
+              <div className={styles.gaping}></div>
               <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
                     <div style={{color:"black",alignSelf:"start",marginLeft:"20px",color:"#8c8c8c"}}> Quantity</div>
                         <div style={{height:"20px",width:"100px",display:"flex",flexDirection:"row"}}>

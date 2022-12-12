@@ -5,6 +5,10 @@
     background:white
 }
 
+.gaping{
+  height:100px;
+}
+
 .successMsg {
     display: flex;
     justify-content: space-between;
@@ -127,7 +131,11 @@ body {background: #333}
 
 
   @media (max-width: 1200px) {
+    .gaping{
     
+      height: 30px;
+
+    }
     .column1{
       width:40%;
     }

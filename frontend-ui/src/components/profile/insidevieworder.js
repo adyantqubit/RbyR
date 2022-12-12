@@ -224,7 +224,7 @@ const InsideOrder = () => {
               <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
                 <span className={style.userinfoText}>Date: <span className={style.userinfoText2}> {states != null && states.length > 0 ? states[0].date.split("-").reverse().join("-") : null}</span></span>
                 <>
-                  <Button type="primary" className={style.userInfoButton} onClick={showModal}>
+                  <Button className={style.userInfoButton} onClick={showModal}>
                     Online Pay
                   </Button>
                   <Modal title="Scan To Pay" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
@@ -265,6 +265,7 @@ const InsideOrder = () => {
 
                 {states?.map((s, i) => {
                   var p = product.filter(p => p.id == s.product_id)[0]
+
                   if((typeof p)==='undefined'){
                    console.log("something went wrong")
                   }else
@@ -277,7 +278,7 @@ const InsideOrder = () => {
                     </div>
                     <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto"}}  >Order Status:- </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >{s.order_status}</span></div>
                     <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >Price :- </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >{s.selected_currency_sign} {(s.price * s.selected_currency_value).toFixed(2)}</span></div>
-                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >Qunatity :- </span><span className={style.userinfoText3} > {s.quantity} </span></div>
+                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >Quantity :- </span><span className={style.userinfoText3} > {s.quantity} </span></div>
                     <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >Total :-</span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >{s.selected_currency_sign} {(p.price * s.quantity * s.selected_currency_value).toFixed(2)}</span></div>
                   </div>
                 }
@@ -332,7 +333,7 @@ const InsideOrder = () => {
 
                   <div className={styles.addressInformation} style={{ minWidth: "150px", maxWidth: "150px" }}>
                     <div ><span className={styles.userinfoText} >Shipping Method</span></div>
-                    <div style={{ maxWidth: "150px" }}><span className={styles.userinfoText} style={{ color: "black" }}>Standard shipping -</span><span className={styles.userinfoText2} style={{ color: "black" }}>Standard shipping </span></div>
+                    <div style={{ maxWidth: "150px" }}><span className={styles.userinfoText2} style={{ color: "black" }}>Standard shipping </span></div>
                   </div>
 
                   <div className={styles.addressInformation} style={{ minWidth: "150px", maxWidth: "150px" }}>
