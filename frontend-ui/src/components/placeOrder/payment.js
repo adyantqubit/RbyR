@@ -116,7 +116,7 @@ const Payment = () => {
     }  
   return (
     <div className={styles.columnitem3} style={{marginTop:"20px"}}>
-          <div className={styles.columnitem1head}>3. PAYMENT</div>
+          <div className={styles.columnitem1head}>3. PAYMENT METHOD</div>
           <div className={styles.boxpay} id="cash">
           <div style={{display:"flex",justifyContent:"space-between"}} onClick={onSelect}>
             <span className={styles.userinfoText}>Cash On Delivery</span>
@@ -129,13 +129,20 @@ const Payment = () => {
           </div>
           <div className={styles.boxpay} id="online">
           <div style={{display:"flex",justifyContent:"space-between"}} onClick={selectop}>
-            <span className={styles.userinfoText}>Pay Online</span>
+            <span className={styles.userinfoText}>Pay via Scanner</span>
           {tickop?
           <IoMdCheckmark style={{fontSize:"25",color:"black",fontWeight:"20",backgroundColor:"white",border:"none"}}/>
           :
             null}
 
             </div>
+          </div>
+
+          <div className={styles.boxpay} >
+          
+            <strike className={styles.userinfoText}>Pay via debit/credit cards</strike>
+            <h6 style={{fontSize:"12px"}}>(Currently not available)</h6>
+        
           </div>
           <button className={styles.userInfoButton} onClick={e=>cartChecking()}>
             PLACE YOUR ORDER

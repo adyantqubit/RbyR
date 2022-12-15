@@ -206,7 +206,9 @@ const FilterNew = ({scrolling}) => {
                 setSizeSelected([]); 
                 closeSortPage(); 
                 setMinMAx(2000, 200000) }}>CLEAR</button>
-              <button className={style.shopbtn2} onClick={e=>{closeSortPage(); scrolling()}}>APPLY</button>
+              <button className={style.shopbtn1}
+              style={{background:"#323232",color:"white",fontWeight:"600"}}
+              onClick={e=>{closeSortPage(); scrolling()}}>APPLY</button>
             </div>
           </div>
 
@@ -229,13 +231,13 @@ const FilterNew = ({scrolling}) => {
                 allCategoryAvai.map(c => {
                   if (selectedCategory.includes(c.toLowerCase())) {
                     return <div className={`${style.textdiv} ${style.value}`} style={{ width: "auto", whiteSpace: "nowrap" }} >
-                      <span className={style.text} onClick={toggleselectc}>{c.toUpperCase()}</span>
+                      <span className={style.text} onClick={toggleselectc}>{c.split("_").join(" ").toUpperCase()}</span>
                       <span onClick={deleteclassc} className={style.cross}>X</span>
                     </div>
                   }
                   else {
                     return <div className={style.textdiv} style={{ width: "auto", whiteSpace: "nowrap" }}>
-                      <span className={style.text} onClick={toggleselectc}>{c.toUpperCase()}</span>
+                      <span className={style.text} onClick={toggleselectc}>{c.split("_").join(" ").toUpperCase()}</span>
                       <span onClick={deleteclassc} className={style.block}>X</span>
                     </div>
                   }

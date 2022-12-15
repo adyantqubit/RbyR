@@ -12,7 +12,7 @@ import Footer from '../global/footer';
 import Below from '../global/below';
 import { notification } from 'antd';
 const Orderpage = (props) => {
-  notification.destroy()
+  // notification.destroy()
   const { userdata, checkoutDetails, setCheckoutDetails, paymentflow, cart, setPaymentflow, shippingflow, setShipingflow } = CartState()
   const nav = useNavigate()
 
@@ -87,7 +87,7 @@ const Orderpage = (props) => {
               :
               <>
                 <div className={styles.upnextForm} >
-                  3. PAYMENT
+                  3. PAYMENT METHOD
                 </div>
                 <hr style={{ color: "black" }} />
               </>

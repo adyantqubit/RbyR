@@ -350,11 +350,11 @@
         margin-top:-12vh;
     }
     .rowheadText{
-        width:80%;
+        width:30%;
     }
     
     .rowText{
-        width:78%;
+        width:30%;
     }
 
     .Container{
@@ -366,6 +366,11 @@
         display:flex;
         flex-direction: column;
         justify-content: space-between;
+    }
+
+    .tablerowheadtable{
+        justify-content: start;
+        gap:8px
     }
 
     .tablerowhead2{

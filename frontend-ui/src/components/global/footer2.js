@@ -182,7 +182,7 @@ function Footer2() {
           </Link>
           <Link to="/terms" style={{ textDecoration: "none", color: "white" }}>
             {" "}
-            <span className={style.span}>Term and Conditions</span>
+            <span className={style.span}>Terms and Conditions</span>
           </Link>
           <Link to="/FAQ" style={{ textDecoration: "none", color: "white" }}>
             {" "}
@@ -249,7 +249,7 @@ function Footer2() {
                 display: "flex",
                 flexDirection: "column",
                 gap: "15px",
-                marginTop: "15px",
+                marginTop: "7px",
               }}
             >
               <FaFacebookF style={{ color: "grey", fontSize: "25px" }} />
@@ -261,7 +261,7 @@ function Footer2() {
                 display: "flex",
                 flexDirection: "column",
                 gap: "20px",
-                marginTop: "15px",
+                marginTop: "7px",
               }}
             >
               {socialLinks.length > 0 ? (

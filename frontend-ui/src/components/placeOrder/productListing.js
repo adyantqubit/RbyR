@@ -40,16 +40,16 @@ const ProductListing = () => {
           <div className={styles.sub}>{currency.sign}{(afterColumnTotalOfferAdd(offer,cart,taxRate).subtotal*currency.value).toFixed(2)}</div>
         </div>
         <div style={{display:"flex",justifyContent:"space-between",marginTop:"8px"}}>
-          <div className={styles.sub}>Shipping</div>
+          <div className={styles.sub}>Shipping Charges</div>
           <div className={styles.sub}>{currency.sign}{(afterColumnTotalOfferAdd(offer,cart,taxRate).shipping*currency.value).toFixed(2)}</div>
-        </div>
-        <div style={{display:"flex",justifyContent:"space-between",marginTop:"8px"}}>
-          <div className={styles.sub}>Offer Discount</div>
-          <div className={styles.sub}>{currency.sign}{(afterColumnTotalOfferAdd(offer,cart,taxRate).coupon*currency.value).toFixed(2)}</div>
         </div>
         <div style={{display:"flex",justifyContent:"space-between",marginTop:"8px"}}>
           <div className={styles.sub}>GST Charges</div>
           <div className={styles.sub}>{currency.sign}{(afterColumnTotalOfferAdd(offer,cart,taxRate).tax*currency.value).toFixed(2)}</div>
+        </div>
+        <div style={{display:"flex",justifyContent:"space-between",marginTop:"8px"}}>
+          <div className={styles.sub}>Offer Discount</div>
+          <div className={styles.sub}>{currency.sign}{(afterColumnTotalOfferAdd(offer,cart,taxRate).coupon*currency.value).toFixed(2)}</div>
         </div>
         <hr style={{color:"black"}}></hr>
         <div style={{marginTop:"-5px",display:"flex",justifyContent:"space-between"}}>

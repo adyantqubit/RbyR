@@ -138,7 +138,7 @@ const Sort = () => {
                 <span onClick={e => { uncheckAvailablity() }} className={style.cross}>✔</span>
               </div> :
                 <div className={style.textdiv} style={{ minWidth: "0", width: "auto", whiteSpace: "nowrap" }} onClick={e => { settemAllpro([]); setCategoryProduct([]) ;setReload(true)}}>
-                  <span className={style.text} onClick={e => { checkAvailablity(); setReload(true) }} >Availablity</span>
+                  <span className={style.text} onClick={e => { checkAvailablity(); setReload(true) }} >Availability</span>
                 </div>
               }
 

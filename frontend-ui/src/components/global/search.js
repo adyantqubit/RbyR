@@ -14,7 +14,7 @@ import { notification } from "antd";
 const Search = () => {
   notification.destroy()
   const [open, setOpen] = useState(false);
-  const { product } = CartState();
+  const { product ,currency} = CartState();
 
 // Added by Ashish dewangan on 18-11-2022
 // Reason - to have cross button on search icon more width
@@ -139,7 +139,7 @@ const Search = () => {
                       <span>{p.title}</span>
                     </div>
                     <div className={styles.price}> {p.category}</div>
-                    <div className={styles.price}>₹ {p.price}</div>
+                    <div className={styles.price}>{currency.sign} {(p.price*currency.value).toFixed(2)}</div>
                   </div>
                 );
               })}

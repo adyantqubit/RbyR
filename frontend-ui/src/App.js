@@ -33,7 +33,7 @@ import { height } from '@mui/system';
 import { notification } from 'antd';
 
 function App() {
-  notification.destroy()
+  // notification.destroy()
   var access_token=0;
   useEffect(()=>{
      access_token=localStorage.getItem("access_token")

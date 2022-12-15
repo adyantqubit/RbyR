@@ -260,7 +260,7 @@ async function DefaultShipping(){
 
         </div>
         <div className={style.subTotal}>
-         <span style={{marginLeft:"15px",fontWeight:"600"}}>Shipping</span>
+         <span style={{marginLeft:"15px",fontWeight:"600"}}>Shipping Charges</span>
          <span style={{marginRight:"15px",fontWeight:"600"}}>{currency.sign} {(afterColumnTotalOfferAdd(offer,cart,taxRate).shipping*currency.value).toFixed(2)}</span>
         </div>
 
@@ -270,7 +270,7 @@ async function DefaultShipping(){
         </div>
 
         <div className={style.promo}>
-         {!ShowCoupon? <> <input className="promoCode" id="prormos" type="text" onKeyPress={e=>validateWhitespace(e,"prormos")} style={{width:"60%",padding:"10px",height:"30px",marginLeft:"15px",border:"1px solid #dfdbdb",outline:"#fff"}} placeholder="Have a promocode" ref={promos} onChange={e=>setError(null)}></input>
+         {!ShowCoupon&&!offer.discount_percentage>0? <> <input className="promoCode" id="prormos" type="text" onKeyPress={e=>validateWhitespace(e,"prormos")} style={{width:"60%",padding:"10px",height:"30px",marginLeft:"15px",border:"1px solid #dfdbdb",outline:"#fff"}} placeholder="Have a promocode" ref={promos} onChange={e=>setError(null)}></input>
           <button className={style.apply} onClick={ApplyPromo}>Apply</button>
           </>
          :<>

@@ -60,6 +60,14 @@
     border: 0px solid white;
 }
 
+.Toastify__toast-icon{
+    display: none !important;
+}
+
+.Toastify__progress-bar{
+    visibility: hidden;
+}
+
 .ant-btn-primary:hover {
     background:#5c5c5c;
     color:white;

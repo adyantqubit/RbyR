@@ -91,10 +91,9 @@
 
 .header{
     width:100%;
-    
     margin-top: 15px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 
@@ -281,9 +280,16 @@
         margin-top:-12vh;
     }
 
+    .header{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        width: 70%;
+    }
+
     .billingfooter{
         width: 100%;
-    
         background-color: black;
         margin-top: 30px;
         display: flex;

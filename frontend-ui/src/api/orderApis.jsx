@@ -57,7 +57,7 @@ return response ? response.data : {};
     const response = await API.post(`User_update/`, data,{
       headers: { "Content-Type": "application/json",'authorization':`Bearer ${localStorage.getItem('access_token')}`},
     }).catch((err) => console.log("Failed to authenticate the user."));
-return response ? response.data : {};
+   return response ? response.data : {};
   }
 
 

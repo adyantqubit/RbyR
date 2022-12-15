@@ -355,7 +355,7 @@ class userbillingDetail(models.Model):
     #End of code addition
     
 order_status=(
-    ("processing","Proccessing"),
+    ("proccessing","Proccessing"),
     ("accepted","Accepted"),
     ("out_for_shipping","Out for Shipping"),
     ("shipped","shipped"),
@@ -378,7 +378,7 @@ class product_orders(models.Model):
     date=models.DateField(('purchase date'), null=False, blank=False, auto_now=True)
     selected_currency_sign=models.CharField(max_length=5)
     selected_currency_value=models.FloatField()
-    order_status=models.CharField(max_length=50,choices=order_status,default="processing",blank=True,null=True)
+    order_status=models.CharField(max_length=50,choices=order_status,default="proccessing",blank=True,null=True)
 
     
     #Added by Ashish Dewangan on 28-11-2022

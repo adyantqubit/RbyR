@@ -159,7 +159,7 @@ function Footer() {
                 display: "flex",
                 flexDirection: "column",
                 gap: "15px",
-                marginTop: "15px",
+                marginTop: "7px",
               }}
             >
               <FaFacebookF style={{ color: "grey", fontSize: "25px" }} />
@@ -171,7 +171,7 @@ function Footer() {
                 display: "flex",
                 flexDirection: "column",
                 gap: "20px",
-                marginTop: "15px",
+                marginTop: "7px",
               }}
             >
               {socialLinks.length > 0 ? (

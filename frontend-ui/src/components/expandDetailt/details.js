@@ -848,9 +848,7 @@ const Details = (props) => {
                         letterSpacing: "1px",
                         fontSize: "14px",
                       }}
-                    >
-                      Contact Us |
-                    </Link>
+                    > Contact Us  </Link>
 
                     <Link
                       to="/delivery-policy"
@@ -861,7 +859,7 @@ const Details = (props) => {
                         fontSize: "14px",
                       }}
                     >
-                      Shipping Policy
+                      | Shipping Policy
                     </Link>
                   </span>
                   <div className={styles["chatBoxContainer"]}>

@@ -9,6 +9,12 @@
   height:100px;
 }
 
+.importantRules{
+   height: 300px;
+    width: 100%;
+    margin-left: 25%;
+}
+
 .successMsg {
     display: flex;
     justify-content: space-between;
@@ -171,6 +177,10 @@ body {background: #333}
     }
 
     
+.importantRules{
+
+   margin-left: 2%;
+}
 
     .heading{
       text-align: center;

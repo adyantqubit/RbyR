@@ -521,9 +521,12 @@ function validatesPin(evt) {
         <div className={styles.columnitem1_1} style={{marginTop:"20px"}}>
             <div className={styles.columnitem1head}>
                 <span>2. SHIPPING INFO
-                <IoIosCheckmarkCircle style={{fontSize:"37px",color:"black",background:"white",marginLeft:"15px",position:"relative",bottom:"5px"}}/>    
+                <IoIosCheckmarkCircle style={{fontSize:"37px",color:"black",background:"white"
+                ,marginLeft:"15px",position:"relative",bottom:"5px"}}/>    
                 </span>
-                <span style={{alignSelf:"flex-end",fontSize:"13px",lineHeight:"20px",letterSpacing:"1px"}} onClick={e=>setCond(true)}>change</span>
+                <span style={{alignSelf:"flex-end",fontSize:"13px",lineHeight:"20px"
+                ,letterSpacing:"1px",textDecoration:"underline",cursor:"pointer",fontWeight:"600"}} 
+                onClick={e=>setCond(true)}>CHANGE</span>
             </div>
             <div className={styles.columnitem1content1}>
                     <div className={styles.columnFirstName}>

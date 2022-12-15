@@ -47,6 +47,7 @@ export const Profile = () => {
     setUserData({
       email:data.email,
       name:data.name,
+      contact:data.contact_number
     })
   },[data,isSuccess])
 

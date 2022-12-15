@@ -16,7 +16,7 @@ import { notification } from 'antd';
 
 
 const InsideOrder = () => {
-  notification.destroy()
+  // notification.destroy()
   var { orders, setOrder, product, checkoutDetails, currency, taxRate, offer, cart, setCart, setshipEditCond, setShowEditable } = CartState()
   var { orderid } = useParams()
   var [states, setState] = useState([])
@@ -225,7 +225,7 @@ const InsideOrder = () => {
                 <span className={style.userinfoText}>Date: <span className={style.userinfoText2}> {states != null && states.length > 0 ? states[0].date.split("-").reverse().join("-") : null}</span></span>
                 <>
                   <Button className={style.userInfoButton} onClick={showModal}>
-                    Online Pay
+                    UPI Scanner
                   </Button>
                   <Modal title="Scan To Pay" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                     <div style={{ background: "white" }}>
@@ -256,7 +256,7 @@ const InsideOrder = () => {
                 <div className={style.tablerowhead2}>
                   <div className={style.rowitem1} style={{ justifyContent: "start", color: "black" }}>Product Name</div>
                   <div className={style.rowitem2} style={{ color: "black" }}>Status</div>
-                  <div className={style.rowitem2} style={{ color: "black" }}>price</div>
+                  <div className={style.rowitem2} style={{ color: "black" }}>Price</div>
                   <div className={style.rowitem2} style={{ color: "black" }}>Qty</div>
                   <div className={style.rowitem2} style={{ color: "black" }}>SubTotal</div>
                 </div>
@@ -289,8 +289,8 @@ const InsideOrder = () => {
                 <div className={style.totalBox} >
                   {allData != null ?
                     <div className={style.box} style={{ borderTop: "1px solid black" }}>
-                      <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "end" }}>sub total</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}>{states[0].selected_currency_sign}{(allData.transaction.subtotal_price * states[0].selected_currency_value).toFixed(2)}</span></div>
-                      <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "end" }}>Shipping</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}>{states[0].selected_currency_sign}{(allData.transaction.shipping_price * states[0].selected_currency_value).toFixed(2)}</span></div>
+                      <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "end" }}>Sub Total</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}>{states[0].selected_currency_sign}{(allData.transaction.subtotal_price * states[0].selected_currency_value).toFixed(2)}</span></div>
+                      <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "end" }}>Shipping Charges</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}>{states[0].selected_currency_sign}{(allData.transaction.shipping_price * states[0].selected_currency_value).toFixed(2)}</span></div>
                       <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "end" }}>Tax</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}>{states[0].selected_currency_sign}{(allData.transaction.tax * states[0].selected_currency_value).toFixed(2)}</span></div>
                       <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "end" }}>Coupon Discount</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}> - {states[0].selected_currency_sign} {(allData.transaction.coupon_discount * states[0].selected_currency_value).toFixed(2)}</span></div>
 

@@ -23,7 +23,8 @@ const Context = ({ children }) => {
   const [con, setcon] = useState(false)
   const [userdata, setUserData] = useState({
     email: "",
-    name: ""
+    name: "",
+    contact:""
   })
   
 

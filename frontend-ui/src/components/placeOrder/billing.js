@@ -157,12 +157,14 @@ const Billing = () => {
                   <hr style={{ color: "black" }}></hr>
                   <div><span className={styles.userinfoText}> Invoice Date: </span><span className={styles.userinfoText2}>{checkoutDetails.date.split("-").reverse().join("-")}</span></div>
                   <div><span className={styles.userinfoText}>Order No:</span><span className={styles.userinfoText2}>{checkoutDetails.orderno}</span></div>
-                  <div><span className={styles.userinfoText}>Payment Mode:</span><span className={styles.userinfoText2}>{checkoutDetails.payment.toUpperCase()}</span></div>
+                  <div><span className={styles.userinfoText} style={{whiteSpace:"nowrap"}}>Payment Mode:</span><span className={styles.userinfoText2} style={{whiteSpace:"nowrap"}}>{checkoutDetails.payment.split("p").join(" p").toUpperCase()}</span></div>
                 </div>
 
                 {storeLocatorDetails != null ?
                   <div className={styles.headerTexts}>
-                    <div className={styles.columnitem1head}>{parse("" + storeLocatorDetails[0].address)}</div>
+                    <div className={styles.columnitem1head}>VENDOR DETAILS</div>
+                    <hr style={{ color: "black" }}></hr>
+                    <div className={styles.userinfoText2}>{parse("" + storeLocatorDetails[0].address)}</div>
                     <div><span className={styles.userinfoText}>{parse("PHONE:" + storeLocatorDetails[0].phoneNumber)}</span></div>
                     <div><span className={styles.userinfoText}>{parse("" + storeLocatorDetails[0].email)}</span></div>
                   </div> : null}
@@ -202,10 +204,6 @@ const Billing = () => {
                 </div>
 
                 <div className={styles.billingtexts}>
-                  <span className={`${styles.columnitem1head}`}  >Discount -</span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto" }} > {checkoutDetails.currency_sign} {checkoutDetails.CouponDiscount ? checkoutDetails.CouponDiscount : (afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).coupon * checkoutDetails.currency_value).toFixed(2)}</span>
-                </div>
-                <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`}  >Shipping charges -</span>
                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto" }} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).shipping * checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
@@ -214,9 +212,14 @@ const Billing = () => {
                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto" }} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).tax * checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
                 <div className={styles.billingtexts}>
+                  <span className={`${styles.columnitem1head}`}  >Discount -</span>
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto" }} > {checkoutDetails.currency_sign} {checkoutDetails.CouponDiscount ? checkoutDetails.CouponDiscount : (afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).coupon * checkoutDetails.currency_value).toFixed(2)}</span>
+                </div>
+                <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`} style={{ color: "black", borderBottom: "1px solid black" }}></span>
                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", borderBottom: "1px solid black", width: "50%" }} ></span>
                 </div>
+                
 
                 <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`}  >Grand Total - </span>

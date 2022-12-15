@@ -14,8 +14,8 @@ function afterColumnTotalOfferAdd(offer,cart,tax){
     )
 
     var shippingCharges=Math.max(...cart.map(c=>{return c.shipping_charges}))
-    console.log(cart)
-    var gst=(temp/100)*tax
+    
+    var gst=((temp+shippingCharges)/100)*tax
   
     var discountAmount=(temp/100)*offer.discount_percentage;
 

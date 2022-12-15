@@ -10,7 +10,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { CartState } from '../../context'
 import { notification } from 'antd';
 const MyOrders = () => {
-  notification.destroy()
+  // notification.destroy()
   var {setshipEditCond,showEditable,setShowEditable,currency}=CartState()
      var [orders,setOrder]=useState([])
      var [tran,settran]=useState([])
@@ -95,7 +95,7 @@ const MyOrders = () => {
                 <div className={style.tablerowheadtable}>
                   <div className={style.rowheadText}>Order ID</div>
                   <br style={{color:"blue"}}></br>
-                  <div className={`${style.rowheadText} ${style.rowtexthide}`}>Date and time</div>
+                  <div className={`${style.rowheadText} `}>Date</div>
 
                   <div className={`${style.rowheadText} ${style.rowtexthide}`}>Name</div>
                   <div className={`${style.rowheadText} ${style.rowtexthide}`}>Price</div>
@@ -109,11 +109,11 @@ const MyOrders = () => {
                { orders.map((o,i)=>
                   <div className={style.tablerowheadtable}>
                     <div className={style.rowText}>{o[0].order_no}</div>
-                    <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].date.split("-").reverse().join("-")}</div>
+                    <div className={`${style.rowText}`}>{o[0].date.split("-").reverse().join("-")}</div>
                     
                     <div className={`${style.rowText} ${style.rowtexthide}`}>{tran.filter(t=>t.order_no==o[0].order_no)[0].firstname} {tran.filter(t=>t.order_no==o[0].order_no)[0].lastname}</div>
                     <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].selected_currency_sign}{(getPrice(o)*o[0].selected_currency_value).toFixed(2)}</div>
-                    <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].payment_mode}</div>
+                    <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].payment_mode.split("p").join(" p")}</div>
                     <div className={`${style.rowText} ${style.rowtexthide}`}>{tran.filter(t=>t.order_no==o[0].order_no)[0].payment_status}</div>
                     <div className={style.rowText} style={{textDecoration:"underline",color:"blue",fontSize:"14px",cursor:"pointer",whiteSpace:"nowrap",overflow:"hidden",width:"80px",marginRight:"10px"}} onClick={e=>nav(`/insideorder/${o[0].order_no}`)}>View Order
                     </div>
