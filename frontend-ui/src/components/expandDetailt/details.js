@@ -866,7 +866,7 @@ const Details = (props) => {
                     <input
                       type="text"
                       id="chatBox"
-                      placeholder="Know more about the product.."
+                      placeholder="Know more about the product..."
                       maxLength={100}
                       className={` ${styles["chatInputBox"]} `}
                     />

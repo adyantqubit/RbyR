@@ -473,8 +473,24 @@ const CartSItem = (props) => {
 
 
 
-          }) :
-            <div style={{ fontSize: "20px", color: "#7c7c7c", height: "100%", display: "flex", justifyContent: "center" }}><span>Your Bag Is Empty</span></div>}
+          }) : <>
+            {/* <div style={{ fontSize: "20px", color: "#7c7c7c", height: "100%", display: "flex", justifyContent: "center" }}>
+              <span>Your Bag Is Empty</span>
+               <div className={style.buttons} style={{ flexDirection: "column", background: "white" }}>
+                <buton className={style.shopbtn2} style={{ width: "100%", margin: "5px" }} onClick={e => cartChecking()} >Go To Checkout</buton>
+              </div> 
+            </div> */}
+             
+             <div style={{width:"100%",height:"100%",display:"flex",flexDirection:"column",alignContent:"center"}}> 
+               <span style={{textAlign:"center",fontSize: "18px",lineHeight:"26px",letterSpacing:"2.5px",fontWeight:"600"}}>Your shopping cart is empty.</span>
+               <buton className={styles.shopbtn2} style={{ width: "70%", margin: "5px auto",fontSize:"14px",cursor: "pointer",
+               letterSpacing: "2px", textAlign: "center", opacity: "1",fontWeight:"700",
+               position: "relative",fontWeight: "normal",textTransform: "uppercase",padding: "10px 18px" }} 
+               onClick={e=>nav("/")}>BROWSE OUR CATALOG</buton>
+
+             </div>
+          </>
+          }
 
           {cart.length > 0 ?
             <div className={style.footerCon} style={{ width: "100%", background: "white" }}>
@@ -539,12 +555,12 @@ const CartSItem = (props) => {
 
 
 
-      <div className={style.footerCon} style={{ width: "100%", background: "white",paddingTop:"20vh" }}>
+      <div className={style.footerCon} style={{ width: "100%", background: "white" }}>
         {/* <span>Total:</span><span>{getTotalPrice()}</span><span>Qty:</span><span>{getTotalQuantity()}</span><button onClick={BuyAll}>Buy ALl</button> */}
         <div className={style.inner} >
 
           {ImportantRules != null ?
-            <div  className={styles.importantRules}>
+            <div className={styles.importantRules}>
               <h6 style={{ fontSize: "14px", lineHeight: "22px", letterSpacing: "1.2px", marginLeft: "15px" }}>IMPORTANTS</h6>
               <ul style={{ listStyleType: "disc", listStylePosition: "outside" }}>
                 <li style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>

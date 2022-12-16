@@ -83,7 +83,7 @@ function Footer() {
   }
 
   return (
-    <div className={style.App} style={{ borderTop: "1px solid white" }}>
+    <div className={style.App} style={{ borderTop: ".1em solid #7c7c7c" }}>
       <div className={style.row}>
         <div className={style.column1}>
           <h1 className={style.heading}>CUSTOMER CARE</h1>

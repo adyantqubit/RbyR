@@ -283,7 +283,7 @@ const ListPage = () => {
         // style={sortui?{opacity:"0.7",}:null}
         >
           {CategoryProduct ?
-            <div style={{ display: "flex", width: "100%", justifyContent: "space-between", flexWrap: "wrap" }}>
+            <div className={style.category}>
               <span className={style.TopContent} style={{ paddingLeft: "5%", fontWeight: "550" }}>{category.split("_").join(" ")}</span>
               <span className={`${style.filter} ${style.sortfilterres}`} style={{ paddingRight: "40px", height: "100%", fontWeight: "600px", whiteSpace: "nowrap" }}>
                 <span style={{ paddingRight: "15px", color: "grey", cursor: "pointer" }} onClick={e => setSortUi(true)}>Sort by</span>

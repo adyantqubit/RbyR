@@ -302,7 +302,7 @@ const handleButtonClicknum = (msg) => {
                 ))
                 :
                 <div style={{width:"100%",height:"40%",display:"flex",justifyContent:"center",textAlign:"center"}}>
-                No Shipping History Found, 
+                No Shipping History Found.
               </div>
                  }      
                 </div>

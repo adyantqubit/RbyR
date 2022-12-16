@@ -119,11 +119,16 @@ const Navbar = () => {
 	return (
 		<>
 		<div className={style.contain} style={{borderBottom:"1px solid white"}}>
-      <div style={{background:"#000",color:"white",display:"flex",justifyContent:"center",fontSize:".7rem",letterSpacing:"1px",fontStyle:"bold",fontWeight:"600"}}>FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT +<a href={`https://wa.me/${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} style={{textDecoration:"none",outline:"none",color:"white",fontSize:".75rem"}}>{whatsappContactNumber?whatsappContactNumber:" Not added"}</a></div>
+      <div style={{background:"#000",color:"white",display:"flex",minHeight:"25px",justifyContent:"center",fontSize:".7rem",letterSpacing:"1px",fontStyle:"bold",fontWeight:"600"}}>
+        <a href={`https://wa.me/${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} 
+        style={{textDecoration:"none",textTransform:"uppercase",outline:"none",color:"white",fontSize:".74rem",fontWeight:"300",marginTop:"8px"}}>
+          FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT +
+          {whatsappContactNumber?whatsappContactNumber:" Not added"}
+          </a>
+        </div>
      
         <div className={style.logo}>
         {/* <img src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" alt="Logo" onClick={openHome}/> */}
-
           <img src={config.apiBaseURL+logo}  alt="Logo" onClick={openHome}/>
         </div>
 

@@ -76,17 +76,18 @@ export const Profile = () => {
        <li  className={style.l} style={{marginLeft:"-30px"}}>
         <BiLogIn className={style.img} style={{color:"red",height:"20px",width:"20px !important"}}/><Link to="/login" className={style.a}>Register/Login</Link>
         </li>} 
-
+        
         {localStorage.getItem('access_token')? <li className={style.l} style={{marginLeft:"-30px"}}>
-         <Link to="/profile" className={style.a}>My Orders</Link>
+         <Link to="/userprofile" className={style.a}>My Profile</Link>
         </li>:null}
+      
 
         {localStorage.getItem('access_token')? <li className={style.l} style={{marginLeft:"-30px"}}>
          <Link to="/shippindprofile" className={style.a}>Shipping Details</Link>
         </li>:null}
 
         {localStorage.getItem('access_token')? <li className={style.l} style={{marginLeft:"-30px"}}>
-         <Link to="/userprofile" className={style.a}>My Profile</Link>
+         <Link to="/profile" className={style.a}>My Orders</Link>
         </li>:null}
 
         {/* {localStorage.getItem('access_token')?<li className={style.l} style={{marginLeft:"-30px"}}>

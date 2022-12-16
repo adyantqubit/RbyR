@@ -90,7 +90,8 @@ const ShrinkHeader = () => {
 
   return (
     <div className={style.responsiveHeader}>
-      <div className={style.topText}>FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT <a href={`https://wa.me/${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} className={style.number} >+91 7865435434</a></div>
+      <div className={style.topText}>FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT +
+      <a href={`https://wa.me/${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} className={style.number} >{whatsappContactNumber?whatsappContactNumber:"Not Added"}</a></div>
 
 
       <div className={style.headerContainer}>

@@ -4,5 +4,5 @@
 }
 
 .home::-webkit-scrollbar{
-    display: none;
+    /* z-index: 0; */
 }

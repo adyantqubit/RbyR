@@ -14,11 +14,12 @@
     top:23vh; */
     padding-top:23vh;
     max-height: 100vh;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .container::-webkit-scrollbar{
-    display: none;
+    /* display: none; */
 }
 
 .main{

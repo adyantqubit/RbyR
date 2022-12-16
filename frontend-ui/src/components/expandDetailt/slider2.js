@@ -71,15 +71,18 @@ const Slider2 = ({scrollTop}) => {
                         style={{ width: "350px" }}
                         onClick={(e) => {openDetail(cart);scrollTop()}}
                       />
-                      <div
+                     <div
                         style={{
                           textAlign: "center",
                           textTransform: "capitalize",
+                          fontWeight:"600",
+                          fontSize:".8rem",
+                          color:"#323232"
                         }}
                       >
                         {cart.title}
                       </div>
-                      <div style={{ textAlign: "center", fontWeight: "600" }}>
+                      <div style={{ textAlign: "center",fontSize:".9rem", fontWeight: "500",color:"#323232" }}>
                         {" "}
                         {currency.sign}{" "}
                         {(cart.price * currency.value).toFixed(2)}

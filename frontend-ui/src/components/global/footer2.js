@@ -172,7 +172,7 @@ function Footer2() {
         </div>
       ) : null}
 
-      <div style={{ height: "40px", borderBottom: "1px solid white" }}></div>
+      <div style={{ height: "40px", borderBottom: "1px solid #7c7c7c" }}></div>
       <div className={style.row}>
         <div className={style.column1}>
           <h1 className={style.heading}>CUSTOMER CARE</h1>
@@ -310,7 +310,7 @@ function Footer2() {
            className={style.emailBoxButton}
               onClick={subscribeToEmailUpdate}
             >
-              <IoChevronForwardOutline style={{ fontSize: "25px" }} />
+              <IoChevronForwardOutline style={{ fontSize: "25px",color:"white" }} />
             </button>
           </div>
         </div>

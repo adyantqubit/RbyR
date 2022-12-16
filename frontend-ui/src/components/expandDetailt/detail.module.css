@@ -434,8 +434,8 @@
     outline: none;
   }
   .button {
-    width: 200px;
-    height:45px;
+    width: 220px;
+    height:50px;
     margin-top: 3%;
     align-self: flex-start;
     font-style: normal;
@@ -443,6 +443,7 @@
     font-weight: 600;
     letter-spacing: 1px;
     text-align: center;
+    border: 0px solid black;
     color: rgb(255, 254, 254);
     background-color: rgb(58, 57, 57);
   }
@@ -450,7 +451,7 @@
     border:2px solid black;
     background-color: #fafafa;
     color: black;
-    transition: 500ms;
+    /* transition: 500ms; */
   }
   .chatButton {
     width: 30%;

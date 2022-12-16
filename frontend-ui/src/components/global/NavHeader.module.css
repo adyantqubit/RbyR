@@ -33,8 +33,8 @@
     max-width:15%;
     overflow: hidden;
     height: 80px;
+    cursor: pointer;
     white-space: nowrap;
-  
    }
 
    .al2{
@@ -61,7 +61,7 @@
    .contain{
     position:fixed;
     width: 100%;
-    z-index: 50;
+    z-index: 10;
     height: 23vh;
    }
 
@@ -91,12 +91,13 @@
     background-color: #323232;
     text-align: center;
     font-size: 32px;
+    padding: 10px;
     height: 60%;
    }
 
    .logo img{
     width: 15%;
-    height: 100%;
+    height: 95%;
 }
 
    .drops{
@@ -138,6 +139,7 @@
     max-width:30%;
     overflow: hidden;
    }
+
    .dropdown {
     background-color: rgba(1, 139, 139,0);
     padding: 1em 0;
@@ -298,9 +300,9 @@ input[type=checkbox]:checked ~ .menu{
   
   .action .menu {
 	position: absolute;
-	padding: 10px 20px;
+	padding: 10px 0px;
 	background: #fff;
-	width: 200px;
+	width: 190px;
 	box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
 	border-radius: 3px;
 	transition: 0.5s;
@@ -311,7 +313,7 @@ input[type=checkbox]:checked ~ .menu{
   .action:hover .menu{
     display: block;
     top:22.5vh;
-    right:0px;
+    right:20px;
     opacity: 1;
 
   }
@@ -335,7 +337,7 @@ input[type=checkbox]:checked ~ .menu{
   
   .action .menu .ul .l {
 	list-style: none;
-	padding: 16px 0;
+	margin: 10px 0;
   font-family: "MyFont";
   letter-spacing: 1.2px;
 	border-top: 1px solid rgba(0, 0, 0, 0.05);
@@ -343,6 +345,10 @@ input[type=checkbox]:checked ~ .menu{
 	align-items: center;
   text-decoration: none;
 
+  }
+
+  .action .menu .ul .l:hover{
+    background-color: rgba(128, 128, 128, 0.3);
   }
   
   .action .menu .ul .l .img {
@@ -369,8 +375,8 @@ input[type=checkbox]:checked ~ .menu{
     font-weight: 500;
   }
   
-  .action .menu .ul .l:hover .a {
+  /* .action .menu .ul .l:hover .a {
 	color: #ff5d94;
-  }
+  } */
 
   

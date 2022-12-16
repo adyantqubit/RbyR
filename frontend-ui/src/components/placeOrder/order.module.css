@@ -52,12 +52,13 @@
     /* position:relative; */
     padding-top:23vh;
     max-height: 100vh;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     
 }
 
 .responsive::-webkit-scrollbar{
-display:none;
+/* display:none; */
 }
 
 

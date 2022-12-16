@@ -83,7 +83,7 @@ const UserProfile = () => {
         setUserData(userData)
 
         Notify()
-        
+
         setShowEditable(false)
       })
     }
@@ -112,28 +112,36 @@ const UserProfile = () => {
     }
   }
 
-  function Notify(){
+  // commented by Rohan kansari- 14/12/22
+  // reason- Antd notification in not working here after notification.destroy method implementation so we are using Toastify.
+
+  function Notify() {
+
     toast.success(<div style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px" }}>Successfully updated.
-          <div style={{ fontSize: "13px", color: "black", letterSpacing: "1.4px" }}>Your User Credentials has been updated</div>
-        </div>,
-          { position: toast.POSITION.TOP_RIGHT, duration:1000, style: { top: "20vh", right: "2vw", background: "#9c9c9c" } },
-        )
+      <div style={{ fontSize: "13px", color: "black", letterSpacing: "1.4px" }}>Your User Credentials has been updated</div>
+    </div>,
+      { position: toast.POSITION.TOP_RIGHT, duration: 1000, style: { top: "20vh", right: "2vw", background: "#9c9c9c" } },
+    )
   }
+
+  //End of code
 
 
   async function updateProfie(event) {
     event.preventDefault();
-    
+
     window.scrollTo(0, 0)
 
     var data = new FormData(event.currentTarget);
-
+    //commented by Rohan- date 14/12/22
+    //Reason- Adding Phone number change functionality
     var userData = {
       firstname: data.get('first'),
       lastname: data.get('last'),
       email: data.get('email'),
       contact: data.get('number')
     }
+    //end of code
 
     if (data.get('oldpswd') != null) {
       handleSubmit(event, userData)
@@ -189,7 +197,10 @@ const UserProfile = () => {
   return (
     <div className={style.scrolling} >
       <Navbar />
+      {/* commented by Rohan - date 14/12/22
+          reason - Here toastify notfication show  */}
       <ToastContainer />
+      {/* {end of code} */}
 
       <div className={style.Container} >
         <div className={style.centerContainer}>
@@ -248,6 +259,8 @@ const UserProfile = () => {
                             <input className={styles.firstInput} type="email" defaultValue={userdata.email} name="email" required />
 
                           </div>
+
+                          {/* Commented by rohan- date 14/12/22 */}
                           <div className={styles.columnFirstName}>
                             <label className={styles.firstName} htmlFor='last'>Contact Number*</label>
 
@@ -255,6 +268,8 @@ const UserProfile = () => {
                             {isAlertVisiblenum && <span asp-validation-for="Code" class="text-danger col-sm-4">{numerror}</span>}
 
                           </div>
+                          {/* End of code */}
+
                         </div>
                         <div className={styles.columnitem1content1}>
 
@@ -283,9 +298,13 @@ const UserProfile = () => {
                               <label className={styles.firstName} htmlFor='current'>Current Password*</label>
 
                               <div className={styles.firstInput} style={{ padding: "0" }}>
+
                                 <input className={styles.inputr} type={showNewPass ? "text" : "password"} name="oldpswd" required onChange={e => { if (e.target.value.length > 0) setVisiblePassreg(true); else setVisiblePassreg(false) }} />
+
                                 {error.non_field_errors && error.non_field_errors[0] == "Old password is Incorect" ? <Typography style={{ color: "red", fontSize: 12 }}>{error.non_field_errors[0]}</Typography> : ""}
+
                                 {visiblepassReg ? showNewPass ? <AiFillEye style={{ fontSize: "20px" }} onClick={e => setNewPass(false)} /> : <AiFillEyeInvisible style={{ fontSize: "20px" }} onClick={e => setNewPass(true)} /> : null}
+
                               </div>
 
                               {/* <input className={styles.firstInput} type={showNewPass?"text":"password"} name="oldpswd" required onChange={e=>{if(e.target.value.length>0)setVisiblePassreg(true); else setVisiblePassreg(false)}}/>
@@ -311,7 +330,9 @@ const UserProfile = () => {
                             <div className={styles.columnFirstName}>
                               <label className={styles.firstName} htmlFor='last'>Confirm New Password*</label>
                               <div className={styles.firstInput} style={{ padding: "0" }}>
+
                                 <input className={styles.inputr} type={showNewPass3 ? "text" : "password"} name="pswd2" required onChange={e => { if (e.target.value.length > 0) setVisiblePassreg3(true); else setVisiblePassreg3(false) }} />
+
                                 {visiblepassReg3 ? showNewPass3 ? <AiFillEye style={{ fontSize: "20px" }} onClick={e => setNewPass3(false)} /> : <AiFillEyeInvisible style={{ fontSize: "20px" }} onClick={e => setNewPass3(true)} /> : null}
 
                                 {error.non_field_errors && error.non_field_errors[0] == "Password and confirm Password doesn't match" ? <Typography style={{ color: "red", fontSize: 12 }}>{error.non_field_errors[0]}</Typography> : " "}

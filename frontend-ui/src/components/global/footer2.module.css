@@ -27,6 +27,9 @@
     flex-direction: column;
     overflow: visible;
     word-break:normal;
+    gap:10px;
+    font-weight: 600;
+
 }
 
 .column2{
@@ -36,6 +39,9 @@
     flex-direction: column;
     overflow: visible;
     word-break:normal;
+    gap:10px;
+    font-weight: 600;
+
 }
 
 .column3{
@@ -45,6 +51,9 @@
     flex-direction: column;
     overflow: visible;
     word-break:normal;
+    gap:10px;
+    font-weight: 600;
+
 }
 
 .column4{
@@ -54,18 +63,26 @@
     flex-direction: column;
     overflow: visible;
     word-break:normal;
+    gap:10px;
+    font-weight: 600;
+
 }
 
 .column5{
     height: auto;
     width: auto;
+    max-width: 20%;
     display: flex;
     flex-direction: column;
     overflow: visible;
     word-break:normal;
+    gap:10px;
+    font-weight: 600;
 }
 
 .heading{
+    font-weight: 500;
+
     color: #fff;
     font-size: 18px;
     line-height: 26px;
@@ -145,13 +162,20 @@
     font-weight: 500;
 }
 .emailBox{
-    width: "50%";
-    height: 33px;
+    /* width: "50%"; */
+    height: 38px;
+    padding:5px;
     font-size:14px;
+    border: none;
 }
+
+.emailBox:focus{
+    outline: none;
+}
+
 .emailBoxButton{
     width: 20%;
-    height: 33px;
+    height: 38px;
     background: #626161;
     border: 0px solid black;
 }
