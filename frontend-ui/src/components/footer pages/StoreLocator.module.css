@@ -71,14 +71,14 @@
     
 }
 .itemImage{
-    height:65%;
+    /* height:65%;s */
     width: 100%;
    
 }
 .itemBody{
     padding: 0 10%;
     word-wrap: break-word;
-    height: 35%;
+    /* height: 35%; */
     padding-top: 5%;
     overflow-y: auto;
 }

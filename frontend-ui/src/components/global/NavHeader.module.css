@@ -60,7 +60,7 @@
 
    .contain{
     position:fixed;
-    width: 100%;
+    width: 98.75vw;
     z-index: 10;
     height: 23vh;
    }
@@ -300,9 +300,10 @@ input[type=checkbox]:checked ~ .menu{
   
   .action .menu {
 	position: absolute;
-	padding: 10px 0px;
+	padding: 10px 20px;
 	background: #fff;
-	width: 190px;
+	width: 200px;
+
 	box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
 	border-radius: 3px;
 	transition: 0.5s;
@@ -313,7 +314,7 @@ input[type=checkbox]:checked ~ .menu{
   .action:hover .menu{
     display: block;
     top:22.5vh;
-    right:20px;
+    right:10px;
     opacity: 1;
 
   }
@@ -337,7 +338,7 @@ input[type=checkbox]:checked ~ .menu{
   
   .action .menu .ul .l {
 	list-style: none;
-	margin: 10px 0;
+	padding: 16px 0;
   font-family: "MyFont";
   letter-spacing: 1.2px;
 	border-top: 1px solid rgba(0, 0, 0, 0.05);
@@ -345,10 +346,6 @@ input[type=checkbox]:checked ~ .menu{
 	align-items: center;
   text-decoration: none;
 
-  }
-
-  .action .menu .ul .l:hover{
-    background-color: rgba(128, 128, 128, 0.3);
   }
   
   .action .menu .ul .l .img {
@@ -375,8 +372,8 @@ input[type=checkbox]:checked ~ .menu{
     font-weight: 500;
   }
   
-  /* .action .menu .ul .l:hover .a {
+  .action .menu .ul .l:hover .a {
 	color: #ff5d94;
-  } */
+  }
 
   

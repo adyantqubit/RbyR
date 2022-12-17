@@ -7,7 +7,7 @@ import parse from "html-react-parser";
 // const Below = () => {
 //   return (
 //     <div style={{backgroundColor:"white"}}>
-//     <div style={{fontSize: "16px",lineHeight: "24px",fontWeight: "600",letterSpacing: "1.2px",marginLeft:"15px",paddingTop:"15px",width:"100%"}}>
+//     <div style={{fontSize: "16px",lineHeight: "24px",fontWeight: "600",letterSpacing: "1.2px",marginLeft:"15px",paddingTop:"15px",width:"19%"}}>
 //     Timeless fashion by Designer Label R By R
 //     </div>
 //     <p style={{color:"#7c7c7c",margin:"15px"}}>R By R, also commonly referred to as RR, is a Delhi-based couturier, who is renowned for his iconic and glamorous fashion wear. The head-office of R By R Store is in Delhi and the flagship store of R By R is in Mehrauli.  This very talented and renowned fashion designer swears by the concept of sustainable fashion wear. His ethos reflects in his creation. He uses the most stunning recycled material to create modern silhouettes that are adorned with traditional Indian craftsmanship. The combination of the Silhouette cut, the pattern of the outfit flow, the strategic placement of the floral motifs and other elements as well as the metallic fabric makes the creation from this fashion label truly mind-blowing and a timeless fashion. Fashion seasons can come and go, but your R By R outfit will remain fashionable even after 2 decades from now and outshine the new designer wear of those times.</p>
@@ -60,7 +60,7 @@ const Below = () => {
                     letterSpacing: "1.2px",
                     marginLeft: "15px",
                     paddingTop: "15px",
-                    width: "100%",
+                    width: "90%",
                   }}
                 >
                   {parse(description.subtitle1)}
@@ -73,7 +73,7 @@ const Below = () => {
                     fontWeight: "600",
                     letterSpacing: "1.2px",
                     margin: "15px",
-                    width: "100%",
+                    width: "90%",
                   }}
                 >
                   {parse(description.subtitle2)}
@@ -86,7 +86,7 @@ const Below = () => {
                     fontWeight: "600",
                     letterSpacing: "1.2px",
                     margin: "15px",
-                    width: "100%",
+                    width: "90%",
                   }}
                 >
                   {parse(description.subtitle3)}
@@ -100,7 +100,7 @@ const Below = () => {
                     fontWeight: "600",
                     letterSpacing: "1.2px",
                     margin: "15px",
-                    width: "100%",
+                    width: "90%",
                   }}
                 >
                   {parse(description.subtitle4)}

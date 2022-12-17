@@ -3,7 +3,8 @@ import Carousel from 'react-grid-carousel'
 import { Navigate, useNavigate } from "react-router-dom";
 import config from "../../api/config";
 import { CartState } from "../../context";
-
+import styles from "./slider.module.css"
+import logo from "../../assets/photos/rts-icon.svg"
 import style from "../listing/listpage.module.css";
 
 const Slider2 = ({scrollTop}) => {
@@ -87,6 +88,20 @@ const Slider2 = ({scrollTop}) => {
                         {currency.sign}{" "}
                         {(cart.price * currency.value).toFixed(2)}
                       </div>
+
+                      {/* Commented by Rohan - 16/12/22
+                      Reason - Adding representation of Reading to ship items  */}
+
+                  {cart.ready_to_ship?
+                  <div className={styles.readyContainer}>
+                  <div className={styles.readyBox}>
+                    <img src={logo} className={styles.readyIcon} />
+                    Ready To Ship
+                  </div>
+                </div>
+                :null}
+
+                {/* End of code */}
                     </Carousel.Item>
                   );
 

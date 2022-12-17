@@ -52,10 +52,12 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         
         
 class UserLoginSerializer(serializers.ModelSerializer):
-    email=serializers.EmailField(max_length=255)
+    email=serializers.EmailField(max_length=255,error_messages={'blank': 'This field cannot be left blank.'})
     class Meta:
         model=User
         fields=['email','password']
+        extra_kwargs = {'password': {'error_messages': {'blank': 'This field cannot be left blank.'}}}
+
         
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:

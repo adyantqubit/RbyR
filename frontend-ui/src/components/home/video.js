@@ -17,7 +17,7 @@ async function images(){
 }
   return (
      <>
-     <div style={{width:"100%",display:"flex",justifyContent:"center"}}>
+     <div style={{width:"100%",display:"flex",justifyContent:"center",zIndex:"-2"}}>
       {iamges?<iframe className={style.video} src={iamges.video_url}></iframe>:null}
      </div>
   </>

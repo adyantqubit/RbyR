@@ -372,7 +372,7 @@ const Details = (props) => {
 
   return (
 
-    <div style={{ maxHeight: "150vh", overflow: "scroll" }} id="scrolling"  >
+    <div style={{ maxHeight: "100vh", overflow: "hidden" }} id="scrolling"  >
 
       <Navbar />
 
@@ -491,7 +491,7 @@ const Details = (props) => {
                               marginLeft: "10px",
                             }}
                           >
-                            Please select one size
+                            Please select your size
                           </div>
                         </Shake>
                       ) : (

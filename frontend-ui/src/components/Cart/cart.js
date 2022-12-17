@@ -19,6 +19,7 @@ import Msg from '../concepts/msgConfirm';
 import { Popconfirm, message, notification } from 'antd';
 import Navbar from '../global/NavHeader';
 import Footer2 from '../global/footer2';
+import {HiMinus,HiPlus} from 'react-icons/hi';
 import Below from '../global/below';
 import { Modal, Space } from 'antd';
 
@@ -30,6 +31,7 @@ import { Typography } from '@mui/material';
 
 
 import { blue } from '@mui/material/colors';
+import { SizeGetter } from '../global/getSize';
 
 const text = 'Are you sure you would like to remove this item from the shopping cart?';
 
@@ -391,7 +393,7 @@ const CartSItem = (props) => {
                     <div style={{ color: "black", marginLeft: "20px" }} className={style.price}> {currency.sign} {(pro.price * currency.value).toFixed(2)}</div>
                     <div style={{ color: "black", marginLeft: "20px", marginTop: "8px" }}>
                       <span className={style.size}>Size :</span>
-                      <span className={style.showSize}> {pro.size}</span>
+                      <span className={style.showSize}> {SizeGetter(pro.size)}</span>
                     </div>
                     <div style={{ color: "black", marginLeft: "20px", marginTop: "8px" }}>
                       <span className={style.shipping}>Standard Shipping:</span>
@@ -402,7 +404,7 @@ const CartSItem = (props) => {
 
                     <div style={{ height: "100px", display: "flex", flexDirection: "column" }}></div>
                     <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                      <div style={{ color: "black", alignSelf: "start", marginLeft: "20px", color: "#8c8c8c" }}> Quantity</div>
+                      {/* <div style={{ color: "black", alignSelf: "start", marginLeft: "20px", color: "#8c8c8c" }}> Quantity</div> */}
                       <div style={{ height: "20px", width: "100px", display: "flex", flexDirection: "row" }}>
                         <div style={{ width: "20px", marginRight: "10px" }}>
                           <div className={styles.increament} onClick={e => decreament(pro)}>
@@ -436,7 +438,7 @@ const CartSItem = (props) => {
                     <div style={{ color: "black", marginLeft: "20px" }} className={style.price}> {currency.sign} {(pro.price * currency.value).toFixed(2)}</div>
                     <div style={{ color: "black", marginLeft: "20px", marginTop: "8px" }}>
                       <span className={style.size}>Size :</span>
-                      <span className={style.showSize}> {pro.size}</span>
+                      <span className={style.showSize}> {SizeGetter(pro.size)}</span>
                     </div>
                     <div style={{ color: "black", marginLeft: "20px", marginTop: "8px" }}>
                       <span className={style.shipping}>Standard Shipping:</span>
@@ -446,7 +448,7 @@ const CartSItem = (props) => {
                     </div>
 
                     <div className={styles.gaping}></div>
-                    <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+                    {/* <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                       <div style={{ color: "black", alignSelf: "start", marginLeft: "20px", color: "#8c8c8c" }}> Quantity</div>
                       <div style={{ height: "20px", width: "100px", display: "flex", flexDirection: "row" }}>
                         <div style={{ width: "20px", height: "100%" }}>
@@ -461,7 +463,17 @@ const CartSItem = (props) => {
                           </div>
                         </div>
                       </div>
+                    </div> */}
+
+                    <div className={styles.qtyContainer}>
+                      <div className={styles.operatorContainer}>
+                        <span className={styles.radius}  onClick={e => decreament(pro)}><HiMinus fontSize={15}/></span>
+                        <span className={styles.quantity}>{pro.quantity}</span>
+                        <span className={styles.radius} onClick={e => increament(pro)}><HiPlus fontSize={15}/></span> 
+                      </div>
                     </div>
+
+
                     <div id={`style${pro.id}${pro.size}`} style={{ display: "flex", justifyContent: "end", margin: "0 5%", fontSize: ".8rem", color: "red", display: "none" }}>No more stock Available
                     </div>
 
@@ -481,7 +493,7 @@ const CartSItem = (props) => {
               </div> 
             </div> */}
              
-             <div style={{width:"100%",height:"100%",display:"flex",flexDirection:"column",alignContent:"center"}}> 
+             <div style={{width:"100%",minHeight:"60vh",height:"100%",display:"flex",flexDirection:"column",alignContent:"center"}}> 
                <span style={{textAlign:"center",fontSize: "18px",lineHeight:"26px",letterSpacing:"2.5px",fontWeight:"600"}}>Your shopping cart is empty.</span>
                <buton className={styles.shopbtn2} style={{ width: "70%", margin: "5px auto",fontSize:"14px",cursor: "pointer",
                letterSpacing: "2px", textAlign: "center", opacity: "1",fontWeight:"700",
@@ -497,9 +509,9 @@ const CartSItem = (props) => {
               {/* <span>Total:</span><span>{getTotalPrice()}</span><span>Qty:</span><span>{getTotalQuantity()}</span><button onClick={BuyAll}>Buy ALl</button> */}
               <div className={style.inner} >
 
-                <div className={style.summ} >
-                  Shopping Summary
-                </div>
+                {/* <div className={style.summ} >
+                  SHOPPING SUMMARY
+                </div> */}
 
                 <div className={style.subTotal}>
                   <span style={{ marginLeft: "15px", textTransform: "uppercase", fontWeight: "600" }}>SubTotal</span>
@@ -518,7 +530,7 @@ const CartSItem = (props) => {
                 <div className={style.promo}>
 
                   {!ShowCoupon && !offer.discount_percentage > 0 ? <> <input className="promoCode" id="prormos" type="text" onKeyPress={e => validateWhitespace(e, "prormos")} style={{ width: "90%", height: "35px", padding: "10px", marginLeft: "15px", border: "1px solid #dfdbdb", outline: "#fff" }} placeholder="Have a promocode" onChange={e => setError(null)}></input>
-                    <button className={style.shopbtn1} style={{ marginRight: "15px", marginTop: "0px", height: "35px", textAlign: "center", backgroundColor: "black", color: "white", letterSpacing: "2px", fontSize: "14px", fontWeight: "600" }} onClick={ApplyPromo}>Apply</button>
+                    <button className={style.shopbtn1} style={{ marginRight: "15px", marginTop: "0px", height: "35px", textAlign: "center", backgroundColor: "#323232", color: "white", letterSpacing: "2px", fontSize: "14px", fontWeight: "600" }} onClick={ApplyPromo}>Apply</button>
                   </>
                     :
                     <div className={styles.successMsg}>
@@ -543,7 +555,6 @@ const CartSItem = (props) => {
 
                 <div className={style.buttons} style={{ flexDirection: "column", background: "white" }}>
                   <button className={style.shopbtn1} style={{ width: "100%", margin: "5px" }} onClick={e => { nav('/') }}>Continue Shopping</button>
-
                   <buton className={style.shopbtn2} style={{ width: "100%", margin: "5px" }} onClick={e => cartChecking()} >Go To Checkout</buton>
                 </div>
               </div>
@@ -560,7 +571,7 @@ const CartSItem = (props) => {
         <div className={style.inner} >
 
           {ImportantRules != null ?
-            <div className={styles.importantRules}>
+            <div className={styles.importantRules} style={{borderTop:"1px solid black"}}>
               <h6 style={{ fontSize: "14px", lineHeight: "22px", letterSpacing: "1.2px", marginLeft: "15px" }}>IMPORTANTS</h6>
               <ul style={{ listStyleType: "disc", listStylePosition: "outside" }}>
                 <li style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>

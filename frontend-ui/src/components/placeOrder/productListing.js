@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import config from '../../api/config'
 import { CartState } from '../../context'
 import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing'
+import { SizeGetter } from '../global/getSize'
 import styles from './order.module.css'
 
 const ProductListing = () => {
@@ -66,7 +67,7 @@ const ProductListing = () => {
             <span className={styles.titlepro}>{c.title}</span>
             <span className={styles.userinfoText} style={{color:"black"}}>{currency.sign}{(c.price*currency.value).toFixed(2)}</span>
             <div ><span className={styles.userinfoText}>Qty:</span><span className={styles.userinfoText2}> {c.quantity}</span></div>
-            <div ><span className={styles.userinfoText}>Size:</span><span className={styles.userinfoText2}> {c.size}</span></div>
+            <div ><span className={styles.userinfoText}>Size:</span><span className={styles.userinfoText2}> {SizeGetter(c.size)}</span></div>
             </div>
           </div>
           )}

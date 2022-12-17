@@ -5,4 +5,5 @@
 
 .home::-webkit-scrollbar{
     /* z-index: 0; */
+    /* width:10px; */
 }

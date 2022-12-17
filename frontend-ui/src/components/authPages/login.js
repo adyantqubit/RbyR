@@ -281,7 +281,7 @@ const Login = () => {
 					<input class="inpu"type="email" style={{marginBottom:"0"}} name="email" placeholder="E-mail*" required=""/>
 					{error.email?<Typography style={{color:"red",paddingLeft:"50px",fontSize:"12px",}}>{error.email[0]}</Typography>:" "}
 
-                    <span class="inpu3" style={{margin:"20px 0",marginLeft:"15%",background:"#e0dede"}}>
+                    <span class="inpu3" style={{marginTop:"20px",marginLeft:"15%",background:"#e0dede"}}>
 					<input class="inpu4" type={showNewPass3?"text":"password"} style={{width:"90%",background:"rgba(0,0,0,0)"}} name="pswd" placeholder="Password*" required="" onChange={e=>{if(e.target.value.length>0)setVisiblePassreg3(true); else setVisiblePassreg3(false)}}/>
 					{visiblepassReg3?showNewPass3?<AiFillEye style={{marginTop:"5px"}} onClick={e=>setNewPass3(false)}/>:<AiFillEyeInvisible style={{marginTop:"5px"}} onClick={e=>setNewPass3(true)}/>:null}
 					</span>
