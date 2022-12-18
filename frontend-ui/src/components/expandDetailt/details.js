@@ -410,6 +410,8 @@ const Details = (props) => {
                               <label
                                 for={details.id}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
+                                style={{textDecoration:"none"}}
+
                               >
                                 <input
                                   type="radio"
@@ -425,6 +427,8 @@ const Details = (props) => {
                               <label
                                 for={details.id * 44}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
+                                style={{textDecoration:"none"}}
+
                               >
                                 <input
                                   type="radio"
@@ -440,6 +444,8 @@ const Details = (props) => {
                               <label
                                 for={details.id * 88}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
+                                style={{textDecoration:"none"}}
+
                               >
                                 <input
                                   type="radio"
@@ -455,6 +461,8 @@ const Details = (props) => {
                               <label
                                 for={details.id * 108}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
+                                style={{textDecoration:"none"}}
+
                               >
                                 <input
                                   type="radio"
@@ -463,6 +471,8 @@ const Details = (props) => {
                                   id={details.id * 108}
                                   value="Extra Large"
                                   onChange={(e) => onChange(e.target.value)}
+                                  style={{textDecoration:"none"}}
+
                                 />
                                 <span class="span">XL</span>
                               </label>
@@ -470,6 +480,8 @@ const Details = (props) => {
                               <label
                                 for={details.id * 126}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
+                                style={{textDecoration:"none"}}
+
                               >
                                 <input
                                   type="radio"
@@ -501,6 +513,8 @@ const Details = (props) => {
                               <label
                                 for={details.id}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
+                                style={{textDecoration:"none"}}
+
                               >
                                 <input
                                   type="radio"
@@ -516,6 +530,8 @@ const Details = (props) => {
                               <label
                                 for={details.id * 44}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
+                                style={{textDecoration:"none"}}
+
                               >
                                 <input
                                   type="radio"
@@ -531,6 +547,8 @@ const Details = (props) => {
                               <label
                                 for={details.id * 88}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
+                                style={{textDecoration:"none"}}
+
                               >
                                 <input
                                   type="radio"
@@ -546,6 +564,8 @@ const Details = (props) => {
                               <label
                                 for={details.id * 108}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
+                                style={{textDecoration:"none"}}
+
                               >
                                 <input
                                   type="radio"
@@ -561,6 +581,7 @@ const Details = (props) => {
                               <label
                                 for={details.id * 126}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
+                                style={{textDecoration:"none"}}
                               >
                                 <input
                                   type="radio"

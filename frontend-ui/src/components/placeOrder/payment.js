@@ -1,153 +1,180 @@
 import { notification } from 'antd';
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { cartStockRecheck } from '../../api/orderApis';
 import { cartDeleteApi, invoiceApi } from '../../api/service';
 import { CartState } from '../../context';
 import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing';
 import { getToken } from '../../Redux-manage/services/localStorageService';
+import * as Icon from "react-icons/fi";
 import styles from './order.module.css'
-import {IoMdCheckmark} from 'react-icons/io'
+import { IoMdCheckmark } from 'react-icons/io'
+import Checkbox from "react-custom-checkbox";
+
 const Payment = () => {
-    var{userdata,checkoutDetails,setCheckoutDetails,cartEnd,currency,cart,setCart,offer,setOffer,taxRate,setTaxRate}=CartState()
-    const nav=useNavigate()
-    var[tick,setTick]=useState(false)
-    var[tickop,setTickop]=useState(false)
+  var { userdata, checkoutDetails, setCheckoutDetails, cartEnd, currency, cart, setCart, offer, setOffer, taxRate, setTaxRate } = CartState()
+  const nav = useNavigate()
+  var [tick, setTick] = useState(false)
+  var [tickop, setTickop] = useState(false)
+  const [billingInfo, setBillingInfo] = useState(true)
 
-    const{access_token,refresh_token}=getToken()
+
+  const { access_token, refresh_token } = getToken()
 
 
-    function onSelect(){
-      tick=!tick
+  function onSelect() {
+    tick = !tick
+    setTick(tick)
+    if (tick == true) {
+      checkoutDetails['payment'] = "cod"
+      document.getElementById('cash').style.border = "1px solid black"
+      document.getElementById('online').style.border = "1px solid black"
+      tickop = false
+      setTickop(tickop)
+    }
+    else
+      checkoutDetails['payment'] = ""
+  }
+
+  function selectop() {
+    tickop = !tickop
+    setTickop(tickop)
+    if (tickop == true) {
+      checkoutDetails['payment'] = "onlinepay"
+      document.getElementById('cash').style.border = "1px solid black"
+      document.getElementById('online').style.border = "1px solid black"
+      tick = false;
       setTick(tick)
-      if(tick==true){
-      checkoutDetails['payment']="cod"
-      document.getElementById('cash').style.border="1px solid black"
-      document.getElementById('online').style.border="1px solid black"
-      tickop=false
-      setTickop(tickop)
-      }
-      else
-      checkoutDetails['payment']=""
     }
+    else
+      checkoutDetails['payment'] = ""
 
-    function selectop(){
-      tickop=!tickop
-      setTickop(tickop)
-      if(tickop==true){
-      checkoutDetails['payment']="onlinepay"
-      document.getElementById('cash').style.border="1px solid black"
-      document.getElementById('online').style.border="1px solid black"
-      tick=false;
-      setTick(tick)  
-      }
-      else
-      checkoutDetails['payment']=""
+  }
 
-    }
+  async function cartChecking() {
+    await cartStockRecheck(cart).then(r => {
 
-    async function cartChecking(){
-      await cartStockRecheck(cart).then(r=>{
-    
-        if(r.error){
-          console.log("error occurs")
-        cartEnd=r.error
-        cartEnd.map(c=>{
+      if (r.error) {
+        console.log("error occurs")
+        cartEnd = r.error
+        cartEnd.map(c => {
           notification.error({
-            message: <div style={{fontSize:"18px",color:"white"}}>Out of stock</div>,
+            message: <div style={{ fontSize: "18px", color: "white" }}>Out of stock</div>,
             description:
-            `Product ${c.name} size ${c.size} is out of stock `,
-            style: { backgroundColor:"#D2042D",color:"white"},
-            duration:20,
+              `Product ${c.name} size ${c.size} is out of stock `,
+            style: { backgroundColor: "#D2042D", color: "white" },
+            duration: 20,
           });
         })
       }
-      else{
+      else {
         console.log("all done")
         submitAll()
       }
+    })
+  }
+
+  async function submitAll() {
+    if (checkoutDetails['payment'] && checkoutDetails['payment'].length > 0) {
+      checkoutDetails['cart'] = cart
+      //  checkoutDetails['CouponDiscount']=afterColumnTotalOfferAdd(offer,cart,taxRate).coupon
+      checkoutDetails['ShippingCharges'] = afterColumnTotalOfferAdd(offer, cart, taxRate).shipping
+      checkoutDetails['SubTotal'] = afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal
+      checkoutDetails['tax'] = afterColumnTotalOfferAdd(offer, cart, taxRate).tax
+      checkoutDetails['grand'] = afterColumnTotalOfferAdd(offer, cart, taxRate).Grand
+      checkoutDetails['currency_sign'] = currency.sign
+      checkoutDetails['currency_value'] = currency.value
+      checkoutDetails['date'] = new Date().toISOString().slice(0, 10)
+      console.log(checkoutDetails)
+
+
+      await invoiceApi(checkoutDetails, access_token).then(r => {
+
+        if (r.error) {
+          notification.error({
+            message: <div style={{ fontSize: "18px", color: "white" }}>Sorry! Something went wrong. </div>,
+            description:
+              `Facing issue on generating bill please contact to Admin `,
+            style: { backgroundColor: "#D2042D", color: "white" },
+            duration: 20,
+          });
+        } else {
+          checkoutDetails['orderno'] = r.order_no
+          console.log(r)
+          sessionStorage.setItem('checkoutDetails', JSON.stringify(checkoutDetails))
+          deleteFromCart()
+          nav("/billing")
+        }
+
       })
+
     }
-
-    async function submitAll(){
-        if(checkoutDetails['payment']&&checkoutDetails['payment'].length>0){
-           checkoutDetails['cart']=cart
-          //  checkoutDetails['CouponDiscount']=afterColumnTotalOfferAdd(offer,cart,taxRate).coupon
-           checkoutDetails['ShippingCharges']=afterColumnTotalOfferAdd(offer,cart,taxRate).shipping
-           checkoutDetails['SubTotal']=afterColumnTotalOfferAdd(offer,cart,taxRate).subtotal
-           checkoutDetails['tax']=afterColumnTotalOfferAdd(offer,cart,taxRate).tax
-           checkoutDetails['grand']=afterColumnTotalOfferAdd(offer,cart,taxRate).Grand
-           checkoutDetails['currency_sign']=currency.sign
-           checkoutDetails['currency_value']=currency.value
-           checkoutDetails['date']=new Date().toISOString().slice(0, 10)
-           console.log(checkoutDetails)
-
-
-           await invoiceApi(checkoutDetails,access_token).then(r=>{
-
-            if(r.error){
-              notification.error({
-                message: <div style={{fontSize:"18px",color:"white"}}>Sorry! Something went wrong. </div>,
-                description:
-                `Facing issue on generating bill please contact to Admin `,
-                style: { backgroundColor:"#D2042D",color:"white"},
-                duration:20,
-              });
-            }else{
-            checkoutDetails['orderno']=r.order_no
-            console.log(r)
-            sessionStorage.setItem('checkoutDetails',JSON.stringify(checkoutDetails))
-              deleteFromCart()  
-              nav("/billing")
-            }
-
-            })
-           
-        }
-        else{
-          document.getElementById('cash').style.border="1px solid red"
-          document.getElementById('online').style.border="1px solid red"
-        }
+    else {
+      document.getElementById('cash').style.border = "1px solid red"
+      document.getElementById('online').style.border = "1px solid red"
     }
+  }
 
-    async function deleteFromCart(){ 
-      var access=localStorage.getItem('access_token')
-      await cartDeleteApi({access}).then(r=>setCart([]))
-    }  
+  async function deleteFromCart() {
+    var access = localStorage.getItem('access_token')
+    await cartDeleteApi({ access }).then(r => setCart([]))
+  }
   return (
-    <div className={styles.columnitem3} style={{marginTop:"20px"}}>
-          <div className={styles.columnitem1head}>3. PAYMENT METHOD</div>
-          <div className={styles.boxpay} id="cash">
-          <div style={{display:"flex",justifyContent:"space-between"}} onClick={onSelect}>
-            <span className={styles.userinfoText}>Cash On Delivery</span>
-          {tick?
-          <IoMdCheckmark style={{fontSize:"25",color:"black",fontWeight:"20",backgroundColor:"white",border:"none"}}/>
-          :
+    <div className={styles.columnitem3} style={{ marginTop: "20px" }}>
+      <div className={styles.columnitem1head}>3. PAYMENT METHOD</div>
+      <div className={styles.boxpay} id="cash">
+        <div style={{ display: "flex", justifyContent: "space-between" }} onClick={onSelect}>
+          <span className={styles.userinfoText}>Cash On Delivery</span>
+          {tick ?
+            <IoMdCheckmark style={{ fontSize: "25", color: "black", fontWeight: "20", backgroundColor: "white", border: "none" }} />
+            :
             null}
 
-            </div>
-          </div>
-          <div className={styles.boxpay} id="online">
-          <div style={{display:"flex",justifyContent:"space-between"}} onClick={selectop}>
-            <span className={styles.userinfoText}>Pay via Scanner</span>
-          {tickop?
-          <IoMdCheckmark style={{fontSize:"25",color:"black",fontWeight:"20",backgroundColor:"white",border:"none"}}/>
-          :
+        </div>
+      </div>
+      <div className={styles.boxpay} id="online">
+        <div style={{ display: "flex", justifyContent: "space-between" }} onClick={selectop}>
+          <span className={styles.userinfoText}>Pay via Scanner</span>
+          {tickop ?
+            <IoMdCheckmark style={{ fontSize: "25", color: "black", fontWeight: "20", backgroundColor: "white", border: "none" }} />
+            :
             null}
 
-            </div>
-          </div>
+        </div>
+      </div>
 
-          <div className={styles.boxpay} >
-          
-            <strike className={styles.userinfoText}>Pay via debit/credit cards</strike>
-            <h6 style={{fontSize:"12px"}}>(Currently not available)</h6>
-        
-          </div>
-          <button className={styles.userInfoButton} onClick={e=>cartChecking()}>
-            PLACE YOUR ORDER
-          </button>
-    </div>  )
+      <div className={styles.boxpay} >
+
+        <strike className={styles.userinfoText}>Pay via debit/credit cards</strike>
+        <h6 style={{ fontSize: "12px" }}>(Currently not available)</h6>
+
+      </div>
+
+
+      <div className={styles.columnitem1content1} style={{margin:"20px 0"}}>
+        <Checkbox
+          icon={<Icon.FiCheck color="white" size={16} style={{background:"black"}}/>}
+          name="my-input"
+          checked={billingInfo}
+          onChange={(value, event) => {
+            setBillingInfo(!value)
+          }}
+          borderColor="#000"
+          style={{ cursor: "pointer", width: "17px", marginLeft: "10px" }}
+          labelStyle={{ marginLeft: 5, userSelect: "none" }}
+          label={<label className={styles.firstName} htmlFor='street'
+          style={{ fontSize: "14px", fontStyle: "bold", letterSpacing: "1.5px", paddingBottom: "2px" }}>
+            I agree to
+         <Link to="/terms" style={{fontSize:"15px",textDecoration:"underline"}}> 
+         Terms and conditions</Link></label>}
+        />
+      </div>
+
+
+      <button className={styles.userInfoButton} onClick={e => cartChecking()}>
+        PLACE YOUR ORDER
+      </button>
+    </div>)
 }
 
 export default Payment

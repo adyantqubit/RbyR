@@ -1,3 +1,7 @@
+//Commented by Rohan -17/12/22
+//Reason -One Requirement raise, we have to show size in short from 
+// so here we pass size and short form of size returns
+
 export function SizeGetter(size){
     if(size=="Short")
     return "S";

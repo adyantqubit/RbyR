@@ -260,12 +260,12 @@ async function DefaultShipping(){
 
         </div>
         <div className={style.subTotal}>
-         <span style={{marginLeft:"15px",fontWeight:"600"}}>Shipping Charges</span>
+         <span style={{marginLeft:"15px",textTransform:"uppercase",fontWeight:"600"}}>Shipping Charges</span>
          <span style={{marginRight:"15px",fontWeight:"600"}}>{currency.sign} {(afterColumnTotalOfferAdd(offer,cart,taxRate).shipping*currency.value).toFixed(2)}</span>
         </div>
 
         <div className={style.subTotal}>
-         <span style={{marginLeft:"15px",fontWeight:"600"}}>GST Charges</span>
+         <span style={{marginLeft:"15px",textTransform:"uppercase",fontWeight:"600"}}>GST Charges</span>
          <span style={{marginRight:"15px",fontWeight:"600"}}>{currency.sign} {(afterColumnTotalOfferAdd(offer,cart,taxRate).tax*currency.value).toFixed(2)}</span>
         </div>
 
@@ -298,8 +298,8 @@ async function DefaultShipping(){
         </div>
 
          <div className={style.buttons} >
-            <button className={style.shopbtn1} onClick={e=>setCartDrawer(false)}>Continue Shopping</button>
-            <buton className={style.shopbtn2} onClick={e=>{cartChecking()}}>Go To Checkout</buton>
+            <button className={style.shopbtn1} onClick={e=>setCartDrawer(false)}>CONTINUE SHOPPING</button>
+            <buton className={style.shopbtn2} onClick={e=>{cartChecking()}}>GO TO CHECKOUT</buton>
          </div>
       </div>
     </div>:null}

@@ -14,6 +14,7 @@ import parse from "html-react-parser";
 import Footer from '../global/footer'
 import Below from '../global/below'
 import { Button, notification } from 'antd';
+import { SizeGetter } from '../global/getSize'
 
 
 const Billing = () => {
@@ -190,7 +191,7 @@ const Billing = () => {
                 </div>
                 {checkoutDetails.cart.map(c =>
                   <div className={styles.billingheader2} style={{ marginTop: "5px", background: "white" }}>
-                    <span className={styles.protitle} > {c.title} ({c.size})</span>
+                    <span className={styles.protitle} > {c.title} ({ SizeGetter(c.size)})</span>
                     <span className={`${styles.protitle2} ${styles.show}`} > {c.quantity}</span>
                     <span className={`${styles.protitle2} ${styles.show2}`} > {c.quantity}</span>
                     <span className={styles.protitle2} >{checkoutDetails.currency_sign}{(c.price * checkoutDetails.currency_value).toFixed(2)}</span>

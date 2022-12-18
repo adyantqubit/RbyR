@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import PropTypes from 'prop-types'
 import "bootstrap/dist/css/bootstrap.min.css";
+import {BsDot} from 'react-icons/bs'
 
 import style from '../global/cartCard.module.css'
 import { useCartUpdateMutation, useGetLikedProductQuery } from '../../Redux-manage/services/userAuthapi'
@@ -375,7 +376,7 @@ const CartSItem = (props) => {
 
 
             return (
-              <div >
+              <div style={{borderBottom:"1px solid #f2f2f2",marginBottom:"25px"}}>
                 {result ? <div style={{ width: "100%", marginBottom: "20px", paddingLeft: "15px", display: "flex", background: 'WHITE' }}>
 
                   <img src={config.apiBaseURL + pro.img_main} className={styles.column1} onClick={e => openDetail(pro)}></img>
@@ -518,19 +519,19 @@ const CartSItem = (props) => {
                   <span style={{ marginRight: "15px", fontWeight: "600" }}>{currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal * currency.value).toFixed(2)}</span>
                 </div>
                 <div className={style.subTotal}>
-                  <span style={{ marginLeft: "15px", fontWeight: "600" }}>Shipping Charges</span>
+                  <span style={{ marginLeft: "15px", fontWeight: "600" }}>SHIPPING CHARGES</span>
                   <span style={{ marginRight: "15px", fontWeight: "600" }}>{currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).shipping * currency.value).toFixed(2)}</span>
                 </div>
 
                 <div className={style.subTotal}>
-                  <span style={{ marginLeft: "15px", fontWeight: "600" }}>GST Charges</span>
+                  <span style={{ marginLeft: "15px", fontWeight: "600" }}>GST CHARGES</span>
                   <span style={{ marginRight: "15px", fontWeight: "600" }}>{currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).tax * currency.value).toFixed(2)}</span>
                 </div>
 
                 <div className={style.promo}>
 
                   {!ShowCoupon && !offer.discount_percentage > 0 ? <> <input className="promoCode" id="prormos" type="text" onKeyPress={e => validateWhitespace(e, "prormos")} style={{ width: "90%", height: "35px", padding: "10px", marginLeft: "15px", border: "1px solid #dfdbdb", outline: "#fff" }} placeholder="Have a promocode" onChange={e => setError(null)}></input>
-                    <button className={style.shopbtn1} style={{ marginRight: "15px", marginTop: "0px", height: "35px", textAlign: "center", backgroundColor: "#323232", color: "white", letterSpacing: "2px", fontSize: "14px", fontWeight: "600" }} onClick={ApplyPromo}>Apply</button>
+                    <button className={style.shopbtn2} style={{ marginRight: "15px", marginTop: "0px", height: "35px", textAlign: "center", letterSpacing: "2px", fontSize: "14px", fontWeight: "600",padding:"0" }} onClick={ApplyPromo}>Apply</button>
                   </>
                     :
                     <div className={styles.successMsg}>
@@ -548,14 +549,14 @@ const CartSItem = (props) => {
                   <span style={{ marginRight: "15px", fontWeight: "600" }}>- {currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).coupon * currency.value).toFixed(2)}</span>
                 </div> : null}
 
-                <div className={style.subTotal} style={{ marginTop: "25px" }}>
+                <div className={style.subTotal} style={{ marginTop: "10px",paddingTop:"15px",borderTop:"1px solid #f2f2f2" }}>
                   <span style={{ marginLeft: "15px", fontWeight: "600" }}>Total</span>
                   <span style={{ fontSize: "20px", fontWeight: "600", marginRight: "15px", fontSize: "21px", lineHeight: "32px", letterSpacing: "3px" }}>{currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).Grand * currency.value).toFixed(2)}</span>
                 </div>
 
                 <div className={style.buttons} style={{ flexDirection: "column", background: "white" }}>
-                  <button className={style.shopbtn1} style={{ width: "100%", margin: "5px" }} onClick={e => { nav('/') }}>Continue Shopping</button>
-                  <buton className={style.shopbtn2} style={{ width: "100%", margin: "5px" }} onClick={e => cartChecking()} >Go To Checkout</buton>
+                  <button className={style.shopbtn1} style={{ width: "100%", margin: "5px" }} onClick={e => { nav('/') }}>CONTINUE SHOPPING</button>
+                  <buton className={style.shopbtn2} style={{ width: "100%", margin: "5px" }} onClick={e => cartChecking()} >GO TO CHECKOUT</buton>
                 </div>
               </div>
             </div> : null}
@@ -571,20 +572,20 @@ const CartSItem = (props) => {
         <div className={style.inner} >
 
           {ImportantRules != null ?
-            <div className={styles.importantRules} style={{borderTop:"1px solid black"}}>
-              <h6 style={{ fontSize: "14px", lineHeight: "22px", letterSpacing: "1.2px", marginLeft: "15px" }}>IMPORTANTS</h6>
+            <div className={styles.importantRules} style={{borderTop:"1px solid rgba(140,140,140,0.7)"}}>
+              <h6 style={{ fontSize: "14px", lineHeight: "22px", letterSpacing: "1.2px", marginLeft: "40px" }}>IMPORTANTS</h6>
               <ul style={{ listStyleType: "disc", listStylePosition: "outside" }}>
                 <li style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
-                  {ImportantRules.point1}
+                 <BsDot fontSize={20}/> {ImportantRules.point1}
                 </li>
                 <li style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
-                  {ImportantRules.point2}
+                <BsDot fontSize={20}/> {ImportantRules.point2}
                 </li>
                 <li style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
-                  {ImportantRules.point3}
+                <BsDot fontSize={20}/> {ImportantRules.point3}
                 </li>
                 <li style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
-                  <Link to="/custom" style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>Contact Us </Link> | <Link to="/delivery-policy" style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>Shipping Policy</Link>
+                <BsDot fontSize={20}/> <Link to="/custom" style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>Contact Us </Link> | <Link to="/delivery-policy" style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>Shipping Policy</Link>
                 </li>
               </ul>
             </div> : null}

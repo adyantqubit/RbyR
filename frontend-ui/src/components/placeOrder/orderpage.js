@@ -9,7 +9,9 @@ import UserInfo from './userInfo'
 import UsserAdresses from './usserAdresses';
 import { useLocation } from 'react-router-dom'
 import Footer from '../global/footer';
+
 import Below from '../global/below';
+import {AiOutlineLeft} from 'react-icons/ai'
 import { notification } from 'antd';
 const Orderpage = (props) => {
   // notification.destroy()
@@ -63,7 +65,7 @@ const Orderpage = (props) => {
       <Navbar />
       <div className={styles.responsive}    >
         <div className={styles.head} ref={scroller}>
-          <span className={styles.headText} onClick={e => nav(-1)}>{`< Back To Cart`}</span>
+          <span className={styles.headText} onClick={e => nav(-1)}><AiOutlineLeft style={{marginBottom:"2.5px"}}/> {` BACK TO CART`}</span>
         </div>
         <div className={styles.row} >
           <div className={styles.column1} >

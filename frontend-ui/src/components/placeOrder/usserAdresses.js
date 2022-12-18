@@ -278,7 +278,7 @@ function validatesPin(evt) {
          <form onSubmit={handleSubmit}>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFirstName}>
-                        <label className={styles.firstName} htmlFor='first'>FIRST NAME *</label>
+                        <label className={styles.firstName} htmlFor='first'>First name *</label>
                         {checkoutDetails.shippingData?
                         <>
                          <input className={styles.firstInput} name='first' maxLength={19} onKeyPress={validate} defaultValue={checkoutDetails.shippingData.firstname} required/>
@@ -292,7 +292,7 @@ function validatesPin(evt) {
                         }
                     </div>
                     <div className={styles.columnFirstName}>
-                        <label className={styles.firstName} htmlFor='b'>LAST NAME *</label>
+                        <label className={styles.firstName} htmlFor='b'>Last name *</label>
                         {checkoutDetails.shippingData?
                          <input className={styles.firstInput} name='last' maxLength={19} onKeyPress={validate} defaultValue={checkoutDetails.shippingData.lastname} required/>
                         : 
@@ -355,13 +355,13 @@ function validatesPin(evt) {
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='last'>Country *</label>
                         {checkoutDetails.shippingData?
-                         <select className={styles.firstInput} defaultValue={value} onChange={changeHandler}>
+                         <select className={styles.countrypicker} defaultValue={value} onChange={changeHandler}>
                          {list.map(l=>{
                              return <option value={l.label}>{l.label}</option>
                          })}
                          </select>
                         : 
-                        <select className={styles.firstInput} defaultValue={value} onChange={changeHandler}>
+                        <select className={styles.countrypicker} defaultValue={value} onChange={changeHandler}>
                             {list.map(l=>{
                                 return <option value={l.label}>{l.label}</option>
                             })}
@@ -409,7 +409,7 @@ function validatesPin(evt) {
              <>
                 <div className={styles.columnitem1content1}>
                 <div className={styles.columnFirstName}>
-                        <label className={styles.firstName} htmlFor='first'>FIRST NAME *</label>
+                        <label className={styles.firstName} htmlFor='first'>First name *</label>
                         {checkoutDetails.billingData?
                          <input className={styles.firstInput} name='firstb' maxLength={19}  onKeyPress={validate} defaultValue={checkoutDetails.billingData.firstname} required/>
                         :        
@@ -417,7 +417,7 @@ function validatesPin(evt) {
                         }
                     </div>
                     <div className={styles.columnFirstName}>
-                        <label className={styles.firstName} htmlFor='b'>LAST NAME *</label>
+                        <label className={styles.firstName} htmlFor='b'>Last name *</label>
                         {checkoutDetails.billingData?
                          <input className={styles.firstInput} name='lastb' maxLength={19} onKeyPress={validate} defaultValue={checkoutDetails.billingData.lastname} required/>
                         : 
@@ -478,13 +478,13 @@ function validatesPin(evt) {
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='last'>Country *</label>
                         {checkoutDetails.billingData?
-                         <select className={styles.firstInput} defaultValue={value2} onChange={changeHandler2}>
+                         <select className={styles.countrypicker} defaultValue={value2} onChange={changeHandler2}>
                          {list.map(l=>{
                              return <option value={l.label}>{l.label}</option>
                          })}
                          </select>
                         : 
-                        <select className={styles.firstInput} defaultValue={value2} onChange={changeHandler2}>
+                        <select className={styles.countrypicker} defaultValue={value2} onChange={changeHandler2}>
                          {list.map(l=>{
                              return <option value={l.label}>{l.label}</option>
                          })}
@@ -511,7 +511,7 @@ function validatesPin(evt) {
                 </>
                 :null}
                                  
-                <button className={styles.userInfoButton} type='submit'>
+                <button className={styles.userInfoButton2} type='submit'>
                     PROCEED TO PAYMENT
                 </button>
             </form>
@@ -527,6 +527,13 @@ function validatesPin(evt) {
                 <span style={{alignSelf:"flex-end",fontSize:"13px",lineHeight:"20px"
                 ,letterSpacing:"1px",textDecoration:"underline",cursor:"pointer",fontWeight:"600"}} 
                 onClick={e=>setCond(true)}>CHANGE</span>
+            </div>
+
+            <div className={styles.columnitem1head}>
+                <span className={styles.ship}> SHIPPING ADDRESS
+                {/* <IoIosCheckmarkCircle style={{fontSize:"37px",color:"black",background:"white",marginLeft:"15px",position:"relative",bottom:"5px"}}/>     */}
+                </span>
+                <span style={{alignSelf:"flex-end",fontSize:"13px",lineHeight:"20px",letterSpacing:"1px"}}></span>
             </div>
             <div className={styles.columnitem1content1}>
                     <div className={styles.columnFirstName}>
@@ -548,11 +555,11 @@ function validatesPin(evt) {
                     
                 </div>
                 <div className={styles.columnitem1head}>
-                <span> BILLING ADDRESS
-                <IoIosCheckmarkCircle style={{fontSize:"37px",color:"black",background:"white",marginLeft:"15px",position:"relative",bottom:"5px"}}/>    
-                </span>
-                <span style={{alignSelf:"flex-end",fontSize:"13px",lineHeight:"20px",letterSpacing:"1px"}}></span>
-            </div>
+                    <span className={styles.ship}> BILLING ADDRESS
+                    {/* <IoIosCheckmarkCircle style={{fontSize:"37px",color:"black",background:"white",marginLeft:"15px",position:"relative",bottom:"5px"}}/>     */}
+                    </span>
+                    <span style={{alignSelf:"flex-end",fontSize:"13px",lineHeight:"20px",letterSpacing:"1px"}}></span>
+                </div>
                 <div className={styles.columnitem1content1}>
                         <div className={styles.columnFirstName}>
                             <div className={styles.boxAddress}>

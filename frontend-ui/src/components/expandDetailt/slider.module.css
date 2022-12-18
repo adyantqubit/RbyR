@@ -7,15 +7,15 @@
 
 
 .readyBox{
-    min-width:30px;
-    width:43%;
+    min-width:70px;
+    width:auto;
     height:30px;
     min-height: 20px;
     border: 1px solid #7c7c7c;
     display: flex;
     justify-content: center;
     gap:5px;
-    padding: 4px 0px;
+    padding: 4px 4px;
     font-size: 11px;
     text-transform: uppercase;
     line-height: 22px;

@@ -54,7 +54,7 @@
     line-height:26px;
     letter-spacing:2.5px;
     font-weight:500;
-    border-bottom:1px solid #7c7c7c;
+    border-bottom:.001em solid rgba(140, 140, 140, 0.5);
   }
 
   .shopbtn2{

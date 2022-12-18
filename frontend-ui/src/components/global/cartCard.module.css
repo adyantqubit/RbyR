@@ -205,8 +205,8 @@
   width: 50%;
   height: 40px;
   text-align: center;
-  padding:4px 0;
-  background-color: #000;
+  padding:7px 0;
+  background-color: #323232;
   color:white;
   margin:5px;
 }
@@ -353,7 +353,8 @@
     .summ{
      
      justify-content: center;
- 
+    font-weight: 600;
+    color:#323232
     }
 
     .column1{

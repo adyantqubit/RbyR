@@ -24,7 +24,7 @@ const Login = () => {
 	let{access_token}=getToken()
 	const dispatch=useDispatch()
 	const navigate = useNavigate(); 
-	const [value, setValue] = useState()
+	const [value, setValue] = useState("+91 ")
 	const [showNewPass,setNewPass]=useState(false)
 	const [visiblepassReg,setVisiblePassreg]=useState(false)
 	const [showNewPass2,setNewPass2]=useState(false)
@@ -99,10 +99,13 @@ const Login = () => {
 	  const handleSubmit2 = async(e) => {
 		e.preventDefault();
 		const data = new FormData(e.currentTarget);
+        
+        console.log(!value.length>5)
 
 		if(value.length<7){
            setServerError({"contact_number":["Minimum 7 digits are require."]})
-		}else{
+		}
+		else{
 		const actualData = {
 		  name: data.get('txt'),
 		  email: data.get('email').toLowerCase(),
@@ -275,22 +278,22 @@ const Login = () => {
 			<div class="logi">
 				<form onSubmit={handleSubmit}>
 
-					<label class="labe" htmlFor="ch" aria-hidden="true">Login</label>
+					<label class="labe" htmlFor="ch" aria-hidden="true" tabIndex={-1}>Login</label>
 					{error.none_field_errors? <Alert severity="error"  style={{margin:"0 45px"}}>{error.none_field_errors[0]}</Alert>:" "}
 
-					<input class="inpu"type="email" style={{marginBottom:"0"}} name="email" placeholder="E-mail*" required=""/>
+					<input class="inpu"type="email" tabIndex={-1} style={{marginBottom:"0"}} name="email" placeholder="E-mail*" required=""/>
 					{error.email?<Typography style={{color:"red",paddingLeft:"50px",fontSize:"12px",}}>{error.email[0]}</Typography>:" "}
 
-                    <span class="inpu3" style={{marginTop:"20px",marginLeft:"15%",background:"#e0dede"}}>
-					<input class="inpu4" type={showNewPass3?"text":"password"} style={{width:"90%",background:"rgba(0,0,0,0)"}} name="pswd" placeholder="Password*" required="" onChange={e=>{if(e.target.value.length>0)setVisiblePassreg3(true); else setVisiblePassreg3(false)}}/>
+                    <span class="inpu3" tabIndex={-1} style={{marginTop:"20px",marginLeft:"15%",background:"#e0dede"}}>
+					<input class="inpu4" tabIndex={-1} type={showNewPass3?"text":"password"} style={{width:"90%",background:"rgba(0,0,0,0)"}} name="pswd" placeholder="Password*" required="" onChange={e=>{if(e.target.value.length>0)setVisiblePassreg3(true); else setVisiblePassreg3(false)}}/>
 					{visiblepassReg3?showNewPass3?<AiFillEye style={{marginTop:"5px"}} onClick={e=>setNewPass3(false)}/>:<AiFillEyeInvisible style={{marginTop:"5px"}} onClick={e=>setNewPass3(true)}/>:null}
 					</span>
 					{error.password?<Typography style={{color:"red",paddingLeft:"50px",fontSize:"12px"}}>{error.password[0]}</Typography>:" "}
-					<Link to='/sendemail' style={{marginLeft:"50%",fontSize:"1em",color:"blue"}} class="underlineput">Forgot Password ?</Link>
+					<Link to='/sendemail' tabIndex={-1} style={{marginLeft:"50%",fontSize:"1em",color:"blue"}} class="underlineput">Forgot Password ?</Link>
 
-					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button class="butto" type='submit'>Login</button>}
-					<label style={{width:"100%",textAlign:"center"}}>OR</label>
-					<label class="labe underlineput" style={{}} htmlFor="ch" aria-hidden="true">Signup</label>
+					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button tabIndex={-1} class="butto" type='submit'>Login</button>}
+					<label tabIndex={-1} style={{width:"100%",textAlign:"center"}}>OR</label>
+					<label tabIndex={-1} class="labe underlineput" style={{}} htmlFor="ch" aria-hidden="true">Signup</label>
 
 				</form>
 			</div>

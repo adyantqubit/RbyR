@@ -13,6 +13,7 @@ import styles from '../placeOrder/billing.module.css'
 import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing'
 import { useCartUpdateMutation } from '../../Redux-manage/services/userAuthapi'
 import { notification } from 'antd';
+import { SizeGetter } from '../global/getSize'
 
 
 const InsideOrder = () => {
@@ -273,7 +274,7 @@ const InsideOrder = () => {
                     <div className={style.rowitem3}>
                       <img src={(typeof p.img_main)==='undefined'?null: config.apiBaseURL + p.img_main} className={style.imgresponsive} />
                       <span className={style.imgTitle}>
-                        {p.title} ({s.size})
+                        {p.title} ({SizeGetter(s.size)})
                       </span>
                     </div>
                     <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto"}}  >Order Status:- </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >{s.order_status}</span></div>

@@ -7,7 +7,7 @@
 
 .head{
     color: #8c8c8c;
-    height: 80px;
+    height: auto;
     background-color: white;
     font-size: 16px;
     line-height: 24px;
@@ -22,8 +22,11 @@
 }
 
 .headText{
-    border-bottom:1px solid #323232;
-    padding-bottom: 20px;
+    border-bottom:1px solid #9c9c9c;
+    padding-bottom: 15px;
+    padding-top:6vh;
+    font-size: 16px;
+    font-weight: 570;
 }
 
 .row {
@@ -88,7 +91,7 @@
     display:flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 5px;
+    margin-top: 0;
 }
 
 .columnFirstName{
@@ -119,6 +122,20 @@
     padding: 0 8px;
     font-size: 14px;
     color: black;
+}
+
+.countrypicker{
+    width: 100%;
+    background: inherit;
+    height: 36px;
+    border: 1px solid rgba(140, 140, 140, 0.5);
+    padding: 0 8px;
+    font-size: 14px;
+    color: black;
+}
+
+.countrypicker:hover{
+    border: 1px solid green;
 }
 
 .firstInput2{
@@ -152,7 +169,7 @@ border-color: white;
     width: 50%;
     cursor: pointer;
     letter-spacing: 2px;
-    background-color: #323232;
+    background-color: #828282;
     color: white !important;
     text-align: center;
     opacity: 1;
@@ -166,36 +183,77 @@ border-color: white;
     transition: all 250ms ease 0s;
     border-width: 2px;
     border-style: solid;
-    border-color: #323232;
+    /* border-color: #323232; */
     -webkit-border-image: initial;
     -o-border-image: initial;
     border-image: initial;
     text-decoration: none;
+    /* border: none; */
     border-radius: 0;
 }
 .userInfoButton:hover{
-    background-color: #828282;
+    background-color: black;
 }
 
+
+.userInfoButton2{
+    margin-top: 15px;
+    min-width: 250px;
+    font-size: 14px;
+    width: 50%;
+    cursor: pointer;
+    letter-spacing: 2px;
+    background-color: black;
+    color: white !important;
+    text-align: center;
+    opacity: 1;
+    font-family: 'MyFont';
+    position: relative;
+    font-weight: normal;
+    text-transform: uppercase;
+    padding: 10px 18px;
+    -webkit-transition: all 250ms ease 0s;
+    -o-transition: all 250ms ease 0s;
+    transition: all 250ms ease 0s;
+    border-width: 2px;
+    border-style: solid;
+    /* border-color: #323232; */
+    -webkit-border-image: initial;
+    -o-border-image: initial;
+    border-image: initial;
+    text-decoration: none;
+    /* border: none; */
+    border-radius: 0;
+}
+.userInfoButton2:hover{
+    background-color: #323232;
+}
 
 .usedetailShow{
 
 }
 
 .userinfoText{
-    color: #8c8c8c;
+    color: #323232;
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
+    font-weight: 600;
     font-family: 'MyFont';
 }
 
 .userinfoText2{
-    color: black;
+    color: #323232;
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
+    font-weight: 600;
     font-family: 'MyFont';
+}
+
+.ship{
+    font-size: 15px;
+    font-weight: 570;
 }
 
 
@@ -208,7 +266,7 @@ border-color: white;
     width:100%;
     height:auto;
     background-color: white;
-    padding:5px;
+    padding:2px 5px;
 }
 
 .boxAddress{
