@@ -97,7 +97,7 @@
 
    .logo img{
     width: 15%;
-    height: 95%;
+    height: 100%;
 }
 
    .drops{
@@ -115,7 +115,9 @@
    /* NAVBAR MENU */
    .menu {
     display: flex;
-    max-width: 60%;
+    min-width: 60%;
+    max-width: 70%;
+    justify-content: end;
     font-size: 16px;
    }
    .menu li:hover {
@@ -194,6 +196,12 @@ input[type=checkbox]{
     font-size: 20px;
     color:#7c7c7c;
   }
+
+  @media (max-width: 1200px) {
+    .navbar{
+      margin-top: -5px;
+    }
+  }
 /* APPLYING MEDIA QUERIES */
 @media (max-width: 768px) {
 
@@ -218,6 +226,7 @@ input[type=checkbox]{
     width: 100%;
     justify-content: flex-end;
     z-index: 50;
+    margin:-5px;
 }    
 .menu { 
  display:none;
@@ -298,7 +307,7 @@ input[type=checkbox]:checked ~ .menu{
  
   
   
-  .action .menu {
+  .action .menu2 {
 	position: absolute;
 	padding: 10px 20px;
 	background: #fff;
@@ -311,16 +320,16 @@ input[type=checkbox]:checked ~ .menu{
 	opacity: 0;
   }
 
-  .action:hover .menu{
+  .action:hover .menu2{
     display: block;
-    top:22.5vh;
+    top:24vh;
     right:10px;
     opacity: 1;
 
   }
 
   
-  .action .menu .h3 {
+  .action .menu2 .h3 {
 	width: 100%;
 	text-align: center;
 	font-size: 18px;
@@ -330,15 +339,15 @@ input[type=checkbox]:checked ~ .menu{
 	line-height: 1.5em;
   }
   
-  .action .menu .h3 .span {
+  .action .menu2 .h3 .span {
 	font-size: 14px;
 	color: #949393;
 	font-weight: 600;
   }
   
-  .action .menu .ul .l {
+  .action .menu2 .ul .l {
 	list-style: none;
-	padding: 16px 0;
+	padding: 8px 0;
   font-family: "MyFont";
   letter-spacing: 1.2px;
 	border-top: 1px solid rgba(0, 0, 0, 0.05);
@@ -348,18 +357,18 @@ input[type=checkbox]:checked ~ .menu{
 
   }
   
-  .action .menu .ul .l .img {
+  .action .menu2 .ul .l .img {
 	min-width: 40px;
 
 	opacity: 0.5;
 	transition: 0.5s;
   }
   
-  .action .menu .ul .l:hover .img {
+  .action .menu2 .ul .l:hover .img {
 	opacity: 1;
   }
   
-  .action .menu .ul .l .a {
+  .action .menu2 .ul .l .a {
 	display: inline-block;
 	text-decoration: none;
 	color: #555;
@@ -372,7 +381,7 @@ input[type=checkbox]:checked ~ .menu{
     font-weight: 500;
   }
   
-  .action .menu .ul .l:hover .a {
+  .action .menu2 .ul .l:hover .a {
 	color: #ff5d94;
   }
 

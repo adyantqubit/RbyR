@@ -30,7 +30,7 @@ const Card = () => {
             {/* <div className={style.text}></div> */}
               <Link to={`listing/${iamges.category_top1}`}>
                 <ImageSwapper />
-                <div className={style.text}><a className={style.linkText}  href={`listing/${iamges.category_top1}`}>{iamges.category_top1}</a></div>
+                {/* <div className={style.text}><a className={style.linkText}  href={`listing/${iamges.category_top1}`}>{iamges.category_top1}</a></div> */}
 
               </Link>
 
@@ -44,7 +44,7 @@ const Card = () => {
             {/* <div className={style.text}>{iamges.category_top2}</div> */}
               <Link to={`listing/${iamges.category_top2}`}>
                 <ImageSwapper2 />
-                <div className={style.text}><a className={style.linkText}  href={`listing/${iamges.category_top2}`}>{iamges.category_top2}</a></div>
+                {/* <div className={style.text}><a className={style.linkText}  href={`listing/${iamges.category_top2}`}>{iamges.category_top2}</a></div> */}
               </Link>
 
             {/* </div> */}

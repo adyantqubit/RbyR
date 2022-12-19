@@ -12,6 +12,8 @@ import config from '../../api/config';
 import Footer from '../global/footer';
 import Below from '../global/below';
 import Slider from 'react-rangeslider'
+import logo from "../../assets/photos/rts-icon.svg"
+
 
 // To include the default styles
 import 'react-rangeslider/lib/index.css'
@@ -318,6 +320,14 @@ const ListPage = () => {
               <img src={config.apiBaseURL + p.img_main} onClick={e => openDetail(p.id)}></img>
               <div className={style.title} ><span>{p.title}</span></div>
               <div className={style.price} >{currency.sign} {(p.price * currency.value).toFixed(2)}</div>
+              {p.ready_to_ship?
+                  <div className={style.readyContainer}>
+                  <div className={style.readyBox}>
+                    <img src={logo} className={style.readyIcon} />
+                    Ready To Ship
+                  </div>
+                </div>
+                :null}
             </div>
 
           )) :

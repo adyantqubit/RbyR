@@ -22,11 +22,12 @@
 }
 
 .headText{
-    border-bottom:1px solid #9c9c9c;
+    font-family: "MyFont";
+    border-bottom:1px solid #5c5c5c;
     padding-bottom: 15px;
     padding-top:6vh;
     font-size: 16px;
-    font-weight: 570;
+    font-weight: 600;
 }
 
 .row {
@@ -123,6 +124,20 @@
     font-size: 14px;
     color: black;
 }
+/* 
+.firstInput:required:valid {
+    border-color: green;
+  }
+.firstInput:invalid {
+    outline: red;
+  } */
+
+  .firstInput::-webkit-validation-bubble{
+    background-color: #323232;
+  }
+
+  ::-webkit-validation-bubble-message { display: none; }
+
 
 .countrypicker{
     width: 100%;

@@ -105,10 +105,10 @@
   }
   .container05 {
     flex: 0 0 auto;
-    width: 70%;
+    width: 80%;
     height: auto;
     display: flex;
-   
+    gap:10px;
     align-items: flex-start;
     justify-content: space-between;
   }
@@ -221,7 +221,8 @@
   .customButtonContainer{
     display: flex;
     flex-direction: row;
-    width: 70%;
+    width: 80%;
+    gap:20px;
     justify-content:space-between;
   }
   .iconButtonsContainer{
@@ -381,10 +382,12 @@
     font-weight: 600;
   }
  
-  .subtitle:hover{
+  .subtitle2:hover{
     color:#7c7c7c;
     text-decoration: underline;
   }
+
+
 
   .text26 {
     font-size: 14px;
@@ -441,6 +444,14 @@
   .chatInputBox:focus{
     outline: none;
   }
+
+  .chatInputBox::placeholder{
+    font-size: 14px;
+    font-family: "MyFont";
+    letter-spacing: 1.2px;
+    font-weight: 570;
+  }
+
   .button {
     width: 220px;
     height:50px;

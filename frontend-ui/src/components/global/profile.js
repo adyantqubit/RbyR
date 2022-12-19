@@ -58,7 +58,7 @@ export const Profile = () => {
       <FaUserCircle style={{width:"30px",hieght:"30px",color:"#7c7c7c"}} />
       {/* <img className={style.img} src="./assets/avatar.jpg" /> */}
       </div>
-    <div className={style.menu}>
+    <div className={style.menu2}>
     <Popconfirm placement="bottomLeft" title={text} onConfirm={e=>handleLogout()} onCancel={e=>seLogoutAction(false)} okText="OK" cancelText="Cancel" open={logoutaction}>
     </Popconfirm>
       {localStorage.getItem('access_token')&&userdata?

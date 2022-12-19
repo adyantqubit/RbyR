@@ -616,13 +616,28 @@ const Details = (props) => {
 
                     {/* Added by Ashish Dewangan on 24-11-2022
                     Reason - To show custom tailored form */}
+                    
                     <span
-                      className={`${styles.subtitle} ${styles.customSubtitle}`}
+                      className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
                       style={{ cursor: "pointer" }}
                       onClick={showCustomTailoredForm}
                     >
                       Custom Tailored
                     </span>
+                    
+                    {/* End of code addition */}
+
+                    {/* Commented and modified by - Ashish Dewangan on 23-11-2022
+                    Reason - to display size chart when we click on size chart text */}
+                    {/* <span  className={styles["text02"]}>Size Chart</span> */}
+                    <span
+                      className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
+                      style={{ cursor: "pointer" }}
+                      onClick={showSizeChart}
+                    >
+                      Size Chart
+                    </span>
+                    
                     <Modal
                       style={{ top: 0 }}
                       className={styles["modalStyleCustomTailored"]}
@@ -634,18 +649,7 @@ const Details = (props) => {
                     >
                       <CustomTailoredForm />
                     </Modal>
-                    {/* End of code addition */}
 
-                    {/* Commented and modified by - Ashish Dewangan on 23-11-2022
-                    Reason - to display size chart when we click on size chart text */}
-                    {/* <span  className={styles["text02"]}>Size Chart</span> */}
-                    <span
-                      className={`${styles.subtitle} ${styles.customSubtitle}`}
-                      style={{ cursor: "pointer" }}
-                      onClick={showSizeChart}
-                    >
-                      Size Chart
-                    </span>
                     <Modal
                       style={{ top: 0 }}
                       className={styles["modalStyle"]}
@@ -857,7 +861,7 @@ const Details = (props) => {
                     >
                       Whatsapp
                     </a>
-                    with us
+                    with us.
                     {/* End of code modification */}
                   </span>
                   <span className={styles["subtitle"]}>

@@ -1,4 +1,4 @@
-import { notification } from 'antd';
+import { notification, Typography } from 'antd';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { cartStockRecheck } from '../../api/orderApis';
@@ -17,7 +17,7 @@ const Payment = () => {
   var [tick, setTick] = useState(false)
   var [tickop, setTickop] = useState(false)
   const [billingInfo, setBillingInfo] = useState(true)
-
+  const [required,setRequired]=useState(false)
 
   const { access_token, refresh_token } = getToken()
 
@@ -52,6 +52,12 @@ const Payment = () => {
   }
 
   async function cartChecking() {
+
+    //commented by Rohan- 18/12/22
+    //reason- adding -terms and condition check functionality
+    if(billingInfo==false){
+      setRequired(true)
+    }else{
     await cartStockRecheck(cart).then(r => {
 
       if (r.error) {
@@ -72,6 +78,7 @@ const Payment = () => {
         submitAll()
       }
     })
+  }
   }
 
   async function submitAll() {
@@ -157,7 +164,9 @@ const Payment = () => {
           name="my-input"
           checked={billingInfo}
           onChange={(value, event) => {
-            setBillingInfo(!value)
+            // console.log(billingInfo)
+            setBillingInfo(value)
+            setRequired(false)
           }}
           borderColor="#000"
           style={{ cursor: "pointer", width: "17px", marginLeft: "10px" }}
@@ -166,8 +175,9 @@ const Payment = () => {
           style={{ fontSize: "14px", fontStyle: "bold", letterSpacing: "1.5px", paddingBottom: "2px" }}>
             I agree to
          <Link to="/terms" style={{fontSize:"15px",textDecoration:"underline"}}> 
-         Terms and conditions</Link></label>}
+         {" "}Terms and conditions</Link></label>}
         />
+     {required?<Typography style={{color:"red",fontSize:"13px",marginLeft:"30px"}}>Please accept terms and conditions.</Typography>:null}
       </div>
 
 

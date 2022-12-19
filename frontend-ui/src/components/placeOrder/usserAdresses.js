@@ -16,6 +16,7 @@ import list from './data.json'
 import { shippingTickGet } from '../../api/orderApis';
 
 
+
 const UsserAdresses = () => {
 
 const{userdata,checkoutDetails,setCheckoutDetails,paymentflow,setPaymentflow}=CartState()
@@ -32,6 +33,8 @@ var [pinerror,setpinerror]=useState("")
 
 const [value, setValue] = useState("India")
 const [value2, setValue2] = useState("India")
+const [required,setRequired]=useState({})
+
 
 const options = countryList().getData()
   
@@ -64,6 +67,84 @@ const handleButtonClicknum = (msg) => {
         isAlertVisiblenum=false
          setIsAlertVisiblenum(false);
      }, 5000);
+}
+
+
+
+//Commented by Rohan kansari - 18/12/22
+//Reason-Showing field required validation same as requirement.
+function RequiredValidate(e){
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    var action=true;
+    // firstname:data.get('first'),
+    //     lastname:data.get('last'),
+    //     street:data.get('street'),
+    //     houseno:data.get('flatno'),
+    //     city:data.get('city'),
+    //     state:data.get('state'),
+    //     zipcode:data.get('pincode'),
+    //     country:value,
+    //     number:data.get('number')
+
+    if(data.get('first').length==0){
+    setRequired({"first":"This field is required."})
+    document.getElementById('first').focus()
+    document.getElementById('first').scrollTop(-100)
+    action=false
+    }
+    else if(data.get('last').length==0){
+        setRequired({"last":"This field is required."})
+        document.getElementById('last').focus()
+        document.getElementById('first').scrollTop(0)
+        action=false
+
+    }
+    else if(data.get('street').length==0){
+        setRequired({'street':"This field is required."})
+        document.getElementById('street').focus()
+        document.getElementById('first').scrollTop(0)
+        action=false
+
+    }
+    else if(data.get('flatno').length==0){
+        setRequired({'flatno':"This field is required."})
+        document.getElementById('flatno').focus()
+        document.getElementById('first').scrollTop(0)
+        action=false
+
+    }
+    else if(data.get('city').length==0){
+        setRequired({'city':"This field is required."})
+        document.getElementById('city').focus()
+        document.getElementById('first').scrollTop(0)
+        action=false
+
+    }
+    else if(data.get('state').length==0){
+        setRequired({'state':"this field is required."})
+        document.getElementById('state').focus()
+        document.getElementById('first').scrollTop(0)
+        action=false
+
+    }
+    else if(data.get('pincode').length==0){
+        setRequired({'pincode':"This field is required."})
+        document.getElementById('pincode').focus()
+        document.getElementById('pincode').scrollTop(0)
+        action=false
+
+    }
+    else if(data.get('number').length==0){
+        setRequired({"number":"This field is required."})
+        document.getElementById('number').focus()
+        document.getElementById('number').scrollTop(0)
+        action=false
+    }
+    else{
+        handleSubmit(e)
+    }
+    
 }
 
 const handleSubmit = async(e) => {
@@ -123,7 +204,7 @@ const handleSubmit = async(e) => {
     else{
         isAlertVisiblenum=false
     }
-}
+ }
 
 
     const shippingData={
@@ -275,18 +356,20 @@ function validatesPin(evt) {
 {cond?
 <div className={styles.columnitem2} style={{marginTop:"20px"}}>
          <div className={styles.columnitem1head}>2. SHIPPING INFO</div>
-         <form onSubmit={handleSubmit}>
+         <form onSubmit={RequiredValidate}>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='first'>First name *</label>
                         {checkoutDetails.shippingData?
                         <>
-                         <input className={styles.firstInput} name='first' maxLength={19} onKeyPress={validate} defaultValue={checkoutDetails.shippingData.firstname} required/>
-                         {/* {!checkFlow?<Typography style={{color:"red",fontSize:"13px"}}>This Field is required</Typography>:null} */}
+                         <input className={styles.firstInput} name='first' id="first" maxLength={19} onKeyPress={validate} defaultValue={checkoutDetails.shippingData.firstname} />
+                         {required.first?<Typography style={{color:"red",fontSize:"13px"}}>This field is required</Typography>:null}
                          </>
                          :        
                          <>
-                        <input className={styles.firstInput} maxLength={19} name='first' onKeyPress={validate} required/>
+                        <input className={styles.firstInput} maxLength={19} name='first' id="first" onKeyPress={validate} />
+                        {required.first?<Typography style={{color:"red",fontSize:"13px"}}>This field is required</Typography>:null}
+
                         {/* {error.efirst?<Typography style={{color:"red",fontSize:"13px"}}>This Field is required</Typography>:null} */}
                         </>
                         }
@@ -294,9 +377,16 @@ function validatesPin(evt) {
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='b'>Last name *</label>
                         {checkoutDetails.shippingData?
-                         <input className={styles.firstInput} name='last' maxLength={19} onKeyPress={validate} defaultValue={checkoutDetails.shippingData.lastname} required/>
-                        : 
-                        <input className={styles.firstInput} name='last' maxLength={19} onKeyPress={validate} required/>}
+                        <>
+                         <input className={styles.firstInput} name='last' id='last' maxLength={19} onKeyPress={validate} defaultValue={checkoutDetails.shippingData.lastname}/>
+                         {required.last?<Typography style={{color:"red",fontSize:"13px"}}>This field is required</Typography>:null}
+                         </>
+                         : 
+                         <>
+                        <input className={styles.firstInput} name='last'id='last'  maxLength={19} onKeyPress={validate} />
+                        {required.last?<Typography style={{color:"red",fontSize:"13px"}}>This field is required</Typography>:null}
+                        </>
+                          }
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
@@ -304,19 +394,30 @@ function validatesPin(evt) {
                         
                         <label className={styles.firstName} htmlFor='street'>Street name *</label>
                         {checkoutDetails.shippingData?
-                         <input className={styles.firstInput} id="street" maxLength={180} onKeyPress={e=>validateWhitespace(e,"street")} name='street' defaultValue={checkoutDetails.shippingData.street} required/>
+                        <>
+                         <input className={styles.firstInput} id="street" maxLength={180} onKeyPress={e=>validateWhitespace(e,"street")} name='street' defaultValue={checkoutDetails.shippingData.street} />
+                         {required.street?<Typography style={{color:"red",fontSize:"13px"}}>This field is required</Typography>:null}
+
+                         </>
                         : 
-                        <input className={styles.firstInput} id="street" maxLength={180} onKeyPress={e=>validateWhitespace(e,"street")} name='street' required/>}
+                        <>
+                        <input className={styles.firstInput} id="street"  maxLength={180} onKeyPress={e=>validateWhitespace(e,"street")} name='street' />
+                        {required.street?<Typography style={{color:"red",fontSize:"13px"}}>This field is required</Typography>:null}
+                        </>}
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFullName}>
                         <label className={styles.firstName} htmlFor='street'>House/Apartment number *</label>
                         {checkoutDetails.shippingData?
-                         <input className={styles.firstInput} id="flatno" name='flatno' onKeyPress={e=>validateWhitespace(e,"flatno")} maxLength={10} defaultValue={checkoutDetails.shippingData.houseno} required/>
+                        <>
+                         <input className={styles.firstInput} id="flatno" name='flatno' onKeyPress={e=>validateWhitespace(e,"flatno")} maxLength={10} defaultValue={checkoutDetails.shippingData.houseno} />
+                         {required.flatno?<Typography style={{color:"red",fontSize:"13px"}}>This field is required</Typography>:null}
+                         </>
                         : 
                         <>
-                        <input className={styles.firstInput} id="flatno" onKeyPress={e=>validateWhitespace(e,"flatno")} name='flatno' maxLength={10}  required/>
+                        <input className={styles.firstInput} id="flatno" onKeyPress={e=>validateWhitespace(e,"flatno")} name='flatno' maxLength={10}  />
+                        {required.flatno?<Typography style={{color:"red",fontSize:"13px"}}>This field is required</Typography>:null}
                         </>
                         }
                     </div>
@@ -325,29 +426,45 @@ function validatesPin(evt) {
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='first'>City *</label>
                         {checkoutDetails.shippingData?
-                         <input className={styles.firstInput} id="city" maxLength={29} onKeyPress={e=>validateWhitespace(e,"city")} name='city' defaultValue={checkoutDetails.shippingData.city} required/>
+                        <>
+                         <input className={styles.firstInput} id="city" maxLength={29} onKeyPress={e=>validateWhitespace(e,"city")} name='city' defaultValue={checkoutDetails.shippingData.city}/>
+                         {required.city?<Typography style={{color:"red",fontSize:"13px"}}>This field is required</Typography>:null}
+                         </>
                         : 
-                        <input className={styles.firstInput} id="city" maxLength={29} onKeyPress={e=>validateWhitespace(e,"city")} name='city' required/>
+                        <>
+                        <input className={styles.firstInput} id="city" maxLength={29} onKeyPress={e=>validateWhitespace(e,"city")} name='city' />
+                        {required.city?<Typography style={{color:"red",fontSize:"13px"}}>This field is required</Typography>:null}
+                        </>
                         }
                     </div>
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='last'>State / Province</label>
                         {checkoutDetails.shippingData?
-                         <input className={styles.firstInput} id="state" maxLength={29} onKeyPress={e=>validateWhitespace(e,"state")} name='state' defaultValue={checkoutDetails.shippingData.state} required/>
+                        <>
+                         <input className={styles.firstInput} id="state" maxLength={29} onKeyPress={e=>validateWhitespace(e,"state")} name='state' defaultValue={checkoutDetails.shippingData.state} />
+                         {required.state?<Typography style={{color:"red",fontSize:"13px"}}>This field is required</Typography>:null}
+                         </> 
                         : 
-                        <input className={styles.firstInput} id="state" maxLength={29} onKeyPress={e=>validateWhitespace(e,"state")} name='state' required/>}
+                        <>
+                        <input className={styles.firstInput} id="state" maxLength={29} onKeyPress={e=>validateWhitespace(e,"state")} name='state' />
+                        {required.state?<Typography style={{color:"red",fontSize:"13px"}}>This field is required</Typography>:null}
+
+                        </>
+                        }
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='first'>Zip-code *</label>
                         {checkoutDetails.shippingData?
-                        <> <input className={styles.firstInput}  name='pincode' onKeyPress={validatesPin} maxLength={6} defaultValue={checkoutDetails.shippingData.zipcode} required/>
+                        <> <input className={styles.firstInput}  name='pincode' id='pincode' onKeyPress={validatesPin} maxLength={6} defaultValue={checkoutDetails.shippingData.zipcode} />
+                         {required.zipcode?<Typography style={{color:"red",fontSize:"13px"}}>This field is required</Typography>:null}
                          {isAlertVisiblepin&&<span asp-validation-for="Code" class="text-danger col-sm-4">{pinerror} </span>}
                          </>
                          : 
                          <>
-                        <input className={styles.firstInput} name='pincode' onKeyPress={validatesPin} maxLength={6} required/>
+                        <input className={styles.firstInput} name='pincode' id='pincode' onKeyPress={validatesPin} maxLength={6} />
+                        {required.zipcode?<Typography style={{color:"red",fontSize:"13px"}}>This field is required</Typography>:null}
                         {isAlertVisiblepin&&<span asp-validation-for="Code" class="text-danger col-sm-4">{pinerror}</span>}
                         </>
                         }
@@ -375,13 +492,15 @@ function validatesPin(evt) {
                         <label className={styles.firstName} htmlFor='street'>Phone Number *</label>
                         {checkoutDetails.shippingData?
                         <>
-                         <input className={styles.firstInput} name='number' onKeyPress={validatesNum} maxlength={10} defaultValue={checkoutDetails.shippingData.number} required/>
+                         <input className={styles.firstInput} name='number' id='number' onKeyPress={validatesNum} maxlength={10} defaultValue={checkoutDetails.shippingData.number} />
                          {isAlertVisiblenum&&<span asp-validation-for="Code" class="text-danger col-sm-4">{numerror}</span>}
+                         {required.number?<Typography style={{color:"red",fontSize:"13px"}}>This field is required</Typography>:null}
                          </>
                          : 
                          <>
-                        <input className={styles.firstInput} name='number' onKeyPress={validatesNum} maxLength={10} required/>
+                        <input className={styles.firstInput} name='number' id='number' onKeyPress={validatesNum} maxLength={10}/>
                         {isAlertVisiblenum&&<span asp-validation-for="Code" class="text-danger col-sm-4">{numerror}</span>}
+                        {required.number?<Typography style={{color:"red",fontSize:"13px"}}>This field is required</Typography>:null}
                         </>
                         }
                     </div>

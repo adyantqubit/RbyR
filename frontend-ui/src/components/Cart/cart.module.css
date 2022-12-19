@@ -33,11 +33,13 @@
   }
 
   .column1{
-    width:30%;
+    max-width:30%;
+    max-height: 220px;
   }
 
   .column2{
     width:65%;
+    max-height: 210px;
     display:flex;
     flex-direction:column;
   }

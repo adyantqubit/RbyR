@@ -531,7 +531,7 @@ const CartSItem = (props) => {
                 <div className={style.promo}>
 
                   {!ShowCoupon && !offer.discount_percentage > 0 ? <> <input className="promoCode" id="prormos" type="text" onKeyPress={e => validateWhitespace(e, "prormos")} style={{ width: "90%", height: "35px", padding: "10px", marginLeft: "15px", border: "1px solid #dfdbdb", outline: "#fff" }} placeholder="Have a promocode" onChange={e => setError(null)}></input>
-                    <button className={style.shopbtn2} style={{ marginRight: "15px", marginTop: "0px", height: "35px", textAlign: "center", letterSpacing: "2px", fontSize: "14px", fontWeight: "600",padding:"0" }} onClick={ApplyPromo}>Apply</button>
+                    <button className={style.shopbtn2} style={{ marginRight: "15px", marginTop: "0px", height: "35px", textAlign: "center", letterSpacing: "2px", fontSize: "14px", fontWeight: "600",padding:"0" }} onClick={ApplyPromo}>APPLY</button>
                   </>
                     :
                     <div className={styles.successMsg}>

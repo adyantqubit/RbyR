@@ -307,7 +307,7 @@ function Footer2() {
               id="emailAddress"
             />
             <button
-           className={style.emailBoxButton}
+            className={style.emailBoxButton}
               onClick={subscribeToEmailUpdate}
             >
               <IoChevronForwardOutline style={{ fontSize: "25px",color:"white" }} />

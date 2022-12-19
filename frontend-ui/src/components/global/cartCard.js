@@ -250,7 +250,6 @@ const CartCard = (props) => {
       {cart.length > 0 ? cart.map(pro => (
 
         <>
-
           <div style={{ width: "100%", height: "auto", marginBottom: "20px", paddingLeft: "15px", display: "flex" }}>
             <img src={config.apiBaseURL + pro.img_main} className={styles.column1} onClick={e => openDetail(pro)}></img>
             <div className={styles.column2} >
@@ -289,8 +288,6 @@ const CartCard = (props) => {
 
             </div>
           </div>
-
-
         </>
       )) : <div style={{ fontSize: "20px", color: "#7c7c7c", height: "100%", display: "flex", justifyContent: "center" }}><span>Your Bag Is Empty</span></div>}
       <DrawerFooter />

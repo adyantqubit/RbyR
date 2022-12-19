@@ -69,7 +69,7 @@ const Slider = ({ scrollTop }) => {
   return (
     <>
       <div
-        style={{ display: "flex", flexDirection: "column", padding: "0 8%", marginBottom: "5vh" }}
+        style={{ display: "flex", flexDirection: "column", padding: "0 8%", marginBottom: "9vh" }}
       >
         <div
           style={{

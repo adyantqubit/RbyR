@@ -271,7 +271,7 @@ async function DefaultShipping(){
 
         <div className={style.promo}>
          {!ShowCoupon&&!offer.discount_percentage>0? <> <input className="promoCode" id="prormos" type="text" onKeyPress={e=>validateWhitespace(e,"prormos")} style={{width:"60%",padding:"10px",height:"30px",marginLeft:"15px",border:"1px solid #dfdbdb",outline:"#fff"}} placeholder="Have a promocode" ref={promos} onChange={e=>setError(null)}></input>
-          <button className={style.apply} onClick={ApplyPromo}>Apply</button>
+          <button className={style.apply} onClick={ApplyPromo}>APPLY</button>
           </>
          :<>
          <div className={styles.successMsg}>
