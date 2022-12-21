@@ -478,14 +478,14 @@ class CouponCheck(APIView):
         try:
             if coupon.objects.get(promocode=request.data) is not None:
                 if coupon.objects.get(promocode=request.data).expiry_date < datetime.date.today():
-                    return Response({"error": "This coupon is expired."})
+                    return Response({"error": "This coupon is expired"})
                 if coupon.objects.get(promocode=request.data).isActive == False:
-                    return Response({"error": "This coupon is not active."})
+                    return Response({"error": "This coupon is not active"})
                 serialize = promocodeSerilizer(
                     coupon.objects.get(promocode=request.data))
                 return Response(serialize.data)
         except:
-            return Response({"error": "Coupon you entered is not exist."})
+            return Response({"error": "Coupon you entered is not exist"})
 
 
 class TaxGet(APIView):

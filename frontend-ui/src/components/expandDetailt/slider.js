@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Carousel from 'react-grid-carousel'
 import "react-multi-carousel/lib/styles.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import config from "../../api/config";
 import { CartState } from "../../context";
 
@@ -13,7 +13,8 @@ const Slider = ({ scrollTop }) => {
   const { CategoryProduct, con, setcon, currency } = CartState();
   const recentlyViews = [];
   const [recentlyViewedProducts, setRecentlyViewedProducts] = useState([])
-
+  
+  const {id}=useParams()
 
   useEffect(() => {
     func();
@@ -68,17 +69,13 @@ const Slider = ({ scrollTop }) => {
 
   return (
     <>
-      <div
+     {recentlyViewedProducts.length>0
+
+? <div
         style={{ display: "flex", flexDirection: "column", padding: "0 8%", marginBottom: "9vh" }}
       >
         <div
-          style={{
-            fontSize: "20px",
-            lineHeight: "32px",
-            letterSpacing: "3px",
-            marginBottom: "20px",
-
-          }}
+          className={styles.header}
         >
           RECENTLY VIEWED PRODUCTS
 
@@ -89,9 +86,7 @@ const Slider = ({ scrollTop }) => {
           JSON.parse(localStorage.getItem("recentview")).length > 0 */}
 
 
-          {recentlyViewedProducts
-
-            ? recentlyViewedProducts.map((cart) => {
+          { recentlyViewedProducts.map((cart) => {
 
               return (
                 <Carousel.Item>
@@ -134,12 +129,12 @@ const Slider = ({ scrollTop }) => {
                   
                 </Carousel.Item>
               );
-            })
-            : null}
+            })}
+            
 
           {/* <div>.</div> */}
         </Carousel>
-      </div>
+      </div>: null}
     </>
   );
 };

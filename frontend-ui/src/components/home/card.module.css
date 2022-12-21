@@ -1,7 +1,7 @@
 .container{
   width:100%;
   
-  margin-top:150px;
+  /* margin-top:150px; */
   padding:0 100px;
 
 }
@@ -12,6 +12,8 @@
     justify-content:space-around;
     padding: 0px;
 }
+
+
 .cardli{
     margin-top:3vh;
     width:33%;
@@ -68,13 +70,14 @@
 
 @media (max-width: 768px) {
     .container{
-        margin-top:80px;
+        /* margin-top:80px; */
         padding:0;
         
       }
       .main{
         flex-direction:column;
-        padding: 0px;       
+        padding: 0px;    
+
     }
     .cardli{
         width:100%;

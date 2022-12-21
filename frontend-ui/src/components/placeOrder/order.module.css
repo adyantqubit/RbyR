@@ -5,6 +5,13 @@
                               'embedded-opentype', and 'svg' */
   }
 
+  @font-face {
+    font-family: 'MyFont2';
+    src: local('MyFont'), url(../../assets/font/RawsonMedium.woff) format('woff');
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+  }
+
 .head{
     color: #8c8c8c;
     height: auto;
@@ -17,21 +24,21 @@
     font-family: 'MyFont';
     flex-direction: column;
     justify-content: center;
-    padding:0 7%;
+    padding:0 5%;
     cursor: pointer;
 }
 
 .headText{
-    font-family: "MyFont";
-    border-bottom:1px solid #5c5c5c;
+    font-family: "MyFont2";
+    border-bottom:1px solid #8c8c8c;
     padding-bottom: 15px;
     padding-top:6vh;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .row {
-    padding: 0 7%;
+    padding: 0 5%;
     color: white;
     background-color: WHITE;
     display:flex;
@@ -249,7 +256,7 @@ border-color: white;
 }
 
 .userinfoText{
-    color: #323232;
+    color: #8c8c8c;
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
@@ -266,11 +273,34 @@ border-color: white;
     font-family: 'MyFont';
 }
 
+.userinfoText3{
+    color: #323232;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1.2px;
+    font-weight: 500;
+    font-family: 'MyFont2';
+}
+
 .ship{
     font-size: 15px;
     font-weight: 570;
 }
 
+.change{
+    align-self: flex-end;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    font-family: "MyFont";
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.change:hover{
+    text-decoration: underline;
+}
 
 .columnitem2{
     width:100%;
@@ -286,6 +316,7 @@ border-color: white;
 
 .boxAddress{
     width:100%;
+    max-width: 235px;
     border:1px solid black;
     display: flex;
 }

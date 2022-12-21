@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import config from "../../api/config";
 import { picApi, SlideShowApi } from "../../api/service";
+import Card from "../home/card";
+import CArd2 from "../home/card2";
+import Video from "../home/video";
+import Below from "./below";
+import Footer2 from "./footer2";
 import style from "./slideshow.module.css";
 
 function Slideshow() {
@@ -57,10 +62,10 @@ function Slideshow() {
 
   if (visible != null && visible.length > 0) {
     return (
+      <div className={style.car}>
       <Carousel
         activeIndex={index}
         onSelect={handleSelect}
-        className={style.car}
       >
         {visible.map((item) => (
           <Carousel.Item>
@@ -77,6 +82,12 @@ function Slideshow() {
           </Carousel.Item>
         ))}
       </Carousel>
+      <Card/>
+      <CArd2/>
+      <Video/>
+      <Footer2 />
+      <Below />
+      </div>
     );
   }
 }

@@ -214,7 +214,7 @@ const Billing = () => {
                 </div>
                 <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`}  >Discount -</span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto" }} > {checkoutDetails.currency_sign} {checkoutDetails.CouponDiscount ? checkoutDetails.CouponDiscount : (afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).coupon * checkoutDetails.currency_value).toFixed(2)}</span>
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto" }} > {checkoutDetails.currency_sign} {checkoutDetails.CouponDiscount ? (checkoutDetails.CouponDiscount* checkoutDetails.currency_value).toFixed(2) : (afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).coupon * checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
                 <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`} style={{ color: "black", borderBottom: "1px solid black" }}></span>

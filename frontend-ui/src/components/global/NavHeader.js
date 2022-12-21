@@ -117,7 +117,7 @@ const Navbar = () => {
   };
 
 	return (
-		<>
+		<div style={{width:"100%"}}>
 		<div className={style.contain} style={{borderBottom:"1px solid white"}}>
       <div style={{background:"#000",color:"white",display:"flex",minHeight:"25px",justifyContent:"center",fontSize:".75rem",letterSpacing:".6px",fontStyle:"bold",fontWeight:"600"}}>
         <a href={`https://wa.me/${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} 
@@ -196,7 +196,7 @@ const Navbar = () => {
          
     </div>
   <ShrinkHeader/>
-	</>
+	</div>
 	);
 };
 

@@ -95,6 +95,8 @@ function Footer2() {
 
   return (
     <div className={style.App}>
+
+      
       {instagramCollections != null ? (
         <div className={style.instagramContainer}>
           <a
@@ -171,6 +173,8 @@ function Footer2() {
           </a>
         </div>
       ) : null}
+
+      
 
       <div style={{ height: "40px", borderBottom: "1px solid #7c7c7c" }}></div>
       <div className={style.row}>

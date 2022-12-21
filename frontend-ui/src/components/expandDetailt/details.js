@@ -372,7 +372,7 @@ const Details = (props) => {
 
   return (
 
-    <div style={{ maxHeight: "100vh", overflow: "hidden" }} id="scrolling"  >
+    <div style={{ maxHeight: "100vh" }} id="scrolling"  >
 
       <Navbar />
 

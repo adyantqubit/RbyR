@@ -31,11 +31,11 @@ export const Home = () => {
       <NavHeader/>
       <Slideshow />
 
-      <Card />
-      <CArd2 />
-      <Video />
-      <Footer2 />
-      <Below />
+      {/* <Card /> */}
+      {/* <CArd2 /> */}
+      {/* <Video /> */}
+      {/* <Footer2 />
+      <Below /> */}
       
       {/* <Chat/> */}
     </div>

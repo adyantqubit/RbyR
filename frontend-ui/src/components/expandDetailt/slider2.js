@@ -1,6 +1,6 @@
 import React from 'react'
 import Carousel from 'react-grid-carousel'
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import config from "../../api/config";
 import { CartState } from "../../context";
 import styles from "./slider.module.css"
@@ -9,6 +9,10 @@ import style from "../listing/listpage.module.css";
 
 const Slider2 = ({scrollTop}) => {
   const { CategoryProduct, con, setcon, currency } = CartState();
+  const {id}=useParams()
+
+  console.log(id)
+
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -50,13 +54,7 @@ const Slider2 = ({scrollTop}) => {
         }}
       >
         <div
-          style={{
-            fontSize: "20px",
-            lineHeight: "32px",
-            letterSpacing: "3px",
-            marginBottom: "20px",
-            
-          }}
+          className={styles.header}
         >
           YOU MAY ALSO LIKE
         </div>
@@ -64,6 +62,7 @@ const Slider2 = ({scrollTop}) => {
           {CategoryProduct
             ? CategoryProduct.map((cart, i) => {
                  
+              if(cart.id!=id)
                   return (
                     <Carousel.Item>
                       <img

@@ -59,7 +59,7 @@ const UserInfo = () => {
 
             {/* comment on 17/11/22-Rohan Kansari 
                 purpose - hide changable functionality */}
-            {/* <span style={{alignSelf:"flex-end",fontSize:"13px",lineHeight:"20px",letterSpacing:"1px"}} onClick={e=>setCond(false)}>change</span> */}
+            <span className={styles.change} onClick={e=>setCond(false)}>change</span>
         
         </div>
         <div className={styles.usedetailShow}>

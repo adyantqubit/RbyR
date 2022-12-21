@@ -56,11 +56,9 @@
     list-style: none;
    }
 
-   
-
    .contain{
     position:fixed;
-    width: 98.75vw;
+    width: 100%;
     z-index: 10;
     height: 23vh;
    }
@@ -115,9 +113,9 @@
    /* NAVBAR MENU */
    .menu {
     display: flex;
-    min-width: 60%;
+    /* min-width: 60%; */
     max-width: 70%;
-    justify-content: end;
+    justify-content: center;
     font-size: 16px;
    }
    .menu li:hover {
@@ -322,7 +320,7 @@ input[type=checkbox]:checked ~ .menu{
 
   .action:hover .menu2{
     display: block;
-    top:24vh;
+    top:22vh;
     right:10px;
     opacity: 1;
 

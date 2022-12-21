@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import "bootstrap/dist/css/bootstrap.min.css";
 import {BsDot} from 'react-icons/bs'
+import { MdClose } from 'react-icons/md';
 
 import style from '../global/cartCard.module.css'
 import { useCartUpdateMutation, useGetLikedProductQuery } from '../../Redux-manage/services/userAuthapi'
@@ -264,7 +265,7 @@ const CartSItem = (props) => {
       })
     }
     else {
-      setError({ "error": "Please enter coupon code" })
+      setError({ "error": "Please enter coupon code." })
     }
   }
 
@@ -432,7 +433,9 @@ const CartSItem = (props) => {
                       <h3 className={style.heading} style={{ width: "80%", color: "black", fontSize: "16px", lineHeight: "26px", letterSpacing: "2.5px" }}>{pro.title}</h3>
                       {/* <span className={style.delete} style={{fontSize:"32px",alignSelf:"start"}} onClick={e=>cartSave(pro)}>x</span> */}
                       <Popconfirm placement="bottomLeft" title={text} onConfirm={e => confirm(pro)} okText="OK" cancelText="Cancel">
-                        <span className={style.delete} style={{ fontSize: "25px", alignSelf: "start" }} >x</span>
+                      <MdClose fontSize={24}  className={style.delete}/>
+
+                        {/* <span className={style.delete} style={{ fontSize: "25px", alignSelf: "start" }} >x</span> */}
                       </Popconfirm>
                     </div>
 
@@ -554,9 +557,10 @@ const CartSItem = (props) => {
                   <span style={{ fontSize: "20px", fontWeight: "600", marginRight: "15px", fontSize: "21px", lineHeight: "32px", letterSpacing: "3px" }}>{currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).Grand * currency.value).toFixed(2)}</span>
                 </div>
 
-                <div className={style.buttons} style={{ flexDirection: "column", background: "white" }}>
-                  <button className={style.shopbtn1} style={{ width: "100%", margin: "5px" }} onClick={e => { nav('/') }}>CONTINUE SHOPPING</button>
+                <div className={styles.buttons} style={{ flexDirection: "column", background: "white" }}>
                   <buton className={style.shopbtn2} style={{ width: "100%", margin: "5px" }} onClick={e => cartChecking()} >GO TO CHECKOUT</buton>
+                  <button className={style.shopbtn1} style={{ width: "100%", margin: "5px" }} onClick={e => { nav('/') }}>CONTINUE SHOPPING</button>
+
                 </div>
               </div>
             </div> : null}
@@ -574,19 +578,35 @@ const CartSItem = (props) => {
           {ImportantRules != null ?
             <div className={styles.importantRules} style={{borderTop:"1px solid rgba(140,140,140,0.7)"}}>
               <h6 style={{ fontSize: "14px", lineHeight: "22px", letterSpacing: "1.2px", marginLeft: "40px" }}>IMPORTANTS</h6>
-              <ul style={{ listStyleType: "disc", listStylePosition: "outside" }}>
-                <li style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
-                 <BsDot fontSize={20}/> {ImportantRules.point1}
+              <ul style={{ listStyleType: "disc", listStylePosition: "outside",marginRight:"15px" }}>
+
+               <div  style={{display:"flex"}}>
+                 <BsDot fontSize={20}/>
+               <li style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
+                  {ImportantRules.point1}
                 </li>
+                </div> 
+
+                <div style={{display:"flex"}}>
+                <BsDot fontSize={20}/>
                 <li style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
-                <BsDot fontSize={20}/> {ImportantRules.point2}
+                 {ImportantRules.point2}
                 </li>
+                </div>
+
+                <div style={{display:"flex"}}>
+                <BsDot fontSize={20}/>
                 <li style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
-                <BsDot fontSize={20}/> {ImportantRules.point3}
+                  {ImportantRules.point3}
                 </li>
+                </div>
+
+                <div style={{display:"flex"}}>
+                <BsDot fontSize={20}/>
                 <li style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
-                <BsDot fontSize={20}/> <Link to="/custom" style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>Contact Us </Link> | <Link to="/delivery-policy" style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>Shipping Policy</Link>
+                 <Link to="/custom" style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>Contact Us </Link> | <Link to="/delivery-policy" style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>Shipping Policy</Link>
                 </li>
+                </div>
               </ul>
             </div> : null}
 
@@ -594,7 +614,7 @@ const CartSItem = (props) => {
       </div>
 
 
-      <div className={styles.sliderShow}>
+      <div className={styles.sliderShow} style={{marginTop:"-80px"}}>
 
         <div style={{ width: "100%", display: "flex", justifyContent: 'center', background: "white" }}>
           <div style={{ width: "100vw", height: "90vh", marginBottom: "50px", background: "white", zIndex: "0" }}>

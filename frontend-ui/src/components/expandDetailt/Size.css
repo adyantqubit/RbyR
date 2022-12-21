@@ -42,7 +42,7 @@ input + .span {
 input[class="super-happy"]:hover + .span,
 input[class="super-happy"]:checked + .span,
 input[class="super-happy"]:focus + .span {
-	color: rgb(0, 109, 217);
+	color: rgb(80, 78, 78);
 	border: 2px solid black;
 	padding: 00.2rem;
 	border-radius: 3px;
@@ -51,7 +51,7 @@ input[class="super-happy"]:focus + .span {
 input[class="happy"]:hover + .span,
 input[class="happy"]:checked + .span,
 input[class="happy"]:focus + .span {
-	color: rgb(0, 204, 79);
+	color: rgb(80, 78, 78);
 	border: 2px solid black;
 	padding: 00.2rem;
 	border-radius: 3px;
@@ -61,7 +61,7 @@ input[class="happy"]:focus + .span {
 input[class="neutral"]:hover + .span,
 input[class="neutral"]:checked + .span,
 input[class="neutral"]:focus + .span {
-	color: rgb(232, 214, 0);
+	color: rgb(80, 78, 78);
 	border: 2px solid black;
 	padding: 00.2rem;
 	border-radius: 3px;
@@ -71,7 +71,7 @@ input[class="neutral"]:focus + .span {
 input[class="sad"]:hover + .span,
 input[class="sad"]:checked + .span,
 input[class="sad"]:focus + .span {
-	color: rgb(229, 132, 0);
+	color: rgb(80, 78, 78);
 	border: 2px solid black;
 	padding: 00.2rem;
 	border-radius: 3px;
@@ -81,7 +81,7 @@ input[class="sad"]:focus + .span {
 input[class="super-sad"]:hover + .span,
 input[class="super-sad"]:checked + .span,
 input[class="super-sad"]:focus + .span {
-	color: rgb(239, 42, 16);
+	color: rgb(80, 78, 78);
 	border: 2px solid black;
 	padding: 00.2rem;
 	border-radius: 3px;

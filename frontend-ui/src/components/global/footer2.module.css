@@ -131,6 +131,7 @@
 .instagramContainer{
     display: flex;
     flex-direction: row;
+    /* height: 50%; */
     justify-content: space-between;
     align-items: center;
     background: #323232;

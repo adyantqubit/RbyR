@@ -45,6 +45,7 @@ const ShrinkHeader = () => {
   const [isOpen2, setIsOpen2] = useState(false)
 
   const toggleDrawer2 = () => {
+    console.log("")
     setIsOpen2((prevState) => !prevState)
     seLogoutAction(false)
   }
@@ -65,14 +66,16 @@ const ShrinkHeader = () => {
   const dispatch = useDispatch();
   const { userdata, setUserData, firstTimeLoadFunctions,setCategorySelected } = CartState()
   const handleLogout = () => {
+    console.log("hit")
     dispatch(unSetUserInfo({ email: "", name: "" }))
     dispatch(unSetUserToken({ access_token: null }))
     removeToken()
     localStorage.clear()
-    nav('/')
+    
     firstTimeLoadFunctions()
     localStorage.setItem('logout', true);
     window.location.reload(false)
+    
 
   }
 
@@ -152,9 +155,9 @@ const ShrinkHeader = () => {
             HOME
           </Link>
 
-          <div className={style.drawerMenu}>
+          <Link to="#" className={style.drawerMenu}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer2(); setMenu(menus) }}><span>ETHNIC</span> <AiOutlineRight /></div>
-          </div>
+          </Link>
           <Link to='/listing/luxury_pret' className={style.drawerMenu} onClick={e=>{toggleDrawer();setCategorySelected([])}}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span>LUXURY PRET</span> </div>
           </Link>
@@ -168,7 +171,7 @@ const ShrinkHeader = () => {
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> CONTACT US</span> </div>
           </Link>
 
-          <div className={style.drawerMenu} >
+          <Link to="#" className={style.drawerMenu} >
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => {
               if (localStorage.getItem("access_token")) {
                 setMenu(profile);
@@ -181,7 +184,7 @@ const ShrinkHeader = () => {
             }}>
               <span> MY ACCOUNT</span><AiOutlineRight />
             </div>
-          </div>
+          </Link>
         </div>
       </Drawer>
 

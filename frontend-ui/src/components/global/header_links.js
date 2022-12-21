@@ -12,7 +12,7 @@ const profile=[
     {"name":"PROFILE","link":"/userprofile"},
     {"name":"SHIPPING DETAILS","link":"/shippindprofile"},
     {"name":"MY ORDERS","link":"/profile"},
-    {"name":"LOGOUT","link":"/"}
+    {"name":"LOGOUT","link":"#"}
 ]
 
 export {menus,profile}

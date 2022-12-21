@@ -14,7 +14,7 @@ const CArd2 = () => {
     await getCardHomeImagesApi().then((r) => setIamges(r.response));
   }
   return (
-    <div className={style.container} style={{ marginTop: "0" }}>
+    <div className={style.container}>
       {iamges ? (
         <ul className={style.main}>
           <li className={style.cardli}>

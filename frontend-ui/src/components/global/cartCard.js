@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import "bootstrap/dist/css/bootstrap.min.css";
 import {HiMinus,HiPlus} from 'react-icons/hi'
+import {MdClose} from 'react-icons/md'
 
 import styles from './cartCard.module.css'
 import { useCartUpdateMutation, useGetLikedProductQuery } from '../../Redux-manage/services/userAuthapi'
@@ -257,7 +258,8 @@ const CartCard = (props) => {
                 <h3 className={styles.heading}>{pro.title}</h3>
                 {/* <span className={styles.delete} style={{fontSize:"32px",alignSelf:"start"}} onClick={e=>cartSave(pro)}>x</span> */}
                 <Popconfirm placement="bottomLeft" title={text} onConfirm={e => confirm(pro)} okText="OK" cancelText="Cancel">
-                  <span className={styles.delete} style={{ fontSize: "28px", alignSelf: "start" }} >x</span>
+                  {/* <span className={styles.delete} style={{ fontSize: "28px", alignSelf: "start" }} >x</span> */}
+                  <MdClose fontSize={24}  className={styles.delete}/>
                 </Popconfirm>
               </div>
 

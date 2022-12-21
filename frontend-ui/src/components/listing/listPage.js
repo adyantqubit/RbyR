@@ -49,8 +49,6 @@ const ListPage = () => {
       Apicall()
     }
 
-
-
   }, [reload])
 
   //  Commented by Rohan
@@ -61,7 +59,7 @@ const ListPage = () => {
     setReload(true)
     ApiReSet()
     document.getElementById('scrolled').scrollTop = 0
-
+    
   }, [category, htl, lth, availablitySelect, latestSelect])
 
   //  useEffect(()=>{
@@ -77,6 +75,7 @@ const ListPage = () => {
   async function ApiReSet() {
     console.log("On category change call-----------", CategoryProduct, reload)
     setPageIndex(0)
+    setNullPage(true)
     setCategoryProduct([])
     settemAllpro([])
 
@@ -225,13 +224,14 @@ const ListPage = () => {
   async function PageLoad() {
     pageIndex = pageIndex + 1;
     setPageIndex(pageIndex)
-    console.log(pageIndex)
-    console.log("page load hit")
-
   }
 
 
+  const[nullpage,setNullPage]=useState(true)
+
   async function Apicall() {
+   
+        
     const data = {
       "pageIndex": pageIndex,
       "category": category,
@@ -252,7 +252,7 @@ const ListPage = () => {
           setLoading(false);
         }
         else {
-
+         setNullPage(false)
           console.log(CategoryProduct)
           setAllCategoryAvai([...r.categories])
           setCategoryProduct([...CategoryProduct, ...r.products])
@@ -265,6 +265,12 @@ const ListPage = () => {
     })
   }
 
+
+  useEffect(()=>{
+    if(CategoryProduct.length>0){
+      setNullPage(false)
+    }
+  },[CategoryProduct])
 
 
   return (
@@ -286,7 +292,7 @@ const ListPage = () => {
         >
           {CategoryProduct ?
             <div className={style.category}>
-              <span className={style.TopContent} style={{ paddingLeft: "5%", fontWeight: "550" }}>{category.split("_").join(" ")}</span>
+              <span className={style.TopContent} style={{ paddingLeft: "5%", fontWeight: "550",whiteSpace:"nowrap" }}>{category.split("_").join(" ")}</span>
               <span className={`${style.filter} ${style.sortfilterres}`} style={{ paddingRight: "40px", height: "100%", fontWeight: "600px", whiteSpace: "nowrap" }}>
                 <span style={{ paddingRight: "15px", color: "grey", cursor: "pointer" }} onClick={e => setSortUi(true)}>Sort by</span>
                 <span style={{ cursor: "pointer", fontWeight: "600" }} onClick={e => setfilterUi(true)}>Filter BY</span>
@@ -316,8 +322,8 @@ const ListPage = () => {
 
           {CategoryProduct.length > 0 ? CategoryProduct.map((p, i) => (
 
-            <div className={style.item}>
-              <img src={config.apiBaseURL + p.img_main} onClick={e => openDetail(p.id)}></img>
+            <div className={style.item} onClick={e => openDetail(p.id)}>
+              <img src={config.apiBaseURL + p.img_main} ></img>
               <div className={style.title} ><span>{p.title}</span></div>
               <div className={style.price} >{currency.sign} {(p.price * currency.value).toFixed(2)}</div>
               {p.ready_to_ship?
@@ -331,6 +337,13 @@ const ListPage = () => {
             </div>
 
           )) :
+          nullpage ?
+            <div style={{ width: "100%", background: "white" }}>
+              <div class="centered">
+                <div class="blob-1"></div>
+                <div class="blob-2"></div>
+              </div>
+            </div> : 
             <div style={{ width: "100%", textAlign: "center" }}>
               <div className={style.noresult} style={{ width: "100%", textAlign: "center" }}>No products found !</div>
               <span style={{ fontSize: "14px" }}>

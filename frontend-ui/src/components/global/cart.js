@@ -59,7 +59,7 @@ const Cart= () => {
 
   useEffect(()=>{
     if(windowSize.innerWidth<500)
-     setDrawerwidth(380)
+     setDrawerwidth(360)
    else if(windowSize.innerWidth<800)
      setDrawerwidth(450)
     else if(windowSize.innerWidth>800)
@@ -156,7 +156,7 @@ const nav=useNavigate();
     }
     })}
     else{
-      setError({"error":"Please enter coupon code"})
+      setError({"error":"Please enter coupon code."})
     }
 
   }
@@ -270,8 +270,8 @@ async function DefaultShipping(){
         </div>
 
         <div className={style.promo}>
-         {!ShowCoupon&&!offer.discount_percentage>0? <> <input className="promoCode" id="prormos" type="text" onKeyPress={e=>validateWhitespace(e,"prormos")} style={{width:"60%",padding:"10px",height:"30px",marginLeft:"15px",border:"1px solid #dfdbdb",outline:"#fff"}} placeholder="Have a promocode" ref={promos} onChange={e=>setError(null)}></input>
-          <button className={style.apply} onClick={ApplyPromo}>APPLY</button>
+         {!ShowCoupon&&!offer.discount_percentage>0? <> <input className="promoCode" id="prormos" type="text" onKeyPress={e=>validateWhitespace(e,"prormos")} style={{width:"60%",padding:"10px",height:"35px",marginLeft:"15px",border:"1px solid #dfdbdb",outline:"#fff"}} placeholder="Have a promocode" ref={promos} onChange={e=>setError(null)}></input>
+          <button className={style.shopbtn1} style={{ marginRight: "15px", marginTop: "0px", height: "35px",maxWidth:"35%", textAlign: "center", letterSpacing: "2px", fontSize: "14px", fontWeight: "600",padding:"0" }} onClick={ApplyPromo}>APPLY</button>
           </>
          :<>
          <div className={styles.successMsg}>

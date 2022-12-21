@@ -1,6 +1,7 @@
 .home{
     max-height: 100vh;
-    overflow: scroll;
+    width:100%;
+    /* overflow: scroll; */
 }
 
 .home::-webkit-scrollbar{

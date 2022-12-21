@@ -76,7 +76,6 @@ const Orderpage = (props) => {
               :
               <>
                 <hr style={{ color: "black" }}></hr>
-
                 <div className={styles.upnextForm} >
                   2. SHIPPING INFO
                 </div>
@@ -93,7 +92,6 @@ const Orderpage = (props) => {
                 </div>
                 <hr style={{ color: "black" }} />
               </>
-
             }
 
           </div>
