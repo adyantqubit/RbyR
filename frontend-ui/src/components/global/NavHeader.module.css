@@ -149,6 +149,12 @@
     top: 35px;
     z-index: 70;
    }
+
+   .cart{
+    position:relative;
+    top:10px;
+   }
+
    .dropdown li + li {
     margin-top: 10px;
    }
@@ -199,6 +205,15 @@ input[type=checkbox]{
     .navbar{
       margin-top: -5px;
     }
+
+
+  }
+
+  @media (max-width:900) {
+    .cart{
+      position:relative;
+      top:0px;
+     }
   }
 /* APPLYING MEDIA QUERIES */
 @media (max-width: 768px) {

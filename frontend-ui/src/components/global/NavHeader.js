@@ -182,7 +182,7 @@ const Navbar = () => {
                     </a>
                   </div>
                   <div><LikedDrawer /></div>
-                  <div style={{position:"relative",top:"10px"}}><Cart/></div>
+                  <div className={style.cart}><Cart/></div>
                   <div><Profile /></div>
                 </div>
 
