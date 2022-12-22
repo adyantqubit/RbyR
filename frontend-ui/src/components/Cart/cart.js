@@ -34,6 +34,7 @@ import { Typography } from '@mui/material';
 
 import { blue } from '@mui/material/colors';
 import { SizeGetter } from '../global/getSize';
+import Chat from '../expandDetailt/chat';
 
 const text = 'Are you sure you would like to remove this item from the shopping cart?';
 
@@ -55,7 +56,6 @@ const CartSItem = (props) => {
     GetTAXapi()
     ruleText()
     notification.destroy()
-
     // document.getElementById("scrolled").scrollTop=0
   }, [])
 
@@ -250,14 +250,21 @@ const CartSItem = (props) => {
 
   async function ApplyPromo() {
     var promocode = document.getElementsByClassName('promoCode')[0].value
+    var token=localStorage.getItem("access_token")
+      
+    var data={
+      usertoken:token,
+      promochar:promocode
+    }
 
     if (promocode.length > 0) {
-      await CouponCheck(promocode).then(r => {
+      await CouponCheck(data).then(r => {
         if (r.error) {
           setError(r)
-          console.log(r)
         }
         else {
+          console.log(r)
+
           setOffer(r)
           setError(null)
           setCoupon(true)
@@ -629,6 +636,7 @@ const CartSItem = (props) => {
         <div className={styles.foot}>
           <Footer />
           <Below />
+          {/* <Chat/> */}
         </div>
       </div>
     </>

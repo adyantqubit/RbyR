@@ -31,6 +31,7 @@ import FAQ from './components/footer pages/FAQ';
 import Bridal from './components/footer pages/bridal';
 import { height } from '@mui/system';
 import { notification } from 'antd';
+import Chat from './components/expandDetailt/chat';
 
 function App() {
   // notification.destroy()
@@ -47,6 +48,7 @@ function App() {
       
     <Route path="/" element={ <Home />} />
     <Route path="/Listing/:category" element={<Listing/>} />
+    
     <Route path="/login" element={!access_token?<Login/>:<Navigate to="/"/>} />
     <Route path="/changePass" element={access_token?<ChngPass/>:<Navigate to="/login"/>}/>
     <Route path="/logout" element={access_token?"":<Navigate to="/login"/>} />
@@ -78,6 +80,7 @@ function App() {
     <Route path='/bridal' element={<Bridal/>} />
     
     </Routes>
+    <Chat/>
     </>
   );
 }

@@ -65,7 +65,7 @@ const Orderpage = (props) => {
       <Navbar />
       <div className={styles.responsive}    >
         <div className={styles.head} ref={scroller}>
-          <span className={styles.headText} onClick={e => nav(-1)}><AiOutlineLeft style={{marginBottom:"2.5px"}}/> {` BACK TO CART`}</span>
+          <span className={styles.headText} onClick={e => nav("/cart")}><AiOutlineLeft style={{marginBottom:"2.5px"}}/> {` BACK TO CART`}</span>
         </div>
         <div className={styles.row} >
           <div className={styles.column1} >

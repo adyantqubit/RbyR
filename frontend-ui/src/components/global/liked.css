@@ -6,13 +6,13 @@
   width: 10%; */
 /* } */
 .likeTitle{
-  width: 100% !important;
-  text-align: center !important;
+  min-width: 300px !important;
+  text-align: start !important;
 }
 .likeSVG{
   width:2rem !important;
   height:2rem !important;
   color: black !important;
   text-align: left !important;
-  margin-right: 100%;
+  /* margin-right: 100%; */
 }

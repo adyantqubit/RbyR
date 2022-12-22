@@ -36,6 +36,7 @@ import {
 import CustomTailoredForm from "./CustomTailoredForm";
 import WomenSizeChart from "./WomenSizeChart";
 import { Link } from "react-router-dom";
+import Chat from "./chat";
 
 const sty = StyleSheet.create({
   bounce: {
@@ -1000,6 +1001,7 @@ const Details = (props) => {
             <Footer />
 
             <Below />
+            {/* <Chat/> */}
 
           </div>
         </div>

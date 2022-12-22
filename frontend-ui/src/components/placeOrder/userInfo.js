@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styles from './order.module.css'
+import style from '../global/cartCard.module.css'
 import {TiTick} from 'react-icons/ti'
 import {IoIosCheckmarkCircle} from 'react-icons/io'
 import { CartState } from '../../context'
@@ -8,7 +9,7 @@ const UserInfo = () => {
     const{userdata,checkoutDetails,setCheckoutDetails,shippingflow,setShipingflow}=CartState()
     const [cond,setCond]=useState(false)
 
-    checkoutDetails['userInfo']={"firstname":userdata.name.substring(0,hasWhiteSpace(userdata.name)),"lastname":userdata.name.substring(hasWhiteSpaceforLast(userdata.name),userdata.name.length),"email":userdata.email}
+    // checkoutDetails['userInfo']={"firstname":userdata.name.substring(0,hasWhiteSpace(userdata.name)),"lastname":userdata.name.substring(hasWhiteSpaceforLast(userdata.name),userdata.name.length),"email":userdata.email}
     function hasWhiteSpace(s) {
         var i=s.indexOf(' ');
         if(i==-1){
@@ -37,17 +38,23 @@ const UserInfo = () => {
         const userData={
             "firstname":data.get('first'),
             "lastname":data.get('last'),
-            "email":data.get('email')
+            "email":data.get('email'),
         }
+
         checkoutDetails['userInfo']=userData;     
+
+        
+
         setCheckoutDetails(checkoutDetails)   
         setCond(true)
         setShipingflow(true)
+
+
     }
 
   return (
   <>
-  {true?
+  {cond?
   <>
    {/* when user info is sibmitted then this will appear */}
    <div className={styles.columnitem1_1}>
@@ -101,7 +108,7 @@ const UserInfo = () => {
                         }
                     </div>
                 </div>
-                <button className={styles.userInfoButton}>
+                <button className={style.shopbtn2} style={{margin:"15px 5px",width:"300px",minHeight:"45px"}} >
                     PROCEED TO SHIPPING
                 </button>
             </form>

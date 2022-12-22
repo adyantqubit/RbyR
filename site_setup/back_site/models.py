@@ -471,6 +471,15 @@ class coupon(models.Model):
             verbose_name_plural = "Coupons"
     #End of code addition   
     
+# Commented by Rohan - 21/12/22 
+# Reason - I have to save which user is alredy used coupon and should not able to apply again.
+
+class couponUsed(models.Model):
+    id=models.AutoField(primary_key=True) 
+    user=models.ForeignKey(User,on_delete=models.CASCADE) 
+    used=models.CharField(max_length=50)
+    
+    
 class Tax(models.Model):
     tax_rate=models.IntegerField(validators=[validate_tax])    
     #Added by Ashish Dewangan on 28-11-2022
@@ -816,20 +825,20 @@ class WomenClothSizeChart(models.Model):
 class CustomTailoredForm(models.Model):
     firstName=models.CharField(max_length=255)
     lastName=models.CharField(max_length=255)
-    email=models.CharField(max_length=255)
+    email=models.CharField(max_length=255,blank=True)
     contactNumber=models.IntegerField()
-    shoulder=models.CharField(max_length=255)
-    chest=models.CharField(max_length=255)
-    upperChest=models.CharField(max_length=255)
-    lowerChest=models.CharField(max_length=255)
-    dartPoint=models.CharField(max_length=255)
-    armhole=models.CharField(max_length=255)
-    armround=models.CharField(max_length=255)
-    waist=models.CharField(max_length=255)
-    lowerWaist=models.CharField(max_length=255)
-    hips=models.CharField(max_length=255)
-    length=models.CharField(max_length=255)
-    otherInstructions=models.TextField(default="")
+    shoulder=models.CharField(max_length=255,blank=True)
+    chest=models.CharField(max_length=255,blank=True)
+    upperChest=models.CharField(max_length=255,blank=True)
+    lowerChest=models.CharField(max_length=255,blank=True)
+    dartPoint=models.CharField(max_length=255,blank=True)
+    armhole=models.CharField(max_length=255,blank=True)
+    armround=models.CharField(max_length=255,blank=True)
+    waist=models.CharField(max_length=255,blank=True)
+    lowerWaist=models.CharField(max_length=255,blank=True)
+    hips=models.CharField(max_length=255,blank=True)
+    length=models.CharField(max_length=255,blank=True)
+    otherInstructions=models.TextField(default="",blank=True)
 
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name

@@ -10,8 +10,11 @@
     max-height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
-    
 
+}
+
+.scrolling::-webkit-scrollbar{
+    display:none
 }
 
 .hovers:hover{

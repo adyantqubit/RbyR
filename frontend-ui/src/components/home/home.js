@@ -36,8 +36,8 @@ export const Home = () => {
       {/* <Video /> */}
       {/* <Footer2 />
       <Below /> */}
-      
-      {/* <Chat/> */}
+          {/* <Chat/> */}
+
     </div>
   );
 };

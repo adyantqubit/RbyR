@@ -100,7 +100,7 @@ const StoreLocator = () => {
           </div> */}
         </div>
 
-        <div style={{ marginTop: "5vh" }}>
+        <div style={{ paddingTop: "100px",backhround:"#323232" }}>
           <Footer />
         </div>
       </div>

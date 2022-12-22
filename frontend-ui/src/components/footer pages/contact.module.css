@@ -16,7 +16,7 @@
     background:#323232;
     padding-top: 35vh;
     max-height: 100vh;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 }
 
 
@@ -122,6 +122,7 @@
     .contain{
         flex-direction: column;
         padding: 0;
+        gap:0px;
         
     }
     .column{

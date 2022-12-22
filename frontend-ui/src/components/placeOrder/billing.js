@@ -31,6 +31,7 @@ const Billing = () => {
     checkoutDetails = JSON.parse(sessionStorage.getItem('checkoutDetails'))
     setCheckoutDetails(checkoutDetails)
     console.log(JSON.parse(sessionStorage.getItem('checkoutDetails')))
+    setOffer({ discount_percentage: 0, maximum_discount_price: 1000, expiry_date: '2022-11-30' })
 
     window.scrollTo(0, 0)
   }, []);
@@ -134,8 +135,8 @@ const Billing = () => {
           Print this out
         </button> 
         </div>
-        <div className={styles.main}  >
-          {checkoutDetails.userInfo ? <div className={styles.invoice} >
+        <div className={styles.main} id="main" >
+          {checkoutDetails.userInfo ? <div className={styles.invoice}  id="invoice">
             <div id="section-to-print"
             // ref={componentRef}
             >
@@ -143,7 +144,7 @@ const Billing = () => {
                 <div className={styles.headIn}>INVOICE</div>
               </div>
 
-              <div className={styles.header}>
+              <div className={styles.header} id="header">
                 <div className={styles.headerTexts}>
                   <div className={styles.columnitem1head}>BILLING To</div>
                   <hr style={{ color: "black" }}></hr>
@@ -239,7 +240,7 @@ const Billing = () => {
         </div>
 
         {/* <div style={{width:"100%",display:"flex",justifyContent:"center",background:"#f2f2f2"}}> <button className={style.shopbtn1} style={{width:"50%"}} onClick={e=>nav('/')}>Continue Shopping</button> */}
-     <div style={{width:"100%",display:"flex",justifyContent:"center",background:"#f2f2f2"}}> 
+     <div style={{width:"100%",display:"flex",justifyContent:"center",background:"#f2f2f2",paddingBottom:"50px"}}> 
      <Button type="primary" className={style.userInfoButton} onClick={goToHomePage}>
      Continue Shopping
     </Button>

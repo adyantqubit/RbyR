@@ -810,6 +810,8 @@ class WhatsappContactAdmin(admin.ModelAdmin):
  # End of code modification
 
 
+
+
 class UserModelAdmin(BaseUserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
@@ -843,3 +845,7 @@ class UserModelAdmin(BaseUserAdmin):
 
 # Now register the new UserAdmin...
 admin.site.register(User, UserModelAdmin)
+
+# commented by Rohan - 21/12/22 
+# Reason - TO store used coupon for user
+admin.site.register(couponUsed)

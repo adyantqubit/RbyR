@@ -243,7 +243,7 @@ const Bridal = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Please enter your message name",
+                    message: "This Field can't be blank",
                     whitespace: true,
                   },
                   () => ({
@@ -356,7 +356,7 @@ const Bridal = () => {
                 rules={[
                   {
                     validator: (_, value) =>
-                      value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement')),
+                      value ? Promise.resolve() : Promise.reject(new Error('You must accept the terms and conditions')),
                   },
                 ]}
                 
@@ -371,7 +371,7 @@ const Bridal = () => {
           </div>
         </Form>
 
-        <div style={{ marginTop: "80px" }}>
+        <div style={{ paddingTop: "80px",background:"#323232" }}>
           <Footer />
         </div>
       </div>

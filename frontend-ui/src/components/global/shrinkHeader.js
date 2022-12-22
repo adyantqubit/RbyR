@@ -48,6 +48,8 @@ const ShrinkHeader = () => {
     console.log("")
     setIsOpen2((prevState) => !prevState)
     seLogoutAction(false)
+
+    console.log("drawer 2 hit ",!isOpen2)
   }
 
   useEffect(() => {
@@ -171,20 +173,24 @@ const ShrinkHeader = () => {
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> CONTACT US</span> </div>
           </Link>
 
-          <Link to="#" className={style.drawerMenu} >
+          <div className={style.drawerMenu} >
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => {
+             console.log(localStorage.getItem("access_token"))
+
               if (localStorage.getItem("access_token")) {
                 setMenu(profile);
                 toggleDrawer2()
+                
               }
               else {
                 nav("/login")
                 toggleDrawer()
+
               }
             }}>
               <span> MY ACCOUNT</span><AiOutlineRight />
             </div>
-          </Link>
+          </div>
         </div>
       </Drawer>
 

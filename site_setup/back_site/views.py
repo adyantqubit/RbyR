@@ -314,7 +314,14 @@ class Invoice(APIView):
                 serialize3 = invoiceSerializer(data=data)
                 if serialize3.is_valid(raise_exception=True):
                     serialize3.save()
-
+            
+            # commented by Rohan - 21/12/22
+            # Reason- storing coupon 
+            if(request.data['CouponDiscount']>0):
+               used= couponUsed.objects.create(user=request.user,used=request.data['promocode'])
+               used.save()
+            # end of the code
+                
             tran = Transaction_history.objects.create(order_no=num, payment_status="pending", user_no=request.user, coupon_discount=request.data['CouponDiscount'], shipping_price=request.data[
                                                       'ShippingCharges'], subtotal_price=request.data['SubTotal'], tax=request.data['tax'], grand_total=request.data['grand'])
             tran.save()
@@ -475,17 +482,40 @@ class IncrementCheck(APIView):
 
 class CouponCheck(APIView):
     def post(self, request):
-        try:
-            if coupon.objects.get(promocode=request.data) is not None:
-                if coupon.objects.get(promocode=request.data).expiry_date < datetime.date.today():
-                    return Response({"error": "This coupon is expired."})
-                if coupon.objects.get(promocode=request.data).isActive == False:
-                    return Response({"error": "This coupon is not active."})
-                serialize = promocodeSerilizer(
-                    coupon.objects.get(promocode=request.data))
-                return Response(serialize.data)
-        except:
-            return Response({"error": "Coupon you entered is not exist."})
+        
+        # Commented by Rohan- 21/12/22
+        # Reason- I re-implement coupon logic becuase new requirement occur , Only login user can able to
+        # apply coupon
+            print(request.data['usertoken'])
+            if request.data['usertoken'] is not None:
+                try: 
+                    tokens = jwt.decode(
+                        request.data['usertoken'], SIMPLE_JWT['SIGNING_KEY'], algorithms=["HS256"])
+                    user=User.objects.get(id=tokens['user_id'])
+                except:
+                   print({"something":"goes"})
+                   return Response({"error":"Something went wrong."}) 
+                
+                try:
+                  if couponUsed.objects.filter(user=user,used=request.data['promochar']).count()==0:
+                    if coupon.objects.get(promocode=request.data['promochar']) is not None:
+                        # print(couponUsed.objects.exists(user=request.user,used=request.data))
+                        if coupon.objects.get(promocode=request.data['promochar']).expiry_date < datetime.date.today():
+                            return Response({"error": "This coupon is expired."})
+                        if coupon.objects.get(promocode=request.data['promochar']).isActive == False:
+                            return Response({"error": "This coupon is not active."})
+                        serialize = promocodeSerilizer(
+                            coupon.objects.get(promocode=request.data['promochar']))
+                        
+                        return Response(serialize.data)
+                  else:
+                       return Response({"error":"You already used this coupon."}) 
+                except:
+                        return Response({"error": "Coupon you entered is not exist."})
+            else:
+                return Response({"error": "Please login to apply coupon."})
+            # End of the code
+               
 
 
 class TaxGet(APIView):

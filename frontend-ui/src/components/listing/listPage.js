@@ -23,6 +23,7 @@ import FilterNew from './filterNew';
 import Sort from './sort';
 import { nextIndexPage } from '../../api/orderApis';
 import { CgEnter } from 'react-icons/cg';
+import Chat from '../expandDetailt/chat';
 
 const ListPage = () => {
 
@@ -47,6 +48,7 @@ const ListPage = () => {
     if (reload == false) {
       PageLoad()
       Apicall()
+      setNullPage(true)
     }
 
   }, [reload])
@@ -75,7 +77,6 @@ const ListPage = () => {
   async function ApiReSet() {
     console.log("On category change call-----------", CategoryProduct, reload)
     setPageIndex(0)
-    setNullPage(true)
     setCategoryProduct([])
     settemAllpro([])
 
@@ -250,6 +251,8 @@ const ListPage = () => {
         if (r.error) {
           setReload(false);
           setLoading(false);
+          setNullPage(false)
+
         }
         else {
          setNullPage(false)
@@ -379,6 +382,7 @@ const ListPage = () => {
         <div className={style.foot}>
           <Footer />
           <Below />
+
         </div>
       </div>
 

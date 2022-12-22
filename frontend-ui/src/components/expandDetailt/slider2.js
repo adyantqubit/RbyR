@@ -54,7 +54,13 @@ const Slider2 = ({scrollTop}) => {
         }}
       >
         <div
-          className={styles.header}
+          style={{
+            fontSize: "20px",
+            lineHeight: "32px",
+            letterSpacing: "3px",
+            marginBottom: "20px",
+            
+          }}
         >
           YOU MAY ALSO LIKE
         </div>

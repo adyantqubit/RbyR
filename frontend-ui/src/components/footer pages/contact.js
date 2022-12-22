@@ -65,7 +65,7 @@ const Contact = () => {
 
         {/* </div> */}
 
-        <div style={{ marginTop: "80px" }}>
+        <div style={{ paddingTop: "80px",background:"#323232" }}>
           <Footer />
         </div>
       </div>

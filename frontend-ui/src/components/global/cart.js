@@ -50,6 +50,8 @@ const Cart= () => {
     return () => {
       window.removeEventListener('resize', handleWindowResize);
     };
+
+
   }, [window.innerWidth]);
 
   function getWindowSize() {
@@ -59,11 +61,13 @@ const Cart= () => {
 
   useEffect(()=>{
     if(windowSize.innerWidth<500)
-     setDrawerwidth(360)
+     setDrawerwidth(330)
    else if(windowSize.innerWidth<800)
      setDrawerwidth(450)
     else if(windowSize.innerWidth>800)
     setDrawerwidth(600)
+
+    
   },[windowSize])
 
 

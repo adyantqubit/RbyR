@@ -3,6 +3,7 @@ import styles from './order.module.css'
 import { TiTick } from 'react-icons/ti'
 import { IoIosCheckmarkCircle } from 'react-icons/io'
 import { IoMdCheckmark } from 'react-icons/io'
+import style from '../global/cartCard.module.css'
 import Checkbox from "react-custom-checkbox";
 import * as Icon from "react-icons/fi";
 import { CartState } from '../../context';
@@ -232,14 +233,14 @@ const UsserAdresses = () => {
         // }
 
         if (data.get('pincode').length < 6) {
-            var dta = " * minimum 6 digit required"
+            var dta = " Minimum 6 digit required"
             handleButtonClickpin(dta)
         }
         else {
             isAlertVisiblepin = false
         }
         if (data.get('number').length < 10) {
-            var dta = " * minimum 10 digit required"
+            var dta = " Minimum 10 digit required"
             handleButtonClicknum(dta)
         }
         else {
@@ -516,13 +517,13 @@ const UsserAdresses = () => {
                                 {checkoutDetails.shippingData ?
                                     <> <input className={styles.firstInput} name='pincode' id='pincode' onKeyPress={validatesPin} maxLength={6} defaultValue={checkoutDetails.shippingData.zipcode} />
                                         {required.zipcode ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
-                                        {isAlertVisiblepin && <span asp-validation-for="Code" class="text-danger col-sm-4">{pinerror} </span>}
+                                        {isAlertVisiblepin && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{pinerror} </span>}
                                     </>
                                     :
                                     <>
                                         <input className={styles.firstInput} name='pincode' id='pincode' onKeyPress={validatesPin} maxLength={6} />
                                         {required.zipcode ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
-                                        {isAlertVisiblepin && <span asp-validation-for="Code" class="text-danger col-sm-4">{pinerror}</span>}
+                                        {isAlertVisiblepin && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{pinerror}</span>}
                                     </>
                                 }
                             </div>
@@ -550,13 +551,13 @@ const UsserAdresses = () => {
                                 {checkoutDetails.shippingData ?
                                     <>
                                         <input className={styles.firstInput} name='number' id='number' onKeyPress={validatesNum} maxlength={10} defaultValue={checkoutDetails.shippingData.number} />
-                                        {isAlertVisiblenum && <span asp-validation-for="Code" class="text-danger col-sm-4">{numerror}</span>}
+                                        {isAlertVisiblenum && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{numerror}</span>}
                                         {required.number ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
                                     </>
                                     :
                                     <>
                                         <input className={styles.firstInput} name='number' id='number' onKeyPress={validatesNum} maxLength={10} />
-                                        {isAlertVisiblenum && <span asp-validation-for="Code" class="text-danger col-sm-4">{numerror}</span>}
+                                        {isAlertVisiblenum && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{numerror}</span>}
                                         {required.number ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
                                     </>
                                 }
@@ -564,7 +565,7 @@ const UsserAdresses = () => {
                         </div>
 
 
-                        <div className={styles.columnitem1content1}>
+                        <div className={styles.columnitem1content1} style={{margin:"15px 0"}}>
                             <Checkbox
                                 icon={<Icon.FiCheck color="white" size={16} style={{ background: "black" }} />}
                                 name="my-input"
@@ -688,14 +689,14 @@ const UsserAdresses = () => {
                                         {checkoutDetails.billingData ?
                                             <>
                                                 <input className={styles.firstInput} name='pincodeb' id="pincodeb" onKeyPress={validatesPin} maxLength={6} defaultValue={checkoutDetails.billingData.zipcode} />
-                                                {isAlertVisiblepin && <span asp-validation-for="Code" class="text-danger col-sm-4">{pinerror} </span>}
+                                                {isAlertVisiblepin && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{pinerror} </span>}
                                                 {required.pincodeb ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
 
                                             </>
                                             :
                                             <>
                                                 <input className={styles.firstInput} name='pincodeb' id="pincodeb" onKeyPress={validatesPin} maxLength={6} />
-                                                {isAlertVisiblepin && <span asp-validation-for="Code" class="text-danger col-sm-4">{pinerror} </span>}
+                                                {isAlertVisiblepin && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{pinerror} </span>}
                                                 {required.pincodeb ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
 
                                             </>}
@@ -723,13 +724,13 @@ const UsserAdresses = () => {
                                         {checkoutDetails.billingData ?
                                             <>
                                                 <input className={styles.firstInput} name='numberb' id="numberb" onKeyPress={validatesNum} maxlength={10} defaultValue={checkoutDetails.billingData.number} />
-                                                {isAlertVisiblenum && <span asp-validation-for="Code" class="text-danger col-sm-4">{numerror}</span>}
+                                                {isAlertVisiblenum && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{numerror}</span>}
                                                 {required.numberb ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
                                             </>
                                             :
                                             <>
                                                 <input className={styles.firstInput} name='numberb' id="numberb" onKeyPress={validatesNum} maxlength={10} />
-                                                {isAlertVisiblenum && <span asp-validation-for="Code" class="text-danger col-sm-4">{numerror}</span>}
+                                                {isAlertVisiblenum && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{numerror}</span>}
                                                 {required.numberb ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
                                             </>
                                         }
@@ -738,7 +739,7 @@ const UsserAdresses = () => {
                             </>
                             : null}
 
-                        <button className={styles.userInfoButton2} type='submit'>
+                        <button className={style.shopbtn2} style={{margin:"15px 5px",width:"300px",minHeight:"50px"}} type='submit'>
                             PROCEED TO PAYMENT
                         </button>
                     </form>

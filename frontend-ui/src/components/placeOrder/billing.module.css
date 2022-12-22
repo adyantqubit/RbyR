@@ -19,19 +19,21 @@
 }
 
 .container::-webkit-scrollbar{
-    /* display: none; */
+    display: none;
 }
 
 .main{
     width:100%;
     background-color: #f2f2f2;
     display: flex;
+    height: auto;
     justify-content: center;
    
 }
 
 .payBox{
-    height:200px;
+    min-height:200px;
+    max-height: 500px;
     width:40%;
     background-color: white;
     display: flex;
@@ -41,12 +43,15 @@
 
 .img{
     padding:8px;
-    height:100%;
+    max-width:50%;
+    height: auto;
+    /* height:100%; */
 }
 
 .payTitle{
     padding: 8px;
     display:flex;
+    overflow: auto;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -62,6 +67,7 @@
 .userinfoText2{
     color: black;
     font-size: 14px;
+    word-break: break-all;
     line-height: 22px;
     letter-spacing: 1.2px;
     font-family: 'MyFont';
@@ -100,7 +106,6 @@
 
 .headerTexts{
     width:200px;
-
     background-color: white;
     padding:5px;
 }
@@ -241,6 +246,8 @@
 
 }
 
+
+
 @media (min-width:700px){
     .show{
         display:flex;
@@ -270,7 +277,6 @@
 
     }
     .payBox{
-        height:200px;
         width:70%;
     }
 }
@@ -282,10 +288,10 @@
     }
 
     .header{
-        flex-direction: column;
+        /* flex-direction: column;
         justify-content: center;
-        align-items: center;
-        margin: 0 auto;
+        align-items: center; */
+        /* margin: 0 auto; */
         width: 70%;
     }
 
@@ -324,7 +330,13 @@
 
     }
     .payBox{
-        height:200px;
+        overflow: auto;
         width:90%;
     }
 }
+
+
+
+
+/* printing whole page like window web page in mobile also. */
+

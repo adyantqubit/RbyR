@@ -8,8 +8,8 @@ export const increamentCheck = async (data) => {
   };
 
 
-  export const CouponCheck = async (data) => {
-    const response = await API.post(`Coupon_check/`,data, {
+  export const CouponCheck = async (promocode) => {
+    const response = await API.post(`Coupon_check/`,promocode, {
           headers: { "Content-Type": "application/json"},
         }).catch((err) => console.log("Failed to authenticate the user."));
     return response ? response.data : {};

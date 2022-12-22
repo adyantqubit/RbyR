@@ -231,7 +231,7 @@ const InsideOrder = () => {
                   <Modal title="Scan To Pay" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                     <div style={{ background: "white" }}>
                       {onlineDetail != null ?
-                        <div className={styles.payBox}>
+                        <div className={styles.payBox} style={{width:"auto"}}>
                           <img src={config.apiBaseURL + onlineDetail.qr_img}
                             className={styles.img} />
                           <div className={styles.payTitle}>

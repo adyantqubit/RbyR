@@ -76,7 +76,10 @@ const LikeCard = (props) => {
         ))
       ) : (
         <div className={style.emptyWishList}>
-          <span>Your Wishlist Is Empty</span>
+          <span>Your wishlist is empty.</span>
+          <br></br>
+          <span className={style.para}>Don't hesitate and browse our catalog to find something beautiful for You!</span>
+
         </div>
       )}
     </>

@@ -145,14 +145,14 @@ function CustomTailoredForm() {
                   E-mail address
                 </label>
               }
-              rules={[
-                {
-                  required: true,
-                  type: "email",
-                  message: "Please enter your email address",
-                  whitespace: true,
-                },
-              ]}
+              // rules={[
+              //   {
+              //     required: true,
+              //     type: "email",
+              //     message: "Please enter your email address",
+              //     whitespace: true,
+              //   },
+              // ]}
               hasFeedback
             >
               <Input className={customTailoredStyle.formInput} maxLength={50} />
@@ -204,26 +204,26 @@ function CustomTailoredForm() {
               label={
                 <label className={customTailoredStyle.label}>Shoulder</label>
               }
-              rules={[
-                {
-                  required: true,
-                  message: "Please enter shoulder size",
-                  whitespace: true,
-                },
-                () => ({
-                  validator(_, value) {
-                    if (!value) {
-                      return Promise.reject();
-                    }
-                    if (value.length < 2) {
-                      return Promise.reject(
-                        "shoulder size should be atleast 2 characters long"
-                      );
-                    }
-                    return Promise.resolve();
-                  },
-                }),
-              ]}
+              // rules={[
+              //   {
+              //     required: true,
+              //     message: "Please enter shoulder size",
+              //     whitespace: true,
+              //   },
+              //   () => ({
+              //     validator(_, value) {
+              //       if (!value) {
+              //         return Promise.reject();
+              //       }
+              //       if (value.length < 2) {
+              //         return Promise.reject(
+              //           "shoulder size should be atleast 2 characters long"
+              //         );
+              //       }
+              //       return Promise.resolve();
+              //     },
+              //   }),
+              // ]}
               hasFeedback
             >
               <Input className={customTailoredStyle.formInput} maxLength={50} />
@@ -233,26 +233,26 @@ function CustomTailoredForm() {
             <Form.Item
               name="chest"
               label={<label className={customTailoredStyle.label}>Chest</label>}
-              rules={[
-                {
-                  required: true,
-                  message: "Please enter chest size",
-                  whitespace: true,
-                },
-                () => ({
-                  validator(_, value) {
-                    if (!value) {
-                      return Promise.reject();
-                    }
-                    if (value.length < 2) {
-                      return Promise.reject(
-                        "Chest size should be atleast 2 characters long"
-                      );
-                    }
-                    return Promise.resolve();
-                  },
-                }),
-              ]}
+              // rules={[
+              //   {
+              //     required: true,
+              //     message: "Please enter chest size",
+              //     whitespace: true,
+              //   },
+              //   () => ({
+              //     validator(_, value) {
+              //       if (!value) {
+              //         return Promise.reject();
+              //       }
+              //       if (value.length < 2) {
+              //         return Promise.reject(
+              //           "Chest size should be atleast 2 characters long"
+              //         );
+              //       }
+              //       return Promise.resolve();
+              //     },
+              //   }),
+              // ]}
               hasFeedback
             >
               <Input className={customTailoredStyle.formInput} maxLength={50} />
@@ -266,26 +266,26 @@ function CustomTailoredForm() {
               label={
                 <label className={customTailoredStyle.label}>Upper chest</label>
               }
-              rules={[
-                {
-                  required: true,
-                  message: "Please enter upper chest size",
-                  whitespace: true,
-                },
-                () => ({
-                  validator(_, value) {
-                    if (!value) {
-                      return Promise.reject();
-                    }
-                    if (value.length < 2) {
-                      return Promise.reject(
-                        "Upper chest size should be atleast 2 characters long"
-                      );
-                    }
-                    return Promise.resolve();
-                  },
-                }),
-              ]}
+              // rules={[
+              //   {
+              //     required: true,
+              //     message: "Please enter upper chest size",
+              //     whitespace: true,
+              //   },
+              //   () => ({
+              //     validator(_, value) {
+              //       if (!value) {
+              //         return Promise.reject();
+              //       }
+              //       if (value.length < 2) {
+              //         return Promise.reject(
+              //           "Upper chest size should be atleast 2 characters long"
+              //         );
+              //       }
+              //       return Promise.resolve();
+              //     },
+              //   }),
+              // ]}
               hasFeedback
             >
               <Input className={customTailoredStyle.formInput} maxLength={50} />
@@ -297,26 +297,26 @@ function CustomTailoredForm() {
               label={
                 <label className={customTailoredStyle.label}>Lower chest</label>
               }
-              rules={[
-                {
-                  required: true,
-                  message: "Please enter lower chest size",
-                  whitespace: true,
-                },
-                () => ({
-                  validator(_, value) {
-                    if (!value) {
-                      return Promise.reject();
-                    }
-                    if (value.length < 2) {
-                      return Promise.reject(
-                        "Lower chest size should be atleast 2 characters long"
-                      );
-                    }
-                    return Promise.resolve();
-                  },
-                }),
-              ]}
+              // rules={[
+              //   {
+              //     required: true,
+              //     message: "Please enter lower chest size",
+              //     whitespace: true,
+              //   },
+              //   () => ({
+              //     validator(_, value) {
+              //       if (!value) {
+              //         return Promise.reject();
+              //       }
+              //       if (value.length < 2) {
+              //         return Promise.reject(
+              //           "Lower chest size should be atleast 2 characters long"
+              //         );
+              //       }
+              //       return Promise.resolve();
+              //     },
+              //   }),
+              // ]}
               hasFeedback
             >
               <Input className={customTailoredStyle.formInput} maxLength={50} />
@@ -330,26 +330,26 @@ function CustomTailoredForm() {
               label={
                 <label className={customTailoredStyle.label}>Dart point</label>
               }
-              rules={[
-                {
-                  required: true,
-                  message: "Please enter dart point",
-                  whitespace: true,
-                },
-                () => ({
-                  validator(_, value) {
-                    if (!value) {
-                      return Promise.reject();
-                    }
-                    if (value.length < 2) {
-                      return Promise.reject(
-                        "Dart point should be atleast 2 characters long"
-                      );
-                    }
-                    return Promise.resolve();
-                  },
-                }),
-              ]}
+              // rules={[
+              //   {
+              //     required: true,
+              //     message: "Please enter dart point",
+              //     whitespace: true,
+              //   },
+              //   () => ({
+              //     validator(_, value) {
+              //       if (!value) {
+              //         return Promise.reject();
+              //       }
+              //       if (value.length < 2) {
+              //         return Promise.reject(
+              //           "Dart point should be atleast 2 characters long"
+              //         );
+              //       }
+              //       return Promise.resolve();
+              //     },
+              //   }),
+              // ]}
               hasFeedback
             >
               <Input className={customTailoredStyle.formInput} maxLength={50} />
@@ -361,26 +361,26 @@ function CustomTailoredForm() {
               label={
                 <label className={customTailoredStyle.label}>Armhole</label>
               }
-              rules={[
-                {
-                  required: true,
-                  message: "Please enter armhole size",
-                  whitespace: true,
-                },
-                () => ({
-                  validator(_, value) {
-                    if (!value) {
-                      return Promise.reject();
-                    }
-                    if (value.length < 2) {
-                      return Promise.reject(
-                        "Armhole size should be atleast 2 characters long"
-                      );
-                    }
-                    return Promise.resolve();
-                  },
-                }),
-              ]}
+              // rules={[
+              //   {
+              //     required: true,
+              //     message: "Please enter armhole size",
+              //     whitespace: true,
+              //   },
+              //   () => ({
+              //     validator(_, value) {
+              //       if (!value) {
+              //         return Promise.reject();
+              //       }
+              //       if (value.length < 2) {
+              //         return Promise.reject(
+              //           "Armhole size should be atleast 2 characters long"
+              //         );
+              //       }
+              //       return Promise.resolve();
+              //     },
+              //   }),
+              // ]}
               hasFeedback
             >
               <Input className={customTailoredStyle.formInput} maxLength={50} />
@@ -394,26 +394,26 @@ function CustomTailoredForm() {
               label={
                 <label className={customTailoredStyle.label}>Armround</label>
               }
-              rules={[
-                {
-                  required: true,
-                  message: "Please enter armround size",
-                  whitespace: true,
-                },
-                () => ({
-                  validator(_, value) {
-                    if (!value) {
-                      return Promise.reject();
-                    }
-                    if (value.length < 2) {
-                      return Promise.reject(
-                        "Armround size should be atleast 2 characters long"
-                      );
-                    }
-                    return Promise.resolve();
-                  },
-                }),
-              ]}
+              // rules={[
+              //   {
+              //     required: true,
+              //     message: "Please enter armround size",
+              //     whitespace: true,
+              //   },
+              //   () => ({
+              //     validator(_, value) {
+              //       if (!value) {
+              //         return Promise.reject();
+              //       }
+              //       if (value.length < 2) {
+              //         return Promise.reject(
+              //           "Armround size should be atleast 2 characters long"
+              //         );
+              //       }
+              //       return Promise.resolve();
+              //     },
+              //   }),
+              // ]}
               hasFeedback
             >
               <Input className={customTailoredStyle.formInput} maxLength={50} />
@@ -423,26 +423,26 @@ function CustomTailoredForm() {
             <Form.Item
               name="waist"
               label={<label className={customTailoredStyle.label}>Waist</label>}
-              rules={[
-                {
-                  required: true,
-                  message: "Please enter waist size",
-                  whitespace: true,
-                },
-                () => ({
-                  validator(_, value) {
-                    if (!value) {
-                      return Promise.reject();
-                    }
-                    if (value.length < 2) {
-                      return Promise.reject(
-                        "waist size should be atleast 2 characters long"
-                      );
-                    }
-                    return Promise.resolve();
-                  },
-                }),
-              ]}
+              // rules={[
+              //   {
+              //     required: true,
+              //     message: "Please enter waist size",
+              //     whitespace: true,
+              //   },
+              //   () => ({
+              //     validator(_, value) {
+              //       if (!value) {
+              //         return Promise.reject();
+              //       }
+              //       if (value.length < 2) {
+              //         return Promise.reject(
+              //           "waist size should be atleast 2 characters long"
+              //         );
+              //       }
+              //       return Promise.resolve();
+              //     },
+              //   }),
+              // ]}
               hasFeedback
             >
               <Input className={customTailoredStyle.formInput} maxLength={50} />
@@ -456,26 +456,26 @@ function CustomTailoredForm() {
               label={
                 <label className={customTailoredStyle.label}>Low waist</label>
               }
-              rules={[
-                {
-                  required: true,
-                  message: "Please enter low waist size",
-                  whitespace: true,
-                },
-                () => ({
-                  validator(_, value) {
-                    if (!value) {
-                      return Promise.reject();
-                    }
-                    if (value.length < 2) {
-                      return Promise.reject(
-                        "Low waist size should be atleast 2 characters long"
-                      );
-                    }
-                    return Promise.resolve();
-                  },
-                }),
-              ]}
+              // rules={[
+              //   {
+              //     required: true,
+              //     message: "Please enter low waist size",
+              //     whitespace: true,
+              //   },
+              //   () => ({
+              //     validator(_, value) {
+              //       if (!value) {
+              //         return Promise.reject();
+              //       }
+              //       if (value.length < 2) {
+              //         return Promise.reject(
+              //           "Low waist size should be atleast 2 characters long"
+              //         );
+              //       }
+              //       return Promise.resolve();
+              //     },
+              //   }),
+              // ]}
               hasFeedback
             >
               <Input className={customTailoredStyle.formInput} maxLength={50} />
@@ -485,26 +485,26 @@ function CustomTailoredForm() {
             <Form.Item
               name="hips"
               label={<label className={customTailoredStyle.label}>Hips</label>}
-              rules={[
-                {
-                  required: true,
-                  message: "Please enter hips size",
-                  whitespace: true,
-                },
-                () => ({
-                  validator(_, value) {
-                    if (!value) {
-                      return Promise.reject();
-                    }
-                    if (value.length < 2) {
-                      return Promise.reject(
-                        "Hips size should be atleast 2 characters long"
-                      );
-                    }
-                    return Promise.resolve();
-                  },
-                }),
-              ]}
+              // rules={[
+              //   {
+              //     required: true,
+              //     message: "Please enter hips size",
+              //     whitespace: true,
+              //   },
+              //   () => ({
+              //     validator(_, value) {
+              //       if (!value) {
+              //         return Promise.reject();
+              //       }
+              //       if (value.length < 2) {
+              //         return Promise.reject(
+              //           "Hips size should be atleast 2 characters long"
+              //         );
+              //       }
+              //       return Promise.resolve();
+              //     },
+              //   }),
+              // ]}
               hasFeedback
             >
               <Input className={customTailoredStyle.formInput} maxLength={50} />
@@ -518,26 +518,26 @@ function CustomTailoredForm() {
               label={
                 <label className={customTailoredStyle.label}>Length</label>
               }
-              rules={[
-                {
-                  required: true,
-                  message: "Please enter length",
-                  whitespace: true,
-                },
-                () => ({
-                  validator(_, value) {
-                    if (!value) {
-                      return Promise.reject();
-                    }
-                    if (value.length < 2) {
-                      return Promise.reject(
-                        "Length should be atleast 2 characters long"
-                      );
-                    }
-                    return Promise.resolve();
-                  },
-                }),
-              ]}
+              // rules={[
+              //   {
+              //     required: true,
+              //     message: "Please enter length",
+              //     whitespace: true,
+              //   },
+              //   () => ({
+              //     validator(_, value) {
+              //       if (!value) {
+              //         return Promise.reject();
+              //       }
+              //       if (value.length < 2) {
+              //         return Promise.reject(
+              //           "Length should be atleast 2 characters long"
+              //         );
+              //       }
+              //       return Promise.resolve();
+              //     },
+              //   }),
+              // ]}
               hasFeedback
             >
               <Input className={customTailoredStyle.formInput} maxLength={50} />

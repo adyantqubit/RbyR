@@ -9,8 +9,8 @@
     width:100%;
     background:#323232;
     padding-top: 27vh;
-    max-height: 100vh;
-    overflow-y: scroll;
+    max-height: 150vh;
+    /* overflow-y: scroll; */
 }
 
 
@@ -39,8 +39,10 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    padding-top: 7vh;
     justify-content: space-around;
     background:#323232;
+    padding-bottom: 30vh;
     margin-bottom: 20vh;
 }
 
@@ -103,6 +105,7 @@
         font-weight: 600;
     }
     .contain{
+        padding-top: 5vh;
         margin-bottom: 7vh;
     }
  

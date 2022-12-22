@@ -9,7 +9,7 @@
     background:#323232;
     padding-top: 27vh;
     max-height: 100vh;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 }
 
 
@@ -41,7 +41,7 @@
     flex-direction: row;
     justify-content: space-around;
     background:#323232;
-    margin-bottom: 20vh;
+    /* margin-bottom: 20vh; */
 }
 
 .column{

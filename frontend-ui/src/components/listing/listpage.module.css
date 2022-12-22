@@ -112,7 +112,7 @@ justify-content: space-between;
 }
 
 .Container::-webkit-scrollbar{
- 
+ display:none;
 }
 
 .item{

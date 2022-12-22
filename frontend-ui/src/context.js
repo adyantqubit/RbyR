@@ -41,7 +41,7 @@ const Context = ({ children }) => {
   const [tempsprice, setTempsprice] = useState([])
   const [sizeSelected, setSizeSelected] = useState([])
   const [checkoutDetails, setCheckoutDetails] = useState({})
-  const [shippingflow, setShipingflow] = useState(true)
+  const [shippingflow, setShipingflow] = useState(false)
   const [paymentflow, setPaymentflow] = useState(false)
   const [defaultShiping, setDefaultShipping] = useState([])
   const [showEditable, setShowEditable] = useState(false)

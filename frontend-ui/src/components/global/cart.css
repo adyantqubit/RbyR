@@ -154,6 +154,7 @@ color:white
 }
 
 
+
 .carousel-control-next-icon{
     background-color: white;
     border-radius:30px;
@@ -190,6 +191,20 @@ opacity: 1;
  }
 
  @media print {
+    
+    #invoice{
+        width:100vw !important
+    }
+
+    #main{
+        width:100vw !important;
+    }
+
+    #header{
+        width: 90vw !important;
+        justify-content: space-between;
+    }
+
     body * {
       visibility: hidden;
     }
@@ -203,6 +218,7 @@ opacity: 1;
       left: 0;
       top: 0;
     }
+
   }
   
 

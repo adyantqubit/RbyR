@@ -9,7 +9,8 @@ const Chat = () => {
       };
   return (
     <div className="App" >
-    <Widget 
+    <Widget  title="Inbox"
+          subtitle="Typically replies within 20 minutes"
             handleNewUserMessage={handleNewUserMessage}
             />
   </div>
