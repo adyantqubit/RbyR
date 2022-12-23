@@ -61,12 +61,53 @@
 
 .responsive{
     /* position:relative; */
-    padding-top:23vh;
+    padding-top:153px;
     max-height: 100vh;
     overflow-y: scroll;
     overflow-x: hidden;
     
 }
+
+
+.shopbtn2{
+    width: 50%;
+    height: 40px;
+    text-align: center;
+    padding:7px 0;
+  
+    background-color: #323232;
+    color:white;
+    /* margin:5px; */
+    font-size: 13px;
+      cursor: pointer;
+      letter-spacing: 2px;
+      font-weight: 500;
+  
+      background-color: #323232;
+      color: white ;
+      text-align: center;
+      opacity: 1;
+      position: relative;
+      font-weight: normal;
+      text-transform: uppercase;
+      padding: 10px 18px;
+      -webkit-transition: all 250ms ease 0s;
+      -o-transition: all 250ms ease 0s;
+      transition: all 250ms ease 0s;
+      border-width: 2px;
+      border-style: solid;
+      border-color: #323232;
+      -webkit-border-image: initial;
+      -o-border-image: initial;
+      border-image: initial;
+      text-decoration: none;
+  }
+  
+  .shopbtn2:hover{
+    background-color: #fff;
+    color: #000;
+    border: 2px solid black;
+  }
 
 .responsive::-webkit-scrollbar{
 display:none;
@@ -215,6 +256,44 @@ border-color: white;
 }
 .userInfoButton:hover{
     background-color: black;
+}
+
+
+
+.userInfoButton3{
+    margin-top: 15px;
+    min-width: 250px;
+    font-size: 14px;
+    width: 50%;
+    cursor: pointer;
+    letter-spacing: 1.3px;
+    background-color: #323232;
+    color: white ;
+    text-align: center;
+    opacity: 1;
+    font-family: 'MyFont';
+    position: relative;
+    font-weight: normal;
+    outline: none;
+    text-transform: uppercase;
+    padding: 10px 18px;
+    -webkit-transition: all 250ms ease 0s;
+    -o-transition: all 250ms ease 0s;
+    transition: all 250ms ease 0s;
+    border-width: 2px;
+    border-color: #323232;
+    border-style: solid;
+    /* border-color: #323232; */
+    -webkit-border-image: initial;
+    -o-border-image: initial;
+    border-image: initial;
+    text-decoration: none;
+    /* border: none; */
+    border-radius: 0;
+}
+.userInfoButton3:hover{
+    background-color: white;
+    color:black
 }
 
 

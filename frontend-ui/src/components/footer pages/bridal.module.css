@@ -13,7 +13,7 @@
     width:100%;
     background:#323232;
     padding-top: 100px;
-    padding-top: 27vh;
+    padding-top: 30vh;
     max-height: 100vh;
     /* overflow-y: scroll; */
 }
@@ -92,6 +92,15 @@
 }
 .formInput{
     border: 1px solid gray;
+    background: #323232;
+    color: white;
+    min-height: 40px;
+    padding-left: 5px;
+}
+
+
+.formInput:focus{
+    outline:blue;
 }
 
 .formInputContainer{

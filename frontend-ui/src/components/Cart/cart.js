@@ -365,6 +365,39 @@ const CartSItem = (props) => {
     }
   }
 
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+  const [drawerwidth, setDrawerwidth] = useState(600)
+
+
+  useEffect(() => {
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
+    }
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+
+
+  }, [window.innerWidth]);
+
+  function getWindowSize() {
+    const { innerWidth, innerHeight } = window;
+    return { innerWidth, innerHeight };
+  }
+
+  useEffect(() => {
+    if (windowSize.innerWidth < 500)
+      setDrawerwidth(360)
+    else if (windowSize.innerWidth < 800)
+      setDrawerwidth(450)
+    else if (windowSize.innerWidth > 800)
+      setDrawerwidth(600)
+
+
+  }, [windowSize])
+
 
 
   return (
@@ -386,8 +419,10 @@ const CartSItem = (props) => {
             return (
               <div style={{borderBottom:"1px solid #f2f2f2",marginBottom:"25px"}}>
                 {result ? <div style={{ width: "100%", marginBottom: "20px", paddingLeft: "15px", display: "flex", background: 'WHITE' }}>
-
-                  <img src={config.apiBaseURL + pro.img_main} className={styles.column1} onClick={e => openDetail(pro)}></img>
+                   
+                   <div className={styles.column1}>
+                  <img src={config.apiBaseURL + pro.img_main} style={{width:"100%"}} onClick={e => openDetail(pro)}></img>
+                   </div>
                   <div className={styles.column2}>
 
 
@@ -433,11 +468,13 @@ const CartSItem = (props) => {
 
                   </div>
                 </div> : <div style={{ width: "100%", marginBottom: "20px", paddingLeft: "15px", display: "flex", background: "white" }}>
+                <div className={styles.column1}>
 
-                  <img src={config.apiBaseURL + pro.img_main} className={styles.column1} onClick={e => openDetail(pro)}></img>
+                  <img src={config.apiBaseURL + pro.img_main} style={{width:"100%"}} onClick={e => openDetail(pro)}></img>
+                  </div>
                   <div className={styles.column2}>
-                    <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                      <h3 className={style.heading} style={{ width: "80%", color: "black", fontSize: "16px", lineHeight: "26px", letterSpacing: "2.5px" }}>{pro.title}</h3>
+                    <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>{console.log(windowSize)}
+                      <h3 className={style.heading} style={{ maxWidth: "80%", color: "black", fontSize: "16px",whiteSpace: windowSize.innerWidth<768?"nowrap":"normal", lineHeight: "26px", letterSpacing: "2.5px", overflow: windowSize.innerWidth<768?"hidden":"none",textOverflow: windowSize.innerWidth<768?"ellipsis":"normal" }}>{pro.title}</h3>
                       {/* <span className={style.delete} style={{fontSize:"32px",alignSelf:"start"}} onClick={e=>cartSave(pro)}>x</span> */}
                       <Popconfirm placement="bottomLeft" title={text} onConfirm={e => confirm(pro)} okText="OK" cancelText="Cancel">
                       <MdClose fontSize={24}  className={style.delete}/>
@@ -560,7 +597,7 @@ const CartSItem = (props) => {
                 </div> : null}
 
                 <div className={style.subTotal} style={{ marginTop: "10px",paddingTop:"15px",borderTop:"1px solid #f2f2f2" }}>
-                  <span style={{ marginLeft: "15px", fontWeight: "600" }}>Total</span>
+                  <span style={{ marginLeft: "15px", fontWeight: "600",fontSize:"20px" }}>Total</span>
                   <span style={{ fontSize: "20px", fontWeight: "600", marginRight: "15px", fontSize: "21px", lineHeight: "32px", letterSpacing: "3px" }}>{currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).Grand * currency.value).toFixed(2)}</span>
                 </div>
 
@@ -624,14 +661,15 @@ const CartSItem = (props) => {
       <div className={styles.sliderShow} style={{marginTop:"-80px"}}>
 
         <div style={{ width: "100%", display: "flex", justifyContent: 'center', background: "white" }}>
-          <div style={{ width: "100vw", height: "90vh", marginBottom: "50px", background: "white", zIndex: "0" }}>
-            {JSON.parse(localStorage.getItem("recentview")) && JSON.parse(localStorage.getItem("recentview")).length > 0 ?
+        {JSON.parse(localStorage.getItem("recentview")) && JSON.parse(localStorage.getItem("recentview")).length > 0 ?
+           <div style={{ width: "100vw", height: "90vh", marginBottom: "50px", background: "white", zIndex: "0" }}>
+     
               <>
                 <Slider />
               </>
-              : null
-            }
-          </div>
+             
+          </div> : null
+        }
         </div>
         <div className={styles.foot}>
           <Footer />

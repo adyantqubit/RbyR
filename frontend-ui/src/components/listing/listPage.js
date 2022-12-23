@@ -46,9 +46,9 @@ const ListPage = () => {
 
     console.log("on reload change call___", reload, CategoryProduct)
     if (reload == false) {
+      
       PageLoad()
       Apicall()
-      setNullPage(true)
     }
 
   }, [reload])
@@ -58,8 +58,10 @@ const ListPage = () => {
   //  Jira issue- RBYR229
 
   useEffect(() => {
+    setNullPage(false)
     setReload(true)
     ApiReSet()
+
     document.getElementById('scrolled').scrollTop = 0
     
   }, [category, htl, lth, availablitySelect, latestSelect])
@@ -75,6 +77,8 @@ const ListPage = () => {
 
 
   async function ApiReSet() {
+    
+
     console.log("On category change call-----------", CategoryProduct, reload)
     setPageIndex(0)
     setCategoryProduct([])
@@ -218,8 +222,6 @@ const ListPage = () => {
       setoldScroll(e.target.scrollTop)
     }
 
-
-
   }
 
   async function PageLoad() {
@@ -228,7 +230,7 @@ const ListPage = () => {
   }
 
 
-  const[nullpage,setNullPage]=useState(true)
+  var[nullpage,setNullPage]=useState(false)
 
   async function Apicall() {
    
@@ -249,13 +251,16 @@ const ListPage = () => {
       console.log("response from backend_______", r)
       setTimeout(() => {
         if (r.error) {
+
+          
           setReload(false);
           setLoading(false);
-          setNullPage(false)
 
+          if(CategoryProduct.length==0)
+          setNullPage(true)
         }
         else {
-         setNullPage(false)
+         
           console.log(CategoryProduct)
           setAllCategoryAvai([...r.categories])
           setCategoryProduct([...CategoryProduct, ...r.products])
@@ -268,12 +273,6 @@ const ListPage = () => {
     })
   }
 
-
-  useEffect(()=>{
-    if(CategoryProduct.length>0){
-      setNullPage(false)
-    }
-  },[CategoryProduct])
 
 
   return (
@@ -340,23 +339,23 @@ const ListPage = () => {
             </div>
 
           )) :
-          nullpage ?
-            <div style={{ width: "100%", background: "white" }}>
-              <div class="centered">
-                <div class="blob-1"></div>
-                <div class="blob-2"></div>
-              </div>
-            </div> : 
-            <div style={{ width: "100%", textAlign: "center" }}>
-              <div className={style.noresult} style={{ width: "100%", textAlign: "center" }}>No products found !</div>
-              <span style={{ fontSize: "14px" }}>
-                Please change Your search criteria and try again.
-                If still not finding anything relevant,
-                please visit the Home page and try out some of our bestsellers!
-              </span>
-            </div>
+           nullpage?null:<div style={{ width: "100%", background: "white" }}>
+           <div class="centered">
+             <div class="blob-1"></div>
+             <div class="blob-2"></div>
+           </div>
+         </div> 
           }
 
+          {nullpage ?
+          <div style={{ width: "100%", textAlign: "center" }}>
+          <div className={style.noresult} style={{ width: "100%", textAlign: "center" }}>No products found !</div>
+          <span style={{ fontSize: "14px" }}>
+            Please change Your search criteria and try again.
+            If still not finding anything relevant,
+            please visit the Home page and try out some of our bestsellers!
+          </span>
+        </div>:null}
 
         </div>
 

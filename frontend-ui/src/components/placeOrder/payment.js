@@ -7,6 +7,7 @@ import { CartState } from '../../context';
 import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing';
 import { getToken } from '../../Redux-manage/services/localStorageService';
 import * as Icon from "react-icons/fi";
+import style from "../global/cartCard.module.css"
 import styles from './order.module.css'
 import { IoMdCheckmark } from 'react-icons/io'
 import Checkbox from "react-custom-checkbox";
@@ -19,6 +20,8 @@ const Payment = () => {
   const [billingInfo, setBillingInfo] = useState(true)
   const [required,setRequired]=useState(false)
 
+  const [buttonchng,setButtonchange]=useState(false)
+
   const { access_token, refresh_token } = getToken()
 
 
@@ -29,6 +32,7 @@ const Payment = () => {
       checkoutDetails['payment'] = "cod"
       document.getElementById('cash').style.border = "1px solid black"
       document.getElementById('online').style.border = "1px solid black"
+      setButtonchange(true)
       tickop = false
       setTickop(tickop)
     }
@@ -43,6 +47,8 @@ const Payment = () => {
       checkoutDetails['payment'] = "onlinepay"
       document.getElementById('cash').style.border = "1px solid black"
       document.getElementById('online').style.border = "1px solid black"
+      setButtonchange(true)
+
       tick = false;
       setTick(tick)
     }
@@ -182,7 +188,7 @@ const Payment = () => {
       </div>
 
 
-      <button className={styles.userInfoButton} onClick={e => cartChecking()}>
+      <button className={buttonchng? styles.userInfoButton3 :styles.userInfoButton} style={{margin:"15px 5px",width:"300px",minHeight:"50px"}} onClick={e => cartChecking()}>
         PLACE YOUR ORDER
       </button>
     </div>)

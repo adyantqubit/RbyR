@@ -1,5 +1,5 @@
 import { Button, Drawer } from "antd";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { CartState } from "../../context";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 import LikeCard from "./likeCard";
@@ -20,6 +20,39 @@ const LikeDrawer = () => {
     setLikeDrawer(false);
   };
 
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+  const [drawerwidth,setDrawerwidth]=useState(600)
+
+
+  useEffect(() => {
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
+    }
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+
+
+  }, [window.innerWidth]);
+
+  function getWindowSize() {
+    const {innerWidth, innerHeight} = window;
+    return {innerWidth, innerHeight};
+  }
+
+  useEffect(()=>{
+    if(windowSize.innerWidth<500)
+     setDrawerwidth(330)
+   else if(windowSize.innerWidth<800)
+     setDrawerwidth(450)
+    else if(windowSize.innerWidth>800)
+    setDrawerwidth(600)
+
+    
+  },[windowSize])
+
   return (
     <>
       {/* <Button type="primary" onClick={showDrawer}>
@@ -34,8 +67,8 @@ const LikeDrawer = () => {
       Reason - To show wishlist title instead of likes */}
       {/* <Drawer width={600} title="Likes" placement="right" onClose={onClose} open={openLikedrawer}></Drawer> */}
       <Drawer
-        width={window.innerWidth > 768 ? 650 : "100%"}
-        title={<div className="likeTitle" style={{minWidth:"300px",textAlign:"start"}}>Wishlist</div>}
+        width={drawerwidth}
+        title={<div className="likeTitle">Wishlist</div>}
         // title="Wishlist"
         placement="right"
         onClose={onClose}

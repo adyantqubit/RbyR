@@ -12,7 +12,7 @@
   line-height: 26px;
   letter-spacing: 2.5px;
   margin-left: 15px;
-  width: 90%;
+  width:85%;
    font-family: 'MyFont' !important;
 }
 
@@ -54,7 +54,7 @@
 .quantity{
   width:auto;
   display: flex;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   color:#444
 }
@@ -209,7 +209,7 @@
 }
 
 .gaping{
-  height:100px;
+  height:50%;
   display:flex;
   flex-direction:column;
 }
@@ -377,12 +377,13 @@
 
   .column1{
     max-width:30%;
+    padding:0 10px;
     max-height: 220px;
   }
 
   .column2{
     width:65%;
-    max-height: 210px;
+    /* max-height: 210px; */
     display:flex;
     flex-direction:column;
   }
@@ -392,7 +393,7 @@
 
     .gaping{
     
-      height: 30px;
+      height: 15px;
 
     }
 
@@ -409,12 +410,13 @@
     }
 
     .column1{
-      min-width:40%;
+      min-width:30%;
       /* height: 70%; */
+      padding: 0px;
     }
   
     .column2{
-      width:55%;
+      width:65%;
       display:flex;
       flex-direction:column;
     }
@@ -425,10 +427,14 @@
       font-size: 15px;
       line-height: 20px;
       letter-spacing: 1.5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
        font-family: 'MyFont' !important;
     }
 
     .buttons{
+      margin-top:-25px;
       padding: 30px 15px;
       display: flex;
       flex-direction: column-reverse;
@@ -444,6 +450,22 @@
     .shopbtn2{
       width: 100%;
       margin:5px;
+    }
+
+    .subTotal{
+      font-size: 14px;
+      line-height: 22px;
+      letter-spacing: 1.2px;
+    }
+
+    .quantity{
+       font-weight: 500;
+       font-size: 14px;
+    }
+
+    .showSize{
+      font-weight: 500;
+      font-size: 14px;
     }
 
   }

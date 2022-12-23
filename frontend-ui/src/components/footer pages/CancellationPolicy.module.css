@@ -8,7 +8,7 @@
     height: auto;
     width:100%;
     background:#323232;
-    padding-top: 27vh;
+    padding-top: 24vh;
     max-height: 150vh;
     /* overflow-y: scroll; */
 }
@@ -62,7 +62,7 @@
     line-height: 32px;
     letter-spacing: 3px;
     font-family: 'MyFont';
-    font-weight: 600;
+    font-weight: 500;
     margin: 0;
     color: #fff;
     margin-top: 5px;

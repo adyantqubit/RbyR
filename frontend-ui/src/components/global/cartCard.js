@@ -251,8 +251,10 @@ const CartCard = (props) => {
       {cart.length > 0 ? cart.map(pro => (
 
         <>
-          <div style={{ width: "100%", height: "auto", marginBottom: "20px", paddingLeft: "15px", display: "flex" }}>
-            <img src={config.apiBaseURL + pro.img_main} className={styles.column1} onClick={e => openDetail(pro)}></img>
+          <div style={{ width: "100%", height: "auto", marginBottom: "30px", paddingLeft: "15px", display: "flex" }}>
+          <div className={styles.column1}>
+            <img src={config.apiBaseURL + pro.img_main} style={{width:"100%"}} onClick={e => openDetail(pro)}></img>
+          </div>
             <div className={styles.column2} >
               <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                 <h3 className={styles.heading}>{pro.title}</h3>

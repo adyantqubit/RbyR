@@ -362,7 +362,6 @@ order_status=(
     ("arrived","Arrived"),
     ("out_for_delivery","Out For Delivery"),
     ("delivered","Delivered"),
-    ("cancel","Cancel")
 )
          
 class product_orders(models.Model):
@@ -687,15 +686,21 @@ class Bridal(models.Model):
 class BridalForm(models.Model):
     firstName=models.CharField(max_length=255)
     lastName=models.CharField(max_length=255)
-    email=models.CharField(max_length=255)
+    email=models.CharField(max_length=255,blank=True,null=True)
     contactNumber=models.IntegerField()
     zipCode=models.IntegerField()
     message=models.TextField()
-    dateOfWedding=models.DateTimeField()
+    dateOfWedding=models.DateField(blank=True,null=True)
     termsAndCondition=models.BooleanField()
+    
+    # Added by Rohan -22/12/22-2022
+    #Reason - To remove time from date and time field
+    def get_date(self):
+        return self.modified.date()
 
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
+    
     def __str__(self):
         return "Bridal request received from - "+self.firstName+" "+self.lastName
     class Meta:

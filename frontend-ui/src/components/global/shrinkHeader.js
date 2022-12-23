@@ -95,8 +95,8 @@ const ShrinkHeader = () => {
 
   return (
     <div className={style.responsiveHeader}>
-      <div className={style.topText}>FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT +
-      <a href={`https://wa.me/${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} className={style.number} >{whatsappContactNumber?whatsappContactNumber:"Not Added"}</a></div>
+      <div className={style.topText}>FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT +91
+      <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} className={style.number} >{whatsappContactNumber?whatsappContactNumber:"Not Added"}</a></div>
 
 
       <div className={style.headerContainer}>
@@ -119,7 +119,7 @@ const ShrinkHeader = () => {
             </div>
             <div className={style.headerMenuitem} >
               <a
-                href={`https://wa.me/${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
+                href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
               >
                 <BsWhatsapp className={styles.icons} fontSize={24} />
               </a>

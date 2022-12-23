@@ -120,9 +120,9 @@ const Navbar = () => {
 		<div style={{width:"100%"}}>
 		<div className={style.contain} style={{borderBottom:"1px solid white"}}>
       <div style={{background:"#000",color:"white",display:"flex",minHeight:"25px",justifyContent:"center",fontSize:".75rem",letterSpacing:".6px",fontStyle:"bold",fontWeight:"600"}}>
-        <a href={`https://wa.me/${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} 
+        <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} 
         style={{textDecoration:"none",textTransform:"uppercase",outline:"none",color:"white",fontSize:".75rem",fontWeight:"300",marginTop:"8px"}}>
-          FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT | +
+          FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT | +91 
           {whatsappContactNumber?whatsappContactNumber:" Not added"}
           </a>
         </div>
@@ -177,7 +177,7 @@ const Navbar = () => {
                 <div className={style.system}>
                   <div><Search className={style.icons}/></div>
                   <div>
-                    <a href={`https://wa.me/${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}>
+                    <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}>
                       <BsWhatsapp className={style.icons}/>
                     </a>
                   </div>

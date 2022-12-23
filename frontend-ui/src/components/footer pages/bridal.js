@@ -39,7 +39,8 @@ const Bridal = () => {
   };
 
   const saveBridalDetails =async (formData)=> {
-    
+    var sub=document.getElementById('date').value
+    console.log(sub)
     const bridalDetail ={
       firstName:formData.firstName,
       lastName:formData.lastName,
@@ -47,9 +48,13 @@ const Bridal = () => {
       zipCode:formData.zipCode,
       message:formData.message,
       contactNumber:formData.contactNumber,
-      dateOfWedding:formData.dateOfWedding,
+      dateOfWedding:document.getElementById('date').value?document.getElementById('date').value:null,
       termsAndCondition:formData.termsAndConditions
     }
+
+          // dateOfWedding:formData.dateOfWedding,
+
+
     const bridalPostResponse= await postBridalDetails(bridalDetail);
     if(bridalPostResponse){
       if(bridalPostResponse.msg){
@@ -60,7 +65,7 @@ const Bridal = () => {
           onClick: () => {
           },
         });
-        bridalForm.resetFields();
+        // bridalForm.resetFields();
       }else{
         notification.open({
           message: 'Message',
@@ -187,14 +192,14 @@ const Bridal = () => {
                 name="email"
                 label={<label style={{ color: "#fff",fontWeight:"500" }}>E-mail address</label>}
                 
-                rules={[
-                  {
-                    required: true,
-                    type: "email",
-                    message: "Please enter your email address",
-                    whitespace: true,
-                  }
-                ]}
+                // rules={[
+                //   {
+                //     required: true,
+                //     type: "email",
+                //     message: "Please enter your email address",
+                //     whitespace: true,
+                //   }
+                // ]}
                 hasFeedback
               >
                 <Input  className={style.formInput} maxLength={50} />
@@ -262,7 +267,7 @@ const Bridal = () => {
                 ]}
                 hasFeedback
               >
-                <TextArea className={style.formInput} rows={4}  maxLength={255} />
+                <TextArea className={style.formInput} rows={4} style={{paddingLeft: "0px"}}  maxLength={255} />
               </Form.Item>
 
             </div>
@@ -335,21 +340,26 @@ const Bridal = () => {
                 <Input className={style.formInput} maxLength={10} />
               </Form.Item>
 
-              <Form.Item
+              {/* <Form.Item
                 name="dateOfWedding"
                 label={<label style={{ color: "#fff" ,fontWeight:"500"}}>Date of wedding</label>}
                
-                rules={[
-                  {
-                    required: true,
-                    message: "Please enter your wedding date",
+                // rules={[
+                //   {
+                //     required: true,
+                //     message: "Please enter your wedding date",
                     
-                  },
-                ]}
+                //   },
+                // ]}
                 hasFeedback
               >
                 <DatePicker disabledDate={d => !d  || d.isSameOrBefore(Date()) } className={style.formInput} maxLength={50} />
-              </Form.Item>
+              </Form.Item> */}
+              
+              <label style={{ color: "#fff" ,fontWeight:"500"}}>Date of wedding</label>              
+              <input type="date" id="date" className={style.formInput} style={{marginBottom:"20px"}}/>
+
+
               <Form.Item
                 name="termsAndConditions"
                 valuePropName="checked"

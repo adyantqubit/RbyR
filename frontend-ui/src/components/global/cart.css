@@ -153,7 +153,15 @@ color:white
 
 }
 
+.ant-drawer-body::-webkit-scrollbar{
+    display: none;
+}
 
+@media screen and (max-width: 800px){
+.rcw-widget-container {
+    height: 70vh !important;
+
+}}
 
 .carousel-control-next-icon{
     background-color: white;

@@ -6,6 +6,10 @@ Jira issue no - RBYR -141 */
   height:1.1rem;
 }
 .ant-drawer-close{
-  width: 100% !important;
+  /* width: 100% !important; */
   text-align: right;
+}
+
+.ant-drawer-header {
+  border-bottom: none;
 }

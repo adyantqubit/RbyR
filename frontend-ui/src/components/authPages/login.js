@@ -227,10 +227,10 @@ const Login = () => {
 					</Popup>:null} */}
 					{/* </span> */}
                     <div style={{fontSize:"14px",color:"white",marginLeft:"15%"}}>Password *</div>
-					<span class="inpu3" style={{marginBottom:"0"}}>
-						<span class="inpu4">
+					<span class="inpu3" style={{marginBottom:"0",flexDirection:"column",height:"auto",paddingLeft:"0px",gap:"10px"}}>
+						<span class="inpu4" style={{width:"100%"}}>
 							<input class="inpu4" type={showNewPass2?"text":"password"} name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-						 required style={{width:"80%"}} 
+						 required style={{width:"90%"}} 
 						 onChange={e=>{if(e.target.value.length>0)setVisiblePassreg2(true); else setVisiblePassreg2(false)}}/>
 						 {/* {server_error.password?<Popup trigger={<button style={{border:"white",background:"#e0dede"}} >{server_error.password?<i class="fa-solid fa-circle-exclamation" style={{color:"red",marginTop:"8px"}}/>:null}</button>} 
 							defaultOpen={true}
@@ -239,8 +239,8 @@ const Login = () => {
 							</Popup>:null} */}
 			             {visiblepassReg2?showNewPass2?<AiFillEye style={{marginTop:"5px"}} onClick={e=>setNewPass2(false)}/>:<AiFillEyeInvisible style={{marginTop:"5px"}} onClick={e=>setNewPass2(true)}/>:null}
 						</span>
-						<span class="inpu4" style={{justifyContent:"start",paddingLeft:"5px"}}>
-							<input class="inpu4" type={showNewPass?"text":"password"} name="pswd2" placeholder="Confirm Password"   required style={{width:"92%",paddingLeft:"2px"}} onChange={e=>{if(e.target.value.length>0)setVisiblePassreg(true); else setVisiblePassreg(false)}}/>
+						<span class="inpu4" style={{width:"100%"}}>
+							<input class="inpu4" type={showNewPass?"text":"password"} name="pswd2" placeholder="Confirm Password"   required style={{width:"90%"}} onChange={e=>{if(e.target.value.length>0)setVisiblePassreg(true); else setVisiblePassreg(false)}}/>
 							{/* {server_error.password2?<Popup trigger={<button style={{border:"white",background:"#e0dede"}} >{server_error.name?<i class="fa-solid fa-circle-exclamation" style={{color:"red",marginTop:"8px"}}/>:null}</button>} 
 							defaultOpen={true}
 							position="top center">
@@ -278,22 +278,23 @@ const Login = () => {
 			<div class="logi">
 				<form onSubmit={handleSubmit}>
 
-					<label class="labe" htmlFor="ch" aria-hidden="true" tabIndex={-1}>Login</label>
-					{error.none_field_errors? <Alert severity="error"  style={{margin:"0 45px"}}>{error.none_field_errors[0]}</Alert>:" "}
+					<label class="labe" htmlFor="ch" aria-hidden="true" tabIndex={-1} onClick={e=>window.scrollTo(0,0)}>Login</label>
+					{/* {error.none_field_errors? <Alert severity="error"  style={{margin:"0 45px"}}>{error.none_field_errors[0]}</Alert>:" "} */}
 
 					<input class="inpu"type="email" tabIndex={-1} style={{marginBottom:"0"}} name="email" placeholder="E-mail*" required=""/>
 					{error.email?<Typography style={{color:"red",paddingLeft:"50px",fontSize:"12px",}}>{error.email[0]}</Typography>:" "}
+					{error.none_field_errors? <Typography style={{color:"red",paddingLeft:"50px",fontSize:"12px",}}>{error.none_field_errors[0]}</Typography>:" "}
 
-                    <span class="inpu3" tabIndex={-1} style={{marginTop:"20px",marginLeft:"15%",background:"#e0dede"}}>
-					<input class="inpu4" tabIndex={-1} type={showNewPass3?"text":"password"} style={{width:"90%",background:"rgba(0,0,0,0)"}} name="pswd" placeholder="Password*" required="" onChange={e=>{if(e.target.value.length>0)setVisiblePassreg3(true); else setVisiblePassreg3(false)}}/>
-					{visiblepassReg3?showNewPass3?<AiFillEye style={{marginTop:"5px"}} onClick={e=>setNewPass3(false)}/>:<AiFillEyeInvisible style={{marginTop:"5px"}} onClick={e=>setNewPass3(true)}/>:null}
+                    <span class="inpu3" tabIndex={-1} style={{marginTop:"20px",height:"40px",marginLeft:"15%",background:"#e0dede"}}>
+					<input class="inpu4" tabIndex={-1} type={showNewPass3?"text":"password"} style={{width:"90%",background:"rgba(0,0,0,0)",height:"40px"}} name="pswd" placeholder="Password*" required="" onChange={e=>{if(e.target.value.length>0)setVisiblePassreg3(true); else setVisiblePassreg3(false)}}/>
+					{visiblepassReg3?showNewPass3?<AiFillEye style={{marginTop:"10px",marginRight:"5px"}} onClick={e=>setNewPass3(false)}/>:<AiFillEyeInvisible style={{marginTop:"10px",marginRight:"5px"}} onClick={e=>setNewPass3(true)}/>:null}
 					</span>
 					{error.password?<Typography style={{color:"red",paddingLeft:"50px",fontSize:"12px"}}>{error.password[0]}</Typography>:" "}
 					<Link to='/sendemail' tabIndex={-1} style={{marginLeft:"50%",fontSize:"1em",color:"blue"}} class="underlineput">Forgot Password ?</Link>
 
 					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button tabIndex={-1} class="butto" type='submit'>Login</button>}
 					<label tabIndex={-1} style={{width:"100%",textAlign:"center"}}>OR</label>
-					<label tabIndex={-1} class="labe underlineput" style={{}} htmlFor="ch" aria-hidden="true">Signup</label>
+					<label tabIndex={-1} class="labe underlineput" style={{}} htmlFor="ch" aria-hidden="true" onClick={e=>window.scrollTo(0,0)}>Signup</label>
 
 				</form>
 			</div>

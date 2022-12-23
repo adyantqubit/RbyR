@@ -373,7 +373,7 @@ const Details = (props) => {
 
   return (
 
-    <div style={{ maxHeight: "100vh" }} id="scrolling"  >
+    <div style={{ maxHeight: "100vh",background:"#f2f2f2" }} id="scrolling"  >
 
       <Navbar />
 

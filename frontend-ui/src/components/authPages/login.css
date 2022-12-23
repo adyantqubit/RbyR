@@ -156,11 +156,11 @@
 }
 .logi{
 	width: 80%;
-	height: 102%;
+	height: 105%;
 	margin:0 auto;
 	background: #eee;
 	border-radius: 60% / 10%;
-	transform: translateY(-90%);
+	transform: translateY(-92%);
 	transition: .8s ease-in-out;
 }
 .logi .labe{

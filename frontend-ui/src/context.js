@@ -94,15 +94,20 @@ const Context = ({ children }) => {
         key: 1
       });
     }
-    if (access_token) {
-      setInterval(TokenManage, 360000)
-    }
+
+ if (localStorage.getItem("access_token")) {
+    setInterval(TokenManage, 360000)
+  }
+   
+
     if (JSON.parse(window.localStorage.getItem('cart')) && (!localStorage.getItem('access_token')))
       setCart([...JSON.parse(window.localStorage.getItem('cart'))])
     if (JSON.parse(window.localStorage.getItem('cart')) && (!localStorage.getItem('access_token')))
       setLike([...JSON.parse(window.localStorage.getItem('like'))])
 
   }
+
+ 
 
 
   useEffect(() => {
@@ -133,6 +138,8 @@ const Context = ({ children }) => {
 
 
   async function TokenManage(int) {
+
+    console.log("token manage")
     const data = {
       "refresh": localStorage.getItem('refresh_token')
     }

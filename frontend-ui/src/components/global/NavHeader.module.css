@@ -60,7 +60,8 @@
     position:fixed;
     width: 100%;
     z-index: 10;
-    height: 23vh;
+    
+    height: 153px;
    }
 
 /* NAVBAR STYLING STARTS */
@@ -94,7 +95,7 @@
    }
 
    .logo img{
-    width: 15%;
+    /* width: 15%; */
     height: 100%;
 }
 
@@ -153,6 +154,7 @@
    .cart{
     position:relative;
     top:10px;
+    min-width: 20px;
    }
 
    .dropdown li + li {
@@ -317,7 +319,17 @@ input[type=checkbox]:checked ~ .menu{
 	cursor: pointer;
   }
   
- 
+  .action2 .profile {
+    position: relative;
+    font-size: 23px;
+  
+    overflow: hidden;
+    cursor: pointer;
+    }
+
+    .action2 .menu2{
+      display: none;
+    }
   
   
   .action .menu2 {
@@ -335,7 +347,7 @@ input[type=checkbox]:checked ~ .menu{
 
   .action:hover .menu2{
     display: block;
-    top:22vh;
+    top:150px;
     right:10px;
     opacity: 1;
 

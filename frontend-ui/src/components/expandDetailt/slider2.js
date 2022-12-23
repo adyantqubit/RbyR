@@ -67,7 +67,8 @@ const Slider2 = ({scrollTop}) => {
         <Carousel cols={4} rows={1} gap={10} style={{ width: "100%" }} >
           {CategoryProduct
             ? CategoryProduct.map((cart, i) => {
-                 
+                // commented by Rohan - 21/12/22 
+                //Reason i have to not show same 
               if(cart.id!=id)
                   return (
                     <Carousel.Item>

@@ -215,7 +215,7 @@ const InsideOrder = () => {
             <div className={style.column2}>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div className={style.column2header}>
-                  MY ORDERS #{orderid}
+                  MY ORDERS {orderid}
                 </div>
                 <div className={style.column2header1} style={{ whiteSpace: "nowrap", textAlign: 'end', color: "#8c8c8cc", textDecoration: "underline", fontSize: "14px", cursor: "pointer" }} onClick={cartAdd}>
                   REORDER
@@ -309,7 +309,7 @@ const InsideOrder = () => {
                 </div>
 
 
-                <div style={{ width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", flexWrap: "wrap", marginTop: '100px', gap: "20px" }}>
+                <div style={{ width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", flexWrap: "wrap", marginTop: '150px', gap: "20px" }}>
 
                   <div className={styles.addressInformation} style={{ minWidth: "150px", maxWidth: "150px" }}>
                     <div ><span className={styles.userinfoText} >Shipping Address</span></div>
