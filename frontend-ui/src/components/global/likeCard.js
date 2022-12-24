@@ -12,10 +12,10 @@ import { getToken } from "../../Redux-manage/services/localStorageService";
 import config from "../../api/config";
 import styles from "./cartCard.module.css";
 import { TiDeleteOutline } from "react-icons/ti";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LikeCard = (props) => {
-  const { like, setLike,currency } = CartState();
+  const { like, setLike,currency ,setLikeDrawer} = CartState();
   let { access_token } = getToken();
   const [saveLikeApi, { isLoading }] = useLikedUpdateMutation();
 
@@ -78,7 +78,7 @@ const LikeCard = (props) => {
         <div className={style.emptyWishList}>
           <span>Your wishlist is empty.</span>
           <br></br>
-          <span className={style.para}>Don't hesitate and browse our catalog to find something beautiful for You!</span>
+          <span className={style.para}>Don't hesitate and <Link to="/" className={style.para2} onClick={e=>setLikeDrawer(false)}>browse our catalog</Link> to find something beautiful for You!</span>
 
         </div>
       )}

@@ -115,7 +115,7 @@ class User(AbstractBaseUser):
         unique=True,
     )
     name = models.CharField(max_length=200)
-    contact_number=models.IntegerField(validators=[validate_phone_number])
+    contact_number=models.CharField(max_length=20,validators=[validate_phone_number])
     tc=models.BooleanField()
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
@@ -323,7 +323,7 @@ class usershippingDetail(models.Model):
     state=models.CharField(max_length=30)
     zipcode=models.CharField(max_length=20)
     country=models.CharField(max_length=30)
-    number=models.IntegerField()
+    number=models.CharField(max_length=20)
     isSelected=models.BooleanField(default=False)
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
@@ -344,7 +344,7 @@ class userbillingDetail(models.Model):
     state=models.CharField(max_length=30)
     zipcode=models.CharField(max_length=20)
     country=models.CharField(max_length=30)
-    number=models.IntegerField() 
+    number=models.CharField(max_length=20) 
      
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name

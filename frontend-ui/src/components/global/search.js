@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import {  BsSearch } from "react-icons/bs";
 import {AiOutlineClosee} from 'react-icons/ai'
 import {GrClose} from 'react-icons/gr'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import config from "../../api/config";
 import { getSearchedProducts } from "../../api/service";
 import { CartState } from "../../context";
@@ -14,12 +14,11 @@ import { notification } from "antd";
 const Search = () => {
   notification.destroy()
   const [open, setOpen] = useState(false);
-  const { product ,currency} = CartState();
+  const { product ,currency,filteredPersons, setFilteredPersons} = CartState();
 
 // Added by Ashish dewangan on 18-11-2022
 // Reason - to have cross button on search icon more width
 // Jira issue no - RBYR -141
-  const [filteredPersons, setFilteredPersons] = useState([]);
   const [msg,setMsg]=useState(null);
 
   function searchProductAfterEnterPressed(event) {
@@ -50,7 +49,7 @@ const Search = () => {
   };
 
   const onClose = () => {
-    document.getElementById("searchBox").value="";
+    // document.getElementById("searchBox").value="";
     setFilteredPersons([]);
     setMsg(null)
     setOpen(false);
@@ -128,13 +127,13 @@ const Search = () => {
               {filteredPersons.map((p) => {
                 return (
                   <div className={styles.item}>
-                    <a href={`/listing/${p.category}/detail/${p.id}`}>
+                    <Link to={`/listing/${p.category}/detail/${p.id}`}>
                       <img
                         className={styles.searchedImage}
                         src={config.apiBaseURL + p.img_main}
                         onClick={(e) => openDetail(p)}
                       ></img>
-                    </a>
+                    </Link>
                     <div className={styles.title}>
                       <span>{p.title}</span>
                     </div>

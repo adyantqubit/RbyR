@@ -99,6 +99,10 @@ justify-content: space-between;
  flex-wrap: wrap;
 }
 
+/* .img{
+  height: 400px;
+} */
+
 .slab{
   margin-top:-2px;
   min-height: 300px;

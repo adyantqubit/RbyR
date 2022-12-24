@@ -12,6 +12,8 @@ import styles from "../placeOrder/order.module.css"
 import { CartState } from '../../context'
 import { shippingTick } from '../../api/orderApis'
 import list from '../placeOrder/data.json'
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 
 import {AiOutlineClose} from 'react-icons/ai'
@@ -82,6 +84,8 @@ const handleButtonClicknum = (msg) => {
       
     }
 
+    console.log(shippingAddress)
+
     function jumpToEdit(){
         setDefaultShipping(shippingAddress.filter(s=>s.isSelected==true)[0])
         setshipEditCond(!shipEditcond)
@@ -109,15 +113,15 @@ const handleButtonClicknum = (msg) => {
         }
 
         if(data.get('pincodeb').length<6)
-    {  var dta=" * minimum 6 digit required"
+    {  var dta=" Minimum 6 digit required"
         handleButtonClickpin(dta)
     }
     else{
         isAlertVisiblepin=false
     }
-    if(data.get('numberb').length<10)
+    if(data.get('numberb').length<8)
     {
-        var dta=" * minimum 10 digit required"
+        var dta="Minimum 8 digit required"
         handleButtonClicknum(dta)
     }
     else{
@@ -312,7 +316,13 @@ const handleButtonClicknum = (msg) => {
           :
 
             <>
-            <form onSubmit={e=>handleSubmit(e,defaultShiping.id)}>
+            <form onSubmit={e=>handleSubmit(e,defaultShiping.id)} onLoad={e=>
+            {
+                var input= document.getElementsByClassName('PhoneInputInput')[0];
+                input.style.background="#fff"
+                input.setAttribute('name','numberb')
+                input.setAttribute('id','numberb')
+            }}>
             <div className={styles.columnitem1content1} >
                 <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='first'>FIRST NAME *</label>
@@ -360,6 +370,8 @@ const handleButtonClicknum = (msg) => {
                         {isAlertVisiblepin&&<span asp-validation-for="Code" class="text-danger col-sm-4">{pinerror} </span>}
 
                     </div>
+
+                    {console.log(defaultShiping)}
                     <div className={styles.columnFirstName}>
                     <label className={styles.firstName} htmlFor='last'>Country *</label>
                         {defaultShiping.zipcode? <select className={styles.firstInput} defaultValue={defaultShiping.country} onChange={changeHandler}>
@@ -384,7 +396,17 @@ const handleButtonClicknum = (msg) => {
                     <div className={styles.columnFullName}>
                         <label className={styles.firstName} htmlFor='street'>Phone Number *</label>
                        
-                        <input className={styles.firstInput} name='numberb' onKeyPress={validatesNum} maxlength={10} defaultValue={defaultShiping.number} required/>
+                        <PhoneInput
+                            international
+                            placeholder="phone number"
+                            value={`${defaultShiping.number}`}
+                            defaultCountry="IN"
+                            className={styles.firstInput}
+                            // style={{width:"70%",marginLeft:"15%"}}
+                            onChange={e=>{}} 
+                            limitMaxLength={15}
+                            />
+                        {/* <input className={styles.firstInput} name='numberb' onKeyPress={validatesNum} maxlength={10} defaultValue={defaultShiping.number} required/> */}
                         {isAlertVisiblenum&&<span asp-validation-for="Code" class="text-danger col-sm-4">{numerror}</span>}
 
                     </div>

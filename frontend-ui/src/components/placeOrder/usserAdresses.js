@@ -8,6 +8,8 @@ import Checkbox from "react-custom-checkbox";
 import * as Icon from "react-icons/fi";
 import { CartState } from '../../context';
 import { Typography } from '@mui/material';
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 import { billingcheckApi, shpingcheckApi } from '../../api/service';
 import { getToken } from '../../Redux-manage/services/localStorageService';
 import { Modal, notification } from 'antd';
@@ -239,8 +241,8 @@ const UsserAdresses = () => {
         else {
             isAlertVisiblepin = false
         }
-        if (data.get('number').length < 10) {
-            var dta = " Minimum 10 digit required"
+        if (data.get('number').length < 8) {
+            var dta = " Minimum 8 digit required"
             handleButtonClicknum(dta)
         }
         else {
@@ -249,14 +251,14 @@ const UsserAdresses = () => {
 
         if (billingInfo) {
             if (data.get('pincodeb').length < 6) {
-                var dta = " * minimum 6 digit required"
+                var dta = " Minimum 6 digit required"
                 handleButtonClickpin(dta)
             }
             else {
                 isAlertVisiblepin = false
             }
-            if (data.get('numberb').length < 10) {
-                var dta = " * minimum 10 digit required"
+            if (data.get('numberb').length < 8) {
+                var dta = " Minimum 8 digit required"
                 handleButtonClicknum(dta)
             }
             else {
@@ -359,7 +361,8 @@ const UsserAdresses = () => {
             handleButtonClickpin(data)
         }
 
-        console.log(key)
+        evt.target.value = evt.target.value.replace(/[^\d]/g,'');
+        return false;
 
     }
 
@@ -368,20 +371,24 @@ const UsserAdresses = () => {
         var theEvent = evt || window.event;
 
         // Handle paste
-        if (theEvent.type === 'paste') {
-            key = evt.clipboardData.getData('text/plain');
-        } else {
-            // Handle key press
-            var key = theEvent.keyCode || theEvent.which;
-            key = String.fromCharCode(key);
-        }
-        var regex = /^0|[1-9]\d*$/
-        if (!regex.test(key)) {
-            theEvent.returnValue = false;
-            if (theEvent.preventDefault) theEvent.preventDefault();
-            var data = "Please Enter Only Number"
-            handleButtonClicknum(data)
-        }
+        // if (theEvent.type === 'paste') {
+        //     key = evt.clipboardData.getData('text/plain');
+        // } else {
+        //     // Handle key press
+        //     var key = theEvent.keyCode || theEvent.which;
+        //     key = String.fromCharCode(key);
+        // }
+        // var regex = /^0|[1-9]\d*$/
+        // var regExp = /[a-zA-Z]/g;
+         
+        // console.log(regExp.test(evt))
+
+        // if (!regex.test(evt)) {
+        //     theEvent.returnValue = false;
+        //     if (theEvent.preventDefault) theEvent.preventDefault();
+        //     var data = "Please Enter Only Number"
+        //     handleButtonClicknum(data)
+        // }
 
 
     }
@@ -409,10 +416,26 @@ const UsserAdresses = () => {
         }
     }
 
+    useEffect(()=>{
+        if(billingInfo){
+        var input= document.getElementsByClassName('PhoneInputInput')[1];
+        input.style.background="#fff"
+        input.setAttribute('name','numberb')
+        input.setAttribute('id','numberb')}
+    },[billingInfo])
+
+
     return (
         <>
             {cond ?
-                <div className={styles.columnitem2} style={{ marginTop: "20px" }}>
+                <div className={styles.columnitem2} style={{ marginTop: "20px" }} onLoad={e=>{
+                   var input= document.getElementsByClassName('PhoneInputInput')[0];
+                   input.style.background="#fff"
+                   input.setAttribute('name','number')
+                   input.setAttribute('id','number')
+                   
+                
+                }}>
                     <div className={styles.columnitem1head}>2. SHIPPING INFO</div>
                     <form onSubmit={RequiredValidate}>
                         <div className={styles.columnitem1content1}>
@@ -515,13 +538,13 @@ const UsserAdresses = () => {
                             <div className={styles.columnFirstName}>
                                 <label className={styles.firstName} htmlFor='first'>Zip-code *</label>
                                 {checkoutDetails.shippingData ?
-                                    <> <input className={styles.firstInput} name='pincode' id='pincode' onKeyPress={validatesPin} maxLength={6} defaultValue={checkoutDetails.shippingData.zipcode} />
+                                    <> <input className={styles.firstInput} name='pincode' id='pincode' onKeyPress={validatesPin} onKeyUp={validatesPin} maxLength={6} defaultValue={checkoutDetails.shippingData.zipcode} />
                                         {required.zipcode ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
                                         {isAlertVisiblepin && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{pinerror} </span>}
                                     </>
                                     :
                                     <>
-                                        <input className={styles.firstInput} name='pincode' id='pincode' onKeyPress={validatesPin} maxLength={6} />
+                                        <input className={styles.firstInput} name='pincode' id='pincode' onKeyPress={validatesPin} onKeyUp={validatesPin} maxLength={6} />
                                         {required.zipcode ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
                                         {isAlertVisiblepin && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{pinerror}</span>}
                                     </>
@@ -550,13 +573,35 @@ const UsserAdresses = () => {
                                 <label className={styles.firstName} htmlFor='street'>Phone Number *</label>
                                 {checkoutDetails.shippingData ?
                                     <>
-                                        <input className={styles.firstInput} name='number' id='number' onKeyPress={validatesNum} maxlength={10} defaultValue={checkoutDetails.shippingData.number} />
+                                    <PhoneInput
+                                        international
+                                        placeholder="phone number"
+                                        value={`${checkoutDetails.shippingData.number}`}
+                                        defaultCountry="IN"
+                                        className={styles.firstInput}
+                                        // style={{width:"70%",marginLeft:"15%"}}
+                                        onChange={e=>{validatesNum(e)}} 
+                                        limitMaxLength={15}
+                                        
+                                        />
+                                        {/* <input className={styles.firstInput} name='number' id='number' onKeyPress={validatesNum} maxlength={10} defaultValue={checkoutDetails.shippingData.number} /> */}
                                         {isAlertVisiblenum && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{numerror}</span>}
                                         {required.number ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
                                     </>
                                     :
                                     <>
-                                        <input className={styles.firstInput} name='number' id='number' onKeyPress={validatesNum} maxLength={10} />
+                                    <PhoneInput
+                                        international
+                                        placeholder="phone number"
+                                        value={`+91`}
+                                        defaultCountry="IN"
+                                        className={styles.firstInput}
+                                        // style={{width:"70%",marginLeft:"15%"}}
+                                        onChange={e=>{validatesNum(e)}} 
+                                        limitMaxLength={15}
+                                        
+                                        />
+                                        {/* <input className={styles.firstInput} name='number' id='number' onKeyPress={validatesNum} maxLength={10} /> */}
                                         {isAlertVisiblenum && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{numerror}</span>}
                                         {required.number ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
                                     </>
@@ -723,13 +768,35 @@ const UsserAdresses = () => {
                                         <label className={styles.firstName} htmlFor='street'>Phone Number *</label>
                                         {checkoutDetails.billingData ?
                                             <>
-                                                <input className={styles.firstInput} name='numberb' id="numberb" onKeyPress={validatesNum} maxlength={10} defaultValue={checkoutDetails.billingData.number} />
+                                            <PhoneInput
+                                        international
+                                        placeholder="phone number"
+                                        value={`${checkoutDetails.billingData.number}`}
+                                        defaultCountry="IN"
+                                        className={styles.firstInput}
+                                        // style={{width:"70%",marginLeft:"15%"}}
+                                        onChange={e=>{validatesNum(e)}} 
+                                        limitMaxLength={15}
+                                        
+                                        />
+                                                {/* <input className={styles.firstInput} name='numberb' id="numberb" onKeyPress={validatesNum} maxlength={10} defaultValue={checkoutDetails.billingData.number} /> */}
                                                 {isAlertVisiblenum && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{numerror}</span>}
                                                 {required.numberb ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
                                             </>
                                             :
                                             <>
-                                                <input className={styles.firstInput} name='numberb' id="numberb" onKeyPress={validatesNum} maxlength={10} />
+                                               <PhoneInput
+                                        international
+                                        placeholder="phone number"
+                                        value={`+91`}
+                                        defaultCountry="IN"
+                                        className={styles.firstInput}
+                                        // style={{width:"70%",marginLeft:"15%"}}
+                                        onChange={e=>{validatesNum(e)}} 
+                                        limitMaxLength={15}
+                                        
+                                        />
+                                                {/* <input className={styles.firstInput} name='numberb' id="numberb" onKeyPress={validatesNum} maxlength={10} /> */}
                                                 {isAlertVisiblenum && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{numerror}</span>}
                                                 {required.numberb ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
                                             </>

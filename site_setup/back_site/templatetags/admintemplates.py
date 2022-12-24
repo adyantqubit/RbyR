@@ -126,7 +126,7 @@ def getPieChartData():
     dayOfMonth=today.day
     startOfTheMonth=today - timedelta(days=(dayOfMonth-1))
     data=dict()
-    summaryLabels=["Pending Orders","Completed Orders","Cancelled Orders"]
+    summaryLabels=["Pending Transactions","Completed Transactions","Cancelled Transactions"]
     
     totalPendingOrders = Transaction_history.objects.filter(date=today,payment_status='pending').count()
     totalPaidOrders = Transaction_history.objects.filter(date=today,payment_status='paid').count()

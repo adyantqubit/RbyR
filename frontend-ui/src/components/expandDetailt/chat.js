@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect,useState } from 'react'
 import { Widget ,addResponseMessage} from 'react-chat-widget';
+import { FloatingWhatsApp } from 'react-floating-whatsapp'
+import logo from "../../assets/photos/Screenshot.png"
 
 import 'react-chat-widget/lib/styles.css';
 import { getWhatsappContactDetail } from '../../api/service';
+
+import logoavatar from "../../assets/photos/rbyr_logo2.jpg"
 
 const Chat = () => {
   const [whatsappContactNumber, setWhatsappContactNumber] = useState(false);
@@ -14,12 +18,15 @@ const Chat = () => {
     }
   };
 
-
+ 
   useEffect(()=>{
     addResponseMessage('Welcome to the RBYR exclusite site.')
     getWhatsappContactNumber()
   },[])
 
+
+  // var img=document.getElementsByClassName('rcw-open-launcher')[0]
+  // img.src=logo
 
     const handleNewUserMessage = (newMessage) => {
         // Now send the message throught the backend API
@@ -45,12 +52,23 @@ const Chat = () => {
 
 
   return (
-    <div className="App" >
-    <Widget  title="Inbox"
-          subtitle="Typically replies within 20 minutes"
-            handleNewUserMessage={handleNewUserMessage}
-            />
-  </div>
+  //   <div className="App" >
+  //   <Widget launcherOpenImg={logo}
+  //    title={<div style={{textAlign:"start",paddingLeft:"15px"}}>Inbox</div>}
+  //         subtitle={<div style={{textAlign:"start",paddingLeft:"15px"}}>Typically replies within 20 minutes</div>}
+  //           handleNewUserMessage={handleNewUserMessage}
+  //           />
+  // </div>
+  <div onLoad={e=>{
+  //  console.log(document.getElementsByClassName('floating-whatsapp-button')[0].childNodes[0].style.animation)
+  }}>
+  <FloatingWhatsApp
+  avatar={logoavatar}
+  phoneNumber={`+91 ${whatsappContactNumber}`} 
+  onSubmit	={e=>handleNewUserMessage(e)}
+  accountName="RBYR Exclusive"
+  />
+</div>
   )
 }
 

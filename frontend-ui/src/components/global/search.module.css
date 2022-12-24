@@ -20,7 +20,7 @@
      margin-bottom: 10px;
   }
   .searchedImage{
-    height: auto;
+    height: 350px;
     width: 100%;
   }
   .price{
@@ -54,6 +54,10 @@
     color: black;
    }
    @media (max-width: 768px) {
+    .searchedImage{
+      height: 220px;
+      width: 100%;
+    }
     .title,.price{
       font-size: .7rem;
     }

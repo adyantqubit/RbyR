@@ -219,6 +219,7 @@ class shippingOrder(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
+        print(request.data)
         shippingData = request.data
         shippingData['user_id'] = request.user.id
         serialize2 = shippingSerializer(data=shippingData)
@@ -433,8 +434,8 @@ class ShippingUpdateApi(APIView):
         ship_instance.city = ship['city']
         ship_instance.houseno = ship['houseno']
         ship_instance.street = ship['street']
-        ship_instance.zipcode = ship['country']
-        ship_instance.country = ship['zipcode']
+        ship_instance.zipcode = ship['zipcode']
+        ship_instance.country = ship['country']
         ship_instance.number = ship['number']
         ship_instance.save()
         # if usershippingDetail.objects.filter(user_id=request.user) is not None:

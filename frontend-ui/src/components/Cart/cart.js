@@ -56,6 +56,7 @@ const CartSItem = (props) => {
     GetTAXapi()
     ruleText()
     notification.destroy()
+    window.scrollTo(0,0)
     // document.getElementById("scrolled").scrollTop=0
   }, [])
 

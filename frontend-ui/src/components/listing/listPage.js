@@ -325,7 +325,7 @@ const ListPage = () => {
           {CategoryProduct.length > 0 ? CategoryProduct.map((p, i) => (
 
             <div className={style.item} onClick={e => openDetail(p.id)}>
-              <img src={config.apiBaseURL + p.img_main} ></img>
+              <img src={config.apiBaseURL + p.img_main} className={style.img}></img>
               <div className={style.title} ><span>{p.title}</span></div>
               <div className={style.price} >{currency.sign} {(p.price * currency.value).toFixed(2)}</div>
               {p.ready_to_ship?

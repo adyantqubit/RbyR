@@ -157,9 +157,9 @@ const Billing = () => {
                 <div className={styles.headerTexts}>
                   <div className={styles.columnitem1head}>BILLING DETAILS</div>
                   <hr style={{ color: "black" }}></hr>
-                  <div><span className={styles.userinfoText}> Invoice Date: </span><span className={styles.userinfoText2}>{checkoutDetails.date.split("-").reverse().join("-")}</span></div>
-                  <div><span className={styles.userinfoText}>Order No:</span><span className={styles.userinfoText2}>{checkoutDetails.orderno}</span></div>
-                  <div><span className={styles.userinfoText} style={{whiteSpace:"nowrap"}}>Payment Mode:</span><span className={styles.userinfoText2} style={{whiteSpace:"nowrap"}}>{checkoutDetails.payment.split("p").join(" p").toUpperCase()}</span></div>
+                  <div><span className={styles.userinfoText2}> Invoice Date: </span><span className={styles.userinfoText2}>{checkoutDetails.date.split("-").reverse().join("-")}</span></div>
+                  <div><span className={styles.userinfoText2}>Order No:</span><span className={styles.userinfoText2}>{checkoutDetails.orderno}</span></div>
+                  <div><span className={styles.userinfoText2} style={{whiteSpace:"nowrap"}}>Payment Mode:</span><span className={styles.userinfoText2} style={{whiteSpace:"nowrap"}}>{checkoutDetails.payment.split("p").join(" p").toUpperCase()}</span></div>
                 </div>
 
                 {storeLocatorDetails != null ?
@@ -167,8 +167,8 @@ const Billing = () => {
                     <div className={styles.columnitem1head}>VENDOR DETAILS</div>
                     <hr style={{ color: "black" }}></hr>
                     <div className={styles.userinfoText2}>{parse("" + storeLocatorDetails[0].address)}</div>
-                    <div><span className={styles.userinfoText}>{parse("PHONE:" + storeLocatorDetails[0].phoneNumber)}</span></div>
-                    <div><span className={styles.userinfoText}>{parse("" + storeLocatorDetails[0].email)}</span></div>
+                    <div><span className={styles.userinfoText2}>{parse("PHONE:" + storeLocatorDetails[0].phoneNumber)}</span></div>
+                    <div><span className={styles.userinfoText2}>{parse("" + storeLocatorDetails[0].email)}</span></div>
                   </div> : null}
 
               </div>

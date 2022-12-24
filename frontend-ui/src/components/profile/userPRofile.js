@@ -25,6 +25,8 @@ import { getToken } from '../../Redux-manage/services/localStorageService'
 import { useSelector } from 'react-redux'
 import { Alert, duration, Typography } from '@mui/material'
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai"
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 import {
   RadiusBottomleftOutlined,
@@ -132,7 +134,16 @@ const UserProfile = () => {
 
     window.scrollTo(0, 0)
 
+    
+
     var data = new FormData(event.currentTarget);
+
+    if(data.get('number').length<8){
+      isAlertVisiblenum = true
+    setIsAlertVisiblenum(true);
+    setnumerror("Minimum 8 digit require")
+    return false
+    }
     //commented by Rohan- date 14/12/22
     //Reason- Adding Phone number change functionality
     var userData = {
@@ -237,7 +248,13 @@ const UserProfile = () => {
                     :
                     <>
                       <div className={styles.columnitem1head}>1. USER DETAILS</div>
-                      <form onSubmit={e => updateProfie(e)}>
+                      <form onSubmit={e => updateProfie(e)} onLoad={e=>
+                      {
+                        var input= document.getElementsByClassName('PhoneInputInput')[0];
+                        input.style.background="#fff"
+                        input.setAttribute('name','number')
+                        input.setAttribute('id','number')
+                      }}>
                         <div className={styles.columnitem1content1}>
                           <div className={styles.columnFirstName}>
                             <label className={styles.firstName} htmlFor='first'>FIRST NAME*</label>
@@ -264,7 +281,17 @@ const UserProfile = () => {
                           <div className={styles.columnFirstName}>
                             <label className={styles.firstName} htmlFor='last'>Contact Number*</label>
 
-                            <input className={styles.firstInput} type="text" defaultValue={userdata.contact} name="number" onKeyPress={validatesNum} minLength={10} maxLength={10} required />
+                            <PhoneInput
+                            international
+                            placeholder="phone number"
+                            value={`${userdata.contact}`}
+                            defaultCountry="IN"
+                            className={styles.firstInput}
+                            // style={{width:"70%",marginLeft:"15%"}}
+                            onChange={e=>{setIsAlertVisiblenum(false)}} 
+                            limitMaxLength={15}
+                            />
+                            {/* <input className={styles.firstInput} type="text" defaultValue={userdata.contact} name="number" onKeyPress={validatesNum} minLength={10} maxLength={10} required /> */}
                             {isAlertVisiblenum && <span asp-validation-for="Code" class="text-danger col-sm-4">{numerror}</span>}
 
                           </div>
