@@ -12,6 +12,8 @@ const DeliveryPolicy = () => {
     useState([]);
   useEffect(() => {
     getDeliveryAndShippingPolicies();
+    window.scrollTo(0,0)
+
   }, []);
 
   const getDeliveryAndShippingPolicies = async () => {

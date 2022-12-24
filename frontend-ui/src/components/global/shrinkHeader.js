@@ -163,6 +163,9 @@ const ShrinkHeader = () => {
           <Link to='/listing/luxury_pret' className={style.drawerMenu} onClick={e=>{toggleDrawer();setCategorySelected([])}}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span>LUXURY PRET</span> </div>
           </Link>
+          <Link to='/listing/rbyr_man' className={style.drawerMenu} onClick={e=>{toggleDrawer();setCategorySelected([])}}>
+            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span>RBYR Man</span> </div>
+          </Link>
           <Link to='/listing/ready_to_wear' className={style.drawerMenu} onClick={e=>{toggleDrawer();setCategorySelected([])}}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> READY TO WEAR</span> </div>
           </Link>

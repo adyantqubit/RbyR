@@ -15,6 +15,7 @@ const FAQ = () => {
   
   useEffect(()=>{
     getFAQs()
+    window.scrollTo(0,0)
   },[])
 
   const getFAQs = async () => {

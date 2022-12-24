@@ -376,7 +376,13 @@ const UserProfile = () => {
                           <button className={styles.userInfoButton} style={{ width: "48%" }} type="submit">
                             UPDATE PROFILE
                           </button>
-                          <div style={{ fontSize: "16px", letterSpacing: "1.7px", fontStyle: "bold", cursor: "pointer", width: "50%", textAlign: "center", marginTop: "10px" }} onClick={e => setShowEditable(false)}>
+                          <div style={{ fontSize: "16px", letterSpacing: "1.7px", 
+                                        fontStyle: "bold", cursor: "pointer", width: "50%", 
+                                        textAlign: "center", marginTop: "10px" }} 
+                            onClick={e =>
+                            { setShowEditable(false)
+                              window.scrollTo(0,0)
+                            }}>
                             CANCEL
                           </div>
 

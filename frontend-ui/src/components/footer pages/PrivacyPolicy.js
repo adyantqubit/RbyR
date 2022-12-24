@@ -11,6 +11,8 @@ const PrivacyPolicy = () => {
 
   useEffect(() => {
     getPrivacyPolicies();
+    window.scrollTo(0,0)
+
   }, []);
 
   const getPrivacyPolicies = async () => {

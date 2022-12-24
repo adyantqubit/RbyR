@@ -407,9 +407,11 @@ const CartSItem = (props) => {
       <div className={styles.container} >
         <div className={styles.main}>
 
-          <div className={styles.heading}>
+        {cart.length > 0 ?<div className={styles.heading}>
             SHOPPING CART
-          </div>
+          </div>:<div style={{marginTop:"70px"}}></div>}
+
+
           {cart.length > 0 ? cart.map(pro => {
 
             var result = 0
@@ -541,11 +543,11 @@ const CartSItem = (props) => {
                 <buton className={style.shopbtn2} style={{ width: "100%", margin: "5px" }} onClick={e => cartChecking()} >Go To Checkout</buton>
               </div> 
             </div> */}
-             
+            
              <div style={{width:"100%",minHeight:"60vh",height:"100%",display:"flex",flexDirection:"column",alignContent:"center"}}> 
-               <span style={{textAlign:"center",fontSize: "18px",lineHeight:"26px",letterSpacing:"2.5px",fontWeight:"600"}}>Your shopping cart is empty.</span>
+               <span style={{textAlign:"center",fontSize: "18px",lineHeight:"24px",letterSpacing:"1.75px",fontWeight:"500"}} className={styles.font}>Your shopping cart is empty.</span>
                <buton className={styles.shopbtn2} style={{ width: "70%", margin: "5px auto",fontSize:"14px",cursor: "pointer",
-               letterSpacing: "2px", textAlign: "center", opacity: "1",fontWeight:"700",
+               letterSpacing:"2px", textAlign: "center", opacity: "1",fontWeight:"700",
                position: "relative",fontWeight: "normal",textTransform: "uppercase",padding: "10px 18px" }} 
                onClick={e=>nav("/")}>BROWSE OUR CATALOG</buton>
 

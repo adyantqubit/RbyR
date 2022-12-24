@@ -163,11 +163,15 @@ const Navbar = () => {
                 </li>
 
                 <li className={style.services} >
+                  <Link  className={style.al} to="/listing/rbyr_man" onClick={e=>setCategorySelected([])} style={{textTransform:"none"}}>RbyR MEN</Link>
+                </li>
+
+                <li className={style.services} >
                   <Link  className={style.al} to="/listing/ready_to_wear" onClick={e=>setCategorySelected([])}>Ready To wear</Link>
                 </li>
 
                 <li className={style.services} >
-                  <Link  className={style.al} to="/listing/world_of_rbyr" onClick={e=>setCategorySelected([])}>World of RbyR</Link>
+                  <Link  className={style.al} to="/listing/world_of_rbyr" onClick={e=>setCategorySelected([])} style={{textTransform:"none"}}>WORLD OF RbyR</Link>
                 </li>
                 </div>
               

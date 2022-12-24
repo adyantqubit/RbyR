@@ -215,16 +215,19 @@ const InsideOrder = () => {
             <div className={style.column2}>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div className={style.column2header}>
-                  MY ORDERS {orderid}
+                  MY ORDERS 
                 </div>
                 <div className={style.column2header1} style={{ whiteSpace: "nowrap", textAlign: 'end', color: "#8c8c8cc", textDecoration: "underline", fontSize: "14px", cursor: "pointer" }} onClick={cartAdd}>
                   REORDER
                 </div>
               </div>
               <hr style={{ color: "black" }}></hr>
-              <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-                <span className={style.userinfoText}>Date: <span className={style.userinfoText2}> {states != null && states.length > 0 ? states[0].date.split("-").reverse().join("-") : null}</span></span>
-                <>
+              <div className={style.resDetail}>
+                <span className={style.details}>
+                  <span className={style.userinfoText} >Date:<span className={style.userinfoText2}> {states != null && states.length > 0 ? states[0].date.split("-").reverse().join("-") : null}</span></span>   
+                  <span className={style.userinfoText}>Order No:<span className={style.userinfoText2}> {orderid}</span></span>   
+                </span>
+                <span style={{alignSelf:"end"}}>
                   <Button className={style.userInfoButton} onClick={showModal}>
                     UPI Scanner
                   </Button>
@@ -250,7 +253,7 @@ const InsideOrder = () => {
                       }
                     </div>
                   </Modal>
-                </>
+                </span>
               </div>
 
               <div className={style.table} style={{ border: "1px solid white", marginTop: "20px" }}>

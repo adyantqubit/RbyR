@@ -11,6 +11,7 @@ notification.destroy()
 
   useEffect(() => {
     getTermsAndConditions();
+    window.scrollTo(0,0)
   }, []);
 
   const getTermsAndConditions = async () => {

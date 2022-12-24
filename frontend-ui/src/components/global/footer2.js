@@ -233,7 +233,7 @@ function Footer2() {
             className={style.span}
             
           >
-            RBYR EXCLUSIVE
+            RbyR EXCLUSIVE
           </span> 
            </Link>
             

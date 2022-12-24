@@ -87,10 +87,10 @@ function Footer() {
       <div className={style.row}>
         <div className={style.column1}>
           <h1 className={style.heading}>CUSTOMER CARE</h1>
-          <a href="/custom" style={{ textDecoration: "none", color: "white" }}>
+          <Link to="/custom" style={{ textDecoration: "none", color: "white" }}>
             {" "}
             <span className={style.span}>Contact Us</span>
-          </a>
+          </Link>
           <Link to="/terms" style={{ textDecoration: "none", color: "white" }}>
             {" "}
             <span className={style.span}>Terms and Conditions</span>
@@ -138,9 +138,8 @@ function Footer() {
            >
             <span
             className={style.span}
-            
           >
-            RBYR EXCLUSIVE
+            RbyR EXCLUSIVE
           </span> 
            </Link>
                       <Link

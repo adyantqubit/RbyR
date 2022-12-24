@@ -29,6 +29,7 @@ const Bridal = () => {
 
   useEffect(() => {
     getBridalText();
+    window.scrollTo(0,0)
   }, []);
 
   const getBridalText = async () => {

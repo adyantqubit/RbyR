@@ -135,7 +135,7 @@ const handleButtonClicknum = (msg) => {
        await ShippingUpdateApi({access,billingData}).then(r=>{
         //if any response come this update shipping detail and re call shipping api to update new list
             if(r)
-             {
+             {   window.scrollTo(0,0)
                 setshipEditCond(!shipEditcond)
                 shippingDetails()
              }
@@ -419,7 +419,10 @@ const handleButtonClicknum = (msg) => {
                 {/* <button className={styles.userInfoButton} style={{marginLeft:"10px"}} onClick={e=>shippingDelete(e,defaultShiping.id)}>
                     DELETE 
                 </button> */}
-                <span className={styles.userInfoButton} onClick={e=>setshipEditCond(true)}>
+                <span className={styles.userInfoButton} onClick={e=>{
+                    setshipEditCond(true)
+                    window.scrollTo(0,0)
+                    }}>
                     CANCEL
                 </span>
                 </div>

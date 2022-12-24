@@ -12,6 +12,8 @@ const Contact = () => {
 
   useEffect(() => {
     getContactUs();
+    window.scrollTo(0,0)
+
   }, []);
 
   const getContactUs = async () => {

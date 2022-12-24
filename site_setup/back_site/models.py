@@ -153,6 +153,7 @@ category = (
     ('wedding_wear','Wedding Wear'),
     ('formal','Formal'),
     ('luxury_pret','Luxury pret'),
+    ('rbyr_man','RBYR Men'),
     ('ready_to_wear','Ready To Wear'),
     ('world_of_rbyr','World Of RBYR')
 )

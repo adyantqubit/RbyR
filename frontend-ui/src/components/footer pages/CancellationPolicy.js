@@ -10,6 +10,7 @@ const CancellationPolicy = () => {
   const [cancellationPolicies, setCancellationPolicies] = useState([]);
   useEffect(() => {
     getCancellationPolicies();
+    window.scrollTo(0,0)
   }, []);
 
   const getCancellationPolicies = async () => {
@@ -54,7 +55,7 @@ const CancellationPolicy = () => {
           )}
         </div>
 
-        <div style={{ marginTop: "5vh" }}>
+        <div style={{ marginTop: "-20vh" }}>
           <Footer />
         </div>
       </div>
