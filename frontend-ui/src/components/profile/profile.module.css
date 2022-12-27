@@ -8,7 +8,7 @@
 
 .scrolling{
     max-height: 100vh;
-     overflow-y: scroll;
+     /* overflow-y: scroll; */
     /* overflow-x: hidden; */ 
 
 }
@@ -36,6 +36,8 @@
     /* top:24vh; */
     padding-top:160px;
     /* margin-bottom: 24vh; */
+    /* max-height: 120vh;
+    overflow: auto; */
     width:100%;
     background-color: white;
     display: flex;

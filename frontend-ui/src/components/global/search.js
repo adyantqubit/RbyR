@@ -14,7 +14,7 @@ import { notification } from "antd";
 const Search = () => {
   notification.destroy()
   const [open, setOpen] = useState(false);
-  const { product ,currency,filteredPersons, setFilteredPersons} = CartState();
+  const { product ,currency,filteredPersons, setFilteredPersons,searchmsg,setSearchMsg} = CartState();
 
 // Added by Ashish dewangan on 18-11-2022
 // Reason - to have cross button on search icon more width
@@ -22,6 +22,7 @@ const Search = () => {
   const [msg,setMsg]=useState(null);
 
   function searchProductAfterEnterPressed(event) {
+    
     if(event.keyCode === 13){
       searchProduct();
     }
@@ -29,6 +30,7 @@ const Search = () => {
 
   const searchProduct = async () => {
     var searchBox = document.getElementById("searchBox");
+    setSearchMsg(searchBox.value)
     const searchedData = await getSearchedProducts(searchBox.value);
     if(searchedData&&searchedData.length>0){
       setFilteredPersons(searchedData);
@@ -114,6 +116,8 @@ const Search = () => {
                 width: "80%",
                 paddingLeft:"10px"
               }}
+              value={searchmsg}
+              onChange={e=>setSearchMsg(e.target.value)}
               placeholder="Type what you are looking for..."
               onKeyUp={searchProductAfterEnterPressed}
             ></input>
