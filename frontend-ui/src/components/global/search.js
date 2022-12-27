@@ -52,7 +52,7 @@ const Search = () => {
 
   const onClose = () => {
     // document.getElementById("searchBox").value="";
-    setFilteredPersons([]);
+    // setFilteredPersons([]);
     setMsg(null)
     setOpen(false);
   };
