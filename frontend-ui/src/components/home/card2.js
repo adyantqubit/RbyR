@@ -28,9 +28,8 @@ const CArd2 = (props) => {
             // style={{ width: "auto", height: "auto", borderRadius: "10px" }}
               style={{ width: "auto", height: "auto" }}
             > */}
-              {/* <div className={style.text}>{iamges.category_top3}</div> */}
-              <div className={style.text}><a className={style.linkText}  href={`listing/${props.imgArray[0].menu}/${props.imgArray[0].category}`}>{props.imgArray[0].category}</a></div>
-              <Link to={`listing/${props.imgArray[0].menu}/${props.imgArray[0].category}`}>
+              {/* <div className={style.text}><a className={style.linkText}  href={`listing/${props.imgArray[0].menu}/${props.imgArray[0].category}`}>{props.imgArray[0].category}</a></div> */}
+              <Link to={`/RRDesign`}>
                 {/* <div> */}
                   <img
                     alt=""
@@ -50,9 +49,8 @@ const CArd2 = (props) => {
               // style={{ width: "auto", height: "auto", borderRadius: "10px" }}
                 style={{ width: "auto", height: "auto"}}
               > */}
-              {/* <div className={style.text}>{iamges.category_top4}</div> */}
-              <div className={style.text}><a className={style.linkText}  href={`listing/${props.imgArray[1].menu}/${props.imgArray[1].category}`}>{props.imgArray[1].category}</a></div>
-                <Link to={`listing/${props.imgArray[1].menu}/${props.imgArray[1].category}`}>
+              {/* <div className={style.text}><a className={style.linkText}  href={`listing/${props.imgArray[1].menu}/${props.imgArray[1].category}`}>{props.imgArray[1].category}</a></div> */}
+                <Link to={`/store-locator`}>
                   {/* <div> */}
                     <img
                       alt=""

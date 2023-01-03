@@ -7,9 +7,10 @@ import image2 from "./assets/fea4.jpg"
 import image3 from "./assets/fea5.jpg"
 import image4 from "./assets/fea7.jpg"
 import image5 from "./assets/fea9.jpg"
-
+import "./open.css"
 
 import ImageViewer from 'react-simple-image-viewer';
+import Blank from './blank'
 
 
 const Features = () => {
@@ -32,16 +33,8 @@ const Features = () => {
 
     return (<>
         <Navbar />
-         <div className={style.Container}>
-             <div className={style.contains}> 
-              {images.map(i=>{
-                return <img src={i} className="img"></img>
-              })}
-            </div>
-        
-            {/* <div class="img" style={{backgroundImage:`url(${image})`}}></div>
-            <div class="img" style={{backgroundImage:`url(${image2})`}}></div>
-            <div class="img" style={{backgroundImage:`url(${image3})`}}></div> */}
+         <div className={style.Container} style={{background:"#D4D9ED"}}>
+         <Blank/>
         </div>
 
     </>

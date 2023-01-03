@@ -72,7 +72,8 @@ const Slider2 = ({scrollTop}) => {
                 //Reason i have to not show same 
               if(cart.id!=id)
                   return (
-                    <Carousel.Item>
+                    <Carousel.Item
+                    style={{cursor:"pointer"}} >
                       <img
                         className={style.img}
                         src={config.apiBaseURL + cart.img_main}
@@ -87,6 +88,7 @@ const Slider2 = ({scrollTop}) => {
                           fontSize:".8rem",
                           color:"#323232"
                         }}
+                        onClick={(e) => {openDetail(cart);scrollTop()}}
                       >
                         {cart.title}
                       </div>
@@ -100,7 +102,9 @@ const Slider2 = ({scrollTop}) => {
                       Reason - Adding representation of Reading to ship items  */}
 
                   {cart.ready_to_ship?
-                  <div className={styles.readyContainer}>
+                  <div className={styles.readyContainer}
+                  onClick={(e) => {openDetail(cart);scrollTop()}}
+                  style={{cursor:"pointer"}}>
                   <div className={styles.readyBox}>
                     <img src={logo} className={styles.readyIcon} />
                     Ready To Ship

@@ -1,3 +1,12 @@
+
+@font-face {
+    font-family: 'MyFont';
+    src: local('MyFont'), url(../../assets/font/RawsonAltRegular.woff) format('woff');
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+  }
+  
+
 .container{
   width:100%;
   background-color: #212121;
@@ -30,6 +39,8 @@
     /* border-radius:10px; */
 }
 .text{
+    display: flex;
+    flex-direction: column;
     /* position:relative;
     top:500px; */
     position: absolute;
@@ -38,19 +49,21 @@
     /* right:80px; */
     width:100%;
     height:50px;
-    background:rgba(0,0,0,0.5);
-    font-size:2rem;
+    /* background:rgba(0,0,0,0.5); */
+    font-size: 30px;
+    line-height: 38px;
+    letter-spacing: 3.5px;
     color:white;
-    letter-spacing:2px;
-    font-family:Rawson-regular;
+    font-family:"MyFont";
     text-align:center;
     display: flex;
     align-items: center;
+    font-weight: 500;
     justify-content: center;
 }
 .linkText{
     text-decoration:none;
-    color:white;
+    color:#f2f2f2;
     font-size:2rem;
     text-transform:uppercase;
    
@@ -63,6 +76,13 @@
     width:75%;
     height:450px;
     border-radius:5px;
+}
+
+.belowTitle{
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 1.4px;
+    color:white;
 }
 
 

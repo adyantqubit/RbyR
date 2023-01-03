@@ -925,7 +925,7 @@ class CustomTailoredForm(models.Model):
 #Added by Ashish on 24-11-2022
 #Reason - To save whatsapp number in table
 class WhatsappContact(models.Model):
-    whatsappNumber=models.IntegerField(validators=[validate_phone_number])
+    whatsappNmber=models.IntegerField(validators=[validate_phone_number])
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self):

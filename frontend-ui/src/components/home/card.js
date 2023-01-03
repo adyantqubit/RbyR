@@ -29,7 +29,12 @@ const Card = (props) => {
                     className={style.imgswap}
                     src={config.apiBaseURL +  props.imgArray[0].Gif_image}
                   />
-              <div className={style.text}><a className={style.linkText}  href={`listing/${props.imgArray[0].menu}/${props.imgArray[0].category}`}>{props.imgArray[0].category}</a></div>
+              <div className={style.text}>
+                <a className={style.linkText}  href={`listing/${props.imgArray[0].menu}/${props.imgArray[0].category}`}>
+                  {props.imgArray[0].category}
+                </a>
+                <h3 className={style.belowTitle}>SHOP NOW</h3>
+              </div>
               </Link>
 
           </li>
@@ -46,7 +51,12 @@ const Card = (props) => {
                   />
 
                 {/* End of comment */}
-                <div className={style.text}><a className={style.linkText}  href={`listing/${props.imgArray[1].menu}/${props.imgArray[1].category}`}>{props.imgArray[1].category}</a></div>
+                <div className={style.text}>
+                  <a className={style.linkText}  href={`listing/${props.imgArray[1].menu}/${props.imgArray[1].category}`}>
+                    {props.imgArray[1].category}
+                  </a>
+                  <h3 className={style.belowTitle}>SHOP NOW</h3>
+                </div>
               </Link>
 
           </li>

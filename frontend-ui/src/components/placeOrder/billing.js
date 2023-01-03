@@ -222,10 +222,13 @@ const Billing = () => {
                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", borderBottom: "1px solid black", width: "50%" }} ></span>
                 </div>
                 
-
                 <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`}  >Grand Total - </span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto" }} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)}</span>
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto" }} > {checkoutDetails.currency_sign} 
+                  {/* {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}
+                  {/* {checkoutDetails.CouponDiscount ?((afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value)- (checkoutDetails.CouponDiscount* checkoutDetails.currency_value)).toFixed(2) :(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}
+                   {checkoutDetails.grand?(checkoutDetails.grand*checkoutDetails.currency_value).toFixed(2):afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand}
+                  </span>
                 </div>
 
                 <div className={styles.billingheader} style={{ height: "30px" }}>

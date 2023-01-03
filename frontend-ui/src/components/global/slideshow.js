@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
+import { Link } from "react-router-dom";
 import config from "../../api/config";
 import { getCardHomeImagesApi, picApi, SlideShowApi } from "../../api/service";
 import Card from "../home/card";
@@ -87,7 +88,7 @@ function Slideshow() {
       >
         {visible.map((item) => (
           <Carousel.Item>
-            <a href={`listing/${item.category}/0`}>
+            <Link to={`/listing/${item.category}/0`}>
               {" "}
               {console.log(item.src)}
               <img
@@ -97,7 +98,7 @@ function Slideshow() {
                 src={config.apiBaseURL + item.src}
                 alt="First slide"
               />
-            </a>
+            </Link>
             
           </Carousel.Item>
         ))}

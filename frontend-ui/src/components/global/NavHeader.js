@@ -225,14 +225,14 @@ const Navbar = () => {
                 })}
 
                 <li className={style.services}>
-                  <span  className={style.al} href="/" style={{fontWeight:"450",fontSize:"16px"}}>WORLD OF RByR</span>
+                  <span  className={style.al} href="/" style={{fontWeight:"450",fontSize:"16px"}}>WORLD OF RbyR</span>
                 
                   <ul className={style.dropdown}>
                   <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none",whiteSpace:"nowrap",paddingLeft:`${left}px`}}>
-                      <Link className={style.al2} to="/aboutRR" onClick={e=>setCategorySelected([])}>ABOUT RR</Link>
+                      <Link className={style.al2} to="/aboutRR" onClick={e=>setCategorySelected([])}>ABOUT RbyR</Link>
                     </li>
                     <li  style={{padding:"0",width:"40px",margin:"20px 15px",border:"none",whiteSpace:"nowrap",paddingLeft:`${left}px`}}>
-                      <Link className={style.al2} to="/RRDesign">RbyR.IT Design</Link>
+                      <Link className={style.al2} to="/RRDesign">RbyR Design</Link>
                     </li>
                     <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none",whiteSpace:"nowrap",paddingLeft:`${left}px`}}>
                       <Link className={style.al2} to="/celebRR" onClick={e=>setCategorySelected([])}>CELEBRITIES IN RbyR</Link>

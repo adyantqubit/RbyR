@@ -36,6 +36,10 @@ import ItDesign from './components/Abouts/ItDesign';
 import Context2, { AboutState } from './components/Abouts/hooks/AboutContext';
 import Celebrities from './components/Abouts/Celebrities';
 import Features from './components/Abouts/Features';
+import About from './components/Abouts/blankpages/about';
+import Celebrity from './components/Abouts/blankpages/celebrity';
+import Feature from './components/Abouts/blankpages/features';
+import Editorial from './components/Abouts/blankpages/editorial';
 
 function App() {
   // notification.destroy()
@@ -87,8 +91,10 @@ function App() {
     {/* Added by Rohan -30/12/22 */}
     
         <Route path='/RRDesign' element={<ItDesign/>}/>
-        <Route path='/celebRR' element={<Celebrities/>}/>
-        <Route path="/features" element={<Features/>}/>
+        <Route path='/celebRR' element={<Celebrity/>}/>
+        <Route path="/features" element={<Feature/>}/>
+        <Route path="/aboutRR" element={<About/>} />
+        <Route path="/editorial" element={<Editorial/>} />
     
     {/* End of code. */}
     
