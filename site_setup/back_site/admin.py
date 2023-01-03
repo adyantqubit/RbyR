@@ -25,6 +25,7 @@ def short_title(obj):
 class Head_imgAdmin(admin.ModelAdmin):
     list_display=("id","src","category","display_on")
     # ordering=("display_on")
+    readonly_fields=("category",)
     list_per_page=10
     # def get_form(self, request, obj=None, **kwargs):
     #     form = super(Head_imgAdmin, self).get_form(request, obj, **kwargs)
@@ -43,11 +44,13 @@ class ProductAdmin(admin.ModelAdmin):
 # Commented and modified by Ashish Dewangan on 27-11-2022
 # Reason - To customize admin panel
 # admin.site.register(product_detail,ProductAdmin)
+ 
 @admin.register(product_detail)
 class product_detailAdmin(admin.ModelAdmin):
     list_display=(short_title,"category","S","M","L","XL","XXL","L","price","color")
     ordering =("title",)
-    readonly_fields=('search_key',)
+    
+    readonly_fields=('search_key','category','menu')
     search_fields=("title","category","color")
     list_filter=("category","color")
     list_per_page=10
@@ -57,10 +60,11 @@ class product_detailAdmin(admin.ModelAdmin):
     shipping_days=models.CharField(max_length=50,default="3-4 weaks")
     ready_to_ship=models.BooleanField(default=False)
     ready_to_ship_days=models.CharField(max_length=50,default="under 7 working days")
-    def get_form(self, request, obj=None, **kwargs):
+    def get_form(self, request, obj, **kwargs):
+        print(request)
         form = super(product_detailAdmin, self).get_form(request, obj, **kwargs)
         form.base_fields['title'].widget.attrs['style'] = 'width: 100%;'
-        form.base_fields['category'].widget.attrs['style'] = 'width: 100%;'
+        # form.base_fields['category'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['color'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['S'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['M'].widget.attrs['style'] = 'width: 100%;'
@@ -82,7 +86,16 @@ class product_detailAdmin(admin.ModelAdmin):
         form.base_fields['shipping_charges'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['shipping_days'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['ready_to_ship_days'].widget.attrs['style'] = 'width: 100%;'
-        return form     
+        form.base_fields['subMenu'].label_from_instance = lambda inst: "{}".format(inst.sub)
+        form.base_fields['upper_menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
+      
+        # form.base_fields['subMenu'].queryset = subMenu.objects.filter(='company')
+        # form.fields['subMenu'].choices = [(None, 'Subscriber\'s Location')] + list(subMenu.objects.all().values_list('menu').order_by('menu'))
+
+
+        return form    
+       
+   
 # End of code modification
 
 
@@ -149,12 +162,46 @@ class CurrencySelectedAdmin(admin.ModelAdmin):
 # Commented and modified by Ashish Dewangan on 27-11-2022
 # Reason - To customize admin panel
 # admin.site.register(HomeCard_img)
-@admin.register(HomeCard_img)
-class HomeCard_imgAdmin(admin.ModelAdmin):
-    list_display=("category_top1","img_top1","category_top1_1","img_top1_1"
-    ,"category_top2","img_top2","category_top2_1","img_top2_1"
-    ,"category_top3","img_top3","category_top4","img_top4","video_url",)
+
+# Commented by Rohan- on 31/12/22
+# Reson - Because not needed any more becuase we make header to dynamic and this model is creating issue.
+
+# @admin.register(HomeCard_img)
+# class HomeCard_imgAdmin(admin.ModelAdmin):
+#     list_display=("category_top1","img_top1","category_top1_1","img_top1_1"
+#     ,"category_top2","img_top2","category_top2_1","img_top2_1"
+#     ,"category_top3","img_top3","category_top4","img_top4","video_url",)
+
+# End of commentation
+
 # End of code modification
+
+
+# Added By Rohan - 31/12/22
+# Reason - To shwing on Admin
+@admin.register(HomeGifImages)
+class HomeGIF_imgAdmin(admin.ModelAdmin):
+    list_display=("category","Gif_image")
+    readonly_fields=("category","menu")
+    
+    def get_form(self, request, obj, **kwargs):
+        form = super(HomeGIF_imgAdmin, self).get_form(request, obj, **kwargs)
+        form.base_fields['Menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
+        form.base_fields['sub'].label_from_instance = lambda inst: "{} : {}".format(inst.Menu.menu,inst.sub)
+        return form    
+    
+@admin.register(HomeNormalImages)
+class HomeNormal_imgAdmin(admin.ModelAdmin):
+    list_display=("category","image")  
+    readonly_fields=("category","menu")
+    def get_form(self, request, obj, **kwargs):
+        form = super(HomeNormal_imgAdmin, self).get_form(request, obj, **kwargs)
+        form.base_fields['Menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
+        form.base_fields['sub'].label_from_instance = lambda inst: "{} : {}".format(inst.Menu.menu,inst.sub)
+        return form    
+    
+admin.site.register(Home_video)      
+#End of code
 
 
 # Commented and modified by Ashish Dewangan on 27-11-2022
@@ -812,6 +859,8 @@ class WhatsappContactAdmin(admin.ModelAdmin):
 
 
 
+
+
 class UserModelAdmin(BaseUserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
@@ -849,3 +898,43 @@ admin.site.register(User, UserModelAdmin)
 # commented by Rohan - 21/12/22 
 # Reason - TO store used coupon for user
 admin.site.register(couponUsed)
+# end of code
+
+
+# Added by Rohan - 28/12/22
+# Reason - To add menu of header 
+@admin.register(Menus)
+class Menu_Detail(admin.ModelAdmin):
+    list_display=("menu",)
+    # ordering =("menu",)
+    # readonly_fields=('menu',)
+    # search_fields=("menu",)
+    # list_filter=("menu",)
+    # list_per_page=10
+    # def get_form(self, request, obj=None, **kwargs):
+    #     form = super(Menu_Detail, self).get_form(request, obj, **kwargs)
+    #     form.base_fields['menu'].widget.attrs['style'] = 'width: 100%;'
+    #     # form.base_fields['category'].widget.attrs['style'] = 'width: 100%;
+    #     return form  
+      
+    def clean(self):
+        if (Menus.objects.count() >= 5 and self.pk is None):
+            raise ValidationError("Can only create five Menu instances. Try editing/removing one of the existing instances.")   
+
+
+@admin.register(subMenu)
+class subMenu_Detail(admin.ModelAdmin):
+    list_display=("sub",)
+    def get_form(self, request, obj, **kwargs):
+        print(request)
+        form = super(subMenu_Detail, self).get_form(request, obj, **kwargs)
+        form.base_fields['Menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
+      
+        # form.base_fields['subMenu'].queryset = subMenu.objects.filter(='company')
+        # form.fields['subMenu'].choices = [(None, 'Subscriber\'s Location')] + list(subMenu.objects.all().values_list('menu').order_by('menu'))
+
+
+        return form    
+# end of code
+
+admin.site.register(ItDesignContent)

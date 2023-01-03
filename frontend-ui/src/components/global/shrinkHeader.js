@@ -17,8 +17,8 @@ import Search from './search';
 import styles from './NavHeader.module.css'
 import Cart from './cart';
 
-import { profile, menus } from './header_links.js'
-import { Link, useNavigate } from 'react-router-dom';
+import { profile, submenus } from './header_links.js'
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import LikeDrawer from './liked';
 import { useDispatch } from 'react-redux';
 import { CartState } from '../../context';
@@ -34,9 +34,12 @@ const text = 'Are you sure you want to logout?';
 
 
 const ShrinkHeader = () => {
-  const [menu, setMenu] = useState([...profile])
+  const { menus } = CartState()
+  const [menu, setMenu] = useState(null)
   const nav = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
+  const [category, setcategory] = useState(null)
+  const [parentmenu,setparentMenu]=useState("")
 
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState)
@@ -49,7 +52,7 @@ const ShrinkHeader = () => {
     setIsOpen2((prevState) => !prevState)
     seLogoutAction(false)
 
-    console.log("drawer 2 hit ",!isOpen2)
+    console.log("drawer 2 hit ", !isOpen2)
   }
 
   useEffect(() => {
@@ -66,18 +69,17 @@ const ShrinkHeader = () => {
   };
 
   const dispatch = useDispatch();
-  const { userdata, setUserData, firstTimeLoadFunctions,setCategorySelected } = CartState()
+  const { userdata, setUserData, firstTimeLoadFunctions, setCategorySelected } = CartState()
   const handleLogout = () => {
     console.log("hit")
     dispatch(unSetUserInfo({ email: "", name: "" }))
     dispatch(unSetUserToken({ access_token: null }))
     removeToken()
     localStorage.clear()
-    
+
     firstTimeLoadFunctions()
     localStorage.setItem('logout', true);
     window.location.reload(false)
-    
 
   }
 
@@ -89,14 +91,28 @@ const ShrinkHeader = () => {
       setUserData({
         email: data.email,
         name: data.name,
-        contact:data.contact_number
+        contact: data.contact_number
       })
   }, [data, isSuccess])
+
+
+  function settingMenus(menuName, index) {
+    if (menus[index][`${menuName}`].length > 0) {
+      setcategory(menus[index][`${menuName}`])
+      setparentMenu(menuName)
+      toggleDrawer2()
+      setMenu(null)
+    }
+    else {
+      toggleDrawer()
+    }
+
+  }
 
   return (
     <div className={style.responsiveHeader}>
       <div className={style.topText}>FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT +91
-      <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} className={style.number} >{whatsappContactNumber?whatsappContactNumber:"Not Added"}</a></div>
+        <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} className={style.number} >{whatsappContactNumber ? whatsappContactNumber : "Not Added"}</a></div>
 
 
       <div className={style.headerContainer}>
@@ -127,7 +143,7 @@ const ShrinkHeader = () => {
             <div className={style.headerMenuitem} >
               <LikeDrawer />
             </div>
-            <div className={style.headerMenuitem} style={{paddingTop:"10px"}} >
+            <div className={style.headerMenuitem} style={{ paddingTop: "10px" }} >
               <Cart style={{ display: "none" }} />
             </div>
 
@@ -136,6 +152,7 @@ const ShrinkHeader = () => {
       </div>
 
       <Drawer
+        size="90%"
         open={isOpen}
         onClose={e => { toggleDrawer() }}
         direction='left'
@@ -144,16 +161,48 @@ const ShrinkHeader = () => {
 
           <div className={style.drawerhead}>
 
-            <div className={style.drawerMenu}>
+            <div className={style.drawerMenu} style={{height:"50px"}}>
               <div className={style.drawerClose}>
                 <div></div>
-                <AiOutlineClose onClick={toggleDrawer} fontSize={24} /></div>
+                <AiOutlineClose onClick={toggleDrawer} color="#7c7c7c" fontSize={20} /></div>
             </div>
 
           </div>
 
-
+          {/* Added by -Rohan 30/12/22
+              Reason- showing parent menu coming from backend */}
           <Link to="/" className={style.drawerMenu} onClick={toggleDrawer}>
+            HOME
+          </Link>    
+          {
+            menus?.map((m, i) => {
+              var parent = Object.keys(m)
+
+              if (m[`${parent}`].length > 0){
+                console.log("hiting")
+                return <Link to="#" className={style.drawerMenu}>
+                         <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => settingMenus(parent, i)}><span>{parent}</span> <AiOutlineRight /></div>
+                       </Link>
+              }
+              else{
+                return <Link to={`/listing/${parent}/0`} className={style.drawerMenu}>
+                         <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => settingMenus(parent, i)}><span>{parent}</span></div>
+                       </Link>
+              }
+
+            })
+          }
+
+           <Link to="#" className={style.drawerMenu}>
+            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer2(); setMenu(submenus) }}>
+              <span>WORLD OF RbyR</span> <AiOutlineRight />
+            </div>
+          </Link>
+          {/* End of code */}
+
+
+
+          {/* <Link to="/" className={style.drawerMenu} onClick={toggleDrawer}>
             HOME
           </Link>
 
@@ -164,31 +213,28 @@ const ShrinkHeader = () => {
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span>LUXURY PRET</span> </div>
           </Link>
           <Link to='/listing/rbyr_man' className={style.drawerMenu} onClick={e=>{toggleDrawer();setCategorySelected([])}}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span>RBYR Man</span> </div>
+            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span>RbyR MAN</span> </div>
           </Link>
           <Link to='/listing/ready_to_wear' className={style.drawerMenu} onClick={e=>{toggleDrawer();setCategorySelected([])}}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> READY TO WEAR</span> </div>
           </Link>
           <Link to='/listing/world_of_rbyr' className={style.drawerMenu} onClick={e=>{toggleDrawer();setCategorySelected([])}}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> WORLD OF RBYR</span> </div>
-          </Link>
+            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> WORLD OF RbyR</span> </div>
+          </Link> */}
           <Link to='/custom' className={style.drawerMenu} onClick={toggleDrawer}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> CONTACT US</span> </div>
           </Link>
 
           <div className={style.drawerMenu} >
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => {
-             console.log(localStorage.getItem("access_token"))
-
               if (localStorage.getItem("access_token")) {
                 setMenu(profile);
                 toggleDrawer2()
-                
+                setcategory(null)
               }
               else {
                 nav("/login")
                 toggleDrawer()
-
               }
             }}>
               <span> MY ACCOUNT</span><AiOutlineRight />
@@ -198,6 +244,7 @@ const ShrinkHeader = () => {
       </Drawer>
 
       <Drawer
+        size="90%"
         open={isOpen2}
         onClose={e => { toggleDrawer2(); toggleDrawer() }}
         direction='left'
@@ -215,15 +262,42 @@ const ShrinkHeader = () => {
 
           </div>
 
-          {menu.filter(f=>f.name=="LOGOUT").length>0?
-          <Link to="" className={style.drawerMenu} >
-            <div style={{ width: "100%"}} >
-              <div style={{ color: "#BABABA", letterSpacing: "1.2px",width:"100%",textAlign:"center" }}> <CgProfile style={{margin:"0 10px 0 0"}}/>{userdata.name}</div> 
-              <div style={{ color: "#7c7c7c", letterSpacing: "1.2px",width:"100%",textAlign:"center"}}>{userdata.email}</div>
-            </div>
-          </Link>:null}
+          {/* Added by Rohan - 30/12/22 
+             Reason - showing menu comes from backend according to parent menu selected*/}
+          {menu==null?
+            <Link to={`/listing/${parentmenu}/0`} className={style.drawerMenu} >
+              <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer(); toggleDrawer2(); setCategorySelected([]) }} >
+                <span style={{ color: "#f2f2f2", letterSpacing: "1.2px" }}>VIEW ALL</span>
+              </div>
+            </Link>
+           :null}
 
-          {menu.map(m => <>
+
+          {category?.map(m =>
+            <Link to={`/listing/${parentmenu}/${m}`} className={style.drawerMenu} >
+              <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer(); toggleDrawer2(); setCategorySelected([]) }} >
+                <span style={{ color: "#f2f2f2", letterSpacing: "1.2px" }}>{m}</span>
+              </div>
+            </Link>
+          )}
+
+          
+
+          {/* End of code */}
+
+
+          {/* This show username and email if profile drawer is open and user logged in already */}
+          {menu?.filter(f => f.name == "LOGOUT").length > 0 ?
+            <Link to="" className={style.drawerMenu} >
+              <div style={{ width: "100%" }} >
+                <div style={{ color: "#BABABA", letterSpacing: "1.2px", width: "100%", textAlign: "center" }}> <CgProfile style={{ margin: "0 10px 0 0" }} />{userdata.name}</div>
+                <div style={{ color: "#7c7c7c", letterSpacing: "1.2px", width: "100%", textAlign: "center" }}>{userdata.email}</div>
+              </div>
+            </Link> : null}
+
+
+          {/* This shown MY ACCOUNT menus if user is already logged in. */}
+          {menu?.map(m => <>
 
             <Link to={m.link} className={style.drawerMenu} >
               {m.name == "LOGOUT" ?

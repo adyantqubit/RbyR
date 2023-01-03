@@ -32,6 +32,10 @@ import Bridal from './components/footer pages/bridal';
 import { height } from '@mui/system';
 import { notification } from 'antd';
 import Chat from './components/expandDetailt/chat';
+import ItDesign from './components/Abouts/ItDesign';
+import Context2, { AboutState } from './components/Abouts/hooks/AboutContext';
+import Celebrities from './components/Abouts/Celebrities';
+import Features from './components/Abouts/Features';
 
 function App() {
   // notification.destroy()
@@ -44,10 +48,11 @@ function App() {
   
   return (
     <>
+    
     <Routes>
       
     <Route path="/" element={ <Home />} />
-    <Route path="/Listing/:category" element={<Listing/>} />
+    <Route path="/Listing/:parent/:category" element={<Listing/>} />
     
     <Route path="/login" element={!access_token?<Login/>:<Navigate to="/"/>} />
     <Route path="/changePass" element={access_token?<ChngPass/>:<Navigate to="/login"/>}/>
@@ -55,7 +60,7 @@ function App() {
     <Route path="/sendemail" element={!access_token?<SentEmail/>:<Navigate to="/"/>}/>
     <Route path="/reset-password/:id/:token" element={<ResetPassword  />} />
     <Route path="/like" element={<Liked/>} />
-    <Route path='/listing/:category/detail/:id' element={<Details/>} />
+    <Route path='/listing/:parent/:category/detail/:id' element={<Details/>} />
 
 
     <Route path='/custom' element={<Contact/>} />
@@ -78,6 +83,14 @@ function App() {
     <Route path='/store-locator' element={<StoreLocator/>}/>
     <Route path='/FAQ' element={<FAQ/>}/>
     <Route path='/bridal' element={<Bridal/>} />
+
+    {/* Added by Rohan -30/12/22 */}
+    
+        <Route path='/RRDesign' element={<ItDesign/>}/>
+        <Route path='/celebRR' element={<Celebrities/>}/>
+        <Route path="/features" element={<Features/>}/>
+    
+    {/* End of code. */}
     
     </Routes>
     <Chat/>

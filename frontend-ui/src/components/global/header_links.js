@@ -1,11 +1,9 @@
-const menus=[
-    {"name":"PARTYWEAR","link":"/Listing/partywear"},
-    {"name":"CASUAL","link":"/Listing/casual"},
-    {"name":"KURTI","link":"/Listing/kurti"},
-    {"name":"FORMAL","link":"/Listing/formal"},
-    {"name":"WEDDING WEAR","link":"/Listing/wedding_wear"},
-    {"name":"VIEW ALL","link":"/listing/view_all"}
-
+const submenus=[
+    {"name":"ABOUT RR","link":"/aboutRR"},
+    {"name":"RbyR.IT DESIGN","link":"/RRDesign"},
+    {"name":"CELEBRITIES IN RByR","link":"/celebRR"},
+    {"name":"FEATURES","link":"/features"},
+    {"name":"EDITORIALS","link":"/editorial"},
 ]
 
 const profile=[
@@ -15,4 +13,4 @@ const profile=[
     {"name":"LOGOUT","link":"#"}
 ]
 
-export {menus,profile}
+export {submenus,profile}

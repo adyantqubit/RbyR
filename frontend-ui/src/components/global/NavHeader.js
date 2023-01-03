@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // import { FiMenu, FiX } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import style from './NavHeader.module.css';
@@ -11,7 +11,7 @@ import { getToken, removeToken } from '../../Redux-manage/services/localStorageS
 import { useGetLoggedUserQuery } from '../../Redux-manage/services/userAuthapi';
 import Drawer from 'react-modern-drawer'
 
-import {BsWhatsapp,BsSearch} from 'react-icons/bs'
+import { BsWhatsapp, BsSearch } from 'react-icons/bs'
 //import styles 👇
 import 'react-modern-drawer/dist/index.css'
 import Liked from './liked';
@@ -29,68 +29,89 @@ import { notification } from 'antd';
 
 const Navbar = () => {
   notification.destroy()
-	const[cl,setClass]=useState(false);
-	const [open, setOpen] = useState(false);
-  const{access_token,refresh_token}= getToken()
+  const [cl, setClass] = useState(false);
+  const [open, setOpen] = useState(false);
+  const { access_token, refresh_token } = getToken()
 
   const [logo, setLogo] = useState("https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg");
-  const {setReload,setCategorySelected}=CartState()
+  const { setReload, setCategorySelected, menus, setMenus } = CartState()
+  const [left,setLeft]=useState(0)
 
+  // Added by Rohan - 30/12/22
+  // Reason- Giving dynamic padding to sub menus - means all sub menu shown below parent menus
+  useEffect(() => {
+    if (document.getElementById(`li0`))
+      menus.map((m, i) => {
+        var parent = Object.keys(m)
+        var leftGap = document.getElementById(`li${i}`).offsetLeft
 
-	const handleClick = () => {
-		setOpen(!open);
-	};
+        {
+          m[`${parent}`].map((s, i) => {
+            setLeft(leftGap+250)
+            document.getElementById(`li${i}${parent}`).style.paddingLeft = `${leftGap}px`
+          })
+        }
 
-	const closeMenu = () => {
-		setOpen(false);
-	};
+        if (document.getElementById(`k${i}`))
+          document.getElementById(`k${i}`).style.paddingLeft = `${leftGap}px`
+      })
+  })
+  // End of code
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
+
+  const closeMenu = () => {
+    setOpen(false);
+  };
 
   const openc = () => {
-		setClass(true)
-	};
+    setClass(true)
+  };
 
-	const closec = () => {
-		setClass(false)
-	};
+  const closec = () => {
+    setClass(false)
+  };
 
   const navigate = useNavigate()
-  const dispatch= useDispatch();
-  const {data,isSuccess}=useGetLoggedUserQuery(access_token)
-  const [userdata,setUserData]=useState({
-    email:"",
-    name:""
+  const dispatch = useDispatch();
+  const { data, isSuccess } = useGetLoggedUserQuery(access_token)
+  const [userdata, setUserData] = useState({
+    email: "",
+    name: ""
   })
 
   const handleLogout = () => {
-    dispatch(unSetUserInfo({email:"",name:""}))
-    dispatch(unSetUserToken({access_token:null}))
+    dispatch(unSetUserInfo({ email: "", name: "" }))
+    dispatch(unSetUserToken({ access_token: null }))
     removeToken()
     localStorage.clear()
     navigate('/login')
   }
 
-  useEffect(()=>{
-    if(data&&isSuccess)
-    setUserData({
-      email:data.email,
-      name:data.name,
-    })
+  useEffect(() => {
+    if (data && isSuccess)
+      setUserData({
+        email: data.email,
+        name: data.name,
+      })
 
-  },[data,isSuccess])
+  }, [data, isSuccess])
 
-  useEffect(()=>{
-    if(data&&isSuccess)
-    dispatch(setUserInfo({
-      email:data.email,
-      name:data.name,
-    }))
-  },[data,isSuccess,dispatch])
+  useEffect(() => {
+    if (data && isSuccess)
+      dispatch(setUserInfo({
+        email: data.email,
+        name: data.name,
+      }))
+  }, [data, isSuccess, dispatch])
 
-  const nav=useNavigate()
-  function openHome(){
-     nav("/")
+  const nav = useNavigate()
+  function openHome() {
+    nav("/")
   }
-  function openCart( ){
+  function openCart() {
     nav("/cart")
   }
 
@@ -100,9 +121,9 @@ const Navbar = () => {
   }, []);
 
   const getLogoAndCoverDetail = async () => {
-    
+
     const coverAndLogoData = await getLogoAndCover();
-    if(coverAndLogoData){
+    if (coverAndLogoData) {
       setLogo(coverAndLogoData[0].logo);
     }
   };
@@ -116,33 +137,35 @@ const Navbar = () => {
     }
   };
 
-	return (
-		<div style={{width:"100%"}}>
-		<div className={style.contain} style={{borderBottom:"1px solid white"}}>
-      <div style={{background:"#000",color:"white",display:"flex",minHeight:"25px",justifyContent:"center",fontSize:".75rem",letterSpacing:".6px",fontStyle:"bold",fontWeight:"600"}}>
-        <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} 
-        style={{textDecoration:"none",textTransform:"uppercase",outline:"none",color:"white",fontSize:".75rem",fontWeight:"300",marginTop:"8px"}}>
-          FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT | +91 
-          {whatsappContactNumber?whatsappContactNumber:" Not added"}
+  var refc = useRef()
+
+  return (
+    <div style={{ width: "100%" }} >
+      <div className={style.contain} style={{ borderBottom: "1px solid white" }}>
+        <div style={{ background: "#000", color: "white", display: "flex", minHeight: "25px", justifyContent: "center", fontSize: ".75rem", letterSpacing: ".6px", fontStyle: "bold", fontWeight: "600" }}>
+          <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
+            style={{ textDecoration: "none", textTransform: "uppercase", outline: "none", color: "white", fontSize: ".75rem", fontWeight: "300", marginTop: "8px" }}>
+            FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT | +91
+            {whatsappContactNumber ? whatsappContactNumber : " Not added"}
           </a>
         </div>
-     
+
         <div className={style.logo}>
-        {/* <img src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" alt="Logo" onClick={openHome}/> */}
-          <img src={config.apiBaseURL+logo}  alt="Logo" onClick={openHome}/>
+          {/* <img src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" alt="Logo" onClick={openHome}/> */}
+          <img src={config.apiBaseURL + logo} alt="Logo" onClick={openHome} />
         </div>
 
-          <nav className={style.navbar}>
-            
-            <ul className={style.nav_links} style={{marginBottom:"0px"}}>
-            
-              <input type="checkbox" id="checkbox_toggle" />
-              <label htmlFor="checkbox_toggle" className={style.hamburger}>&#9776;</label>
-              
-              <div style={{display:"flex",justifyContent:"space-around"}}>
-              <Converter/>
+        <nav className={style.navbar}>
+
+          <ul className={style.nav_links} style={{ marginBottom: "0px" }}>
+
+            <input type="checkbox" id="checkbox_toggle" />
+            <label htmlFor="checkbox_toggle" className={style.hamburger}>&#9776;</label>
+
+            <div style={{ display: "flex", justifyContent: "space-around" }}>
+              <Converter />
               <div className={style.menu}>
-                <li style={{height:"40px"}}><a className={style.al} href="/">Home</a></li>
+                {/* <li style={{height:"40px"}}><a className={style.al} href="/">Home</a></li>
                 <li className={style.services} onMouseEnter={openc} onMouseLeave={closec}>
                   <span  className={style.al} href="/" style={{fontWeight:"450",fontSize:"16px"}}>ETHNIC</span>
                 
@@ -172,36 +195,86 @@ const Navbar = () => {
 
                 <li className={style.services} >
                   <Link  className={style.al} to="/listing/world_of_rbyr" onClick={e=>setCategorySelected([])} style={{textTransform:"none"}}>WORLD OF RbyR</Link>
+                </li> */}
+
+                {menus?.map((m, i) => {
+                  var parent = Object.keys(m)
+                  return <li id={`li${i}`} ref={refc} style={{ height: "40px" }} className={style.services} onMouseEnter={openc} onMouseLeave={closec}>
+                    <Link className={style.al} to={`/listing/${parent}/0`} onClick={e => setCategorySelected([])}>{parent}</Link>
+                    {/* <span id={`${parent}${i+1}`}  className={style.al} href="/" style={{fontWeight:"450",fontSize:"16px"}}>{parent}</span> */}
+                    <ul className={style.dropdown} style={{ padding: m[`${parent}`].length > 0 ? "20px 0" : null }}>
+
+                      {m[`${parent}`].map((s, j) => (<>
+                        <li id={`li${j}${parent}`} style={{ margin: "0px 15px", border: "none", whiteSpace: "nowrap", position: "relative", left: "auto", }} >
+                          <Link className={style.al2} to={`/listing/${parent}/${s}`} onClick={e => setCategorySelected([])}>{s}</Link>
+                        </li>
+                      </>
+                      ))}
+
+                      {m[`${parent}`].length > 0 ?
+                        <li id={`k${i}`} style={{ margin: "8px 15px", border: "none", whiteSpace: "nowrap", position: "relative", left: "auto", }} >
+                          <Link className={style.al2} to={`/listing/${parent}/0`} onClick={e => setCategorySelected([])}>VIEW ALL</Link>
+                        </li> : null}
+
+                    </ul>
+                  </li>
+
+
+
+
+                })}
+
+                <li className={style.services}>
+                  <span  className={style.al} href="/" style={{fontWeight:"450",fontSize:"16px"}}>WORLD OF RByR</span>
+                
+                  <ul className={style.dropdown}>
+                  <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none",whiteSpace:"nowrap",paddingLeft:`${left}px`}}>
+                      <Link className={style.al2} to="/aboutRR" onClick={e=>setCategorySelected([])}>ABOUT RR</Link>
+                    </li>
+                    <li  style={{padding:"0",width:"40px",margin:"20px 15px",border:"none",whiteSpace:"nowrap",paddingLeft:`${left}px`}}>
+                      <Link className={style.al2} to="/RRDesign">RbyR.IT Design</Link>
+                    </li>
+                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none",whiteSpace:"nowrap",paddingLeft:`${left}px`}}>
+                      <Link className={style.al2} to="/celebRR" onClick={e=>setCategorySelected([])}>CELEBRITIES IN RbyR</Link>
+                    </li>
+                    <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none",whiteSpace:"nowrap",paddingLeft:`${left}px`}}>
+                      <Link className={style.al2} to="/features"onClick={e=>setCategorySelected([])}>FEATURES</Link>
+                    </li>
+                    <li style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none",whiteSpace:"nowrap",paddingLeft:`${left}px`}}>
+                      <Link className={style.al2}  to="/editorial" onClick={e=>setCategorySelected([])}>EDITORIALS</Link>
+                    </li>
+                  </ul>    
                 </li>
-                </div>
-              
-                {/* {access_token?<li><a className={style.al} href="/changePass">Change Password</a></li>:<li><Link to="/login">Register/Login</Link></li>}
+
+              </div>
+
+              {/* {access_token?<li><a className={style.al} href="/changePass">Change Password</a></li>:<li><Link to="/login">Register/Login</Link></li>}
                 {access_token?<li><span  className={style.al}  onClick={handleLogout}>Logout</span></li>:null} */}
 
-                <div className={style.system}>
-                  <div><Search className={style.icons}/></div>
-                  <div>
-                    <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}>
-                      <BsWhatsapp className={style.icons}/>
-                    </a>
-                  </div>
-                  <div><LikedDrawer /></div>
-                  <div className={style.cart}><Cart/></div>
-                  <div><Profile /></div>
+              <div className={style.system}>
+                <div><Search className={style.icons} /></div>
+                <div>
+                  <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}>
+                    <BsWhatsapp className={style.icons} />
+                  </a>
                 </div>
+                <div><LikedDrawer /></div>
+                <div className={style.cart}><Cart /></div>
+                <div><Profile /></div>
+              </div>
 
-              </div>            
+            </div>
 
-            </ul>
+          </ul>
 
-          </nav>
-        
-          <div className={cl?style.drops:style.out}></div>
-         
+        </nav>
+
+        {/* // <div className={cl?style.drops:style.out}></div> */}
+
+      </div>
+      <ShrinkHeader />
     </div>
-  <ShrinkHeader/>
-	</div>
-	);
+  );
 };
 
 export default Navbar;

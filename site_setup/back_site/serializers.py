@@ -198,6 +198,7 @@ class CartUpdateSerializer(serializers.ModelSerializer):
             #  product.save()
              raise serializers.ValidationError({"jds"})
           else:
+              print(attrs.get("size"))
               like=Cart.objects.create(product_no=product,user_no=user,size=attrs.get("size"))
               like.save()
             #   product.like=True
@@ -217,10 +218,23 @@ class getPictureSer(serializers.ModelSerializer):
         fields="__all__"              
         
         
+#Changes By Rohan- on 31/12/22
+# Reason - Changing HomeCard_Img to HOMEGifImage
 class getCardSer(serializers.ModelSerializer):
     class Meta:
-        model=HomeCard_img
-        fields="__all__"         
+        model=HomeGifImages
+        fields="__all__"  
+        
+class getcard2ser(serializers.ModelSerializer):
+    class Meta:
+        model=HomeNormalImages
+        fields="__all__"    
+        
+class getVideoser(serializers.ModelSerializer):
+    class Meta:
+        model=Home_video
+        fields="__all__"        
+#End on change  
         
         
 # class invoiceSerializer(serializers.ModelSerializer):
@@ -403,3 +417,11 @@ class CurrencySerializer(serializers.ModelSerializer):
     class Meta:
         model=CurrencySelected
         fields="__all__"
+        
+#Added by Rohan -on 30/12/22
+# Reason - To get serialized ItDesign content
+class ItDesignSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=ItDesignContent
+        fields="__all__"
+# End of code 

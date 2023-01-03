@@ -35,7 +35,7 @@ const Slider2 = ({scrollTop}) => {
 
   const nav = useNavigate();
   function openDetail(id) {
-    nav(`/listing/${id.category}/detail/${id.id}`);
+    nav(`/listing/${id.menu}/${id.category}/detail/${id.id}`);
     setcon(false);
     // window.location.reload(false)
 
@@ -44,6 +44,8 @@ const Slider2 = ({scrollTop}) => {
 
   return (
     <>
+     {CategoryProduct && CategoryProduct.length>1
+            ?
       <div
         style={{
           display: "flex",
@@ -65,8 +67,7 @@ const Slider2 = ({scrollTop}) => {
           YOU MAY ALSO LIKE
         </div>
         <Carousel cols={4} rows={1} gap={10} style={{ width: "100%" }} >
-          {CategoryProduct
-            ? CategoryProduct.map((cart, i) => {
+          {CategoryProduct.map((cart, i) => {
                 // commented by Rohan - 21/12/22 
                 //Reason i have to not show same 
               if(cart.id!=id)
@@ -112,11 +113,11 @@ const Slider2 = ({scrollTop}) => {
                   );
 
               })
-            : null}
+            }
 
           {/* <div>.</div> */}
         </Carousel>
-      </div>
+      </div>:null}
     </>
   );
 };

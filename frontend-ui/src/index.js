@@ -7,6 +7,7 @@ import { store } from './Redux-manage/app/store'
 import './index.css';
 import {BrowserRouter} from 'react-router-dom'
 import Context from './context';
+import Context2 from './components/Abouts/hooks/AboutContext';
 
 
 const container = document.getElementById('root');

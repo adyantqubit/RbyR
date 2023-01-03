@@ -288,7 +288,9 @@ const UserProfile = () => {
                             defaultCountry="IN"
                             className={styles.firstInput}
                             // style={{width:"70%",marginLeft:"15%"}}
-                            onChange={e=>{setIsAlertVisiblenum(false)}} 
+                            onChange={e=>{
+                              userdata.contact=e;
+                              setIsAlertVisiblenum(false)}} 
                             limitMaxLength={15}
                             />
                             {/* <input className={styles.firstInput} type="text" defaultValue={userdata.contact} name="number" onKeyPress={validatesNum} minLength={10} maxLength={10} required /> */}

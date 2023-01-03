@@ -405,7 +405,7 @@ const handleButtonClicknum = (msg) => {
                             defaultCountry="IN"
                             className={styles.firstInput}
                             // style={{width:"70%",marginLeft:"15%"}}
-                            onChange={e=>{}} 
+                            onChange={e=>{console.log(e)}} 
                             limitMaxLength={15}
                             />
                         {/* <input className={styles.firstInput} name='numberb' onKeyPress={validatesNum} maxlength={10} defaultValue={defaultShiping.number} required/> */}

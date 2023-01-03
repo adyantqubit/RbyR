@@ -103,12 +103,13 @@ const Details = (props) => {
       console.log(r.category);
     });
 
-    else
+    else{
+      console.log("hit may like api")
     await getCategoryProduct(category).then((r) => {
       setCategoryProduct([...r.category]);
       settemAllpro([...r.category]);
       console.log(r.category);
-    });
+    });}
   };
 
 
@@ -349,7 +350,7 @@ const Details = (props) => {
     var chatBox = document.getElementById("chatBox");
     if (chatBox.value) {
       window.location =
-        "https://wa.me/" +
+        "https://wa.me/+91 " +
         whatsappContactNumber +
         "?text=Product : " +
         details.title +
@@ -858,7 +859,7 @@ const Details = (props) => {
                         // fontSize: "1em",
                         // borderBottom:"1px solid grey",
                       }}
-                      href={`https://wa.me/${whatsappContactNumber}?text=Product : ${details.title}  |  Category : ${details.category}`}
+                      href={`https://wa.me/+91${whatsappContactNumber}?text=Product : ${details.title}  |  Category : ${details.category}`}
                     >
                       Whatsapp
                     </a>

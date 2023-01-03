@@ -47,8 +47,24 @@ class User2API(APIView,):
         datai = image.objects.all()
         serializers1 = product_serializer(datap, many=True)
         serializers2 = image_serializer(datai, many=True)
-        return Response({"product": serializers1.data, "image": serializers2.data})
-
+        menus= Menus.objects.all()
+        submenus=subMenu.objects.all()
+        
+        
+        # Added by Rohan -28/12/22
+        # Reason - Sending all menu and submenu in organize form
+        Header_menus=[]
+        i=0
+        for menu in menus:
+            i+=1
+            Header_menus.append({menu.menu:[]})
+            for submenu in submenus:
+                if(submenu.Menu.menu==menu.menu):
+                  Header_menus[i-1][menu.menu].append(submenu.sub)
+                      
+                
+        return Response({"product": serializers1.data, "image": serializers2.data,"menus":Header_menus})
+        # End of the code
 
 class UserRegistrationView(APIView):
     renderer_classes = [UserRenderer]
@@ -164,15 +180,24 @@ class ProductSetting(APIView):
         serializers1 = product_serializer(cart, many=True)
         return Response({"category": serializers1.data})
 
+# Changes on Rohan -31/12/22
 
 class picget(APIView):
     renderer_classes = [UserRenderer]
 
     def get(self, request):
+       try: 
         ser = getPictureSer(Head_img.objects.filter(display_on="window"), many=True)
         ser2 = getPictureSer(Head_img.objects.filter(display_on="Mobile"), many=True)
-
-        return Response({"j": ser.data,"h":ser2.data})
+        iamges = HomeGifImages.objects.all()
+        serialize = getCardSer(iamges,many=True)
+        iamges2 = HomeNormalImages.objects.all()
+        serialize2 = getcard2ser(iamges2,many=True)
+        video=Home_video.objects.last()
+        serialize3=getVideoser(video)
+        return Response({"j": ser.data,"h":ser2.data,"Gif": serialize.data,"Normal":serialize2.data,"video":serialize3.data})
+       except:
+        return Response({"j":None,"h":None,"Gif": None,"Normal":None,"video":None})   
 
 
 class Givingdetail(APIView):
@@ -209,9 +234,19 @@ class CartSetting(APIView):
 
 class cardImage(APIView):
     def get(self, request):
-        iamges = HomeCard_img.objects.all()
-        serialize = getCardSer(iamges.last())
-        return Response({"response": serialize.data})
+        # iamges = HomeCard_img.objects.all()
+        # serialize = getCardSer(iamges.last())
+        # return Response({"response": serialize.data})
+        # try:
+            iamges = HomeGifImages.objects.all()
+            serialize = getCardSer(iamges,many=True)
+            iamges2 = HomeNormalImages.objects.all()
+            serialize2 = getcard2ser(iamges2,many=True)
+            video=Home_video.objects.all()
+            serialize3=getVideoser(video,many=True)
+            return Response({"Gif": serialize.data,"Normal":serialize2.data,"video":serialize3.data})
+        # except:
+        #     return Response({"response":0})
 
 
 class shippingOrder(APIView):
@@ -933,13 +968,20 @@ class pageIndex(APIView):
     def post(self, request):
         try:
             products = []
-            print(request.data["category"])
-            if (request.data['category'] == "view_all"):
-                products = product_detail.objects.filter(category="partywear") | product_detail.objects.filter(category="kurti") | product_detail.objects.filter(
-                    category="casual") | product_detail.objects.filter(category="wedding_wear") | product_detail.objects.filter(category="formal")
+            # Add by Rohan - 30/12/22
+            # Reason - Changing view all functionality becuase for requirement of sending header menu from backend
+            if (request.data['category'] == "0"):
+                # products = product_detail.objects.filter(category="partywear") | product_detail.objects.filter(category="kurti") | product_detail.objects.filter(
+                #     category="casual") | product_detail.objects.filter(category="wedding_wear") | product_detail.objects.filter(category="formal")
+                menu=Menus.objects.get(menu=request.data['parent'])
+                print("parent hit",product_detail.objects.filter(upper_menu=menu))
+                products=product_detail.objects.filter(upper_menu=menu)
+            # End of code
             else:
                 products = product_detail.objects.filter(
                     category=request.data['category'])
+                
+                print("category hit",products)
 
             if (request.data['lth'] and request.data['availablity']):
                 products = products.filter(available=True).order_by("price")
@@ -956,19 +998,18 @@ class pageIndex(APIView):
             elif (request.data['availablity']):
                 products = products.filter(available=True)
 
-            print(products.count())
 
             colors = []
             for product in products:
                 if product.color in colors:
-                    print("exist")
+                    print("")
                 else:
                     colors.append(product.color)
                     
             categories=[]
             for product in products:
                 if product.category in categories:   
-                    print("exist")
+                    print("")
                 else:
                     categories.append(product.category)         
 
@@ -1014,9 +1055,30 @@ class Currency(APIView):
         except:
             CurrencySelected.objects.create(
                 user=user,currency=request.data['currency'],currency_sign=request.data['sign'], currency_value=request.data['value']).save()
-        return Response(request.data)
+        return Response(request.data)    
 
 # end of code Addition
+
+# Added by Rohan on 30/12/22
+#Reason- sending worldofrr page data
+class WorldofRRApi(APIView):
+    renderer_classes = [UserRenderer]
+    
+    def get(self,request):
+     Whole_data={}
+     Design=0   
+     try:   
+        serialize=ItDesignSerializer(ItDesignContent.objects.last())
+        Design=serialize.data
+     except:
+        Design={"blank":0}    
+        
+     Whole_data["ItDesign"]=Design   
+     return Response(Whole_data)
+#End of code
+
+
+
 
 # Commented by Ashish on 04-12-2022
 # Reason - Put these code in single method in template

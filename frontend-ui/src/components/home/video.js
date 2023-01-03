@@ -3,22 +3,25 @@ import { getCardHomeImagesApi } from '../../api/service';
 import style from './card.module.css'
 const src = "https://www.youtube.com/embed/m_LfH48sTmY";
 
-const Video = () => {
-  const [iamges,setIamges]=useState({})
-  useEffect(()=>{
+const Video = (props) => {
+//   const [iamges,setIamges]=useState({})
+//   useEffect(()=>{
 
-    images()
-  },[])
+//     images()
+//   },[])
 
 
-async function images(){
-  await getCardHomeImagesApi().then(r=>setIamges(r.response))
+// async function images(){
+//   await getCardHomeImagesApi().then(r=>setIamges(r.response))
 
-}
+// }
   return (
      <>
+     
      <div style={{width:"100%",display:"flex",justifyContent:"center",zIndex:"-2",marginBottom:"25px"}}>
-      {iamges?<iframe className={style.video} src={iamges.video_url}></iframe>:null}
+      {props.url?
+      <iframe width="560" height="315" className={style.video} src={props.url.Video_url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      :null}
      </div>
   </>
   )

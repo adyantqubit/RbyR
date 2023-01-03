@@ -276,7 +276,7 @@ const InsideOrder = () => {
                   return <div className={style.tablerowhead} style={i % 2 == 0 ? { marginTop: "10px", background: "#f2f2f2" } : { marginTop: "10px" }}>
                     <div className={style.rowitem3}>
                   
-                    <img src={(typeof p.img_main)==='undefined'?null: config.apiBaseURL + p.img_main} className={style.imgresponsive} onClick={e=>nav(`/listing/${p.category}/detail/${p.id}`)} />
+                    <img src={(typeof p.img_main)==='undefined'?null: config.apiBaseURL + p.img_main} className={style.imgresponsive} onClick={e=>nav(`/listing/${p.menu}/${p.category}/detail/${p.id}`)} />
                   
                       <span className={style.imgTitle}>
                         {p.title} ({SizeGetter(s.size)})

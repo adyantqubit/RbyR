@@ -37,7 +37,7 @@ const LikeCard = (props) => {
 
   const nav = useNavigate();
   function openDetail(id) {
-    nav(`/listing/${id.category}/detail/${id.id}`);
+    nav(`/listing/${id.menu}/${id.category}/detail/${id.id}`);
     // window.location.reload(false);
   }
 

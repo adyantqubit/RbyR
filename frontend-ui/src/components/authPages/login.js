@@ -102,8 +102,8 @@ const Login = () => {
         
         console.log(!value.length>5)
 
-		if(value.length<7){
-           setServerError({"contact_number":["Minimum 7 digits are require."]})
+		if(value.length<9){
+           setServerError({"contact_number":["Minimum 8 digits are require."]})
 		}
 		else{
 		const actualData = {

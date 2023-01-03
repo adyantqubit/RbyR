@@ -53,6 +53,11 @@ urlpatterns = [
     path('cart_recheck/',CartRecheck.as_view()),
     path('shipping_tick/',ShippingTick.as_view()),
     path('User_update/',updateUser.as_view()),
+    
+    # Added by Rohan on 30/11/22
+    #Reason - To get all worldofrr content
+    path('worldofRR/',WorldofRRApi.as_view()),
+    # End of code
 
 
     #Added by Ashish on 06-11-2022

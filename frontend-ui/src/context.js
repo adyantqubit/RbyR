@@ -71,11 +71,11 @@ const Context = ({ children }) => {
   var [reload, setReload] = useState(true)
   const [selectedCategory, setCategorySelected] = useState([])
   const [searchmsg,setSearchMsg]=useState("")
+  const [menus,setMenu]=useState([])
 
   //product updation
   useEffect(() => {
     firstTimeLoadFunctions()
-    
   }, [])
 
   function firstTimeLoadFunctions() {
@@ -135,6 +135,7 @@ const Context = ({ children }) => {
   const productApi = async () => {
     await check2().then(r => {
       setProduct(r.product);
+      setMenu(r.menus)
     })
   }
 
@@ -187,6 +188,7 @@ const Context = ({ children }) => {
               img_main: [...p][0].img_main,
               quantity: lke.quantity,
               category: [...p][0].category,
+              menu:[...p][0].menu,
               size: lke.size,
               shipping_charges: [...p][0].shipping_charges,
               ready_to_ship_days:[...p][0].ready_to_ship_days,
@@ -344,7 +346,7 @@ const Context = ({ children }) => {
 
   //filter
   return (
-    <Cart.Provider value={{searchmsg,setSearchMsg, filteredPersons, setFilteredPersons,selectedCategory, setCategorySelected, reload, setReload, firstTimeLoadFunctions, showEditable, setShowEditable, shipEditcond, setshipEditCond, cartEnd, setCartEnd, taxRate, setTaxRate, offer, setOffer, availablitySelect, setAvailablity, latestSelect, setLatestSelect, defaultShiping, setDefaultShipping, orders, setOrder, paymentflow, setPaymentflow, shippingflow, setShipingflow, checkoutDetails, setCheckoutDetails, userdata, setUserData, to, setTo, currency, setCurrency, sizeSelected, setSizeSelected, con, setcon, htl, sethtl, lth, setLth, tempsprice, setTempsprice, filterui, setfilterUi, maxValue, setmaxValue, minValue, setminValue, allCategoryAvai, setAllCategoryAvai, allColorAvai, setAllColorAvai, selectedColor, setSelectedColor, tempallpro, settemAllpro, sortui, setSortUi, product, cart, setCart, setProduct, setcheck, checked1, checked2, image, setImage, like, setLike, setCondition, condition, openLikedrawer, setLikeDrawer, openCartdrawer, setCartDrawer, CategoryProduct, setCategoryProduct }}>
+    <Cart.Provider value={{menus,setMenu,searchmsg,setSearchMsg, filteredPersons, setFilteredPersons,selectedCategory, setCategorySelected, reload, setReload, firstTimeLoadFunctions, showEditable, setShowEditable, shipEditcond, setshipEditCond, cartEnd, setCartEnd, taxRate, setTaxRate, offer, setOffer, availablitySelect, setAvailablity, latestSelect, setLatestSelect, defaultShiping, setDefaultShipping, orders, setOrder, paymentflow, setPaymentflow, shippingflow, setShipingflow, checkoutDetails, setCheckoutDetails, userdata, setUserData, to, setTo, currency, setCurrency, sizeSelected, setSizeSelected, con, setcon, htl, sethtl, lth, setLth, tempsprice, setTempsprice, filterui, setfilterUi, maxValue, setmaxValue, minValue, setminValue, allCategoryAvai, setAllCategoryAvai, allColorAvai, setAllColorAvai, selectedColor, setSelectedColor, tempallpro, settemAllpro, sortui, setSortUi, product, cart, setCart, setProduct, setcheck, checked1, checked2, image, setImage, like, setLike, setCondition, condition, openLikedrawer, setLikeDrawer, openCartdrawer, setCartDrawer, CategoryProduct, setCategoryProduct }}>
       {children}
     </Cart.Provider>
   );

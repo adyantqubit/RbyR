@@ -4,18 +4,22 @@ import config from "../../api/config";
 import { getCardHomeImagesApi } from "../../api/service";
 import style from "./card.module.css";
 
-const CArd2 = () => {
-  const [iamges, setIamges] = useState({});
-  useEffect(() => {
-    images();
-  }, []);
+const CArd2 = (props) => {
+  // const [iamges, setIamges] = useState(null);
+  // useEffect(() => {
+  //   images();
+  // }, []);
 
-  async function images() {
-    await getCardHomeImagesApi().then((r) => setIamges(r.response));
-  }
+  // async function images() {
+  //   await getCardHomeImagesApi().then((r) => 
+  //   {
+  //     // setIamges(r.response);
+  //        console.log(r)
+  //   })
+  // }
   return (
     <div className={style.container}>
-      {iamges ? (
+      {props.imgArray ? (
         <ul className={style.main}>
           <li className={style.cardli}>
             {/* Commented and modified by Ashish on 20-111-2022
@@ -25,13 +29,13 @@ const CArd2 = () => {
               style={{ width: "auto", height: "auto" }}
             > */}
               {/* <div className={style.text}>{iamges.category_top3}</div> */}
-              <div className={style.text}><a className={style.linkText}  href={`listing/${iamges.category_top3}`}>{iamges.category_top3}</a></div>
-              <Link to={`listing/${iamges.category_top3}`}>
+              <div className={style.text}><a className={style.linkText}  href={`listing/${props.imgArray[0].menu}/${props.imgArray[0].category}`}>{props.imgArray[0].category}</a></div>
+              <Link to={`listing/${props.imgArray[0].menu}/${props.imgArray[0].category}`}>
                 {/* <div> */}
                   <img
                     alt=""
                     className={style.imgswap}
-                    src={config.apiBaseURL + iamges.img_top3}
+                    src={config.apiBaseURL +props.imgArray[0].image}
                   />
                 {/* </div> */}
 
@@ -47,13 +51,13 @@ const CArd2 = () => {
                 style={{ width: "auto", height: "auto"}}
               > */}
               {/* <div className={style.text}>{iamges.category_top4}</div> */}
-              <div className={style.text}><a className={style.linkText}  href={`listing/${iamges.category_top4}`}>{iamges.category_top4}</a></div>
-                <Link to={`listing/${iamges.category_top4}`}>
+              <div className={style.text}><a className={style.linkText}  href={`listing/${props.imgArray[1].menu}/${props.imgArray[1].category}`}>{props.imgArray[1].category}</a></div>
+                <Link to={`listing/${props.imgArray[1].menu}/${props.imgArray[1].category}`}>
                   {/* <div> */}
                     <img
                       alt=""
                       className={style.imgswap}
-                      src={config.apiBaseURL + iamges.img_top4}
+                      src={config.apiBaseURL + props.imgArray[1].image}
                     />
                   {/* </div> */}
 

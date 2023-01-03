@@ -102,3 +102,13 @@ export const CurrencySaverGetter=async()=>{
   }).catch((err) => console.log("Failed to authenticate the user."));
 return response ? response.data : {};
 }
+
+
+// Added by ROhan - on 30/12/22
+export const WorldOfRR=async()=>{
+  const response = await API.get(`worldofRR/`,{
+    headers: { "Content-Type": "application/json"},
+  }).catch((err) => console.log("Failed to authenticate the user."));
+return response ? response.data : {};
+}
+// end of code

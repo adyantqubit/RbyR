@@ -158,11 +158,31 @@ category = (
     ('world_of_rbyr','World Of RBYR')
 )
 
+# Added by Rohan on 27-12-2022
+#Reason - Adding category and menus name from backend
+
+class Menus(models.Model):
+    menu=models.CharField(max_length=15)
+    
+    def clean(self):
+        if (Menus.objects.count() >= 5 and self.pk is None):
+            raise ValidationError("Can only create five Menu instances. Try editing/removing one of the existing instances.")   
+ 
+class subMenu(models.Model):
+    sub=models.CharField(max_length=15)
+    Menu=models.ForeignKey(Menus,on_delete=models.CASCADE)    
+    
+#End of the code
+
 class product_detail(models.Model):
     id=models.AutoField(primary_key=True)
     title=models.CharField(max_length=100)
     about=models.CharField(max_length=300)
-    category=models.CharField(max_length=50,choices=category,default="casual")
+    upper_menu=models.ForeignKey(Menus,on_delete=models.CASCADE,null=True,blank=True)
+    subMenu=models.ForeignKey(subMenu,on_delete=models.CASCADE,null=True,blank=True)
+    
+    menu=models.CharField(max_length=50)
+    category=models.CharField(max_length=50)
     img_main=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100)  
     img_sub1=models.ImageField(upload_to='None/', height_field=None,\
@@ -202,7 +222,9 @@ class product_detail(models.Model):
 
     def save(self,*args, **kwargs):
         # self.productName_with_category =  self.product_name+self.category_name.category
-        strWithSpace =  self.title+self.category
+        strWithSpace =  self.title+self.subMenu.sub
+        self.category=self.subMenu.sub
+        self.menu=self.upper_menu.menu
         self.search_key=strWithSpace.replace(" ", "")
         super().save(*args,**kwargs) 
     #End of code addition
@@ -273,7 +295,8 @@ class Head_img(models.Model):
            width_field=None, max_length=100)   
     label=models.CharField(max_length=100,default="slider")
     about=models.CharField(max_length=200,default="here you have to write something")
-    category=models.CharField(max_length=50,choices=category,default="casual")
+    Menu=models.ForeignKey(Menus,on_delete=models.CASCADE,blank=True,null=True)
+    category=models.CharField(max_length=50)
     display_on=models.CharField(max_length=20,choices=window_CHOICES,default="window")
     
     #Added by Ashish Dewangan on 28-11-2022
@@ -283,35 +306,78 @@ class Head_img(models.Model):
     class Meta:
             verbose_name_plural = "Cover Images"
     #End of code addition 
+    
+# Added by ROhan -31/12/22
+# Reason- Making Header menu dynamic so, user is able select category from available list
+    
+    def save(self,*args, **kwargs):
+        self.category=self.Menu.menu
+        super().save(*args,**kwargs) 
+    
+    
 
-class HomeCard_img(models.Model):
-    img_top1=models.ImageField(upload_to='None/', height_field=None,\
-    width_field=None, max_length=100)
-    category_top1=models.CharField(max_length=50,choices=category,default="casual")
-    img_top1_1=models.ImageField(upload_to='None/', height_field=None,\
-    width_field=None, max_length=100)
-    category_top1_1=models.CharField(max_length=50,choices=category,default="casual")
-    img_top2=models.ImageField(upload_to='None/', height_field=None,\
-    width_field=None, max_length=100)
-    category_top2=models.CharField(max_length=50,choices=category,default="casual")
-    img_top2_1=models.ImageField(upload_to='None/', height_field=None,\
-    width_field=None, max_length=100)
-    category_top2_1=models.CharField(max_length=50,choices=category,default="casual")
-    img_top3=models.ImageField(upload_to='None/', height_field=None,\
-    width_field=None, max_length=100)
-    category_top3=models.CharField(max_length=50,choices=category,default="casual")
-    img_top4=models.ImageField(upload_to='None/', height_field=None,\
-    width_field=None, max_length=100)
-    category_top4=models.CharField(max_length=50,choices=category,default="casual")
-    video_url=models.CharField(max_length=200,default="")
+# Reason - Creating new 3 models and commenting HomeCard_img model becuase
+# HomeCard_Img is generating Issuebeacuse all content in one model so making different model for each  
+# Content according to our need
+class HomeGifImages(models.Model):
+    Gif_image=models.ImageField(upload_to='None/', height_field=None,\
+    width_field=None, max_length=100)   
+    Menu=models.ForeignKey(Menus,on_delete=models.CASCADE,blank=True,null=True)
+    sub=models.ForeignKey(subMenu,on_delete=models.CASCADE,blank=True,null=True)
+    menu=models.CharField(max_length=50,blank=True)
+    category=models.CharField(max_length=50,blank=True) 
+    
+    def save(self,*args, **kwargs):
+        self.menu=self.Menu.menu
+        self.category=self.sub.sub
+        super().save(*args,**kwargs) 
+  
+class HomeNormalImages(models.Model):
+    image=models.ImageField(upload_to='None/', height_field=None,\
+    width_field=None, max_length=100)   
+    Menu=models.ForeignKey(Menus,on_delete=models.CASCADE,blank=True,null=True)
+    sub=models.ForeignKey(subMenu,on_delete=models.CASCADE,blank=True,null=True)
+    menu=models.CharField(max_length=50,blank=True)
+    category=models.CharField(max_length=50) 
+    
+    def save(self,*args, **kwargs):
+        self.menu=self.Menu.menu
+        self.category=self.sub.sub
+        super().save(*args,**kwargs) 
+        
+class Home_video(models.Model):
+    Video_url=models.CharField(max_length=200)        
+    
+# End of code    
 
-    #Added by Ashish Dewangan on 28-11-2022
-    #Reason - To change table's displayed name
-    def __str__(self):
-         return "Images that will be shown on Home page categories"
-    class Meta:
-            verbose_name_plural = "Category Images"
-    #End of code addition      
+# class HomeCard_img(models.Model):
+#     img_top1=models.ImageField(upload_to='None/', height_field=None,\
+#     width_field=None, max_length=100)
+#     category_top1=models.CharField(max_length=50,choices=category,default="casual")
+#     img_top1_1=models.ImageField(upload_to='None/', height_field=None,\
+#     width_field=None, max_length=100)
+#     category_top1_1=models.CharField(max_length=50,choices=category,default="casual")
+#     img_top2=models.ImageField(upload_to='None/', height_field=None,\
+#     width_field=None, max_length=100)
+#     category_top2=models.CharField(max_length=50,choices=category,default="casual")
+#     img_top2_1=models.ImageField(upload_to='None/', height_field=None,\
+#     width_field=None, max_length=100)
+#     category_top2_1=models.CharField(max_length=50,choices=category,default="casual")
+#     img_top3=models.ImageField(upload_to='None/', height_field=None,\
+#     width_field=None, max_length=100)
+#     category_top3=models.CharField(max_length=50,choices=category,default="casual")
+#     img_top4=models.ImageField(upload_to='None/', height_field=None,\
+#     width_field=None, max_length=100)
+#     category_top4=models.CharField(max_length=50,choices=category,default="casual")
+#     video_url=models.CharField(max_length=200,default="")
+
+#     #Added by Ashish Dewangan on 28-11-2022
+#     #Reason - To change table's displayed name
+#     def __str__(self):
+#          return "Images that will be shown on Home page categories"
+#     class Meta:
+#             verbose_name_plural = "Category Images"
+#     #End of code addition      
          
 class usershippingDetail(models.Model):
     id=models.AutoField(primary_key=True)
@@ -853,7 +919,6 @@ class CustomTailoredForm(models.Model):
     class Meta:
             verbose_name_plural = "Custom Tailored Requests"
     #End of code addition   
-    
 #End of code addition
 
 
@@ -882,5 +947,26 @@ class CurrencySelected(models.Model):
 #End of code addition
 #End of code addition
 
+
+# Added by Rohan on 30-12-22
+# Reason - It Design page of RR content
+class ItDesignContent(models.Model):
+    TopImage1=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    TopImage2=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    HeaderText=models.CharField(max_length=50)
+    description1=models.TextField(max_length=200)
+    description2=models.TextField(max_length=500)
+    descriptionHighlight=models.CharField(max_length=100)
+    sliderImg1=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    sliderImg2=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    sliderImg3=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    contactHeader=models.CharField(max_length=50)
+    contactDescription=models.TextField(max_length=100)
+# End of code
 
 

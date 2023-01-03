@@ -7,47 +7,48 @@ import AutoCard from "./AutoChange";
 import ImageSwapper2 from "./AutoChange2";
 import style from "./card.module.css";
 
-const Card = () => {
-  const [iamges, setIamges] = useState({});
-  useEffect(() => {
-    images();
-  }, []);
+const Card = (props) => {
+  // const [iamges, setIamges] = useState(1);
+  // useEffect(() => {
+  //   images();
+  // }, []);
 
-  async function images() {
-    await getCardHomeImagesApi().then((r) => setIamges(r.response));
-  }
+  console.log(props.imgArray)
+  // async function images() {
+  //   await getCardHomeImagesApi().then((r) => setIamges(r.response));
+  // }
   return (
     <div className={style.container}>
-      {iamges ? (
+      {props.imgArray ? (
         <ul className={style.main}>
           <li className={style.cardli}>
-            {/* Commented and modified by Ashish on 20-111-2022
-            Reason- To make card responsive */}
-            {/* <div
-            // style={{ width: "auto", height: "auto", borderRadius: "10px"}}
-              // style={{ width: "auto", height: "auto"}}
-            > */}
-            {/* <div className={style.text}></div> */}
-              <Link to={`listing/${iamges.category_top1}`}>
-                <ImageSwapper />
-                {/* <div className={style.text}><a className={style.linkText}  href={`listing/${iamges.category_top1}`}>{iamges.category_top1}</a></div> */}
-
+        
+              <Link to={`listing/${props.imgArray[0].menu}/${props.imgArray[0].category}`}>
+              <img
+                    alt=""
+                    className={style.imgswap}
+                    src={config.apiBaseURL +  props.imgArray[0].Gif_image}
+                  />
+              <div className={style.text}><a className={style.linkText}  href={`listing/${props.imgArray[0].menu}/${props.imgArray[0].category}`}>{props.imgArray[0].category}</a></div>
               </Link>
 
-            {/* </div> */}
           </li>
-          <li className={style.cardli}>
-            {/* <div
-            // style={{ width: "auto", height: "auto", borderRadius: "10px" }}
-              // style={{ width: "auto", height: "auto"}}
-            > */}
-            {/* <div className={style.text}>{iamges.category_top2}</div> */}
-              <Link to={`listing/${iamges.category_top2}`}>
-                <ImageSwapper2 />
-                {/* <div className={style.text}><a className={style.linkText}  href={`listing/${iamges.category_top2}`}>{iamges.category_top2}</a></div> */}
+          <li className={style.cardli}>             
+              <Link to={`listing/${props.imgArray[1].menu}/${props.imgArray[1].category}`}>
+                {/* Commented by ROhan -on 31/12/22 
+                    Reason beasuse Now We are getting gif image so no need to swap */}
+                {/* <ImageSwapper2 /> */}
+              
+                <img
+                    alt=""
+                    className={style.imgswap}
+                    src={config.apiBaseURL + props.imgArray[1].Gif_image}
+                  />
+
+                {/* End of comment */}
+                <div className={style.text}><a className={style.linkText}  href={`listing/${props.imgArray[1].menu}/${props.imgArray[1].category}`}>{props.imgArray[1].category}</a></div>
               </Link>
 
-            {/* </div> */}
           </li>
         </ul>
       ) : null}
