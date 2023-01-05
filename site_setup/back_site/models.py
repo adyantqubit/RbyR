@@ -181,8 +181,8 @@ class product_detail(models.Model):
     upper_menu=models.ForeignKey(Menus,on_delete=models.CASCADE,null=True,blank=True)
     subMenu=models.ForeignKey(subMenu,on_delete=models.CASCADE,null=True,blank=True)
     
-    menu=models.CharField(max_length=50)
-    category=models.CharField(max_length=50)
+    menu=models.CharField(max_length=50,null=True,blank=True)
+    category=models.CharField(max_length=50,null=True,blank=True)
     img_main=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100)  
     img_sub1=models.ImageField(upload_to='None/', height_field=None,\
@@ -222,8 +222,12 @@ class product_detail(models.Model):
 
     def save(self,*args, **kwargs):
         # self.productName_with_category =  self.product_name+self.category_name.category
-        strWithSpace =  self.title+self.subMenu.sub
-        self.category=self.subMenu.sub
+        if self.subMenu is not None:
+            strWithSpace =  self.title+self.subMenu.sub
+            self.category=self.subMenu.sub
+        else:
+            strWithSpace =  self.title
+            self.category=""
         self.menu=self.upper_menu.menu
         self.search_key=strWithSpace.replace(" ", "")
         super().save(*args,**kwargs) 
@@ -925,7 +929,7 @@ class CustomTailoredForm(models.Model):
 #Added by Ashish on 24-11-2022
 #Reason - To save whatsapp number in table
 class WhatsappContact(models.Model):
-    whatsappNumber=models.IntegerField(validators=[validate_phone_number])
+    whatsappNmber=models.IntegerField(validators=[validate_phone_number])
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self):
@@ -970,3 +974,28 @@ class ItDesignContent(models.Model):
 # End of code
 
 
+# created by Rohan - 4/1/23
+#Reason - Saving celebrity data and their shoot
+
+class Celebrity(models.Model):
+    TopImage1=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    ModelName=models.CharField(max_length=50)
+    productTitle=models.TextField(max_length=200)
+    upper_menu=models.ForeignKey(Menus,on_delete=models.CASCADE,null=True,blank=True)
+    subMenu=models.ForeignKey(subMenu,on_delete=models.CASCADE,null=True,blank=True)
+    menu=models.CharField(max_length=50,null=True,blank=True)
+    category=models.CharField(max_length=50,null=True,blank=True)
+    product=models.ForeignKey(product_detail,on_delete=models.CASCADE,blank=True,null=True)
+
+    def save(self,*args, **kwargs):
+        # self.productName_with_category =  self.product_name+self.category_name.category
+        if self.subMenu is not None:
+            self.category=self.subMenu.sub
+            self.menu=self.upper_menu.menu
+        else:
+            self.category=""
+            self.menu=""
+
+        super().save(*args,**kwargs) 
+# End of code

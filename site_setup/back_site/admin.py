@@ -922,6 +922,8 @@ class Menu_Detail(admin.ModelAdmin):
             raise ValidationError("Can only create five Menu instances. Try editing/removing one of the existing instances.")   
 
 
+
+
 @admin.register(subMenu)
 class subMenu_Detail(admin.ModelAdmin):
     list_display=("sub",)
@@ -937,4 +939,13 @@ class subMenu_Detail(admin.ModelAdmin):
         return form    
 # end of code
 
+
+# Created on 31/12/22
+#Reason- showing Design page
 admin.site.register(ItDesignContent)
+#end of code
+
+# Created on 4/1/23
+#Reason- showing Design page
+admin.site.register(Celebrity)
+#end of code

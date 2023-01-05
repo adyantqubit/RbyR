@@ -6,6 +6,7 @@ import config from '../../api/config'
 import Footer from '../global/footer'
 import Navbar from '../global/NavHeader'
 import "./open.css"
+import ResponsiveSlider from './responsiveSlider';
 
 const ItDesign = () => {
 
@@ -19,36 +20,7 @@ const ItDesign = () => {
         await WorldOfRR().then(r=>setResponse(r.ItDesign))
     }
 
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-    const [drawerwidth, setDrawerwidth] = useState(false)
-  
-  
-    useEffect(() => {
-      function handleWindowResize() {
-        setWindowSize(getWindowSize());
-      }
-      window.addEventListener('resize', handleWindowResize);
-  
-      return () => {
-        window.removeEventListener('resize', handleWindowResize);
-      };
-  
-  
-    }, [window.innerWidth]);
-  
-    function getWindowSize() {
-      const { innerWidth, innerHeight } = window;
-      return { innerWidth, innerHeight };
-    }
-  
-    useEffect(() => {
-      if (windowSize.innerWidth < 500)
-        setDrawerwidth(true)
-      else if (windowSize.innerWidth > 800)
-        setDrawerwidth(false)
-    }, [windowSize])
-
-
+    
     
 
     if(response!=null)
@@ -87,31 +59,7 @@ const ItDesign = () => {
 
             {/* Slider images */}
 
-            <div className={style.TextContainer}>
-                <div className={style.InnerImgContainer}>
-
-                {drawerwidth?
-                <>
-                <ImageSlider effectDelay={100} autoPlayDelay={2000}>
-                    <Slide>
-                        <img alt="img2" className={style.sliderImg} src={config.apiBaseURL+response.sliderImg1}/>
-                    </Slide>
-                    <Slide>
-                        <img alt="img2" className={style.sliderImg} src={config.apiBaseURL+response.sliderImg1} />
-                    </Slide>
-                    <Slide>
-                        <img alt="img1" className={style.sliderImg} src={config.apiBaseURL+response.sliderImg1} />
-                    </Slide>
-                    </ImageSlider>
-                    </>
-                    :<>
-                    <img className={style.sliderImg} src={config.apiBaseURL+response.sliderImg1}></img>
-                    <img className={style.sliderImg} src={config.apiBaseURL+response.sliderImg2}></img>
-                    <img className={style.sliderImg} src={config.apiBaseURL+response.sliderImg3}></img>
-                    </>
-                    }
-                </div>
-            </div>
+            <ResponsiveSlider img1={response.sliderImg1} img2={response.sliderImg2} img3={response.sliderImg3}/>
 
             {/* Contact Text */}
             <div className={style.Top2Images}>

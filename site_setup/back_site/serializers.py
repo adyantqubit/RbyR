@@ -425,3 +425,13 @@ class ItDesignSerializer(serializers.ModelSerializer):
         model=ItDesignContent
         fields="__all__"
 # End of code 
+
+
+# Added by Rohan - on 4/1/12
+# Reason - To get all celebrity data
+class celebritySerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Celebrity
+        fields="__all__"
+        
+#End of code 

@@ -911,42 +911,43 @@ const Details = (props) => {
           {/* <div className={styles['container13']}>
      <span className={styles['text28']}>Text</span> 
       </div> */}
-          <div className={styles.gal}>
+          <div className={styles.gal}>  
             <div className={styles.image_gallery}>
               <div className={styles.column}>
                 <div className={styles.image_item}>
-                  <InnerImageZoom
-                    className={styles.img}
-                    src={config.apiBaseURL + details.img_sub1}
-                    zoomSrc={config.apiBaseURL + details.img_sub1}
-                  />
+                  {details.img_sub1!="/null"?
+                   <InnerImageZoom
+                   className={styles.img}
+                   src={config.apiBaseURL + details.img_sub1}
+                   zoomSrc={config.apiBaseURL + details.img_sub1}
+                 />:null}
+                 
                 </div>
               </div>
               <div className={styles.column}>
                 <div className={styles.image_item}>
+                 {details.img_sub2!="/null"?
                   <InnerImageZoom
                     className={styles.img}
                     src={config.apiBaseURL + details.img_sub2}
                     zoomSrc={config.apiBaseURL + details.img_sub2}
-                  />
+                  />:null}
                 </div>
               </div>
               <div className={styles.column}>
                 <div className={styles.image_item}>
+                 {details.img_sub3!="/null"?
                   <InnerImageZoom
                     className={styles.img}
                     src={config.apiBaseURL + details.img_sub3}
                     zoomSrc={config.apiBaseURL + details.img_sub3}
-                  />
+                  />:null}
                 </div>
               </div>
             </div>
           </div>
           {/* 
-          {CategoryProduct && CategoryProduct.length > 0 ? (
-
-          
-            
+          {CategoryProduct && CategoryProduct.length > 0 ? (  
             <div
               style={{
                 width: "80vw",

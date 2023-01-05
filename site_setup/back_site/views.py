@@ -1073,7 +1073,19 @@ class WorldofRRApi(APIView):
      except:
         Design={"blank":0}    
         
-     Whole_data["ItDesign"]=Design   
+     Whole_data["ItDesign"]=Design 
+     
+     
+    #  Added by Rohan - on 4/1/22
+    # Reason-Sending all celebrity data
+     celebrity=0
+     try:
+        serialize=celebritySerializer(Celebrity.objects.all(),many=True)
+        celebrity=serialize.data
+     except:    
+        celebrity={"blank":0} 
+     Whole_data['celebrity']=celebrity
+    # End of the code  
      return Response(Whole_data)
 #End of code
 

@@ -40,6 +40,7 @@ import About from './components/Abouts/blankpages/about';
 import Celebrity from './components/Abouts/blankpages/celebrity';
 import Feature from './components/Abouts/blankpages/features';
 import Editorial from './components/Abouts/blankpages/editorial';
+import AboutUs from './components/Abouts/AboutUs';
 
 function App() {
   // notification.destroy()
@@ -91,10 +92,15 @@ function App() {
     {/* Added by Rohan -30/12/22 */}
     
         <Route path='/RRDesign' element={<ItDesign/>}/>
-        <Route path='/celebRR' element={<Celebrity/>}/>
+        {/* <Route path='/celebRR' element={<Celebrity/>}/>
         <Route path="/features" element={<Feature/>}/>
         <Route path="/aboutRR" element={<About/>} />
+        <Route path="/editorial" element={<Editorial/>} /> */}
+        <Route path='/celebRR' element={<Celebrities/>}/>
+        <Route path="/features" element={<Features/>}/>
+        <Route path="/aboutRR" element={<AboutUs/>} />
         <Route path="/editorial" element={<Editorial/>} />
+    
     
     {/* End of code. */}
     
