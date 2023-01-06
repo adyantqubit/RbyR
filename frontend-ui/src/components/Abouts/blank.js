@@ -1,16 +1,19 @@
 import React from 'react'
+import Footer from '../global/footer'
+import Navbar from '../global/NavHeader'
+import style from './ItDesign.module.css'
 
 const Blank = () => {
   return (
-    <div class="cont_principal">
-<div class="cont_error">
-  
-<h1>Oops</h1>  
-  <p>The Page you're looking for isn't here.</p>
-  </div>
-<div class="cont_aura_1"></div>
-<div class="cont_aura_2"></div>
-</div>
+    <>
+      <Navbar />
+      <div style={{ height: "90vh", width: "auto",paddingTop:"153px",background:"#323232",color:"white" ,display:"flex",flexDirection:"column",justifyContent:"center",textAlign:"center" }}>
+       <div className={style.headerText}>NOTHING FOUNDS !</div> 
+      </div>
+      <div className={style.foot}>
+        <Footer />
+      </div>
+    </>
   )
 }
 

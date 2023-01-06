@@ -41,11 +41,11 @@ const ResponsiveSlider = (props) => {
 
     {drawerwidth?
     <>
-    <ImageSlider effectDelay={100} autoPlayDelay={2000}>
+    <ImageSlider effectDelay={1000} autoPlayDelay={2000}>
         <Slide>
             <img alt="img2" className={style.sliderImg} src={props.response=="frontend"?props.img1:config.apiBaseURL+props.img1}/>
         </Slide>
-        <Slide>
+        <Slide>   
             <img alt="img2" className={style.sliderImg} src={props.response=="frontend"?props.img2:config.apiBaseURL+props.img2} />
         </Slide>
         <Slide>

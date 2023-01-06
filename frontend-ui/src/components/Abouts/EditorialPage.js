@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import Navbar from '../global/NavHeader'
-import style from "./celebrities.module.css"
-import image from "./assets/example.jpg"
+import style from "./Editorial.module.css"
 
 import ImageViewer from 'react-simple-image-viewer';
 import { WorldOfRR } from '../../api/orderApis';
@@ -11,7 +10,7 @@ import Footer from '../global/footer';
 import Blank from './blank';
 
 
-const Celebrities = () => {
+const Editorialpage = () => {
 
     // Showing image if no product is connected to image
 
@@ -55,7 +54,7 @@ const Celebrities = () => {
 
 
     async function GetWorldOfRRContent(){
-        await WorldOfRR().then(r=>setResponse(r.celebrity))
+        await WorldOfRR().then(r=>setResponse(r.editorial))
     }
 
     const nav=useNavigate()
@@ -84,29 +83,24 @@ const Celebrities = () => {
                  </div>:null}
                  </div>
                  <div className={style.celeb}>{i.ModelName}</div>
-                 <div className={style.product}>{i.productTitle}</div>
+                 <div className={style.product}>{i.MagzineName}</div>
              </div>)}
             </div>
 
-            
-
-                {isViewerOpen && (
-                    <ImageViewer
-                        src={images}
-                        currentIndex={currentImage}
-                        disableScroll={false}
-                        closeOnClickOutside={true}
-                        onClose={closeImageViewer}
-                    />
-                )}
-            
-
+            {isViewerOpen && (
+                <ImageViewer
+                    src={images}
+                    currentIndex={currentImage}
+                    disableScroll={false}
+                    closeOnClickOutside={true}
+                    onClose={closeImageViewer}
+                />
+            )}
         </div>
 
         <div className={style.foot}>
         <Footer/>
         </div>
-
     </>
     )
 }
@@ -115,4 +109,4 @@ else{
 }
 }
 
-export default Celebrities
+export default Editorialpage

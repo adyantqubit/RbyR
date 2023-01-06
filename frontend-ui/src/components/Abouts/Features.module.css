@@ -1,0 +1,78 @@
+
+@font-face {
+    font-family: 'MyFont';
+    src: local('MyFont'), url(../../assets/font/RawsonAltRegular.woff) format('woff');
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+  }
+
+  @font-face {
+    font-family: 'MyFont2';
+    src: local('MyFont'), url(../../assets/font/RawsonMedium.woff) format('woff');
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+  }
+
+
+.Container{
+    width:100%;
+    padding: 150px 5.5% 0% 5.5%;
+    background-color: #323232;
+}
+
+.contains{
+    margin-top: 4%;
+    width: 100%;
+    display: inline-block;
+    flex-wrap: wrap;
+    flex-basis: auto;
+}
+
+.headerText{
+    margin-bottom: 20px;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 3px;
+    font-family: 'MyFont2' !important;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #fff;
+
+}
+
+.imageContainer{
+    width: 100%;
+    background-color: aqua;
+    display: flex;
+    flex-wrap: wrap;
+    gap:10px
+}
+
+.column{
+    flex: 1 1 0 ;
+    justify-content: flex-start;
+    width:fit-content;
+    min-width: 310px; 
+    /* max-width: 390px; */
+    background-color: bisque;
+}
+
+.img{
+    margin: 5px 0px;
+}
+
+
+
+
+
+@media (max-width:768px){
+    .Container{
+    padding: 12vh 0% 0% 0%;
+    }
+    .contains{
+        margin-top: 4vh;
+        padding: 0 2%;
+    }
+    
+   
+}

@@ -396,6 +396,7 @@ const Details = (props) => {
                   <h1 className={styles["subtitle"]}>{details.about}</h1>
                   <span className={styles["subtitle"]}>
                     {" "}
+                    
                     {currency.sign}{" "}
                     {(details.price * currency.value).toFixed(2)}
                   </span>
@@ -413,7 +414,6 @@ const Details = (props) => {
                                 for={details.id}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
                                 style={{textDecoration:"none"}}
-
                               >
                                 <input
                                   type="radio"

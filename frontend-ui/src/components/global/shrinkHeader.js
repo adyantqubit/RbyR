@@ -193,6 +193,12 @@ const ShrinkHeader = () => {
             })
           }
 
+          <Link to={`/listing/ready to wear/0`} className={style.drawerMenu}>
+            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer()}}>
+              <span>READY TO WEAR</span> <AiOutlineRight />
+            </div>
+          </Link>
+
            <Link to="#" className={style.drawerMenu}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer2(); setMenu(submenus) }}>
               <span>WORLD OF RbyR</span> <AiOutlineRight />

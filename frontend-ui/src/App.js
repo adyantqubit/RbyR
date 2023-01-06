@@ -41,6 +41,7 @@ import Celebrity from './components/Abouts/blankpages/celebrity';
 import Feature from './components/Abouts/blankpages/features';
 import Editorial from './components/Abouts/blankpages/editorial';
 import AboutUs from './components/Abouts/AboutUs';
+import Editorialpage from './components/Abouts/EditorialPage';
 
 function App() {
   // notification.destroy()
@@ -99,7 +100,7 @@ function App() {
         <Route path='/celebRR' element={<Celebrities/>}/>
         <Route path="/features" element={<Features/>}/>
         <Route path="/aboutRR" element={<AboutUs/>} />
-        <Route path="/editorial" element={<Editorial/>} />
+        <Route path="/editorial" element={<Editorialpage/>} />
     
     
     {/* End of code. */}

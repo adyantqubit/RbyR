@@ -916,11 +916,9 @@ class Menu_Detail(admin.ModelAdmin):
     #     form.base_fields['menu'].widget.attrs['style'] = 'width: 100%;'
     #     # form.base_fields['category'].widget.attrs['style'] = 'width: 100%;
     #     return form  
+    def has_add_permission(self, request):
+        return not Menus.objects.count()>=4
       
-    def clean(self):
-        if (Menus.objects.count() >= 5 and self.pk is None):
-            raise ValidationError("Can only create five Menu instances. Try editing/removing one of the existing instances.")   
-
 
 
 
@@ -928,7 +926,6 @@ class Menu_Detail(admin.ModelAdmin):
 class subMenu_Detail(admin.ModelAdmin):
     list_display=("sub",)
     def get_form(self, request, obj, **kwargs):
-        print(request)
         form = super(subMenu_Detail, self).get_form(request, obj, **kwargs)
         form.base_fields['Menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
       
@@ -946,6 +943,31 @@ admin.site.register(ItDesignContent)
 #end of code
 
 # Created on 4/1/23
-#Reason- showing Design page
-admin.site.register(Celebrity)
+#Reason- Showing Celebrity and editorial page
+@admin.register(Celebrity)
+class CelebrityAdmin(admin.ModelAdmin):
+    list_display=("ModelName",)
+    readonly_fields=("menu","category",)
+    def get_form(self, request, obj, **kwargs):
+        form = super(CelebrityAdmin, self).get_form(request, obj, **kwargs)
+        form.base_fields['upper_menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
+        form.base_fields['subMenu'].label_from_instance = lambda inst:"{}:{}".format(inst.Menu.menu,inst.sub)
+        return form 
+    
+    
+@admin.register(Editorial)
+class EditorialAdmin(admin.ModelAdmin):
+    list_display=("ModelName","MagzineName")
+    readonly_fields=("menu","category",)    
+    def get_form(self, request, obj, **kwargs):
+        print(request)
+        form = super(EditorialAdmin, self).get_form(request, obj, **kwargs)
+        form.base_fields['upper_menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
+        form.base_fields['subMenu'].label_from_instance = lambda inst:"{}:{}".format(inst.Menu.menu,inst.sub)
+        return form  
+    
+    
+admin.site.register(AboutUs)
+  
+     
 #end of code

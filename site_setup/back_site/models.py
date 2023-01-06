@@ -165,7 +165,7 @@ class Menus(models.Model):
     menu=models.CharField(max_length=15)
     
     def clean(self):
-        if (Menus.objects.count() >= 5 and self.pk is None):
+        if (Menus.objects.count() >= 4 and self.pk is None):
             raise ValidationError("Can only create five Menu instances. Try editing/removing one of the existing instances.")   
  
 class subMenu(models.Model):
@@ -981,7 +981,7 @@ class Celebrity(models.Model):
     TopImage1=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100)
     ModelName=models.CharField(max_length=50)
-    productTitle=models.TextField(max_length=200)
+    productTitle=models.CharField(max_length=200)
     upper_menu=models.ForeignKey(Menus,on_delete=models.CASCADE,null=True,blank=True)
     subMenu=models.ForeignKey(subMenu,on_delete=models.CASCADE,null=True,blank=True)
     menu=models.CharField(max_length=50,null=True,blank=True)
@@ -998,4 +998,68 @@ class Celebrity(models.Model):
             self.menu=""
 
         super().save(*args,**kwargs) 
+# End of code
+
+
+# Created by Rohan - 5/1/23
+# Reason - To save all Editorial data and aboutus content
+class Editorial(models.Model):
+    TopImage1=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    ModelName=models.CharField(max_length=50)
+    MagzineName=models.CharField(max_length=200)
+    upper_menu=models.ForeignKey(Menus,on_delete=models.CASCADE,null=True,blank=True)
+    subMenu=models.ForeignKey(subMenu,on_delete=models.CASCADE,null=True,blank=True)
+    menu=models.CharField(max_length=50,null=True,blank=True)
+    category=models.CharField(max_length=50,null=True,blank=True)
+    product=models.ForeignKey(product_detail,on_delete=models.CASCADE,blank=True,null=True)
+
+    def save(self,*args, **kwargs):
+        # self.productName_with_category =  self.product_name+self.category_name.category
+        if self.subMenu is not None:
+            self.category=self.subMenu.sub
+            self.menu=self.upper_menu.menu
+        else:
+            self.category=""
+            self.menu=""
+
+        super().save(*args,**kwargs) 
+        
+class AboutUs(models.Model):
+    video_url=models.CharField(max_length=400)
+    top_image=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    title1=models.CharField(max_length=50)
+    description1=models.TextField()
+    img1=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    img2=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    img3=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    title2=models.CharField(max_length=50)
+    description2=models.TextField()
+    img4=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    img5=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    img6=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    title3=models.CharField(max_length=50)
+    description3=models.TextField()
+    description4=models.TextField()
+    description5=models.TextField()
+    description6=models.TextField()
+    img7=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    img8=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    img9=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    title4=models.CharField(max_length=50)
+    description7=models.TextField()
+    description8=models.TextField()
+    description9=models.TextField()
+
+
 # End of code

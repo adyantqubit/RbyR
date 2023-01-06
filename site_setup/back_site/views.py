@@ -970,18 +970,22 @@ class pageIndex(APIView):
             products = []
             # Add by Rohan - 30/12/22
             # Reason - Changing view all functionality becuase for requirement of sending header menu from backend
-            if (request.data['category'] == "0"):
+            if (request.data['category']=="0" and request.data['parent']!="ready to wear"):
                 # products = product_detail.objects.filter(category="partywear") | product_detail.objects.filter(category="kurti") | product_detail.objects.filter(
                 #     category="casual") | product_detail.objects.filter(category="wedding_wear") | product_detail.objects.filter(category="formal")
                 menu=Menus.objects.get(menu=request.data['parent'])
-                print("parent hit",product_detail.objects.filter(upper_menu=menu))
                 products=product_detail.objects.filter(upper_menu=menu)
+            # End of code
+            
+            # Added by Rohan -5/1/22
+            # Reason- Adding ready to wear functionality where all ready to ship product shown on this link
+            elif (request.data['parent']=="ready to wear" and request.data['category']=="0"):
+                products=product_detail.objects.filter(ready_to_ship=True)
             # End of code
             else:
                 products = product_detail.objects.filter(
                     category=request.data['category'])
                 
-                print("category hit",products)
 
             if (request.data['lth'] and request.data['availablity']):
                 products = products.filter(available=True).order_by("price")
@@ -1071,7 +1075,7 @@ class WorldofRRApi(APIView):
         serialize=ItDesignSerializer(ItDesignContent.objects.last())
         Design=serialize.data
      except:
-        Design={"blank":0}    
+        Design=None  
         
      Whole_data["ItDesign"]=Design 
      
@@ -1085,6 +1089,25 @@ class WorldofRRApi(APIView):
      except:    
         celebrity={"blank":0} 
      Whole_data['celebrity']=celebrity
+    # End of the code  
+    
+    #  Added by Rohan - on 5/1/22
+    # Reason-Sending all editorial data and about us content
+     editorial=0
+     try:
+        serialize=editorialSerializer(Editorial.objects.all(),many=True)
+        editorial=serialize.data
+     except:    
+        editorial={"blank":0} 
+     Whole_data['editorial']=editorial
+     
+     about=0
+     try:
+        serialize=aboutSerializer(AboutUs.objects.last())
+        about=serialize.data
+     except:    
+        about=None 
+     Whole_data['about']=about
     # End of the code  
      return Response(Whole_data)
 #End of code
