@@ -285,7 +285,7 @@
 @media (max-width: 768px) {
 
     .foot{
-        margin-top:-12vh;
+        margin-top:-60px;
     }
 
     .header{
@@ -324,7 +324,7 @@
         max-width: 10%;
     }
     .container{
-        padding-top:12vh;
+        padding-top:60px;
         /* top:12vh; */
     }
     .invoice{

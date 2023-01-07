@@ -124,7 +124,7 @@
 }
 @media screen and (max-width:768px) {
     .container{
-        padding-top: 12vh;
+        padding-top: 60px;
         /* top:12vh; */
     }
     .title{

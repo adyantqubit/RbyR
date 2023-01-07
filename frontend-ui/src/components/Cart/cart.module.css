@@ -229,11 +229,11 @@ body {background: #333}
 @media (max-width: 768px) {
 
   .container{
-    padding-top:12vh;
+    padding-top:60px;
   }
 
   .foot{
-    margin-top: -12vh;
+    margin-top: -60px;
   }
 
    .summ{

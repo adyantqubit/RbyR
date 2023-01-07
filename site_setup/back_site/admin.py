@@ -47,7 +47,7 @@ class ProductAdmin(admin.ModelAdmin):
  
 @admin.register(product_detail)
 class product_detailAdmin(admin.ModelAdmin):
-    list_display=(short_title,"category","S","M","L","XL","XXL","L","price","color")
+    list_display=(short_title,"menu","category","S","M","L","XL","XXL","L","price","color")
     ordering =("title",)
     
     readonly_fields=('search_key','category','menu')

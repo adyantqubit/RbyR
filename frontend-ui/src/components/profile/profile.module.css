@@ -362,7 +362,7 @@
 
     
     .foot{
-        margin-top:-12vh;
+        margin-top:-60px;
     }
     .rowheadText{
         width:30%;
@@ -374,7 +374,7 @@
 
     .Container{
         /* top:12vh; */
-        padding-top: 12vh;
+        padding-top: 60px;
     }
 
     .tablerowhead{

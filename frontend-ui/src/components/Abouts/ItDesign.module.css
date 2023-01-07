@@ -82,7 +82,7 @@
 
 @media (max-width:768px) {
     .container{
-        padding-top: 12vh;
+        padding-top: 60px;
     }
     .InnerImgContainer {
         display: flex;
@@ -110,7 +110,7 @@
 
 
     .header {
-        height: 12vh;
+        height: 60px;
 
     }
     .AboutContent{

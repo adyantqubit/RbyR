@@ -156,7 +156,7 @@ justify-content: space-between;
   .Container{
     /* position: relative;
     top: 8vh */
-    padding-top:12vh
+    padding-top:60px
   }
  }
 
@@ -596,14 +596,14 @@ justify-content: space-between;
     top:0vh;
   }
 .foot{
-  margin-top: -12vh;
+  margin-top: -60px;
 }
   .containsSort{
     top:auto;
     bottom: 0vh;
    }
   .footerArange{
-    top:12vh;
+    top:60px;
   }
   .Container{
    

@@ -131,7 +131,8 @@ const Search = () => {
               {filteredPersons.map((p) => {
                 return (
                   <div className={styles.item}>
-                    <Link to={`/listing/${p.category}/detail/${p.id}`}>
+                    {console.log(p)}
+                    <Link to={`/listing/${p.menu}/${p.category}/detail/${p.id}`}>
                       <img
                         className={styles.searchedImage}
                         src={config.apiBaseURL + p.img_main}

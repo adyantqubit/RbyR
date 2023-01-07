@@ -502,11 +502,11 @@ letter-spacing: 1.2px;
         min-width: 100%;
     }
     .foot{
-       margin-top:-12vh;
+       margin-top:-60px;
     }
     .responsive{
         /* position:relative; */
-        padding-top:12vh;
+        padding-top:60px;
     }
     
     .row {
