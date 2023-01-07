@@ -969,5 +969,7 @@ class EditorialAdmin(admin.ModelAdmin):
     
 admin.site.register(AboutUs)
   
+admin.site.register(Feature)  
+  
      
 #end of code

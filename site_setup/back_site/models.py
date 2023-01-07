@@ -1060,6 +1060,10 @@ class AboutUs(models.Model):
     description7=models.TextField()
     description8=models.TextField()
     description9=models.TextField()
+    
+class Feature(models.Model):
+    magzine_img=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)    
 
 
 # End of code

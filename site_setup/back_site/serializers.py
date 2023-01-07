@@ -447,5 +447,10 @@ class aboutSerializer(serializers.ModelSerializer):
     class Meta:
         model=AboutUs
         fields="__all__"        
+
         
+class featureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Feature
+        fields="__all__"           
 #End of code 

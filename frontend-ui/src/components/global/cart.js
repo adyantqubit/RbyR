@@ -75,7 +75,7 @@ const Cart = () => {
     <>
 
       {/* < BsCartFill style={{marginTop:"10px",fontSize:"20px",color:"#7c7c7c"}} /> */}
-      <span style={{ height: "20px" }} onClick={openCart}>
+      <span style={{ height: "20px",width:"20px" }} onClick={openCart}>
         {cart && cart.length > 0 ? <span class='badge badge-warning' id='lblCartCount'>{cart.length}</span> : null}
         {/* <i class="fa" >&#xf07a;</i> */}
         {cart && cart.length > 0 ?
@@ -208,8 +208,7 @@ export function DrawerFooter() {
   useEffect(() => {
     console.log(afterColumnTotalOfferAdd(offer, cart, taxRate).coupon)
   }, [offer, taxRate])
-
-
+  
 
   async function cartChecking() {
     await cartStockRecheck(cart).then(r => {

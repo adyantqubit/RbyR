@@ -143,7 +143,7 @@ const ShrinkHeader = () => {
             <div className={style.headerMenuitem} >
               <LikeDrawer />
             </div>
-            <div className={style.headerMenuitem} style={{ paddingTop: "10px" }} >
+            <div className={style.headerMenuitem} style={{ paddingTop: "10px",width:"20px" }} >
               <Cart style={{ display: "none" }} />
             </div>
 

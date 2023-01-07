@@ -33,7 +33,9 @@ const Login = () => {
 	const [visiblepassReg3,setVisiblePassreg3]=useState(false)
 
 
-	
+	useEffect(()=>{
+      window.scrollTo(0,0)
+	},[])
 
 	//For login User
 	const[loginUser,{isLoading}]=useLoginUserMutation()
@@ -101,8 +103,8 @@ const Login = () => {
 		const data = new FormData(e.currentTarget);
         
         console.log(!value.length>5)
-
-		if(value.length<9){
+         
+		if(value.length<11){
            setServerError({"contact_number":["Minimum 8 digits are require."]})
 		}
 		else{

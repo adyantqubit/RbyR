@@ -1108,6 +1108,14 @@ class WorldofRRApi(APIView):
      except:    
         about=None 
      Whole_data['about']=about
+     
+     feature=0
+     try:
+        serialize=featureSerializer(Feature.objects.all(),many=True)
+        feature=serialize.data
+     except:    
+        feature=None 
+     Whole_data['feature']=feature
     # End of the code  
      return Response(Whole_data)
 #End of code
