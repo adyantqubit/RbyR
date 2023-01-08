@@ -1,6 +1,6 @@
 import { style } from "@mui/system";
 import { Button, Drawer, message } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {  BsSearch } from "react-icons/bs";
 import {AiOutlineClosee} from 'react-icons/ai'
 import {GrClose} from 'react-icons/gr'
@@ -28,6 +28,11 @@ const Search = () => {
     }
   }
 
+  useEffect(()=>{
+     setSearchMsg(localStorage.getItem("searchkey"))
+     setFilteredPersons(JSON.parse(localStorage.getItem("searchproduct")))
+  },[])
+
   const searchProduct = async () => {
     var searchBox = document.getElementById("searchBox");
     setSearchMsg(searchBox.value)
@@ -36,7 +41,7 @@ const Search = () => {
       setFilteredPersons(searchedData);
       setMsg(null);
       console.log(searchedData)
-
+      localSaveproduct(searchedData)
     }else{
 
       console.log(searchedData)
@@ -59,6 +64,15 @@ const Search = () => {
 
   const nav = useNavigate();
   function openDetail(id) {}
+
+
+  function localSavekey(name){
+    localStorage.setItem("searchkey",name)
+  }
+
+  function localSaveproduct(product){
+    localStorage.setItem("searchproduct",JSON.stringify(product))
+  }
 
   return (
     <>
@@ -117,7 +131,7 @@ const Search = () => {
                 paddingLeft:"10px"
               }}
               value={searchmsg}
-              onChange={e=>setSearchMsg(e.target.value)}
+              onChange={e=>{setSearchMsg(e.target.value); localSavekey(e.target.value)}}
               placeholder="Type what you are looking for..."
               onKeyUp={searchProductAfterEnterPressed}
             ></input>
@@ -126,12 +140,11 @@ const Search = () => {
         </div>
 
         <div className={styles.slab}>
-          {filteredPersons.length > 0 ? (
+          {filteredPersons&&filteredPersons.length > 0 ? (
             <>
               {filteredPersons.map((p) => {
                 return (
                   <div className={styles.item}>
-                    {console.log(p)}
                     <Link to={`/listing/${p.menu}/${p.category}/detail/${p.id}`}>
                       <img
                         className={styles.searchedImage}

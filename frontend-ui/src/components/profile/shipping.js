@@ -112,14 +112,14 @@ const handleButtonClicknum = (msg) => {
             number:data.get('numberb')
         }
 
-        if(data.get('pincodeb').length<6)
+        if(data.get('pincodeb').split(" ").join("").length<6)
     {  var dta=" Minimum 6 digit required"
         handleButtonClickpin(dta)
     }
     else{
         isAlertVisiblepin=false
     }
-    if(data.get('numberb').length<11)
+    if(data.get('numberb').split(" ").join("").length<11)
     {
         var dta="Minimum 8 digit required"
         handleButtonClicknum(dta)

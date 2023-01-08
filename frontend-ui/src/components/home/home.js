@@ -10,6 +10,8 @@ import CArd2 from "./card2";
 import Chat from "../expandDetailt/chat";
 import Footer2 from "../global/footer2";
 import { getLogoAndCover } from "../../api/service";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import style from './home.module.css'
 import { notification } from "antd";
 export const Home = () => {
@@ -30,6 +32,7 @@ export const Home = () => {
     <div className={style.home}>
       <NavHeader/>
       <Slideshow />
+      <ToastContainer />
 
       {/* <Card /> */}
       {/* <CArd2 /> */}

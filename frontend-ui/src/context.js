@@ -8,7 +8,8 @@ import { unSetUserToken } from "./Redux-manage/features/authSlice";
 import { unSetUserInfo } from "./Redux-manage/features/userSlice";
 import { getToken, removeToken, storeToken } from "./Redux-manage/services/localStorageService";
 import { useGetCartProductQuery, useGetLikedProductQuery } from "./Redux-manage/services/userAuthapi";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Cart = createContext();
 
 
@@ -95,6 +96,8 @@ const Context = ({ children }) => {
         duration: 2,
         key: 1
       });
+
+      Notify()
     }
 
  if (localStorage.getItem("access_token")) {
@@ -117,6 +120,16 @@ const Context = ({ children }) => {
     likeGetApi()
   }, [product])
 
+
+  
+  function Notify() {
+
+    toast.success(<div style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px" }}>Successfully Logged out.
+      <div style={{ fontSize: "13px", color: "black", letterSpacing: "1.4px" }}>You are logged out</div>
+    </div>,
+      { position: toast.POSITION.TOP_RIGHT, duration: 1000, style: { top: "20vh", right: "2vw", background: "#9c9c9c" } },
+    )
+  }
 
 
   useEffect(() => {

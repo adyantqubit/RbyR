@@ -241,7 +241,8 @@ const UsserAdresses = () => {
         else {
             isAlertVisiblepin = false
         }
-        if (data.get('number').length < 11) {
+        console.log(data.get('number'))
+        if (data.get('number').split(" ").join("").length < 11) {
             var dta = " Minimum 8 digit required"
             handleButtonClicknum(dta)
         }
@@ -257,7 +258,7 @@ const UsserAdresses = () => {
             else {
                 isAlertVisiblepin = false
             }
-            if (data.get('numberb').length < 11) {
+            if (data.get('numberb').split(" ").join("").length < 11) {
                 var dta = " Minimum 8 digit required"
                 handleButtonClicknum(dta)
             }

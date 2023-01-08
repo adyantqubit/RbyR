@@ -12,13 +12,11 @@ import Popup from 'reactjs-popup';
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 import {AiFillEyeInvisible,AiFillEye} from "react-icons/ai"
-
 import { CartState } from '../../context';
 import { notification } from 'antd';
 import { GuestCartRequest } from '../../api/orderApis';
 
 const Login = () => {
-	notification.destroy()
 	const {setCart,setLike,firstTimeLoadFunctions,cart}=CartState()
 	const [error, setError] = useState({})
 	let{access_token}=getToken()
@@ -79,13 +77,8 @@ const Login = () => {
 			duration:2,
 			key:1
 		  });
-
 		  firstTimeLoadFunctions()
-		  navigate(-1)
-		
-		  
-		  
-
+		  navigate(-1)	  
 		}
 	  }
 
@@ -104,7 +97,7 @@ const Login = () => {
         
         console.log(!value.length>5)
          
-		if(value.length<11){
+		if(value.split(" ").join("").length<11){
            setServerError({"contact_number":["Minimum 8 digits are require."]})
 		}
 		else{

@@ -55,7 +55,7 @@
     display: inline-block;
 }
 
-@media (min-width:1427px){
+/* @media (min-width:1427px){
     .img{
         width:min-content;
         max-width: 390px;
@@ -63,7 +63,7 @@
         background-color: #eee;
         display: inline-block;
     }
-}
+} */
 
 
 @media (max-width:768px){

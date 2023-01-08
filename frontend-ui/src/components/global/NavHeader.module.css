@@ -366,7 +366,7 @@ input[type=checkbox]:checked ~ .menu{
 	font-weight: 500;
 	color: #555;
 	line-height: 1.5em;
-  word-break: break-all;
+  word-break:normal;
 
   }
   

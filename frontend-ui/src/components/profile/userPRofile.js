@@ -138,10 +138,10 @@ const UserProfile = () => {
 
     var data = new FormData(event.currentTarget);
 
-    if(data.get('number').length<11){
+    if(data.get('number').split(" ").join("").length<11){
       isAlertVisiblenum = true
     setIsAlertVisiblenum(true);
-    setnumerror("Minimum 8 digit require")
+    setnumerror("Minimum 8 digit required")
     return false
     }
     //commented by Rohan- date 14/12/22
