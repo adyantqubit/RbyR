@@ -16,7 +16,7 @@
 
 .Container{
     width:100%;
-    padding: 150px 5.5% 0% 5.5%;
+    padding: 150px 5.5% 50px 5.5%;
     background-color: #323232;
 }
 
@@ -55,10 +55,23 @@
     display: inline-block;
 }
 
-
+@media (min-width:1427px){
+    .img{
+        width:min-content;
+        max-width: 390px;
+        margin: 7.5px 0px;
+        background-color: #eee;
+        display: inline-block;
+    }
+}
 
 
 @media (max-width:768px){
+    .foot{
+        background-color: #323232;
+        margin-top: -80px;
+        padding-top: 50px;
+    }
     .Container{
     padding: 60px 0% 0% 0%;
     }
@@ -67,7 +80,7 @@
         padding: 0 2%;
     }
 }
-
+   
 
 @media (max-width:1427px) {
     .imageContainer{

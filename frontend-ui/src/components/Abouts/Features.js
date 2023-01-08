@@ -6,6 +6,7 @@ import "./open.css"
 import ImageViewer from 'react-simple-image-viewer';
 import { WorldOfRR } from '../../api/orderApis'
 import config from '../../api/config'
+import Footer from '../global/footer';
 
 const Features = () => {
     const [currentImage, setCurrentImage] = useState(0);
@@ -71,7 +72,10 @@ const Features = () => {
 
             </div>
         </div>
-
+        
+        <div className={style.foot}>
+        <Footer/>
+        </div>
     </>
     )
 }
