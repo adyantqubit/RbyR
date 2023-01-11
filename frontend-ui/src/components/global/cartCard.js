@@ -162,6 +162,15 @@ const CartCard = (props) => {
       //   con=false
       // }
     }
+    else if (CartProduct.size == "Extra Extra Extra Large") {
+      var data = {
+        id: CartProduct.id,
+        quantity: CartProduct.quantity,
+        size: "XXXL"
+      }
+      await increamentApiMethodCall({ CartProduct, data })
+
+    }
     else if (CartProduct.size == "Extra Large") {
       var data = {
         id: CartProduct.id,
@@ -194,6 +203,15 @@ const CartCard = (props) => {
         id: CartProduct.id,
         quantity: CartProduct.quantity,
         size: "S"
+      }
+      await increamentApiMethodCall({ CartProduct, data })
+
+    }
+    else if (CartProduct.size == "Extra Short") {
+      var data = {
+        id: CartProduct.id,
+        quantity: CartProduct.quantity,
+        size: "XS"
       }
       await increamentApiMethodCall({ CartProduct, data })
 
@@ -268,6 +286,7 @@ const CartCard = (props) => {
               <div style={{ color: "black", marginLeft: "20px" }} className={styles.price}> {currency.sign}{(pro.price * currency.value).toFixed(2)}</div>
               <div style={{ color: "black", marginLeft: "20px", marginTop: "8px" }}>
                 <span className={styles.size}>Size :</span>
+                {console.log(pro.size)}
                 <span className={styles.showSize}> {SizeGetter(pro.size)}</span>
               </div>
               <div style={{ color: "black", marginLeft: "20px", marginTop: "8px" }}>

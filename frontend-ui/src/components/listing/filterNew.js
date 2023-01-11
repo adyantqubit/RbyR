@@ -301,6 +301,14 @@ const FilterNew = ({scrolling}) => {
 
             <div className={style.iteminner}>
 
+            {sizeSelected.includes('XS') ? <div className={`${style.sizediv} ${style.value}`} style={{ width: "auto", whiteSpace: "nowrap" }}>
+                <span className={style.size} onClick={toggleselects}>XS</span>
+                <span onClick={deleteclasss} className={style.cross}>X</span>
+              </div> : <div className={style.sizediv} style={{ width: "auto", whiteSpace: "nowrap" }}>
+                <span className={style.size} onClick={toggleselects}>XS</span>
+                <span onClick={deleteclasss} className={style.block}>X</span>
+              </div>}
+
               {sizeSelected.includes('S') ? <div className={`${style.sizediv} ${style.value}`} style={{ width: "auto", whiteSpace: "nowrap" }}>
                 <span className={style.size} onClick={toggleselects}>S</span>
                 <span onClick={deleteclasss} className={style.cross}>X</span>
@@ -340,6 +348,14 @@ const FilterNew = ({scrolling}) => {
                 <span onClick={deleteclasss} className={style.cross}>X</span>
               </div> : <div className={style.sizediv}>
                 <span className={style.size} onClick={toggleselects}>XXL</span>
+                <span onClick={deleteclasss} className={style.block}>X</span>
+              </div>}
+
+              {sizeSelected.includes('XXXL') ? <div className={`${style.sizediv} ${style.value}`} style={{ width: "auto", whiteSpace: "nowrap" }}>
+                <span className={style.size} onClick={toggleselects}>XXXL</span>
+                <span onClick={deleteclasss} className={style.cross}>X</span>
+              </div> : <div className={style.sizediv}>
+                <span className={style.size} onClick={toggleselects}>XXXL</span>
                 <span onClick={deleteclasss} className={style.block}>X</span>
               </div>}
 

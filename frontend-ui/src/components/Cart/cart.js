@@ -161,6 +161,15 @@ const CartSItem = (props) => {
       //   con=false
       // }
     }
+    else if (CartProduct.size == "Extra Extra Extra Large") {
+      var data = {
+        id: CartProduct.id,
+        quantity: CartProduct.quantity,
+        size: "XXXL"
+      }
+      await increamentApiMethodCall({ CartProduct, data })
+
+    }
     else if (CartProduct.size == "Extra Large") {
       var data = {
         id: CartProduct.id,
@@ -193,6 +202,15 @@ const CartSItem = (props) => {
         id: CartProduct.id,
         quantity: CartProduct.quantity,
         size: "S"
+      }
+      await increamentApiMethodCall({ CartProduct, data })
+
+    }
+    else if (CartProduct.size == "Extra Short") {
+      var data = {
+        id: CartProduct.id,
+        quantity: CartProduct.quantity,
+        size: "XS"
       }
       await increamentApiMethodCall({ CartProduct, data })
 
@@ -264,8 +282,6 @@ const CartSItem = (props) => {
           setError(r)
         }
         else {
-          console.log(r)
-
           setOffer(r)
           setError(null)
           setCoupon(true)
@@ -481,7 +497,6 @@ const CartSItem = (props) => {
                       {/* <span className={style.delete} style={{fontSize:"32px",alignSelf:"start"}} onClick={e=>cartSave(pro)}>x</span> */}
                       <Popconfirm placement="bottomLeft" title={text} onConfirm={e => confirm(pro)} okText="OK" cancelText="Cancel">
                       <MdClose fontSize={24}  className={style.delete}/>
-
                         {/* <span className={style.delete} style={{ fontSize: "25px", alignSelf: "start" }} >x</span> */}
                       </Popconfirm>
                     </div>
@@ -515,7 +530,6 @@ const CartSItem = (props) => {
                         </div>
                       </div>
                     </div> */}
-
                     <div className={styles.qtyContainer}>
                       <div className={styles.operatorContainer}>
                         <span className={styles.radius}  onClick={e => decreament(pro)}><HiMinus fontSize={15}/></span>

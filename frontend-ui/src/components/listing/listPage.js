@@ -28,7 +28,7 @@ import Chat from '../expandDetailt/chat';
 const ListPage = () => {
 
 
-  var { product, condition, like, setLike, setAllCategoryAvai, reload, setReload, htl, lth, availablitySelect, latestSelect, cart, allColorAvai, tempallpro, settemAllpro, currency, setAllColorAvai, setCurrency, setCart, CategoryProduct, setCategoryProduct, sortui, setSortUi, filterui, setfilterUi } = CartState()
+  var { product, condition, like,nullpage, setNullPage, setLike, setAllCategoryAvai, reload, setReload, htl, lth, availablitySelect, latestSelect, cart, allColorAvai, tempallpro, settemAllpro, currency, setAllColorAvai, setCurrency, setCart, CategoryProduct, setCategoryProduct, sortui, setSortUi, filterui, setfilterUi } = CartState()
   const [saveLikeApi, { isLoading }] = useLikedUpdateMutation()
   const [cartsaveApi, { isLoad }] = useCartUpdateMutation()
   let { access_token } = getToken();
@@ -230,7 +230,6 @@ const ListPage = () => {
   }
 
 
-  var [nullpage, setNullPage] = useState(false)
 
   async function Apicall() {
 

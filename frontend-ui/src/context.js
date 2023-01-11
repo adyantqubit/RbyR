@@ -29,6 +29,7 @@ const Context = ({ children }) => {
   })
   
 
+  var [nullpage, setNullPage] = useState(false)
 
   // use in filter new js file inside listing component
   const [allCategoryAvai, setAllCategoryAvai] = useState([])
@@ -288,21 +289,21 @@ const Context = ({ children }) => {
     //size
 
     if (sizeSelected.length > 0)
-      sizeSelected.filter(s => {
+     filteredProducts= sizeSelected.filter(s => {
         tempSize = tempSize.filter(c => c[`${s}`] > 0)
       })
 
+      console.log(sizeSelected)
+      console.log(filteredProducts)
 
     // price
-    if (tempSize.length > 0) {
+    if (tempSize.length > 0 ) {
       filteredProducts = tempSize.filter(c => c.price > minValue && c.price < maxValue)
     }
     else {
       filteredProducts = filteredProducts.filter(c => c.price > minValue && c.price < maxValue)
     }
-
-
-      
+    console.log(filteredProducts)
 
      console.log(selectedCategory)
       if (selectedCategory.length > 0)
@@ -310,12 +311,12 @@ const Context = ({ children }) => {
         filteredProducts= filteredProducts.filter(c => c.category.toLowerCase() == s.toLowerCase())
         })             
     
-    console.log(filteredProducts)
     var finalFilter = []
   
     
     if (selectedColor.length > 0 || sizeSelected.length > 0 || filteredProducts.length > 0 || maxValue) {
-      if (filteredProducts.length < 8) {
+      if (filteredProducts.length < 8 ) {
+
         console.log("page index re hit")
         setReload(!reload)    
         finalFilter = filteredProducts
@@ -359,7 +360,7 @@ const Context = ({ children }) => {
 
   //filter
   return (
-    <Cart.Provider value={{menus,setMenu,searchmsg,setSearchMsg, filteredPersons, setFilteredPersons,selectedCategory, setCategorySelected, reload, setReload, firstTimeLoadFunctions, showEditable, setShowEditable, shipEditcond, setshipEditCond, cartEnd, setCartEnd, taxRate, setTaxRate, offer, setOffer, availablitySelect, setAvailablity, latestSelect, setLatestSelect, defaultShiping, setDefaultShipping, orders, setOrder, paymentflow, setPaymentflow, shippingflow, setShipingflow, checkoutDetails, setCheckoutDetails, userdata, setUserData, to, setTo, currency, setCurrency, sizeSelected, setSizeSelected, con, setcon, htl, sethtl, lth, setLth, tempsprice, setTempsprice, filterui, setfilterUi, maxValue, setmaxValue, minValue, setminValue, allCategoryAvai, setAllCategoryAvai, allColorAvai, setAllColorAvai, selectedColor, setSelectedColor, tempallpro, settemAllpro, sortui, setSortUi, product, cart, setCart, setProduct, setcheck, checked1, checked2, image, setImage, like, setLike, setCondition, condition, openLikedrawer, setLikeDrawer, openCartdrawer, setCartDrawer, CategoryProduct, setCategoryProduct }}>
+    <Cart.Provider value={{nullpage, setNullPage,menus,setMenu,searchmsg,setSearchMsg, filteredPersons, setFilteredPersons,selectedCategory, setCategorySelected, reload, setReload, firstTimeLoadFunctions, showEditable, setShowEditable, shipEditcond, setshipEditCond, cartEnd, setCartEnd, taxRate, setTaxRate, offer, setOffer, availablitySelect, setAvailablity, latestSelect, setLatestSelect, defaultShiping, setDefaultShipping, orders, setOrder, paymentflow, setPaymentflow, shippingflow, setShipingflow, checkoutDetails, setCheckoutDetails, userdata, setUserData, to, setTo, currency, setCurrency, sizeSelected, setSizeSelected, con, setcon, htl, sethtl, lth, setLth, tempsprice, setTempsprice, filterui, setfilterUi, maxValue, setmaxValue, minValue, setminValue, allCategoryAvai, setAllCategoryAvai, allColorAvai, setAllColorAvai, selectedColor, setSelectedColor, tempallpro, settemAllpro, sortui, setSortUi, product, cart, setCart, setProduct, setcheck, checked1, checked2, image, setImage, like, setLike, setCondition, condition, openLikedrawer, setLikeDrawer, openCartdrawer, setCartDrawer, CategoryProduct, setCategoryProduct }}>
       {children}
     </Cart.Provider>
   );

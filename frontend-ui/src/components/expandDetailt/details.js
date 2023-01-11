@@ -96,20 +96,21 @@ const Details = (props) => {
   const { category } = useParams();
 
   const catApi = async () => {
-    if(category=="view_all")
-    await getCategoryProduct("partywear").then((r) => {
-      setCategoryProduct([...r.category]);
-      settemAllpro([...r.category]);
-      console.log(r.category);
-    });
+    if (category == "view_all")
+      await getCategoryProduct("partywear").then((r) => {
+        setCategoryProduct([...r.category]);
+        settemAllpro([...r.category]);
+        console.log(r.category);
+      });
 
-    else{
+    else {
       console.log("hit may like api")
-    await getCategoryProduct(category).then((r) => {
-      setCategoryProduct([...r.category]);
-      settemAllpro([...r.category]);
-      console.log(r.category);
-    });}
+      await getCategoryProduct(category).then((r) => {
+        setCategoryProduct([...r.category]);
+        settemAllpro([...r.category]);
+        console.log(r.category);
+      });
+    }
   };
 
 
@@ -117,7 +118,7 @@ const Details = (props) => {
     gettingDetail();
   }, [id])
 
- 
+
 
 
   useEffect(() => {
@@ -134,7 +135,7 @@ const Details = (props) => {
       localStorage.setItem("recentview", JSON.stringify(recents));
     }
 
-   window.scrollTo(0,0)
+    window.scrollTo(0, 0)
 
   }, [details]);
 
@@ -215,47 +216,55 @@ const Details = (props) => {
   // }
 
   async function AddToCart(details) {
-   
-    
+
+
     setPushData(false);
     if (!size.length > 0) {
       setSizecond(true);
       setPushData(true);
     }
-    
-    if(details.available==false){
+
+    if (details.available == false) {
       notification.error({
-        message: <div style={{fontSize:"18px",color:"black"}}>Not Available !</div>,
+        message: <div style={{ fontSize: "18px", color: "black" }}>Not Available !</div>,
         description:
-        `No More Stock Available`,
-        className:"custom-class",
-        style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"10vh"},
-        duration:2,
-        key:1
-        });
-        notAvai=true
-        setNotAvai(true)
+          `No More Stock Available`,
+        className: "custom-class",
+        style: { backgroundColor: "#8c8c8c", color: "black", marginTop: "10vh" },
+        duration: 2,
+        key: 1
+      });
+      notAvai = true
+      setNotAvai(true)
     }
 
-    if(!notAvai)
-    if (size) {
-      if (size == "Extra Extra Large") {
-        if (details.XXL < 1) setNotAvai(true);
-        else saveCart(details);
-      } else if (size == "Extra Large") {
-        if (details.XL < 1) setNotAvai(true);
-        else saveCart(details);
-      } else if (size == "Large") {
-        if (details.L < 1) setNotAvai(true);
-        else saveCart(details);
-      } else if (size == "Medium") {
-        if (details.M < 1) setNotAvai(true);
-        else saveCart(details);
-      } else if (size == "Short") {
-        if (details.S < 1) setNotAvai(true);
-        else saveCart(details);
+    if (!notAvai)
+      if (size) {
+        if (size == "Extra Extra Extra Large") {
+          if (details.XXXL < 1) setNotAvai(true);
+          else saveCart(details);
+        }
+        if (size == "Extra Extra Large") {
+          if (details.XXL < 1) setNotAvai(true);
+          else saveCart(details);
+        } else if (size == "Extra Large") {
+          if (details.XL < 1) setNotAvai(true);
+          else saveCart(details);
+        } else if (size == "Large") {
+          if (details.L < 1) setNotAvai(true);
+          else saveCart(details);
+        } else if (size == "Medium") {
+          if (details.M < 1) setNotAvai(true);
+          else saveCart(details);
+        } else if (size == "Short") {
+          if (details.S < 1) setNotAvai(true);
+          else saveCart(details);
+        }
+        else if (size == "Extra Short") {
+          if (details.XS < 1) setNotAvai(true);
+          else saveCart(details);
+        }
       }
-    }
   }
 
   async function saveCart(details) {
@@ -367,19 +376,15 @@ const Details = (props) => {
     scroller.current.scrollTop = 0
   }
 
- 
-
-
-
 
   return (
 
-    <div style={{ maxHeight: "100vh",background:"#f2f2f2" }} id="scrolling"  >
+    <div style={{ maxHeight: "100vh", background: "#f2f2f2" }} id="scrolling"  >
 
       <Navbar />
 
       {details ? (
-        <div  className={styles["container"]} ref={scroller}>
+        <div className={styles["container"]} ref={scroller}>
           <div className={styles["container01"]} >
             <div className={styles["container02"]} >
               <div className={styles["image"]}>
@@ -396,7 +401,7 @@ const Details = (props) => {
                   <h1 className={styles["subtitle"]}>{details.about}</h1>
                   <span className={styles["subtitle"]}>
                     {" "}
-                    
+
                     {currency.sign}{" "}
                     {(details.price * currency.value).toFixed(2)}
                   </span>
@@ -411,9 +416,24 @@ const Details = (props) => {
                           <div class="rating">
                             <form class="rating-form">
                               <label
+                                for={details.id * 2}
+                                className={`${styles.subtitle} ${styles.customSubtitle}`}
+                                style={{ textDecoration: "none" }}
+                              >
+                                <input
+                                  type="radio"
+                                  name={details.id}
+                                  class="super-duper-happy"
+                                  id={details.id * 2}
+                                  value="Extra Short"
+                                  onChange={(e) => onChange(e.target.value)}
+                                />
+                                <span class="span">XS</span>
+                              </label>
+                              <label
                                 for={details.id}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{textDecoration:"none"}}
+                                style={{ textDecoration: "none" }}
                               >
                                 <input
                                   type="radio"
@@ -429,7 +449,7 @@ const Details = (props) => {
                               <label
                                 for={details.id * 44}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{textDecoration:"none"}}
+                                style={{ textDecoration: "none" }}
 
                               >
                                 <input
@@ -446,7 +466,7 @@ const Details = (props) => {
                               <label
                                 for={details.id * 88}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{textDecoration:"none"}}
+                                style={{ textDecoration: "none" }}
 
                               >
                                 <input
@@ -463,7 +483,7 @@ const Details = (props) => {
                               <label
                                 for={details.id * 108}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{textDecoration:"none"}}
+                                style={{ textDecoration: "none" }}
 
                               >
                                 <input
@@ -473,7 +493,7 @@ const Details = (props) => {
                                   id={details.id * 108}
                                   value="Extra Large"
                                   onChange={(e) => onChange(e.target.value)}
-                                  style={{textDecoration:"none"}}
+                                  style={{ textDecoration: "none" }}
 
                                 />
                                 <span class="span">XL</span>
@@ -482,7 +502,7 @@ const Details = (props) => {
                               <label
                                 for={details.id * 126}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{textDecoration:"none"}}
+                                style={{ textDecoration: "none" }}
 
                               >
                                 <input
@@ -494,6 +514,22 @@ const Details = (props) => {
                                   onChange={(e) => onChange(e.target.value)}
                                 />
                                 <span class="span">XXL</span>
+                              </label>
+                              <label
+                                for={details.id * 146}
+                                className={`${styles.subtitle} ${styles.customSubtitle}`}
+                                style={{ textDecoration: "none" }}
+
+                              >
+                                <input
+                                  type="radio"
+                                  name={details.id}
+                                  class="super-duper-sad"
+                                  id={details.id * 146}
+                                  value="Extra Extra Extra Large"
+                                  onChange={(e) => onChange(e.target.value)}
+                                />
+                                <span class="span">XXXL</span>
                               </label>
                             </form>
                           </div>
@@ -513,9 +549,24 @@ const Details = (props) => {
                           <div class="rating">
                             <form class="rating-form">
                               <label
+                                for={details.id * 2}
+                                className={`${styles.subtitle} ${styles.customSubtitle}`}
+                                style={{ textDecoration: "none" }}
+                              >
+                                <input
+                                  type="radio"
+                                  name={details.id}
+                                  class="super-duper-happy"
+                                  id={details.id * 2}
+                                  value="Extra Short"
+                                  onChange={(e) => onChange(e.target.value)}
+                                />
+                                <span class="span">XS</span>
+                              </label>
+                              <label
                                 for={details.id}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{textDecoration:"none"}}
+                                style={{ textDecoration: "none" }}
 
                               >
                                 <input
@@ -532,7 +583,7 @@ const Details = (props) => {
                               <label
                                 for={details.id * 44}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{textDecoration:"none"}}
+                                style={{ textDecoration: "none" }}
 
                               >
                                 <input
@@ -549,7 +600,7 @@ const Details = (props) => {
                               <label
                                 for={details.id * 88}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{textDecoration:"none"}}
+                                style={{ textDecoration: "none" }}
 
                               >
                                 <input
@@ -566,7 +617,7 @@ const Details = (props) => {
                               <label
                                 for={details.id * 108}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{textDecoration:"none"}}
+                                style={{ textDecoration: "none" }}
 
                               >
                                 <input
@@ -583,7 +634,7 @@ const Details = (props) => {
                               <label
                                 for={details.id * 126}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{textDecoration:"none"}}
+                                style={{ textDecoration: "none" }}
                               >
                                 <input
                                   type="radio"
@@ -594,6 +645,21 @@ const Details = (props) => {
                                   onChange={(e) => onChange(e.target.value)}
                                 />
                                 <span class="span">XXL</span>
+                              </label>
+                              <label
+                                for={details.id * 146}
+                                className={`${styles.subtitle} ${styles.customSubtitle}`}
+                                style={{ textDecoration: "none" }}
+                              >
+                                <input
+                                  type="radio"
+                                  name={details.id}
+                                  class="super-duper-sad"
+                                  id={details.id * 146}
+                                  value="Extra Extra Extra Large"
+                                  onChange={(e) => onChange(e.target.value)}
+                                />
+                                <span class="span">XXXL</span>
                               </label>
                             </form>
                           </div>
@@ -612,34 +678,37 @@ const Details = (props) => {
                           ) : null}
                         </>
                       )}
+
                     </div>
 
-                    {/* <span  className={styles["text02"]}>Custom Tailored</span> */}
+                    <div className={styles.charts}>
 
-                    {/* Added by Ashish Dewangan on 24-11-2022
+                      {/* <span  className={styles["text02"]}>Custom Tailored</span> */}
+
+                      {/* Added by Ashish Dewangan on 24-11-2022
                     Reason - To show custom tailored form */}
-                    
-                    <span
-                      className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
-                      style={{ cursor: "pointer" }}
-                      onClick={showCustomTailoredForm}
-                    >
-                      Custom Tailored
-                    </span>
-                    
-                    {/* End of code addition */}
 
-                    {/* Commented and modified by - Ashish Dewangan on 23-11-2022
+                      <span
+                        className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
+                        style={{ cursor: "pointer" }}
+                        onClick={showCustomTailoredForm}
+                      >
+                        Custom Tailored
+                      </span>
+
+                      {/* End of code addition */}
+                      {/* Commented and modified by - Ashish Dewangan on 23-11-2022
                     Reason - to display size chart when we click on size chart text */}
-                    {/* <span  className={styles["text02"]}>Size Chart</span> */}
-                    <span
-                      className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
-                      style={{ cursor: "pointer" }}
-                      onClick={showSizeChart}
-                    >
-                      Size Chart
-                    </span>
-                    
+                      {/* <span  className={styles["text02"]}>Size Chart</span> */}
+                      <span
+                        className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
+                        style={{ cursor: "pointer" }}
+                        onClick={showSizeChart}
+                      >
+                        Size Chart
+                      </span>
+                    </div>
+
                     <Modal
                       style={{ top: 0 }}
                       className={styles["modalStyleCustomTailored"]}
@@ -911,37 +980,37 @@ const Details = (props) => {
           {/* <div className={styles['container13']}>
      <span className={styles['text28']}>Text</span> 
       </div> */}
-          <div className={styles.gal}>  
+          <div className={styles.gal}>
             <div className={styles.image_gallery}>
               <div className={styles.column}>
                 <div className={styles.image_item}>
-                  {details.img_sub1!="/null"?
-                   <InnerImageZoom
-                   className={styles.img}
-                   src={config.apiBaseURL + details.img_sub1}
-                   zoomSrc={config.apiBaseURL + details.img_sub1}
-                 />:null}
-                 
+                  {details.img_sub1 != "/null" ?
+                    <InnerImageZoom
+                      className={styles.img}
+                      src={config.apiBaseURL + details.img_sub1}
+                      zoomSrc={config.apiBaseURL + details.img_sub1}
+                    /> : null}
+
                 </div>
               </div>
               <div className={styles.column}>
                 <div className={styles.image_item}>
-                 {details.img_sub2!="/null"?
-                  <InnerImageZoom
-                    className={styles.img}
-                    src={config.apiBaseURL + details.img_sub2}
-                    zoomSrc={config.apiBaseURL + details.img_sub2}
-                  />:null}
+                  {details.img_sub2 != "/null" ?
+                    <InnerImageZoom
+                      className={styles.img}
+                      src={config.apiBaseURL + details.img_sub2}
+                      zoomSrc={config.apiBaseURL + details.img_sub2}
+                    /> : null}
                 </div>
               </div>
               <div className={styles.column}>
                 <div className={styles.image_item}>
-                 {details.img_sub3!="/null"?
-                  <InnerImageZoom
-                    className={styles.img}
-                    src={config.apiBaseURL + details.img_sub3}
-                    zoomSrc={config.apiBaseURL + details.img_sub3}
-                  />:null}
+                  {details.img_sub3 != "/null" ?
+                    <InnerImageZoom
+                      className={styles.img}
+                      src={config.apiBaseURL + details.img_sub3}
+                      zoomSrc={config.apiBaseURL + details.img_sub3}
+                    /> : null}
                 </div>
               </div>
             </div>
@@ -995,8 +1064,8 @@ const Details = (props) => {
           </div> */}
 
           <div style={{ width: "100%", zIndex: "1" }} >
-            <Slider2 scrollTop={scrolling}/>
-            <Slider scrollTop={scrolling}/>
+            <Slider2 scrollTop={scrolling} />
+            <Slider scrollTop={scrolling} />
           </div>
 
           <div className={styles.foot}>

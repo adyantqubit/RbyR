@@ -326,6 +326,12 @@ class Invoice(APIView):
                     pro.S = pro.S-cart['quantity']
                     print(pro.S)
                     pro.save()
+                elif (cart['size'] == "Extra Short"):
+                    pro = product_detail.objects.get(id=cart['id'])
+                    pro.XS = pro.XS-cart['quantity']
+                    print(pro.XS)
+                    pro.save()
+                        
                 elif (cart['size'] == "Medium"):
                     pro = product_detail.objects.get(id=cart['id'])
                     pro.M = pro.M-cart['quantity']
@@ -346,6 +352,12 @@ class Invoice(APIView):
                     pro.XXL = pro.XXL-cart['quantity']
                     print(pro.XXL)
                     pro.save()
+                    
+                elif (cart['size'] == "Extra Extra Extra Large"):
+                    pro = product_detail.objects.get(id=cart['id'])
+                    pro.XXXL = pro.XXXL-cart['quantity']
+                    print(pro.XXXL)
+                    pro.save()    
 
                 serialize3 = invoiceSerializer(data=data)
                 if serialize3.is_valid(raise_exception=True):
@@ -587,6 +599,11 @@ class CartRecheck(APIView):
                 if cart['quantity'] > pro.M:
                     car.append(
                         {"id": pro.id, "size": "Medium", "name": pro.title})
+            elif (cart['size'] == "Extra Short"):
+                pro = product_detail.objects.get(id=cart['id'])
+                if cart['quantity'] > pro.XS:
+                    car.append(
+                        {"id": pro.id, "size": "Extra Short", "name": pro.title})        
             elif (cart['size'] == "Large"):
                 pro = product_detail.objects.get(id=cart['id'])
                 if cart['quantity'] > pro.L:
@@ -602,6 +619,12 @@ class CartRecheck(APIView):
                 if cart['quantity'] > pro.XXL:
                     car.append(
                         {"id": pro.id, "size": "Extra Extra Large", "name": pro.title})
+            
+            elif (cart['size'] == "Extra Extra Extra Large"):
+                pro = product_detail.objects.get(id=cart['id'])
+                if cart['quantity'] > pro.XXXL:
+                    car.append(
+                        {"id": pro.id, "size": "Extra Extra Extra Large", "name": pro.title})        
 
         if len(car) > 0:
             return Response({"error": car})
@@ -940,6 +963,11 @@ class GeustCart(APIView):
                 pro = product_detail.objects.get(id=data['id'])
                 Cart.objects.create(
                     product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()
+            
+            elif (data['size'] == "Extra Short"):
+                pro = product_detail.objects.get(id=data['id'])
+                Cart.objects.create(
+                    product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()
 
             elif (data['size'] == "Large"):
                 pro = product_detail.objects.get(id=data['id'])
@@ -952,6 +980,11 @@ class GeustCart(APIView):
                     product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()
 
             elif (data['size'] == "Extra Extra Large"):
+                pro = product_detail.objects.get(id=data['id'])
+                Cart.objects.create(
+                    product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()
+            
+            elif (data['size'] == "Extra Extra Extra Large"):
                 pro = product_detail.objects.get(id=data['id'])
                 Cart.objects.create(
                     product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()

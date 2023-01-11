@@ -3,6 +3,8 @@
 // so here we pass size and short form of size returns
 
 export function SizeGetter(size){
+    if(size=="Extra Short")
+    return "XS";
     if(size=="Short")
     return "S";
     else if(size=="Medium")
@@ -13,5 +15,7 @@ export function SizeGetter(size){
     return "XL";
     else if(size=="Extra Extra Large")
     return "XXL";
+    else if(size=="Extra Extra Extra Large")
+    return "XXXL";
 }
 

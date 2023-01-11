@@ -198,11 +198,13 @@ class product_detail(models.Model):
     fabric=models.CharField(max_length=50,default="Chiffon")
     made_in=models.CharField(max_length=30,default="India")
     style_code=models.CharField(max_length=30,default="AAIR-129-KTH")
+    XS=models.IntegerField(default=30)
     S=models.IntegerField(default=30)
     M=models.IntegerField(default=30)
     L=models.IntegerField(default=30)
     XL=models.IntegerField(default=30)
     XXL=models.IntegerField(default=30)
+    XXXL=models.IntegerField(default=30)
     date = models.DateTimeField(default=now, blank=True)
     available=models.BooleanField(default=True)
     shipping_charges=models.IntegerField(default=100)
@@ -258,17 +260,20 @@ class Liked(models.Model):
     #End of code addition 
     
 SIZE_CHOICES = (
+    ('Extra Short','XS'),
     ('Short','S'),
     ('Medium', 'M'),
     ('Large','L'),
     ('Extra Large','XL'),
     ('Extra Extra Large','XXL'),
+    ('Extra Extra Extra Large','XXL'),
+
 )    
 class Cart(models.Model):
     product_no=models.ForeignKey(product_detail,on_delete=models.CASCADE)
     user_no=models.ForeignKey(User,on_delete=models.CASCADE)
     quantity=models.IntegerField(default=1)       
-    size=models.CharField(max_length=20, choices=SIZE_CHOICES, default='Short')
+    size=models.CharField(max_length=40, choices=SIZE_CHOICES, default='Short')
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self):
@@ -443,7 +448,7 @@ class product_orders(models.Model):
     product_id=models.ForeignKey(product_detail,on_delete=models.CASCADE)  
     quantity=models.IntegerField()          
     price=models.IntegerField()
-    size=models.CharField(max_length=20)
+    size=models.CharField(max_length=40)   
     payment_mode=models.CharField(max_length=20,default="cod")
     date=models.DateField(('purchase date'), null=False, blank=False, auto_now=True)
     selected_currency_sign=models.CharField(max_length=5)
@@ -486,6 +491,9 @@ class Transaction_history(models.Model):
           for product in pros:
              pro=product_detail.objects.get(id=product.product_id.id)
              
+             if product.size=="Extra Short":
+               pro.XS+=product.quantity
+               pro.save()
              if product.size=="Short":
                pro.S+=product.quantity
                pro.save()               
@@ -500,7 +508,10 @@ class Transaction_history(models.Model):
                  pro.save()                
              if product.size=="Extra Extra Large":
                  pro.XXL+=product.quantity 
-                 pro.save()      
+                 pro.save() 
+             if product.size=="Extra Extra Extra Large":
+                 pro.XXXL+=product.quantity 
+                 pro.save()         
         super().save(*args,**kwargs)
 
     #Added by Ashish Dewangan on 28-11-2022

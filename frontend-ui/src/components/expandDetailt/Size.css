@@ -39,6 +39,24 @@ input + .span {
 	cursor: pointer;
 }
 
+input[class="super-duper-happy"]:hover + .span,
+input[class="super-duper-happy"]:checked + .span,
+input[class="super-duper-happy"]:focus + .span {
+	color: rgb(80, 78, 78);
+	border: 2px solid black;
+	padding: 00.2rem;
+	border-radius: 3px;
+}
+
+input[class="super-happy"]:hover + .span,
+input[class="super-happy"]:checked + .span,
+input[class="super-happy"]:focus + .span {
+	color: rgb(80, 78, 78);
+	border: 2px solid black;
+	padding: 00.2rem;
+	border-radius: 3px;
+}
+
 input[class="super-happy"]:hover + .span,
 input[class="super-happy"]:checked + .span,
 input[class="super-happy"]:focus + .span {
@@ -81,6 +99,15 @@ input[class="sad"]:focus + .span {
 input[class="super-sad"]:hover + .span,
 input[class="super-sad"]:checked + .span,
 input[class="super-sad"]:focus + .span {
+	color: rgb(80, 78, 78);
+	border: 2px solid black;
+	padding: 00.2rem;
+	border-radius: 3px;
+}
+
+input[class="super-duper-sad"]:hover + .span,
+input[class="super-duper-sad"]:checked + .span,
+input[class="super-duper-sad"]:focus + .span {
 	color: rgb(80, 78, 78);
 	border: 2px solid black;
 	padding: 00.2rem;

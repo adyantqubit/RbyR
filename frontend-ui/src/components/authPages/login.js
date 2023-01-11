@@ -98,7 +98,7 @@ const Login = () => {
         console.log(!value.length>5)
          
 		if(value.split(" ").join("").length<11){
-           setServerError({"contact_number":["Minimum 8 digits are require."]})
+           setServerError({"contact_number":["Minimum 8 digits are required."]})
 		}
 		else{
 		const actualData = {
@@ -290,7 +290,7 @@ const Login = () => {
 					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button tabIndex={-1} class="butto" type='submit'>Login</button>}
 					<label tabIndex={-1} style={{width:"100%",textAlign:"center"}}>OR</label>
 					<label tabIndex={-1} class="labe underlineput" style={{}} htmlFor="ch" aria-hidden="true" onClick={e=>window.scrollTo(0,0)}>Signup</label>
-
+   
 				</form>
 			</div>
 	</div>
