@@ -47,7 +47,7 @@ class ProductAdmin(admin.ModelAdmin):
  
 @admin.register(product_detail)
 class product_detailAdmin(admin.ModelAdmin):
-    list_display=(short_title,"menu","category","S","M","L","XL","XXL","L","price","color")
+    list_display=(short_title,"menu","category","XS","S","M","L","XL","XXL","XXXL","price","color")
     ordering =("title",)
     
     readonly_fields=('search_key','category','menu')
@@ -66,12 +66,14 @@ class product_detailAdmin(admin.ModelAdmin):
         form.base_fields['title'].widget.attrs['style'] = 'width: 100%;'
         # form.base_fields['category'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['color'].widget.attrs['style'] = 'width: 100%;'
+        form.base_fields['XS'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['S'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['M'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['L'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['XL'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['XXL'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['price'].widget.attrs['style'] = 'width: 100%;'
+        form.base_fields['XXXL'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['about'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['img_main'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['img_sub1'].widget.attrs['style'] = 'width: 100%;'

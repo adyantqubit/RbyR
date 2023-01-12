@@ -11,10 +11,11 @@ import { CartState } from "../../context";
 import styles from "./search.module.css";
 import "./search.css"
 import { notification } from "antd";
+import { stringify } from "rc-field-form/es/useWatch";
 const Search = () => {
   notification.destroy()
   const [open, setOpen] = useState(false);
-  const { product ,currency,filteredPersons, setFilteredPersons,searchmsg,setSearchMsg} = CartState();
+  const { product,allResult,setAllResult ,currency,filteredPersons, setFilteredPersons,searchmsg,setSearchMsg,allCategory,setAllCategory} = CartState();
 
 // Added by Ashish dewangan on 18-11-2022
 // Reason - to have cross button on search icon more width
@@ -31,20 +32,20 @@ const Search = () => {
   useEffect(()=>{
      setSearchMsg(localStorage.getItem("searchkey"))
      setFilteredPersons(JSON.parse(localStorage.getItem("searchproduct")))
+     setAllCategory(JSON.parse(localStorage.getItem('searchcategory')))
   },[])
 
   const searchProduct = async () => {
     var searchBox = document.getElementById("searchBox");
     setSearchMsg(searchBox.value)
     const searchedData = await getSearchedProducts(searchBox.value);
-    if(searchedData&&searchedData.length>0){
-      setFilteredPersons(searchedData);
-      setMsg(null);
-      console.log(searchedData)
-      localSaveproduct(searchedData)
+    if(searchedData.result&&searchedData.result.length>0){
+      setAllResult(searchedData.result);
+      setFilteredPersons(searchedData.result);
+      setMsg(null); 
+      setAllCategory(searchedData.categories)
+      localSaveproduct(searchedData.result,searchedData.categories)
     }else{
-
-      console.log(searchedData)
       setMsg("Result not found!");
       setFilteredPersons([]);
     }
@@ -70,10 +71,35 @@ const Search = () => {
     localStorage.setItem("searchkey",name)
   }
 
-  function localSaveproduct(product){
+  function localSaveproduct(product,category){
     localStorage.setItem("searchproduct",JSON.stringify(product))
+    localStorage.setItem("searchcategory",JSON.stringify(category))
   }
 
+  // Added on - 11/1/23 by Rohan
+  // Adding category filter functionality
+  const [selectedCategory,setSelectedCategory]= useState([])
+  useEffect(()=>{
+     if(selectedCategory.length>0){
+
+      setFilteredPersons(allResult.filter(a=>
+        selectedCategory.includes(a.category)||selectedCategory.includes(a.menu)
+        ))
+
+     }
+  },[selectedCategory])
+
+  function filter(){
+    setFilteredPersons(allResult.filter(a=>
+      selectedCategory.includes(a.category)||selectedCategory.includes(a.menu)
+      ))
+
+      console.log(selectedCategory.length)
+      if(selectedCategory.length==0)
+      setFilteredPersons(allResult)
+  }
+
+  // End of code
   return (
     <>
       <BsSearch
@@ -103,7 +129,8 @@ const Search = () => {
           <div
             style={{
               width: "90%",
-              height: "52px",
+              height: "auto",
+              padding:"10px 0px",
               borderBottom: "1px solid black",
             }}
           >
@@ -139,6 +166,27 @@ const Search = () => {
           {/* <button onClick={searchProduct}>search</button> */}
         </div>
 
+        {/* Added by Rohan - on 11/1/23
+         Reason-category selection ui and functionality */}
+
+        <div className={styles.categoryContainer}>
+            <div className={styles.filterTitle}>FILTER BY CATEGORIES</div>
+
+            <div className={styles.categoryItems}>
+              {allCategory?.map(m=>
+               selectedCategory.includes(m)?
+               <button className={`${styles.category} ${styles.selected}`} onClick={e=>{setSelectedCategory(selectedCategory.filter(s=>s!=m)); filter(selectedCategory.filter(s=>s!=m))}}>
+                 {m}
+                </button>
+                :
+                <button className={`${styles.category}`} onClick={e=>{setSelectedCategory([...selectedCategory,m]); filter()}}>
+                {m}
+               </button>
+                )}
+            </div>
+        </div>
+
+        {/* End of code */}
         <div className={styles.slab}>
           {filteredPersons&&filteredPersons.length > 0 ? (
             <>

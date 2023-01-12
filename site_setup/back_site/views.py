@@ -888,9 +888,25 @@ class SearchProductView(APIView):
                 # print("data--------------------------",data)
                 if (AllProduct.filter(search_key__icontains=data)):
                     resultSet = AllProduct.filter(search_key__icontains=data)
+                    
+        #Added by Rohan on- 11/1/23 
+        # Reason - getting all unique category of result
+        categories=[]
+        for product in resultSet:
+            if product.category in categories:   
+                print("")
+            else:
+                categories.append(product.category)
+                
+            if product.menu in categories:   
+                print("")
+            else:
+                categories.append(product.menu)     
+                
+        # End of Code
 
         serializedData = product_serializer(resultSet, many=True)
-        return Response(serializedData.data)
+        return Response({"result":serializedData.data,"categories":categories})
 # End of code addition
 
 # Added by Ashish on 19-11-2022
