@@ -125,7 +125,7 @@ const Bridal = () => {
               <Form.Item
              
                 name="firstName"
-                label={<label style={{ color: "#fff" ,fontWeight:"500"}}>First name</label>}
+                label={<label style={{ color: "black" ,fontWeight:"500"}}>First name</label>}
                 
                 rules={[
                   {
@@ -159,7 +159,7 @@ const Bridal = () => {
               <Form.Item
                 
                 name="lastName"
-                label={<label style={{ color: "#fff",fontWeight:"500" }}>Last name</label>}
+                label={<label style={{ color: "black",fontWeight:"500" }}>Last name</label>}
                 rules={[
                   {
                     required: true,
@@ -191,7 +191,7 @@ const Bridal = () => {
               </Form.Item>
               <Form.Item
                 name="email"
-                label={<label style={{ color: "#fff",fontWeight:"500" }}>E-mail address</label>}
+                label={<label style={{ color: "black",fontWeight:"500" }}>E-mail address</label>}
                 
                 // rules={[
                 //   {
@@ -208,7 +208,7 @@ const Bridal = () => {
 
               <Form.Item
                 name="zipCode"
-                label={<label style={{ color: "#fff" ,fontWeight:"500"}}>ZIP code</label>}
+                label={<label style={{ color: "black" ,fontWeight:"500"}}>ZIP code</label>}
                 
                 rules={[
                   {
@@ -244,7 +244,7 @@ const Bridal = () => {
 
               <Form.Item
                 name="message"
-                label={<label style={{ color: "#fff",fontWeight:"500" }}>Message to our consultants</label>}
+                label={<label style={{ color: "black",fontWeight:"500" }}>Message to our consultants</label>}
                 
                 rules={[
                   {
@@ -309,7 +309,7 @@ const Bridal = () => {
 
               <Form.Item
                 name="contactNumber"
-                label={<label style={{ color: "#fff",fontWeight:"500" }}>Contact number</label>}
+                label={<label style={{ color: "black",fontWeight:"500" }}>Contact number</label>}
                
                 rules={[
                   {
@@ -357,7 +357,7 @@ const Bridal = () => {
                 <DatePicker disabledDate={d => !d  || d.isSameOrBefore(Date()) } className={style.formInput} maxLength={50} />
               </Form.Item> */}
               
-              <label style={{ color: "#fff" ,fontWeight:"500"}}>Date of wedding</label>              
+              <label style={{ color: "black" ,fontWeight:"500"}}>Date of wedding</label>              
               <input type="date" id="date" className={style.formInput} style={{marginBottom:"20px"}}/>
 
 
@@ -382,7 +382,7 @@ const Bridal = () => {
           </div>
         </Form>
 
-        <div style={{ paddingTop: "80px",background:"#323232" }}>
+        <div style={{ paddingTop: "80px",background:"#ffffff" }}>
           <Footer />
         </div>
       </div>

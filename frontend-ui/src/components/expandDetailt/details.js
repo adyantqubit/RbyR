@@ -783,9 +783,15 @@ const Details = (props) => {
                       {/* Commented and modified by Ashish Dewangan on 24-11-2022
                       Reason - To have whatsapp chat functionality */}
                       {/* <a href="https://wa.me/916264170187"></a> */}
+                      {/* Commented and modified by - Ashish Dewangan on 15-02-2023
+                         Reason - To open external links in new browser tab */}
+                      {/* <a
+                        href={`https://wa.me/send?text=${window.location.href}`} 
+                      > */}
                       <a
-                        href={`https://wa.me/send?text=${window.location.href}`}
+                        href={`https://wa.me/send?text=${window.location.href}`} target="_blank"
                       >
+                        {/* End of code modification */}
                         {/* End of code modification */}{" "}
                         <AiOutlineWhatsApp
                           style={{
@@ -920,7 +926,9 @@ const Details = (props) => {
                   <span className={styles["textDescription"]}>
                     {" "}
                     or share the details on
-                    <a
+                    {/* Commented and modified by - Ashish Dewangan on 15-02-2023
+                  Reason - To open external links in new browser tab */}
+                    {/* <a
                       className={styles["textLink"]}
                       style={{
                         marginLeft: "3px",
@@ -929,7 +937,20 @@ const Details = (props) => {
                         // borderBottom:"1px solid grey",
                       }}
                       href={`https://wa.me/+91${whatsappContactNumber}?text=Product : ${details.title}  |  Category : ${details.category}`}
+                      
+                    > */}
+                      <a
+                      className={styles["textLink"]}
+                      style={{
+                        marginLeft: "3px",
+                        marginRight: "3px",
+                        // fontSize: "1em",
+                        // borderBottom:"1px solid grey",
+                      }}
+                      href={`https://wa.me/+91${whatsappContactNumber}?text=Product : ${details.title}  |  Category : ${details.category}`}
+                      target="_blank"
                     >
+                      {/* End of code modification */}
                       Whatsapp
                     </a>
                     with us.
@@ -1068,13 +1089,14 @@ const Details = (props) => {
             <Slider scrollTop={scrolling} />
           </div>
 
-          <div className={styles.foot}>
+          {/* Commented by - Ashish Dewangan on 15-02-2023
+            Reason - To hide the text that appear after footer */}
+          {/* <div className={styles.foot}> */}
             <Footer />
-
-            <Below />
+            {/* <Below /> */}
             {/* <Chat/> */}
-
-          </div>
+          {/* </div> */}
+          {/* End of comment */}
         </div>
       ) : (
         "loading"

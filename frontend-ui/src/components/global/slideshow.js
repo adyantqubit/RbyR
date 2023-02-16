@@ -107,7 +107,10 @@ function Slideshow() {
       <CArd2 imgArray={normal}/> 
        <Video url={video}/>
       <Footer2 />
-      <Below />
+      {/* Commented by - Ashish Dewangan on 15-02-2023
+      Reason - To hide text that appear after footer */}
+      {/* <Below /> */}
+      {/* End of comment */}
       </div>
     );
   }

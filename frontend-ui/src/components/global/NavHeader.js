@@ -142,9 +142,9 @@ const Navbar = () => {
   return (
     <div style={{ width: "100%" }} >
       <div className={style.contain} style={{ borderBottom: "1px solid white" }}>
-        <div style={{ background: "#000", color: "white", display: "flex", minHeight: "25px", justifyContent: "center", fontSize: ".75rem", letterSpacing: ".6px", fontStyle: "bold", fontWeight: "600" }}>
+        <div style={{ background: "#ffffff", color: "white", display: "flex", minHeight: "25px", justifyContent: "center", fontSize: ".75rem", letterSpacing: ".6px", fontStyle: "bold", fontWeight: "600" }}>
           <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
-            style={{ textDecoration: "none", textTransform: "uppercase", outline: "none", color: "white", fontSize: ".75rem", fontWeight: "300", marginTop: "8px" }}>
+            style={{ textDecoration: "none", textTransform: "uppercase", outline: "none", color: "black", fontSize: ".75rem", fontWeight: "300", marginTop: "8px" }}>
             FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT | +91
             {whatsappContactNumber ? whatsappContactNumber : " Not added"}
           </a>
@@ -196,6 +196,9 @@ const Navbar = () => {
                 <li className={style.services} >
                   <Link  className={style.al} to="/listing/world_of_rbyr" onClick={e=>setCategorySelected([])} style={{textTransform:"none"}}>WORLD OF RbyR</Link>
                 </li> */}
+                    <li className={style.services}>
+                      <Link  className={style.al} to="/" style={{fontWeight:"450",fontSize:"16px"}}>HOME</Link>
+                    </li>
 
                 {menus?.map((m, i) => {
                   var parent = Object.keys(m)
@@ -230,7 +233,9 @@ const Navbar = () => {
 
                 <li className={style.services}>
                   <span  className={style.al} href="/" style={{fontWeight:"450",fontSize:"16px"}}>WORLD OF RbyR</span>
-                
+                  {/* Commented by - Ashish Dewangan on 15-02-2023
+                  Reason - To hide submenu of world of rbyr */}
+                  {/*                 
                   <ul className={style.dropdown}>
                   <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none",whiteSpace:"nowrap",paddingLeft:`${left}px`}}>
                       <Link className={style.al2} to="/aboutRR" onClick={e=>setCategorySelected([])}>ABOUT RbyR</Link>
@@ -247,7 +252,9 @@ const Navbar = () => {
                     <li style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none",whiteSpace:"nowrap",paddingLeft:`${left}px`}}>
                       <Link className={style.al2}  to="/editorial" onClick={e=>setCategorySelected([])}>EDITORIALS</Link>
                     </li>
-                  </ul>    
+                  </ul>     
+                  */}
+                  {/* End of comment */}
                 </li>
 
               </div>
@@ -258,7 +265,11 @@ const Navbar = () => {
               <div className={style.system}>
                 <div><Search className={style.icons} /></div>
                 <div>
-                  <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}>
+                  {/* Commented and modified by - Ashish Dewangan on 15-02-2023
+                  Reason - To open external links in new browser tab */}
+                  {/* <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} > */}
+                  <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} target="_blank">
+                  {/* End of code modification */}
                     <BsWhatsapp className={style.icons} />
                   </a>
                 </div>

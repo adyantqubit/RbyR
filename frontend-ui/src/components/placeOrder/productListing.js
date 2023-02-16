@@ -47,10 +47,13 @@ const ProductListing = () => {
           <div className={styles.sub}>GST Charges</div>
           <div className={styles.sub}>{currency.sign}{(afterColumnTotalOfferAdd(offer, cart, taxRate).tax * currency.value).toFixed(2)}</div>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", marginTop: "8px" }}>
+        {/* Commented by - Ashish on 15-02-2023
+        Reason - To hide coupen/promocode */}
+        {/* <div style={{ display: "flex", justifyContent: "space-between", marginTop: "8px" }}>
           <div className={styles.sub}>Offer Discount</div>
           <div className={styles.sub}>{currency.sign}{(afterColumnTotalOfferAdd(offer, cart, taxRate).coupon * currency.value).toFixed(2)}</div>
-        </div>
+        </div> */}
+        {/* ENd of comment */}
         <hr style={{ color: "black" }}></hr>
         <div style={{ marginTop: "-5px", display: "flex", justifyContent: "space-between" }}>
           <div className={styles.columnitem1head} style={{ marginTop: "-5px" }}>TOTAL</div>

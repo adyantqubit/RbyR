@@ -91,7 +91,7 @@ const DeliveryPolicy = () => {
           </div> */}
         </div>
 
-        <div style={{ paddingTop: "100px",background:"#323232" }}>
+        <div style={{ paddingTop: "100px",background:"#ffffff" }}>
           <Footer />
         </div>
       </div>

@@ -1,7 +1,7 @@
-.ant-input{
+/* .ant-input{
     background-color: #323232;
     border: 1px solid grey;
-    color: #fff;
+    color: black;
     font-weight: 500;
 }
 
@@ -20,12 +20,12 @@
 }
 .ant-picker ,.ant-picker-status-error.ant-picker, .ant-picker-status-error.ant-picker:not([disabled]):hover {
     background-color: #323232;
-    color: #fff;
+    color: black;
     width: 100%;
 }
 .ant-picker-input > input{
-    color: #fff;
+    color: black;
 }
 .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
-    color:#fff;
-}
+    color:black;
+} */

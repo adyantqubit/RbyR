@@ -24,7 +24,14 @@ function Converter() {
 				const data = {
 					'INR': [res.data["inr"].inr, "₹", "INR"],
 					'USD': [res.data["inr"].usd, "$", "USD"],
-					'GBP': [res.data['inr'].gbp, "£", "GBP"]
+					/*
+						Commented by - Ashish Dewangan on 15-02-2023
+						Reason - To show only INR and USD
+					*/
+					// 'GBP': [res.data['inr'].gbp, "£", "GBP"]
+					/**
+					 * End of comment
+					 */
 				}
 				setInfo(data);
 

@@ -29,7 +29,8 @@ import { notification, Popconfirm } from 'antd';
 import { getWhatsappContactDetail } from '../../api/service';
 import Converter from '../concepts/convertCurrency';
 import { useGetLoggedUserQuery } from '../../Redux-manage/services/userAuthapi';
-
+import { getLogoAndCover } from "../../api/service";
+import config from '../../api/config';
 const text = 'Are you sure you want to logout?';
 
 
@@ -40,6 +41,7 @@ const ShrinkHeader = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [category, setcategory] = useState(null)
   const [parentmenu,setparentMenu]=useState("")
+  const [logo, setLogo] = useState("https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg");
 
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState)
@@ -57,9 +59,18 @@ const ShrinkHeader = () => {
 
   useEffect(() => {
     getWhatsappContactNumber()
+    getLogoAndCoverDetail();
   }, [])
 
   const [whatsappContactNumber, setWhatsappContactNumber] = useState(false);
+
+  const getLogoAndCoverDetail = async () => {
+
+    const coverAndLogoData = await getLogoAndCover();
+    if (coverAndLogoData) {
+      setLogo(coverAndLogoData[0].logo);
+    }
+  };
 
   const getWhatsappContactNumber = async () => {
     const whatsappContactNumberData = await getWhatsappContactDetail();
@@ -123,7 +134,10 @@ const ShrinkHeader = () => {
           </div>
           <div className={style.logo}>
             <Converter />
-            <Link to="/"><img alt="header" src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" className={style.img}></img></Link>
+            <Link to="/">
+              {/* <img alt="header" src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" className={style.img}></img> */}
+              <img src={config.apiBaseURL + logo} alt="Logo" className={style.img} />
+              </Link>
           </div>
 
           <div className={style.headerMenu}>
@@ -134,9 +148,15 @@ const ShrinkHeader = () => {
               <Search className={styles.icons} fontSize={24} />
             </div>
             <div className={style.headerMenuitem} >
+               {/* Commented and modified by - Ashish Dewangan on 15-02-2023
+                  Reason - To open external links in new browser tab */}
+              {/* <a
+                href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
+              > */}
               <a
                 href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
-              >
+               target="_blank">
+                {/* End of code modification */}
                 <BsWhatsapp className={styles.icons} fontSize={24} />
               </a>
             </div>
@@ -199,13 +219,21 @@ const ShrinkHeader = () => {
             </div>
           </Link>
 
-           <Link to="#" className={style.drawerMenu}>
+          {/* Commented and modified by - Ashish Dewangan on 15-02-2023
+          Reason - To hide submenu of world of rbyr */}
+           {/* <Link to="#" className={style.drawerMenu}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer2(); setMenu(submenus) }}>
               <span>WORLD OF RbyR</span> <AiOutlineRight />
             </div>
+          </Link> */}
+          <Link to="#" className={style.drawerMenu}>
+            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => {  }}>
+              <span>WORLD OF RbyR</span> <AiOutlineRight />
+            </div>
           </Link>
+          {/* End of code modification */}
           {/* End of code */}
-
+          
 
 
           {/* <Link to="/" className={style.drawerMenu} onClick={toggleDrawer}>
@@ -255,7 +283,7 @@ const ShrinkHeader = () => {
         onClose={e => { toggleDrawer2(); toggleDrawer() }}
         direction='left'
       >
-        <div style={{ width: "100%", height: "100%", background: "#323232", padding: "10%" }}>
+        <div style={{ width: "100%", height: "100%", background: "white", padding: "10%" }}>
 
           <div className={style.drawerhead}>
 
@@ -273,7 +301,7 @@ const ShrinkHeader = () => {
           {menu==null?
             <Link to={`/listing/${parentmenu}/0`} className={style.drawerMenu} >
               <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer(); toggleDrawer2(); setCategorySelected([]) }} >
-                <span style={{ color: "#f2f2f2", letterSpacing: "1.2px" }}>VIEW ALL</span>
+                <span style={{ color: "black", letterSpacing: "1.2px" }}>VIEW ALL</span>
               </div>
             </Link>
            :null}
@@ -282,7 +310,7 @@ const ShrinkHeader = () => {
           {category?.map(m =>
             <Link to={`/listing/${parentmenu}/${m}`} className={style.drawerMenu} >
               <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer(); toggleDrawer2(); setCategorySelected([]) }} >
-                <span style={{ color: "#f2f2f2", letterSpacing: "1.2px" }}>{m}</span>
+                <span style={{ color: "black", letterSpacing: "1.2px" }}>{m}</span>
               </div>
             </Link>
           )}
@@ -311,7 +339,7 @@ const ShrinkHeader = () => {
                   <span>{m.name}</span> <AiOutlineRight />
                 </div>
                 : <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer(); toggleDrawer2(); setCategorySelected([]) }} >
-                  <span style={{ color: "#f2f2f2", letterSpacing: "1.2px" }}>{m.name}</span> <AiOutlineRight />
+                  <span style={{ color: "black", letterSpacing: "1.2px" }}>{m.name}</span> <AiOutlineRight />
                 </div>}
 
             </Link>

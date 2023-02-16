@@ -7,7 +7,7 @@
     top:23vh; */
     height: auto;
     width:100%;
-    background:#323232;
+    background:#ffffff;
     padding-top: 30vh;
     min-height: 100vh;
     /* overflow-y: scroll; */
@@ -42,7 +42,7 @@
 .column{
     height:auto;
     width:35%;
-    background:#323232;
+    background:#ffffff;
     display: flex;
     flex-direction: column;
     
@@ -55,7 +55,7 @@
     font-family: 'MyFont';
     font-weight: 600;
     margin: 0;
-    color: #fff;
+    color: black;
     text-align: center;
     margin-bottom: 3vh;
 }
@@ -111,25 +111,26 @@
     text-align: center;
     font-size: 15px;
     line-height: 19px;
-    color: #fff;
+    color: black;
     word-wrap: break-word;
 }
 .itemButton{
     width: fit-content;
     padding:8px 20px;
     margin: 5% auto;
-    background-color: #fff;
+    background-color: #202020;
     font-size: 16px;
     letter-spacing: 1px;
     font-family: 'Rawson-Regular';
-    color: #000;
+    color: #ffffff;
 }
 a{
     text-decoration: none;
     color: #000;
 }
 a:hover{
-    color: #000;
+    color: #ffffff;
+    
 }
 
 @media screen and (max-width:768px) {

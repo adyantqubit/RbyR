@@ -9,7 +9,7 @@
 .main {
     width: 100%;
     height: 100%;
-    background: #323232;
+    background: #ffffff;
     padding:0 5%;
     overflow: scroll;
 }
@@ -20,8 +20,8 @@
 }
 
 .topText {
-    background: #000;
-    color: white;
+    background: #ffffff;
+    color: black;
     display: flex;
     justify-content: center;
     font-size: 9px;
@@ -32,7 +32,7 @@
 .number {
     text-decoration: none;
     outline: none;
-    color: white;
+    color: black;
     margin-top: 1px;
     font-size: 9px;
 }
@@ -42,7 +42,7 @@
     width: 100%;
     min-height: 60px;
     /* height: 10vh; */
-    background-color: #323232;
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -91,7 +91,7 @@
 
 .drawerhead {
     min-height: 40px;
-    background-color: #323232;
+    background-color: #ffffff;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -102,7 +102,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    background-color: #323232;
+    background-color: #ffffff;
 }
 
 .drawerMenu {
@@ -116,7 +116,7 @@
     flex-direction: column;
     justify-content: center;
     font-weight: 600;
-    color: #f2f2f2;
+    color: black;
     border-bottom: 1px solid #5f5e5e;
 }
 

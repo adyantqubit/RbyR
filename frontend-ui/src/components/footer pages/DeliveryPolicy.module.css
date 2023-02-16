@@ -6,7 +6,7 @@
    
     height: auto;
     width:100%;
-    background:#323232;
+    background:#ffffff;
     padding-top: 30vh;
     max-height: 100vh;
     /* overflow-y: scroll; */
@@ -39,13 +39,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background:#323232;
+    background:#ffffff;
 }
 
 .column{
     height:auto;
     width:100%;
-    background:#323232;
+    background:#ffffff;
     display: flex;
     flex-direction: column;
   
@@ -60,7 +60,7 @@
     font-family: 'MyFont';
     font-weight: 600;
     margin: 0;
-    color: #fff;
+    color: black;
     margin-top: 5px;
     text-align: center;
     margin-bottom: 3vh;
@@ -73,7 +73,7 @@
     letter-spacing: 3px;
     font-family: 'MyFont';
     margin-top: 15px;
-    color: #fff;
+    color: black;
 }
 
 .content{
@@ -82,7 +82,7 @@
     line-height: 22px;
     letter-spacing: 1px;
     font-family: 'Rawson-Regular';
-    color: #fff;
+    color: black;
 }
 
 @media screen and (max-width:768px) {

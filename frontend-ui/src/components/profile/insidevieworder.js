@@ -298,8 +298,10 @@ const InsideOrder = () => {
                       <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "start" }}>Sub Total</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}>{states[0].selected_currency_sign}{(allData.transaction.subtotal_price * states[0].selected_currency_value).toFixed(2)}</span></div>
                       <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "start" }}>Shipping Charges</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}>{states[0].selected_currency_sign}{(allData.transaction.shipping_price * states[0].selected_currency_value).toFixed(2)}</span></div>
                       <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "start" }}>Tax</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}>{states[0].selected_currency_sign}{(allData.transaction.tax * states[0].selected_currency_value).toFixed(2)}</span></div>
-                      <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "start" }}>Coupon Discount</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}> - {states[0].selected_currency_sign} {(allData.transaction.coupon_discount * states[0].selected_currency_value).toFixed(2)}</span></div>
-
+                      {/* Commented by - Ashish Dewangan on 15-02-2023
+                      End of comment */}
+                      {/* <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "start" }}>Coupon Discount</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}> - {states[0].selected_currency_sign} {(allData.transaction.coupon_discount * states[0].selected_currency_value).toFixed(2)}</span></div> */}
+                      {/* End of comment */}
                       <hr style={{ color: "black" }}></hr>
                       <div className={style.textlight1}>
                         <span style={{ fontWeight: "600", width: "50%", textAlign: "start" }}>Total</span><span style={{ fontWeight: "600", width: "50%", textAlign: "end" }}> {states[0].selected_currency_sign} {(allData.transaction.grand_total * states[0].selected_currency_value).toFixed(2)}</span>

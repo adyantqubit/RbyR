@@ -70,9 +70,9 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    background-color:  #323232;
+    background-color:  #ffffff;
     border-bottom: .1em solid #7c7c7c;
-    color: #fff;
+    color: black;
     width: 100%;
     height: 30%;
    }
@@ -83,11 +83,11 @@
    }
 
    .nav_links a {
-    color: #fff;
+    color: black;
    }
    /* LOGO */
    .logo {
-    background-color: #323232;
+    background-color: #ffffff;
     text-align: center;
     font-size: 32px;
     padding: 10px;
@@ -121,14 +121,15 @@
     font-size: 16px;
    }
    .menu li:hover {
-    transition: 0.3s ease;
-    border-bottom: 2px solid white;
-    color: white;
-
+    /* transition: 0.3s ease; */
+    border-bottom: 3px solid black;
+    color: black;
+    transform: scale(1.05);
    }
 
    .menu li:hover a{
-    color: white;
+    color: black;
+
    }
    .menu li {
     padding: 0 10px;
@@ -173,13 +174,18 @@
     background-color: rgba(0,0,0,0);
    }
 
+/* commented by Ashish on 13-02-2023
+   Reason - To hide drop down list when hovering on menu item */
+/* 
    .services:hover{
     overflow: visible;
    }
    .services:hover .dropdown {
     display: table;
     overflow: auto;
-   }
+   } */
+/*
+End of comment*/
 
 /*RESPONSIVE NAVBAR MENU STARTS*/
 /* CHECKBOX HACK */

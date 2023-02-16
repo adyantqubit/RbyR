@@ -213,10 +213,13 @@ const Billing = () => {
                   <span className={`${styles.columnitem1head}`}  >GST Charges -</span>
                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto" }} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).tax * checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
-                <div className={styles.billingtexts}>
+                {/* Commented by - Ashish Dewangan on 15-02-2023
+                Reason - To Hide offer/Coupon/promocode from bill */}
+                {/* <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`}  >Discount -</span>
                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto" }} > {checkoutDetails.currency_sign} {checkoutDetails.CouponDiscount ? (checkoutDetails.CouponDiscount* checkoutDetails.currency_value).toFixed(2) : (afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).coupon * checkoutDetails.currency_value).toFixed(2)}</span>
-                </div>
+                </div> */}
+                {/* End of comment */}
                 <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`} style={{ color: "black", borderBottom: "1px solid black" }}></span>
                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", borderBottom: "1px solid black", width: "50%" }} ></span>
@@ -252,7 +255,10 @@ const Billing = () => {
 
         <div className={styles.foot} >
           <Footer />
-          <Below />
+          {/* Commented by - Ashish Dewangan on 15-02-2023
+          Reason - To hide the text that appear after footer */}
+          {/* <Below /> */}
+          {/* End of comment */}
         </div>
       </div >
     </>

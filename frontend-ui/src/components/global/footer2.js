@@ -258,7 +258,10 @@ function Footer2() {
             >
               <FaFacebookF style={{ color: "grey", fontSize: "25px" }} />
               <TiSocialInstagram style={{ color: "grey", fontSize: "25px" }} />
-              <FaTwitter style={{ color: "grey", fontSize: "25px" }} />
+              {/* Commented by - Ashish Dewangan on 15-02-2023
+              Reason - To hide Twitter link */}
+              {/* <FaTwitter style={{ color: "grey", fontSize: "25px" }} /> */}
+              {/* End of comment */}
             </div>
             <div
               style={{
@@ -276,14 +279,24 @@ function Footer2() {
                         style={{ marginTop: "0" }}
                         className={`${style.span} ${style.span1}`}
                       >
-                        <a
+                        {/* <a
                           href={socialLink.link}
                           className={style.span}
                           style={{
                             textDecoration: "none",
-                            color: "white",
+                            color: "black",
                             marginLeft: "10px",
                           }}
+                        > */}
+                          <a
+                          href={socialLink.link}
+                          className={style.span}
+                          style={{
+                            textDecoration: "none",
+                            color: "black",
+                            marginLeft: "10px",
+                          }}
+                          target="_blank"
                         >
                           {" "}
                           {socialLink.linkName}

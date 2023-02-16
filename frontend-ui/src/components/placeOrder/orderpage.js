@@ -100,7 +100,10 @@ const Orderpage = (props) => {
 
         <div className={styles.foot} >
           <Footer />
-          <Below />
+          {/* Commented by - Ashish Dewangan on 15-02-2023
+          Reason - To hide the text that apprear after footer */}
+          {/* <Below /> */}
+          {/* End of comment */}
         </div>
       </div>
     </>

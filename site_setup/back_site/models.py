@@ -162,7 +162,7 @@ category = (
 #Reason - Adding category and menus name from backend
 
 class Menus(models.Model):
-    menu=models.CharField(max_length=15)
+    menu=models.CharField(max_length=13)
     
     def clean(self):
         if (Menus.objects.count() >= 4 and self.pk is None):

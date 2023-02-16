@@ -280,8 +280,9 @@ export function DrawerFooter() {
             <span style={{ marginLeft: "15px", textTransform: "uppercase", fontWeight: "600" }}>GST Charges</span>
             <span style={{ marginRight: "15px", fontWeight: "600" }}>{currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).tax * currency.value).toFixed(2)}</span>
           </div>
-
-          <div className={style.promo}>
+          {/* Commented by - Ashish Dewangan on 15-02-2023
+          Reason - To hide promocode/offer functionality from cart drawer  */}
+          {/* <div className={style.promo}>
             {!ShowCoupon && !offer.discount_percentage > 0 ? <> <input className="promoCode" id="prormos" type="text" onKeyPress={e => validateWhitespace(e, "prormos")} style={{ width: "60%", padding: "10px", height: "35px", marginLeft: "15px", border: "1px solid #dfdbdb", outline: "#fff" }} placeholder="Have a promocode" ref={promos} onChange={e => setError(null)}></input>
               <button className={style.shopbtn1} style={{ marginRight: "15px", marginTop: "0px", height: "35px", maxWidth: "35%", textAlign: "center", letterSpacing: "2px", fontSize: "14px", fontWeight: "600", padding: "0" }} onClick={ApplyPromo}>APPLY</button>
             </>
@@ -301,8 +302,8 @@ export function DrawerFooter() {
           {ShowCoupon ? <div className={style.subTotal}>
             <span style={{ marginLeft: "15px", fontWeight: "600" }}>Coupon Discount</span>
             <span style={{ marginRight: "15px", fontWeight: "600" }}>- {currency.sign} {afterColumnTotalOfferAdd(offer, cart, taxRate).coupon * currency.value}</span>
-          </div> : null}
-
+          </div> : null} */}
+          {/* End of comment */}
           <hr style={{ color: "black" }}></hr>
           <div className={style.subTotal} style={{ marginTop: "25px",fontSize:"16px" }}>
             <span style={{ marginLeft: "15px", fontWeight: "600",fontSize:"18px" }}>Total</span>

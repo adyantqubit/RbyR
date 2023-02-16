@@ -385,7 +385,10 @@ const ListPage = () => {
 
         <div className={style.foot}>
           <Footer />
-          <Below />
+          {/* Commented by - Ashish Dewangan on 15-02-2023
+          Reason - To hide text that appear below footer */}
+          {/* <Below /> */}
+          {/* End of comment */}
 
         </div>
       </div>

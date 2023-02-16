@@ -592,7 +592,9 @@ const CartSItem = (props) => {
                   <span style={{ marginRight: "15px", fontWeight: "600" }}>{currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).tax * currency.value).toFixed(2)}</span>
                 </div>
 
-                <div className={style.promo}>
+                {/* Commented by - Ashish Dewangan on 15-02-2023
+                Reason - To hide coupon/promocode functionality */}
+                {/* <div className={style.promo}>
 
                   {!ShowCoupon && !offer.discount_percentage > 0 ? <> <input className="promoCode" id="prormos" type="text" onKeyPress={e => validateWhitespace(e, "prormos")} style={{ width: "90%", height: "35px", padding: "10px", marginLeft: "15px", border: "1px solid #dfdbdb", outline: "#fff" }} placeholder="Have a promocode" onChange={e => setError(null)}></input>
                     <button className={style.shopbtn2} style={{ marginRight: "15px", marginTop: "0px", height: "35px", textAlign: "center", letterSpacing: "2px", fontSize: "14px", fontWeight: "600",padding:"0" }} onClick={ApplyPromo}>APPLY</button>
@@ -606,8 +608,8 @@ const CartSItem = (props) => {
                     </div>}
 
                 </div>
-                {error != null ? <Typography style={{ marginTop: "-10px", color: "red", fontSize: "14px", marginLeft: "15px" }}>{error.error}</Typography> : null}
-
+                {error != null ? <Typography style={{ marginTop: "-10px", color: "red", fontSize: "14px", marginLeft: "15px" }}>{error.error}</Typography> : null} */}
+                {/* End of comment */}
                 {ShowCoupon ? <div className={style.subTotal}>
                   <span style={{ marginLeft: "15px", fontWeight: "600" }}>Coupon Discount</span>
                   <span style={{ marginRight: "15px", fontWeight: "600" }}>- {currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).coupon * currency.value).toFixed(2)}</span>
@@ -690,7 +692,10 @@ const CartSItem = (props) => {
         </div>
         <div className={styles.foot}>
           <Footer />
-          <Below />
+          {/* Commented by - Ashish Dewangan on 15-02-2023
+          Reason - To hide the text that appear below footer */}
+          {/* <Below /> */}
+          {/* End of comment */}
           {/* <Chat/> */}
         </div>
       </div>
