@@ -123,9 +123,12 @@ const ShrinkHeader = () => {
   return (
     <div className={style.responsiveHeader}>
       <div className={style.topText}>FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT +91
-        <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} className={style.number} >{whatsappContactNumber ? whatsappContactNumber : "Not Added"}</a></div>
-
-
+      {/* Commented and modified by - Ashish Dewanan on 15-02-2023
+      Reason - To open link in new tab */}
+        {/* <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} className={style.number} >{whatsappContactNumber ? whatsappContactNumber : "Not Added"}</a></div> */}
+        <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} className={style.number}
+        target="_blank" >{whatsappContactNumber ? whatsappContactNumber : "Not Added"}</a></div>
+{/* End of code modification */}
       <div className={style.headerContainer}>
 
         <div style={{ display: "flex" }}>

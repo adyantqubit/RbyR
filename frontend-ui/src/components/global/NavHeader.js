@@ -143,8 +143,15 @@ const Navbar = () => {
     <div style={{ width: "100%" }} >
       <div className={style.contain} style={{ borderBottom: "1px solid white" }}>
         <div style={{ background: "#ffffff", color: "white", display: "flex", minHeight: "25px", justifyContent: "center", fontSize: ".75rem", letterSpacing: ".6px", fontStyle: "bold", fontWeight: "600" }}>
+          {/* Commented and modified by - Ashish Dewangan on 16-02-2023
+          Reason - open link in new tab */}
+        {/* <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
+            style={{ textDecoration: "none", textTransform: "uppercase", outline: "none", color: "black", fontSize: ".75rem", fontWeight: "300", marginTop: "8px" }}> */}
           <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
-            style={{ textDecoration: "none", textTransform: "uppercase", outline: "none", color: "black", fontSize: ".75rem", fontWeight: "300", marginTop: "8px" }}>
+            style={{ textDecoration: "none", textTransform: "uppercase", outline: "none", color: "black", fontSize: ".75rem", fontWeight: "300", marginTop: "8px" }}
+            target="_blank"
+            >
+              {/* End of code modification */}
             FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT | +91
             {whatsappContactNumber ? whatsappContactNumber : " Not added"}
           </a>
