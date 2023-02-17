@@ -78,7 +78,7 @@ const FAQ = () => {
             }
         </div>
 
-        <div style={{ paddingTop: "80px",background:"#ffffff" }}>
+        <div className={style.footerMargin} style={{ paddingTop: "80px"}}>
           <Footer />
         </div>
       </div>

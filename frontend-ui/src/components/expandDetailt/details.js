@@ -1084,7 +1084,7 @@ const Details = (props) => {
             <Slider />
           </div> */}
 
-          <div style={{ width: "100%", zIndex: "1" }} >
+          <div style={{ width: "100%", zIndex: "1"}} >
             <Slider2 scrollTop={scrolling} />
             <Slider scrollTop={scrolling} />
           </div>

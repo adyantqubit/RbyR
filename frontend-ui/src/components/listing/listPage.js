@@ -344,7 +344,7 @@ const ListPage = () => {
             </div>
 
           )) :
-            nullpage ? null : <div style={{ width: "100%", background: "white" }}>
+            nullpage ? null : <div style={{ width: "100%" }}>
               <div class="centered">
                 <div class="blob-1"></div>
                 <div class="blob-2"></div>
@@ -375,7 +375,9 @@ const ListPage = () => {
         }
 
         {loading ?
-          <div style={{ width: "100%", background: "white" }}>
+          
+          // <div style={{ width: "100%", background: "white" }}>
+          <div className={style.loader}  >
             <div class="centered">
               <div class="blob-1"></div>
               <div class="blob-2"></div>

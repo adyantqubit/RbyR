@@ -91,7 +91,7 @@ const MyOrders = () => {
             <div className={style.column2header}>MY ORDERS</div>
             <hr style={{color:"black"}}></hr>
 
-            {orders.length>0&&tran.length>0? <div className={style.table}>
+            {orders.length>0&&tran.length>0? <div className={style.table} >
                 <div className={style.tablerowheadtable}>
                   <div className={style.rowheadText}>Order ID</div>
                   <br style={{color:"blue"}}></br>
@@ -107,7 +107,7 @@ const MyOrders = () => {
 
                 
                { orders.map((o,i)=>
-                  <div className={style.tablerowheadtable}>
+                  <div className={style.tablerowheadtable} >
                     <div className={style.rowText}>{o[0].order_no}</div>
                     <div className={`${style.rowText}`}>{o[0].date.split("-").reverse().join("-")}</div>
                     

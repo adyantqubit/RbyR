@@ -486,7 +486,7 @@ const CartSItem = (props) => {
                     </div>
 
                   </div>
-                </div> : <div style={{ width: "100%", marginBottom: "20px", paddingLeft: "15px", display: "flex", background: "white" }}>
+                </div> : <div className={styles.columnContainer} style={{ width: "100%", marginBottom: "20px", paddingLeft: "15px", display: "flex" }}>
                 <div className={styles.column1}>
 
                   <img src={config.apiBaseURL + pro.img_main} style={{width:"100%"}} onClick={e => openDetail(pro)}></img>
@@ -620,7 +620,7 @@ const CartSItem = (props) => {
                   <span style={{ fontSize: "20px", fontWeight: "600", marginRight: "15px", fontSize: "21px", lineHeight: "32px", letterSpacing: "3px" }}>{currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).Grand * currency.value).toFixed(2)}</span>
                 </div>
 
-                <div className={styles.buttons} style={{ flexDirection: "column", background: "white" }}>
+                <div className={styles.buttons} style={{ flexDirection: "column" }}>
                   <buton className={style.shopbtn2} style={{ width: "100%", margin: "5px" }} onClick={e => cartChecking()} >GO TO CHECKOUT</buton>
                   <button className={style.shopbtn1} style={{ width: "100%", margin: "5px" }} onClick={e => { nav('/') }}>CONTINUE SHOPPING</button>
 
@@ -679,9 +679,9 @@ const CartSItem = (props) => {
 
       <div className={styles.sliderShow} style={{marginTop:"-80px"}}>
 
-        <div style={{ width: "100%", display: "flex", justifyContent: 'center', background: "white" }}>
+        <div className={styles.columnContainer} style={{ width: "100%", display: "flex", justifyContent: 'center' }}>
         {JSON.parse(localStorage.getItem("recentview")) && JSON.parse(localStorage.getItem("recentview")).length > 0 ?
-           <div style={{ width: "100vw", height: "90vh", marginBottom: "50px", background: "white", zIndex: "0" }}>
+           <div className={styles.columnContainer} style={{ width: "100vw", height: "90vh", marginBottom: "50px", zIndex: "0" }}>
      
               <>
                 <Slider />

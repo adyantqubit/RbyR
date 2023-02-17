@@ -1,3 +1,4 @@
+@import '../../root.css';
 .bod{
 	margin: 0;
 	padding: 0;
@@ -8,13 +9,13 @@
 	position: relative;
 	top:20vh;
 	font-family: 'Jost', sans-serif;
-	background: linear-gradient(to bottom, #323232, #000, #323232);
+	background: var(--bgColor);
 }
 .mai{
 	margin-top: 30px;
 	width: 400px;
 	height: 550px;
-	background: red;
+	background: var(--bgColor);
 	overflow: hidden;
 	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
 	border-radius: 10px;
@@ -39,7 +40,7 @@
 
 
 .labe{
-	color: #fff;
+	color: black;
 	font-size: 2.3em;
 	justify-content: center;
 	display: flex;
@@ -57,7 +58,7 @@
 	height: 40px;
 	padding-left:10px;
 
-	background: #e0dede;
+	background: var(--bgColor);
 	justify-content: center;
 	display: flex;
 	
@@ -66,6 +67,7 @@
 	border: none;
 	outline: none;
 	border-radius: 5px;
+	border: 1px solid black;
 }
 
 .inpu2{
@@ -73,7 +75,7 @@
 	padding-left:10px;
 	height: 35px;
 	margin-left: 15%;
-	background: #e0dede;
+	background: var(--bgColor);
 	justify-content: center;
 	display: flex;
 	
@@ -82,12 +84,13 @@
 	border: none;
 	outline: none;
 	border-radius: 5px;
+	border: 1px solid black;
 }
 
 .inpu3{
 	width: 70%;
 	height: 30px;
-	background: #181717;
+	background: var(--bgColor);
 	justify-content: space-between;
 	display: flex;
 	padding-left:10px;
@@ -97,18 +100,20 @@
 	border: none;
 	outline: none;
 	border-radius: 5px;
+	border: 1px solid black;
 }
 
 .inpu4{
 	width: 49%;
 	height: 30px;
-	background: #e0dede;
+	background: var(--bgColor);
 	justify-content: center;
 	display: flex;
 
 	border: none;
 	outline: none;
 	border-radius: 5px;
+
 }
 
 .PhoneInput{
@@ -119,7 +124,7 @@
 .PhoneInputInput{
 	width: 90%;
 	height: 30px;
-	background: #e0dede;
+	background: var(--bgColor);
 	justify-content: center;
 	display: flex;
 	
@@ -128,6 +133,7 @@
 	border: none;
 	outline: none;
 	border-radius: 5px;
+
 }
 
 .inpu4::placeholder{

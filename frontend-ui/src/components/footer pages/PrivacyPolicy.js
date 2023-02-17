@@ -61,7 +61,7 @@ const PrivacyPolicy = () => {
           )}
         </div>
 
-        <div style={{paddingTop:"100px",background:"#ffffff" }}>
+        <div className={style.footerMargin} style={{paddingTop:"100px" }}>
           <Footer />
         </div>
       </div>

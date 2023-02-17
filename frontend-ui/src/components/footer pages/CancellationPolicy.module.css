@@ -1,13 +1,11 @@
 
-
-
-
+@import '../../root.css';
 .ppContainer{
     /* position: relative;
     top:23vh; */
     height: auto;
     width:100%;
-    background:#ffffff;
+    background:var(--bgColor);
     padding-top: 24vh;
     max-height: 100vh;
     /* overflow-y: scroll; */
@@ -41,7 +39,7 @@
     flex-direction: row;
     padding-top: 7vh;
     justify-content: space-around;
-    background:#ffffff;
+    background:var(--bgColor);
     padding-bottom: 30vh;
   
 }
@@ -49,7 +47,7 @@
 .column{
     height:auto;
     width:100%;
-    background:#ffffff;
+    background:var(--bgColor);
     display: flex;
     flex-direction: column;
   

@@ -71,7 +71,7 @@ const Slider = ({ scrollTop }) => {
     <>
      {recentlyViewedProducts.length>0
 
-? <div
+? <div className={styles.sliderContainer}
         style={{ display: "flex", flexDirection: "column", padding: "0 8%", marginBottom: "9vh" }}
       >
         <div

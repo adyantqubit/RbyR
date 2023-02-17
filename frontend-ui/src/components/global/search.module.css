@@ -17,12 +17,14 @@
 .search:focus{
     outline: 0ch;
 }
-
+.cutomDrawerInput{
+  background-color: var(--bgColor);
+}
 
 .slab{
     min-height: 300px;
     width: 100%;
-    background-color: white;
+
     display: flex;
     flex-wrap: wrap;
     padding:0 5%;

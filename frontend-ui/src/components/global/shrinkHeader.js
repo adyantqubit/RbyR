@@ -286,8 +286,11 @@ const ShrinkHeader = () => {
         onClose={e => { toggleDrawer2(); toggleDrawer() }}
         direction='left'
       >
-        <div style={{ width: "100%", height: "100%", background: "white", padding: "10%" }}>
-
+        {/* commented and modified by - Ashish Dewangan on 16-02-2023
+        Reason - To have styling in seperate file */}
+        {/* <div style={{ width: "100%", height: "100%", background: "white", padding: "10%" }}> */}
+        <div className={style.drawerContainer} >
+          {/* End of code modification */}
           <div className={style.drawerhead}>
 
             <div className={style.drawerMenu}>

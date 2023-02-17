@@ -1,4 +1,4 @@
-
+@import '../../root.css';
 /* // Created by Ashish on 06-11-2022
 // Reason - To have FAQ functionality */
 .faqContainer{
@@ -6,12 +6,15 @@
     top:23vh; */
     height: auto;
     width:100%;
-    background:#ffffff;
+    background:var(--bgColor);
     padding-top: 30vh;
     max-height: 100vh;
     /* overflow-y: scroll; */
 }
 
+.footerMargin{
+    background-color: var(--bgColor);
+}
 
 .faqContainer::-webkit-scrollbar-track
 {

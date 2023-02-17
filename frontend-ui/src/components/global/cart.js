@@ -94,8 +94,10 @@ const Cart = () => {
         onClose={onClose}
         closeIcon={<MdOutlineArrowBack className="likeSVG" />}
         open={openCartdrawer}
-        headerStyle={{ height: "200px", backgroundColor: "white" }}
-        style={{ display: "flex", justifyContent: "center" }} >
+        headerStyle={{ height: "200px" }}
+        style={{ display: "flex", justifyContent: "center" }}
+       
+        >
         <CartCard />
 
       </Drawer>

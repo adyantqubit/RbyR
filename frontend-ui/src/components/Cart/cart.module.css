@@ -1,4 +1,4 @@
-
+@import '../../root.css';
 @font-face {
   font-family: 'MyFont';
   src: local('MyFont'), url(../../assets/font/RawsonAltRegular.woff) format('woff');
@@ -6,10 +6,12 @@
                             'embedded-opentype', and 'svg' */
 }
 
-
+.columnContainer{
+  background:var(--bgColor);
+}
 .main{
     width:45%;
-    background:white
+    background:var(--bgColor);
 }
 
 .gaping{
@@ -59,7 +61,7 @@
     width:100%;
     height:80px;
     margin-bottom:50px;
-    background:white;
+    background:var(--bgColor);
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -75,7 +77,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: #f2f2f2;
+    background-color: var(--bgColor);
   }
 
   .shopbtn2{
@@ -102,7 +104,7 @@
     top:23vh; */
     padding-top:153px;
     width:100%;
-    background:white;
+    background:var(--bgColor);
     display:flex;
     /* overflow-x: hidden; */
     justify-content:center;
@@ -243,7 +245,7 @@ body {background: #333}
    }
     .main{
         width:100%;
-        background:white
+        background:var(--bgColor);
     }
 
     

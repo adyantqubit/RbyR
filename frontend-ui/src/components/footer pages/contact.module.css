@@ -1,4 +1,4 @@
-
+@import '../../root.css';
 @font-face {
     font-family: 'MyFont';
     src: local('MyFont'), url(../../assets/font/RawsonAltRegular.woff) format('woff');
@@ -13,7 +13,7 @@
     top:25vh; */
     height: auto;
     width:100%;
-    background:#ffffff;
+    background:var(--bgColor);
     padding-top: 35vh;
     max-height: 100vh;
     /* overflow-y: scroll; */
@@ -48,13 +48,13 @@
     flex-direction: row;
     justify-content: center;
     gap:100px;
-    background:#ffffff;
+    background:var(--bgColor);
 }
 
 .column{
     height:auto;
     width:35%;
-    background:#ffffff;
+    background:var(--bgColor);
     display: flex;
     flex-direction: column;
   
@@ -94,6 +94,10 @@
     font-family: 'Rawson-Regular';
     font-weight: 400;
     color: black;
+}
+
+.footerMargin{
+    background-color: var(--bgColor);
 }
 
 @media screen and (max-width:768px) {

@@ -142,7 +142,7 @@ const Navbar = () => {
   return (
     <div style={{ width: "100%" }} >
       <div className={style.contain} style={{ borderBottom: "1px solid white" }}>
-        <div style={{ background: "#ffffff", color: "white", display: "flex", minHeight: "25px", justifyContent: "center", fontSize: ".75rem", letterSpacing: ".6px", fontStyle: "bold", fontWeight: "600" }}>
+        <div  className={style.whatsappBanner} style={{  color: "white", display: "flex", minHeight: "25px", justifyContent: "center", fontSize: ".75rem", letterSpacing: ".6px", fontStyle: "bold", fontWeight: "600" }}>
           {/* Commented and modified by - Ashish Dewangan on 16-02-2023
           Reason - open link in new tab */}
         {/* <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}

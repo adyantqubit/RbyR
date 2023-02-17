@@ -169,7 +169,7 @@ const Login = () => {
 					<label class="labe" htmlFor="ch" aria-hidden="true">Sign up</label>
 					{/* {server_error.non_field_errors?<Alert severity='error'>{server_error.non_field_errors[0]}</Alert>:" "} */}
 
-                    <div style={{fontSize:"14px",color:"white",marginLeft:"15%"}}>Name *</div>
+                    <div style={{fontSize:"14px",marginLeft:"15%"}}>Name *</div>
 					<input  class="inpu2" type="text" name="txt" placeholder="User name" required/>
 
 					{/* <Popup trigger={<button style={{border:"white",background:"#e0dede"}} >{server_error.name?<i class="fa-solid fa-circle-exclamation" style={{color:"red",marginTop:"8px"}}/>:null}</button>} 
@@ -182,7 +182,7 @@ const Login = () => {
 
 					</div>
 					
-                    <div style={{fontSize:"14px",color:"white",marginLeft:"15%"}}>Email *</div>
+                    <div style={{fontSize:"14px",marginLeft:"15%"}}>Email *</div>
 					<input class="inpu2"type="email" name="email" placeholder="Email" required/>
 					<div style={{height:"20px"}}>
                     {server_error.email?<Typography style={{color:"red",fontSize:"14px",marginBottom:"10px",marginLeft:"15%"}}>{server_error.email[0]}</Typography>:" "}
@@ -198,7 +198,7 @@ const Login = () => {
 					{/* </span> */}
 
 					{/* <span class="inpu"> */}
-                    <div style={{fontSize:"14px",color:"white",marginLeft:"15%"}}>Phone Number *</div>
+                    <div style={{fontSize:"14px",marginLeft:"15%"}}>Phone Number *</div>
 					<PhoneInput
 					international
 					placeholder="phone number"
@@ -221,7 +221,7 @@ const Login = () => {
 					{server_error.contact_number?<Typography style={{color:"red",fontSize:"14px"}}>{server_error.contact_number[0]}</Typography>:" "}
 					</Popup>:null} */}
 					{/* </span> */}
-                    <div style={{fontSize:"14px",color:"white",marginLeft:"15%"}}>Password *</div>
+                    <div style={{fontSize:"14px",marginLeft:"15%"}}>Password *</div>
 					<span class="inpu3" style={{marginBottom:"0",flexDirection:"column",height:"auto",paddingLeft:"0px",gap:"10px"}}>
 						<span class="inpu4" style={{width:"100%"}}>
 							<input class="inpu4" type={showNewPass2?"text":"password"} name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
@@ -254,14 +254,14 @@ const Login = () => {
 
 					{/* {server_error.password2?<Typography style={{color:"red",paddingLeft:10,fontSize:10,position:"absolute",top:"310px",left:"150px",right:"0",fontSize:"0.8rem"}}>{server_error.password2[0]}</Typography>:" "} */}
 
-					<FormControlLabel style={{paddingLeft:"70px",color:"white"}} control={<Checkbox value={true} color="primary" name="tc" id="tc" />} label={<span style={{ fontSize: '0.8rem' }}>
+					<FormControlLabel style={{paddingLeft:"70px"}} control={<Checkbox value={true}  name="tc" id="tc" />} label={<span style={{ fontSize: '0.8rem' }}>
 						{/* {server_error.tc?
 						<Popup trigger={<button style={{border:"white",background:"rgba(0,0,0,0)",marginRight:"10px"}} >{server_error.name?<i class="fa-solid fa-circle-exclamation" style={{color:"red",marginTop:"8px"}}/>:null}</button>} 
 						defaultOpen={true}
 						position="top center">
 						{server_error.tc?<span style={{color:"red",fontSize:"0.8rem"}}>check term and condition</span>:" "}
 					</Popup>:null} */}
-						<Link to="/terms" style={{fontSize:"12px",color:"white",letterSpacing:"1.2px"}}> I accept terms and conditions.</Link>   
+						<Link to="/terms" style={{fontSize:"12px",letterSpacing:"1.2px"}}> I accept terms and conditions.</Link>   
 					</span>} />
 
 					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button style={{paddingTop:"0",marginTop:"0"}} class="butto" type='submit'>Sign up</button>}

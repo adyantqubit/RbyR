@@ -1,4 +1,6 @@
 /* UTILITIES */
+@import '../../root.css';
+
 @font-face {
   font-family: 'MyFont';
   src: local('MyFont'), url(../../assets/font/RawsonAltRegular.woff) format('woff');
@@ -65,12 +67,14 @@
    }
 
 /* NAVBAR STYLING STARTS */
-
+.whatsappBanner{
+  background-color: var(--bannerColor);
+}
 .navbar {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    background-color:  #ffffff;
+    background-color:  var(--bgColor);
     border-bottom: .1em solid #7c7c7c;
     color: black;
     width: 100%;
@@ -87,7 +91,7 @@
    }
    /* LOGO */
    .logo {
-    background-color: #ffffff;
+    background-color: var(--bgColor);
     text-align: center;
     font-size: 32px;
     padding: 10px;
@@ -345,7 +349,7 @@ input[type=checkbox]:checked ~ .menu{
   .action .menu2 {
 	position: absolute;
 	padding: 10px 20px;
-	background: #fff;
+	background: var(--bgColor);
 	width: 200px;
 
 	box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);

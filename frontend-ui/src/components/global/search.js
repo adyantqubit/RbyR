@@ -112,7 +112,7 @@ const Search = () => {
         width={window.innerWidth>768 ? 650 : "100%"}
         closeIcon={<GrClose className="searchSVG"/>}
        
-        headerStyle={{ height: "200px", backgroundColor: "white" }}
+        headerStyle={{ height: "200px"}}
         placement="right"
         onClose={onClose}
         open={open}
@@ -145,6 +145,7 @@ const Search = () => {
               }}
             />
             <input
+            className={styles.cutomDrawerInput}
               type="text"
               id="searchBox"
               style={{

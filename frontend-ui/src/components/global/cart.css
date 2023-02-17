@@ -8,6 +8,10 @@
 
 .ant-drawer-body{
     padding: 0%;
+    background-color: var(--bgColor);
+}
+.ant-drawer-header{
+    background-color: var(--bgColor);
 }
 
 .ant-popover-inner-content {

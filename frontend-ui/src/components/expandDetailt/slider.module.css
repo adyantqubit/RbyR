@@ -1,3 +1,4 @@
+@import '../../root.css';
 @font-face {
     font-family: 'MyFont';
     src: local('MyFont'), url(../../assets/font/RawsonAltRegular.woff) format('woff');
@@ -31,7 +32,9 @@
     margin-top: 10px;
     justify-content: center;
 }
-
+.sliderContainer{
+    background-color: var(--bgColor);
+}
 
 .readyIcon{
     width: 8px;

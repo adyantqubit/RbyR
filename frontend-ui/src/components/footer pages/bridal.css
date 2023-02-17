@@ -1,25 +1,25 @@
-/* .ant-input{
-    background-color: #323232;
+.ant-input{
+    background-color: var(--bgColor);
     border: 1px solid grey;
     color: black;
     font-weight: 500;
 }
 
 .ant-input-affix-wrapper{
-    background-color: #323232;
+    background-color: var(--bgColor);
     padding: 7px;
 }
 .ant-input-status-error{
-    background-color: #323232;
+    background-color: var(--bgColor);
 }
 .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input, .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:hover {
-    background-color: #323232;
+    background-color: var(--bgColor);
 }
 .ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper, .ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper:hover {
-    background-color: #323232;
+    background-color: var(--bgColor);
 }
 .ant-picker ,.ant-picker-status-error.ant-picker, .ant-picker-status-error.ant-picker:not([disabled]):hover {
-    background-color: #323232;
+    background-color: var(--bgColor);
     color: black;
     width: 100%;
 }
@@ -28,4 +28,4 @@
 }
 .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
     color:black;
-} */
+}

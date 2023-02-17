@@ -1,3 +1,4 @@
+@import '../../root.css';
 @font-face {
     font-family: 'MyFont';
     src: local('MyFont'), url(../../assets/font/RawsonAltRegular.woff) format('woff');
@@ -39,7 +40,7 @@
     /* max-height: 120vh;
     overflow: auto; */
     width:100%;
-    background-color: white;
+    background-color: var(--bgColor);
     display: flex;
     justify-content: center;
 }
@@ -145,18 +146,20 @@
 
 .table{
     width:100%;
-   background-color: white;
+   background-color: var(--bgColor);
     border: #323232 solid 1px;
 }
 
 .tablerowhead{
     display:flex;
     justify-content: space-between;
+    background-color: var(--bgColor);
 }
 
 .tablerowheadtable{
     display:flex;
     justify-content: space-between;
+    background-color: var(--bgColor);
 }
 
 .tablerowhead2{
@@ -279,6 +282,7 @@
     padding: 0 8px;
     font-size: 14px;
     color: black;
+    background-color:var(--bgColor) !important;
 }
 
 .box{

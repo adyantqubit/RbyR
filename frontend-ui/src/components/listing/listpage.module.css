@@ -1,3 +1,4 @@
+@import '../../root.css';
 .Container{
   /* position: relative;
   top: 23vh; */
@@ -5,6 +6,7 @@
   max-height: 100vh;
   overflow-y: scroll;
   overflow-x: hidden;
+  background-color: var(--bgColor);
 }
 
 @font-face {
@@ -14,7 +16,10 @@
                             'embedded-opentype', and 'svg' */
 }
 
-
+.loader{
+  width: 100%; 
+  background: var(--bgColor);
+}
 .readyBox{
   min-width:70px;
   width:auto;
@@ -53,7 +58,7 @@
 .tops{
   height: 100px;
   width:100%;
-  background-color: #fff;
+  background-color: var(--bgColor);
 }
 
 .foot{
@@ -90,7 +95,7 @@
   width:100%;
   display: flex;
   justify-content: space-between;
-  background-color: white;
+  background-color: var(--bgColor);
 }
 
 .category{
@@ -108,7 +113,7 @@ justify-content: space-between;
   margin-top:-2px;
   min-height: 300px;
   width: 100%;
-  background-color: white;
+  background-color: var(--bgColor);
   display: flex;
   flex-wrap: wrap;
   gap:28px;
@@ -166,7 +171,7 @@ justify-content: space-between;
  .containsSort{
   width:100%;
   height:auto;
-  background:white;
+  background:var(--bgColor);
   position:fixed;
   top:160px;
   
@@ -178,7 +183,7 @@ justify-content: space-between;
  .contains{
   width:100%;
   height:80vh;
-  background:white;
+  background:var(--bgColor);
   position:fixed;
   top:23vh;
   right:10px;
@@ -190,7 +195,7 @@ justify-content: space-between;
 .filterContain{
   width:100%;
   height:13%;
-  background:white;
+  background:var(--bgColor);
   position:fixed;
   top:160px;
   display:flex;
@@ -200,7 +205,7 @@ justify-content: space-between;
 .filterContainf{
   width:100%;
   height:13%;
-  background:white;
+  background:var(--bgColor);
   position:fixed;
   top:155px;
   right:10px;
@@ -211,7 +216,7 @@ justify-content: space-between;
 .filterContainres{
   width:100%;
   height:13%;
-  background:white;
+  background:var(--bgColor);
   position:fixed;
   top:23vh;
   display:none;
@@ -320,7 +325,7 @@ justify-content: space-between;
   min-height:13vh;
   padding-bottom: 20px;
   padding:0 5%;
-  background:white;
+  background:var(--bgColor);
   box-shadow: #212121;
   position:relative;
   top:13vh;
@@ -416,7 +421,7 @@ justify-content: space-between;
   min-width:48%;
   margin: 2px;
   border-radius: 2px;
-  background-color: #f8f8f8;
+  background-color: var(--bgColor);
   display:flex;
 }
 
@@ -430,7 +435,7 @@ justify-content: space-between;
   border-radius: 2px;
   display: flex;
   justify-content: space-between;
-  background-color: #f8f8f8;
+  background-color: var(--bgColor);
 }
 
 .size{
@@ -448,7 +453,7 @@ justify-content: space-between;
 
 
 .value{
-  background-color: #d8d8d8;
+  background-color: var(--bgColor);
 }
 
 .block{
@@ -514,7 +519,7 @@ justify-content: space-between;
 }
 
 .shopbtn2:hover{
-  background-color: #fff;
+  background-color: var(--bgColor);
   color: #000;
   border: 2px solid black;
 }
@@ -623,7 +628,7 @@ justify-content: space-between;
   .contains{
     width:100%;
     height:100vh;
-    background:white;
+    background:var(--bgColor);
     position:fixed;
     top:11vh;
     right:10px;
@@ -640,7 +645,7 @@ justify-content: space-between;
 .filterContain{
   width:100%;
   height:13%;
-  background:white;
+  background:var(--bgColor);
   position:fixed;
   top:auto;
   box-shadow: 0px 0 50px rgba(0, 0, 0, 0.7);

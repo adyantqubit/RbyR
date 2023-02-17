@@ -12,4 +12,5 @@ Jira issue no - RBYR -141 */
 
 .ant-drawer-header {
   border-bottom: none;
+  /* background-color: var(--bgColor); */
 }

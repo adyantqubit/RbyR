@@ -46,7 +46,7 @@ const Slider2 = ({scrollTop}) => {
     <>
      {CategoryProduct && CategoryProduct.length>1
             ?
-      <div
+      <div className={styles.sliderContainer}
         style={{
           display: "flex",
           flexDirection: "column",
