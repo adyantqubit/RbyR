@@ -15,8 +15,9 @@
 
 .container {
     padding-top: 153px;
+    padding-bottom: 100px;
     width: 100%;
-    background-color: #323232;
+    background-color: #fff;
     overflow-x: hidden;
 }
 
@@ -55,7 +56,8 @@
 }
 
 .TextContainer{
-    padding: 0% 6%;
+    padding-left:6%;
+    padding-right: 6%;
     height: auto;
 }
 
@@ -70,7 +72,7 @@
     font-family: 'MyFont2' !important;
     font-weight: 500;
     text-transform: uppercase;
-    color: #fff;
+    color: #212121;
 
 }
 
@@ -78,7 +80,7 @@
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 0.8px;
-    color: #fff;
+    color: #212121;
     font-weight: 500;
     font-family: 'MyFont2' !important;
 }

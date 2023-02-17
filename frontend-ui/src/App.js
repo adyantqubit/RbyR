@@ -42,6 +42,7 @@ import Feature from './components/Abouts/blankpages/features';
 import Editorial from './components/Abouts/blankpages/editorial';
 import AboutUs from './components/Abouts/AboutUs';
 import Editorialpage from './components/Abouts/EditorialPage';
+import Categories from './components/listing/Categories';
 
 function App() {
   // notification.destroy()
@@ -67,7 +68,7 @@ function App() {
     <Route path="/reset-password/:id/:token" element={<ResetPassword  />} />
     <Route path="/like" element={<Liked/>} />
     <Route path='/listing/:parent/:category/detail/:id' element={<Details/>} />
-
+    
 
     <Route path='/custom' element={<Contact/>} />
     <Route path='/terms' element={<Terms/>} />
@@ -89,6 +90,7 @@ function App() {
     <Route path='/store-locator' element={<StoreLocator/>}/>
     <Route path='/FAQ' element={<FAQ/>}/>
     <Route path='/bridal' element={<Bridal/>} />
+    <Route path='/categories' element={<Categories/>}/>
 
     {/* Added by Rohan -30/12/22 */}
     

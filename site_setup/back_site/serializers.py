@@ -443,10 +443,15 @@ class editorialSerializer(serializers.ModelSerializer):
         model=Editorial
         fields="__all__"
         
-class aboutSerializer(serializers.ModelSerializer):
+class worldOfrbyRContentSerializer(serializers.ModelSerializer):
     class Meta:
-        model=AboutUs
-        fields="__all__"        
+        model=WorldOfRByRContent
+        fields="__all__"      
+        
+class worldOfrbyRRowSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=worldOfRByRRow
+        fields="__all__"           
 
         
 class featureSerializer(serializers.ModelSerializer):

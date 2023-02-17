@@ -1150,10 +1150,13 @@ class WorldofRRApi(APIView):
         editorial={"blank":0} 
      Whole_data['editorial']=editorial
      
-     about=0
+     about={}
      try:
-        serialize=aboutSerializer(AboutUs.objects.last())
-        about=serialize.data
+        serialize=worldOfrbyRContentSerializer(WorldOfRByRContent.objects.last())
+        about['content']=serialize.data
+        serializer2=worldOfrbyRRowSerializer(worldOfRByRRow.objects.all(),many=True)
+        about['row']=serializer2.data
+
      except:    
         about=None 
      Whole_data['about']=about

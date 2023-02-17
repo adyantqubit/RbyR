@@ -39,23 +39,23 @@ const Navbar = () => {
 
   // Added by Rohan - 30/12/22
   // Reason- Giving dynamic padding to sub menus - means all sub menu shown below parent menus
-  useEffect(() => {
-    if (document.getElementById(`li0`))
-      menus.map((m, i) => {
-        var parent = Object.keys(m)
-        var leftGap = document.getElementById(`li${i}`).offsetLeft
+  // useEffect(() => {
+  //   if (document.getElementById(`li0`))
+  //     menus.map((m, i) => {
+  //       var parent = Object.keys(m)
+  //       var leftGap = document.getElementById(`li${i}`).offsetLeft
 
-        {
-          m[`${parent}`].map((s, i) => {
-            setLeft(leftGap+250)
-            document.getElementById(`li${i}${parent}`).style.paddingLeft = `${leftGap}px`
-          })
-        }
+  //       {
+  //         m[`${parent}`].map((s, i) => {
+  //           setLeft(leftGap+250)
+  //           document.getElementById(`li${i}${parent}`).style.paddingLeft = `${leftGap}px`
+  //         })
+  //       }
 
-        if (document.getElementById(`k${i}`))
-          document.getElementById(`k${i}`).style.paddingLeft = `${leftGap}px`
-      })
-  })
+  //       if (document.getElementById(`k${i}`))
+  //         document.getElementById(`k${i}`).style.paddingLeft = `${leftGap}px`
+  //     })
+  // })
   // End of code
 
   const handleClick = () => {
@@ -208,13 +208,19 @@ const Navbar = () => {
                     </li>
 
                 {menus?.map((m, i) => {
+                  console.log(menus)
                   var parent = Object.keys(m)
-                  return <li id={`li${i}`} ref={refc} style={{ height: "40px" }} className={style.services} onMouseEnter={openc} onMouseLeave={closec}>
-                    <Link className={style.al} to={`/listing/${parent}/0`} onClick={e => setCategorySelected([])}>{parent}</Link>
-                    {/* <span id={`${parent}${i+1}`}  className={style.al} href="/" style={{fontWeight:"450",fontSize:"16px"}}>{parent}</span> */}
-                    <ul className={style.dropdown} style={{ padding: m[`${parent}`].length > 0 ? "20px 0" : null }}>
 
-                      {m[`${parent}`].map((s, j) => (<>
+                  return <li id={`li${i}`} ref={refc} style={{ height: "40px" }} className={style.services} onMouseEnter={openc} onMouseLeave={closec}>
+                    <Link className={style.al} to={
+                      true?
+                      `/categories`:true?`/listing/${parent}/0`:`/listing/${parent}/0`
+                      } onClick={e => setCategorySelected([])}>{parent}</Link>
+                    {/* <span id={`${parent}${i+1}`}  className={style.al} href="/" style={{fontWeight:"450",fontSize:"16px"}}>{parent}</span> */}
+                    {/* <ul className={style.dropdown} style={{ padding: m[`${parent}`].length > 0 ? "20px 0" : null }}>
+
+                      {m[`${parent}`].map((s, j) => (
+                      <>
                         <li id={`li${j}${parent}`} style={{ margin: "0px 15px", border: "none", whiteSpace: "nowrap", position: "relative", left: "auto", }} >
                           <Link className={style.al2} to={`/listing/${parent}/${s}`} onClick={e => setCategorySelected([])}>{s}</Link>
                         </li>
@@ -226,7 +232,7 @@ const Navbar = () => {
                           <Link className={style.al2} to={`/listing/${parent}/0`} onClick={e => setCategorySelected([])}>VIEW ALL</Link>
                         </li> : null}
 
-                    </ul>
+                    </ul> */}
                   </li>
 
 
@@ -239,7 +245,7 @@ const Navbar = () => {
                 </li>
 
                 <li className={style.services}>
-                  <span  className={style.al} href="/" style={{fontWeight:"450",fontSize:"16px"}}>WORLD OF RbyR</span>
+                  <Link  className={style.al} to="/aboutRR" style={{fontWeight:"450",fontSize:"16px"}}>WORLD OF RbyR</Link>
                   {/* Commented by - Ashish Dewangan on 15-02-2023
                   Reason - To hide submenu of world of rbyr */}
                   {/*                 

@@ -1036,41 +1036,63 @@ class Editorial(models.Model):
 
         super().save(*args,**kwargs) 
         
-class AboutUs(models.Model):
+class WorldOfRByRContent(models.Model):
     video_url=models.CharField(max_length=400)
     top_image=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100)
     title1=models.CharField(max_length=50)
     description1=models.TextField()
+    
+    # --------------------------
+    # commented by Rohan-on 16/2/23
+    # reason-removing this rows to this table and making new table to making dynamic row to show
+    # ---------------------------
+    
+    # img1=models.ImageField(upload_to='None/', height_field=None,\
+    #        width_field=None, max_length=100)
+    # img2=models.ImageField(upload_to='None/', height_field=None,\
+    #        width_field=None, max_length=100)
+    # img3=models.ImageField(upload_to='None/', height_field=None,\
+    #        width_field=None, max_length=100)
+    # title2=models.CharField(max_length=50)
+    # description2=models.TextField()
+    # img4=models.ImageField(upload_to='None/', height_field=None,\
+    #        width_field=None, max_length=100)
+    # img5=models.ImageField(upload_to='None/', height_field=None,\
+    #        width_field=None, max_length=100)
+    # img6=models.ImageField(upload_to='None/', height_field=None,\
+    #        width_field=None, max_length=100)
+    # title3=models.CharField(max_length=50)
+    # description3=models.TextField()
+    # description4=models.TextField()
+    # description5=models.TextField()
+    # description6=models.TextField()
+    # img7=models.ImageField(upload_to='None/', height_field=None,\
+    #        width_field=None, max_length=100)
+    # img8=models.ImageField(upload_to='None/', height_field=None,\
+    #        width_field=None, max_length=100)
+    # img9=models.ImageField(upload_to='None/', height_field=None,\
+    #        width_field=None, max_length=100)
+    # title4=models.CharField(max_length=50)
+    # description7=models.TextField()
+    # description8=models.TextField()
+    # description9=models.TextField()
+    
+    # -------------------
+    # end of code
+    # -------------------
+    
+    
+class worldOfRByRRow(models.Model):
     img1=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100)
     img2=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100)
     img3=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100)
-    title2=models.CharField(max_length=50)
+    title=models.CharField(max_length=50)
+    description1=models.TextField()
     description2=models.TextField()
-    img4=models.ImageField(upload_to='None/', height_field=None,\
-           width_field=None, max_length=100)
-    img5=models.ImageField(upload_to='None/', height_field=None,\
-           width_field=None, max_length=100)
-    img6=models.ImageField(upload_to='None/', height_field=None,\
-           width_field=None, max_length=100)
-    title3=models.CharField(max_length=50)
-    description3=models.TextField()
-    description4=models.TextField()
-    description5=models.TextField()
-    description6=models.TextField()
-    img7=models.ImageField(upload_to='None/', height_field=None,\
-           width_field=None, max_length=100)
-    img8=models.ImageField(upload_to='None/', height_field=None,\
-           width_field=None, max_length=100)
-    img9=models.ImageField(upload_to='None/', height_field=None,\
-           width_field=None, max_length=100)
-    title4=models.CharField(max_length=50)
-    description7=models.TextField()
-    description8=models.TextField()
-    description9=models.TextField()
     
 class Feature(models.Model):
     magzine_img=models.ImageField(upload_to='None/', height_field=None,\

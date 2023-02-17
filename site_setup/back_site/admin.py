@@ -969,7 +969,9 @@ class EditorialAdmin(admin.ModelAdmin):
         return form  
     
     
-admin.site.register(AboutUs)
+admin.site.register(WorldOfRByRContent)
+admin.site.register(worldOfRByRRow)
+
   
 admin.site.register(Feature)  
   
