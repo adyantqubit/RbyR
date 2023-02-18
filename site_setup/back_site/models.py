@@ -168,7 +168,16 @@ class Menus(models.Model):
     Show_subMenu_with_image=models.BooleanField(default=False)
     show_instant_filter_for_subMenu=models.BooleanField(default=False)
     # end of code - 17/2/23
-
+    
+    # Added by Rohan - on - 18/2/23
+    # Reason - after adding product if we change menu name so in product menu remain old name
+    def save(self,*args, **kwargs):
+        # self.productName_with_category =  self.product_name+self.category_name.category
+        for pro in product_detail.objects.all():
+            if pro.upper_menu==self:
+               pro.category=self.menu
+               pro.save()
+        super().save(*args,**kwargs)   
     
     def clean(self):
         if (Menus.objects.count() >= 4 and self.pk is None):
@@ -181,7 +190,17 @@ class subMenu(models.Model):
            width_field=None, max_length=100)
     # End of code
     sub=models.CharField(max_length=15)
-    Menu=models.ForeignKey(Menus,on_delete=models.CASCADE)    
+    Menu=models.ForeignKey(Menus,on_delete=models.CASCADE)
+    
+     # Added by Rohan - on - 18/2/23
+    # Reason - after adding product if we change menu name so in product menu remain old name
+    def save(self,*args, **kwargs):
+        # self.productName_with_category =  self.product_name+self.category_name.category
+        for pro in product_detail.objects.all():
+            if pro.subMenu==self:
+               pro.category=self.sub
+               pro.save()
+        super().save(*args,**kwargs)    
     
 #End of the code
 

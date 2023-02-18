@@ -150,7 +150,11 @@ const AboutUs = () => {
                                     </div>
                                 </div>
                             </div>
-                            <ResponsiveSlider response="frontend" img1={r.img1} img2={r.img2} img3={r.img3} />
+                            {/* commented by rohan - on 18/2/23
+                            reason - response frontend is for hardcode images but for backend immage we dont need frontend string */}
+                            <ResponsiveSlider 
+                            // response="frontend" 
+                            img1={r.img1} img2={r.img2} img3={r.img3} />
                             {/* end of code */}
                         </>)}
 

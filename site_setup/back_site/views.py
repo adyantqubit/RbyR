@@ -1019,6 +1019,7 @@ class pageIndex(APIView):
     def post(self, request):
         try:
             products = []
+            
             # Add by Rohan - 30/12/22
             # Reason - Changing view all functionality becuase for requirement of sending header menu from backend
             if (request.data['category']=="0" and request.data['parent']!="ready to wear"):
@@ -1074,6 +1075,7 @@ class pageIndex(APIView):
             pageno = request.data['pageIndex']
             serialize = product_serializer(
                 p.page(pageno).object_list, many=True)
+            
             return Response({"products": serialize.data, "colors": colors,"categories":categories})
         except:
             return Response({"error": True})

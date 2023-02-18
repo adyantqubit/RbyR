@@ -23,6 +23,15 @@ const Categories = () => {
     }, [parent, menus])
 
 
+    // jump into product listing page according to menu instant filter showing condition
+    function jumpIntoProductPage(s){
+        if(list.shownInstFilter)
+        nav(`/listing/${parent}/0`)
+        else
+        nav(`/listing/${parent}/${s.category}`)
+
+    }
+
     return (
         <>
             <Navbar />
@@ -40,7 +49,7 @@ const Categories = () => {
                                 <img className={style.img} src={s.img} />
                                 <div className={style.absoluteBox}>
                                     <div className={style.menu}>{s.category}</div>
-                                    <button className={style.button} onClick={e => nav(`/listing/${parent}/${s.category}`)}>View Products</button>
+                                    <button className={style.button} onClick={e => jumpIntoProductPage(s)}>View Products</button>
                                 </div>
                             </div>
                         ) : <div style={{ width: "100%" }}>

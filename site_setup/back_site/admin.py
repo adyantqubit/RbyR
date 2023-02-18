@@ -88,7 +88,8 @@ class product_detailAdmin(admin.ModelAdmin):
         form.base_fields['shipping_charges'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['shipping_days'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['ready_to_ship_days'].widget.attrs['style'] = 'width: 100%;'
-        form.base_fields['subMenu'].label_from_instance = lambda inst: "{}".format(inst.sub)
+        # added by rohan- on 18/2/23,reason- to show parent linked menu name on submenu dropdown
+        form.base_fields['subMenu'].label_from_instance = lambda inst: "{}:{}".format(inst.Menu.menu,inst.sub)
         form.base_fields['upper_menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
       
         # form.base_fields['subMenu'].queryset = subMenu.objects.filter(='company')

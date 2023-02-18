@@ -24,11 +24,12 @@ import Sort from './sort';
 import { nextIndexPage } from '../../api/orderApis';
 import { CgEnter } from 'react-icons/cg';
 import Chat from '../expandDetailt/chat';
+import InstantFilter from './InstantFilter';
 
 const ListPage = () => {
 
 
-  var { product, condition, like, nullpage, setNullPage, setLike, setAllCategoryAvai, reload, setReload, htl, lth, availablitySelect, latestSelect, cart, allColorAvai, tempallpro, settemAllpro, currency, setAllColorAvai, setCurrency, setCart, CategoryProduct, setCategoryProduct, sortui, setSortUi, filterui, setfilterUi } = CartState()
+  var { menus, nullpage, setNullPage, setLike, setAllCategoryAvai,allCategoryAvai, reload, setReload, htl, lth, availablitySelect, latestSelect, cart, allColorAvai, tempallpro, settemAllpro, currency, setAllColorAvai, setCurrency, setCart, CategoryProduct, setCategoryProduct, sortui, setSortUi, filterui, setfilterUi } = CartState()
   const [saveLikeApi, { isLoading }] = useLikedUpdateMutation()
   const [cartsaveApi, { isLoad }] = useCartUpdateMutation()
   let { access_token } = getToken();
@@ -37,6 +38,12 @@ const ListPage = () => {
 
 
   const { category, parent } = useParams()
+
+  // extracting selected parent menu sub list
+  const [list, setList] = useState(null)
+  useEffect(() => {
+    setList(menus?.filter(m => Object.keys(m)[0] === parent)[0])
+  }, [parent, menus])
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -189,7 +196,13 @@ const ListPage = () => {
 
 
   function openDetail(id) {
-    nav(`/listing/${id.menu}/${id.category}/detail/${id.id}`)
+    // added by rohan on - 18/2/23
+    // Reason - jumping into detail page according to category presence
+    if (id.category.length)
+      nav(`/listing/${id.menu}/${id.category}/detail/${id.id}`)
+    else {
+      nav(`/listing/${id.menu}/0/detail/${id.id}`)
+    }
   }
 
 
@@ -287,8 +300,8 @@ const ListPage = () => {
         <div className={style.bottom}
         // style={sortui?{opacity:"0.7"}:null}
         >
-
         </div>
+
         <div className={style.bottom}
         // style={sortui?{opacity:"0.7",}:null}
         >
@@ -300,10 +313,13 @@ const ListPage = () => {
                 <span className={style.TopContent} style={{ paddingLeft: "5%", fontWeight: "550", whiteSpace: "nowrap" }}>{parent.split("_").join(" ")}</span>
               }
 
-              <span className={`${style.filter} ${style.sortfilterres}`} style={{ paddingRight: "40px", height: "100%", fontWeight: "600px", whiteSpace: "nowrap" }}>
+              {/* commented by -rohan- on - 18/2/23
+                  Reason - Hidding  */}
+              {/* <span className={`${style.filter} ${style.sortfilterres}`} style={{ paddingRight: "40px", height: "100%", fontWeight: "600px", whiteSpace: "nowrap" }}>
                 <span style={{ paddingRight: "15px", color: "grey", cursor: "pointer" }} onClick={e => setSortUi(true)}>Sort by</span>
                 <span style={{ cursor: "pointer", fontWeight: "600" }} onClick={e => setfilterUi(true)}>Filter BY</span>
-              </span>
+              </span> */}
+              {/* end of code- 18/2/23 */}
             </div>
             : null}
         </div>
@@ -322,10 +338,19 @@ const ListPage = () => {
           </div>
         </div>
 
+        {/* Added by rohan - on -18/2/23
+            Reason- spliting content into two columns one for fliter and one for showing product */}
         <div className={style.row}>
-          <div className={style.instFilter}>
-            {/* <div style={{height:"200vh"}}></div> */}
-          </div>
+          {/* this row is used to show all instant filter option */}
+          {list != null ? list.shownInstFilter && allCategoryAvai.length>1?
+
+            <div className={style.instFilter}>
+              <InstantFilter />
+            </div> 
+            : null 
+            : null}
+
+          {/* second row for showing all product list */}
           <div className={style.cardContainer}
             // style={sortui?{opacity:"0.7"}:null}
             ref={lastref}>
@@ -364,10 +389,9 @@ const ListPage = () => {
                   please visit the Home page and try out some of our bestsellers!
                 </span>
               </div> : null}
-
           </div>
         </div>
-
+        {/* End of code -18/2/23 */}
 
 
         {sortui ?
