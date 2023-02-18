@@ -74,9 +74,9 @@
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    background-color:  var(--bgColor);
+    background-color:  var(--backgroundColorPrimary);
     border-bottom: .1em solid #7c7c7c;
-    color: black;
+    color: var(--textPrimaryColor);
     width: 100%;
     height: 30%;
    }
@@ -87,11 +87,11 @@
    }
 
    .nav_links a {
-    color: black;
+    color: var(--textPrimaryColor);
    }
    /* LOGO */
    .logo {
-    background-color: var(--bgColor);
+    background-color: var(--backgroundColorPrimary);
     text-align: center;
     font-size: 32px;
     padding: 10px;
@@ -104,7 +104,7 @@
 }
 
    .drops{
-    background-color:rgba(90, 90, 90, .8);
+    background-color:var(--dropDownMenuBackgroundColor);
     width:100vw;
     height: 350px;
     position: absolute;
@@ -148,7 +148,7 @@
    }
 
    .dropdown {
-    background-color:rgba(90, 90, 90, .8);
+    background-color:var(--dropDownMenuBackgroundColor);
     width: 100%;
     /* padding: 1em 0; */
     position: fixed; /*WITH RESPECT TO PARENT*/
@@ -214,7 +214,7 @@ input[type=checkbox]{
   .icons{
    margin-top: 10px;
     font-size: 20px;
-    color:#7c7c7c;
+    color:var(--iconsColor);
   }
 
   @media (max-width: 1200px) {
@@ -260,7 +260,7 @@ input[type=checkbox]{
 .menu { 
  display:none;
  position: absolute;
- background-color:rgba(128, 128, 128, 0.9);
+ background-color:rgba(var(--backgroundColorSecondary), 0.9);
  right: 0;
  left: 0;
  text-align: center;
@@ -349,7 +349,7 @@ input[type=checkbox]:checked ~ .menu{
   .action .menu2 {
 	position: absolute;
 	padding: 10px 20px;
-	background: var(--bgColor);
+	background: var(--backgroundColorPrimary);
 	width: 200px;
 
 	box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);

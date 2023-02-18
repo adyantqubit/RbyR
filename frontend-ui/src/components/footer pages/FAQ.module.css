@@ -6,14 +6,14 @@
     top:23vh; */
     height: auto;
     width:100%;
-    background:var(--bgColor);
+    background:var(--backgroundColorPrimary);
     padding-top: 30vh;
     max-height: 100vh;
     /* overflow-y: scroll; */
 }
 
 .footerMargin{
-    background-color: var(--bgColor);
+    background-color:var(--backgroundColorPrimary);
 }
 
 .faqContainer::-webkit-scrollbar-track

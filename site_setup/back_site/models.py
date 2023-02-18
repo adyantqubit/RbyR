@@ -233,6 +233,11 @@ class product_detail(models.Model):
     #Jira issue no - RBYR -141
     search_key=models.TextField(default="",blank=True)
 
+    #Added by - Ashish Dewangan on 17-02-2023
+    #Reason - To have best seller checkbox for product
+    bestSeller=models.BooleanField(default=False)
+    #End of code addition
+
     def save(self,*args, **kwargs):
         # self.productName_with_category =  self.product_name+self.category_name.category
         if self.subMenu is not None:
@@ -702,9 +707,9 @@ class RefundPolicy(models.Model):
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self) -> str:
-         return "Refund policy of RbyR"
+         return "Return policy of RbyR"
     class Meta:
-            verbose_name_plural = "Refund Policy"
+            verbose_name_plural = "Return Policy"
     #End of code addition
 
 #Added by Ashish on 14-11-2022

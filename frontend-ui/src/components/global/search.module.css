@@ -1,4 +1,4 @@
-
+@import '../../root.css';
 @font-face {
   font-family: 'MyFont';
   src: local('MyFont'), url(../../assets/font/RawsonAltRegular.woff) format('woff');
@@ -82,8 +82,8 @@
     -ms-flex-align: center;
     align-items: center;
     margin-right: 15px;
-    background-color: #f8f8f8;
-    border: 2px solid #f8f8f8;
+    background-color: var(--bgColor);
+    border: 2px solid var(--bgColor);
     -webkit-transition: all 0.2s ease;
     -o-transition: all 0.2s ease;
     transition: all 0.2s ease;
@@ -98,7 +98,7 @@
   }
 
   .selected{
-    background: #333;
+    background: var(--backgroundColorSecondary);
     text-decoration: underline;
     color: #8c8c8c;
   }

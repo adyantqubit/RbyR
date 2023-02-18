@@ -7,14 +7,14 @@
   }
 
   .footerMargin{
-    background-color: var(--bgColor);
+    background-color: var(--backgroundColorPrimary);
 }
 .container{
     /* position: relative;
     top:23vh; */
     height: auto;
     width:100%;
-    background:var(--bgColor);
+    background:var(--backgroundColorPrimary);
     padding-top: 100px;
     padding-top: 30vh;
     max-height: 100vh;
@@ -50,7 +50,7 @@
     flex-direction: row;
     padding: 0 50px;
     justify-content: space-around;
-    background:var(--bgColor);
+    background:var(--backgroundColorPrimary);
     padding:0 10%;
    
 }
@@ -58,7 +58,7 @@
 .column{
     height:auto;
     width:450px;
-    background:var(--bgColor);
+    background:var(--backgroundColorPrimary);
     display: flex;
     flex-direction: column;
     
@@ -72,7 +72,7 @@
     font-family: 'MyFont';
     font-weight: 500;
     margin: 0;
-    color: black;
+    color: var(--textPrimaryColor);
     margin-top: 5px;
 }
 
@@ -83,7 +83,7 @@
     letter-spacing: 3px;
     font-family: 'MyFont';
     font-weight: 500;
-    color: black;
+    color: var(--textPrimaryColor);
     word-wrap: break-word;
     
 }
@@ -96,7 +96,7 @@
 .formInput{
     border: 1px solid gray;
     background: var(--bgColor);
-    color: black;
+    color: var(--textPrimaryColor);
     min-height: 40px;
     padding-left: 5px;
 }
@@ -114,14 +114,15 @@
     width: 100%;
     padding:9px 20px;
     text-align:center;
-    background-color: var(--bgColor);
+    background-color: var(--btnBackgroundColor);
     font-size: 15px;
     letter-spacing: 1px;
     font-family: 'Rawson-Regular';
-    color: #000;
+    color: var(--btnTextColor);
+    border: 2px solid var(--btnBorderColor)
 }
 .lbl{
-    color: black;
+    color: var(--textPrimaryColor);
     letter-spacing:1px;
     font-weight:500;
 }

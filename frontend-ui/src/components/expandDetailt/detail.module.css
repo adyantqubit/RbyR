@@ -10,6 +10,7 @@
   }
   .modalStyleCustomTailored{
     width: 50vw !important;
+    
   }
 
 
@@ -202,6 +203,9 @@
     font-family: 'Rawson-Regular';
     font-weight: 500;
   }
+  .container06,.container07{
+    margin-top: 15px;
+  }
   .container07 {
     flex: 0 0 auto;
     width: 100%;
@@ -227,9 +231,9 @@
   }
   .customButtonContainer{
     display: flex;
-    flex-direction: row;
-    width: 80%;
-    gap:20px;
+    flex-direction: column;
+    width: 100%;
+  
     justify-content:space-between;
   }
   .iconButtonsContainer{
@@ -388,7 +392,10 @@
     font-family: 'Rawson-Regular';
     font-weight: 600;
   }
- 
+ .hoverableSubtitle:hover{
+    color:black;
+    border-bottom: 1px solid black;
+ }
   .subtitle2:hover{
     color:#7c7c7c;
     text-decoration: underline;
@@ -421,6 +428,9 @@
     color: #5a5a5a;
     font-family: 'Rawson-Regular';
     font-weight: 500;
+  }
+  .textLink:hover{
+    color:black;
   }
   .text27 {
     margin-top: 20px;
@@ -460,7 +470,7 @@
   }
 
   .button {
-    width: 220px;
+    width: 90%;
     height:50px;
     margin-top: 3%;
     align-self: flex-start;

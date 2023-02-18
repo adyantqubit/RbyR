@@ -9,7 +9,7 @@
 
 .container{
   width:100%;
-  background-color: var(--bgColor);
+  background-color: var(--backgroundColorPrimary);
   /* margin-top:150px; */
   padding:0 100px;
 
@@ -53,7 +53,7 @@
     font-size: 30px;
     line-height: 38px;
     letter-spacing: 3.5px;
-    color:white;
+    color:var(--textPrimaryColor);
     font-family:"MyFont";
     text-align:center;
     display: flex;
@@ -63,13 +63,13 @@
 }
 .linkText{
     text-decoration:none;
-    color:#f2f2f2;
+    color:var(--textPrimaryColor);
     font-size:2rem;
     text-transform:uppercase;
    
 }
 .linkText:hover{
-    color:white;
+    color:var(--textPrimaryHoverColor);
 }
 
 .video{
@@ -82,7 +82,7 @@
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 1.4px;
-    color:white;
+    color:var(--textPrimaryColor);
 }
 
 

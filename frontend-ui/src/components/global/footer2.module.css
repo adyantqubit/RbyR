@@ -7,7 +7,7 @@
 
 .App{
     width:100%;
-    background-color: var(--bgColor);
+    background-color: var(--backgroundColorPrimary);
     height:auto;
 }
 
@@ -85,7 +85,7 @@
 .heading{
     font-weight: 500;
 
-    color: black;
+    color: var(--textPrimaryColor);
     font-size: 18px;
     line-height: 26px;
     letter-spacing: 2px;
@@ -102,7 +102,7 @@
     letter-spacing: 1px;
     font-family: 'MyFont';
     font-weight: 500;
-    color: black;
+    color: var(--textSecondaryColor);
 
 }
 
@@ -134,13 +134,13 @@
     /* height: 50%; */
     justify-content: space-between;
     align-items: center;
-    background: #323232;
+    background: var(--backgroundColorSecondary);
     margin-top: 15px;
 }
 .instagramLink{
     width:16.5%;
     height:200px;
-    background-color:#5a5a5a;
+    background-color: var(--backgroundColorSecondary);
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -153,13 +153,13 @@
 }
 
 .instaBox{
-    color: black;
+    color: var(--textPrimaryColor);
     font-size: 24px;
     line-height: 32px;
     letter-spacing: 3px;
 }
 .instaText{
-    color: black;
+    color: var(--textPrimaryColor);
     font-size: 16px;
     line-height: 32px;
     letter-spacing: 1.7px;
@@ -170,7 +170,7 @@
     height: 38px;
     padding:5px;
     font-size:14px;
-    border: 1px solid black;
+    border: 1px solid var(--inputBorderColor);
 }
 
 .emailBox:focus{
@@ -180,8 +180,9 @@
 .emailBoxButton{
     width: 20%;
     height: 38px;
-    background: #626161;
-    border: 0px solid black;
+    background: var(--btnBackgroundColor);
+    border: 0px solid var(--btnBorderColor);
+    color:var(--buttonTextColor);
 }
     
 
@@ -220,6 +221,7 @@
         margin-top: 15px;
         padding-left: 0;
         padding-right: 0;
+      
     }
     .instagramContainer{
         height: 150px;
@@ -253,13 +255,13 @@
         height:130px;
     }
     .instaBox{
-        color: black;
+        /* color: black; */
         font-size: 16px;
         letter-spacing: 1px;
         
     }
     .instaText{
-        color: black;
+        /* color: black; */
         font-size: 12px;
         letter-spacing: 1px;
         font-weight: 500;

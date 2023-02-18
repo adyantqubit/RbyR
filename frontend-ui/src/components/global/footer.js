@@ -121,7 +121,7 @@ function Footer() {
             to="/refund-policy"
             style={{ textDecoration: "none", color: "white" }}
           >
-            <span className={style.span}>Refund Policy</span>
+            <span className={style.span}>Return Policy</span>
           </Link>
           <Link
             to="/cancellation-policy"
@@ -197,7 +197,6 @@ function Footer() {
                           className={style.span}
                           style={{
                             textDecoration: "none",
-                            color: "black",
                             marginLeft: "10px",
                           }}
                           target="_blank"

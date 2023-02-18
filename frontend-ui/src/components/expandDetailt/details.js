@@ -215,6 +215,7 @@ const Details = (props) => {
   //   )
   // }
 
+
   async function AddToCart(details) {
 
 
@@ -398,24 +399,35 @@ const Details = (props) => {
               <div className={styles["container03"]}>
                 <div className={styles["container04"]}>
                   <h1 className={styles["heading"]}>{details.title}</h1>
-                  <h1 className={styles["subtitle"]}>{details.about}</h1>
+                  {/* Commented by - Ashish Dewangan on 17-02-2023
+                  Reason - To hide description and to have simple UI */}
+                  {/* <h1 className={styles["subtitle"]}>{details.about}</h1> */}
+                  {/* End of comment */}
                   <span className={styles["subtitle"]}>
                     {" "}
 
                     {currency.sign}{" "}
                     {(details.price * currency.value).toFixed(2)}
                   </span>
+                  {/* Added by - Ashish Dewangan on 17-02-2023
+                  Reason - To add a horizontal line after price */}
+                  <div style={{borderBottom:"1px solid lightgrey",width:"90%",marginTop:"15px"}}></div>
+                  {/* End of code addition */}
                   <div className={styles["container05"]}>
+                  
                     <div
                       class={sizeCond ? sty : "rating-container face"}
                       className={styles.sizeSlection}
                     >
+                     <span className={styles["textLabel"]}>Size : </span> 
                       {pushData ? (
                         <Shake>
                           {" "}
                           <div class="rating">
                             <form class="rating-form">
-                              <label
+                              {/* Commented by - Ashish Dewangan on 17-02-2023
+                              Reason - To hide sizes that are not required */}
+                              {/* <label
                                 for={details.id * 2}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
                                 style={{ textDecoration: "none" }}
@@ -429,7 +441,8 @@ const Details = (props) => {
                                   onChange={(e) => onChange(e.target.value)}
                                 />
                                 <span class="span">XS</span>
-                              </label>
+                              </label> */}
+                              {/* End of comment */}
                               <label
                                 for={details.id}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
@@ -498,8 +511,9 @@ const Details = (props) => {
                                 />
                                 <span class="span">XL</span>
                               </label>
-
-                              <label
+                              {/* Commented by - Ashish Dewangan on 17-02-2023
+                              Reason - To hide sizes that are not required */}
+                              {/* <label
                                 for={details.id * 126}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
                                 style={{ textDecoration: "none" }}
@@ -530,7 +544,8 @@ const Details = (props) => {
                                   onChange={(e) => onChange(e.target.value)}
                                 />
                                 <span class="span">XXXL</span>
-                              </label>
+                              </label> */}
+                              {/* End of comment */}
                             </form>
                           </div>
                           <div
@@ -548,7 +563,9 @@ const Details = (props) => {
                         <>
                           <div class="rating">
                             <form class="rating-form">
-                              <label
+                              {/* Commented by - Ashish Dewangan on 17-02-2023
+                              Reason - To hide sizes that are not required */}
+                              {/* <label
                                 for={details.id * 2}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
                                 style={{ textDecoration: "none" }}
@@ -562,7 +579,8 @@ const Details = (props) => {
                                   onChange={(e) => onChange(e.target.value)}
                                 />
                                 <span class="span">XS</span>
-                              </label>
+                              </label> */}
+                              {/* End of comment */}
                               <label
                                 for={details.id}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
@@ -630,8 +648,9 @@ const Details = (props) => {
                                 />
                                 <span class="span">XL</span>
                               </label>
-
-                              <label
+                              {/* Commented by - Ashish Dewangan on 17-02-2023
+                              Reason - To hide sizes that are not required */}
+                              {/* <label
                                 for={details.id * 126}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
                                 style={{ textDecoration: "none" }}
@@ -660,7 +679,8 @@ const Details = (props) => {
                                   onChange={(e) => onChange(e.target.value)}
                                 />
                                 <span class="span">XXXL</span>
-                              </label>
+                              </label> */}
+                              {/* End of comment */}
                             </form>
                           </div>
                           {notAvai ? (
@@ -681,37 +701,37 @@ const Details = (props) => {
 
                     </div>
 
-                    <div className={styles.charts}>
-
+                    {/* <div className={styles.charts}> */}
                       {/* <span  className={styles["text02"]}>Custom Tailored</span> */}
-
                       {/* Added by Ashish Dewangan on 24-11-2022
-                    Reason - To show custom tailored form */}
-
-                      <span
+                      Reason - To show custom tailored form */}
+                      {/* Commented by - Ashish Dewangan on 17-02-2023
+                      Reason - To hide custom tailored label and have simple UI */}
+                      {/* <span
                         className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
                         style={{ cursor: "pointer" }}
                         onClick={showCustomTailoredForm}
                       >
                         Custom Tailored
-                      </span>
-
+                      </span> */}
+                      {/* End of comment */}
                       {/* End of code addition */}
                       {/* Commented and modified by - Ashish Dewangan on 23-11-2022
-                    Reason - to display size chart when we click on size chart text */}
+                      Reason - to display size chart when we click on size chart text */}
                       {/* <span  className={styles["text02"]}>Size Chart</span> */}
-                      <span
+                      {/* <span
                         className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
                         style={{ cursor: "pointer" }}
                         onClick={showSizeChart}
                       >
                         Size Chart
-                      </span>
-                    </div>
+                      </span> */}
+                    {/* </div> */}
 
                     <Modal
                       style={{ top: 0 }}
                       className={styles["modalStyleCustomTailored"]}
+                      bodyStyle={{backgroundColor:"var(--modalBodyBackgroundColor)"}}
                       footer={null}
                       title="CUSTOM TAILORED"
                       visible={isCustomTailoredVisible}
@@ -742,6 +762,8 @@ const Details = (props) => {
                     </Modal>
                     {/* End of code addition */}
                   </div>
+
+
                   <div
                     className={` ${styles["customButtonContainer"]} `}
                     style={{}}
@@ -761,8 +783,16 @@ const Details = (props) => {
                         ADD TO BAG
                       </button>
                     )}
-                    <div className={` ${styles["iconButtonsContainer"]} `}>
-                      {like.filter((l) => l.id === details.id).length > 0 ? (
+{/* 
+                      <button
+                        className={` ${styles["button"]} `}
+                        onClick={(e) => AddToCart(details)}
+                      >
+                        BUY NOW
+                      </button> */}
+                      
+                    {/* <div className={` ${styles["iconButtonsContainer"]} `}> */}
+                      {/* {like.filter((l) => l.id === details.id).length > 0 ? (
                         <AiFillHeart
                           style={{
                             color: "red",
@@ -779,20 +809,49 @@ const Details = (props) => {
                           }}
                           onClick={(e) => LikedSave(details)}
                         />
+                      )} */}
+                       {like.filter((l) => l.id === details.id).length > 0 ? (
+                        // <AiFillHeart
+                        //   style={{
+                        //     color: "red",
+                        //     width: "25px",
+                        //     height: "25px",
+                        //   }}
+                        //   onClick={(e) => LikedSave(details)}
+                        // />
+                        <button
+                        className={` ${styles["button"]} `}
+                        onClick={(e) => LikedSave(details)}
+                      >
+                        REMOVE FROM WISHLIST
+                      </button>
+                      ) : (
+                        // <AiOutlineHeart
+                        //   style={{
+                        //     width: "25px",
+                        //     height: "25px",
+                        //   }}
+                        //   onClick={(e) => LikedSave(details)}
+                        // />
+                        <button
+                        className={` ${styles["button"]} `}
+                        onClick={(e) => LikedSave(details)}
+                      >
+                        ADD TO WISHLIST
+                        
+                      </button>
                       )}
                       {/* Commented and modified by Ashish Dewangan on 24-11-2022
                       Reason - To have whatsapp chat functionality */}
                       {/* <a href="https://wa.me/916264170187"></a> */}
                       {/* Commented and modified by - Ashish Dewangan on 15-02-2023
                          Reason - To open external links in new browser tab */}
+                      
                       {/* <a
-                        href={`https://wa.me/send?text=${window.location.href}`} 
-                      > */}
-                      <a
                         href={`https://wa.me/send?text=${window.location.href}`} target="_blank"
                       >
-                        {/* End of code modification */}
-                        {/* End of code modification */}{" "}
+                     
+                        {" "}
                         <AiOutlineWhatsApp
                           style={{
                             width: "25px",
@@ -800,10 +859,19 @@ const Details = (props) => {
                             marginLeft: "10px",
                           }}
                         />
-                      </a>
-                    </div>
+                      </a> */}
+                         {/* End of code modification */}
+                    {/* </div> */}
                   </div>
-                  <h1 className={styles["subtitle"]}>ABOUT THE PRODUCT</h1>
+
+
+                  {/* Commented and modified by - Ashish Dewangan on 17-02-2023
+                  Reason - To hide unnecessary details
+                   */}
+                  {/* <h1 className={styles["subtitle"]}>ABOUT THE PRODUCT</h1> */}
+                  <h1 className={styles["subtitle"]}></h1>
+                  {/* End of code modification */}
+                  
                   <span className={styles["text04"]}>
                     {details.description}
                   </span>
@@ -821,7 +889,9 @@ const Details = (props) => {
                       {details.color}
                     </span>
                   </div>
-                  <div className={styles["container08"]}>
+                  {/* Commented by - Ashish Dewangan on 17-02-2023
+                  Reason - To hide country of origin and have simple UI */}
+                  {/* <div className={styles["container08"]}>
                     <span className={styles["textLabel"]}>
                       Country of Origin
                     </span>
@@ -829,10 +899,14 @@ const Details = (props) => {
                     <span className={styles["textDescription"]}>
                       {details.made_in}
                     </span>
-                  </div>
-                  <h1 className={styles["subtitle"]} onClick={check}>
+                  </div> */}
+                  
+                  {/* End of comment */}
+
+                   {/* <h1 className={styles["subtitle"]} onClick={check}>
                     PRODUCT DETAILS
-                  </h1>
+                  </h1> */}
+                 
                   <div className={styles["container06"]}>
                     <span className={styles["textLabel"]}>Style Code </span>
                     <span className={styles["textLabel"]}>:</span>
@@ -884,7 +958,9 @@ const Details = (props) => {
                         className={styles["textLabel"]}
                         style={{ display: "inline-block", marginRight: "3px" }}
                       >
-                        Standard Shipping{" "}
+
+                        {/* Standard Shipping{" "} */}
+                        Delivery Time{" "}
                       </span>
                       <span
                         className={styles["textLabel"]}
@@ -902,11 +978,14 @@ const Details = (props) => {
                     </div>
                   )}
                   {/* End of code modification */}
-                  <div className={styles["container08"]}>
+                  {/* Commented by - Ashish Dewangan on 17-02-2023
+                  Reason - To hide unnecessary details and have simple UI*/}
+                  {/* <div className={styles["container08"]}>
                     <span className={styles["textDescription"]}>
                       Additional Charges for International Shipping
                     </span>
-                  </div>
+                  </div> */}
+                  {/* End of comment */}
                   <h1 className={styles["subtitle"]}>FOR CUSTOMISATIONS</h1>
                   <span className={styles["textDescription"]}>
                     <span
@@ -957,7 +1036,7 @@ const Details = (props) => {
                     {/* End of code modification */}
                   </span>
                   <span className={styles["subtitle"]}>
-                    <Link
+                    {/* <Link
                       to="/custom"
                       className={styles["subtitle"]}
                       style={{
@@ -965,21 +1044,32 @@ const Details = (props) => {
                         letterSpacing: "1px",
                         fontSize: "14px",
                       }}
-                    > Contact Us  </Link>
-
+                    > Contact Us  </Link> */}
                     <Link
-                      to="/delivery-policy"
-                      className={styles["subtitle"]}
+                      to="/refund-policy"
+                      className={styles["subtitle","hoverableSubtitle"]}
                       style={{
                         textDecoration: "none",
                         letterSpacing: "1px",
                         fontSize: "14px",
                       }}
+                    > Return Policy  </Link>
+                    <Link
+                      to="/delivery-policy"
+                      className={styles["subtitle","hoverableSubtitle"]}
+                      style={{
+                        textDecoration: "none",
+                        letterSpacing: "1px",
+                        fontSize: "14px",
+                        
+                      }}
                     >
                       | Shipping Policy
                     </Link>
                   </span>
-                  <div className={styles["chatBoxContainer"]}>
+                  {/* Commented by - Ashish Dewangan on 17-02-2023
+                  Reason - To hide unnecessary details and have simple UI */}
+                  {/* <div className={styles["chatBoxContainer"]}>
                     <input
                       type="text"
                       id="chatBox"
@@ -993,7 +1083,8 @@ const Details = (props) => {
                     >
                       CHAT WITH US
                     </button>
-                  </div>
+                  </div> */}
+                  {/* End of comment */}
                 </div>
               </div>
             </div>

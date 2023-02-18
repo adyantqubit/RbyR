@@ -1,4 +1,4 @@
-
+@import '../../root.css';
 /* .ant-modal-content{
   height: 80vh !important;
 } */
@@ -29,8 +29,7 @@ box-shadow: 0 2px 10px 1px #323232;
 
 .ant-modal-header {
   color: white;
-  
-  background-color: #575555;
+  background-color: var(--modalHeaderBackgroundColor);
   border-bottom: none;
   
 }
@@ -38,16 +37,17 @@ box-shadow: 0 2px 10px 1px #323232;
 .ant-modal-title{
   font-size: 1rem;
   text-align: center;
+  color:var(--modalHeaderTextColor);
 }
 .ant-modal-body{
-  background-color: #323232;
+  background-color: var(--modalBodyBackgroundColor) !important;
   padding: 0px;
   display: flex;
   align-items: center;
   height: 100%;
 }
 .ant-modal-close-icon{
-  color:  #a59f9f;
+  color:  var(--modalHeaderCancelButtonColor);
 
 }
 .ant-form-item{

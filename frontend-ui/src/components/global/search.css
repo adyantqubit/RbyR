@@ -1,3 +1,4 @@
+@import '../../root.css';
 /* Created by Ashish dewangan on 18-11-2022
 Reason - to have cross button on search icon more width
 Jira issue no - RBYR -141 */
@@ -8,9 +9,10 @@ Jira issue no - RBYR -141 */
 .ant-drawer-close{
   /* width: 100% !important; */
   text-align: right;
+  color: var(--drawerHeaderIconColor);
 }
 
 .ant-drawer-header {
   border-bottom: none;
-  /* background-color: var(--bgColor); */
+  background-color: var(--drawerHeaderBackgroundColor);
 }

@@ -1,7 +1,46 @@
 :root {
-    --bgColor: #f7f7f7;
+    --bannerColor:gold;
+
+    --backgroundColorPrimary: #f7f7f7;
+    --backgroundColorSecondary: #f3dc5c;
     
-     /* --bgColor: lime; */
-    --textColor: black;
-    --bannerColor:#1e90ff;
+    --iconsColor:green;
+
+    --formBackgroundColor:#f7f7f7;
+
+    --textPrimaryColor: black;
+    --textSecondaryColor:grey;
+    --textPrimaryHoverColor:white;
+    --textSecondaryHoverColor:black;
+
+    --modalHeaderBackgroundColor:gold;
+    --modalHeaderTextColor:black;
+    --modalHeaderCancelButtonColor:black;
+    --modalBodyBackgroundColor:white;
+    --modalBodyTextColor:black;
+
+    --drawerHeaderBackgroundColor:gold;
+    --drawerHeaderTextColor:black;
+    --drawerHeaderIconColor:black;
+    --drawerBodyBackgroundColor:white;
+    --drawerBodyTextColor:black;
+
+    --dropDownMenuBackgroundColor:grey;
+    --dropDownMenuTextColor:white;
+    --dropDownMenuTextHoverColor:black;
+    
+    --btnBackgroundColor:black;
+    --btnHoverBackgroundColor:#f7f7f7;
+    --btnTextColor:white;
+    --btnTextHoverColor:black;
+    --btnBorderColor:gold;
+    --btnBorderHoverColor:black;
+
+    --inputBackgroundColor:black;
+    --inputHoverBackgroundColor:#f7f7f7;
+    --inputTextColor:white;
+    --inputTextHoverColor:black;
+    --inputBorderColor:gold;
+    --inputBorderHoverColor:black;
+
   }
