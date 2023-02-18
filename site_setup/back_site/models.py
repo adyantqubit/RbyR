@@ -163,12 +163,23 @@ category = (
 
 class Menus(models.Model):
     menu=models.CharField(max_length=13)
+    # Added by Rohan- on -17/2/23
+    # Reason- giving image showing functionality for each category and filteration option
+    Show_subMenu_with_image=models.BooleanField(default=False)
+    show_instant_filter_for_subMenu=models.BooleanField(default=False)
+    # end of code - 17/2/23
+
     
     def clean(self):
         if (Menus.objects.count() >= 4 and self.pk is None):
             raise ValidationError("Can only create five Menu instances. Try editing/removing one of the existing instances.")   
  
 class subMenu(models.Model):
+    # Added by Rohan- on -17/2/23
+    # reason - Showing images for category
+    image=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
+    # End of code
     sub=models.CharField(max_length=15)
     Menu=models.ForeignKey(Menus,on_delete=models.CASCADE)    
     

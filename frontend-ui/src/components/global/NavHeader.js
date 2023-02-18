@@ -206,16 +206,18 @@ const Navbar = () => {
                     <li className={style.services}>
                       <Link  className={style.al} to="/" style={{fontWeight:"450",fontSize:"16px"}}>HOME</Link>
                     </li>
-
+{                  console.log(menus)
+}
                 {menus?.map((m, i) => {
-                  console.log(menus)
                   var parent = Object.keys(m)
 
                   return <li id={`li${i}`} ref={refc} style={{ height: "40px" }} className={style.services} onMouseEnter={openc} onMouseLeave={closec}>
                     <Link className={style.al} to={
-                      true?
-                      `/categories`:true?`/listing/${parent}/0`:`/listing/${parent}/0`
-                      } onClick={e => setCategorySelected([])}>{parent}</Link>
+                      m.shownMenuNImg?`/categories/${parent[0]}`:
+                      m.shownInstFilter?`/listing/${parent[0]}/0`:
+                      `/listing/${parent[0]}/0`
+                      } onClick={e => setCategorySelected([])}>{parent[0]}</Link>
+
                     {/* <span id={`${parent}${i+1}`}  className={style.al} href="/" style={{fontWeight:"450",fontSize:"16px"}}>{parent}</span> */}
                     {/* <ul className={style.dropdown} style={{ padding: m[`${parent}`].length > 0 ? "20px 0" : null }}>
 

@@ -31,12 +31,12 @@ function Slideshow() {
 
   const fun = async () => {
     await picApi().then((r) => {
+      console.log(r)
       setpay([...r.j]);
       setpay2([...r.h]);
       setGif(r.Gif)
       setVideo(r.video)
       setnormal(r.Normal)
-      console.log(r);
     });
   };
 

@@ -90,7 +90,7 @@ function App() {
     <Route path='/store-locator' element={<StoreLocator/>}/>
     <Route path='/FAQ' element={<FAQ/>}/>
     <Route path='/bridal' element={<Bridal/>} />
-    <Route path='/categories' element={<Categories/>}/>
+    <Route path='/categories/:parent' element={<Categories/>}/>
 
     {/* Added by Rohan -30/12/22 */}
     

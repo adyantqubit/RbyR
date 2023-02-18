@@ -92,7 +92,7 @@
 
 @media (max-width:768px) {
     .container{
-        padding-top: 60px;
+        padding-top: 14vh;
     }
     .InnerImgContainer {
         display: flex;
@@ -125,7 +125,7 @@
 
     .foot{
         background-color: #323232;
-        margin-top: -80px;
-        padding-top: 50px;
+        /* margin-top: -80px;
+        padding-top: 50px; */
     }
 }

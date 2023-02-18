@@ -57,12 +57,14 @@ class User2API(APIView,):
         i=0
         for menu in menus:
             i+=1
-            Header_menus.append({menu.menu:[]})
+            #added by rohan-on-17/2/23
+            #Reason- To also send image data in organize way
+            Header_menus.append({menu.menu:[],"shownMenuNImg":menu.Show_subMenu_with_image,"shownInstFilter":menu.show_instant_filter_for_subMenu})
             for submenu in submenus:
                 if(submenu.Menu.menu==menu.menu):
-                  Header_menus[i-1][menu.menu].append(submenu.sub)
+                  serializer=submenuImage(submenu) 
+                  Header_menus[i-1][menu.menu].append({"category":submenu.sub,"img":serializer.data['image']})
                       
-                
         return Response({"product": serializers1.data, "image": serializers2.data,"menus":Header_menus})
         # End of the code
 

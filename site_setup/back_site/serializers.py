@@ -459,3 +459,10 @@ class featureSerializer(serializers.ModelSerializer):
         model=Feature
         fields="__all__"           
 #End of code 
+
+#added by rohan- on 17/2/23
+#reason - to get image url only
+class submenuImage(serializers.ModelSerializer):
+    class Meta:
+          model=subMenu
+          fields=['image']

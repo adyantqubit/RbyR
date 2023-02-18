@@ -926,7 +926,11 @@ class Menu_Detail(admin.ModelAdmin):
 
 @admin.register(subMenu)
 class subMenu_Detail(admin.ModelAdmin):
-    list_display=("sub",)
+    #added by rohan-on-17/2/23
+    #reason -to show menu name not an object of foreign key
+    list_display=("sub","get_menu")
+    def get_menu(self, obj):
+        return obj.Menu.menu
     def get_form(self, request, obj, **kwargs):
         form = super(subMenu_Detail, self).get_form(request, obj, **kwargs)
         form.base_fields['Menu'].label_from_instance = lambda inst: "{}".format(inst.menu)

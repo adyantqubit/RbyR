@@ -28,7 +28,7 @@ import Chat from '../expandDetailt/chat';
 const ListPage = () => {
 
 
-  var { product, condition, like,nullpage, setNullPage, setLike, setAllCategoryAvai, reload, setReload, htl, lth, availablitySelect, latestSelect, cart, allColorAvai, tempallpro, settemAllpro, currency, setAllColorAvai, setCurrency, setCart, CategoryProduct, setCategoryProduct, sortui, setSortUi, filterui, setfilterUi } = CartState()
+  var { product, condition, like, nullpage, setNullPage, setLike, setAllCategoryAvai, reload, setReload, htl, lth, availablitySelect, latestSelect, cart, allColorAvai, tempallpro, settemAllpro, currency, setAllColorAvai, setCurrency, setCart, CategoryProduct, setCategoryProduct, sortui, setSortUi, filterui, setfilterUi } = CartState()
   const [saveLikeApi, { isLoading }] = useLikedUpdateMutation()
   const [cartsaveApi, { isLoad }] = useCartUpdateMutation()
   let { access_token } = getToken();
@@ -294,11 +294,11 @@ const ListPage = () => {
         >
           {CategoryProduct ?
             <div className={style.category}>
-              {category!="0" ?
-                  <span className={style.TopContent} style={{ paddingLeft: "5%", fontWeight: "550", whiteSpace: "nowrap" }}>{category.split("_").join(" ")}</span>
+              {category != "0" ?
+                <span className={style.TopContent} style={{ paddingLeft: "5%", fontWeight: "550", whiteSpace: "nowrap" }}>{category.split("_").join(" ")}</span>
                 :
                 <span className={style.TopContent} style={{ paddingLeft: "5%", fontWeight: "550", whiteSpace: "nowrap" }}>{parent.split("_").join(" ")}</span>
-                }
+              }
 
               <span className={`${style.filter} ${style.sortfilterres}`} style={{ paddingRight: "40px", height: "100%", fontWeight: "600px", whiteSpace: "nowrap" }}>
                 <span style={{ paddingRight: "15px", color: "grey", cursor: "pointer" }} onClick={e => setSortUi(true)}>Sort by</span>
@@ -322,47 +322,52 @@ const ListPage = () => {
           </div>
         </div>
 
+        <div className={style.row}>
+          <div className={style.instFilter}>
+            {/* <div style={{height:"200vh"}}></div> */}
+          </div>
+          <div className={style.cardContainer}
+            // style={sortui?{opacity:"0.7"}:null}
+            ref={lastref}>
 
-        <div className={style.slab}
-          // style={sortui?{opacity:"0.7"}:null}
-          ref={lastref}>
+            {CategoryProduct.length > 0 ? CategoryProduct.map((p, i) => (
 
-          {CategoryProduct.length > 0 ? CategoryProduct.map((p, i) => (
-
-            <div className={style.item} onClick={e => openDetail(p)}>
-              <img src={config.apiBaseURL + p.img_main} className={style.img}></img>
-              <div className={style.title} ><span>{p.title}</span></div>
-              <div className={style.price} >{currency.sign} {(p.price * currency.value).toFixed(2)}</div>
-              {p.ready_to_ship ?
-                <div className={style.readyContainer}>
-                  <div className={style.readyBox}>
-                    <img src={logo} className={style.readyIcon} />
-                    Ready To Ship
+              <div className={style.card} onClick={e => openDetail(p)}>
+                <img src={config.apiBaseURL + p.img_main} className={style.img}></img>
+                <div className={style.title} ><span>{p.title}</span></div>
+                <div className={style.price} >{currency.sign} {(p.price * currency.value).toFixed(2)}</div>
+                {p.ready_to_ship ?
+                  <div className={style.readyContainer}>
+                    <div className={style.readyBox}>
+                      <img src={logo} className={style.readyIcon} />
+                      Ready To Ship
+                    </div>
                   </div>
-                </div>
-                : null}
-            </div>
-
-          )) :
-            nullpage ? null : <div style={{ width: "100%" }}>
-              <div class="centered">
-                <div class="blob-1"></div>
-                <div class="blob-2"></div>
+                  : null}
               </div>
-            </div>
-          }
 
-          {nullpage ?
-            <div style={{ width: "100%", textAlign: "center" }}>
-              <div className={style.noresult} style={{ width: "100%", textAlign: "center" }}>No products found !</div>
-              <span style={{ fontSize: "14px" }}>
-                Please change Your search criteria and try again.
-                If still not finding anything relevant,
-                please visit the Home page and try out some of our bestsellers!
-              </span>
-            </div> : null}
+            )) :
+              nullpage ? null : <div style={{ width: "100%" }}>
+                <div class="centered">
+                  <div class="blob-1"></div>
+                  <div class="blob-2"></div>
+                </div>
+              </div>
+            }
 
+            {nullpage ?
+              <div style={{ width: "100%", textAlign: "center" }}>
+                <div className={style.noresult} style={{ width: "100%", textAlign: "center" }}>No products found !</div>
+                <span style={{ fontSize: "14px" }}>
+                  Please change Your search criteria and try again.
+                  If still not finding anything relevant,
+                  please visit the Home page and try out some of our bestsellers!
+                </span>
+              </div> : null}
+
+          </div>
         </div>
+
 
 
         {sortui ?
@@ -375,7 +380,7 @@ const ListPage = () => {
         }
 
         {loading ?
-          
+
           // <div style={{ width: "100%", background: "white" }}>
           <div className={style.loader}  >
             <div class="centered">

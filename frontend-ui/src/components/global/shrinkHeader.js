@@ -108,9 +108,10 @@ const ShrinkHeader = () => {
 
 
   function settingMenus(menuName, index) {
-    if (menus[index][`${menuName}`].length > 0) {
-      setcategory(menus[index][`${menuName}`])
-      setparentMenu(menuName)
+    console.log(menus[index][`${menuName[0]}`])
+    if (menus[index][`${menuName[0]}`].length > 0) {
+      setcategory(menus[index][`${menuName[0]}`])
+      setparentMenu(menuName[0])
       toggleDrawer2()
       setMenu(null)
     }
@@ -123,12 +124,12 @@ const ShrinkHeader = () => {
   return (
     <div className={style.responsiveHeader}>
       <div className={style.topText}>FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT +91
-      {/* Commented and modified by - Ashish Dewanan on 15-02-2023
+        {/* Commented and modified by - Ashish Dewanan on 15-02-2023
       Reason - To open link in new tab */}
         {/* <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} className={style.number} >{whatsappContactNumber ? whatsappContactNumber : "Not Added"}</a></div> */}
         <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} className={style.number}
-        target="_blank" >{whatsappContactNumber ? whatsappContactNumber : "Not Added"}</a></div>
-{/* End of code modification */}
+          target="_blank" >{whatsappContactNumber ? whatsappContactNumber : "Not Added"}</a></div>
+      {/* End of code modification */}
       <div className={style.headerContainer}>
 
         <div style={{ display: "flex" }}>
@@ -140,7 +141,7 @@ const ShrinkHeader = () => {
             <Link to="/">
               {/* <img alt="header" src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" className={style.img}></img> */}
               <img src={config.apiBaseURL + logo} alt="Logo" className={style.img} />
-              </Link>
+            </Link>
           </div>
 
           <div className={style.headerMenu}>
@@ -151,14 +152,14 @@ const ShrinkHeader = () => {
               <Search className={styles.icons} fontSize={24} />
             </div>
             <div className={style.headerMenuitem} >
-               {/* Commented and modified by - Ashish Dewangan on 15-02-2023
+              {/* Commented and modified by - Ashish Dewangan on 15-02-2023
                   Reason - To open external links in new browser tab */}
               {/* <a
                 href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
               > */}
               <a
                 href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
-               target="_blank">
+                target="_blank">
                 {/* End of code modification */}
                 <BsWhatsapp className={styles.icons} fontSize={24} />
               </a>
@@ -166,7 +167,7 @@ const ShrinkHeader = () => {
             <div className={style.headerMenuitem} >
               <LikeDrawer />
             </div>
-            <div className={style.headerMenuitem} style={{ paddingTop: "10px",width:"20px" }} >
+            <div className={style.headerMenuitem} style={{ paddingTop: "10px", width: "20px" }} >
               <Cart style={{ display: "none" }} />
             </div>
 
@@ -184,7 +185,7 @@ const ShrinkHeader = () => {
 
           <div className={style.drawerhead}>
 
-            <div className={style.drawerMenu} style={{height:"50px"}}>
+            <div className={style.drawerMenu} style={{ height: "50px" }}>
               <div className={style.drawerClose}>
                 <div></div>
                 <AiOutlineClose onClick={toggleDrawer} color="#7c7c7c" fontSize={20} /></div>
@@ -196,68 +197,56 @@ const ShrinkHeader = () => {
               Reason- showing parent menu coming from backend */}
           <Link to="/" className={style.drawerMenu} onClick={toggleDrawer}>
             HOME
-          </Link>    
+          </Link>
           {
             menus?.map((m, i) => {
               var parent = Object.keys(m)
 
-              if (m[`${parent}`].length > 0){
-                console.log("hiting")
-                return <Link to="#" className={style.drawerMenu}>
-                         <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => settingMenus(parent, i)}><span>{parent}</span> <AiOutlineRight /></div>
-                       </Link>
-              }
-              else{
-                return <Link to={`/listing/${parent}/0`} className={style.drawerMenu}>
-                         <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => settingMenus(parent, i)}><span>{parent}</span></div>
-                       </Link>
-              }
+              return <Link to={
+                  m.shownMenuNImg ? `/categories/${parent[0]}` :
+                  m.shownInstFilter ? `/listing/${parent[0]}/0` :
+                  `/listing/${parent[0]}/0`
+              } className={style.drawerMenu}>
+                <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => toggleDrawer()}><span>{parent[0]}</span></div>
+              </Link>
 
+              // commented by Rohan-on- 17/2/23
+              // Reason - removing second drawer and directly showing category
+              // if (m[`${parent[0]}`].length > 0){
+              //   return <Link to="#" className={style.drawerMenu}>
+              //            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => settingMenus(parent, i)}><span>{parent[0]}</span> <AiOutlineRight /></div>
+              //          </Link>
+              // }
+              // else{
+              //   return <Link to={`/listing/${parent[0]}/0`} className={style.drawerMenu}>
+              //            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => settingMenus(parent, i)}><span>{parent[0]}</span></div>
+              //          </Link>
+              // }
             })
           }
 
           <Link to={`/listing/ready to wear/0`} className={style.drawerMenu}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer()}}>
+            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer() }}>
               <span>READY TO WEAR</span> <AiOutlineRight />
             </div>
           </Link>
 
           {/* Commented and modified by - Ashish Dewangan on 15-02-2023
           Reason - To hide submenu of world of rbyr */}
-           {/* <Link to="#" className={style.drawerMenu}>
+          {/* <Link to="#" className={style.drawerMenu}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer2(); setMenu(submenus) }}>
               <span>WORLD OF RbyR</span> <AiOutlineRight />
             </div>
           </Link> */}
-          <Link to="#" className={style.drawerMenu}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => {  }}>
+          <Link to="/AboutRR" className={style.drawerMenu}>
+            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer() }}>
               <span>WORLD OF RbyR</span> <AiOutlineRight />
             </div>
           </Link>
           {/* End of code modification */}
           {/* End of code */}
+
           
-
-
-          {/* <Link to="/" className={style.drawerMenu} onClick={toggleDrawer}>
-            HOME
-          </Link>
-
-          <Link to="#" className={style.drawerMenu}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer2(); setMenu(menus) }}><span>ETHNIC</span> <AiOutlineRight /></div>
-          </Link>
-          <Link to='/listing/luxury_pret' className={style.drawerMenu} onClick={e=>{toggleDrawer();setCategorySelected([])}}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span>LUXURY PRET</span> </div>
-          </Link>
-          <Link to='/listing/rbyr_man' className={style.drawerMenu} onClick={e=>{toggleDrawer();setCategorySelected([])}}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span>RbyR MAN</span> </div>
-          </Link>
-          <Link to='/listing/ready_to_wear' className={style.drawerMenu} onClick={e=>{toggleDrawer();setCategorySelected([])}}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> READY TO WEAR</span> </div>
-          </Link>
-          <Link to='/listing/world_of_rbyr' className={style.drawerMenu} onClick={e=>{toggleDrawer();setCategorySelected([])}}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> WORLD OF RbyR</span> </div>
-          </Link> */}
           <Link to='/custom' className={style.drawerMenu} onClick={toggleDrawer}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> CONTACT US</span> </div>
           </Link>
@@ -304,24 +293,25 @@ const ShrinkHeader = () => {
 
           {/* Added by Rohan - 30/12/22 
              Reason - showing menu comes from backend according to parent menu selected*/}
-          {menu==null?
+          {menu == null ?
             <Link to={`/listing/${parentmenu}/0`} className={style.drawerMenu} >
               <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer(); toggleDrawer2(); setCategorySelected([]) }} >
                 <span style={{ color: "black", letterSpacing: "1.2px" }}>VIEW ALL</span>
               </div>
             </Link>
-           :null}
+            : null}
 
 
           {category?.map(m =>
-            <Link to={`/listing/${parentmenu}/${m}`} className={style.drawerMenu} >
+            <Link to={`/listing/${parentmenu}/${m.category}`} className={style.drawerMenu} >
+
               <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer(); toggleDrawer2(); setCategorySelected([]) }} >
-                <span style={{ color: "black", letterSpacing: "1.2px" }}>{m}</span>
+                <span style={{ color: "black", letterSpacing: "1.2px" }}>{m.category}</span>
               </div>
             </Link>
           )}
 
-          
+
 
           {/* End of code */}
 
