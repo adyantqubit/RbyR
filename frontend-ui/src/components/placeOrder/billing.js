@@ -130,7 +130,7 @@ const Billing = () => {
         content={() => componentRef.current}
         
       /> */}
-        <div style={{ width: "100%", display: "flex", justifyContent: "center", background: "#f2f2f2" }}> 
+        <div style={{ width: "100%", display: "flex", justifyContent: "center" }}> 
         <button className={style.shopbtn1} style={{ width: "50%" }} onClick={e => window.print()}>
           Print this out
         </button> 
@@ -191,17 +191,17 @@ const Billing = () => {
 
                 </div>
                 {checkoutDetails.cart.map(c =>
-                  <div className={styles.billingheader2} style={{ marginTop: "5px", background: "white" }}>
+                  <div className={styles.billingheader2} style={{ marginTop: "5px", background: "var(--backgroundColorSecondary)" }}>
                     <span className={styles.protitle} > {c.title} ({ SizeGetter(c.size)})</span>
                     <span className={`${styles.protitle2} ${styles.show}`} > {c.quantity}</span>
                     <span className={`${styles.protitle2} ${styles.show2}`} > {c.quantity}</span>
                     <span className={styles.protitle2} >{checkoutDetails.currency_sign}{(c.price * checkoutDetails.currency_value).toFixed(2)}</span>
-                    <span className={styles.protitle2} style={{ borderRight: "1px solid white", paddingLeft: "5px" }}> {checkoutDetails.currency_sign} {(c.price * c.quantity * checkoutDetails.currency_value).toFixed(2)}</span>
+                    <span className={styles.protitle2} style={{  paddingLeft: "5px" }}> {checkoutDetails.currency_sign} {(c.price * c.quantity * checkoutDetails.currency_value).toFixed(2)}</span>
                   </div>
                 )}
 
                 <div className={styles.billingfooter}>
-                  <span className={`${styles.columnitem1head}`} style={{ color: "white" }} >Subtotal -</span>
+                  <span className={`${styles.columnitem1head}`} style={{color:"var(--textColorSecondary)"}} >Subtotal -</span>
                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ borderRight: "1px solid black", whiteSpace: "nowrap" }}>{checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).subtotal * checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
 
@@ -246,7 +246,7 @@ const Billing = () => {
         </div>
 
         {/* <div style={{width:"100%",display:"flex",justifyContent:"center",background:"#f2f2f2"}}> <button className={style.shopbtn1} style={{width:"50%"}} onClick={e=>nav('/')}>Continue Shopping</button> */}
-     <div style={{width:"100%",display:"flex",justifyContent:"center",background:"#f2f2f2",paddingBottom:"50px"}}> 
+     <div style={{width:"100%",display:"flex",justifyContent:"center",paddingBottom:"50px"}}> 
      <Button type="primary" className={style.userInfoButton} onClick={goToHomePage}>
      Continue Shopping
     </Button>

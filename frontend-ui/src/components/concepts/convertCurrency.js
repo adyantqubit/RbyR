@@ -95,7 +95,7 @@ function Converter() {
 
 	return (
 
-		<div className="right">
+		<div className="right" >
 			<Dropdown options={options}
 				onChange={(e) => {
 					curencyvalue(e.value); setTo(e.value);
@@ -107,7 +107,9 @@ function Converter() {
 						localStorage.setItem("currency",data)
 					}
 				}}
-				value={currency.name} placeholder="To" />
+				value={currency.name} placeholder="To"
+				
+				/>
 		</div>
 
 	);

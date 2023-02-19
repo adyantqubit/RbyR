@@ -15,9 +15,9 @@
   }
 
 .head{
-    color: #8c8c8c;
+    color: var(--textColorSecondary);
     height: auto;
-    background-color: var(--bgColor);
+    background-color: var(--backgroundColorSecondary);
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 1.4px;
@@ -42,7 +42,7 @@
 .row {
     padding: 0 5%;
     color: white;
-    background-color: var(--bgColor);
+    background-color: var(--backgroundColorSecondary);
     display:flex;
     padding-bottom: 100px;
 }
@@ -149,7 +149,7 @@ display:none;
     width:47%;
     margin:8px;
     height:auto;
-    background-color: var(--bgColor);
+    background-color: var(--backgroundColorSecondary);
 }
 .cancelButtonWithSubmit{
     display:flex;
@@ -173,7 +173,7 @@ display:none;
     padding: 0 8px;
     font-size: 14px;
     color: black;
-    background-color: var(--bgColor) !important;
+    background-color: var(--backgroundColorSecondary) !important;
 }
 /* 
 .firstInput:required:valid {
@@ -235,8 +235,8 @@ border-color: white;
     width: 50%;
     cursor: pointer;
     letter-spacing: 1.3px;
-    background-color: #7c7c7c;
-    color: white !important;
+    background-color: var(--btnBackgroundColorSecondary);
+    color: var(--btnTextColorSecondary) !important;
     text-align: center;
     opacity: 1;
     font-family: 'MyFont';
@@ -258,7 +258,8 @@ border-color: white;
     border-radius: 0;
 }
 .userInfoButton:hover{
-    background-color: black;
+    background-color: var(--btnHoverBackgroundColorSecondary);
+    color:var(--btnTextHoverColorSecondary) !important;
 }
 
 
@@ -386,13 +387,13 @@ border-color: white;
 
 .columnitem2{
     width:100%;
-    background-color: var(--bgColor);
+    background-color: var(--backgroundColorSecondary);
 }
 
 .columnFullName{
     width:100%;
     height:auto;
-    background-color: var(--bgColor);
+    background-color: var(--backgroundColorSecondary);
     padding:2px 5px;
 }
 
@@ -495,7 +496,7 @@ letter-spacing: 1.2px;
     width:100%;
     margin:8px;
     height:auto;
-    background-color: var(--bgColor);
+    background-color: var(--backgroundColorSecondary);
 }
 
 }

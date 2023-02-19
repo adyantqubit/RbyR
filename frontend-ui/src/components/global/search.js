@@ -103,7 +103,7 @@ const Search = () => {
   return (
     <>
       <BsSearch
-        style={{ fontSize: "22px", marginTop: "10px", color: "#7c7c7c" }}
+        style={{ fontSize: "22px", marginTop: "10px", color: "var(--iconsColor)" }}
         type="primary"
         onClick={showDrawer}
       />

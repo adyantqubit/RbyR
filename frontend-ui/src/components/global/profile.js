@@ -60,7 +60,7 @@ export const Profile = () => {
         nav("/login")
       }}>
         <div className={style.profile}>
-          <FaUserCircle style={{ width: "30px", hieght: "30px", color: "#7c7c7c" }} />
+          <FaUserCircle style={{ width: "30px", hieght: "30px",color:"var(--iconsColor)"}} />
           {/* <img className={style.img} src="./assets/avatar.jpg" /> */}
         </div>
         <div className={style.menu2}>

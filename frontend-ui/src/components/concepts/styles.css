@@ -6,7 +6,7 @@ bottom:0vh;
 }
 .Dropdown-control{
   height:35px;
-  background:var(--bgColor);
+  background:var(--backgroundColorPrimary);
   color:black;
   border:0;
 }

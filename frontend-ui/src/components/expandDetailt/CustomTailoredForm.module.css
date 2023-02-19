@@ -5,7 +5,7 @@ Reason - To style cutom tailored form */
     width: 100%;
     margin-top: 3vh;
     margin-bottom: 3vh;
-    background-color: var(--bgColor);
+    background-color: var(--backgroundColorPrimary);
 }
 .form{
     width: 100%;
@@ -39,18 +39,18 @@ Reason - To style cutom tailored form */
 }
 .itemButton{
     text-align:center;
-    background-color: var(--btnBackgroundColor);
+    background-color: var(--btnBackgroundColorPrimary);
     font-size: 15px;
     letter-spacing: 1px;
     font-family: 'Rawson-Regular';
-    color: var(--btnTextColor);
+    color: var(--btnTextColorPrimary);
     width: 60%;
-    border: 2px solid var(--btnBorderColor);
+    border: 2px solid var(--btnBorderColorPrimary);
 }
 .itemButton:hover{
-    background-color: var(--btnHoverBackgroundColor);
-    border: 2px solid var(--btnBorderHoverColor);
-    color: var(--btnTextHoverColor);
+    background-color: var(--btnHoverBackgroundColorPrimary);
+    border: 2px solid var(--btnBorderHoverColorPrimary);
+    color: var(--btnTextHoverColorPrimary);
 }
 @media screen and (max-width:768px) {
     .row{

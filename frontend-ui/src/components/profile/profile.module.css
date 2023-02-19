@@ -40,7 +40,7 @@
     /* max-height: 120vh;
     overflow: auto; */
     width:100%;
-    background-color: var(--bgColor);
+    background-color: var(--backgroundColorSecondary);
     display: flex;
     justify-content: center;
 }
@@ -63,7 +63,7 @@
     font-size: 12px;
     line-height: 20px;
     letter-spacing: 0.6px;
-    color:black;
+    color:var(--textColorPrimary);
     display: flex;
     justify-content: start;
 }
@@ -146,20 +146,20 @@
 
 .table{
     width:100%;
-   background-color: var(--bgColor);
+   background-color: var(--backgroundColorSecondary);
     border: #323232 solid 1px;
 }
 
 .tablerowhead{
     display:flex;
     justify-content: space-between;
-    background-color: var(--bgColor);
+    background-color: var(--backgroundColorSecondary);
 }
 
 .tablerowheadtable{
     display:flex;
     justify-content: space-between;
-    background-color: var(--bgColor);
+    background-color: var(--backgroundColorSecondary);
 }
 
 .tablerowhead2{
@@ -282,7 +282,7 @@
     padding: 0 8px;
     font-size: 14px;
     color: black;
-    background-color:var(--bgColor) !important;
+    background-color:var(--backgroundColorSecondary) !important;
 }
 
 .box{

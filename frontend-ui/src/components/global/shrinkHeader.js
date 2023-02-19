@@ -134,7 +134,7 @@ const ShrinkHeader = () => {
 
         <div style={{ display: "flex" }}>
           <div className={style.humbergerDiv}>
-            <GiHamburgerMenu onClick={toggleDrawer} fontSize="30px" color='#7c7c7c' />
+            <GiHamburgerMenu onClick={toggleDrawer} fontSize="30px" color='var(--iconsColor)' />
           </div>
           <div className={style.logo}>
             <Converter />
@@ -188,7 +188,7 @@ const ShrinkHeader = () => {
             <div className={style.drawerMenu} style={{ height: "50px" }}>
               <div className={style.drawerClose}>
                 <div></div>
-                <AiOutlineClose onClick={toggleDrawer} color="#7c7c7c" fontSize={20} /></div>
+                <AiOutlineClose onClick={toggleDrawer} color="var(--iconsColor)" fontSize={20} /></div>
             </div>
 
           </div>
@@ -284,8 +284,8 @@ const ShrinkHeader = () => {
 
             <div className={style.drawerMenu}>
               <div className={style.drawerClose}>
-                <div><RiArrowLeftLine fontSize={24} onClick={toggleDrawer2} color="#7c7c7c" /></div>
-                <AiOutlineClose onClick={e => { toggleDrawer(); toggleDrawer2() }} fontSize={24} color="#7c7c7c" />
+                <div><RiArrowLeftLine fontSize={24} onClick={toggleDrawer2} color="var(--iconsColor)" /></div>
+                <AiOutlineClose onClick={e => { toggleDrawer(); toggleDrawer2() }} fontSize={24} color="var(--iconsColor)" />
               </div>
             </div>
 
@@ -320,8 +320,8 @@ const ShrinkHeader = () => {
           {menu?.filter(f => f.name == "LOGOUT").length > 0 ?
             <Link to="" className={style.drawerMenu} >
               <div style={{ width: "100%" }} >
-                <div style={{ color: "#BABABA", letterSpacing: "1.2px", width: "100%", textAlign: "center" }}> <CgProfile style={{ margin: "0 10px 0 0" }} />{userdata.name}</div>
-                <div style={{ color: "#7c7c7c", letterSpacing: "1.2px", width: "100%", textAlign: "center" }}>{userdata.email}</div>
+                <div style={{ color: "var(--textColorPrimary)", letterSpacing: "1.2px", width: "100%", textAlign: "center" }}> <CgProfile style={{ margin: "0 10px 0 0" }} />{userdata.name}</div>
+                <div style={{ color: "var(--textColorSecondary)", letterSpacing: "1.2px", width: "100%", textAlign: "center" }}>{userdata.email}</div>
               </div>
             </Link> : null}
 
@@ -335,7 +335,7 @@ const ShrinkHeader = () => {
                   <span>{m.name}</span> <AiOutlineRight />
                 </div>
                 : <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer(); toggleDrawer2(); setCategorySelected([]) }} >
-                  <span style={{ color: "black", letterSpacing: "1.2px" }}>{m.name}</span> <AiOutlineRight />
+                  <span style={{ color: "var(--textColorPrimary)", letterSpacing: "1.2px" }}>{m.name}</span> <AiOutlineRight />
                 </div>}
 
             </Link>

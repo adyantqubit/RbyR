@@ -13,7 +13,7 @@
     top:25vh; */
     height: auto;
     width:100%;
-    background:var(--backgroundColorPrimary);
+    background:var(--backgroundColorSecondary);
     padding-top: 35vh;
     max-height: 100vh;
     /* overflow-y: scroll; */
@@ -48,13 +48,13 @@
     flex-direction: row;
     justify-content: center;
     gap:100px;
-    background:var(--backgroundColorPrimary);
+    background:var(--backgroundColorSecondary);
 }
 
 .column{
     height:auto;
     width:35%;
-    background:var(--backgroundColorPrimary);
+    background:var(--backgroundColorSecondary);
     display: flex;
     flex-direction: column;
   
@@ -69,7 +69,7 @@
     font-family: 'MyFont';
     font-weight: 500;
     margin: 0;
-    color: var(--textPrimaryColor);
+    color: var(--textColorPrimary);
     margin-top: 5px;
 
 }
@@ -81,7 +81,7 @@
     letter-spacing: 3px;
     font-family: 'MyFont';
     font-weight: 500;
-    color: var(--textPrimaryColor);
+    color: var(--textColorPrimary);
     margin-top:40px;
 
 }
@@ -93,11 +93,11 @@
     letter-spacing: 1px;
     font-family: 'Rawson-Regular';
     font-weight: 400;
-    color: var(--textPrimaryColor);
+    color: var(--textColorPrimary);
 }
 
 .footerMargin{
-    background-color: var(--backgroundColorPrimary);
+    background-color: var(--backgroundColorSecondary);
 }
 
 @media screen and (max-width:768px) {

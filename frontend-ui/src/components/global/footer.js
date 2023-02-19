@@ -198,6 +198,7 @@ function Footer() {
                           style={{
                             textDecoration: "none",
                             marginLeft: "10px",
+                            
                           }}
                           target="_blank"
                         >

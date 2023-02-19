@@ -85,7 +85,7 @@
 .heading{
     font-weight: 500;
 
-    color: var(--textPrimaryColor);
+    color: var(--textColorPrimary);
     font-size: 18px;
     line-height: 26px;
     letter-spacing: 2px;
@@ -102,7 +102,7 @@
     letter-spacing: 1px;
     font-family: 'MyFont';
     font-weight: 500;
-    color: var(--textSecondaryColor);
+    color: var(--textColorSecondary);
 
 }
 
@@ -134,13 +134,13 @@
     /* height: 50%; */
     justify-content: space-between;
     align-items: center;
-    background: var(--backgroundColorSecondary);
+    background: var(--backgroundColorPrimary);
     margin-top: 15px;
 }
 .instagramLink{
     width:16.5%;
     height:200px;
-    background-color: var(--backgroundColorSecondary);
+    background-color: var(--backgroundColorPrimary);
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -153,13 +153,13 @@
 }
 
 .instaBox{
-    color: var(--textPrimaryColor);
+    color: var(--textColorPrimary);
     font-size: 24px;
     line-height: 32px;
     letter-spacing: 3px;
 }
 .instaText{
-    color: var(--textPrimaryColor);
+    color: var(--textColorPrimary);
     font-size: 16px;
     line-height: 32px;
     letter-spacing: 1.7px;
@@ -180,8 +180,8 @@
 .emailBoxButton{
     width: 20%;
     height: 38px;
-    background: var(--btnBackgroundColor);
-    border: 0px solid var(--btnBorderColor);
+    background: var(--btnBackgroundColorPrimary);
+    border: 0px solid var(--btnBorderColorPrimary);
     color:var(--buttonTextColor);
 }
     

@@ -1,6 +1,8 @@
+@import '../../root.css';
 .container{
  padding-top: 143px;
  padding-bottom: 80px;
+ background-color: var(--backgroundColorSecondary);
 }
 
 .heading{
@@ -55,7 +57,7 @@
 .menu{
     font-size: 24px;
     width: 100%;
-    color:#f7f7f7;
+    color:var(--textColorSecondary);
     letter-spacing: 1.7px;
 }
 
@@ -71,12 +73,12 @@
     padding: 0 10px;
     min-width: 50%;
     min-height: 50px;
-    border:  1px solid #f7f7f7;
+    border:  1px solid var(--btnBorderColorPrimary);
     background-color: transparent;
-    color: #f7f7f7;
+    color: var(--btnTextColorPrimary);
     
      /* "to left" / "to right" - affects initial color */
-     background: linear-gradient(to left, transparent 50%, #f7f7f7 50%) right;
+     background: linear-gradient(to left, transparent 50%,var(--btnBackgroundColorPrimary) 50%) right;
      background-size: 200%;
      transition: .5s ease-out;
      background-position: right;
@@ -87,7 +89,8 @@
 /* animation from left */
 .button:hover,
 .button:focus {
-        color: #212121;
+        /* color: var(--btnTextHoverColor) !important; */
+        /* background-color: var(--btnHoverBackgroundColor); */
         background-position: left;
 }
 

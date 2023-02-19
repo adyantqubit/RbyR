@@ -8,6 +8,7 @@
 
 
 .readyBox{
+    color:var(--textColorPrimary);
     min-width:70px;
     width:auto;
     height:30px;
@@ -33,7 +34,7 @@
     justify-content: center;
 }
 .sliderContainer{
-    background-color: var(--bgColor);
+    background-color: var(--backgroundColorSecondary);
 }
 
 .readyIcon{
@@ -48,8 +49,8 @@
         line-height: 28px;
         letter-spacing: 2.5px;
         margin-bottom: 20px;
-        white-space:nowrap
-      
+        white-space:nowrap;
+        color:var(--textColorPrimary);
 }
 
 @media only screen and (max-width: 768px)  {

@@ -9,13 +9,13 @@
 	position: relative;
 	top:20vh;
 	font-family: 'Jost', sans-serif;
-	background: var(--bgColor);
+	background: var(--backgroundColorPrimary);
 }
 .mai{
 	margin-top: 30px;
 	width: 400px;
 	height: 550px;
-	background: var(--bgColor);
+	background: var(--backgroundColorPrimary);
 	overflow: hidden;
 	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
 	border-radius: 10px;
@@ -58,7 +58,7 @@
 	height: 40px;
 	padding-left:10px;
 
-	background: var(--bgColor);
+	background: var(--backgroundColorPrimary);
 	justify-content: center;
 	display: flex;
 	
@@ -75,7 +75,7 @@
 	padding-left:10px;
 	height: 35px;
 	margin-left: 15%;
-	background: var(--bgColor);
+	background: var(--backgroundColorPrimary);
 	justify-content: center;
 	display: flex;
 	
@@ -90,7 +90,7 @@
 .inpu3{
 	width: 70%;
 	height: 30px;
-	background: var(--bgColor);
+	background: var(--backgroundColorPrimary);
 	justify-content: space-between;
 	display: flex;
 	padding-left:10px;
@@ -106,7 +106,7 @@
 .inpu4{
 	width: 49%;
 	height: 30px;
-	background: var(--bgColor);
+	background: var(--backgroundColorPrimary);
 	justify-content: center;
 	display: flex;
 
@@ -124,7 +124,7 @@
 .PhoneInputInput{
 	width: 90%;
 	height: 30px;
-	background: var(--bgColor);
+	background: var(--backgroundColorPrimary);
 	justify-content: center;
 	display: flex;
 	

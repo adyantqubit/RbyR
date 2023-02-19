@@ -436,7 +436,7 @@ const CartSItem = (props) => {
 
 
             return (
-              <div style={{borderBottom:"1px solid #f2f2f2",marginBottom:"25px"}}>
+              <div style={{borderBottom:"1px solid var(--borderColorPrimary)",marginBottom:"25px"}}>
                 {result ? <div style={{ width: "100%", marginBottom: "20px", paddingLeft: "15px", display: "flex", background: 'WHITE' }}>
                    
                    <div className={styles.column1}>
@@ -446,17 +446,17 @@ const CartSItem = (props) => {
 
 
                     <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                      <h3 className={style.heading} style={{ width: "80%", color: "black", fontSize: "16px", lineHeight: "26px", letterSpacing: "2.5px" }}>{pro.title}</h3>
+                      <h3 className={style.heading} style={{ width: "80%",  fontSize: "16px", lineHeight: "26px", letterSpacing: "2.5px" }}>{pro.title}</h3>
                       {/* <span className={style.delete} style={{fontSize:"32px",alignSelf:"start"}} onClick={e=>cartSave(pro)}>x</span> */}
                       <Popconfirm placement="bottomLeft" title={text} onConfirm={e => confirm(pro)} okText="OK" cancelText="Cancel">
                         <span className={style.delete} style={{ fontSize: "25px", alignSelf: "start" }} >x</span>
                       </Popconfirm>
                     </div>
 
-                    <div style={{ color: "black", marginLeft: "20px" }} className={style.price}> {currency.sign} {(pro.price * currency.value).toFixed(2)}</div>
+                    <div style={{ color: "var(--textColorPrimary)", marginLeft: "20px" }} className={style.price}> {currency.sign} {(pro.price * currency.value).toFixed(2)}</div>
                     <div style={{ color: "black", marginLeft: "20px", marginTop: "8px" }}>
-                      <span className={style.size}>Size :</span>
-                      <span className={style.showSize}> {SizeGetter(pro.size)}</span>
+                      <span className={style.size}  style={{ color: "var(--textColorPrimary)"}}>Size :</span>
+                      <span className={style.showSize}  style={{ color: "var(--textColorPrimary)"}}> {SizeGetter(pro.size)}</span>
                     </div>
                     <div style={{ color: "black", marginLeft: "20px", marginTop: "8px" }}>
                       <span className={style.shipping}>Standard Shipping:</span>
@@ -570,7 +570,7 @@ const CartSItem = (props) => {
           }
 
           {cart.length > 0 ?
-            <div className={style.footerCon} style={{ width: "100%", background: "white" }}>
+            <div className={style.footerCon} style={{ width: "100%" }}>
               {/* <span>Total:</span><span>{getTotalPrice()}</span><span>Qty:</span><span>{getTotalQuantity()}</span><button onClick={BuyAll}>Buy ALl</button> */}
               <div className={style.inner} >
 
@@ -634,40 +634,40 @@ const CartSItem = (props) => {
 
 
 
-      <div className={style.footerCon} style={{ width: "100%", background: "white" }}>
+      <div className={style.footerCon} style={{ width: "100%" }}>
         {/* <span>Total:</span><span>{getTotalPrice()}</span><span>Qty:</span><span>{getTotalQuantity()}</span><button onClick={BuyAll}>Buy ALl</button> */}
         <div className={style.inner} >
 
           {ImportantRules != null ?
             <div className={styles.importantRules} style={{borderTop:"1px solid rgba(140,140,140,0.7)"}}>
-              <h6 style={{ fontSize: "14px", lineHeight: "22px", letterSpacing: "1.2px", marginLeft: "40px" }}>IMPORTANTS</h6>
+              <h6 style={{ fontSize: "14px", lineHeight: "22px", letterSpacing: "1.2px", marginLeft: "40px",color:"var(--textColorSecondary)" }}>IMPORTANTS</h6>
               <ul style={{ listStyleType: "disc", listStylePosition: "outside",marginRight:"15px" }}>
 
                <div  style={{display:"flex"}}>
                  <BsDot fontSize={20}/>
-               <li style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
+               <li style={{ color:"var(--textColorSecondary)", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
                   {ImportantRules.point1}
                 </li>
                 </div> 
 
                 <div style={{display:"flex"}}>
                 <BsDot fontSize={20}/>
-                <li style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
+                <li style={{ color:"var(--textColorSecondary)", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
                  {ImportantRules.point2}
                 </li>
                 </div>
 
                 <div style={{display:"flex"}}>
                 <BsDot fontSize={20}/>
-                <li style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
+                <li style={{ color:"var(--textColorSecondary)", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
                   {ImportantRules.point3}
                 </li>
                 </div>
 
                 <div style={{display:"flex"}}>
                 <BsDot fontSize={20}/>
-                <li style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
-                 <Link to="/custom" style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>Contact Us </Link> | <Link to="/delivery-policy" style={{ color: "#8c8c8c", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>Shipping Policy</Link>
+                <li style={{color:"var(--textColorSecondary)", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
+                 <Link to="/custom" style={{color:"var(--textColorSecondary)", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>Contact Us </Link> | <Link to="/delivery-policy" style={{ color:"var(--textColorSecondary)", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>Shipping Policy</Link>
                 </li>
                 </div>
               </ul>

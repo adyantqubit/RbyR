@@ -7,11 +7,11 @@
 }
 
 .columnContainer{
-  background:var(--bgColor);
+  background:var(--backgroundColorSecondary);
 }
 .main{
     width:45%;
-    background:var(--bgColor);
+    background:var(--backgroundColorSecondary);
 }
 
 .gaping{
@@ -23,6 +23,7 @@
     width: auto;
     padding-top: 30px;
     margin: 0 25%;
+    background-color: var(--backgroundColorSecondary);
 }
 
 .successMsg {
@@ -55,13 +56,14 @@
 
   .font{
     font-family: "MyFont";
+    color:var(--textColorPrimary);
   }
 
   .heading{
     width:100%;
     height:80px;
     margin-bottom:50px;
-    background:var(--bgColor);
+    background:var(--backgroundColorSecondary);
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -77,7 +79,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: var(--bgColor);
+    background-color: var(--backgroundColorSecondary);
   }
 
   .shopbtn2{
@@ -85,15 +87,15 @@
     height: 40px;
     text-align: center;
     padding:4px 0;
-    background-color: #323232;
-    color:white;
+    background-color: var(--btnBackgroundColorPrimary);
+    color:var(--btnTextColorPrimary);
     margin:5px;
   }
 
   .shopbtn2:hover{
-    border: 1px solid black;
-    background-color: #ffffff;
-    color:black;
+    border: 1px solid var(--btnBorderHoverColorPrimary);
+    background-color:  var(--btnHoverBackgroundColorPrimary);
+    color: var(--btnTextHoverColorPrimary);
     outline: #000;
   }
   
@@ -104,7 +106,7 @@
     top:23vh; */
     padding-top:153px;
     width:100%;
-    background:var(--bgColor);
+    background:var(--backgroundColorSecondary);
     display:flex;
     /* overflow-x: hidden; */
     justify-content:center;
@@ -114,7 +116,7 @@
   
   border:none;
   border-radius:5px;
-  background:#ededed;
+  background:var(--backgroundColorSecondary);
   padding-left: 5px;
   padding-right: 5px;
   display: flex;
@@ -245,7 +247,7 @@ body {background: #333}
    }
     .main{
         width:100%;
-        background:var(--bgColor);
+        background:var(--backgroundColorSecondary);
     }
 
     

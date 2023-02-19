@@ -27,7 +27,7 @@
 
 .topText {
     background: var(--bannerColor);
-    color: var(--textPrimaryColor);
+    color: var(--textColorPrimary);
     display: flex;
     justify-content: center;
     font-size: 9px;
@@ -38,7 +38,7 @@
 .number {
     text-decoration: none;
     outline: none;
-    color: var(--textPrimaryColor);
+    color: var(--textColorPrimary);
     margin-top: 1px;
     font-size: 9px;
 }
@@ -122,12 +122,12 @@
     flex-direction: column;
     justify-content: center;
     font-weight: 600;
-    color: var(--textPrimaryColor);
+    color: var(--textColorPrimary);
     border-bottom: 1px solid #5f5e5e;
-    background-color: var(--bgColor);
+    background-color: var(--backgroundColorPrimary);
 }
 .drawerMenu:hover {
-    color: var(--textSecondaryColor);
+    color: var(--textColorSecondary);
 }
 
 @media (max-width: 380px) {

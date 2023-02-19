@@ -4,7 +4,7 @@
     top:23vh; */
     height: auto;
     width:100%;
-    background:var(--backgroundColorPrimary);
+    background:var(--backgroundColorSecondary);
     padding-top: 30vh;
     min-height: 100vh;
     /* overflow-y: scroll; */
@@ -39,7 +39,7 @@
 .column{
     height:auto;
     width:35%;
-    background:var(--backgroundColorPrimary);
+    background:var(--backgroundColorSecondary);
     display: flex;
     flex-direction: column;
     
@@ -52,7 +52,7 @@
     font-family: 'MyFont';
     font-weight: 600;
     margin: 0;
-    color: var(--textPrimaryColor);
+    color: var(--textColorPrimary);
     text-align: center;
     margin-bottom: 3vh;
 }
@@ -108,25 +108,25 @@
     text-align: center;
     font-size: 15px;
     line-height: 19px;
-    color: var(--textPrimaryColor);
+    color: var(--textColorPrimary);
     word-wrap: break-word;
 }
 .itemButton{
     width: fit-content;
     padding:8px 20px;
     margin: 5% auto;
-    background-color: var(--btnBackgroundColor);
+    background-color: var(--btnBackgroundColorPrimary);
     font-size: 16px;
     letter-spacing: 1px;
     font-family: 'Rawson-Regular';
-    color: var(--btnTextColor);
+    color: var(--btnTextColorPrimary);
 }
 a{
     text-decoration: none;
-    color: var(--textPrimaryColor);
+    color: var(--textColorPrimary);
 }
 a:hover{
-    color: var(--textPrimaryHoverColor);
+    color: var(--textHoverColorPrimary);
     
 }
 

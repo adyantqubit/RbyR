@@ -18,7 +18,7 @@
     outline: 0ch;
 }
 .cutomDrawerInput{
-  background-color: var(--bgColor);
+  background-color: var(--backgroundColorPrimary);
 }
 
 .slab{
@@ -82,8 +82,8 @@
     -ms-flex-align: center;
     align-items: center;
     margin-right: 15px;
-    background-color: var(--bgColor);
-    border: 2px solid var(--bgColor);
+    background-color: var(--backgroundColorPrimary);
+    border: 2px solid var(--backgroundColorPrimary);
     -webkit-transition: all 0.2s ease;
     -o-transition: all 0.2s ease;
     transition: all 0.2s ease;

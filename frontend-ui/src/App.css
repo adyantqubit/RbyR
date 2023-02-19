@@ -59,7 +59,7 @@ height:26vh;
   top:13vh;
 margin-left:50%;
 transform:translate(-50%,-50%);
-background:var(--bgColor);
+background:var(--backgroundColorPrimary);
 filter: blur(5px) contrast(20);
 }
 .blob-1{

@@ -103,13 +103,13 @@ const Slider = ({ scrollTop }) => {
                       textTransform: "capitalize",
                       fontWeight: "600",
                       fontSize: ".8rem",
-                      color: "#323232"
+                      color: "var(--textColorPrimary)"
                     }}
                     onClick={(e) => {openDetail(cart);scrollTop()}}
                   >
                     {cart.title}
                   </div>
-                  <div style={{ textAlign: "center", fontSize: ".9rem", fontWeight: "500", color: "#323232" }}>
+                  <div style={{ textAlign: "center", fontSize: ".9rem", fontWeight: "500", color: "var(--textColorPrimary)" }}>
                     {" "}
                     {currency.sign}{" "}
                     {(cart.price * currency.value).toFixed(2)}
