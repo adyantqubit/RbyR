@@ -161,8 +161,8 @@ function Footer() {
                 marginTop: "7px",
               }}
             >
-              <FaFacebookF style={{ color: "grey", fontSize: "25px" }} />
-              <TiSocialInstagram style={{ color: "grey", fontSize: "25px" }} />
+              <FaFacebookF style={{ color: "var(--iconsColor)", fontSize: "25px" }} />
+              <TiSocialInstagram style={{ color: "var(--iconsColor)", fontSize: "25px" }} />
               {/* Commented by - Ashish Dewangan on 15-02-2023
               Reason - To hide twitter link */}
               {/* <FaTwitter style={{ color: "grey", fontSize: "25px" }} /> */}

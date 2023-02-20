@@ -1,23 +1,24 @@
 :root {
     /* ---------------------------banner color ----------------- */ 
-    --bannerColor:gold;
+    --bannerColor:white;
 
     /* ---------------------------background color 1 ----------------- */ 
-    --backgroundColorPrimary: rgb(25, 199, 25);
+    --backgroundColorPrimary: #63a688;
+    
 
     /* ---------------------------background color 2 ----------------- */ 
     --backgroundColorSecondary: #f7f7f7;
     
     /* ---------------------------text 1----------------- */
-    --textColorPrimary: red;
-    --textHoverColorPrimary:yellow;
+    --textColorPrimary: black;
+    --textHoverColorPrimary:rgb(250, 216, 114);
 
     /* ---------------------------text 2----------------- */
-    --textColorSecondary:orange;
+    --textColorSecondary:black;
     --textHoverColorSecondary:black;
     
     /* ---------------------------icon ----------------- */ 
-    --iconsColor:green;
+    --iconsColor:black;
 
     /* ---------------------------form ----------------- */
     --formBackgroundColor:#f7f7f7;

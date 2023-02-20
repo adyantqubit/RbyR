@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 // import { FiMenu, FiX } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import style from './NavHeader.module.css';
