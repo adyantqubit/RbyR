@@ -11,6 +11,7 @@ import { BackTop, Modal, notification } from "antd";
 // import projectStyles from '.style.module.css'
 import styles from "./detail.module.css";
 import "./detail.scss";
+import "./like.scss"
 import "./details.css";
 import Size from "./Size.css";
 import { message } from "antd";
@@ -377,6 +378,23 @@ const Details = (props) => {
     scroller.current.scrollTop = 0
   }
 
+  // Added by rohan - 19/2/23
+  // Reason-Adding buy now functionality so user able to add product in cart and redirect on cart page
+   function buyNow(detail){
+
+    if(size.length==0)
+    {
+      setPushData(true)
+    }else{
+      cart.filter((i) => {
+        if (i.id == detail.id) if (i.size == size) return i;
+      }).length > 0?
+      nav("/cart"):
+      AddToCart(detail)
+    }
+   }
+  // end of code - 19/2/23
+
 
   return (
 
@@ -414,14 +432,16 @@ const Details = (props) => {
                   <div style={{borderBottom:"1px solid lightgrey",width:"90%",marginTop:"15px"}}></div>
                   {/* End of code addition */}
                   <div className={styles["container05"]}>
-                  
+
                     <div
                       class={sizeCond ? sty : "rating-container face"}
                       className={styles.sizeSlection}
                     >
-                     <span className={styles["textLabel"]}>Size : </span> 
+                      <span className={`${styles["textLabel"]} ${styles.sizeMargin}`}>Size : </span>
                       {pushData ? (
+                        
                         <Shake>
+                          <div>
                           {" "}
                           <div class="rating">
                             <form class="rating-form">
@@ -558,9 +578,10 @@ const Details = (props) => {
                           >
                             Please select your size
                           </div>
+                          </div>
                         </Shake>
                       ) : (
-                        <>
+                        <div style={{display:"flex",flexDirection:'column'}}>
                           <div class="rating">
                             <form class="rating-form">
                               {/* Commented by - Ashish Dewangan on 17-02-2023
@@ -696,30 +717,30 @@ const Details = (props) => {
                               This size is not available.
                             </div>
                           ) : null}
-                        </>
+                        </div>
                       )}
 
                     </div>
 
                     {/* <div className={styles.charts}> */}
-                      {/* <span  className={styles["text02"]}>Custom Tailored</span> */}
-                      {/* Added by Ashish Dewangan on 24-11-2022
+                    {/* <span  className={styles["text02"]}>Custom Tailored</span> */}
+                    {/* Added by Ashish Dewangan on 24-11-2022
                       Reason - To show custom tailored form */}
-                      {/* Commented by - Ashish Dewangan on 17-02-2023
+                    {/* Commented by - Ashish Dewangan on 17-02-2023
                       Reason - To hide custom tailored label and have simple UI */}
-                      {/* <span
+                    {/* <span
                         className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
                         style={{ cursor: "pointer" }}
                         onClick={showCustomTailoredForm}
                       >
                         Custom Tailored
                       </span> */}
-                      {/* End of comment */}
-                      {/* End of code addition */}
-                      {/* Commented and modified by - Ashish Dewangan on 23-11-2022
+                    {/* End of comment */}
+                    {/* End of code addition */}
+                    {/* Commented and modified by - Ashish Dewangan on 23-11-2022
                       Reason - to display size chart when we click on size chart text */}
-                      {/* <span  className={styles["text02"]}>Size Chart</span> */}
-                      {/* <span
+                    {/* <span  className={styles["text02"]}>Size Chart</span> */}
+                    {/* <span
                         className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
                         style={{ cursor: "pointer" }}
                         onClick={showSizeChart}
@@ -731,7 +752,7 @@ const Details = (props) => {
                     <Modal
                       style={{ top: 0 }}
                       className={styles["modalStyleCustomTailored"]}
-                      bodyStyle={{backgroundColor:"var(--modalBodyBackgroundColor)"}}
+                      bodyStyle={{ backgroundColor: "var(--modalBodyBackgroundColor)" }}
                       footer={null}
                       title="CUSTOM TAILORED"
                       visible={isCustomTailoredVisible}
@@ -768,31 +789,85 @@ const Details = (props) => {
                     className={` ${styles["customButtonContainer"]} `}
                     style={{}}
                   >
-                    {check() ? (
-                      <button
-                        className={` ${styles["button"]} `}
-                        onClick={(e) => saveCart(details)}
-                      >
-                        REMOVE FROM BAG
-                      </button>
-                    ) : (
-                      <button
-                        className={` ${styles["button"]} `}
-                        onClick={(e) => AddToCart(details)}
-                      >
-                        ADD TO BAG
-                      </button>
-                    )}
-{/* 
-                      <button
-                        className={` ${styles["button"]} `}
-                        onClick={(e) => AddToCart(details)}
-                      >
+                    <div style={{ display: "flex", gap: "15px" }}>
+                      {check() ? (
+                        <button
+                          className={` ${styles["button"]} `}
+                          onClick={(e) => saveCart(details)}
+                        >
+                          <span style={{ margin: "auto" }}>
+                            REMOVE FROM BAG
+                          </span>
+                        </button>
+                      ) : (
+                        <button
+                          className={` ${styles["button"]} `}
+                          onClick={(e) => AddToCart(details)}
+                        >
+                          <span style={{ margin: "auto" }}>
+                            ADD TO BAG
+                          </span>
+                        </button>
+                      )}
+
+                      {like.filter((l) => l.id === details.id).length > 0 ? (
+                        // <AiFillHeart
+                        //   style={{
+                        //     color: "red",
+                        //     width: "25px",
+                        //     height: "25px",
+                        //   }}
+                        //   onClick={(e) => LikedSave(details)}
+                        // />
+                        <button
+                          className={` ${styles["button2"]} `}
+                          onClick={(e) => LikedSave(details)}
+                        >
+                          <span style={{ margin: "auto",paddingLeft:"10px" }}>
+                            REMOVE FROM WISHLIST
+                          </span>
+                          <div class="placement">
+                            <div class="heart is-active" onClick={(e) => LikedSave(details)}></div>
+                          </div>
+                        </button>
+
+                      ) : (
+                        // <AiOutlineHeart
+                        //   style={{
+                        //     width: "25px",
+                        //     height: "25px",
+                        //   }}
+                        //   onClick={(e) => LikedSave(details)}
+                        // />
+                        <button
+                          className={` ${styles["button2"]} `}
+                          onClick={(e) => LikedSave(details)}
+                        >
+                          <span style={{ margin: "auto" }}>
+                            ADD TO WISHLIST
+                          </span>
+                          <div class="placement">
+                            <div class="heart" onClick={(e) => LikedSave(details)}></div>
+                          </div>
+                        </button>
+
+                      )}
+                    </div>
+
+
+                    <button
+                      className={` ${styles["button3"]} `}
+                      onClick={(e) => buyNow(details)}
+                    >
+                      <span style={{ margin: "auto" }}>
+
                         BUY NOW
-                      </button> */}
-                      
+
+                      </span>
+                    </button>
+
                     {/* <div className={` ${styles["iconButtonsContainer"]} `}> */}
-                      {/* {like.filter((l) => l.id === details.id).length > 0 ? (
+                    {/* {like.filter((l) => l.id === details.id).length > 0 ? (
                         <AiFillHeart
                           style={{
                             color: "red",
@@ -810,44 +885,14 @@ const Details = (props) => {
                           onClick={(e) => LikedSave(details)}
                         />
                       )} */}
-                       {like.filter((l) => l.id === details.id).length > 0 ? (
-                        // <AiFillHeart
-                        //   style={{
-                        //     color: "red",
-                        //     width: "25px",
-                        //     height: "25px",
-                        //   }}
-                        //   onClick={(e) => LikedSave(details)}
-                        // />
-                        <button
-                        className={` ${styles["button"]} `}
-                        onClick={(e) => LikedSave(details)}
-                      >
-                        REMOVE FROM WISHLIST
-                      </button>
-                      ) : (
-                        // <AiOutlineHeart
-                        //   style={{
-                        //     width: "25px",
-                        //     height: "25px",
-                        //   }}
-                        //   onClick={(e) => LikedSave(details)}
-                        // />
-                        <button
-                        className={` ${styles["button"]} `}
-                        onClick={(e) => LikedSave(details)}
-                      >
-                        ADD TO WISHLIST
-                        
-                      </button>
-                      )}
-                      {/* Commented and modified by Ashish Dewangan on 24-11-2022
+
+                    {/* Commented and modified by Ashish Dewangan on 24-11-2022
                       Reason - To have whatsapp chat functionality */}
-                      {/* <a href="https://wa.me/916264170187"></a> */}
-                      {/* Commented and modified by - Ashish Dewangan on 15-02-2023
+                    {/* <a href="https://wa.me/916264170187"></a> */}
+                    {/* Commented and modified by - Ashish Dewangan on 15-02-2023
                          Reason - To open external links in new browser tab */}
-                      
-                      {/* <a
+
+                    {/* <a
                         href={`https://wa.me/send?text=${window.location.href}`} target="_blank"
                       >
                      
@@ -860,7 +905,7 @@ const Details = (props) => {
                           }}
                         />
                       </a> */}
-                         {/* End of code modification */}
+                    {/* End of code modification */}
                     {/* </div> */}
                   </div>
 
@@ -871,7 +916,7 @@ const Details = (props) => {
                   {/* <h1 className={styles["subtitle"]}>ABOUT THE PRODUCT</h1> */}
                   <h1 className={styles["subtitle"]}></h1>
                   {/* End of code modification */}
-                  
+
                   <span className={styles["text04"]}>
                     {details.description}
                   </span>
@@ -900,13 +945,13 @@ const Details = (props) => {
                       {details.made_in}
                     </span>
                   </div> */}
-                  
+
                   {/* End of comment */}
 
-                   {/* <h1 className={styles["subtitle"]} onClick={check}>
+                  {/* <h1 className={styles["subtitle"]} onClick={check}>
                     PRODUCT DETAILS
                   </h1> */}
-                 
+
                   <div className={styles["container06"]}>
                     <span className={styles["textLabel"]}>Style Code </span>
                     <span className={styles["textLabel"]}>:</span>
@@ -1018,7 +1063,7 @@ const Details = (props) => {
                       href={`https://wa.me/+91${whatsappContactNumber}?text=Product : ${details.title}  |  Category : ${details.category}`}
                       
                     > */}
-                      <a
+                    <a
                       className={styles["textLink"]}
                       style={{
                         marginLeft: "3px",
@@ -1047,7 +1092,7 @@ const Details = (props) => {
                     > Contact Us  </Link> */}
                     <Link
                       to="/refund-policy"
-                      className={styles["subtitle","hoverableSubtitle"]}
+                      className={styles["subtitle", "hoverableSubtitle"]}
                       style={{
                         textDecoration: "none",
                         letterSpacing: "1px",
@@ -1056,12 +1101,12 @@ const Details = (props) => {
                     > Return Policy  </Link>
                     <Link
                       to="/delivery-policy"
-                      className={styles["subtitle","hoverableSubtitle"]}
+                      className={styles["subtitle", "hoverableSubtitle"]}
                       style={{
                         textDecoration: "none",
                         letterSpacing: "1px",
                         fontSize: "14px",
-                        
+
                       }}
                     >
                       | Shipping Policy
@@ -1175,7 +1220,7 @@ const Details = (props) => {
             <Slider />
           </div> */}
 
-          <div style={{ width: "100%", zIndex: "1"}} >
+          <div style={{ width: "100%", zIndex: "1" }} >
             <Slider2 scrollTop={scrolling} />
             <Slider scrollTop={scrolling} />
           </div>
@@ -1183,9 +1228,9 @@ const Details = (props) => {
           {/* Commented by - Ashish Dewangan on 15-02-2023
             Reason - To hide the text that appear after footer */}
           {/* <div className={styles.foot}> */}
-            <Footer />
-            {/* <Below /> */}
-            {/* <Chat/> */}
+          <Footer />
+          {/* <Below /> */}
+          {/* <Chat/> */}
           {/* </div> */}
           {/* End of comment */}
         </div>

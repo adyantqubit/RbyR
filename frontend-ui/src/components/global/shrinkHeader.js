@@ -203,7 +203,7 @@ const ShrinkHeader = () => {
               var parent = Object.keys(m)
 
               return <Link to={
-                  m.shownMenuNImg ? `/categories/${parent[0]}` :
+                  m.shownMenuNImg &&m[`${parent}`]?.length>0? `/categories/${parent[0]}` :
                   m.shownInstFilter ? `/listing/${parent[0]}/0` :
                   `/listing/${parent[0]}/0`
               } className={style.drawerMenu}>

@@ -115,8 +115,9 @@
     justify-content: space-between;
   }
   .sizeSlection{
-    max-width:60%;
-    width: 60%;
+    /* max-width:60%; */
+    width: auto;
+    display: flex;
   }
 
   .charts{
@@ -470,12 +471,15 @@
   }
 
   .button {
-    width: 90%;
+    width:40%;
     height:50px;
     margin-top: 3%;
-    align-self: flex-start;
+    display: flex;
+    /* align-self: flex-start; */
+    justify-content: center;
     font-style: normal;
     font-size: 13px;
+    padding: auto;
     font-weight: 600;
     letter-spacing: 1px;
     text-align: center;
@@ -483,12 +487,67 @@
     color: rgb(255, 254, 254);
     background-color: rgb(58, 57, 57);
   }
+
   .button:hover{
     border:2px solid black;
     background-color: #fafafa;
     color: black;
     /* transition: 500ms; */
   }
+
+  .button2 {
+    width:40%;
+    height:50px;
+    margin-top: 3%;
+    display: flex;
+    /* align-self: flex-start; */
+    justify-content: center;
+    font-style: normal;
+    font-size: 13px;
+    padding: auto;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+    /* border: 0px solid black; */
+    color: rgb(255, 254, 254);
+    background-color: rgb(58, 57, 57);
+    border:2px solid rgb(177, 175, 175);
+    background-color: transparent;
+    color: black;
+  }
+
+  .button2:hover{
+    /* border:2px solid black; */
+    /* background-color: #fafafa; */
+    color: black;
+    /* transition: 500ms; */
+  }
+
+  .button3 {
+    width:82%;
+    height:50px;
+    margin-top: 3%;
+    display: flex;
+    /* align-self: flex-start; */
+    justify-content: center;
+    font-style: normal;
+    font-size: 13px;
+    padding: auto;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+    border: 0px solid black;
+    color: rgb(255, 254, 254);
+    background-color: rgb(58, 57, 57); 
+  }
+
+  .button3:hover{
+    border:2px solid black;
+    background-color: #fafafa;
+    color: black;
+  }
+
+  
   .chatButton {
     width: 30%;
     height: 45px;
@@ -574,6 +633,10 @@
     perspective: 1000px;
   }
 
+  .sizeMargin{
+    margin-top:20px
+  }
+
 @keyframes shake {
   10%, 90% {
     transform: translate3d(-1px, 0, 0);
@@ -627,6 +690,9 @@
   width: 95%;
   }
 
+  .sizeMargin{
+    margin-top:0px
+  }
 
   .modalStyle{
     width: 90vw !important;
@@ -681,8 +747,8 @@
       width: 100%;
     }
     .container05{
-      border-top: 2px solid #c4c0c0;
-      border-bottom: 2px solid #c4c0c0;
+      /* border-top: 2px solid #c4c0c0;
+      border-bottom: 2px solid #c4c0c0; */
       width: 100%;
       align-items: center;
       margin-top: 15px;
@@ -704,7 +770,18 @@
     }
     .button{
       width: 49%;
+      height: auto;
     }
+
+    .button2{
+      width: 49%;
+      height: auto;
+    }
+
+    .button3{
+      width: 99%;
+    }
+
     .customSubtitle{
       margin-top: 0;
     }
