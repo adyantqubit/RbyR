@@ -3,9 +3,11 @@ import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
 import config from "../../api/config";
 import { getCardHomeImagesApi, picApi, SlideShowApi } from "../../api/service";
+import BestSeller from "../home/BestSeller";
 import Card from "../home/card";
 import CArd2 from "../home/card2";
 import Video from "../home/video";
+//import Test from "../test/Test";
 import Below from "./below";
 import Footer2 from "./footer2";
 import style from "./slideshow.module.css";
@@ -15,7 +17,7 @@ function Slideshow() {
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
-  };
+  }; 
 
   const [pay2, setpay2] = useState([]);
   const [pay, setpay] = useState([]);
@@ -31,7 +33,7 @@ function Slideshow() {
 
   const fun = async () => {
     await picApi().then((r) => {
-      console.log(r)
+      console.log(reportError)
       setpay([...r.j]);
       setpay2([...r.h]);
       setGif(r.Gif)
@@ -103,8 +105,10 @@ function Slideshow() {
           </Carousel.Item>
         ))}
       </Carousel>
-      <Card imgArray={gif}/>
+      {/* <Card imgArray={gif}/>
       <CArd2 imgArray={normal}/> 
+       <Video url={video}/> */}
+       <BestSeller/>
        <Video url={video}/>
       <Footer2 />
       {/* Commented by - Ashish Dewangan on 15-02-2023

@@ -195,8 +195,8 @@ class picget(APIView):
         serialize = getCardSer(iamges,many=True)
         iamges2 = HomeNormalImages.objects.all()
         serialize2 = getcard2ser(iamges2,many=True)
-        video=Home_video.objects.last()
-        serialize3=getVideoser(video)
+        video=Home_video.objects.all()
+        serialize3=getVideoser(video,many=True)
         return Response({"j": ser.data,"h":ser2.data,"Gif": serialize.data,"Normal":serialize2.data,"video":serialize3.data})
        except:
         return Response({"j":None,"h":None,"Gif": None,"Normal":None,"video":None})   
@@ -1019,10 +1019,11 @@ class pageIndex(APIView):
     def post(self, request):
         try:
             products = []
-            
+            print(request.data['parent']=="best seller")
             # Add by Rohan - 30/12/22
             # Reason - Changing view all functionality becuase for requirement of sending header menu from backend
-            if (request.data['category']=="0" and request.data['parent']!="ready to wear"):
+            if (request.data['category']=="0" and request.data['parent']!="ready to wear" and request.data['parent']!="best seller"):
+                print("run1")
                 # products = product_detail.objects.filter(category="partywear") | product_detail.objects.filter(category="kurti") | product_detail.objects.filter(
                 #     category="casual") | product_detail.objects.filter(category="wedding_wear") | product_detail.objects.filter(category="formal")
                 menu=Menus.objects.get(menu=request.data['parent'])
@@ -1032,9 +1033,16 @@ class pageIndex(APIView):
             # Added by Rohan -5/1/22
             # Reason- Adding ready to wear functionality where all ready to ship product shown on this link
             elif (request.data['parent']=="ready to wear" and request.data['category']=="0"):
+                print("run2")
                 products=product_detail.objects.filter(ready_to_ship=True)
+                
+            elif(request.data['parent']=="best seller" and request.data['category']=="0"):
+                print("run")
+                products=product_detail.objects.filter(bestSeller=True)
+  
             # End of code
             else:
+                print("run3")
                 products = product_detail.objects.filter(
                     category=request.data['category'])
                 

@@ -130,7 +130,7 @@
 .billingheader{
     width: 100%;
 
-    background-color:  var(--backgroundColorSecondary);
+    background-color:  var(--backgroundColorPrimary);
     margin-top: 30px;
     display: flex;
 }

@@ -43,6 +43,7 @@ import Editorial from './components/Abouts/blankpages/editorial';
 import AboutUs from './components/Abouts/AboutUs';
 import Editorialpage from './components/Abouts/EditorialPage';
 import Categories from './components/listing/Categories';
+import Test from './components/test/Test';
 
 function App() {
   // notification.destroy()
@@ -104,6 +105,7 @@ function App() {
         <Route path="/aboutRR" element={<AboutUs/>} />
         <Route path="/editorial" element={<Editorialpage/>} />
     
+   {/* <Route path="/test" element={<Test/>}/> */}
     
     {/* End of code. */}
     

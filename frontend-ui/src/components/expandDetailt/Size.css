@@ -114,3 +114,29 @@ input[class="super-duper-sad"]:focus + .span {
 	border-radius: 3px;
 }
 
+
+
+
+.yrv-video-container{
+	position: relative;
+	padding-top: 56.25%;
+	margin-bottom: 1.5em;
+	}
+	.yrv-video-container iframe{
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	}
+	.wp-block-embed__wrapper .yrv-video-container{
+	position: initial;
+	padding-top: 0;
+	margin-bottom: 0;
+	}
+
+	.bqyzQp{
+		margin: auto;
+	}

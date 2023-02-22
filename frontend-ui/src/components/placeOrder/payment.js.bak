@@ -165,7 +165,6 @@ const Payment = () => {
 
         </div>
       </div>
-      
 
       <div className={styles.boxpay} >
 

@@ -73,4 +73,10 @@
 
 /* ---------------------------border 2----------------- */
 
+/* --------------------------line height----------------- */
+
+    --letterSpacingText:1.7px;
+    --letterSpacingTitle:2.4px;
+    --letterSpacingHeading:3.3px
+
   }

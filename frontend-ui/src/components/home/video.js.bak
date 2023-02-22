@@ -1,7 +1,3 @@
-//Added by -Rohan
-//Reason - Adding all new design and functionality to video
-
-
 import React, { useState, useEffect } from 'react'
 import { getCardHomeImagesApi } from '../../api/service';
 import image from "../../assets/photos/model.jpg"

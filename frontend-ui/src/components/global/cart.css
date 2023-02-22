@@ -263,6 +263,16 @@ opacity: 1;
       margin-left: -15px; 
   }
 
+  /* Youtube section hidding
+
+.ytp-chrome-top{
+    display: none !important;
+  }
+
+  .ytp-large-play-button .ytp-button .ytp-large-play-button-red-bg{
+    display: none !important;
+  } */
+
   @media (min-width: 768px) {
 
     .react-multi-carousel-item{

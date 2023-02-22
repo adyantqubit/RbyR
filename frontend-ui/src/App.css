@@ -102,6 +102,13 @@ background:#323232;
 50%{left:50%;}
 100%{left:80%;}
 }
+
+.bqyzQp {
+  position: relative;
+  width: 90%;
+}
+
+
 @media (max-width: 1100px) {
 
   .centered{
