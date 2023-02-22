@@ -48,7 +48,11 @@ const BestSeller = () => {
                     {/* {bestProducts.map(m=>console.log(m))} */}
                     {imageSwap ? bestProducts.map((m, i) => {
                         if (i < 12)
-                            return <div className={style.card}>
+                            return <div className={style.card}
+                                onMouseEnter={e => swapImage(i)}
+                                onMouseLeave={e => swapImage(i)}
+                                onClick={e => { console.log("hit"); nav(`/listing/${m.menu}/${m.category}/detail/${m.id}`) }}
+                            >
                                 <img
                                     src={config.apiBaseURL + m.img_main}
                                     className={style.img}
@@ -68,7 +72,9 @@ const BestSeller = () => {
                         if (i < 12)
                             return <div className={style.card}
                                 onMouseEnter={e => swapImage(i)}
-                                onMouseLeave={e => swapImage(i)}>
+                                onMouseLeave={e => swapImage(i)}
+                                onClick={e => { console.log("hit"); nav(`/listing/${m.menu}/${m.category}/detail/${m.id}`) }}
+                            >
                                 <img
                                     src={config.apiBaseURL + m.img_main}
                                     className={style.img}
@@ -87,7 +93,7 @@ const BestSeller = () => {
                 <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
                     {/* {bestProducts.length>12? */}
                     <button onClick={e => nav(`/listing/best seller/0`)} className={`${style.button_arounder} ${style.button_b}`}>View More</button>:
-                     {/* null} */}
+                    {/* null} */}
                 </div>
 
             </div>
