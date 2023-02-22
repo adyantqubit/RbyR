@@ -74,7 +74,7 @@ const LikeDrawer = () => {
         onClose={onClose}
         closeIcon={<MdOutlineArrowBack className="likeSVG"/>}
         open={openLikedrawer}
-        headerStyle={{ height: "200px" }}
+        headerStyle={{ height: "200px",backgroundColor:"var(--backgroundColorPrimary)" }}
         style={{ display: "flex", justifyContent: "center" }}
       >
         {/* End of code modification */}

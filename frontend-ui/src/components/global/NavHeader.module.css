@@ -383,7 +383,7 @@ input[type=checkbox]:checked ~ .menu{
   
   .action .menu2 .h3 .span {
 	font-size: 14px;
-	color: #949393;
+	color: var(--textColorPrimary);
 	font-weight: 600;
   word-break: break-all;
   }

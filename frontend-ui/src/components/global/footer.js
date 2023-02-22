@@ -133,13 +133,13 @@ function Footer() {
 
         <div className={style.column3}>
           <h1 className={style.heading}>THE COMPANY</h1>
-          <Link to="/Listing/world_of_rbyr"
+          <Link to="/aboutRR"
             style={{ textDecoration: "none", color: "white" }}
            >
             <span
             className={style.span}
           >
-            RbyR EXCLUSIVE
+            World of RbyR
           </span> 
            </Link>
                       <Link

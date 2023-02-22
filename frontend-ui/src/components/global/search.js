@@ -112,7 +112,7 @@ const Search = () => {
         width={window.innerWidth>768 ? 650 : "100%"}
         closeIcon={<GrClose className="searchSVG"/>}
        
-        headerStyle={{ height: "200px"}}
+        headerStyle={{ height: "200px",backgroundColor:"var(--backgroundColorPrimary)"}}
         placement="right"
         onClose={onClose}
         open={open}
@@ -139,7 +139,7 @@ const Search = () => {
               style={{
                 marginRight: "20px",
                 fontSize: "20px",
-                color: "#7c7c7c",
+                color: "var(--textColorPrimary)",
                 width:"1em",
                 height:"1em",
               }}
@@ -154,7 +154,7 @@ const Search = () => {
                 border: "none",
                 fontFamily: "Arial, FontAwesome",
                 fontSize: "15px",
-                color: "#7c7c7c",
+                color: "var(--textColorPrimary)",
                 width: "80%",
                 paddingLeft:"10px"
               }}
