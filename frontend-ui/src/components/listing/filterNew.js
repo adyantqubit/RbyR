@@ -4,7 +4,7 @@ import style from './listpage.module.css'
 import RangeSlider from './rangeslider';
 import MultiRangeSlider from './rangeslider';
 
-const FilterNew = ({scrolling}) => {
+const FilterNew = ({ scrolling }) => {
   const { selectedCategory, setCategorySelected, sizeSelected, setSizeSelected, filterui, setfilterUi, CategoryProduct, setCategoryProduct, tempallpro, settemAllpro, maxValue, setmaxValue, minValue, setminValue, allCategoryAvai, setAllCategoryAvai, allColorAvai, setAllColorAvai, selectedColor, setSelectedColor, tempsprice, setTempsprice } = CartState()
   const [tempprice, setTempprice] = useState([])
   const [tempSize, setTempSize] = useState([])
@@ -199,16 +199,18 @@ const FilterNew = ({scrolling}) => {
       <div className={style.filterContainres} style={{ zIndex: "50" }}>
         <div className={style.filterInner}>
           <div className={style.filterheader}>
-            <div className={style.filterHeaderInner} style={{margin:"10px 0"}}>
+            <div className={style.filterHeaderInner} style={{ margin: "10px 0" }}>
               <button className={style.shopbtn1}
-                style={{background:"white"}}
-                onClick={e => { setSelectedColor([]); 
-                setSizeSelected([]); 
-                closeSortPage(); 
-                setMinMAx(2000, 200000) }}>CLEAR</button>
+                style={{ background: "white" }}
+                onClick={e => {
+                  setSelectedColor([]);
+                  setSizeSelected([]);
+                  closeSortPage();
+                  setMinMAx(2000, 200000)
+                }}>CLEAR</button>
               <button className={style.shopbtn1}
-              style={{background:"#323232",color:"white",fontWeight:"600"}}
-              onClick={e=>{closeSortPage(); scrolling()}}>APPLY</button>
+                style={{ background: "var(--backgroundColorPrimary)", color: "white", fontWeight: "600" }}
+                onClick={e => { closeSortPage(); scrolling() }}>APPLY</button>
             </div>
           </div>
 
@@ -256,9 +258,9 @@ const FilterNew = ({scrolling}) => {
 
           {/* div 1 end */}
 
-          {/* div item 2   */}
-
-          <div className={style.filterbottomMainInnerItem2}>
+          {/* Commented by Rohan- 22/2/23
+              Reason- Hidding functionalities of filter */}
+          {/* <div className={style.filterbottomMainInnerItem2}>
             <span className={style.categ}>
               Color
             </span>
@@ -268,13 +270,13 @@ const FilterNew = ({scrolling}) => {
 
 
                 if (selectedColor.includes(c.toLowerCase())) {
-                  return <div className={`${style.textdiv} ${style.value}`} style={{whiteSpace: "nowrap" }} >
+                  return <div className={`${style.textdiv} ${style.value}`} style={{ whiteSpace: "nowrap" }} >
                     <div className={style.text} onClick={toggleselect}>{c.toUpperCase()}</div>
                     <span onClick={deleteclass} className={style.cross}>X</span>
                   </div>
                 }
                 else {
-                  return <div className={style.textdiv} style={{whiteSpace: "nowrap" }}>
+                  return <div className={style.textdiv} style={{ whiteSpace: "nowrap" }}>
                     <div className={style.text} onClick={toggleselect}>{c.toUpperCase()}</div>
                     <span onClick={deleteclass} className={style.block}>X</span>
                   </div>
@@ -289,11 +291,7 @@ const FilterNew = ({scrolling}) => {
 
             </div>
           </div>
-          {/* div item 2 end  */}
 
-
-
-          {/* div item 3  */}
           <div className={style.filterbottomMainInnerItem}>
             <span className={style.categ}>
               Size
@@ -301,7 +299,7 @@ const FilterNew = ({scrolling}) => {
 
             <div className={style.iteminner}>
 
-            {sizeSelected.includes('XS') ? <div className={`${style.sizediv} ${style.value}`} style={{ width: "auto", whiteSpace: "nowrap" }}>
+              {sizeSelected.includes('XS') ? <div className={`${style.sizediv} ${style.value}`} style={{ width: "auto", whiteSpace: "nowrap" }}>
                 <span className={style.size} onClick={toggleselects}>XS</span>
                 <span onClick={deleteclasss} className={style.cross}>X</span>
               </div> : <div className={style.sizediv} style={{ width: "auto", whiteSpace: "nowrap" }}>
@@ -362,9 +360,6 @@ const FilterNew = ({scrolling}) => {
             </div>
 
           </div>
-          {/* div item 3 end */}
-
-          {/* div item 4 */}
 
           <div className={style.filterbottomMainInnerItem}>
             <MultiRangeSlider
@@ -374,8 +369,8 @@ const FilterNew = ({scrolling}) => {
               maxS={maxValue > 0 ? maxValue : 200000}
               onChange={({ min, max }) => { setMinMAx(min, max) }}
             />
-          </div>
-          {/* div item 4 end  */}
+          </div> */}
+          {/* end of code */}
 
 
 

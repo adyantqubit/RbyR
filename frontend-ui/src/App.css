@@ -39,6 +39,20 @@ body::-webkit-scrollbar {
   color: rgb(112, 76, 182);
 }
 
+Iframe body{
+  background-color: transparent !important;
+}
+
+.video-container {
+  aspect-ratio: 16/9;
+}
+   
+.video-container iframe {
+ width: 100%;
+ height: 100%;
+}
+ 
+
 @keyframes App-logo-float {
   0% {
     transform: translateY(0);
@@ -59,7 +73,7 @@ height:26vh;
   top:13vh;
 margin-left:50%;
 transform:translate(-50%,-50%);
-background:var(--backgroundColorPrimary);
+background:transparent;
 filter: blur(5px) contrast(20);
 }
 .blob-1{

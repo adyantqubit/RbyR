@@ -187,7 +187,7 @@ const Billing = () => {
                   <span className={`${styles.columnitem1head} ${styles.header2} ${styles.show}`} id="show" style={{ "textAlign": "center" }}> Quantity</span>
                   <span className={`${styles.columnitem1head} ${styles.header2} ${styles.show2}`} id="show2" style={{ "textAlign": "center" }}> Qty</span>
                   <span className={`${styles.columnitem1head} ${styles.header2}`} > Price</span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ borderRight: "1px solid black" }}>Total</span>
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{border:"none",outline:"none"}}>Total</span>
 
                 </div>
                 {checkoutDetails.cart.map(c =>
@@ -196,22 +196,22 @@ const Billing = () => {
                     <span className={`${styles.protitle2} ${styles.show}`} > {c.quantity}</span>
                     <span className={`${styles.protitle2} ${styles.show2}`} > {c.quantity}</span>
                     <span className={styles.protitle2} >{checkoutDetails.currency_sign}{(c.price * checkoutDetails.currency_value).toFixed(2)}</span>
-                    <span className={styles.protitle2} style={{  paddingLeft: "5px" }}> {checkoutDetails.currency_sign} {(c.price * c.quantity * checkoutDetails.currency_value).toFixed(2)}</span>
+                    <span className={styles.protitle2} style={{  paddingLeft: "5px",border:"none",outline:"none" }}> {checkoutDetails.currency_sign} {(c.price * c.quantity * checkoutDetails.currency_value).toFixed(2)}</span>
                   </div>
                 )}
 
                 <div className={styles.billingfooter}>
-                  <span className={`${styles.columnitem1head}`} style={{color:"var(--textColorSecondary)"}} >Subtotal -</span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ borderRight: "1px solid black", whiteSpace: "nowrap" }}>{checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).subtotal * checkoutDetails.currency_value).toFixed(2)}</span>
+                  <span className={`${styles.columnitem1head}`} >Subtotal -</span>
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ borderRight: "1px solid black", whiteSpace: "nowrap",border:"none",outline:"none" }}>{checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).subtotal * checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
 
                 <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`}  >Shipping charges -</span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto" }} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).shipping * checkoutDetails.currency_value).toFixed(2)}</span>
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto",border:"none",outline:"none" }} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).shipping * checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
                 <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`}  >GST Charges -</span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto" }} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).tax * checkoutDetails.currency_value).toFixed(2)}</span>
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto",border:"none",outline:"none" }} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).tax * checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
                 {/* Commented by - Ashish Dewangan on 15-02-2023
                 Reason - To Hide offer/Coupon/promocode from bill */}
@@ -227,7 +227,7 @@ const Billing = () => {
                 
                 <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`}  >Grand Total - </span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto" }} > {checkoutDetails.currency_sign} 
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto",border:"none",outline:"none" }} > {checkoutDetails.currency_sign} 
                   {/* {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}
                   {/* {checkoutDetails.CouponDiscount ?((afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value)- (checkoutDetails.CouponDiscount* checkoutDetails.currency_value)).toFixed(2) :(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}
                    {checkoutDetails.grand?(checkoutDetails.grand*checkoutDetails.currency_value).toFixed(2):afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand}

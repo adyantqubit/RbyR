@@ -299,14 +299,16 @@ const Context = ({ children }) => {
       console.log(filteredProducts)
 
     // price
-    if (tempSize.length > 0 ) {
-      filteredProducts = tempSize.filter(c => c.price > minValue && c.price < maxValue)
-    }
-    else {
-      filteredProducts = filteredProducts.filter(c => c.price > minValue && c.price < maxValue)
-    }
-    console.log(filteredProducts)
-
+    // commented by -Rohan- 21/2/23
+    //Reason - removing price functionality
+    // if (tempSize.length > 0 ) {
+    //   filteredProducts = tempSize.filter(c => c.price > minValue && c.price < maxValue)
+    // }
+    // else {
+    //   filteredProducts = filteredProducts.filter(c => c.price > minValue && c.price < maxValue)
+    // }
+    // console.log(filteredProducts)
+    // end of code
      console.log(selectedCategory)
       if (selectedCategory.length > 0)
         selectedCategory.filter(s => {

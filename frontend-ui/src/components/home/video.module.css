@@ -118,6 +118,19 @@
     justify-content: center;
 }
 
+.video{
+    width:80vw;
+    height:76vh;
+    margin:auto;
+    background:#fff;}
+
+
+    @media (max-width:767px){
+         .video{
+            width: 90vw;
+            height: 30vh;
+         }
+    }
 /* category side */
 /* 
 .categoryContainer {

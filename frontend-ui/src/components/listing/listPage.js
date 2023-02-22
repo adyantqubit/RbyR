@@ -329,8 +329,8 @@ const ListPage = () => {
           <div className={style.filterInner} >
             <div className={style.filterheader}>
               <div className={style.filterHeaderInner} style={{ margin: "10px 0" }}>
-                <span className={style.shopbtn1}
-                  onClick={e => setSortUi(true)}>SORT BY</span>
+                {/* <span className={style.shopbtn1}
+                  onClick={e => setSortUi(true)}>SORT BY</span> */}
                 <span className={style.shopbtn1}
                   onClick={e => setfilterUi(true)}>FILTER</span>
               </div>

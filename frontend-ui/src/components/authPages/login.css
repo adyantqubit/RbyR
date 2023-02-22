@@ -9,7 +9,7 @@
 	position: relative;
 	top:20vh;
 	font-family: 'Jost', sans-serif;
-	background: var(--backgroundColorPrimary);
+	/* background: var(--backgroundColorPrimary); */
 }
 .mai{
 	margin-top: 30px;
@@ -57,8 +57,8 @@
 	width: 70%;
 	height: 40px;
 	padding-left:10px;
-
-	background: var(--backgroundColorPrimary);
+	background-color: transparent;
+	/* background: var(--backgroundColorPrimary); */
 	justify-content: center;
 	display: flex;
 	
@@ -67,6 +67,8 @@
 	border: none;
 	outline: none;
 	border-radius: 5px;
+	border: none;
+	outline: none;
 	border: 1px solid black;
 }
 
@@ -75,7 +77,8 @@
 	padding-left:10px;
 	height: 35px;
 	margin-left: 15%;
-	background: var(--backgroundColorPrimary);
+	background-color: transparent;
+	/* background: var(--backgroundColorPrimary); */
 	justify-content: center;
 	display: flex;
 	
@@ -84,13 +87,16 @@
 	border: none;
 	outline: none;
 	border-radius: 5px;
+	border: none;
+	outline: none;
 	border: 1px solid black;
 }
 
 .inpu3{
 	width: 70%;
 	height: 30px;
-	background: var(--backgroundColorPrimary);
+	background-color: transparent;
+	/* background: var(--backgroundColorPrimary); */
 	justify-content: space-between;
 	display: flex;
 	padding-left:10px;
@@ -100,18 +106,20 @@
 	border: none;
 	outline: none;
 	border-radius: 5px;
-	border: 1px solid black;
+	/* border: 1px solid black; */
 }
 
 .inpu4{
 	width: 49%;
 	height: 30px;
-	background: var(--backgroundColorPrimary);
+	background-color: transparent;
+	/* background: var(--backgroundColorPrimary); */
 	justify-content: center;
 	display: flex;
 
 	border: none;
 	outline: none;
+	border: 1px solid black;
 	border-radius: 5px;
 
 }
@@ -124,14 +132,14 @@
 .PhoneInputInput{
 	width: 90%;
 	height: 30px;
-	background: var(--backgroundColorPrimary);
+	/* background: var(--backgroundColorPrimary); */
 	justify-content: center;
 	display: flex;
-	
 	/* margin: 20px auto; */
 	
 	border: none;
 	outline: none;
+	border: 1px solid black;
 	border-radius: 5px;
 
 }

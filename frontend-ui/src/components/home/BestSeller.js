@@ -91,9 +91,9 @@ const BestSeller = () => {
                     {/* </Carousel> */}
                 </div>
                 <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-                    {/* {bestProducts.length>12? */}
-                    <button onClick={e => nav(`/listing/best seller/0`)} className={`${style.button_arounder} ${style.button_b}`}>View More</button>:
-                    {/* null} */}
+                    {bestProducts.length > 12 ?
+                        <button onClick={e => nav(`/listing/best seller/0`)} className={`${style.button_arounder} ${style.button_b}`}>View More</button> :
+                        null}
                 </div>
 
             </div>

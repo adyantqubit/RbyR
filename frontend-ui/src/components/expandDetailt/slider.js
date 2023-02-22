@@ -60,11 +60,11 @@ const Slider = ({ scrollTop }) => {
       /* you can also use 'auto' behaviour
          in place of 'smooth' */
     });
-    nav(`/listing/${id.menu}/${id.category}/detail/${id.id}`);
-    // setcon(false);
-    // window.location.reload(false)
 
-    //  <Navigate to={`/listing/${id.category}/detail/${id.id}`}/>
+    if(id.category.length!=0)
+    nav(`/listing/${id.menu}/${id.category}/detail/${id.id}`);
+    else
+    nav(`/listing/${id.menu}/0/detail/${id.id}`)
   }
 
   return (

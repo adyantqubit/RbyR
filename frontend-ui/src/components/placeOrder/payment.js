@@ -148,7 +148,7 @@ const Payment = () => {
           <span className={styles.userinfoText}>Pay via Scanner</span>
           {/* {tickop ? */}
           {true?
-            <IoMdCheckmark style={{ fontSize: "25", color: "black", fontWeight: "20", backgroundColor: "white", border: "none" }} />
+            <IoMdCheckmark style={{ fontSize: "25", color: "black", fontWeight: "20", backgroundColor: "transparent", border: "none" }} />
             :
             null}
         </div>
@@ -159,7 +159,7 @@ const Payment = () => {
         <div style={{ display: "flex", justifyContent: "space-between" }} onClick={onSelect}>
           <strike className={styles.userinfoText}>Cash On Delivery</strike>
           {tick ?
-            <IoMdCheckmark style={{ fontSize: "25", color: "black", fontWeight: "20", backgroundColor: "white", border: "none" }} />
+            <IoMdCheckmark style={{ fontSize: "25", color: "black", fontWeight: "20", backgroundColor: "transparent", border: "none" }} />
             :
             null}
 

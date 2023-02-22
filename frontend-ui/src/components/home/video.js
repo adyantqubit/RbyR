@@ -85,10 +85,11 @@ const Video = (props) => {
           <Carousel
             activeIndex={index}
             onSelect={handleSelect}
+            slide={false}
           >
             {props.url.map((u,i)=> (
-              <Carousel.Item>
-                <iframe style={{width:"90vw",height:"70vh",margin:"auto"}} src={index==i?`${u.Video_url}?autoplay=1&showinfo=0&controls=0&modestbranding=1&mute=1`:`${u.Video_url}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+              <Carousel.Item interval={300000}>
+                <iframe width="65vw" height="70vh" className={style.video}  color={"transparent"} src={index==i?`${u.Video_url}?autoplay=1&showinfo=0&controls=0&modestbranding=1&mute=1`:`${u.Video_url}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
               </Carousel.Item>
             ))}
           </Carousel>

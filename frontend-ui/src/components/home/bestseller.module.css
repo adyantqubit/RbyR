@@ -25,7 +25,7 @@
     width: 29%;
     min-height: 200px;
     position: relative;
-    background-color: black;
+    background-color: transparent;
     overflow: hidden;
     transition: all .6s ease;
 }
@@ -159,6 +159,13 @@
     border-top-right-radius: var(--radius);
     border-bottom-left-radius: var(--radius);
     border-bottom-right-radius: var(--radius);
+  }
+
+
+  @media (max-width:767px){
+    .card{
+        width: 95%;
+    }
   }
 
 

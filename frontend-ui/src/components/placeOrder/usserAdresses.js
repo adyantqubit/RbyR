@@ -818,7 +818,7 @@ const UsserAdresses = () => {
                     <div className={styles.columnitem1head}>
                         <span>2. SHIPPING INFO
                             <IoIosCheckmarkCircle style={{
-                                fontSize: "37px", color: "black", background: "white"
+                                fontSize: "37px", color: "black", backgroundColor: "transparent"
                                 , marginLeft: "15px", position: "relative", bottom: "5px"
                             }} />
                         </span>
@@ -869,7 +869,7 @@ const UsserAdresses = () => {
                                     <div ><span className={styles.userinfoText3}>{checkoutDetails.billingData.number} </span></div>
                                 </div>
                                 <div className={styles.adressTick}>
-                                    <IoMdCheckmark style={{ fontSize: "25", color:"#323232", fontWeight: "20", backgroundColor: "white", border: "none" }} />
+                                    <IoMdCheckmark style={{ fontSize: "25", color:"#323232", fontWeight: "20",backgroundColor: "transparent", border: "none" }} />
                                 </div>
                             </div>
                         </div>

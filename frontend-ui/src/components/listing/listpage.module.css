@@ -278,7 +278,7 @@ justify-content: space-between;
   width:100%;
   height:40%;
   display:flex;
-  justify-content:space-between;
+  justify-content:center;
   transition: height 2s ease-in;
 }
 
@@ -297,7 +297,7 @@ justify-content: space-between;
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
-    color: #8c8c8c;
+    /* color: #8c8c8c; */
     text-transform: uppercase;
     font-family: 'MyFont';
     font-weight: 500;
@@ -455,7 +455,7 @@ justify-content: space-between;
   min-width:48%;
   margin: 2px;
   border-radius: 2px;
-  background-color: var(--backgroundColorSecondary);
+  background-color: #dfdddd;
   display:flex;
 }
 
@@ -488,6 +488,7 @@ justify-content: space-between;
 
 .value{
   background-color: var(--backgroundColorPrimary);
+  color: #212121 !important;
 }
 
 .block{
@@ -651,7 +652,7 @@ justify-content: space-between;
   }
   .filterbottomMainInner{
     top: 0vh;
-    height: 100vh;
+    /* height: 100vh; */
     flex-wrap: wrap;
   }
 
@@ -696,7 +697,7 @@ justify-content: space-between;
 .filterContainres{
   display:flex;
   top:auto;
-  background-color: #7c7c7c;
+  /* background-color: #7c7c7c; */
   bottom: 0vh !important;
   transition: height 2s ease-out;
   height: 8%;
