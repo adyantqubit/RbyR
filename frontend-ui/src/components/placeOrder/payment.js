@@ -156,8 +156,10 @@ const Payment = () => {
        {/*commenting by -rohan Changing position of cash and online option */}
 
       <div className={styles.boxpay} id="cash">
-        <div style={{ display: "flex", justifyContent: "space-between" }} onClick={onSelect}>
+        <div style={{ display: "flex", flexDirection:"column",justifyContent: "space-between" }} onClick={onSelect}>
           <strike className={styles.userinfoText}>Cash On Delivery</strike>
+          <h6 style={{ fontSize: "12px" }}>(Currently not available)</h6>
+
           {tick ?
             <IoMdCheckmark style={{ fontSize: "25", color: "black", fontWeight: "20", backgroundColor: "transparent", border: "none" }} />
             :
@@ -191,7 +193,7 @@ const Payment = () => {
           label={<label className={styles.firstName} htmlFor='street'
           style={{ fontSize: "14px", fontStyle: "bold", letterSpacing: "1.5px", paddingBottom: "2px" }}>
             I agree to
-         <Link to="/terms" style={{fontSize:"15px",textDecoration:"underline"}}> 
+         <Link to="/terms" target="_blank" style={{fontSize:"15px",textDecoration:"underline"}}> 
          {" "}Terms and conditions</Link></label>}
         />
      {required?<Typography style={{color:"red",fontSize:"13px",marginLeft:"30px"}}>Please accept terms and conditions.</Typography>:null}

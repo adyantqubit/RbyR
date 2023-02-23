@@ -177,7 +177,17 @@ class Menus(models.Model):
             if pro.upper_menu==self:
                pro.category=self.menu
                pro.save()
+            super().save(*args,**kwargs)     
+            
+            #Added by Rohan-23/2/23
+            #Reason- if we change menu name then it should also reflect to cover image category   
+        for slide in Head_img.objects.all():
+            if slide.Menu==self:
+               slide.category=self.menu      
+               slide.save() 
+            super().save(*args,**kwargs)    
         super().save(*args,**kwargs)   
+        #End of code
     
     def clean(self):
         if (Menus.objects.count() >= 4 and self.pk is None):
@@ -200,7 +210,11 @@ class subMenu(models.Model):
             if pro.subMenu==self:
                pro.category=self.sub
                pro.save()
-        super().save(*args,**kwargs)    
+               #Added by -Rohan-23/2/23
+               #Reason-Calling super.save method 2 times for saving issue
+            super().save(*args,**kwargs)         
+        super().save(*args,**kwargs)  
+             
     
 #End of the code
 

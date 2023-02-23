@@ -1,26 +1,16 @@
-//Added by -Rohan
-//Reason - Adding all new design and functionality to video
-
+// video
 
 import React, { useState, useEffect } from 'react'
 import { getCardHomeImagesApi } from '../../api/service';
 import image from "../../assets/photos/model.jpg"
 import { ImCross } from "react-icons/im"
-// import Carousel from 'react-grid-carousel'
-import Carousel from "react-bootstrap/Carousel";
-
+import Carousel from 'react-grid-carousel'
 import styles from "./card.module.css"
 import style from './video.module.css'
 import { CartState } from '../../context';
 const src = "https://www.youtube.com/embed/m_LfH48sTmY";
 
 const Video = (props) => {
-
-  const [index, setIndex] = useState(0);
-
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  }; 
 
   //   const [iamges,setIamges]=useState({})
   //   useEffect(()=>{
@@ -33,8 +23,8 @@ const Video = (props) => {
   //   await getCardHomeImagesApi().then(r=>setIamges(r.response))
 
   // }
-
-
+  
+ 
 
   const [showVideo, setShow] = useState(false)
   const [url, setUrl] = useState("")
@@ -45,16 +35,16 @@ const Video = (props) => {
 
 
     return <div className={style.popupContainer}>
-
+  
       <div className={style.cancle}>
-        <ImCross color='var(--backgroundColorSecondary)' style={{ margin: "auto 0", fontSize: "30px" }} onClick={e => setShow(false)} />
+        <ImCross color='var(--backgroundColorSecondary)' style={{ margin: "auto 0", fontSize: "30px" }}  onClick={e=>setShow(false)} />
       </div>
-
+  
       <div className={style.videoContains}>
         <iframe src={props.url} style={{ width: "80%", height: "70%", margin: "auto" }} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+  
       </div>
-
+  
     </div>
   }
 
@@ -65,8 +55,8 @@ const Video = (props) => {
       <div className={style.container}>
 
         {/* <div className={style.heading}> Best seller product of RBYR </div> */}
-        {/* <div className={style.sliderContainer}> */}
-          {/* <Carousel cols={2} rows={1} gap={10}>
+        <div className={style.sliderContainer}>
+          <Carousel cols={3} rows={1} gap={10}>
 
            {props.url.map(u=>
             
@@ -74,34 +64,25 @@ const Video = (props) => {
               className={style.card}
             >
               <div style={{ position: "relative" }}>
-                <iframe  style={{minWidth:"15vw",minHeight:"28vh"}} src={`${u.Video_url}?autoplay=1&showinfo=0&controls=0&modestbranding=1&mute=1`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+                <iframe  style={{minWidth:"25vw",minHeight:"30vh"}} src={`${u.Video_url}?autoplay=1&showinfo=0&controls=0&modestbranding=1&mute=1`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
                 <div class={style.overlay} onClick={e =>{setShow(true); setUrl(u.Video_url); console.log(showVideo)}}></div>
               </div>
 
             </Carousel.Item>
             )}
-          </Carousel> */}
+       
+            
 
-          <Carousel
-            activeIndex={index}
-            onSelect={handleSelect}
-            slide={false}
-          >
-            {props.url.map((u,i)=> (
-              <Carousel.Item interval={300000}>
-                <iframe width="65vw" height="70vh" className={style.video}  color={"transparent"} src={index==i?`${u.Video_url}?autoplay=1&showinfo=0&controls=0&modestbranding=1&mute=1`:`${u.Video_url}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
-              </Carousel.Item>
-            ))}
+            
           </Carousel>
-
-        {/* </div> */}
+        </div>
       </div>
 
-      {/* {
+      {
         showVideo ?
           <Popup url={url} />
           : null
-      } */}
+      }
 
       {/* <div style={{ width: "100%", display: "flex", justifyContent: "center", zIndex: "-2", marginBottom: "25px", background: "var(--backgroundColorSecondary)" }}>
         {props.url ?
@@ -113,5 +94,4 @@ const Video = (props) => {
 }
 
 export default Video;
-
 

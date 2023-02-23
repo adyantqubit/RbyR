@@ -27,14 +27,15 @@ class Head_imgAdmin(admin.ModelAdmin):
     # ordering=("display_on")
     readonly_fields=("category",)
     list_per_page=10
-    # def get_form(self, request, obj=None, **kwargs):
-    #     form = super(Head_imgAdmin, self).get_form(request, obj, **kwargs)
-    #     # form.base_fields['label'].widget.attrs['style'] = 'width: 100%;'
-    #     # form.base_fields['about'].widget.attrs['style'] = 'width: 100%;'
-    #     form.base_fields['category'].widget.attrs['style'] = 'width: 100%;'
-    #     # form.base_fields['display_on'].widget.attrs['style'] = 'width: 100%;'
+    def get_form(self, request, obj=None, **kwargs):
+        form = super(Head_imgAdmin, self).get_form(request, obj, **kwargs)
+        form.base_fields['Menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
+        form.base_fields['Menu'].widget.attrs['style'] = 'width: 280px;'
+        # form.base_fields['about'].widget.attrs['style'] = 'width: 50%;'
+        # form.base_fields['category'].widget.attrs['style'] = 'width: 100%;'
+        # form.base_fields['display_on'].widget.attrs['style'] = 'width: 50%'
 
-    #     return form
+        return form
 # End of code modification
 
 
@@ -91,7 +92,6 @@ class product_detailAdmin(admin.ModelAdmin):
         # added by rohan- on 18/2/23,reason- to show parent linked menu name on submenu dropdown
         form.base_fields['subMenu'].label_from_instance = lambda inst: "{}:{}".format(inst.Menu.menu,inst.sub)
         form.base_fields['upper_menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
-      
         # form.base_fields['subMenu'].queryset = subMenu.objects.filter(='company')
         # form.fields['subMenu'].choices = [(None, 'Subscriber\'s Location')] + list(subMenu.objects.all().values_list('menu').order_by('menu'))
 

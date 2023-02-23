@@ -1,3 +1,4 @@
+
 @import "../../root.css";
 
 @font-face {
@@ -10,8 +11,7 @@
 .container {
     width: 100%;
     background-color: var(--bannerColor);
-    display: flex;
-    justify-content: center;
+
     /* height: 300px; */
     padding: 30px;
     /* background-color: var(--backgroundColorPrimary); */
@@ -21,11 +21,11 @@
 }
 
 .card {
-    /* position: relative; */
+    position: relative;
     margin: auto 0;
     /* width: 22%; */
-    min-height: 200px;
-    /* position: relative; */
+    min-height: 500px;
+    position: relative;
     z-index: 9999;
     background-color: black;
 }
@@ -39,7 +39,7 @@
 
 .sliderContainer {
     margin: auto;
-    width: 90%;
+    width: 100%;
     row-gap: 15px;
 
 }
@@ -118,19 +118,6 @@
     justify-content: center;
 }
 
-.video{
-    width:80vw;
-    height:76vh;
-    margin:auto;
-    background:#fff;}
-
-
-    @media (max-width:767px){
-         .video{
-            width: 90vw;
-            height: 30vh;
-         }
-    }
 /* category side */
 /* 
 .categoryContainer {
