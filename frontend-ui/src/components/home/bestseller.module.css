@@ -10,7 +10,7 @@
 
 .container {
     width: 100%;
-    background-color: var(--bannerColor);
+    background-color: var(--backgroundColorSecondary);
 
     /* height: 300px; */
     padding: 30px;

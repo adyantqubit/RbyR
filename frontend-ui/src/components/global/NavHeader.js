@@ -148,7 +148,7 @@ const Navbar = () => {
         {/* <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
             style={{ textDecoration: "none", textTransform: "uppercase", outline: "none", color: "black", fontSize: ".75rem", fontWeight: "300", marginTop: "8px" }}> */}
           <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
-            style={{ textDecoration: "none", textTransform: "uppercase", outline: "none", color: "black", fontSize: ".75rem", fontWeight: "300", marginTop: "8px" }}
+            style={{ textDecoration: "none", textTransform: "uppercase", outline: "none", color: "black", fontSize: ".85rem", fontWeight: "700", marginTop: "8px" }}
             target="_blank"
             >
               {/* End of code modification */}
@@ -204,7 +204,7 @@ const Navbar = () => {
                   <Link  className={style.al} to="/listing/world_of_rbyr" onClick={e=>setCategorySelected([])} style={{textTransform:"none"}}>WORLD OF RbyR</Link>
                 </li> */}
                     <li className={style.services}>
-                      <Link  className={style.al} to="/" style={{fontWeight:"450",fontSize:"16px"}}>HOME</Link>
+                      <Link  className={style.al} to="/" style={{fontSize:"16px"}}>HOME</Link>
                     </li>
 {                  console.log(menus)
 }
@@ -244,11 +244,11 @@ const Navbar = () => {
                 })}
 
                 <li className={style.services}>
-                  <Link  className={style.al} to="/listing/ready to wear/0" style={{fontWeight:"450",fontSize:"16px"}}>READY TO SHIP</Link>
+                  <Link  className={style.al} to="/listing/ready to wear/0" style={{fontSize:"16px"}}>READY TO SHIP</Link>
                 </li>
 
                 <li className={style.services}>
-                  <Link  className={style.al} to="/aboutRR" style={{fontWeight:"450",fontSize:"16px"}}>WORLD OF RbyR</Link>
+                  <Link  className={style.al} to="/aboutRR" style={{fontSize:"16px"}}>WORLD OF RbyR</Link>
                   {/* Commented by - Ashish Dewangan on 15-02-2023
                   Reason - To hide submenu of world of rbyr */}
                   {/*                 

@@ -1,4 +1,3 @@
-
 @import "../../root.css";
 
 @font-face {
@@ -10,7 +9,7 @@
 
 .container {
     width: 100%;
-    background-color: var(--bannerColor);
+    background-color: var(--videoBackgroundColor);
 
     /* height: 300px; */
     padding: 30px;

@@ -1,9 +1,9 @@
 :root {
     /* ---------------------------banner color ----------------- */ 
-    --bannerColor:white;
-
+    --bannerColor:#8e6ea6;
+    --videoBackgroundColor:#dfcfec;
     /* ---------------------------background color 1 ----------------- */ 
-    --backgroundColorPrimary: #63a688;
+    --backgroundColorPrimary: #e7dfe9;
     
 
     /* ---------------------------background color 2 ----------------- */ 
@@ -46,7 +46,7 @@
 /* ---------------------------button 1----------------- */
     --btnBackgroundColorPrimary:black;
     --btnTextColorPrimary:white;
-    --btnBorderColorPrimary:gold;
+    --btnBorderColorPrimary:black;
     --btnHoverBackgroundColorPrimary:#f7f7f7;
     --btnTextHoverColorPrimary:black;
     --btnBorderHoverColorPrimary:black;
@@ -57,7 +57,7 @@
     --btnBorderColorSecondary:black;
     --btnHoverBackgroundColorSecondary:black;
     --btnTextHoverColorSecondary:white;
-    --btnBorderHoverColorSecondary:gold;
+    --btnBorderHoverColorSecondary:black;
 
 /* ---------------------------input----------------- */
     --inputBackgroundColor:black;
