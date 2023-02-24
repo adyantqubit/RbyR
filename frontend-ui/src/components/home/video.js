@@ -24,12 +24,9 @@ const Video = (props) => {
 
   // }
   
- 
 
   const [showVideo, setShow] = useState(false)
   const [url, setUrl] = useState("")
-
-  console.log(props.url)
 
   const Popup = function popup(props) {
 
@@ -58,7 +55,7 @@ const Video = (props) => {
         <div className={style.sliderContainer}>
           <Carousel cols={3} rows={1} gap={10}>
 
-           {props.url.map(u=>
+           {props.url?.map(u=>
             
             <Carousel.Item
               className={style.card}

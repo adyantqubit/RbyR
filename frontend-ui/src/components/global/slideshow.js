@@ -3,6 +3,7 @@ import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
 import config from "../../api/config";
 import { getCardHomeImagesApi, picApi, SlideShowApi } from "../../api/service";
+import { CartState } from "../../context";
 import BestSeller from "../home/BestSeller";
 import Card from "../home/card";
 import CArd2 from "../home/card2";
@@ -14,7 +15,7 @@ import style from "./slideshow.module.css";
 
 function Slideshow() {
   const [index, setIndex] = useState(0);
-
+  const {video,setVideo} = CartState()
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   }; 
@@ -23,7 +24,6 @@ function Slideshow() {
   const [pay, setpay] = useState([]);
   const [gif,setGif]=useState(null)
   const [normal,setnormal]=useState(null)
-  const [video,setVideo]=useState(null)
 
 
   useEffect(() => {
@@ -109,8 +109,7 @@ function Slideshow() {
       <CArd2 imgArray={normal}/> 
        <Video url={video}/> */}
        <BestSeller/>
-       <Video url={video}/>
-      <Footer2 />
+       
       {/* Commented by - Ashish Dewangan on 15-02-2023
       Reason - To hide text that appear after footer */}
       {/* <Below /> */}

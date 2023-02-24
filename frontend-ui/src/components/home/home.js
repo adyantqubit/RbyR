@@ -14,9 +14,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import style from './home.module.css'
 import { notification } from "antd";
+import { CartState } from "../../context";
 export const Home = () => {
   // const [logoAndCover, setLogoAndCover] = useState([]);
-
+  const {video , setVideo}=CartState()
   // useEffect(() => {
   //   getLogoAndCoverDetail();
   // }, []);
@@ -33,7 +34,8 @@ export const Home = () => {
       <NavHeader/>
       <Slideshow />
       <ToastContainer />
-
+      <Video url={video}/>
+      <Footer2 />
       {/* <Card /> */}
       {/* <CArd2 /> */}
       {/* <Video /> */}
