@@ -19,7 +19,6 @@ const InstantFilter = () => {
         else {
             setCategorySelected(selectedCategory.filter(s => s !== e.currentTarget.textContent.toLowerCase()))
         }
-        console.log(selectedCategory)
     }
 
     return (

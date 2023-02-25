@@ -263,7 +263,9 @@ const Login = () => {
 						position="top center">
 						{server_error.tc?<span style={{color:"red",fontSize:"0.8rem"}}>check term and condition</span>:" "}
 					</Popup>:null} */}
-						<Link to="/terms" target="_blank" style={{fontSize:"12px",letterSpacing:"1.2px"}}> I accept terms and conditions.</Link>   
+						<Link to="/terms" onCLick={(e)=>{
+						  
+						}} target="_blank" title='Terms and Condition' style={{fontSize:"12px",letterSpacing:"1.2px"}}> I accept terms and conditions.</Link>   
 					</span>} />
 
 					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button style={{paddingTop:"0",marginTop:"0"}} class="butto" type='submit'>Sign up</button>}

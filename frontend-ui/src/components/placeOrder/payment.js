@@ -18,9 +18,9 @@ const Payment = () => {
   var [tick, setTick] = useState(false)
   var [tickop, setTickop] = useState(false)
   const [billingInfo, setBillingInfo] = useState(true)
-  const [required,setRequired]=useState(false)
+  const [required, setRequired] = useState(false)
 
-  const [buttonchng,setButtonchange]=useState(false)
+  const [buttonchng, setButtonchange] = useState(false)
 
   const { access_token, refresh_token } = getToken()
 
@@ -42,7 +42,7 @@ const Payment = () => {
 
   function selectop() {
     // tickop = !tickop
-    tickop=true
+    tickop = true
     //added by - rohan -on -21/2/23
     //reason- To set by default cash option selected 
     setTickop(tickop)
@@ -64,67 +64,67 @@ const Payment = () => {
 
     //commented by Rohan- 18/12/22
     //reason- adding -terms and condition check functionality
-    if(billingInfo==false){
+    if (billingInfo == false) {
       setRequired(true)
-    }else{
-    await cartStockRecheck(cart).then(r => {
+    } else {
+      await cartStockRecheck(cart).then(r => {
 
-      if (r.error) {
-        console.log("error occurs")
-        cartEnd = r.error
-        cartEnd.map(c => {
-          notification.error({
-            message: <div style={{ fontSize: "18px", color: "white" }}>Out of stock</div>,
-            description:
-              `Product ${c.name} size ${c.size} is out of stock `,
-            style: { backgroundColor: "#D2042D", color: "white" },
-            duration: 20,
-          });
-        })
-      }
-      else {
-        console.log("all done")
-        submitAll()
-      }
-    })
-  }
+        if (r.error) {
+          console.log("error occurs")
+          cartEnd = r.error
+          cartEnd.map(c => {
+            notification.error({
+              message: <div style={{ fontSize: "18px", color: "white" }}>Out of stock</div>,
+              description:
+                `Product ${c.name} size ${c.size} is out of stock `,
+              style: { backgroundColor: "#D2042D", color: "white" },
+              duration: 20,
+            });
+          })
+        }
+        else {
+          console.log("all done")
+          submitAll()
+        }
+      })
+    }
   }
 
   async function submitAll() {
     // if (checkoutDetails['payment'] && checkoutDetails['payment'].length > 0) {
-      checkoutDetails['payment'] = "onlinepay"
-      checkoutDetails['cart'] = cart
-      //  checkoutDetails['CouponDiscount']=afterColumnTotalOfferAdd(offer,cart,taxRate).coupon
-      checkoutDetails['ShippingCharges'] = afterColumnTotalOfferAdd(offer, cart, taxRate).shipping
-      checkoutDetails['SubTotal'] = afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal
-      checkoutDetails['tax'] = afterColumnTotalOfferAdd(offer, cart, taxRate).tax
-      checkoutDetails['grand'] = afterColumnTotalOfferAdd(offer, cart, taxRate).Grand
-      checkoutDetails['currency_sign'] = currency.sign
-      checkoutDetails['currency_value'] = currency.value
-      checkoutDetails["promocode"]=offer.promocode
-      checkoutDetails['date'] = new Date().toISOString().slice(0, 10)
-      console.log(checkoutDetails)
+    checkoutDetails['payment'] = "onlinepay"
+    checkoutDetails['cart'] = cart
+    //  checkoutDetails['CouponDiscount']=afterColumnTotalOfferAdd(offer,cart,taxRate).coupon
+    checkoutDetails['ShippingCharges'] = afterColumnTotalOfferAdd(offer, cart, taxRate).shipping
+    checkoutDetails['SubTotal'] = afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal
+    checkoutDetails['tax'] = afterColumnTotalOfferAdd(offer, cart, taxRate).tax
+    checkoutDetails['grand'] = afterColumnTotalOfferAdd(offer, cart, taxRate).Grand
+    checkoutDetails['currency_sign'] = currency.sign
+    checkoutDetails['currency_value'] = currency.value
+    checkoutDetails["promocode"] = offer.promocode
+    checkoutDetails['date'] = new Date().toISOString().slice(0, 10)
+    console.log(checkoutDetails)
 
 
-      await invoiceApi(checkoutDetails, access_token).then(r => {
+    await invoiceApi(checkoutDetails, access_token).then(r => {
 
-        if (r.error) {
-          notification.error({
-            message: <div style={{ fontSize: "18px", color: "white" }}>Sorry! Something went wrong. </div>,
-            description:
-              `Facing issue on generating bill please contact to Admin `,
-            style: { backgroundColor: "#D2042D", color: "white" },
-            duration: 20,
-          });
-        } else {
-          checkoutDetails['orderno'] = r.order_no
-          console.log(r)
-          sessionStorage.setItem('checkoutDetails', JSON.stringify(checkoutDetails))
-          deleteFromCart()
-          nav("/billing")
-        }
+      if (r.error) {
+        notification.error({
+          message: <div style={{ fontSize: "18px", color: "white" }}>Sorry! Something went wrong. </div>,
+          description:
+            `Facing issue on generating bill please contact to Admin `,
+          style: { backgroundColor: "#D2042D", color: "white" },
+          duration: 20,
+        });
+      } else {
+        checkoutDetails['orderno'] = r.order_no
+        console.log(r)
+        sessionStorage.setItem('checkoutDetails', JSON.stringify(checkoutDetails))
+        deleteFromCart()
+        nav("/billing")
+      }
 
-      })
+    })
 
     //commented by - Rohan
     //Reason - Commenting warning to select options
@@ -147,16 +147,16 @@ const Payment = () => {
         <div style={{ display: "flex", justifyContent: "space-between" }} onClick={selectop}>
           <span className={styles.userinfoText}>Pay via Scanner</span>
           {/* {tickop ? */}
-          {true?
+          {true ?
             <IoMdCheckmark style={{ fontSize: "25", color: "black", fontWeight: "20", backgroundColor: "transparent", border: "none" }} />
             :
             null}
         </div>
       </div>
-       {/*commenting by -rohan Changing position of cash and online option */}
+      {/*commenting by -rohan Changing position of cash and online option */}
 
       <div className={styles.boxpay} id="cash">
-        <div style={{ display: "flex", flexDirection:"column",justifyContent: "space-between" }} onClick={onSelect}>
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }} onClick={onSelect}>
           <strike className={styles.userinfoText}>Cash On Delivery</strike>
           <h6 style={{ fontSize: "12px" }}>(Currently not available)</h6>
 
@@ -167,7 +167,7 @@ const Payment = () => {
 
         </div>
       </div>
-      
+
 
       <div className={styles.boxpay} >
 
@@ -177,9 +177,9 @@ const Payment = () => {
       </div>
 
 
-      <div className={styles.columnitem1content1} style={{margin:"20px 0"}}>
+      <div className={styles.columnitem1content1} style={{ margin: "20px 0", justifyContent: "flex-start" }}>
         <Checkbox
-          icon={<Icon.FiCheck color="white" size={16} style={{background:"black"}}/>}
+          icon={<Icon.FiCheck color="white" size={16} style={{ background: "black" }} />}
           name="my-input"
           checked={billingInfo}
           onChange={(value, event) => {
@@ -191,16 +191,18 @@ const Payment = () => {
           style={{ cursor: "pointer", width: "17px", marginLeft: "10px" }}
           labelStyle={{ marginLeft: 5, userSelect: "none" }}
           label={<label className={styles.firstName} htmlFor='street'
-          style={{ fontSize: "14px", fontStyle: "bold", letterSpacing: "1.5px", paddingBottom: "2px" }}>
+            style={{ fontSize: "14px", fontStyle: "bold", letterSpacing: "1.5px", paddingBottom: "2px" }}>
             I agree to
-         <Link to="/terms" target="_blank" style={{fontSize:"15px",textDecoration:"underline"}}> 
-         {" "}Terms and conditions</Link></label>}
+          </label>
+          }
         />
-     {required?<Typography style={{color:"red",fontSize:"13px",marginLeft:"30px"}}>Please accept terms and conditions.</Typography>:null}
+        <Link to="/terms" target="_blank" style={{ fontSize: "15px", textDecoration: "underline", paddingTop: "5px" }}>
+          {" "} Terms and conditions</Link>
+        {required ? <Typography style={{ color: "red", fontSize: "13px", marginLeft: "30px" }}>Please accept terms and conditions.</Typography> : null}
       </div>
 
 
-      <button className={buttonchng? styles.userInfoButton3 :styles.userInfoButton} style={{margin:"15px 5px",width:"300px",minHeight:"50px"}} onClick={e => cartChecking()}>
+      <button className={buttonchng ? styles.userInfoButton3 : styles.userInfoButton} style={{ margin: "15px 5px", width: "300px", minHeight: "50px" }} onClick={e => cartChecking()}>
         PLACE YOUR ORDER
       </button>
     </div>)

@@ -44,7 +44,7 @@ const Categories = () => {
                     <div className={style.cardContainer}>
 
                         {/* listing all category of parent menu */}
-                        {list != null ? list[`${parent}`].map(s =>
+                        {list != null ? list[`${parent}`]?.map(s =>
                             <div className={style.card}>
                                 <img className={style.img} src={s.img} />
                                 <div className={style.absoluteBox}>

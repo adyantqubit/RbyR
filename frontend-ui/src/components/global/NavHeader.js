@@ -214,7 +214,7 @@ const Navbar = () => {
                   return <li id={`li${i}`} ref={refc} style={{ height: "40px" }} className={style.services} onMouseEnter={openc} onMouseLeave={closec}>
                     <Link className={style.al} to={
                       // checking length on menu if 0 then not showing submenu with image page
-                      m.shownMenuNImg&&m[`${parent}`]?.length>0?`/categories/${parent[0]}`:
+                      m.shownMenuNImg&&m[`${parent[0]}`]?.length>0?`/categories/${parent[0]}`:
                       m.shownInstFilter?`/listing/${parent[0]}/0`:
                       `/listing/${parent[0]}/0`
                       } onClick={e => setCategorySelected([])}>{parent[0]}</Link>

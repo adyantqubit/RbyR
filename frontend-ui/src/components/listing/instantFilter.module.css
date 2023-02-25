@@ -33,6 +33,14 @@
     font-weight: 500;
 }
 
+.category:hover{
+    cursor: pointer;
+}
+
+.pointedCategory:hover{
+    cursor: pointer;
+}
+
 .circle{
     display: flex;
     width: 8px;

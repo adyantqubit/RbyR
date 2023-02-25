@@ -34,8 +34,10 @@ export const Home = () => {
       <NavHeader/>
       <Slideshow />
       <ToastContainer />
+      <div className={style.foot}>
       <Video url={video}/>
       <Footer2 />
+      </div>
       {/* <Card /> */}
       {/* <CArd2 /> */}
       {/* <Video /> */}
