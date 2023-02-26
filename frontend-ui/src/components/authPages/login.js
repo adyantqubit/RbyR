@@ -264,7 +264,7 @@ const Login = () => {
 						{server_error.tc?<span style={{color:"red",fontSize:"0.8rem"}}>check term and condition</span>:" "}
 					</Popup>:null} */}
 						<Link to="/terms" onCLick={(e)=>{
-						  
+					      window.open("/terms").onload(e=>document.title="terms")
 						}} target="_blank" title='Terms and Condition' style={{fontSize:"12px",letterSpacing:"1.2px"}}> I accept terms and conditions.</Link>   
 					</span>} />
 
@@ -280,7 +280,7 @@ const Login = () => {
 					<label class="labe" htmlFor="ch" aria-hidden="true" tabIndex={-1} onClick={e=>window.scrollTo(0,0)}>Login</label>
 					{/* {error.none_field_errors? <Alert severity="error"  style={{margin:"0 45px"}}>{error.none_field_errors[0]}</Alert>:" "} */}
 
-					<input class="inpu"type="email" tabIndex={-1} style={{marginBottom:"0",background:"transparent"}} name="email" placeholder="E-mail*" required=""/>
+					<input class="inpu" type="email" tabIndex={-1} style={{marginBottom:"0",background:"transparent"}} name="email" placeholder="E-mail*" required=""/>
 					{error.email?<Typography style={{color:"red",paddingLeft:"50px",fontSize:"12px",}}>{error.email[0]}</Typography>:" "}
 					{error.none_field_errors? <Typography style={{color:"red",paddingLeft:"50px",fontSize:"12px",}}>{error.none_field_errors[0]}</Typography>:" "}
 

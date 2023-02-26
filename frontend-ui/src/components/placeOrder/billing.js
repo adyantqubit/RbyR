@@ -173,16 +173,16 @@ const Billing = () => {
 
               </div>
 
-              <div style={{ width: "100%", textAlign: "center", padding: "15px" }}>
+              <div style={{ width: "65%", textAlign: "center", padding: "15px" ,margin:"auto" }}>
                 <span className={styles.columnitem1head}>
-                  Shipping To-
+                  Shipping To-:
                 </span>
                 <span className={styles.userinfoText2}>{checkoutDetails.shippingData.firstname} {checkoutDetails.shippingData.lastname}, {checkoutDetails.shippingData.street} {checkoutDetails.shippingData.houseno}, {checkoutDetails.shippingData.city} -{checkoutDetails.shippingData.zipcode}, {checkoutDetails.shippingData.state} {checkoutDetails.shippingData.country}, {checkoutDetails.shippingData.number}
                 </span>
               </div>
 
               <div className={styles.billingmain}>
-                <div className={styles.billingheader}>
+                <div className={styles.billingheader} id="footer">
                   <span className={`${styles.columnitem1head} ${styles.header1}`} > Item Description</span>
                   <span className={`${styles.columnitem1head} ${styles.header2} ${styles.show}`} id="show" style={{ "textAlign": "center" }}> Quantity</span>
                   <span className={`${styles.columnitem1head} ${styles.header2} ${styles.show2}`} id="show2" style={{ "textAlign": "center" }}> Qty</span>
@@ -191,7 +191,7 @@ const Billing = () => {
 
                 </div>
                 {checkoutDetails.cart.map(c =>
-                  <div className={styles.billingheader2} style={{ marginTop: "5px", background: "var(--backgroundColorSecondary)" }}>
+                  <div className={styles.billingheader2} id="footer" style={{ marginTop: "5px", background: "var(--backgroundColorSecondary)" }}>
                     <span className={styles.protitle} > {c.title} ({ SizeGetter(c.size)})</span>
                     <span className={`${styles.protitle2} ${styles.show}`} > {c.quantity}</span>
                     <span className={`${styles.protitle2} ${styles.show2}`} > {c.quantity}</span>
@@ -200,17 +200,17 @@ const Billing = () => {
                   </div>
                 )}
 
-                <div className={styles.billingfooter}>
-                  <span className={`${styles.columnitem1head}`} >Subtotal -</span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ borderRight: "1px solid black", whiteSpace: "nowrap",border:"none",outline:"none" }}>{checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).subtotal * checkoutDetails.currency_value).toFixed(2)}</span>
+                <div className={styles.billingfooter} id="footer" >
+                  <span className={`${styles.columnitem1head}`} >Subtotal -: </span>
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ borderRight: "1px solid black", whiteSpace: "nowrap",border:"none",outline:"none",width:"auto" }}>{checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).subtotal * checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
 
                 <div className={styles.billingtexts}>
-                  <span className={`${styles.columnitem1head}`}  >Shipping charges -</span>
+                  <span className={`${styles.columnitem1head}`}  >Shipping charges -:</span>
                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto",border:"none",outline:"none" }} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).shipping * checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
                 <div className={styles.billingtexts}>
-                  <span className={`${styles.columnitem1head}`}  >GST Charges -</span>
+                  <span className={`${styles.columnitem1head}`}  >GST Charges -:</span>
                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto",border:"none",outline:"none" }} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).tax * checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
                 {/* Commented by - Ashish Dewangan on 15-02-2023
@@ -226,7 +226,7 @@ const Billing = () => {
                 </div>
                 
                 <div className={styles.billingtexts}>
-                  <span className={`${styles.columnitem1head}`}  >Grand Total - </span>
+                  <span className={`${styles.columnitem1head}`}  >Grand Total -: </span>
                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto",border:"none",outline:"none" }} > {checkoutDetails.currency_sign} 
                   {/* {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}
                   {/* {checkoutDetails.CouponDiscount ?((afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value)- (checkoutDetails.CouponDiscount* checkoutDetails.currency_value)).toFixed(2) :(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}

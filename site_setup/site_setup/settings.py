@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'phone_field',
+    'ckeditor'
 
 ]
 
@@ -96,6 +97,15 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+    
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'db.psql',
+    #     'USER': 'DB_USER_NAME',
+    #     'PASSWORD': 'DB_PASSWORD',
+    #     'HOST': 'localhost',
+    #     'PORT': 'PORT_NUMBER',
+    # }
 }
 
 REST_FRAMEWORK = {

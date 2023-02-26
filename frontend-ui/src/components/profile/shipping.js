@@ -271,7 +271,7 @@ const handleButtonClicknum = (msg) => {
                     <span>SHIPPING DETAILS</span>
                    
                     {shippingAddress!=null&&shippingAddress.length>0?
-                     <span className={styles.userinfoText} onClick={e=>jumpToEdit()}>
+                     <span className={styles.userinfoText} style={{textDecoration:"underline",cursor:"pointer"}} onClick={e=>jumpToEdit()}>
                         {shipEditcond&&shippingAddress.filter(s=>s.isSelected==true).length>0?"Edit Configuration":null}
                     </span> :
                     null}

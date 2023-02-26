@@ -1022,7 +1022,7 @@ class pageIndex(APIView):
             print(request.data['parent']=="best seller")
             # Add by Rohan - 30/12/22
             # Reason - Changing view all functionality becuase for requirement of sending header menu from backend
-            if (request.data['category']=="0" and request.data['parent']!="ready to wear" and request.data['parent']!="best seller"):
+            if (request.data['category']=="0" and request.data['parent']!="ready to ship" and request.data['parent']!="best seller"):
                 print("run1")
                 # products = product_detail.objects.filter(category="partywear") | product_detail.objects.filter(category="kurti") | product_detail.objects.filter(
                 #     category="casual") | product_detail.objects.filter(category="wedding_wear") | product_detail.objects.filter(category="formal")
@@ -1032,7 +1032,7 @@ class pageIndex(APIView):
             
             # Added by Rohan -5/1/22
             # Reason- Adding ready to wear functionality where all ready to ship product shown on this link
-            elif (request.data['parent']=="ready to wear" and request.data['category']=="0"):
+            elif (request.data['parent']=="ready to ship" and request.data['category']=="0"):
                 print("run2")
                 products=product_detail.objects.filter(ready_to_ship=True)
                 

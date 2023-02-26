@@ -35,35 +35,35 @@ notification.destroy()
                 return (
                   <div className={style.column}>
                     <span className={style.title}>{parse(termAndCondition.title1)}</span>
-                    <span className={style.content}>
-                      {parse(termAndCondition.content1)}
+                    <span dangerouslySetInnerHTML={{__html:termAndCondition.content1}} className={style.content}>
+                      {/* {parse(termAndCondition.content1)} */}
                     </span>
                     
                     <span className={style.subTitle}>
                       {parse(termAndCondition.subtitle1)}
                     </span>
                     
-                    <span className={style.content}>
-                    {parse(termAndCondition.content2)}
+                    <span dangerouslySetInnerHTML={{__html:termAndCondition.content2}} className={style.content}>
+                    {/* {parse(termAndCondition.content2)} */}
                     </span>
 
                     <span className={style.subTitle}>{parse(termAndCondition.subtitle2)}</span>
-                    <span className={style.content}>
-                    {parse(termAndCondition.content3)}
+                    <span dangerouslySetInnerHTML={{__html:termAndCondition.content3}} className={style.content}>
+                    {/* {parse(termAndCondition.content3)} */}
                     </span>
 
                     <span className={style.subTitle}>
                     {parse(termAndCondition.subtitle3)}
                     </span>
-                    <span className={style.content}>
-                    {parse(termAndCondition.content4)}
+                    <span dangerouslySetInnerHTML={{__html:termAndCondition.content4}} className={style.content}>
+                    {/* {parse(termAndCondition.content4)} */}
                     </span>
 
                     <span className={style.subTitle}>
                     {parse(termAndCondition.subtitle4)}
                     </span>
-                    <span className={style.content}>
-                    {parse(termAndCondition.content5)}
+                    <span dangerouslySetInnerHTML={{__html:termAndCondition.content5}} className={style.content}>
+                    {/* {parse(termAndCondition.content5)} */}
                     </span>
                   </div>
                 );

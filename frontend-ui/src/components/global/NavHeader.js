@@ -244,7 +244,7 @@ const Navbar = () => {
                 })}
 
                 <li className={style.services}>
-                  <Link  className={style.al} to="/listing/ready to wear/0" style={{fontSize:"16px"}}>READY TO SHIP</Link>
+                  <Link  className={style.al} to="/listing/ready to ship/0" style={{fontSize:"16px"}}>READY TO SHIP</Link>
                 </li>
 
                 <li className={style.services}>

@@ -36,22 +36,22 @@ const Contact = () => {
                     <span className={style.head}>
                       {parse(contact.subtitle1)}
                     </span>
-                    <span className={style.body}>
-                      {parse(contact.content1)}
+                    <span dangerouslySetInnerHTML={{__html:contact.content1}} className={style.body}>
+                      {/* {parse(contact.content1)} */}
                     </span>
 
                     <span className={style.head2}>
                       {parse(contact.subtitle2)}
                     </span>
-                    <span className={style.body}>
-                      {parse(contact.content2)}
+                    <span dangerouslySetInnerHTML={{__html:contact.content2}} className={style.body}>
+                      {/* {parse(contact.content2)} */}
                     </span>
 
                     <span className={style.head2}>
                       {parse(contact.subtitle3)}
                     </span>
-                    <span className={style.body}>
-                      {parse(contact.content3)}
+                    <span  dangerouslySetInnerHTML={{__html:contact.content3}} className={style.body}>
+                      {/* {parse(contact.content3)} */}
                     </span>
                   </div>
                   <div className={`${style.column} ${style.col2}`}>

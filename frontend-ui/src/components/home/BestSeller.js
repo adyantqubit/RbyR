@@ -9,7 +9,7 @@ import config from '../../api/config'
 // import Carousel from 'react-grid-carousel'
 
 const BestSeller = () => {
-    const { product, setProduct } = CartState()
+    const { product, setProduct,currency } = CartState()
     const [bestProducts, setbest] = useState([])
     const [imageSwap, setImageSwap] = useState(false)
     const nav = useNavigate()
@@ -59,8 +59,8 @@ const BestSeller = () => {
                                     onMouseEnter={e => swapImage(i)}
                                     onMouseLeave={e => swapImage(i)} />
                                 <div className={style.absolute}>
-                                    {/* <div className={style.name}>metallic draped dress</div>
-                                    <button className={style.button}>{`view product >>`}</button> */}
+                                    <div className={style.name}>{m.title}</div>
+                                    <div className={style.name}>{currency.sign}{m.price*currency.value}</div>
                                 </div>
                             </div>
                         // <Carousel.Item
@@ -80,8 +80,8 @@ const BestSeller = () => {
                                     className={style.img}
                                 />
                                 <div className={style.absolute}>
-                                    {/* <div className={style.name}>metallic draped dress</div>
-                                    <button className={style.button}>{`view product >>`}</button> */}
+                                    <div className={style.name}>{m.title}</div>
+                                    <div className={style.name}>{currency.sign}{m.price*currency.value}</div>
                                 </div>
                             </div>
                     })}

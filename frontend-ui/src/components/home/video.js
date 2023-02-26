@@ -79,12 +79,11 @@ function newFunction(props, setShow, setUrl, showVideo) {
 
     {props.url?.map(u => <Carousel.Item
       className={style.card}
-    >
+    > 
       <div style={{ position: "relative" }}>
         <iframe style={{ minWidth: "25vw", minHeight: "30vh" }} src={`${u.Video_url}?autoplay=1&showinfo=0&controls=0&modestbranding=1&mute=1`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <div class={style.overlay} onClick={e => { setShow(true); setUrl(u.Video_url); console.log(showVideo); } }></div>
       </div>
-
     </Carousel.Item>
     )}
 

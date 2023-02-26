@@ -203,7 +203,7 @@ const ShrinkHeader = () => {
               var parent = Object.keys(m)
 
               return <Link to={
-                  m.shownMenuNImg &&m[`${parent}`]?.length>0? `/categories/${parent[0]}` :
+                  m.shownMenuNImg &&m[`${parent[0]}`]?.length>0? `/categories/${parent[0]}` :
                   m.shownInstFilter ? `/listing/${parent[0]}/0` :
                   `/listing/${parent[0]}/0`
               } className={style.drawerMenu}>
@@ -225,7 +225,7 @@ const ShrinkHeader = () => {
             })
           }
 
-          <Link to={`/listing/ready to wear/0`} className={style.drawerMenu}>
+          <Link to={`/listing/ready to ship/0`} className={style.drawerMenu}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer() }}>
               <span>READY TO SHIP</span> <AiOutlineRight />
             </div>

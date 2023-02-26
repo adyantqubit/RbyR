@@ -217,6 +217,11 @@ opacity: 1;
         justify-content: space-between;
     }
 
+    #footer{
+        width: 87vw !important;
+        margin: auto;
+    }
+
     body * {
       visibility: hidden;
     }

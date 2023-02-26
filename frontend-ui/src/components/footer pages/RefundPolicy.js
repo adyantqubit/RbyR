@@ -33,16 +33,16 @@ const RefundPolicy = () => {
                     <span className={style.title}>
                       {parse(refundPolicy.title1)}
                     </span>
-                    <span className={style.content}>
-                      {parse(refundPolicy.content1)}
+                    <span  dangerouslySetInnerHTML={{__html:refundPolicy.content1}} className={style.content}>
+                      {/* {parse(refundPolicy.content1)} */}
                     </span>
 
                     <span className={style.subTitle}>
                       {parse(refundPolicy.subtitle1)}
                     </span>
 
-                    <span className={style.content}>
-                      {parse(refundPolicy.content2)}
+                    <span dangerouslySetInnerHTML={{__html:refundPolicy.content2}} className={style.content}>
+                      {/* {parse(refundPolicy.content2)} */}
                     </span>
                     <br />
                   </div>

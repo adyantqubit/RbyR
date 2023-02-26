@@ -37,15 +37,15 @@ const DeliveryPolicy = () => {
                     <span className={style.title}>
                       {parse(deliveryAndShippingPolicy.title1)}
                     </span>
-                    <span className={style.content}>
-                      {parse(deliveryAndShippingPolicy.content1)}
+                    <span  dangerouslySetInnerHTML={{__html:deliveryAndShippingPolicy.content1}} className={style.content}>
+                      {/* {parse(deliveryAndShippingPolicy.content1)} */}
                     </span>
                     <br />
                     <span className={style.title}>
                       {parse(deliveryAndShippingPolicy.title2)}
                     </span>
-                    <span className={style.content}>
-                      {parse(deliveryAndShippingPolicy.content2)}
+                    <span dangerouslySetInnerHTML={{__html:deliveryAndShippingPolicy.content2}} className={style.content}>
+                      {/* {parse(deliveryAndShippingPolicy.content2)} */}
                     </span>
                   </div>
                 );

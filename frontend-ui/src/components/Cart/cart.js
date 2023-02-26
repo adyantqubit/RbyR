@@ -621,7 +621,7 @@ const CartSItem = (props) => {
                 </div>
 
                 <div className={styles.buttons} style={{ flexDirection: "column" }}>
-                  <buton className={style.shopbtn2} style={{ width: "100%", margin: "5px" }} onClick={e => cartChecking()} >GO TO CHECKOUT</buton>
+                  <buton className={style.shopbtn1} style={{ width: "100%", margin: "5px" }} onClick={e => cartChecking()} >GO TO CHECKOUT</buton>
                   <button className={style.shopbtn1} style={{ width: "100%", margin: "5px" }} onClick={e => { nav('/') }}>CONTINUE SHOPPING</button>
 
                 </div>
@@ -667,7 +667,7 @@ const CartSItem = (props) => {
                 <div style={{display:"flex"}}>
                 <BsDot fontSize={20}/>
                 <li style={{color:"var(--textColorSecondary)", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
-                 <Link to="/custom" style={{color:"var(--textColorSecondary)", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>Contact Us </Link> | <Link to="/delivery-policy" style={{ color:"var(--textColorSecondary)", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>Shipping Policy</Link>
+                 <Link to="/custom" style={{color:"var(--textColorSecondary)",textDecoration:"underline", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>Contact Us </Link> | <Link to="/delivery-policy" style={{ color:"var(--textColorSecondary)",textDecoration:"underline", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>Shipping Policy</Link>
                 </li>
                 </div>
               </ul>

@@ -141,7 +141,7 @@ const UserProfile = () => {
     if(data.get('number').split(" ").join("").length<11){
       isAlertVisiblenum = true
     setIsAlertVisiblenum(true);
-    setnumerror("Minimum 8 digit required")
+    setnumerror("Minimum 8 digits required")
     return false
     }
     //commented by Rohan- date 14/12/22
@@ -330,7 +330,7 @@ const UserProfile = () => {
 
                                 <input className={styles.inputr} type={showNewPass ? "text" : "password"} name="oldpswd" required onChange={e => { if (e.target.value.length > 0) setVisiblePassreg(true); else setVisiblePassreg(false) }} />
 
-                                {error.non_field_errors && error.non_field_errors[0] == "Old password is Incorect" ? <Typography style={{ color: "red", fontSize: 12 }}>{error.non_field_errors[0]}</Typography> : ""}
+                                {error.non_field_errors && error.non_field_errors[0] == "Old password is Incorrect" ? <Typography style={{ color: "red", fontSize: 12 }}>{error.non_field_errors[0]}</Typography> : ""}
 
                                 {visiblepassReg ? showNewPass ? <AiFillEye style={{ fontSize: "20px" }} onClick={e => setNewPass(false)} /> : <AiFillEyeInvisible style={{ fontSize: "20px" }} onClick={e => setNewPass(true)} /> : null}
 
@@ -364,7 +364,7 @@ const UserProfile = () => {
 
                                 {visiblepassReg3 ? showNewPass3 ? <AiFillEye style={{ fontSize: "20px" }} onClick={e => setNewPass3(false)} /> : <AiFillEyeInvisible style={{ fontSize: "20px" }} onClick={e => setNewPass3(true)} /> : null}
 
-                                {error.non_field_errors && error.non_field_errors[0] == "Password and confirm Password doesn't match" ? <Typography style={{ color: "red", fontSize: 12 }}>{error.non_field_errors[0]}</Typography> : " "}
+                                {error.non_field_errors && error.non_field_errors[0] == "New password and confirm password doesn't match" ? <Typography style={{ color: "red", fontSize: 12 }}>{error.non_field_errors[0]}</Typography> : " "}
                               </div>
                               {/* {error.password2?<Typography style={{color:"red",fontSize:10}}>{error.password2[0]}</Typography>:" "} */}
 
@@ -378,9 +378,7 @@ const UserProfile = () => {
                           <button className={styles.userInfoButton} style={{ width: "48%" }} type="submit">
                             UPDATE PROFILE
                           </button>
-                          <div style={{ fontSize: "16px", letterSpacing: "1.7px", 
-                                        fontStyle: "bold", cursor: "pointer", width: "50%", 
-                                        textAlign: "center", marginTop: "10px" }} 
+                          <div className={styles.userInfoButton} 
                             onClick={e =>
                             { setShowEditable(false)
                               window.scrollTo(0,0)

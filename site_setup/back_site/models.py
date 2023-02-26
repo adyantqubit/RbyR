@@ -10,6 +10,10 @@ from phone_field import PhoneField
 from django.core.validators import MinLengthValidator,MaxValueValidator
 from django.core.exceptions import ValidationError
 from django.utils.timezone import now
+from ckeditor.fields import RichTextField
+
+
+
 
 import datetime
 
@@ -73,7 +77,7 @@ def validate_title(value):
 # Create your models here.
 
 class MyUserManager(BaseUserManager):
-    def create_user(self, email, name,tc,contact_number, password=None,password2=None):
+    def create_user(self, email, name,tc,is_active,contact_number, password=None,password2=None):
         """
         Creates and saves a User with the given email, date of
         birth and password.
@@ -86,13 +90,14 @@ class MyUserManager(BaseUserManager):
             name=name,
             contact_number=contact_number,
             tc=tc,
+            is_active=is_active
         )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, name,tc,contact_number, password=None):
+    def create_superuser(self, email, name,tc,is_active,contact_number, password=None):
         """
         Creates and saves a superuser with the given email, date of
         birth and password.
@@ -103,6 +108,7 @@ class MyUserManager(BaseUserManager):
             name=name,
             contact_number=contact_number,
             tc=tc,
+            is_active=is_active
         )
         user.is_admin = True
         user.save(using=self._db)
@@ -124,7 +130,7 @@ class User(AbstractBaseUser):
     objects = MyUserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['name','tc','contact_number']
+    REQUIRED_FIELDS = ['name','tc','contact_number','is_active']
 
     def __str__(self):
         return self.email
@@ -177,7 +183,9 @@ class Menus(models.Model):
             if pro.upper_menu==self:
                pro.category=self.menu
                pro.save()
+               super().save(*args,**kwargs)    
             super().save(*args,**kwargs)     
+ 
             
             #Added by Rohan-23/2/23
             #Reason- if we change menu name then it should also reflect to cover image category   
@@ -185,7 +193,9 @@ class Menus(models.Model):
             if slide.Menu==self:
                slide.category=self.menu      
                slide.save() 
-            super().save(*args,**kwargs)    
+               super().save(*args,**kwargs) 
+            super().save(*args,**kwargs)     
+
         super().save(*args,**kwargs)   
         #End of code
     
@@ -212,7 +222,9 @@ class subMenu(models.Model):
                pro.save()
                #Added by -Rohan-23/2/23
                #Reason-Calling super.save method 2 times for saving issue
+               super().save(*args,**kwargs) 
             super().save(*args,**kwargs)         
+        
         super().save(*args,**kwargs)  
              
     
@@ -638,7 +650,7 @@ class ImportantNoticeToBuy(models.Model):
 class FAQ(models.Model):
     qno=models.AutoField(primary_key=True)
     question=models.CharField(max_length=255)
-    answer=models.TextField()
+    answer=RichTextField(null=True,blank=True)
 
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
@@ -653,11 +665,11 @@ class FAQ(models.Model):
 #Reason - To create contact us table
 class ContactUs(models.Model):
     subtitle1=models.CharField(max_length=255)
-    content1=models.TextField()
+    content1=RichTextField(null=True,blank=True)
     subtitle2=models.CharField(max_length=255)
-    content2=models.TextField()
+    content2=RichTextField(null=True,blank=True)
     subtitle3=models.CharField(max_length=255)
-    content3=models.TextField()
+    content3=RichTextField(null=True,blank=True)
     contactUsImage=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100,default='None/a1.jpg')
 
@@ -674,15 +686,15 @@ class ContactUs(models.Model):
 #Reason - To create T&C table
 class TermAndCondition(models.Model):
     title1=models.CharField(max_length=255)
-    content1=models.TextField()
+    content1=RichTextField(null=True,blank=True)
     subtitle1=models.CharField(max_length=255)
-    content2=models.TextField()
+    content2=RichTextField(null=True,blank=True)
     subtitle2=models.CharField(max_length=255)
-    content3=models.TextField()
+    content3=RichTextField(null=True,blank=True)
     subtitle3=models.CharField(max_length=255)
-    content4=models.TextField()
+    content4=RichTextField(null=True,blank=True)
     subtitle4=models.CharField(max_length=255)
-    content5=models.TextField()
+    content5=RichTextField(null=True,blank=True)
 #End of code addition
 
     #Added by Ashish Dewangan on 28-11-2022
@@ -715,9 +727,9 @@ class PrivacyPolicy(models.Model):
 #Reason - To create T&C table
 class DeliveryAndShippingPolicy(models.Model):
     title1=models.CharField(max_length=255)
-    content1=models.TextField()
+    content1=RichTextField(null=True,blank=True)
     title2=models.CharField(max_length=255)
-    content2=models.TextField()
+    content2=RichTextField(null=True,blank=True)
 
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
@@ -732,9 +744,9 @@ class DeliveryAndShippingPolicy(models.Model):
 #Reason - To create Refund policy table
 class RefundPolicy(models.Model):
     title1=models.CharField(max_length=255)
-    content1=models.TextField()
+    content1=RichTextField(null=True,blank=True)
     subtitle1=models.CharField(max_length=255)
-    content2=models.TextField()
+    content2=RichTextField(null=True,blank=True)
 #End of code addition
 
     #Added by Ashish Dewangan on 28-11-2022
@@ -749,9 +761,9 @@ class RefundPolicy(models.Model):
 #Reason - To create Cancellation policy table
 class CancellationPolicy(models.Model):
     title1=models.CharField(max_length=255)
-    content1=models.TextField()
+    content1=RichTextField(null=True,blank=True)
     subtitle1=models.CharField(max_length=255)
-    content2=models.TextField()
+    content2=RichTextField(null=True,blank=True)
 
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name

@@ -59,8 +59,8 @@ const FAQ = () => {
                         <div className={`${style.itemText} ${style.question}`} id={faq.qno} onClick={showHideAnswer}>
                           {serialNumber}. {faq.question}
                         </div>
-                        <div className={`${style.itemText} ${style.answer} ${style.hideAnswer}`} id={faq.qno+'_child'}>
-                          { parse(faq.answer)}
+                        <div dangerouslySetInnerHTML={{__html:faq.answer}} className={`${style.itemText} ${style.answer} ${style.hideAnswer}`} id={faq.qno+'_child'}>
+                          {/* { parse(faq.answer)} */}
                           
                         </div>
                         <div style={{display:'none'}}>

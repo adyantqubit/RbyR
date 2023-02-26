@@ -33,16 +33,16 @@ const CancellationPolicy = () => {
                     <span className={style.title}>
                       {parse(cancellationPolicy.title1)}
                     </span>
-                    <span className={style.content}>
-                      {parse(cancellationPolicy.content1)}
+                    <span dangerouslySetInnerHTML={{__html:cancellationPolicy.content1}} className={style.content}>
+                      {/* {parse(cancellationPolicy.content1)} */}
                     </span>
 
                     <span className={style.subTitle}>
                       {parse(cancellationPolicy.subtitle1)}
                     </span>
 
-                    <span className={style.content}>
-                      {parse(cancellationPolicy.content2)}
+                    <span dangerouslySetInnerHTML={{__html:cancellationPolicy.content2}} className={style.content}>
+                      {/* {parse(cancellationPolicy.content2)} */}
                     </span>
 
                     <br />

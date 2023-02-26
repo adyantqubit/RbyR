@@ -314,7 +314,7 @@ export function DrawerFooter() {
 
           <div className={style.buttons} >
             <button className={style.shopbtn1} onClick={e => setCartDrawer(false)}>CONTINUE SHOPPING</button>
-            <buton className={style.shopbtn2} onClick={e => { cartChecking() }}>GO TO CHECKOUT</buton>
+            <buton className={style.shopbtn1} onClick={e => { cartChecking() }}>GO TO CHECKOUT</buton>
           </div>
         </div>
       </div> : null}
