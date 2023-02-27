@@ -72,7 +72,7 @@ class UserRegistrationView(APIView):
     renderer_classes = [UserRenderer]
 
     def post(self, request, format=None):
-
+        print(request.data)
         serializer = UserRegistrationSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             user = serializer.save()
@@ -960,9 +960,9 @@ class CustomTailoredFormView(APIView):
 # Reason - To send whatsapp contact number to frontend
 
 
-class WhatsappContactView(APIView):
+class LogoAndNumberView(APIView):
     def get(self, request):
-        WhatsappContactDetail = WhatsappContact.objects.all().values()
+        WhatsappContactDetail = LogoAndNumber.objects.all().values()
         return Response(WhatsappContactDetail)
 # End of code addition
 

@@ -514,6 +514,7 @@ class StoreLocatorAdmin(admin.ModelAdmin):
         return True if StoreLocator.objects.count() < 2  else False
     def get_form(self, request, obj=None, **kwargs):
         form = super(StoreLocatorAdmin, self).get_form(request, obj, **kwargs)
+        form.base_fields['address'].widget.cha
         form.base_fields['city'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['address'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['phoneNumber'].widget.attrs['style'] = 'width: 100%;'
@@ -848,13 +849,13 @@ class CustomTailoredFormAdmin(admin.ModelAdmin):
     #Reason - To send whatsapp contact number to front end
     #admin.site.register(WhatsappContact) 
     #End of code addition 
-@admin.register(WhatsappContact)    
-class WhatsappContactAdmin(admin.ModelAdmin):
+@admin.register(LogoAndNumber)    
+class LogoAndNumberAdmin(admin.ModelAdmin):
     list_display=("whatsappNmber",)
     def has_add_permission(self, request):
-        return not WhatsappContact.objects.exists() 
+        return not LogoAndNumber.objects.exists() 
     def get_form(self, request, obj=None, **kwargs):
-        form = super(WhatsappContactAdmin, self).get_form(request, obj, **kwargs)
+        form = super(LogoAndNumberAdmin, self).get_form(request, obj, **kwargs)
         form.base_fields['whatsappNmber'].widget.attrs['style'] = 'width: 100%;'
         return form    
  # End of code modification
@@ -868,22 +869,22 @@ class UserModelAdmin(BaseUserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('name','email', 'tc','contact_number', 'is_admin')
-    list_filter = ('is_admin',)
+    list_display = ('name','email', 'tc','contact_number', 'is_admin','is_active')
+    list_filter = ('is_admin','is_active')
     ordering=("name",)
     search_fields=("name","email")
     list_per_page=10
     fieldsets = (
         ('user Credentials', {'fields': ('email', 'password')}),
         ('Personal info', {'fields': ('name','tc','contact_number')}),
-        ('Permissions', {'fields': ('is_admin',)}),
+        ('Permissions', {'fields': ('is_admin','is_active')}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # overrides get_fieldsets to use this attribute when creating a user.
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'name','tc','contact_number', 'password1', 'password2'),
+            'fields': ('email', 'name','tc','is_active','contact_number', 'password1', 'password2'),
         }),
     )
     search_fields = ('email',)

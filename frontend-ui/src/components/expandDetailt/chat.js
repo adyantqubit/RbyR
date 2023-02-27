@@ -7,14 +7,16 @@ import 'react-chat-widget/lib/styles.css';
 import { getWhatsappContactDetail } from '../../api/service';
 
 import logoavatar from "../../assets/photos/rbyr_logo2.jpg"
+import config from '../../api/config';
 
 const Chat = () => {
   const [whatsappContactNumber, setWhatsappContactNumber] = useState(false);
-
+  const [logo,setLogo]=useState(null)
   const getWhatsappContactNumber = async () => {
     const whatsappContactNumberData = await getWhatsappContactDetail();
     if (whatsappContactNumberData) {
       setWhatsappContactNumber(whatsappContactNumberData[0].whatsappNmber);
+      setLogo(whatsappContactNumberData[0].logo)
     }
   };
 
@@ -63,7 +65,7 @@ const Chat = () => {
   //  console.log(document.getElementsByClassName('floating-whatsapp-button')[0].childNodes[0].style.animation)
   }}>
   <FloatingWhatsApp
-  avatar={logoavatar}
+  avatar={logo?config.apiBaseURL+ logo:logoavatar}
   phoneNumber={`+91 ${whatsappContactNumber}`} 
   onSubmit	={e=>handleNewUserMessage(e)}
   accountName="RBYR Exclusive"

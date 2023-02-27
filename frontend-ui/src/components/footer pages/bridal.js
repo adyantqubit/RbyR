@@ -65,6 +65,7 @@ const Bridal = () => {
             'Bridal details posted successfully',
           onClick: () => {
           },
+          key:1,
         });
         // bridalForm.resetFields();
       }else{
@@ -74,6 +75,7 @@ const Bridal = () => {
             'Some problem occured while posting the data',
           onClick: () => {
           },
+          key:1,
         });
       }
       

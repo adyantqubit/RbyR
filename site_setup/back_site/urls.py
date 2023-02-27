@@ -157,7 +157,7 @@ urlpatterns = [
     
     #Added by Ashish Dewangan on 24-11-2022
     #Reason - To send whatsapp contact number to front end
-    path('whatsapp-contact-number/',WhatsappContactView.as_view()),
+    path('whatsapp-contact-number/',LogoAndNumberView.as_view()),
     #End of code addition
     
     #Added by Rohan kansari on 24-11-2022

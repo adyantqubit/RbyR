@@ -18,6 +18,12 @@ from rest_framework import serializers
 from django.contrib.auth.hashers import check_password
 
 
+def validate(value):
+    if User.objects.exists(value):
+        return "message"
+    else:
+        raise ValidationError("Price can not be more than 99999999.")     
+
 
         
 class product_serializer(serializers.ModelSerializer):
@@ -39,8 +45,9 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         model = User
         fields = ('email','name','password','password2','contact_number','tc')
         extra_kwargs = {
-            'password':{'write_only':True}
+            'password':{'write_only':True},
         }
+        
 
     def validate(self, attrs):
         if attrs['password'] != attrs['password2']:
@@ -49,6 +56,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return User.objects.create_user(**validated_data)
+    
         
         
 class UserLoginSerializer(serializers.ModelSerializer):
@@ -57,7 +65,8 @@ class UserLoginSerializer(serializers.ModelSerializer):
         model=User
         fields=['email','password']
         extra_kwargs = {'password': {'error_messages': {'blank': 'This field cannot be left blank.'}}}
-
+    
+        
         
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:

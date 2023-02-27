@@ -48,6 +48,7 @@ function Footer() {
               'Subscribed to email updates successfully',
             onClick: () => {
             },
+            key:1
           });
         }else{
           if(emailData.error){
@@ -57,6 +58,8 @@ function Footer() {
                 emailData.error,
               onClick: () => {
               },
+              key:1
+
             });
           }else{
             notification.open({
@@ -65,6 +68,8 @@ function Footer() {
                 'Email subscription failed',
               onClick: () => {
               },
+              key:1
+
             });
           }
           
@@ -77,6 +82,8 @@ function Footer() {
           'Please provide a valid email format',
         onClick: () => {
         },
+        key:1
+
       });
     }
  
@@ -220,7 +227,7 @@ function Footer() {
         <div className={style.column5}>
           <h1 className={style.heading}>SIGN UP FOR UPDATES</h1>
           <div
-            style={{ display: "flex", flexDirection: "row", marginTop: "30px" }}
+            style={{ display: "flex", flexDirection: "row", marginTop: "10px" }}
           >
             <input
               type="email"

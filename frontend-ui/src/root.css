@@ -11,7 +11,7 @@
     
     /* ---------------------------text 1----------------- */
     --textColorPrimary: black;
-    --textHoverColorPrimary:rgb(250, 216, 114);
+    --textHoverColorPrimary:#878787;
 
     /* ---------------------------text 2----------------- */
     --textColorSecondary:black;
@@ -77,6 +77,6 @@
 
     --letterSpacingText:1.7px;
     --letterSpacingTitle:2.4px;
-    --letterSpacingHeading:3.3px
+    --letterSpacingHeading:3.3px;
 
   }

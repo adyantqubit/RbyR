@@ -57,7 +57,7 @@
 .menu{
     font-size: 24px;
     width: 100%;
-    color:var(--textColorSecondary);
+    color:#f7f7f7;
     letter-spacing: 1.7px;
 }
 

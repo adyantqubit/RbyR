@@ -472,7 +472,7 @@
 
   .button {
     width:40%;
-    height:50px;
+    max-height:50px;
     margin-top: 3%;
     display: flex;
     /* align-self: flex-start; */
@@ -497,7 +497,7 @@
 
   .button2 {
     width:40%;
-    height:50px;
+    max-height:50px;
     margin-top: 3%;
     display: flex;
     /* align-self: flex-start; */
@@ -691,7 +691,7 @@
   }
 
   .sizeMargin{
-    margin-top:0px
+    margin-top:3px
   }
 
   .modalStyle{

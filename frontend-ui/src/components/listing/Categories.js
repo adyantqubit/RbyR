@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../global/NavHeader'
 import style from './category.module.css'
 import image from '../../assets/photos/model.jpg'
+import config from '../../api/config'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { CartState } from '../../context'
 import Footer from '../global/footer'
@@ -46,7 +47,7 @@ const Categories = () => {
                         {/* listing all category of parent menu */}
                         {list != null ? list[`${parent}`]?.map(s =>
                             <div className={style.card}>
-                                <img className={style.img} src={s.img} />
+                                <img className={style.img} src={ config.apiBaseURL+ s.img} />
                                 <div className={style.absoluteBox}>
                                     <div className={style.menu}>{s.category}</div>
                                     <button className={style.button} onClick={e => jumpIntoProductPage(s)}>View Products</button>

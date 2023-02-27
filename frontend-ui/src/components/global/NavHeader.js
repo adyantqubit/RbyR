@@ -116,17 +116,17 @@ const Navbar = () => {
   }
 
   useEffect(() => {
-    getLogoAndCoverDetail();
+    // getLogoAndCoverDetail();
     getWhatsappContactNumber()
   }, []);
 
-  const getLogoAndCoverDetail = async () => {
+  // const getLogoAndCoverDetail = async () => {
 
-    const coverAndLogoData = await getLogoAndCover();
-    if (coverAndLogoData) {
-      setLogo(coverAndLogoData[0].logo);
-    }
-  };
+  //   const coverAndLogoData = await getLogoAndCover();
+  //   if (coverAndLogoData) {
+  //     setLogo(coverAndLogoData[0].logo);
+  //   }
+  // };
 
   const [whatsappContactNumber, setWhatsappContactNumber] = useState(false);
 
@@ -134,6 +134,8 @@ const Navbar = () => {
     const whatsappContactNumberData = await getWhatsappContactDetail();
     if (whatsappContactNumberData) {
       setWhatsappContactNumber(whatsappContactNumberData[0].whatsappNmber);
+      setLogo(whatsappContactNumberData[0].logo);
+
     }
   };
 

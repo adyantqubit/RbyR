@@ -101,9 +101,9 @@ export const Profile = () => {
 
             {/* <div className={style.column1text}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY SHIPPING DETAILS</Link></div> */}
 
-            {localStorage.getItem('access_token') ? <li className={style.l} style={{ marginLeft: "-30px" }}>
+            {localStorage.getItem('access_token') ? <li className={style.l} style={{ marginLeft: "-30px",cursor:"pointer" }}>
 
-              <span className={style.a} onClick={e => seLogoutAction(true)} >Logout</span>
+              <span className={style.a}  onClick={e => seLogoutAction(true)} >Logout</span>
 
             </li> : null}
 

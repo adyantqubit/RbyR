@@ -59,23 +59,25 @@ const ShrinkHeader = () => {
 
   useEffect(() => {
     getWhatsappContactNumber()
-    getLogoAndCoverDetail();
+    // getLogoAndCoverDetail();
   }, [])
 
   const [whatsappContactNumber, setWhatsappContactNumber] = useState(false);
 
-  const getLogoAndCoverDetail = async () => {
+  // const getLogoAndCoverDetail = async () => {
 
-    const coverAndLogoData = await getLogoAndCover();
-    if (coverAndLogoData) {
-      setLogo(coverAndLogoData[0].logo);
-    }
-  };
+  //   const coverAndLogoData = await getLogoAndCover();
+  //   if (coverAndLogoData) {
+  //     setLogo(coverAndLogoData[0].logo);
+  //   }
+  // };
 
   const getWhatsappContactNumber = async () => {
     const whatsappContactNumberData = await getWhatsappContactDetail();
     if (whatsappContactNumberData) {
       setWhatsappContactNumber(whatsappContactNumberData[0].whatsappNmber);
+      setLogo(whatsappContactNumberData[0].logo);
+
     }
   };
 

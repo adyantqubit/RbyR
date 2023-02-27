@@ -380,7 +380,7 @@ const ListPage = () => {
               </div>
             }
 
-            {nullpage ?
+            {nullpage && CategoryProduct.length==0?
               <div style={{ width: "100%", textAlign: "center" }}>
                 <div className={style.noresult} style={{ width: "100%", textAlign: "center" }}>No products found !</div>
                 <span style={{ fontSize: "14px" }}>

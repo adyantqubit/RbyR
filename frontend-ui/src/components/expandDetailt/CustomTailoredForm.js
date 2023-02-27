@@ -550,7 +550,7 @@ function CustomTailoredForm() {
             <Form.Item
               name="otherInstructions"
               label={
-                <label style={{ color: "#fff", fontWeight: "500" }}>
+                <label style={{ color: "#212121", fontWeight: "500" }}>
                   Other Instructions
                 </label>
               }

@@ -132,7 +132,8 @@ const Details = (props) => {
       recents != null &&
       recents.filter((r) => r.id === details.id).length == 0
     ) {
-      recents.push(details);
+      recents.unshift(details)
+      // recents.push(details);
       localStorage.setItem("recentview", JSON.stringify(recents));
     }
 
@@ -824,7 +825,7 @@ const Details = (props) => {
                           onClick={(e) => LikedSave(details)}
                         >
                           <span style={{ margin: "auto",paddingLeft:"10px" }}>
-                            REMOVE FROM WISHLIST
+                            REMOVE TO WISHLIST
                           </span>
                           <div class="placement">
                             <div class="heart is-active" onClick={(e) => LikedSave(details)}></div>

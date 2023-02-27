@@ -53,6 +53,7 @@ function Footer2() {
             message: "Success",
             description: "Subscribed to email updates successfully",
             onClick: () => {},
+            key:1
           });
         } else {
           if (emailData.error) {
@@ -60,12 +61,14 @@ function Footer2() {
               message: "Error",
               description: emailData.error,
               onClick: () => {},
+              key:1
             });
           } else {
             notification.open({
               message: "Error",
               description: "Email subscription failed",
               onClick: () => {},
+              key:1
             });
           }
         }
@@ -75,6 +78,7 @@ function Footer2() {
         message: "Error",
         description: "Please provide a valid email format",
         onClick: () => {},
+        key:1
       });
     }
   };
@@ -89,6 +93,7 @@ function Footer2() {
           message: "Error",
           description: "Instagram Post Not Found",
           onClick: () => {},
+          key:1
         });
     });
   }
@@ -314,7 +319,7 @@ function Footer2() {
         <div className={style.column5}>
           <h1 className={style.heading}>SIGN UP FOR UPDATES</h1>
           <div
-            style={{ display: "flex", flexDirection: "row", marginTop: "30px" }}
+            style={{ display: "flex", flexDirection: "row", marginTop: "10px" }}
           >
             <input
               type="email"
@@ -352,9 +357,10 @@ function Footer2() {
           Powered by{" "}
           <span
             style={{
-              fontFamily: "Rawson-Medium",
+              fontFamily: "Rawson-Regular",
               fontSize: "16px",
               fontWeight: "20",
+              color:"#212121",
               textDecoration: "none",
             }}
           >

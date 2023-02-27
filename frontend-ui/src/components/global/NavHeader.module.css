@@ -20,7 +20,7 @@
     text-decoration: none;
     font-size: 1.2rem;
     font-family: "Rawson-Regular";
-    
+    cursor: pointer;
    }
 
    .al{
@@ -233,6 +233,12 @@ input[type=checkbox]{
       top:0px;
      }
   }
+
+  @media (max-width: 1000px) {
+    .contain{
+      display: none;
+    }
+  }
 /* APPLYING MEDIA QUERIES */
 @media (max-width: 768px) {
 
@@ -317,13 +323,6 @@ input[type=checkbox]:checked ~ .menu{
 
 
 }
-
-
-
-
-
-
-
 
 
 

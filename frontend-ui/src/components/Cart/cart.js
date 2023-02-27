@@ -453,7 +453,7 @@ const CartSItem = (props) => {
                       </Popconfirm>
                     </div>
 
-                    <div style={{ color: "var(--textColorPrimary)", marginLeft: "20px" }} className={style.price}> {currency.sign} {(pro.price * currency.value).toFixed(2)}</div>
+                    <div style={{ color: "var(--textColorPrimary)", marginLeft: "20px" }} className={style.price}> {currency.sign} {(pro.price * currency.value * pro.quantity).toFixed(2)}</div>
                     <div style={{ color: "black", marginLeft: "20px", marginTop: "8px" }}>
                       <span className={style.size}  style={{ color: "var(--textColorPrimary)"}}>Size :</span>
                       <span className={style.showSize}  style={{ color: "var(--textColorPrimary)"}}> {SizeGetter(pro.size)}</span>
@@ -501,7 +501,7 @@ const CartSItem = (props) => {
                       </Popconfirm>
                     </div>
 
-                    <div style={{ color: "black", marginLeft: "20px" }} className={style.price}> {currency.sign} {(pro.price * currency.value).toFixed(2)}</div>
+                    <div style={{ color: "black", marginLeft: "20px" }} className={style.price}> {currency.sign} {(pro.price * currency.value * pro.quantity).toFixed(2)}</div>
                     <div style={{ color: "black", marginLeft: "20px", marginTop: "8px" }}>
                       <span className={style.size}>Size :</span>
                       <span className={style.showSize}> {SizeGetter(pro.size)}</span>

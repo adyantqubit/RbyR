@@ -77,7 +77,7 @@ def validate_title(value):
 # Create your models here.
 
 class MyUserManager(BaseUserManager):
-    def create_user(self, email, name,tc,is_active,contact_number, password=None,password2=None):
+    def create_user(self, email, name,tc,contact_number, password=None,password2=None):
         """
         Creates and saves a User with the given email, date of
         birth and password.
@@ -90,14 +90,13 @@ class MyUserManager(BaseUserManager):
             name=name,
             contact_number=contact_number,
             tc=tc,
-            is_active=is_active
         )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, name,tc,is_active,contact_number, password=None):
+    def create_superuser(self, email, name,tc,contact_number, password=None):
         """
         Creates and saves a superuser with the given email, date of
         birth and password.
@@ -108,11 +107,11 @@ class MyUserManager(BaseUserManager):
             name=name,
             contact_number=contact_number,
             tc=tc,
-            is_active=is_active
         )
         user.is_admin = True
         user.save(using=self._db)
         return user
+    
 
 class User(AbstractBaseUser):
     email = models.EmailField(
@@ -144,6 +143,13 @@ class User(AbstractBaseUser):
         "Does the user have permissions to view the app `app_label`?"
         # Simplest possible answer: Yes, always
         return True
+    
+    def validate_email(self, value):
+        if User.objects.filter(email=value).exists():
+           raise ValidationError("This email already exists!.")
+        return value
+            
+    
 
     @property
     def is_staff(self):
@@ -183,19 +189,19 @@ class Menus(models.Model):
             if pro.upper_menu==self:
                pro.category=self.menu
                pro.save()
-               super().save(*args,**kwargs)    
-            super().save(*args,**kwargs)     
- 
-            
+               super().save(*args,**kwargs)   
+            else:
+               super().save(*args,**kwargs)   
+
             #Added by Rohan-23/2/23
             #Reason- if we change menu name then it should also reflect to cover image category   
         for slide in Head_img.objects.all():
             if slide.Menu==self:
                slide.category=self.menu      
                slide.save() 
-               super().save(*args,**kwargs) 
-            super().save(*args,**kwargs)     
-
+               super().save(*args,**kwargs)   
+     
+         
         super().save(*args,**kwargs)   
         #End of code
     
@@ -1000,7 +1006,9 @@ class CustomTailoredForm(models.Model):
 
 #Added by Ashish on 24-11-2022
 #Reason - To save whatsapp number in table
-class WhatsappContact(models.Model):
+class LogoAndNumber(models.Model):
+    logo=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
     whatsappNmber=models.IntegerField(validators=[validate_phone_number])
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
