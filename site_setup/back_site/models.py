@@ -90,7 +90,7 @@ class MyUserManager(BaseUserManager):
             name=name,
             contact_number=contact_number,
             tc=tc,
-            is_active=is_active
+            is_active=is_active,
         )
 
         user.set_password(password)
@@ -252,23 +252,23 @@ class product_detail(models.Model):
            width_field=None, max_length=100,default="null") 
     img_sub3=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100,default="null") 
-    like=models.IntegerField(default=0, validators=[MaxValueValidator(999999999)])
+    like=models.BigIntegerField(default=0, validators=[MaxValueValidator(999999999)])
     price=models.DecimalField(decimal_places=2,max_digits=10)
     color=models.CharField(max_length=25,default="blue")
     description=models.CharField(max_length=300,default="Draped Halter Top With Cutout And Handkerchief Drape")
     fabric=models.CharField(max_length=50,default="Chiffon")
     made_in=models.CharField(max_length=30,default="India")
     style_code=models.CharField(max_length=30,default="AAIR-129-KTH")
-    XS=models.IntegerField(default=30)
-    S=models.IntegerField(default=30)
-    M=models.IntegerField(default=30)
-    L=models.IntegerField(default=30)
-    XL=models.IntegerField(default=30)
-    XXL=models.IntegerField(default=30)
-    XXXL=models.IntegerField(default=30)
+    XS=models.BigIntegerField(default=30)
+    S=models.BigIntegerField(default=30)
+    M=models.BigIntegerField(default=30)
+    L=models.BigIntegerField(default=30)
+    XL=models.BigIntegerField(default=30)
+    XXL=models.BigIntegerField(default=30)
+    XXXL=models.BigIntegerField(default=30)
     date = models.DateTimeField(default=now, blank=True)
     available=models.BooleanField(default=True)
-    shipping_charges=models.IntegerField(default=100)
+    shipping_charges=models.BigIntegerField(default=100)
 
     #Added by Ashish dewangan on 23-11-2022
     #Reason - to have shipping days and ready to wear functionality for product
@@ -338,7 +338,7 @@ SIZE_CHOICES = (
 class Cart(models.Model):
     product_no=models.ForeignKey(product_detail,on_delete=models.CASCADE)
     user_no=models.ForeignKey(User,on_delete=models.CASCADE)
-    quantity=models.IntegerField(default=1)       
+    quantity=models.BigIntegerField(default=1)       
     size=models.CharField(max_length=40, choices=SIZE_CHOICES, default='Short')
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
@@ -507,13 +507,13 @@ order_status=(
 )
          
 class product_orders(models.Model):
-    order_no=models.IntegerField()
+    order_no=models.BigIntegerField()
     user_no=models.ForeignKey(User,on_delete=models.CASCADE,blank=True)
     billing_id=models.ForeignKey(userbillingDetail,on_delete=models.CASCADE)  
     shipping_id=models.ForeignKey(usershippingDetail,on_delete=models.CASCADE)
     product_id=models.ForeignKey(product_detail,on_delete=models.CASCADE)  
-    quantity=models.IntegerField()          
-    price=models.IntegerField()
+    quantity=models.BigIntegerField()          
+    price=models.BigIntegerField()
     size=models.CharField(max_length=40)   
     payment_mode=models.CharField(max_length=20,default="cod")
     date=models.DateField(('purchase date'), null=False, blank=False, auto_now=True)
@@ -539,14 +539,14 @@ status = (
 
 
 class Transaction_history(models.Model):
-    order_no=models.IntegerField()
+    order_no=models.BigIntegerField()
     payment_status=models.CharField(max_length=50,choices=status,default="pending")
     user_no=models.ForeignKey(User,on_delete=models.CASCADE)    
-    coupon_discount=models.IntegerField()
-    shipping_price=models.IntegerField()
-    subtotal_price=models.IntegerField()
-    tax=models.IntegerField()
-    grand_total=models.IntegerField()
+    coupon_discount=models.BigIntegerField()
+    shipping_price=models.BigIntegerField()
+    subtotal_price=models.BigIntegerField()
+    tax=models.BigIntegerField()
+    grand_total=models.BigIntegerField()
 
     #Commented by Rohan 10/12/22
     # I make change on datefield to auto not before i am using today() function so while migrating transactiona history date changes
@@ -606,8 +606,8 @@ class Online_Qr(models.Model):
 class coupon(models.Model):
     id=models.AutoField(primary_key=True)
     promocode=models.CharField(max_length=10)
-    discount_percentage=models.IntegerField(validators=[validate_discount])
-    maximum_discount_price=models.IntegerField(validators=[validate_integer_field])               
+    discount_percentage=models.BigIntegerField(validators=[validate_discount])
+    maximum_discount_price=models.BigIntegerField(validators=[validate_integer_field])               
     expiry_date=models.DateField()
     isActive=models.BooleanField(default=False)
     #Added by Ashish Dewangan on 28-11-2022
@@ -628,7 +628,7 @@ class couponUsed(models.Model):
     
     
 class Tax(models.Model):
-    tax_rate=models.IntegerField(validators=[validate_tax])    
+    tax_rate=models.BigIntegerField(validators=[validate_tax])    
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self):
@@ -784,7 +784,7 @@ class CancellationPolicy(models.Model):
 class StoreLocator(models.Model):
     city=models.CharField(max_length=50)
     address=models.TextField(validators=[validate_address])
-    phoneNumber=models.IntegerField(validators=[validate_phone_number])
+    phoneNumber=models.BigIntegerField(validators=[validate_phone_number])
     email=models.CharField(max_length=50)
     timing=models.CharField(max_length=50)
     storeImage=models.ImageField(upload_to='None/', height_field=None,\
@@ -835,8 +835,8 @@ class BridalForm(models.Model):
     firstName=models.CharField(max_length=255)
     lastName=models.CharField(max_length=255)
     email=models.CharField(max_length=255,blank=True,null=True)
-    contactNumber=models.IntegerField()
-    zipCode=models.IntegerField()
+    contactNumber=models.BigIntegerField()
+    zipCode=models.BigIntegerField()
     message=models.TextField()
     dateOfWedding=models.DateField(blank=True,null=True)
     termsAndCondition=models.BooleanField()
@@ -979,7 +979,7 @@ class CustomTailoredForm(models.Model):
     firstName=models.CharField(max_length=255)
     lastName=models.CharField(max_length=255)
     email=models.CharField(max_length=255,blank=True)
-    contactNumber=models.IntegerField()
+    contactNumber=models.BigIntegerField()
     shoulder=models.CharField(max_length=255,blank=True)
     chest=models.CharField(max_length=255,blank=True)
     upperChest=models.CharField(max_length=255,blank=True)
@@ -1008,7 +1008,7 @@ class CustomTailoredForm(models.Model):
 class LogoAndNumber(models.Model):
     logo=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100)
-    whatsappNmber=models.IntegerField(validators=[validate_phone_number])
+    whatsappNmber=models.BigIntegerField(validators=[validate_phone_number])
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self):
