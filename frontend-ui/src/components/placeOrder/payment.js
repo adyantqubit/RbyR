@@ -112,10 +112,12 @@ const Payment = () => {
         notification.error({
           message: <div style={{ fontSize: "18px", color: "white" }}>Sorry! Something went wrong. </div>,
           description:
-            `Facing issue on generating bill please contact to Admin `,
+            `Facing issue on generating bill please contact to Admin or again try to checkout `,
           style: { backgroundColor: "#D2042D", color: "white" },
           duration: 20,
         });
+        nav("/cart")
+        window.localStorage.clear()
       } else {
         checkoutDetails['orderno'] = r.order_no
         console.log(r)
@@ -192,7 +194,7 @@ const Payment = () => {
           labelStyle={{ marginLeft: 5, userSelect: "none" }}
           label={<label className={styles.firstName} htmlFor='street'
             style={{ fontSize: "14px", fontStyle: "bold", letterSpacing: "1.5px", paddingBottom: "2px" }}>
-            I agree to
+            I agree to {` `}
           </label>
           }
         />

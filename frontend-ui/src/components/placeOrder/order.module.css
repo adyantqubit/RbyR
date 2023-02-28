@@ -375,9 +375,10 @@ border-color: white;
     font-size: 13px;
     line-height: 20px;
     letter-spacing: 1px;
+    /* padding: 2px 5px; */
     font-family: "MyFont";
+    /* border: .1rem solid black; */
     font-weight: 600;
-    text-transform: uppercase;
     cursor: pointer;
 }
 

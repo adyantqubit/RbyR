@@ -209,7 +209,7 @@ const FilterNew = ({ scrolling }) => {
                   setMinMAx(2000, 200000)
                 }}>CLEAR</button>
               <button className={style.shopbtn1}
-                style={{ background: "var(--backgroundColorPrimary)", color: "white", fontWeight: "600" }}
+                style={{ background: "var(--backgroundColorPrimary)", fontWeight: "600" }}
                 onClick={e => { closeSortPage(); scrolling() }}>APPLY</button>
             </div>
           </div>

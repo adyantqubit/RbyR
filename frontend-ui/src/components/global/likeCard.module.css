@@ -93,7 +93,7 @@
   }
   .wishImage{
     width: 40%; 
-    height: 100%;
+    height: auto;
   }
   .wishItem{
     width: 60%;
@@ -176,6 +176,6 @@
 
   @media (max-width: 768px) {
     .wishContainer{
-      height:200px;
+      height:auto;
     }
   }

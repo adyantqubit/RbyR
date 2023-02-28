@@ -132,14 +132,15 @@ a:hover{
 
 @media screen and (max-width:768px) {
     .storeContainer{
-        padding-top:60px;
+        padding-top:75px;
         
     }
     .row{
         flex-direction: column;
     }
     .column{
-        width: 100%;
+        width: 90%;
+        margin:auto;
        
     }
     .itemContent{

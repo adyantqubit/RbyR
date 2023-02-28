@@ -105,12 +105,12 @@ const UserProfile = () => {
   }
 
   function hasWhiteSpaceforLast(s) {
-    var i = s.indexOf(' ');
-    if (i == -1) {
-      return 0;
+    var i=s.indexOf(' ');
+    if(i==-1){
+        return s.length;
     }
-    else {
-      return i
+    else{
+        return i;
     }
   }
 
@@ -265,7 +265,7 @@ const UserProfile = () => {
                           <div className={styles.columnFirstName}>
                             <label className={styles.firstName} htmlFor='last'>LAST NAME*</label>
 
-                            <input className={styles.firstInput} type="text" defaultValue={userdata.name.substring(hasWhiteSpaceforLast(userdata.name), userdata.name.length)} name="last" required />
+                            <input className={styles.firstInput} type="text" defaultValue={userdata.name.substring(hasWhiteSpaceforLast(userdata.name), userdata.name.length)} name="last"/>
 
                           </div>
                         </div>

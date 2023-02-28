@@ -51,7 +51,7 @@ const Details = (props) => {
   notification.destroy()
   const { id } = useParams();
   const nav = useNavigate()
-  const [details, setDetails] = useState([]);
+  const [details, setDetails] = useState(null);
   const [size, setSize] = useState("");
   const { con, setcon, setCartDrawer, openCartdrawer } = CartState();
   const [sizeCond, setSizecond] = useState(false);
@@ -123,21 +123,24 @@ const Details = (props) => {
 
 
   useEffect(() => {
+    if(details){
     var recents = JSON.parse(localStorage.getItem("recentview"));
     if (recents == null) {
-      localStorage.setItem("recentview", JSON.stringify([details]));
+        localStorage.setItem("recentview", JSON.stringify([details]));
     }
 
     if (
       recents != null &&
       recents.filter((r) => r.id === details.id).length == 0
     ) {
-      recents.unshift(details)
+      recents.splice(0,0,details)
       // recents.push(details);
       localStorage.setItem("recentview", JSON.stringify(recents));
     }
 
     window.scrollTo(0, 0)
+
+  }
 
   }, [details]);
 
@@ -381,25 +384,24 @@ const Details = (props) => {
 
   // Added by rohan - 19/2/23
   // Reason-Adding buy now functionality so user able to add product in cart and redirect on cart page
-   function buyNow(detail){
+  function buyNow(detail) {
 
-    if(size.length==0)
-    {
+    if (size.length == 0) {
       setPushData(true)
-    }else{
+    } else {
       cart.filter((i) => {
         if (i.id == detail.id) if (i.size == size) return i;
-      }).length > 0?
-      nav("/cart"):
-      AddToCart(detail)
+      }).length > 0 ?
+        nav("/cart") :
+        AddToCart(detail)
     }
-   }
+  }
   // end of code - 19/2/23
 
 
   return (
 
-    <div style={{ maxHeight: "100vh"}} id="scrolling"  >
+    <div style={{ maxHeight: "100vh" }} id="scrolling"  >
 
       <Navbar />
 
@@ -430,7 +432,7 @@ const Details = (props) => {
                   </span>
                   {/* Added by - Ashish Dewangan on 17-02-2023
                   Reason - To add a horizontal line after price */}
-                  <div style={{borderBottom:"1px solid lightgrey",width:"90%",marginTop:"15px"}}></div>
+                  <div style={{ borderBottom: "1px solid lightgrey", width: "90%", marginTop: "15px" }}></div>
                   {/* End of code addition */}
                   <div className={styles["container05"]}>
 
@@ -440,15 +442,15 @@ const Details = (props) => {
                     >
                       <span className={`${styles["textLabel"]} ${styles.sizeMargin}`}>Size : </span>
                       {pushData ? (
-                        
+
                         <Shake>
                           <div>
-                          {" "}
-                          <div class="rating">
-                            <form class="rating-form">
-                              {/* Commented by - Ashish Dewangan on 17-02-2023
+                            {" "}
+                            <div class="rating">
+                              <form class="rating-form">
+                                {/* Commented by - Ashish Dewangan on 17-02-2023
                               Reason - To hide sizes that are not required */}
-                              {/* <label
+                                {/* <label
                                 for={details.id * 2}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
                                 style={{ textDecoration: "none" }}
@@ -463,78 +465,78 @@ const Details = (props) => {
                                 />
                                 <span class="span">XS</span>
                               </label> */}
-                              {/* End of comment */}
-                              <label
-                                for={details.id}
-                                className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{ textDecoration: "none" }}
-                              >
-                                <input
-                                  type="radio"
-                                  name={details.id}
-                                  class="super-happy"
-                                  id={details.id}
-                                  value="Short"
-                                  onChange={(e) => onChange(e.target.value)}
-                                />
-                                <span class="span">S</span>
-                              </label>
+                                {/* End of comment */}
+                                <label
+                                  for={details.id}
+                                  className={`${styles.subtitle} ${styles.customSubtitle}`}
+                                  style={{ textDecoration: "none" }}
+                                >
+                                  <input
+                                    type="radio"
+                                    name={details.id}
+                                    class="super-happy"
+                                    id={details.id}
+                                    value="Short"
+                                    onChange={(e) => onChange(e.target.value)}
+                                  />
+                                  <span class="span">S</span>
+                                </label>
 
-                              <label
-                                for={details.id * 44}
-                                className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{ textDecoration: "none" }}
-
-                              >
-                                <input
-                                  type="radio"
-                                  name={details.id}
-                                  class="happy"
-                                  id={details.id * 44}
-                                  value="Medium"
-                                  onChange={(e) => onChange(e.target.value)}
-                                />
-                                <span class="span">M</span>
-                              </label>
-
-                              <label
-                                for={details.id * 88}
-                                className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{ textDecoration: "none" }}
-
-                              >
-                                <input
-                                  type="radio"
-                                  name={details.id}
-                                  class="sad"
-                                  id={details.id * 88}
-                                  value="Large"
-                                  onChange={(e) => onChange(e.target.value)}
-                                />
-                                <span class="span">L</span>
-                              </label>
-
-                              <label
-                                for={details.id * 108}
-                                className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{ textDecoration: "none" }}
-
-                              >
-                                <input
-                                  type="radio"
-                                  name={details.id}
-                                  class="super-sad"
-                                  id={details.id * 108}
-                                  value="Extra Large"
-                                  onChange={(e) => onChange(e.target.value)}
+                                <label
+                                  for={details.id * 44}
+                                  className={`${styles.subtitle} ${styles.customSubtitle}`}
                                   style={{ textDecoration: "none" }}
 
-                                />
-                                <span class="span">XL</span>
-                              </label>
-                              {/* Commented by - Ashish Dewangan on 17-02-2023
+                                >
+                                  <input
+                                    type="radio"
+                                    name={details.id}
+                                    class="happy"
+                                    id={details.id * 44}
+                                    value="Medium"
+                                    onChange={(e) => onChange(e.target.value)}
+                                  />
+                                  <span class="span">M</span>
+                                </label>
+
+                                <label
+                                  for={details.id * 88}
+                                  className={`${styles.subtitle} ${styles.customSubtitle}`}
+                                  style={{ textDecoration: "none" }}
+
+                                >
+                                  <input
+                                    type="radio"
+                                    name={details.id}
+                                    class="sad"
+                                    id={details.id * 88}
+                                    value="Large"
+                                    onChange={(e) => onChange(e.target.value)}
+                                  />
+                                  <span class="span">L</span>
+                                </label>
+
+                                <label
+                                  for={details.id * 108}
+                                  className={`${styles.subtitle} ${styles.customSubtitle}`}
+                                  style={{ textDecoration: "none" }}
+
+                                >
+                                  <input
+                                    type="radio"
+                                    name={details.id}
+                                    class="super-sad"
+                                    id={details.id * 108}
+                                    value="Extra Large"
+                                    onChange={(e) => onChange(e.target.value)}
+                                    style={{ textDecoration: "none" }}
+
+                                  />
+                                  <span class="span">XL</span>
+                                </label>
+                                {/* Commented by - Ashish Dewangan on 17-02-2023
                               Reason - To hide sizes that are not required */}
-                              {/* <label
+                                {/* <label
                                 for={details.id * 126}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
                                 style={{ textDecoration: "none" }}
@@ -566,23 +568,23 @@ const Details = (props) => {
                                 />
                                 <span class="span">XXXL</span>
                               </label> */}
-                              {/* End of comment */}
-                            </form>
-                          </div>
-                          <div
-                            class="rating"
-                            style={{
-                              color: "red",
-                              fontSize: "0.8rem",
-                              marginLeft: "10px",
-                            }}
-                          >
-                            Please select your size
-                          </div>
+                                {/* End of comment */}
+                              </form>
+                            </div>
+                            <div
+                              class="rating"
+                              style={{
+                                color: "red",
+                                fontSize: "0.8rem",
+                                marginLeft: "10px",
+                              }}
+                            >
+                              Please select your size
+                            </div>
                           </div>
                         </Shake>
                       ) : (
-                        <div style={{display:"flex",flexDirection:'column'}}>
+                        <div style={{ display: "flex", flexDirection: 'column' }}>
                           <div class="rating">
                             <form class="rating-form">
                               {/* Commented by - Ashish Dewangan on 17-02-2023
@@ -824,7 +826,7 @@ const Details = (props) => {
                           className={` ${styles["button2"]} `}
                           onClick={(e) => LikedSave(details)}
                         >
-                          <span style={{ margin: "auto",paddingLeft:"10px" }}>
+                          <span style={{ margin: "auto", paddingLeft: "10px" }}>
                             REMOVE TO WISHLIST
                           </span>
                           <div class="placement">
@@ -1246,4 +1248,3 @@ const Details = (props) => {
 };
 
 export default Details;
-   

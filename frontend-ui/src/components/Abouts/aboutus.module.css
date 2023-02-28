@@ -92,7 +92,7 @@
 
 @media (max-width:768px) {
     .container{
-        padding-top: 14vh;
+        padding-top: 10vh;
     }
     .InnerImgContainer {
         display: flex;
@@ -108,10 +108,12 @@
     }
     .img1 {
         width: 100%;
+        height: 30vh;
     }
 
     .img2 {
         width:100%;
+
     }
 
 

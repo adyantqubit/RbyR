@@ -68,7 +68,7 @@
 .userinfoText2{
     color: black;
     font-size: 14px;
-    word-break: break-all;
+    word-break: normal;
     line-height: 22px;
     letter-spacing: 1.2px;
     font-family: 'MyFont';
@@ -290,6 +290,10 @@
         margin-top:-60px;
     }
 
+    .header2{
+        width:24%;
+    }
+
     .header{
         /* flex-direction: column;
         justify-content: center;
@@ -336,6 +340,10 @@
     .payBox{
         overflow: auto;
         width:90%;
+    }
+
+    .protitle2{
+        width: 24%;
     }
 }
 

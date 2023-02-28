@@ -63,8 +63,10 @@ const Categories = () => {
                 </div>
 
             </div>
-
+            
+            <div className={style.foot}>
             <Footer />
+            </div>
 
         </>
     )

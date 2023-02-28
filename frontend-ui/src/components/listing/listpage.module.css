@@ -428,7 +428,7 @@ justify-content: space-between;
   font-size: 13px;
   line-height: 20px;
   letter-spacing: 1px;
-  color: #8c8c8c;
+  color: var(--textColorPrimary);
   text-transform: uppercase;
   font-family: 'MyFont';
   font-weight: 500;
@@ -517,7 +517,7 @@ justify-content: space-between;
   height: 30px; 
   text-align: center;
   text-transform: uppercase;
-  color: #7c7c7c;
+  color: #212121;
   font-weight: 600;
   font-size: 12px;
   height: 28px;
@@ -622,7 +622,7 @@ justify-content: space-between;
     margin:0 8%;
     overflow: scroll;
     -ms-overflow-style:auto ;
-   max-height: 75vh;
+   max-height: 88vh;
     z-index: 50;
   }
   

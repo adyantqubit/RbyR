@@ -77,7 +77,7 @@ def validate_title(value):
 # Create your models here.
 
 class MyUserManager(BaseUserManager):
-    def create_user(self, email, name,tc,contact_number, password=None,password2=None):
+    def create_user(self, email, name,tc,is_active,contact_number, password=None,password2=None):
         """
         Creates and saves a User with the given email, date of
         birth and password.
@@ -90,13 +90,14 @@ class MyUserManager(BaseUserManager):
             name=name,
             contact_number=contact_number,
             tc=tc,
+            is_active=is_active
         )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, name,tc,contact_number, password=None):
+    def create_superuser(self, email, name,tc,is_active,contact_number, password=None):
         """
         Creates and saves a superuser with the given email, date of
         birth and password.
@@ -107,6 +108,7 @@ class MyUserManager(BaseUserManager):
             name=name,
             contact_number=contact_number,
             tc=tc,
+            is_active=is_active,
         )
         user.is_admin = True
         user.save(using=self._db)
@@ -144,10 +146,7 @@ class User(AbstractBaseUser):
         # Simplest possible answer: Yes, always
         return True
     
-    def validate_email(self, value):
-        if User.objects.filter(email=value).exists():
-           raise ValidationError("This email already exists!.")
-        return value
+    
             
     
 

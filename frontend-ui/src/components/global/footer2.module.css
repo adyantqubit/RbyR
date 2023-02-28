@@ -187,6 +187,10 @@
     
 
 @media (max-width: 768px) {
+
+    .heading{
+        white-space: nowrap;
+    }
     .App{
         margin-top: 60px;
     }

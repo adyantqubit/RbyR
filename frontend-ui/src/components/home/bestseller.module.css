@@ -68,7 +68,10 @@
 .absolute {
     position: absolute;
     bottom: 15px;
-    left: 20px;
+    left: 0;
+    padding-left: 15px;
+    width: 100%;
+    background: rgba(0,0,0,0.4);
 }
 
 .name {

@@ -128,7 +128,7 @@
 }
 @media screen and (max-width:768px) {
     .container{
-        padding-top: 60px;
+        padding-top: 75px;
         /* top:12vh; */
     }
     .title{
@@ -175,6 +175,6 @@
 }
 @media screen and (max-width:400px) {
     .bridalImg{
-        height:60vh;
+        /* height:60vh; */
     }
 }

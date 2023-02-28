@@ -23,7 +23,37 @@ const Video = (props) => {
   //   await getCardHomeImagesApi().then(r=>setIamges(r.response))
 
   // }
-  
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+  const [drawerwidth, setDrawerwidth] = useState(false)
+
+
+  useEffect(() => {
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
+    }
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+
+
+  }, [window.innerWidth]);
+
+  function getWindowSize() {
+    const { innerWidth, innerHeight } = window;
+    return { innerWidth, innerHeight };
+  }
+
+  useEffect(() => {
+    if (windowSize.innerWidth < 900)
+      setDrawerwidth(true)
+    else if (windowSize.innerWidth > 900)
+      setDrawerwidth(false)
+  }, [windowSize])
+
+
+
 
   const [showVideo, setShow] = useState(false)
   const [url, setUrl] = useState("")
@@ -32,16 +62,16 @@ const Video = (props) => {
 
 
     return <div className={style.popupContainer}>
-  
+
       <div className={style.cancle}>
-        <ImCross color='var(--backgroundColorSecondary)' style={{ margin: "auto 0", fontSize: "30px" }}  onClick={e=>setShow(false)} />
+        <ImCross color='var(--backgroundColorSecondary)' style={{ margin: "auto 0", fontSize: "30px" }} onClick={e => setShow(false)} />
       </div>
-  
+
       <div className={style.videoContains}>
         <iframe src={`${props.url}?autoplay=1`} style={{ width: "80%", height: "70%", margin: "auto" }} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  
+
       </div>
-  
+
     </div>
   }
 
@@ -53,7 +83,19 @@ const Video = (props) => {
 
         {/* <div className={style.heading}> Best seller product of RBYR </div> */}
         <div className={style.sliderContainer}>
-          {newFunction(props, setShow, setUrl, showVideo)}
+          <Carousel cols={drawerwidth?1:3} rows={1} gap="10px">
+
+            {props.url?.map(u => <Carousel.Item
+              className={style.card}
+            >
+              <div style={{ position: "relative", minWidth: "100%", minHeight: "100%", padding: "10px" }}>
+                <iframe className={style.video} src={`${u.Video_url}?autoplay=1&showinfo=0&controls=0&modestbranding=1&mute=1`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class={style.overlay} onClick={e => { setShow(true); setUrl(u.Video_url); console.log(showVideo); }}></div>
+              </div>
+            </Carousel.Item>
+            )}
+
+          </Carousel>
         </div>
       </div>
 
@@ -74,19 +116,7 @@ const Video = (props) => {
 
 export default Video;
 
-function newFunction(props, setShow, setUrl, showVideo) {
-  return <Carousel cols={3} rows={1} gap={10}>
-
-    {props.url?.map(u => <Carousel.Item
-      className={style.card}
-    > 
-      <div style={{ position: "relative" }}>
-        <iframe style={{ minWidth: "25vw", minHeight: "30vh" }} src={`${u.Video_url}?autoplay=1&showinfo=0&controls=0&modestbranding=1&mute=1`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <div class={style.overlay} onClick={e => { setShow(true); setUrl(u.Video_url); console.log(showVideo); } }></div>
-      </div>
-    </Carousel.Item>
-    )}
-
-  </Carousel>;
+function newFunction(props, setShow, setUrl, showVideo, drawerwidth) {
+  return;
 }
 

@@ -21,12 +21,13 @@ const UserInfo = () => {
       }
 
       function hasWhiteSpaceforLast(s) {
+        console.log(s.indexOf(' '))
         var i=s.indexOf(' ');
         if(i==-1){
             return s.length;
         }
         else{
-            return i
+            return i;
         }
       }
 
@@ -66,7 +67,7 @@ const UserInfo = () => {
 
             {/* comment on 17/11/22-Rohan Kansari 
                 purpose - hide changable functionality */}
-            <span className={styles.change} onClick={e=>setCond(false)}>change</span>
+            <span className={styles.change} onClick={e=>setCond(false)}>Edit</span>
         
         </div>
         <div className={styles.usedetailShow}>

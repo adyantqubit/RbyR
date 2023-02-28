@@ -20,10 +20,9 @@
 }
 
 .card {
-    position: relative;
-    margin: auto 0;
     /* width: 22%; */
-    min-height: 500px;
+    min-width: 25vw;
+    min-height: 30vh;
     position: relative;
     z-index: 9999;
     background-color: black;
@@ -115,6 +114,33 @@
     background-color: rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content: center;
+}
+
+.video{
+    min-width: 25vw;
+    min-height: 30vh;
+}
+
+@media (max-width:1000px) {
+    .video{
+        min-height: 30vh;
+        min-width: 70vw;
+    }
+}
+
+
+@media (max-width:500px){
+
+    .video{
+        min-width: 70vw;
+        min-height: 20vh !important;
+        height: auto !important;
+        background-color: #f2f2f2;
+        padding: 2px;
+    }
+    /* .card{
+        min-height: 10vh !important;
+    } */
 }
 
 /* category side */

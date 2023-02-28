@@ -29,6 +29,9 @@ export const Home = () => {
    
   // };
   notification.destroy()
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
   return (
     <div className={style.home}>
       <NavHeader/>
