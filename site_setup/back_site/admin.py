@@ -48,7 +48,7 @@ class ProductAdmin(admin.ModelAdmin):
  
 @admin.register(product_detail)
 class product_detailAdmin(admin.ModelAdmin):
-    list_display=(short_title,"menu","category","XS","S","M","L","XL","XXL","XXXL","price","color")
+    list_display=(short_title,"upper_menu","subMenu","XS","S","M","L","XL","XXL","XXXL","price","color")
     ordering =("title",)
     
     readonly_fields=('search_key','category','menu')
@@ -90,8 +90,8 @@ class product_detailAdmin(admin.ModelAdmin):
         form.base_fields['shipping_days'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['ready_to_ship_days'].widget.attrs['style'] = 'width: 100%;'
         # added by rohan- on 18/2/23,reason- to show parent linked menu name on submenu dropdown
-        form.base_fields['subMenu'].label_from_instance = lambda inst: "{}:{}".format(inst.Menu.menu,inst.sub)
-        form.base_fields['upper_menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
+        # form.base_fields['subMenu'].label_from_instance = lambda inst: "{}:{}".format(inst.Menu.menu,inst.sub)
+        # form.base_fields['upper_menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
         # form.base_fields['subMenu'].queryset = subMenu.objects.filter(='company')
         # form.fields['subMenu'].choices = [(None, 'Subscriber\'s Location')] + list(subMenu.objects.all().values_list('menu').order_by('menu'))
 

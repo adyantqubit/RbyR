@@ -77,7 +77,7 @@ def validate_title(value):
 # Create your models here.
 
 class MyUserManager(BaseUserManager):
-    def create_user(self, email, name,tc,is_active,contact_number, password=None,password2=None):
+    def create_user(self, email, name,tc,contact_number, password=None,password2=None):
         """
         Creates and saves a User with the given email, date of
         birth and password.
@@ -90,7 +90,7 @@ class MyUserManager(BaseUserManager):
             name=name,
             contact_number=contact_number,
             tc=tc,
-            is_active=is_active,
+            is_active=True
         )
 
         user.set_password(password)
@@ -108,7 +108,7 @@ class MyUserManager(BaseUserManager):
             name=name,
             contact_number=contact_number,
             tc=tc,
-            is_active=is_active,
+            is_active=is_active
         )
         user.is_admin = True
         user.save(using=self._db)
@@ -185,7 +185,7 @@ class Menus(models.Model):
     def save(self,*args, **kwargs):
         # self.productName_with_category =  self.product_name+self.category_name.category
         for pro in product_detail.objects.all():
-            if pro.upper_menu==self:
+            if pro.upper_menu.id==self.id:
                pro.category=self.menu
                pro.save()
                super().save(*args,**kwargs)   
@@ -198,15 +198,17 @@ class Menus(models.Model):
             if slide.Menu==self:
                slide.category=self.menu      
                slide.save() 
-               super().save(*args,**kwargs)   
+               super().save(*args,**kwargs)  
      
-         
         super().save(*args,**kwargs)   
         #End of code
     
     def clean(self):
         if (Menus.objects.count() >= 4 and self.pk is None):
-            raise ValidationError("Can only create five Menu instances. Try editing/removing one of the existing instances.")   
+            raise ValidationError("Can only create five Menu instances. Try editing/removing one of the existing instances.") 
+
+    def __str__(self):
+         return self.menu      
  
 class subMenu(models.Model):
     # Added by Rohan- on -17/2/23
@@ -232,7 +234,8 @@ class subMenu(models.Model):
         
         super().save(*args,**kwargs)  
              
-    
+    def __str__(self):
+         return self.sub
 #End of the code
 
 class product_detail(models.Model):
