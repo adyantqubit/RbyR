@@ -77,7 +77,7 @@ class UserRegistrationView(APIView):
         if serializer.is_valid(raise_exception=True):
             user = serializer.save()
             token = get_tokens_for_user(user)
-            return Response({'token': token, 'msg': 'registration successfully done'}, status=status.HTTP_201_CREATED)
+            return Response({'token': token, 'msg': 'Registration successfully done'}, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
 
@@ -331,17 +331,24 @@ class Invoice(APIView):
                     "shipping_id": instanceshipping.id,
                     "product_id": cart['id'],
                     "quantity": cart['quantity'],
-                    "price": cart['price'],
+                    "price": cart['price'] ,
+                    "total_price":float(cart['price'])*cart['quantity'],
                     "size": cart['size'],
                     "payment_mode": request.data['payment'],
                     "selected_currency_sign": request.data['currency_sign'],
                     "selected_currency_value": request.data['currency_value']
                 }
+                
+                print(data)
+                
+                serialize3 = invoiceSerializer(data=data)
+                if serialize3.is_valid(raise_exception=True):
+                    serialize3.save()
 
                 if (cart['size'] == "Short"):
                     pro = product_detail.objects.get(id=cart['id'])
                     pro.S = pro.S-cart['quantity']
-                    print(pro.S)
+                    # print(pro.S)
                     pro.save()
                 elif (cart['size'] == "Extra Short"):
                     pro = product_detail.objects.get(id=cart['id'])
@@ -352,12 +359,12 @@ class Invoice(APIView):
                 elif (cart['size'] == "Medium"):
                     pro = product_detail.objects.get(id=cart['id'])
                     pro.M = pro.M-cart['quantity']
-                    print(pro.M)
+                    # print(pro.M)
                     pro.save()
                 elif (cart['size'] == "Large"):
                     pro = product_detail.objects.get(id=cart['id'])
                     pro.L = pro.L-cart['quantity']
-                    print(pro.L)
+                    # print(pro.L)
                     pro.save()
                 elif (cart['size'] == "Extra Large"):
                     pro = product_detail.objects.get(id=cart['id'])
@@ -367,18 +374,16 @@ class Invoice(APIView):
                 elif (cart['size'] == "Extra Extra Large"):
                     pro = product_detail.objects.get(id=cart['id'])
                     pro.XXL = pro.XXL-cart['quantity']
-                    print(pro.XXL)
+                    # print(pro.XXL)
                     pro.save()
                     
                 elif (cart['size'] == "Extra Extra Extra Large"):
                     pro = product_detail.objects.get(id=cart['id'])
                     pro.XXXL = pro.XXXL-cart['quantity']
-                    print(pro.XXXL)
+                    # print(pro.XXXL)
                     pro.save()    
 
-                serialize3 = invoiceSerializer(data=data)
-                if serialize3.is_valid(raise_exception=True):
-                    serialize3.save()
+                
             
             # commented by Rohan - 21/12/22
             # Reason- storing coupon 
@@ -605,7 +610,7 @@ class ImportantTextGet(APIView):
 class CartRecheck(APIView):
    
     def post(self, request):
-        print(request.data)
+        # print(request.data)
         user=User.objects.get(email=request.data['email'])
         if user.is_active==False:
            return Response({"error_user": True})

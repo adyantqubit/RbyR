@@ -359,7 +359,7 @@ const UsserAdresses = () => {
         if (!regex.test(key)) {
             theEvent.returnValue = false;
             if (theEvent.preventDefault) theEvent.preventDefault();
-            var data = "Please Enter Only Number"
+            var data = "Please enter only digits"
             handleButtonClickpin(data)
         }
 

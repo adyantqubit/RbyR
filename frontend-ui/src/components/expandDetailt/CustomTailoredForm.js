@@ -36,7 +36,7 @@ function CustomTailoredForm() {
       if (customTailoredPostResponse.msg) {
         
         notification.open({
-          message: "Success",
+          message: "",
           description: "Custom tailored request posted successfully",
           onClick: () => {},
         });

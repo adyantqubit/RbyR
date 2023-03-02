@@ -258,7 +258,7 @@ class product_ordersAdmin(admin.ModelAdmin):
     list_filter=("date","payment_mode","price","user_no")
     search_fields=("product_id__title","user_no__name")
     readonly_fields=("id","order_no","user_no","product_id","billing_id","shipping_id","quantity"
-    ,"price","size","payment_mode","date","selected_currency_sign","selected_currency_value")
+    ,"price","size","payment_mode","date","total_price","selected_currency_sign","selected_currency_value")
     ordering=("order_no",)
     list_per_page=10
     def has_add_permission(self, request):
@@ -666,11 +666,11 @@ class InstagramCollectionAdmin(admin.ModelAdmin):
     #Reason - To register LogoAndCover model
     #admin.site.register(LogoAndCover) 
     #End of code addition
-@admin.register(LogoAndCover)
-class LogoAndCoverAdmin(admin.ModelAdmin):
-    list_display=("id","logo","cover1","cover2","cover3","cover4","cover5")
-    def has_add_permission(self, request):
-        return not LogoAndCover.objects.exists()
+# @admin.register(LogoAndCover)
+# class LogoAndCoverAdmin(admin.ModelAdmin):
+#     list_display=("id","logo","cover1","cover2","cover3","cover4","cover5")
+#     def has_add_permission(self, request):
+#         return not LogoAndCover.objects.exists()
 # End of code modification
 
 
@@ -715,20 +715,20 @@ class Online_QrAdmin(admin.ModelAdmin):
 # Commented and modified by Ashish on 28-11-2022
 # To customize admin panel
     #admin.site.register(coupon)
-@admin.register(coupon)    
-class couponAdmin(admin.ModelAdmin):
-    list_display=("promocode","discount_percentage","maximum_discount_price","expiry_date","isActive",)
-    list_per_page = 10
-    list_filter=("isActive","expiry_date")
-    ordering=("promocode",)
-    sortable_by=("discount_percentage","maximum_discount_price","expiry_date")
-    def get_form(self, request, obj=None, **kwargs):
-        form = super(couponAdmin, self).get_form(request, obj, **kwargs)
-        form.base_fields['promocode'].widget.attrs['style'] = 'width: 100%;'
-        form.base_fields['discount_percentage'].widget.attrs['style'] = 'width: 100%;'
-        form.base_fields['maximum_discount_price'].widget.attrs['style'] = 'width: 100%;'
-        form.base_fields['expiry_date'].widget.attrs['style'] = 'width: 100%;'
-        return form
+# @admin.register(coupon)    
+# class couponAdmin(admin.ModelAdmin):
+#     list_display=("promocode","discount_percentage","maximum_discount_price","expiry_date","isActive",)
+#     list_per_page = 10
+#     list_filter=("isActive","expiry_date")
+#     ordering=("promocode",)
+#     sortable_by=("discount_percentage","maximum_discount_price","expiry_date")
+#     def get_form(self, request, obj=None, **kwargs):
+#         form = super(couponAdmin, self).get_form(request, obj, **kwargs)
+#         form.base_fields['promocode'].widget.attrs['style'] = 'width: 100%;'
+#         form.base_fields['discount_percentage'].widget.attrs['style'] = 'width: 100%;'
+#         form.base_fields['maximum_discount_price'].widget.attrs['style'] = 'width: 100%;'
+#         form.base_fields['expiry_date'].widget.attrs['style'] = 'width: 100%;'
+#         return form
 # End of code modification
 
 
@@ -901,7 +901,7 @@ admin.site.register(User, UserModelAdmin)
 
 # commented by Rohan - 21/12/22 
 # Reason - TO store used coupon for user
-admin.site.register(couponUsed)
+# admin.site.register(couponUsed)
 # end of code
 
 
@@ -947,39 +947,39 @@ class subMenu_Detail(admin.ModelAdmin):
 
 # Created on 31/12/22
 #Reason- showing Design page
-admin.site.register(ItDesignContent)
+# admin.site.register(ItDesignContent)
 #end of code
 
 # Created on 4/1/23
 #Reason- Showing Celebrity and editorial page
-@admin.register(Celebrity)
-class CelebrityAdmin(admin.ModelAdmin):
-    list_display=("ModelName",)
-    readonly_fields=("menu","category",)
-    def get_form(self, request, obj, **kwargs):
-        form = super(CelebrityAdmin, self).get_form(request, obj, **kwargs)
-        form.base_fields['upper_menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
-        form.base_fields['subMenu'].label_from_instance = lambda inst:"{}:{}".format(inst.Menu.menu,inst.sub)
-        return form 
+# @admin.register(Celebrity)
+# class CelebrityAdmin(admin.ModelAdmin):
+#     list_display=("ModelName",)
+#     readonly_fields=("menu","category",)
+#     def get_form(self, request, obj, **kwargs):
+#         form = super(CelebrityAdmin, self).get_form(request, obj, **kwargs)
+#         form.base_fields['upper_menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
+#         form.base_fields['subMenu'].label_from_instance = lambda inst:"{}:{}".format(inst.Menu.menu,inst.sub)
+#         return form 
     
     
-@admin.register(Editorial)
-class EditorialAdmin(admin.ModelAdmin):
-    list_display=("ModelName","MagzineName")
-    readonly_fields=("menu","category",)    
-    def get_form(self, request, obj, **kwargs):
-        print(request)
-        form = super(EditorialAdmin, self).get_form(request, obj, **kwargs)
-        form.base_fields['upper_menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
-        form.base_fields['subMenu'].label_from_instance = lambda inst:"{}:{}".format(inst.Menu.menu,inst.sub)
-        return form  
+# @admin.register(Editorial)
+# class EditorialAdmin(admin.ModelAdmin):
+#     list_display=("ModelName","MagzineName")
+#     readonly_fields=("menu","category",)    
+#     def get_form(self, request, obj, **kwargs):
+#         print(request)
+#         form = super(EditorialAdmin, self).get_form(request, obj, **kwargs)
+#         form.base_fields['upper_menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
+#         form.base_fields['subMenu'].label_from_instance = lambda inst:"{}:{}".format(inst.Menu.menu,inst.sub)
+#         return form  
     
     
 admin.site.register(WorldOfRByRContent)
 admin.site.register(worldOfRByRRow)
 
   
-admin.site.register(Feature)  
+# admin.site.register(Feature)  
   
      
 #end of code

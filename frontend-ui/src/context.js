@@ -25,9 +25,9 @@ const Context = ({ children }) => {
   const [userdata, setUserData] = useState({
     email: "",
     name: "",
-    contact:""
+    contact: ""
   })
-  
+
 
   var [nullpage, setNullPage] = useState(false)
 
@@ -47,7 +47,7 @@ const Context = ({ children }) => {
   const [paymentflow, setPaymentflow] = useState(false)
   const [defaultShiping, setDefaultShipping] = useState([])
   const [showEditable, setShowEditable] = useState(false)
-  const [video,setVideo]=useState(null)
+  const [video, setVideo] = useState(null)
 
 
   const [lth, setLth] = useState(false)
@@ -57,7 +57,7 @@ const Context = ({ children }) => {
   var [cartEnd, setCartEnd] = useState([])
   const [shipEditcond, setshipEditCond] = useState(true)
 
-  const [currency, setCurrency] = useState({name:"INR", value: 1, sign: "₹" });
+  const [currency, setCurrency] = useState({ name: "INR", value: 1, sign: "₹" });
   const [to, setTo] = useState("INR")
 
   let { access_token, refresh_token } = getToken()
@@ -73,10 +73,10 @@ const Context = ({ children }) => {
   var [taxRate, setTaxRate] = useState(0)
   var [reload, setReload] = useState(true)
   const [selectedCategory, setCategorySelected] = useState([])
-  const [searchmsg,setSearchMsg]=useState("")
-  const [menus,setMenu]=useState([])
-  const [allCategory,setAllCategory]=useState([])
-  const [allResult,setAllResult]=useState([])
+  const [searchmsg, setSearchMsg] = useState("")
+  const [menus, setMenu] = useState([])
+  const [allCategory, setAllCategory] = useState([])
+  const [allResult, setAllResult] = useState([])
 
   //product updation
   useEffect(() => {
@@ -96,7 +96,7 @@ const Context = ({ children }) => {
         description:
           `You are Log out`,
         className: "custom-class",
-        style: { backgroundColor:"var(--backgroundColorPrimary)",color:"black",marginTop:"10vh"},
+        style: { backgroundColor: "var(--backgroundColorPrimary)", color: "black", marginTop: "10vh" },
         duration: 2,
         key: 1
       });
@@ -104,10 +104,10 @@ const Context = ({ children }) => {
       Notify()
     }
 
- if (localStorage.getItem("access_token")) {
-    setInterval(TokenManage, 360000)
-  }
-   
+    if (localStorage.getItem("access_token")) {
+      setInterval(TokenManage, 360000)
+    }
+
 
     if (JSON.parse(window.localStorage.getItem('cart')) && (!localStorage.getItem('access_token')))
       setCart([...JSON.parse(window.localStorage.getItem('cart'))])
@@ -116,7 +116,7 @@ const Context = ({ children }) => {
 
   }
 
- 
+
 
 
   useEffect(() => {
@@ -125,7 +125,7 @@ const Context = ({ children }) => {
   }, [product])
 
 
-  
+
   function Notify() {
 
     toast.success(<div style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px" }}>Successfully Logged out.
@@ -166,14 +166,14 @@ const Context = ({ children }) => {
     await regenaratingTokenApi(data).then(r => {
       if (r.error) {
 
-       
+
         removeToken()
         setLike([])
         console.log("token error ---------------")
         this.clearInterval()
         window.location.reload(false)
-        
-        
+
+
       }
       else {
         console.log("token succesfully ---------------")
@@ -205,12 +205,12 @@ const Context = ({ children }) => {
               img_main: [...p][0].img_main,
               quantity: lke.quantity,
               category: [...p][0].category,
-              menu:[...p][0].menu,
+              menu: [...p][0].menu,
               size: lke.size,
               shipping_charges: [...p][0].shipping_charges,
-              ready_to_ship_days:[...p][0].ready_to_ship_days,
-              shipping_days:[...p][0].shipping_days,
-              ready_to_ship:[...p][0].ready_to_ship
+              ready_to_ship_days: [...p][0].ready_to_ship_days,
+              shipping_days: [...p][0].shipping_days,
+              ready_to_ship: [...p][0].ready_to_ship
 
             }
 
@@ -292,12 +292,12 @@ const Context = ({ children }) => {
     //size
 
     if (sizeSelected.length > 0)
-     filteredProducts= sizeSelected.filter(s => {
+      filteredProducts = sizeSelected.filter(s => {
         tempSize = tempSize.filter(c => c[`${s}`] > 0)
       })
 
-      console.log(sizeSelected)
-      console.log(filteredProducts)
+    console.log(sizeSelected)
+    console.log(filteredProducts)
 
     // price
     // commented by -Rohan- 21/2/23
@@ -310,20 +310,24 @@ const Context = ({ children }) => {
     // }
     // console.log(filteredProducts)
     // end of code
-     console.log(selectedCategory)
-      if (selectedCategory.length > 0)
-        selectedCategory.filter(s => {
-        filteredProducts= filteredProducts.filter(c => c.category.toLowerCase() == s.toLowerCase())
-        })             
-    
+    console.log(selectedCategory)
+
+    if (selectedCategory.length > 0) {
+      const filter2 = []
+      selectedCategory.filter(s => {
+        filter2.push(...filteredProducts.filter(c => c.category.toLowerCase() == s.toLowerCase()))
+      })
+      filteredProducts = filter2
+    }
+
     var finalFilter = []
-  
-    
+
+
     if (selectedColor.length > 0 || sizeSelected.length > 0 || filteredProducts.length > 0 || maxValue) {
-      if (filteredProducts.length < 8 ) {
+      if (filteredProducts.length < 8) {
 
         console.log("page index re hit")
-        setReload(!reload)    
+        setReload(!reload)
         finalFilter = filteredProducts
       }
       else
@@ -334,7 +338,7 @@ const Context = ({ children }) => {
 
 
     //category
-    
+
 
 
     setCategoryProduct([...finalFilter])
@@ -365,7 +369,7 @@ const Context = ({ children }) => {
 
   //filter
   return (
-    <Cart.Provider value={{video,setVideo,allResult,setAllResult,allCategory,setAllCategory,nullpage, setNullPage,menus,setMenu,searchmsg,setSearchMsg, filteredPersons, setFilteredPersons,selectedCategory, setCategorySelected, reload, setReload, firstTimeLoadFunctions, showEditable, setShowEditable, shipEditcond, setshipEditCond, cartEnd, setCartEnd, taxRate, setTaxRate, offer, setOffer, availablitySelect, setAvailablity, latestSelect, setLatestSelect, defaultShiping, setDefaultShipping, orders, setOrder, paymentflow, setPaymentflow, shippingflow, setShipingflow, checkoutDetails, setCheckoutDetails, userdata, setUserData, to, setTo, currency, setCurrency, sizeSelected, setSizeSelected, con, setcon, htl, sethtl, lth, setLth, tempsprice, setTempsprice, filterui, setfilterUi, maxValue, setmaxValue, minValue, setminValue, allCategoryAvai, setAllCategoryAvai, allColorAvai, setAllColorAvai, selectedColor, setSelectedColor, tempallpro, settemAllpro, sortui, setSortUi, product, cart, setCart, setProduct, setcheck, checked1, checked2, image, setImage, like, setLike, setCondition, condition, openLikedrawer, setLikeDrawer, openCartdrawer, setCartDrawer, CategoryProduct, setCategoryProduct }}>
+    <Cart.Provider value={{ video, setVideo, allResult, setAllResult, allCategory, setAllCategory, nullpage, setNullPage, menus, setMenu, searchmsg, setSearchMsg, filteredPersons, setFilteredPersons, selectedCategory, setCategorySelected, reload, setReload, firstTimeLoadFunctions, showEditable, setShowEditable, shipEditcond, setshipEditCond, cartEnd, setCartEnd, taxRate, setTaxRate, offer, setOffer, availablitySelect, setAvailablity, latestSelect, setLatestSelect, defaultShiping, setDefaultShipping, orders, setOrder, paymentflow, setPaymentflow, shippingflow, setShipingflow, checkoutDetails, setCheckoutDetails, userdata, setUserData, to, setTo, currency, setCurrency, sizeSelected, setSizeSelected, con, setcon, htl, sethtl, lth, setLth, tempsprice, setTempsprice, filterui, setfilterUi, maxValue, setmaxValue, minValue, setminValue, allCategoryAvai, setAllCategoryAvai, allColorAvai, setAllColorAvai, selectedColor, setSelectedColor, tempallpro, settemAllpro, sortui, setSortUi, product, cart, setCart, setProduct, setcheck, checked1, checked2, image, setImage, like, setLike, setCondition, condition, openLikedrawer, setLikeDrawer, openCartdrawer, setCartDrawer, CategoryProduct, setCategoryProduct }}>
       {children}
     </Cart.Provider>
   );

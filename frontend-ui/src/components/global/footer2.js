@@ -50,7 +50,7 @@ function Footer2() {
       if (emailData) {
         if (emailData.msg) {
           notification.open({
-            message: "Success",
+            message: "",
             description: "Subscribed to email updates successfully",
             onClick: () => {},
             key:1
@@ -58,14 +58,14 @@ function Footer2() {
         } else {
           if (emailData.error) {
             notification.open({
-              message: "Error",
+              message:"",
               description: emailData.error,
               onClick: () => {},
               key:1
             });
           } else {
             notification.open({
-              message: "Error",
+              message: "",
               description: "Email subscription failed",
               onClick: () => {},
               key:1
@@ -75,7 +75,7 @@ function Footer2() {
       }
     } else {
       notification.open({
-        message: "Error",
+        message: "",
         description: "Please provide a valid email format",
         onClick: () => {},
         key:1
@@ -90,7 +90,7 @@ function Footer2() {
         setInstagramCollections(r);
       } else
         notification.open({
-          message: "Error",
+          message:"",
           description: "Instagram Post Not Found",
           onClick: () => {},
           key:1

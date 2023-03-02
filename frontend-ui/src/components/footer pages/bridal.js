@@ -60,7 +60,7 @@ const Bridal = () => {
     if(bridalPostResponse){
       if(bridalPostResponse.msg){
         notification.open({
-          message: 'Success',
+          message: "",
           description:
             'Bridal details posted successfully',
           onClick: () => {

@@ -90,7 +90,7 @@ class MyUserManager(BaseUserManager):
             name=name,
             contact_number=contact_number,
             tc=tc,
-            is_active=True
+            # is_active=True
         )
 
         user.set_password(password)
@@ -108,7 +108,7 @@ class MyUserManager(BaseUserManager):
             name=name,
             contact_number=contact_number,
             tc=tc,
-            is_active=is_active
+            # is_active=is_active
         )
         user.is_admin = True
         user.save(using=self._db)
@@ -517,6 +517,7 @@ class product_orders(models.Model):
     product_id=models.ForeignKey(product_detail,on_delete=models.CASCADE)  
     quantity=models.BigIntegerField()          
     price=models.BigIntegerField()
+    total_price=models.BigIntegerField()
     size=models.CharField(max_length=40)   
     payment_mode=models.CharField(max_length=20,default="cod")
     date=models.DateField(('purchase date'), null=False, blank=False, auto_now=True)
@@ -1015,9 +1016,9 @@ class LogoAndNumber(models.Model):
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self):
-         return "Whatsapp Number"
+         return "Logo and Number"
     class Meta:
-            verbose_name_plural = "Whatsapp Number"
+            verbose_name_plural = "Logo and Number"
     #End of code addition
 #End of code addition
 

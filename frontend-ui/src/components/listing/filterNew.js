@@ -69,6 +69,8 @@ const FilterNew = ({ scrolling }) => {
 
 
   function toggleselectc(e) {
+
+    
     e.currentTarget.parentElement.className = `${style.value} ${style.textdiv}`
     e.currentTarget.nextSibling.className = `${style.cross}`
     selectedCategory.push(e.currentTarget.textContent.toLowerCase())
@@ -205,6 +207,7 @@ const FilterNew = ({ scrolling }) => {
                 onClick={e => {
                   setSelectedColor([]);
                   setSizeSelected([]);
+                  setCategorySelected([])
                   closeSortPage();
                   setMinMAx(2000, 200000)
                 }}>CLEAR</button>

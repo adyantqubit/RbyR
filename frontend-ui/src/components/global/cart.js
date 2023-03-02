@@ -231,7 +231,7 @@ export function DrawerFooter() {
     await cartStockRecheck(data).then(r => {
       
       if (r.error_cart) {
-        cartEnd = r.error
+        cartEnd = r.error_cart
         cartEnd.map(c => {
           notification.error({
             message: <div style={{ fontSize: "18px", color: "white" }}>Out of stock</div>,

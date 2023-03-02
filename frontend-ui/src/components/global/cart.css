@@ -15,7 +15,7 @@
 }
 
 .ant-popover-inner-content {
-    background-color: #8c8c8c;
+    background-color: var(--backgroundColorPrimary);
     
 }
 
@@ -139,7 +139,7 @@ color:white
 
 
 .ant-popover-message-title{
-    color: white;
+    color:#212121;
     margin-left: -15px;
     font-size: 15px;
     width:300px;

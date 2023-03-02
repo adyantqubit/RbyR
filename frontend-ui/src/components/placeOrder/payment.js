@@ -67,11 +67,15 @@ const Payment = () => {
     if (billingInfo == false) {
       setRequired(true)
     } else {
-      await cartStockRecheck(cart).then(r => {
+      const data={
+        email:userdata.email,
+        cart:cart
+      }
+      await cartStockRecheck(data).then(r => {
 
-        if (r.error) {
+        if (r.error_cart) {
           console.log("error occurs")
-          cartEnd = r.error
+          cartEnd = r.error_cart
           cartEnd.map(c => {
             notification.error({
               message: <div style={{ fontSize: "18px", color: "white" }}>Out of stock</div>,
@@ -81,6 +85,18 @@ const Payment = () => {
               duration: 20,
             });
           })
+        }else if(r.error_user){
+          notification.error({
+            message: <div style={{ fontSize: "18px", color: "white" }}><br/></div>,
+            description:
+              <span>Your account is disabled! please contact to the our customer support.</span>,
+            style: { backgroundColor: "var(--bannerColor)", color: "#212121" },
+            duration: 20,
+            key:1
+  
+          });
+          //  firstTimeLoadFunctions()
+          // nav("/login")
         }
         else {
           console.log("all done")
@@ -107,6 +123,8 @@ const Payment = () => {
 
 
     await invoiceApi(checkoutDetails, access_token).then(r => {
+      
+      console.log(r)
       if(r.order_no)
       {
         checkoutDetails['orderno'] = r.order_no
@@ -119,9 +137,10 @@ const Payment = () => {
         notification.error({
           message: <div style={{ fontSize: "18px", color: "white" }}>Sorry! Something went wrong. </div>,
           description:
-            `You are temporary disabled. please contact to our customer servicee `,
+            `Facing issue in generating bill! please contact to the our customer support.`,
           style: { backgroundColor: "#D2042D", color: "white" },
           duration: 20,
+          key:1
         });
         // nav("/cart")
         // window.localStorage.clear()

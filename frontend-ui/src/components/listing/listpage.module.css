@@ -457,6 +457,7 @@ justify-content: space-between;
   border-radius: 2px;
   background-color: #dfdddd;
   display:flex;
+  justify-content: space-between;
 }
 
 

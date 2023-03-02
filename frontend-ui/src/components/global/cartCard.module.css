@@ -282,6 +282,7 @@
   padding: 30px 15px;
   display: flex;
   flex-direction: row;
+  gap:10px;
   justify-content: center;
   background-color: var(--backgroundColorSecondary) !important;
 }

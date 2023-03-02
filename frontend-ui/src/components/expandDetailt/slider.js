@@ -90,7 +90,7 @@ const Slider = ({ scrollTop }) => {
 
               return (
                 <Carousel.Item 
-                style={{cursor:"pointer"}}>
+                style={{cursor:"pointer",padding:"5px auto"}}>
                   <img
                     className={style.img}
                     src={config.apiBaseURL + cart.img_main}

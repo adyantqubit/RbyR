@@ -43,7 +43,7 @@ function Footer() {
       if(emailData){
         if(emailData.msg){
           notification.open({
-            message: 'Success',
+            message: "",
             description:
               'Subscribed to email updates successfully',
             onClick: () => {
@@ -53,7 +53,7 @@ function Footer() {
         }else{
           if(emailData.error){
             notification.open({
-              message: 'Error',
+              message: "",
               description:
                 emailData.error,
               onClick: () => {
@@ -63,7 +63,7 @@ function Footer() {
             });
           }else{
             notification.open({
-              message: 'Error',
+              message: "",
               description:
                 'Email subscription failed',
               onClick: () => {
@@ -77,7 +77,7 @@ function Footer() {
       }
     }else{
       notification.open({
-        message: 'Error',
+        message: "",
         description:
           'Please provide a valid email format',
         onClick: () => {
