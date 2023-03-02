@@ -92,7 +92,7 @@ class UserChangePasswordSerializer(serializers.ModelSerializer):
           password=attrs.get('password')
           password2=attrs.get('password2')
           if password != password2:
-            raise serializers.ValidationError("Password and confirm Password doesn't match")
+            raise serializers.ValidationError("New password and confirm password doesn't match")
           if password==self.context.get('oldPass'):
               raise serializers.ValidationError("New password should not be matched with old")
           user.set_password(password)

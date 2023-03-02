@@ -55,8 +55,9 @@ export const Profile = () => {
 
   return (
     <>
-      <div className={access_token?style.action:style.action2} onClick={e=>{
-        if(!access_token)
+    {/* {console.log(userdata.email.length)} */}
+      <div className={access_token && userdata.email.length!=0?style.action:style.action2} onClick={e=>{
+        if(userdata.email.length==0)
         nav("/login")
       }}>
         <div className={style.profile}>

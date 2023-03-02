@@ -20,8 +20,8 @@ const Orderpage = (props) => {
 
 
   useEffect(() => {
-    if (!localStorage.getItem("access_token"))
-      nav("/login")
+    // if (!localStorage.getItem("access_token"))
+    //   nav("/login")
 
    window.scrollTo(0,0)   
   }, [])

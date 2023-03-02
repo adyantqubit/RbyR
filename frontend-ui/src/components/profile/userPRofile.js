@@ -160,6 +160,7 @@ const UserProfile = () => {
 
     if (!data.get('oldpswd'))
       await userUpdate(userData).then(r => {
+        
         userData = r;
         setUserData(userData);
         // Create an instance of Notyf

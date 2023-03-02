@@ -185,7 +185,10 @@ const Login = () => {
                     <div style={{fontSize:"14px",marginLeft:"15%"}}>Email *</div>
 					<input class="inpu2"type="email" name="email" placeholder="Email" required/>
 					<div style={{height:"20px"}}>
-                    {server_error.email?<Typography style={{color:"red",fontSize:"14px",marginBottom:"10px",marginLeft:"15%"}}>{server_error.email[0]}</Typography>:" "}
+                    {server_error.email?<Typography style={{color:"red",fontSize:"14px",marginBottom:"10px",marginLeft:"15%"}}>
+						{server_error.email[0]}
+						</Typography>
+						:" "}
 
 					</div>
 
@@ -282,7 +285,8 @@ const Login = () => {
 
 					<input class="inpu" type="email" tabIndex={-1} style={{marginBottom:"0",background:"transparent"}} name="email" placeholder="E-mail*" required=""/>
 					{error.email?<Typography style={{color:"red",paddingLeft:"50px",fontSize:"12px",}}>{error.email[0]}</Typography>:" "}
-					{error.none_field_errors? <Typography style={{color:"red",paddingLeft:"50px",fontSize:"12px",}}>{error.none_field_errors[0]}</Typography>:" "}
+					{error.none_field_errors? <Typography style={{color:"red",width:"80%",paddingLeft:"50px",marginTop:"5px",fontSize:"12px",lineHeight:"12px"}}>{error.none_field_errors[0]}
+					<Link to="/custom"style={{color:"blue",fontSize:"12px",textDecoration:"underline"}}> Contact us</Link></Typography>:" "}
 
                     <span class="inpu3" tabIndex={-1} style={{marginTop:"20px",height:"40px",marginLeft:"15%",background:"#e0dede",border:"1px solid black"}}>
 					<input class="inpu4" tabIndex={-1} type={showNewPass3?"text":"password"} style={{width:"90%",background:"transparent",height:"40px",border:"none"}} name="pswd" placeholder="Password*" required="" onChange={e=>{if(e.target.value.length>0)setVisiblePassreg3(true); else setVisiblePassreg3(false)}}/>

@@ -107,26 +107,27 @@ const Payment = () => {
 
 
     await invoiceApi(checkoutDetails, access_token).then(r => {
-
-      if (r.error) {
-        notification.error({
-          message: <div style={{ fontSize: "18px", color: "white" }}>Sorry! Something went wrong. </div>,
-          description:
-            `Facing issue on generating bill please contact to Admin or again try to checkout `,
-          style: { backgroundColor: "#D2042D", color: "white" },
-          duration: 20,
-        });
-        nav("/cart")
-        window.localStorage.clear()
-      } else {
+      if(r.order_no)
+      {
         checkoutDetails['orderno'] = r.order_no
         console.log(r)
         sessionStorage.setItem('checkoutDetails', JSON.stringify(checkoutDetails))
         deleteFromCart()
         nav("/billing")
       }
+      else{
+        notification.error({
+          message: <div style={{ fontSize: "18px", color: "white" }}>Sorry! Something went wrong. </div>,
+          description:
+            `You are temporary disabled. please contact to our customer servicee `,
+          style: { backgroundColor: "#D2042D", color: "white" },
+          duration: 20,
+        });
+        // nav("/cart")
+        // window.localStorage.clear()
+      } 
 
-    })
+    }).catch(err=>console.log(err))
 
     //commented by - Rohan
     //Reason - Commenting warning to select options

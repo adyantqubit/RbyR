@@ -21,7 +21,7 @@ import { MdOutlineArrowBack } from 'react-icons/md';
 const Cart = () => {
 
 
-  const { openCartdrawer, setCartDrawer, cart } = CartState();
+  const { openCartdrawer, setCartDrawer, cart,userdata } = CartState();
 
 
   const showDrawer = () => {
@@ -109,7 +109,7 @@ export default Cart;
 
 
 export function DrawerFooter() {
-  var { cart, setCartDrawer, currency, offer, setOffer, taxRate, setTaxRate, cartEnd, setCartEnd, checkoutDetails } = CartState()
+  var { cart, setCartDrawer, currency,userdata, offer, setOffer, taxRate, setTaxRate, cartEnd, setCartEnd, checkoutDetails } = CartState()
   const [UploadCartApi, { isLoading }] = useCartBuyAllMutation()
   const [cond, setCond] = useState([])
   const [error, setError] = useState(null)
@@ -213,27 +213,61 @@ export function DrawerFooter() {
   
 
   async function cartChecking() {
-    await cartStockRecheck(cart).then(r => {
+  
 
-      if (r.error) {
+    if(userdata.email.length==0){
+      nav("/login")
+      setCartDrawer(false)
+
+    }
+    else{
+
+    const data={
+      email:userdata.email,
+      cart:cart
+    }
+
+    
+    await cartStockRecheck(data).then(r => {
+      
+      if (r.error_cart) {
         cartEnd = r.error
         cartEnd.map(c => {
           notification.error({
             message: <div style={{ fontSize: "18px", color: "white" }}>Out of stock</div>,
             description:
-              `Product ${c.name} size ${c.size} is out of stock `,
+              <span>Product ${c.name} size ${c.size} is out of stock <br />
+                Please move this item  to Wishlist.</span>,
             style: { backgroundColor: "#D2042D", color: "white" },
             duration: 20,
+
           });
         })
       }
-      else {
-        setCartDrawer(false)
-        DefaultShipping()
-        checkoutDetails['CouponDiscount'] = afterColumnTotalOfferAdd(offer, cart, taxRate).coupon
-        nav("/placeorder")
+      else if(r.error_user){
+        notification.error({
+          message: <div style={{ fontSize: "18px", color: "white" }}><br/></div>,
+          description:
+            <span>Your account is disabled! please contact to the our customer support.</span>,
+          style: { backgroundColor: "var(--bannerColor)", color: "#212121" },
+          duration: 20,
+          key:1
+
+        });
+        //  firstTimeLoadFunctions()
+        // nav("/login")
       }
-    })
+      else {
+
+        setCartDrawer(false)
+        checkoutDetails['CouponDiscount'] = afterColumnTotalOfferAdd(offer, cart, taxRate).coupon
+        DefaultShipping()
+        nav("/placeorder")
+
+      }
+    }).catch(err=>console.log(err))
+
+  }
   }
 
 

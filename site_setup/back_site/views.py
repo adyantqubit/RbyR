@@ -88,15 +88,30 @@ class UserLoginView(APIView):
     def post(self, request, format=None):
         serializer = UserLoginSerializer(data=request.data)
         if (serializer.is_valid(raise_exception=True)):
+            print("run")
             email = serializer.data.get('email')
             password = serializer.data.get('password')
             user = authenticate(email=email, password=password)
+            
+            # if User.objects.exists(email=email,is_active=False) is not None:
+            #     return Response({'errors': {'none_field_errors': ['This user is blocked, <br/> For more details']}}, status=status.HTTP_404_NOT_FOUND)
+            
+            try:
+                active=User.objects.get(email=email)
+                print("---------",active.is_active)
+                if active.is_active==False:
+                   return Response({'errors': {'none_field_errors': ['This user is blocked , for more detail']}}, status=status.HTTP_404_NOT_FOUND)
+                
+            except:
+                 D=None   
 
             if user is not None:
+                print("token generated")
                 token = get_tokens_for_user(user)
                 return Response({'token': token, 'msg': 'login successful'}, status=status.HTTP_200_OK)
             else:
-                return Response({'errors': {'none_field_errors': ['Email or Password is not valid.']}}, status=status.HTTP_404_NOT_FOUND)
+                print("error")
+                return Response({'errors': {'none_field_errors': ['Email or Password is not valid']}}, status=status.HTTP_404_NOT_FOUND)
 
 
 class UserProfileView(APIView):
@@ -588,9 +603,14 @@ class ImportantTextGet(APIView):
 
 
 class CartRecheck(APIView):
+   
     def post(self, request):
+        print(request.data)
+        user=User.objects.get(email=request.data['email'])
+        if user.is_active==False:
+           return Response({"error_user": True})
         car = []
-        for cart in request.data:
+        for cart in request.data['cart']:
             if (cart['size'] == "Short"):
                 pro = product_detail.objects.get(id=cart['id'])
                 if cart['quantity'] > pro.S:
@@ -629,7 +649,7 @@ class CartRecheck(APIView):
                         {"id": pro.id, "size": "Extra Extra Extra Large", "name": pro.title})        
 
         if len(car) > 0:
-            return Response({"error": car})
+            return Response({"error_cart": car})
         else:
             return Response({"Success": "go ahead"})
 
@@ -973,36 +993,38 @@ class LogoAndNumberView(APIView):
 class GeustCart(APIView):
     def post(self, request):
         for data in request.data:
-            if (data['size'] == "Short"):
+            availability=Cart.objects.filter(product_no=product_detail.objects.get(id=data['id']), size=data['size']).count()==0
+            print(availability)
+            if (data['size'] == "Short" and availability):
                 pro = product_detail.objects.get(id=data['id'])
                 Cart.objects.create(
                     product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()
-            elif (data['size'] == "Medium"):
-                pro = product_detail.objects.get(id=data['id'])
-                Cart.objects.create(
-                    product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()
-            
-            elif (data['size'] == "Extra Short"):
-                pro = product_detail.objects.get(id=data['id'])
-                Cart.objects.create(
-                    product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()
-
-            elif (data['size'] == "Large"):
-                pro = product_detail.objects.get(id=data['id'])
-                Cart.objects.create(
-                    product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()
-
-            elif (data['size'] == "Extra Large"):
-                pro = product_detail.objects.get(id=data['id'])
-                Cart.objects.create(
-                    product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()
-
-            elif (data['size'] == "Extra Extra Large"):
+            elif (data['size'] == "Medium" and availability):
                 pro = product_detail.objects.get(id=data['id'])
                 Cart.objects.create(
                     product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()
             
-            elif (data['size'] == "Extra Extra Extra Large"):
+            elif (data['size'] == "Extra Short" and availability):
+                pro = product_detail.objects.get(id=data['id'])
+                Cart.objects.create(
+                    product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()
+
+            elif (data['size'] == "Large" and availability):
+                pro = product_detail.objects.get(id=data['id'])
+                Cart.objects.create(
+                    product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()
+
+            elif (data['size'] == "Extra Large" and availability):
+                pro = product_detail.objects.get(id=data['id'])
+                Cart.objects.create(
+                    product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()
+
+            elif (data['size'] == "Extra Extra Large" and availability):
+                pro = product_detail.objects.get(id=data['id'])
+                Cart.objects.create(
+                    product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()
+            
+            elif (data['size'] == "Extra Extra Extra Large" and availability):
                 pro = product_detail.objects.get(id=data['id'])
                 Cart.objects.create(
                     product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()

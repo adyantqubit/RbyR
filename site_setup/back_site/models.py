@@ -520,7 +520,7 @@ class product_orders(models.Model):
     size=models.CharField(max_length=40)   
     payment_mode=models.CharField(max_length=20,default="cod")
     date=models.DateField(('purchase date'), null=False, blank=False, auto_now=True)
-    selected_currency_sign=models.CharField(max_length=5)
+    selected_currency_sign=models.CharField(max_length=255)
     selected_currency_value=models.FloatField()
     order_status=models.CharField(max_length=50,choices=order_status,default="processing",blank=True,null=True)
 
@@ -1028,7 +1028,7 @@ class LogoAndNumber(models.Model):
 class CurrencySelected(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     currency=models.CharField(max_length=10)
-    currency_sign=models.CharField(max_length=5)
+    currency_sign=models.CharField(max_length=255)
     currency_value=models.FloatField()
 #End of code addition
 #End of code addition

@@ -22,7 +22,7 @@ import Search from './search';
 import Slideshow from './slideshow';
 import Converter from '../concepts/convertCurrency';
 import config from '../../api/config';
-import { getLogoAndCover, getWhatsappContactDetail } from "../../api/service";
+import { getLogoAndCover, getProfileData, getWhatsappContactDetail } from "../../api/service";
 import ShrinkHeader from './shrinkHeader';
 import { CartState } from '../../context';
 import { notification } from 'antd';
@@ -34,7 +34,7 @@ const Navbar = () => {
   const { access_token, refresh_token } = getToken()
 
   const [logo, setLogo] = useState("https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg");
-  const { setReload, setCategorySelected, menus, setMenus } = CartState()
+  const { setReload, setCategorySelected,firstTimeLoadFunctions, menus, setMenus } = CartState()
   const [left,setLeft]=useState(0)
 
   // Added by Rohan - 30/12/22
@@ -82,6 +82,19 @@ const Navbar = () => {
     name: ""
   })
 
+  // async function profile(){
+
+  //   try{
+  //     await getProfileData().then(r=>console.log(r))
+
+  //   }
+  //   catch(err){
+  //  console.log(err)
+  //   }
+
+
+  // }
+
   const handleLogout = () => {
     dispatch(unSetUserInfo({ email: "", name: "" }))
     dispatch(unSetUserToken({ access_token: null }))
@@ -105,6 +118,16 @@ const Navbar = () => {
         email: data.email,
         name: data.name,
       }))
+       
+      console.log("-------------------------success------------------",data)
+      // if(localStorage.getItem("access_token")&& ){
+      //   // localStorage.removeItem("access_token")
+      //   // localStorage.removeItem("refresh_token")
+      //   firstTimeLoadFunctions()
+      // }
+
+      // profile()
+
   }, [data, isSuccess, dispatch])
 
   const nav = useNavigate()

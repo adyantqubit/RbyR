@@ -35,12 +35,14 @@ import { Typography } from '@mui/material';
 import { blue } from '@mui/material/colors';
 import { SizeGetter } from '../global/getSize';
 import Chat from '../expandDetailt/chat';
+import { TokenManage } from '../../hooks/globalFunctionUser';
 
 const text = 'Are you sure you would like to remove this item from the shopping cart?';
 
 const CartSItem = (props) => {
   notification.destroy()
-  var { cart, setCart, CategoryProduct, checkoutDetails, currency, offer, setOffer, taxRate, setTaxRate, cartEnd, setCartEnd } = CartState()
+  var { cart, setCart,setUserData,firstTimeLoadFunctions, CategoryProduct,userdata, checkoutDetails, currency, offer, setOffer, taxRate, setTaxRate, cartEnd, setCartEnd } = CartState()
+
 
   const [cartsaveApi, { isLoad }] = useCartUpdateMutation()
   let textInput = React.createRef();
@@ -309,9 +311,24 @@ const CartSItem = (props) => {
 
 
   async function cartChecking() {
-    await cartStockRecheck(cart).then(r => {
 
-      if (r.error) {
+    console.log(userdata.email.length)
+
+    if(userdata.email.length==0){
+      
+      nav("/login")
+    }
+    else{
+
+    const data={
+      email:userdata.email,
+      cart:cart
+    }
+
+    
+    await cartStockRecheck(data).then(r => {
+      
+      if (r.error_cart) {
         cartEnd = r.error
         cartEnd.map(c => {
           notification.error({
@@ -325,15 +342,35 @@ const CartSItem = (props) => {
           });
         })
       }
+      else if(r.error_user){
+        // setUserData({
+        //   email: "",
+        //   name: "",
+        //   contact:""
+        // })
+        // setCart([])
+        notification.error({
+          message: <div style={{ fontSize: "18px", color: "white" }}><br/></div>,
+          description:
+            <span>Your account is disabled! please contact to the our customer support.</span>,
+          style: { backgroundColor: "var(--bannerColor)", color: "#212121" },
+          duration: 20,
+          key:1
+
+        });
+        //  firstTimeLoadFunctions()
+        // nav("/login")
+      }
       else {
         checkoutDetails['CouponDiscount'] = afterColumnTotalOfferAdd(offer, cart, taxRate).coupon
         DefaultShipping()
         nav("/placeorder")
 
       }
-    })
+    }).catch(err=>console.log(err))
 
     return cartSuccess;
+  }
   }
 
 
