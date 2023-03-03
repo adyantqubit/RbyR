@@ -173,7 +173,7 @@ const Billing = () => {
 
               </div>
 
-              <div style={{ width: "65%", textAlign: "start", padding: "15px" ,margin:"auto" }}>
+              <div className={styles.shippingDetail}>
                 <span className={styles.columnitem1head}>
                   Shipping To:-
                 </span>

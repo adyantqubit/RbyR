@@ -29,7 +29,7 @@ box-shadow: 0 2px 10px 1px #323232;
 
 .ant-modal-header {
   color: white;
-  background-color: var(--modalHeaderBackgroundColor);
+  background-color: var(--bannerColor);
   border-bottom: none;
   
 }

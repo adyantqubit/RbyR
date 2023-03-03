@@ -258,7 +258,7 @@ class product_ordersAdmin(admin.ModelAdmin):
     list_filter=("date","payment_mode","price","user_no")
     search_fields=("product_id__title","user_no__name")
     readonly_fields=("id","order_no","user_no","product_id","billing_id","shipping_id","quantity"
-    ,"price","size","payment_mode","date","total_price","selected_currency_sign","selected_currency_value")
+    ,"price","total_price","size","payment_mode","date","selected_currency_sign","selected_currency_value")
     ordering=("order_no",)
     list_per_page=10
     def has_add_permission(self, request):

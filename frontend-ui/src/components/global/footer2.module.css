@@ -102,7 +102,7 @@
     letter-spacing: 1px;
     font-family: 'MyFont';
     font-weight: 500;
-    color: var(--textColorSecondary);
+    color: var(--textColorSecondary) !important;
 
 }
 

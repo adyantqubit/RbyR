@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import config from "../../api/config";
-import { DetailApi, getCategoryProduct } from "../../api/service";
+import { DetailApi, getCategoryProduct, LikeDeleteApi } from "../../api/service";
 import Footer from "../global/footer";
 import Navbar from "../global/NavHeader";
 import { bounce } from "react-animations";
@@ -123,24 +123,24 @@ const Details = (props) => {
 
 
   useEffect(() => {
-    if(details){
-    var recents = JSON.parse(localStorage.getItem("recentview"));
-    if (recents == null) {
+    if (details) {
+      var recents = JSON.parse(localStorage.getItem("recentview"));
+      if (recents == null) {
         localStorage.setItem("recentview", JSON.stringify([details]));
+      }
+
+      if (
+        recents != null &&
+        recents.filter((r) => r.id === details.id).length == 0
+      ) {
+        recents.splice(0, 0, details)
+        // recents.push(details);
+        localStorage.setItem("recentview", JSON.stringify(recents));
+      }
+
+      window.scrollTo(0, 0)
+
     }
-
-    if (
-      recents != null &&
-      recents.filter((r) => r.id === details.id).length == 0
-    ) {
-      recents.splice(0,0,details)
-      // recents.push(details);
-      localStorage.setItem("recentview", JSON.stringify(recents));
-    }
-
-    window.scrollTo(0, 0)
-
-  }
 
   }, [details]);
 
@@ -335,6 +335,7 @@ const Details = (props) => {
 
     const data = {
       item: product.id,
+      size: product.size,
     };
     var access_token = localStorage.getItem("access_token");
     const resp = await saveLikeApi({ data, access_token });
@@ -397,6 +398,20 @@ const Details = (props) => {
     }
   }
   // end of code - 19/2/23
+
+  async function likeDelete(product){
+    const data={
+      id:product.id
+    }
+    await LikeDeleteApi(data,localStorage.getItem('access_token')).then(r=> console.log(r))
+
+    if (like.filter((l) => l.id === product.id).length > 0) {
+      const p = like.filter((i) => i.id !== product.id);
+      setLike(p);
+    } else {
+      setLike([...like, product]);
+    }
+  }
 
 
   return (
@@ -813,7 +828,21 @@ const Details = (props) => {
                         </button>
                       )}
 
-                      {like.filter((l) => l.id === details.id).length > 0 ? (
+                      <button
+                        className={` ${styles["button2"]} `}
+                        onClick={(e) => buyNow(details)}
+                      >
+                        <span style={{ margin: "auto" }}>
+
+                          BUY NOW
+
+                        </span>
+                      </button>
+
+                      
+                    </div>
+
+                    {like.filter((l) => l.id === details.id).length > 0 ? (
                         // <AiFillHeart
                         //   style={{
                         //     color: "red",
@@ -823,8 +852,8 @@ const Details = (props) => {
                         //   onClick={(e) => LikedSave(details)}
                         // />
                         <button
-                          className={` ${styles["button2"]} `}
-                          onClick={(e) => LikedSave(details)}
+                          className={` ${styles["button3"]} `}
+                          onClick={(e) => likeDelete(details)}
                         >
                           <span style={{ margin: "auto", paddingLeft: "10px" }}>
                             REMOVE TO WISHLIST
@@ -843,7 +872,7 @@ const Details = (props) => {
                         //   onClick={(e) => LikedSave(details)}
                         // />
                         <button
-                          className={` ${styles["button2"]} `}
+                          className={` ${styles["button3"]} `}
                           onClick={(e) => LikedSave(details)}
                         >
                           <span style={{ margin: "auto" }}>
@@ -855,19 +884,7 @@ const Details = (props) => {
                         </button>
 
                       )}
-                    </div>
 
-
-                    <button
-                      className={` ${styles["button3"]} `}
-                      onClick={(e) => buyNow(details)}
-                    >
-                      <span style={{ margin: "auto" }}>
-
-                        BUY NOW
-
-                      </span>
-                    </button>
 
                     {/* <div className={` ${styles["iconButtonsContainer"]} `}> */}
                     {/* {like.filter((l) => l.id === details.id).length > 0 ? (

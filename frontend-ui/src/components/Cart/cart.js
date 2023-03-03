@@ -37,7 +37,7 @@ import { SizeGetter } from '../global/getSize';
 import Chat from '../expandDetailt/chat';
 import { TokenManage } from '../../hooks/globalFunctionUser';
 
-const text = 'Are you sure you would like to remove this item from the shopping cart?';
+const text = 'Are you sure you would like to remove this item from the Shopping Cart?';
 
 const CartSItem = (props) => {
   notification.destroy()
@@ -129,7 +129,7 @@ const CartSItem = (props) => {
           description:
             `No More Stock Available`,
           className: "custom-class",
-          style: { backgroundColor: "#8c8c8c", color: "black", marginTop: "10vh" },
+          style: {backgroundColor: "var(--backgroundColorPrimary)", color: "black", marginTop: "10vh" },
           duration: 2,
           key: 1
         });
@@ -336,7 +336,7 @@ const CartSItem = (props) => {
             description:
               <span>Product ${c.name} size ${c.size} is out of stock <br />
                 Please move this item  to Wishlist.</span>,
-            style: { backgroundColor: "#D2042D", color: "white" },
+            style: { backgroundColor: "var(--backgroundColorPrimary)", color: "white" },
             duration: 20,
 
           });
@@ -353,7 +353,7 @@ const CartSItem = (props) => {
           message: <div style={{ fontSize: "18px", color: "white" }}><br/></div>,
           description:
             <span>Your account is disabled! please contact to the our customer support.</span>,
-          style: { backgroundColor: "var(--bannerColor)", color: "#212121" },
+          style: { backgroundColor: "var(--backgroundColorPrimary)", color: "#212121" },
           duration: 20,
           key:1
 
@@ -681,28 +681,28 @@ const CartSItem = (props) => {
               <ul style={{ listStyleType: "disc", listStylePosition: "outside",marginRight:"15px" }}>
 
                <div  style={{display:"flex"}}>
-                 <BsDot fontSize={20}/>
+                 <BsDot fontSize={20} style={{minWidth:"20px",minHeight:"20px"}}/>
                <li style={{ color:"var(--textColorSecondary)", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
                   {ImportantRules.point1}
                 </li>
                 </div> 
 
                 <div style={{display:"flex"}}>
-                <BsDot fontSize={20}/>
+                <BsDot fontSize={20} style={{minWidth:"20px",minHeight:"20px"}}/>
                 <li style={{ color:"var(--textColorSecondary)", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
                  {ImportantRules.point2}
                 </li>
                 </div>
 
                 <div style={{display:"flex"}}>
-                <BsDot fontSize={20}/>
+                <BsDot fontSize={20} style={{minWidth:"20px",minHeight:"20px"}}/>
                 <li style={{ color:"var(--textColorSecondary)", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
                   {ImportantRules.point3}
                 </li>
                 </div>
 
                 <div style={{display:"flex"}}>
-                <BsDot fontSize={20}/>
+                <BsDot fontSize={20} style={{minWidth:"20px",minHeight:"20px"}}/>
                 <li style={{color:"var(--textColorSecondary)", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>
                  <Link to="/custom" style={{color:"var(--textColorSecondary)",textDecoration:"underline", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>Contact Us </Link> | <Link to="/delivery-policy" style={{ color:"var(--textColorSecondary)",textDecoration:"underline", fontSize: "13px", lineHeight: "20px", letterSpacing: "1px" }}>Shipping Policy</Link>
                 </li>

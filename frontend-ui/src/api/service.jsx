@@ -390,3 +390,11 @@ export const getWhatsappContactDetail = async () => {
   return response ? response.data : {};
 };
 // End of code addition
+
+
+export const LikeDeleteApi = async (data,access) => {
+  const response = await API.post(`likeDelete/`,data, {
+        headers: { "Content-Type": "application/json",'authorization':`Bearer ${access}`},
+      }).catch((err) => console.log("Failed to authenticate the user."));
+  return response ? response.data : {};
+};

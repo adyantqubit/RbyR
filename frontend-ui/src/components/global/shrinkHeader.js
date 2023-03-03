@@ -35,7 +35,7 @@ const text = 'Are you sure you want to logout?';
 
 
 const ShrinkHeader = () => {
-  const { menus } = CartState()
+  const { menus} = CartState()
   const [menu, setMenu] = useState(null)
   const nav = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
@@ -209,7 +209,7 @@ const ShrinkHeader = () => {
                   m.shownInstFilter ? `/listing/${parent[0]}/0` :
                   `/listing/${parent[0]}/0`
               } className={style.drawerMenu}>
-                <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => toggleDrawer()}><span>{parent[0]}</span></div>
+                <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => {toggleDrawer(); setCategorySelected([])}}><span>{parent[0]}</span></div>
               </Link>
 
               // commented by Rohan-on- 17/2/23

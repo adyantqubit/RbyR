@@ -73,8 +73,9 @@
     padding: 0 10px;
     min-width: 50%;
     min-height: 50px;
-    border:  1px solid var(--btnBorderColorPrimary);
+    border:  1px solid white;
     background-color: transparent;
+    text-align: start;
     color: var(--btnTextColorPrimary);
     
      /* "to left" / "to right" - affects initial color */
@@ -97,7 +98,7 @@
 @media (max-width:767px) {
 
     .heading{
-
+        height: 8vh;
         font-size: 18px;
     }
 

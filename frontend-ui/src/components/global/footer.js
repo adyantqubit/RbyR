@@ -265,6 +265,7 @@ function Footer() {
               fontFamily: "Rawson-Medium",
               fontSize: "16px",
               fontWeight: "20",
+              color:"#212121",
               textDecoration: "none",
             }}
           >

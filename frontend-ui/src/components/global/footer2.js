@@ -53,6 +53,7 @@ function Footer2() {
             message: "",
             description: "Subscribed to email updates successfully",
             onClick: () => {},
+            style:{backgroundColor: "var(--bannerColor)"},
             key:1
           });
         } else {
@@ -61,6 +62,7 @@ function Footer2() {
               message:"",
               description: emailData.error,
               onClick: () => {},
+              style:{backgroundColor: "var(--bannerColor)"},
               key:1
             });
           } else {
@@ -68,6 +70,7 @@ function Footer2() {
               message: "",
               description: "Email subscription failed",
               onClick: () => {},
+              style:{backgroundColor: "var(--bannerColor)"},
               key:1
             });
           }
@@ -78,6 +81,8 @@ function Footer2() {
         message: "",
         description: "Please provide a valid email format",
         onClick: () => {},
+        style:{backgroundColor: "var(--bannerColor)"},
+
         key:1
       });
     }
@@ -93,6 +98,7 @@ function Footer2() {
           message:"",
           description: "Instagram Post Not Found",
           onClick: () => {},
+          style:{backgroundColor: "var(--bannerColor)"},
           key:1
         });
     });

@@ -171,6 +171,15 @@ class LikedUpdateView(APIView):
         data = giveLikedDataSerializer(
             Liked.objects.filter(user_no=request.user), many=True)
         return Response({"liked": data.data})
+    
+    
+class likeDelete(APIView):
+      def post(self, request):
+          pro=product_detail.objects.get(id=request.data['id'])
+          like=Liked.objects.filter(item=pro)
+          for singleInstance in like:
+              singleInstance.delete()
+          return Response({"like"}) 
 
 
 class CartUpdateView(APIView):

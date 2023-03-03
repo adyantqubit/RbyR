@@ -13,6 +13,7 @@ import config from "../../api/config";
 import styles from "./cartCard.module.css";
 import { TiDeleteOutline } from "react-icons/ti";
 import { Link, useNavigate } from "react-router-dom";
+import { LikeDeleteApi } from "../../api/service";
 
 const LikeCard = (props) => {
   const { like, setLike,currency ,setLikeDrawer} = CartState();
@@ -41,6 +42,20 @@ const LikeCard = (props) => {
     // window.location.reload(false);
   }
 
+  async function likeDelete(product){
+    const data={
+      id:product.id
+    }
+    await LikeDeleteApi(data,localStorage.getItem('access_token')).then(r=> console.log(r))
+
+    if (like.filter((l) => l.id === product.id).length > 0) {
+      const p = like.filter((i) => i.id !== product.id);
+      setLike(p);
+    } else {
+      setLike([...like, product]);
+    }
+  }
+
   return (
     <>
       {like.length > 0 ? (
@@ -63,7 +78,7 @@ const LikeCard = (props) => {
                   </h3>
                   <TiDeleteOutline
                     className={style.wishItemCancelButton}
-                    onClick={(e) => LikedSave(l)}
+                    onClick={(e) => likeDelete(l)}
                   ></TiDeleteOutline>
                 </div>
                 <div className={style.wishItemBodyContainer}>

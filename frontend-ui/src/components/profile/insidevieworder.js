@@ -232,9 +232,9 @@ const InsideOrder = () => {
                     UPI Scanner
                   </Button>
                   <Modal title="Scan To Pay" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                    <div style={{ background: "white" }}>
+                    <div style={{ background: "white",width:'100%' }}>
                       {onlineDetail != null ?
-                        <div className={styles.payBox} style={{width:"auto"}}>
+                        <div className={styles.payBox} style={{width:"100%"}}>
                           <img src={config.apiBaseURL + onlineDetail.qr_img}
                             className={styles.img} />
                           <div className={styles.payTitle}>

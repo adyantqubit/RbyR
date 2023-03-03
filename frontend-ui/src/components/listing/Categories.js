@@ -26,9 +26,9 @@ const Categories = () => {
 
     // jump into product listing page according to menu instant filter showing condition
     function jumpIntoProductPage(s){
-        if(list.shownInstFilter)
-        nav(`/listing/${parent}/0`)
-        else
+        // if(list.shownInstFilter)
+        // nav(`/listing/${parent}/0`)
+        // else
         nav(`/listing/${parent}/${s.category}`)
 
     }

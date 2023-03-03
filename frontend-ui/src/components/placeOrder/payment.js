@@ -178,7 +178,9 @@ const Payment = () => {
       {/*commenting by -rohan Changing position of cash and online option */}
 
       <div className={styles.boxpay} id="cash">
-        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }} onClick={onSelect}>
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }} 
+        // onClick={onSelect}
+        >
           <strike className={styles.userinfoText}>Cash On Delivery</strike>
           <h6 style={{ fontSize: "12px" }}>(Currently not available)</h6>
 
@@ -224,7 +226,10 @@ const Payment = () => {
       </div>
 
 
-      <button className={buttonchng ? styles.userInfoButton3 : styles.userInfoButton} style={{ margin: "15px 5px", width: "300px", minHeight: "50px" }} onClick={e => cartChecking()}>
+      <button 
+      // className={buttonchng ? styles.userInfoButton3 : styles.userInfoButton} 
+      className={styles.shopbtn2}
+      style={{ margin: "15px 5px", width: "300px", minHeight: "50px" }} onClick={e => cartChecking()}>
         PLACE YOUR ORDER
       </button>
     </div>)

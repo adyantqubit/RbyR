@@ -88,7 +88,7 @@ class UserChangePasswordSerializer(serializers.ModelSerializer):
           if(ch==True):
               pass
           else:
-            raise serializers.ValidationError("Old password is Incorect")
+            raise serializers.ValidationError("Old password is Incorrect")
           password=attrs.get('password')
           password2=attrs.get('password2')
           if password != password2:

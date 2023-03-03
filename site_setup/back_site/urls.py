@@ -53,6 +53,7 @@ urlpatterns = [
     path('cart_recheck/',CartRecheck.as_view()),
     path('shipping_tick/',ShippingTick.as_view()),
     path('User_update/',updateUser.as_view()),
+    path('likeDelete/',likeDelete.as_view()),
     
     # Added by Rohan on 30/11/22
     #Reason - To get all worldofrr content

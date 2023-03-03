@@ -109,7 +109,7 @@ const UserInfo = () => {
                         }
                     </div>
                 </div>
-                <button className={style.shopbtn2} style={{margin:"15px 5px",width:"300px",minHeight:"45px"}} >
+                <button className={styles.shopbtn2} style={{margin:"15px 5px",width:"300px",minHeight:"45px"}} >
                     PROCEED TO SHIPPING
                 </button>
             </form>

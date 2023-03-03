@@ -29,7 +29,7 @@ import InstantFilter from './InstantFilter';
 const ListPage = () => {
 
 
-  var { menus, nullpage, setNullPage, setLike, setAllCategoryAvai,allCategoryAvai, reload, setReload, htl, lth, availablitySelect, latestSelect, cart, allColorAvai, tempallpro, settemAllpro, currency, setAllColorAvai, setCurrency, setCart, CategoryProduct, setCategoryProduct, sortui, setSortUi, filterui, setfilterUi } = CartState()
+  var { menus, nullpage, setNullPage, setCategorySelected,setLike, setAllCategoryAvai,allCategoryAvai, reload, setReload, htl, lth, availablitySelect, latestSelect, cart, allColorAvai, tempallpro, settemAllpro, currency, setAllColorAvai, setCurrency, setCart, CategoryProduct, setCategoryProduct, sortui, setSortUi, filterui, setfilterUi } = CartState()
   const [saveLikeApi, { isLoading }] = useLikedUpdateMutation()
   const [cartsaveApi, { isLoad }] = useCartUpdateMutation()
   let { access_token } = getToken();
@@ -47,6 +47,9 @@ const ListPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    window.onpopstate=()=>{
+      setCategorySelected([])
+    }
   }, [])
 
   useEffect(() => {

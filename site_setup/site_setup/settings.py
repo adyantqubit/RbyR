@@ -64,6 +64,13 @@ MIDDLEWARE = [
 
 ]
 
+CKEDITOR_CONFIGS = {
+  'default': {
+    'removePlugins': 'stylesheetparser',
+    'allowedContent': True,
+  },
+}
+
 ROOT_URLCONF = 'site_setup.urls'
 
 TEMPLATES = [
@@ -152,7 +159,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-Base_url="http://127.0.0.1:8000/"
+Base_url="http://192.168.1.50:3000"
 
 
 import os
@@ -168,7 +175,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_WHITELIST = [
      "http://localhost:3000",
-     "http://192.168.1.9:3000",
+     "http://192.168.1.50:3000",
 ]
 
 # Django project settings.py
@@ -227,5 +234,5 @@ PASSWORD_RESET_TIMEOUT = 1800 # 30 mint, in seconds
 
 CORS_ALLOWED_ORIGINS=[
     "http://localhost:3000",
-    "http://192.168.1.9:3000",
+    "http://192.168.1.50:3000",
 ]

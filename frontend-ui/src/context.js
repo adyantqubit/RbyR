@@ -320,6 +320,8 @@ const Context = ({ children }) => {
       filteredProducts = filter2
     }
 
+    console.log("------------------filtered product------------------",filteredProducts)
+
     var finalFilter = []
 
 
@@ -337,6 +339,7 @@ const Context = ({ children }) => {
       finalFilter = tempallpro
 
 
+      console.log("------------------------ final------------------",finalFilter)
     //category
 
 

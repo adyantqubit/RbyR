@@ -156,6 +156,7 @@ display:none;
     align-items:center;
     justify-content:space-between;
     width:100%;
+    margin-top: 10px;
 }
 .firstName{
     font-size: 13px;

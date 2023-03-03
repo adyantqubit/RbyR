@@ -92,7 +92,7 @@
     letter-spacing: 1px;
     font-family: 'MyFont2';
     font-weight: 500;
-    min-width: 40px;
+    /* min-width: 40px; */
     padding: 9px 20px;
     height: 100%;
   }
