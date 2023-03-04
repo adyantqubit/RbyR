@@ -76,15 +76,6 @@ const ListPage = () => {
 
   }, [category, parent, htl, lth, availablitySelect, latestSelect])
 
-  //  useEffect(()=>{
-  //   console.log("on page index call",reload,CategoryProduct)
-  //   if(reload==false)
-  //   Apicall()
-
-  //  },[pageIndex])
-
-  // end of the code
-
 
   async function ApiReSet() {
 
@@ -93,122 +84,9 @@ const ListPage = () => {
     setPageIndex(0)
     setCategoryProduct([])
     settemAllpro([])
-
-
-
-    // const data={
-    //   "pageIndex":1,
-    //   "category":category,
-    //   "lth":lth,
-    //   "htl":htl,
-    //   "latest":latestSelect,
-    //   "availablity":availablitySelect
-    // }
-
-    // await nextIndexPage(data).then(r=>{
-    //   console.log("response from backend_______",r)
-    //   setTimeout(() => { 
-    //     if(r.error){
-    //       setReload(false);
-    //       setLoading(false);
-    //       console.log("api reset false statement")
-
-    //     }
-    //     else{
-    //     setCategoryProduct([...r.products])
-
-
-    //     console.log("api reset true statement")
-    //     settemAllpro([...r.products])
-    //     setAllColorAvai(r.colors)
-
-    //     setReload(true);
-
-    //     }
-
-    //   }, 1000)
-    // })
   }
 
-  function scrollTop() {
-    console.log("top")
-    document.getElementById('scrolled').scrollTop = 0
-  }
-
-  const catApi = async () => {
-    await getCategoryProduct(category).then(r => { setCategoryProduct([...r.category]); settemAllpro([...r.category]); console.log(r.category) })
-  }
-
-
-
-  //Commented By Rohan 
-  //Reason - Garbage function no need to use like and cart functionality in list page
-
-  //   //Like Concept
-
-  //   const LikedSave=async(product)=>{
-
-  //     if(access_token){
-
-  //     }
-
-  //     const data={
-  //       item:product.id
-  //     }
-  //     const resp=await saveLikeApi({data,access_token});
-
-  //         if(like.filter(l=>l.id===product.id).length>0){
-  //           const p=like.filter(i=>i.id!==product.id)
-  //           setLike(p)
-  //         }else{
-  //           setLike([...like,product])
-  //         }
-  //     }             
-  //  //like
-
-
-  //  //cart
-  //  const cartSave=async(product)=>{
-
-  //   const data={
-  //     product_no:product.id
-  //   }
-  //   const resp=await cartsaveApi({data,access_token});
-  //       if(cart.filter(l=>l.id===product.id).length>0){
-  //         const p=cart.filter(i=>i.id!==product.id)
-
-  //         setCart(p)
-  //       }else{
-  //         const cartData={
-  //           id:product.id,
-  //           title:product.title,
-  //           about:product.about,
-  //           price:product.price,
-  //           img_main:product.img_main,
-  //           quantity:1,
-  //           size:"Medium"
-  //         }
-  //         setCart([...cart,cartData])
-  //         localStorage.setItem('cart',JSON.stringify(cart))
-  //       }
-  //   }             
-  //  //cart
-
-  //  var temp =1
-  //End of Garbage code
-
-
-  function openDetail(id) {
-    // added by rohan on - 18/2/23
-    // Reason - jumping into detail page according to category presence
-    if (id.category.length)
-      nav(`/listing/${id.menu}/${id.category}/detail/${id.id}`)
-    else {
-      nav(`/listing/${id.menu}/0/detail/${id.id}`)
-    }
-  }
-
-
+ 
 
   const lastref = useRef()
   var [loading, setLoading] = useState(false)
@@ -288,6 +166,34 @@ const ListPage = () => {
       }, 200)
     })
   }
+
+
+
+
+  
+
+  function scrollTop() {
+    console.log("top")
+    document.getElementById('scrolled').scrollTop = 0
+  }
+
+  const catApi = async () => {
+    await getCategoryProduct(category).then(r => { setCategoryProduct([...r.category]); settemAllpro([...r.category]); console.log(r.category) })
+  }
+
+
+
+
+  function openDetail(id) {
+    // added by rohan on - 18/2/23
+    // Reason - jumping into detail page according to category presence
+    if (id.category.length)
+      nav(`/listing/${id.menu}/${id.category}/detail/${id.id}`)
+    else {
+      nav(`/listing/${id.menu}/0/detail/${id.id}`)
+    }
+  }
+
 
 
 

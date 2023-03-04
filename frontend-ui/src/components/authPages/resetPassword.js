@@ -36,10 +36,8 @@ const ResetPassword = () => {
       if(res.error){
         setMsg({})
         setError(res.error.data.errors)
-        console.log(res)
       }
       if(res.data){
-                console.log(res)
 
        setError(null)
        notification.error({

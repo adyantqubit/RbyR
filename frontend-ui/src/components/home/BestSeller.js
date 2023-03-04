@@ -15,7 +15,6 @@ const BestSeller = () => {
     const nav = useNavigate()
     useEffect(() => {
         setbest(product.filter(p => p.bestSeller == true))
-        console.log(product.filter(p => p.bestSeller == true))
     }, [product])
 
 
@@ -23,7 +22,6 @@ const BestSeller = () => {
         let temp = bestProducts[i].img_main;
         bestProducts[i].img_main = bestProducts[i].img_sub1
         bestProducts[i].img_sub1 = temp
-        console.log(bestProducts)
         setbest(bestProducts)
         setImageSwap(!imageSwap)
 
@@ -51,7 +49,7 @@ const BestSeller = () => {
                             return <div className={style.card}
                                 onMouseEnter={e => swapImage(i)}
                                 onMouseLeave={e => swapImage(i)}
-                                onClick={e => { console.log("hit"); nav(`/listing/${m.menu}/${m.category}/detail/${m.id}`) }}
+                                onClick={e => {  nav(`/listing/${m.menu}/${m.category}/detail/${m.id}`) }}
                             >
                                 <img
                                     src={config.apiBaseURL + m.img_main}
@@ -73,7 +71,7 @@ const BestSeller = () => {
                             return <div className={style.card}
                                 onMouseEnter={e => swapImage(i)}
                                 onMouseLeave={e => swapImage(i)}
-                                onClick={e => { console.log("hit"); nav(`/listing/${m.menu}/${m.category}/detail/${m.id}`) }}
+                                onClick={e => { nav(`/listing/${m.menu}/${m.category}/detail/${m.id}`) }}
                             >
                                 <img
                                     src={config.apiBaseURL + m.img_main}

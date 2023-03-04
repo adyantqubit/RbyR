@@ -13,7 +13,6 @@ const Card = (props) => {
   //   images();
   // }, []);
 
-  console.log(props.imgArray)
   // async function images() {
   //   await getCardHomeImagesApi().then((r) => setIamges(r.response));
   // }

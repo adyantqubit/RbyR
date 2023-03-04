@@ -96,7 +96,7 @@ const Context = ({ children }) => {
         description:
           `You are Log out`,
         className: "custom-class",
-        style: { backgroundColor: "var(--backgroundColorPrimary)", color: "black", marginTop: "10vh" },
+        style: { backgroundColor: "var(--bannerColor)", color: "black", marginTop: "10vh" },
         duration: 2,
         key: 1
       });
@@ -131,7 +131,7 @@ const Context = ({ children }) => {
     toast.success(<div style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px" }}>Successfully Logged out.
       <div style={{ fontSize: "13px", color: "black", letterSpacing: "1.4px" }}>You are logged out</div>
     </div>,
-      { position: toast.POSITION.TOP_RIGHT, duration: 1000, style: { top: "20vh", right: "2vw", background: "var(--backgroundColorPrimary)" } },
+      { position: toast.POSITION.TOP_RIGHT, duration: 1000, style: { top: "20vh", right: "2vw", background: "var(--bannerColor)" } },
     )
   }
 
@@ -159,7 +159,6 @@ const Context = ({ children }) => {
 
   async function TokenManage(int) {
 
-    console.log("token manage")
     const data = {
       "refresh": localStorage.getItem('refresh_token')
     }
@@ -169,14 +168,12 @@ const Context = ({ children }) => {
 
         removeToken()
         setLike([])
-        console.log("token error ---------------")
         this.clearInterval()
         window.location.reload(false)
 
 
       }
       else {
-        console.log("token succesfully ---------------")
         const token = {
           access: r.access,
           refresh: r.refresh
@@ -239,7 +236,6 @@ const Context = ({ children }) => {
               like.push(...p)
           }
         })
-        console.log(r.liked)
         setLike([...like])
 
       })
@@ -296,8 +292,7 @@ const Context = ({ children }) => {
         tempSize = tempSize.filter(c => c[`${s}`] > 0)
       })
 
-    console.log(sizeSelected)
-    console.log(filteredProducts)
+   
 
     // price
     // commented by -Rohan- 21/2/23
@@ -310,7 +305,6 @@ const Context = ({ children }) => {
     // }
     // console.log(filteredProducts)
     // end of code
-    console.log(selectedCategory)
 
     if (selectedCategory.length > 0) {
       const filter2 = []
@@ -320,7 +314,6 @@ const Context = ({ children }) => {
       filteredProducts = filter2
     }
 
-    console.log("------------------filtered product------------------",filteredProducts)
 
     var finalFilter = []
 
@@ -328,7 +321,6 @@ const Context = ({ children }) => {
     if (selectedColor.length > 0 || sizeSelected.length > 0 || filteredProducts.length > 0 || maxValue) {
       if (filteredProducts.length < 8) {
 
-        console.log("page index re hit")
         setReload(!reload)
         finalFilter = filteredProducts
       }
@@ -339,7 +331,6 @@ const Context = ({ children }) => {
       finalFilter = tempallpro
 
 
-      console.log("------------------------ final------------------",finalFilter)
     //category
 
 
@@ -356,7 +347,6 @@ const Context = ({ children }) => {
   const [checked1, setCheckBoxChecked] = useState(false);
   const [checked2, setCheckBoxChecked2] = useState(false);
   const setcheck = (e) => {
-    console.log(e.target.checked)
     if (e.target.value == 1) {
       setCheckBoxChecked(true)
       setCheckBoxChecked2(false)

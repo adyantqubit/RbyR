@@ -30,7 +30,6 @@ const Billing = () => {
     getStoreLocator();
     checkoutDetails = JSON.parse(sessionStorage.getItem('checkoutDetails'))
     setCheckoutDetails(checkoutDetails)
-    console.log(JSON.parse(sessionStorage.getItem('checkoutDetails')))
     setOffer({ discount_percentage: 0, maximum_discount_price: 1000, expiry_date: '2022-11-30' })
 
     window.scrollTo(0, 0)

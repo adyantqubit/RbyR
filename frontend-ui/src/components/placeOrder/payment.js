@@ -74,7 +74,6 @@ const Payment = () => {
       await cartStockRecheck(data).then(r => {
 
         if (r.error_cart) {
-          console.log("error occurs")
           cartEnd = r.error_cart
           cartEnd.map(c => {
             notification.error({
@@ -99,7 +98,6 @@ const Payment = () => {
           // nav("/login")
         }
         else {
-          console.log("all done")
           submitAll()
         }
       })
@@ -119,16 +117,13 @@ const Payment = () => {
     checkoutDetails['currency_value'] = currency.value
     checkoutDetails["promocode"] = offer.promocode
     checkoutDetails['date'] = new Date().toISOString().slice(0, 10)
-    console.log(checkoutDetails)
 
 
     await invoiceApi(checkoutDetails, access_token).then(r => {
       
-      console.log(r)
       if(r.order_no)
       {
         checkoutDetails['orderno'] = r.order_no
-        console.log(r)
         sessionStorage.setItem('checkoutDetails', JSON.stringify(checkoutDetails))
         deleteFromCart()
         nav("/billing")
@@ -146,7 +141,7 @@ const Payment = () => {
         // window.localStorage.clear()
       } 
 
-    }).catch(err=>console.log(err))
+    })
 
     //commented by - Rohan
     //Reason - Commenting warning to select options

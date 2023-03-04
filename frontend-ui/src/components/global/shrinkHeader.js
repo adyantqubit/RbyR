@@ -50,11 +50,9 @@ const ShrinkHeader = () => {
   const [isOpen2, setIsOpen2] = useState(false)
 
   const toggleDrawer2 = () => {
-    console.log("")
     setIsOpen2((prevState) => !prevState)
     seLogoutAction(false)
 
-    console.log("drawer 2 hit ", !isOpen2)
   }
 
   useEffect(() => {
@@ -84,7 +82,6 @@ const ShrinkHeader = () => {
   const dispatch = useDispatch();
   const { userdata, setUserData, firstTimeLoadFunctions, setCategorySelected } = CartState()
   const handleLogout = () => {
-    console.log("hit")
     dispatch(unSetUserInfo({ email: "", name: "" }))
     dispatch(unSetUserToken({ access_token: null }))
     removeToken()
@@ -110,7 +107,6 @@ const ShrinkHeader = () => {
 
 
   function settingMenus(menuName, index) {
-    console.log(menus[index][`${menuName[0]}`])
     if (menus[index][`${menuName[0]}`].length > 0) {
       setcategory(menus[index][`${menuName[0]}`])
       setparentMenu(menuName[0])

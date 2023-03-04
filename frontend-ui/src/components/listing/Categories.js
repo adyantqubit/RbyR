@@ -21,6 +21,7 @@ const Categories = () => {
     // extracting all child menu of parent menu from menu list 
     useEffect(() => {
         setList(menus?.filter(m => Object.keys(m)[0] === parent)[0])
+        window.scrollTo(0,0)
     }, [parent, menus])
 
 

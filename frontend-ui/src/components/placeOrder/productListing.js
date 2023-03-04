@@ -17,7 +17,6 @@ const ProductListing = () => {
   const nav = useNavigate()
 
   useEffect(() => {
-    console.log(checkoutDetails.CouponDiscount)
     if (typeof checkoutDetails.CouponDiscount != 'undefined') {
 
     }
@@ -36,7 +35,6 @@ const ProductListing = () => {
         <hr style={{ color: "black" }}></hr>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div className={styles.sub}>Subtotal</div>
-          {console.log(offer, cart, taxRate)}
           <div className={styles.sub}>{currency.sign}{(afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal * currency.value).toFixed(2)}</div>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", marginTop: "8px" }}>

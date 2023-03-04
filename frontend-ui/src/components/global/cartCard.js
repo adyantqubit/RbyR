@@ -90,7 +90,6 @@ const CartCard = (props) => {
     await increamentCheck(data).then(r => {
       if (r.success == true) {
         con = true;
-        console.log("present in stock", r)
       }
       else if (r.error) {
         document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display = "block";
@@ -104,7 +103,6 @@ const CartCard = (props) => {
           duration: 2,
           key: 1
         });
-        console.log("stock is not present", r)
       }
     })
   }
@@ -116,7 +114,6 @@ const CartCard = (props) => {
     await increamentCheck(data).then(r => {
       if (r.success == true) {
         con = true;
-        console.log("present in stock", r)
       }
       else if (r.error) {
         // document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
@@ -131,7 +128,6 @@ const CartCard = (props) => {
           key: 1
         });
         con = false;
-        console.log("stock is not present", r)
       }
 
     })
@@ -258,7 +254,7 @@ const CartCard = (props) => {
 
   async function increamentApi(data) {
     var access_token = localStorage.getItem('access_token')
-    await CartQuantityApi({ data, access_token }).then(r => console.log(r))
+    await CartQuantityApi({ data, access_token })
   }
   const confirm = (pro) => {
     cartSave(pro)
@@ -286,7 +282,6 @@ const CartCard = (props) => {
               <div style={{ color: "black", marginLeft: "20px" }} className={styles.price}> {currency.sign}{(pro.price * currency.value*pro.quantity).toFixed(2)}</div>
               <div style={{ color: "black", marginLeft: "20px", marginTop: "8px" }}>
                 <span className={styles.size}>Size :</span>
-                {console.log(pro.size)}
                 <span className={styles.showSize}> {SizeGetter(pro.size)}</span>
               </div>
               <div style={{ color: "black", marginLeft: "20px", marginTop: "8px" }}>

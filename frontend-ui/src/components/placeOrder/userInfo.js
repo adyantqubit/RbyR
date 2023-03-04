@@ -21,7 +21,6 @@ const UserInfo = () => {
       }
 
       function hasWhiteSpaceforLast(s) {
-        console.log(s.indexOf(' '))
         var i=s.indexOf(' ');
         if(i==-1){
             return s.length;

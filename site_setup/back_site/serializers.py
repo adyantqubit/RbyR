@@ -97,7 +97,6 @@ class UserChangePasswordSerializer(serializers.ModelSerializer):
               raise serializers.ValidationError("New password should not be matched with old")
           user.set_password(password)
           user.save()
-          print(ch)
           return attrs
       
       
@@ -198,7 +197,6 @@ class CartUpdateSerializer(serializers.ModelSerializer):
             fields=['product_no','size']
             
         def validate(self, attrs):
-          print(attrs.get('product_no'),attrs.get('size'))
           product=product_detail.objects.get(id=attrs.get('product_no').id) 
           user=User.objects.get(email=self.context.get("user"))
           if Cart.objects.filter(product_no=product,user_no=user,size=attrs.get('size')).exists():
@@ -208,7 +206,6 @@ class CartUpdateSerializer(serializers.ModelSerializer):
             #  product.save()
              raise serializers.ValidationError({"jds"})
           else:
-              print(attrs.get("size"))
               like=Cart.objects.create(product_no=product,user_no=user,size=attrs.get("size"))
               like.save()
             #   product.like=True

@@ -241,7 +241,6 @@ const UsserAdresses = () => {
         else {
             isAlertVisiblepin = false
         }
-        console.log(data.get('number'))
         if (data.get('number').split(" ").join("").length < 11) {
             var dta = " Minimum 8 digit required"
             handleButtonClicknum(dta)
@@ -303,11 +302,9 @@ const UsserAdresses = () => {
             checkoutDetails['shippingData'] = shippingData;
             checkoutDetails['billingData'] = billingData;
             setCheckoutDetails(checkoutDetails)
-            console.log(checkoutDetails)
 
             await shpingcheckApi(shippingData, access_token).then(e => {
                 checkoutDetails['shipping_id'] = e.shipping_id;
-                console.log(e)
                 setCheckoutDetails(checkoutDetails)
                 setCond(false)
                 setPaymentflow(true)
@@ -316,7 +313,6 @@ const UsserAdresses = () => {
 
             await billingcheckApi(billingData, access_token).then(e => {
                 checkoutDetails['billing_id'] = e.billing_id;
-                console.log(e)
                 setCheckoutDetails(checkoutDetails)
                 setCond(false)
                 setPaymentflow(true)

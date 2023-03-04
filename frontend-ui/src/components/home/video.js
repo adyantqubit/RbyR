@@ -90,7 +90,7 @@ const Video = (props) => {
             >
               <div style={{ position: "relative", minWidth: "100%", minHeight: "100%", padding: "10px" }}>
                 <iframe className={style.video} src={`${u.Video_url}?autoplay=1&showinfo=0&controls=0&modestbranding=1&mute=1`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <div class={style.overlay} onClick={e => { setShow(true); setUrl(u.Video_url); console.log(showVideo); }}></div>
+                <div class={style.overlay} onClick={e => { setShow(true); setUrl(u.Video_url); }}></div>
               </div>
             </Carousel.Item>
             )}

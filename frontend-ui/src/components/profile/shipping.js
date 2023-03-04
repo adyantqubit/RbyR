@@ -84,7 +84,6 @@ const handleButtonClicknum = (msg) => {
       
     }
 
-    console.log(shippingAddress)
 
     function jumpToEdit(){
         setDefaultShipping(shippingAddress.filter(s=>s.isSelected==true)[0])
@@ -149,7 +148,6 @@ const handleButtonClicknum = (msg) => {
         var access=localStorage.getItem('access_token')
         await ShippingDeleteApi({access,id}).then(r=>
             {
-                console.log(r)
                 shippingDetails()
                 setshipEditCond(!shipEditcond)
             }
@@ -193,9 +191,7 @@ const handleButtonClicknum = (msg) => {
                 var data="Please Enter Only Number"
                 handleButtonClickpin(data)
               }
-           
-              console.log(key)
-          
+                     
           }
         
         
@@ -260,9 +256,9 @@ const handleButtonClicknum = (msg) => {
             <div className={style.column1}>
               <div className={style.column1header} >MY ACCOUNT</div>
               <hr style={{color:"black"}}></hr>
-              <div className={style.column1text} onClick={e=>setShowEditable(!true)}><Link to="/userprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY PROFILE</Link></div>
-              <div className={style.column1text} onClick={e=>setshipEditCond(true)}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#8c8c8c"}} >MY SHIPPING DETAILS</Link></div>
-              <div className={style.column1text}><Link to="/profile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY ORDERS</Link></div>
+              <div className={style.column1text} onClick={e=>setShowEditable(!true)}><Link to="/userprofile" style={{textDecoration:"none",color:"#212121"}}>MY PROFILE</Link></div>
+              <div className={style.column1text} onClick={e=>setshipEditCond(true)}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#212121"}} >MY SHIPPING DETAILS</Link></div>
+              <div className={style.column1text}><Link to="/profile" style={{textDecoration:"none",color:"#212121"}}>MY ORDERS</Link></div>
 
             </div>
             <div className={style.column2}>
@@ -373,7 +369,6 @@ const handleButtonClicknum = (msg) => {
 
                     </div>
 
-                    {console.log(defaultShiping)}
                     <div className={styles.columnFirstName}>
                     <label className={styles.firstName} htmlFor='last'>Country *</label>
                         {defaultShiping.zipcode? <select className={styles.firstInput} defaultValue={defaultShiping.country} onChange={changeHandler}>
@@ -405,7 +400,6 @@ const handleButtonClicknum = (msg) => {
                             defaultCountry="IN"
                             className={styles.firstInput}
                             // style={{width:"70%",marginLeft:"15%"}}
-                            onChange={e=>{console.log(e)}} 
                             limitMaxLength={15}
                             />
                         {/* <input className={styles.firstInput} name='numberb' onKeyPress={validatesNum} maxlength={10} defaultValue={defaultShiping.number} required/> */}

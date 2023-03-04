@@ -46,7 +46,7 @@ const LikeCard = (props) => {
     const data={
       id:product.id
     }
-    await LikeDeleteApi(data,localStorage.getItem('access_token')).then(r=> console.log(r))
+    await LikeDeleteApi(data,localStorage.getItem('access_token'))
 
     if (like.filter((l) => l.id === product.id).length > 0) {
       const p = like.filter((i) => i.id !== product.id);

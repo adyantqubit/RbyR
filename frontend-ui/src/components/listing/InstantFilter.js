@@ -13,8 +13,10 @@ const InstantFilter = () => {
     function toggleSelect(e) {
 
         if (selectedCategory.indexOf(e.currentTarget.textContent.toLowerCase()) == -1) {
-            selectedCategory.push(e.currentTarget.textContent.toLowerCase())
-            setCategorySelected([e.currentTarget.textContent.toLowerCase()])
+            // console.log(selectedCategory)
+            // selectedCategory.push(e.currentTarget.textContent.toLowerCase())
+            // console.log(selectedCategory)
+            setCategorySelected([...selectedCategory,e.currentTarget.textContent.toLowerCase()])
         }
         else {
             setCategorySelected(selectedCategory.filter(s => s !== e.currentTarget.textContent.toLowerCase()))

@@ -11,7 +11,6 @@ const Slider2 = ({scrollTop}) => {
   const { CategoryProduct, con, setcon, currency } = CartState();
   const {id}=useParams()
 
-  console.log(id)
 
   const responsive = {
     superLargeDesktop: {

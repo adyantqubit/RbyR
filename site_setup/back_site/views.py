@@ -25,7 +25,6 @@ from django.db.models import Sum, Avg
 def specific_string():
     sample_string = 'pqrstuvwxydjlkfdsjk'
     result = ''.join((random.choice(sample_string)) for x in range(10))
-    print(" Randomly generated string is: ", result)
 
 
 # generating token for auth by jwt
@@ -72,7 +71,6 @@ class UserRegistrationView(APIView):
     renderer_classes = [UserRenderer]
 
     def post(self, request, format=None):
-        print(request.data)
         serializer = UserRegistrationSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             user = serializer.save()
@@ -88,7 +86,6 @@ class UserLoginView(APIView):
     def post(self, request, format=None):
         serializer = UserLoginSerializer(data=request.data)
         if (serializer.is_valid(raise_exception=True)):
-            print("run")
             email = serializer.data.get('email')
             password = serializer.data.get('password')
             user = authenticate(email=email, password=password)
@@ -98,7 +95,6 @@ class UserLoginView(APIView):
             
             try:
                 active=User.objects.get(email=email)
-                print("---------",active.is_active)
                 if active.is_active==False:
                    return Response({'errors': {'none_field_errors': ['This user is blocked , for more detail']}}, status=status.HTTP_404_NOT_FOUND)
                 
@@ -106,11 +102,9 @@ class UserLoginView(APIView):
                  D=None   
 
             if user is not None:
-                print("token generated")
                 token = get_tokens_for_user(user)
                 return Response({'token': token, 'msg': 'login successful'}, status=status.HTTP_200_OK)
             else:
-                print("error")
                 return Response({'errors': {'none_field_errors': ['Email or Password is not valid']}}, status=status.HTTP_404_NOT_FOUND)
 
 
@@ -119,7 +113,6 @@ class UserProfileView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request, format=None):
-        print(request.user)
         serializer = UserProfileSerializer(request.user)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -280,7 +273,6 @@ class shippingOrder(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        print(request.data)
         shippingData = request.data
         shippingData['user_id'] = request.user.id
         serialize2 = shippingSerializer(data=shippingData)
@@ -348,7 +340,6 @@ class Invoice(APIView):
                     "selected_currency_value": request.data['currency_value']
                 }
                 
-                print(data)
                 
                 serialize3 = invoiceSerializer(data=data)
                 if serialize3.is_valid(raise_exception=True):
@@ -357,39 +348,32 @@ class Invoice(APIView):
                 if (cart['size'] == "Short"):
                     pro = product_detail.objects.get(id=cart['id'])
                     pro.S = pro.S-cart['quantity']
-                    # print(pro.S)
                     pro.save()
                 elif (cart['size'] == "Extra Short"):
                     pro = product_detail.objects.get(id=cart['id'])
                     pro.XS = pro.XS-cart['quantity']
-                    print(pro.XS)
                     pro.save()
                         
                 elif (cart['size'] == "Medium"):
                     pro = product_detail.objects.get(id=cart['id'])
                     pro.M = pro.M-cart['quantity']
-                    # print(pro.M)
                     pro.save()
                 elif (cart['size'] == "Large"):
                     pro = product_detail.objects.get(id=cart['id'])
                     pro.L = pro.L-cart['quantity']
-                    # print(pro.L)
                     pro.save()
                 elif (cart['size'] == "Extra Large"):
                     pro = product_detail.objects.get(id=cart['id'])
                     pro.XL = pro.XL-cart['quantity']
-                    print(pro.XL)
                     pro.save()
                 elif (cart['size'] == "Extra Extra Large"):
                     pro = product_detail.objects.get(id=cart['id'])
                     pro.XXL = pro.XXL-cart['quantity']
-                    # print(pro.XXL)
                     pro.save()
                     
                 elif (cart['size'] == "Extra Extra Extra Large"):
                     pro = product_detail.objects.get(id=cart['id'])
                     pro.XXXL = pro.XXXL-cart['quantity']
-                    # print(pro.XXXL)
                     pro.save()    
 
                 
@@ -414,7 +398,6 @@ class CartDelete(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        print(request.user)
         if Cart.objects.filter(user_no=request.user) is not None:
             Cart.objects.filter(user_no=request.user).delete()
         else:
@@ -536,7 +519,6 @@ class getQrDetails(APIView):
     def get(self, request):
         try:
             serialize = QrDetailSerializer(Online_Qr.objects.all().last())
-            print(serialize.data)
             return Response(serialize.data)
         except:
             return Response({"error": "something went wrong"})
@@ -565,14 +547,12 @@ class CouponCheck(APIView):
         # Commented by Rohan- 21/12/22
         # Reason- I re-implement coupon logic becuase new requirement occur , Only login user can able to
         # apply coupon
-            print(request.data['usertoken'])
             if request.data['usertoken'] is not None:
                 try: 
                     tokens = jwt.decode(
                         request.data['usertoken'], SIMPLE_JWT['SIGNING_KEY'], algorithms=["HS256"])
                     user=User.objects.get(id=tokens['user_id'])
                 except:
-                   print({"something":"goes"})
                    return Response({"error":"Something went wrong."}) 
                 
                 try:
@@ -1008,7 +988,6 @@ class GeustCart(APIView):
     def post(self, request):
         for data in request.data:
             availability=Cart.objects.filter(product_no=product_detail.objects.get(id=data['id']), size=data['size']).count()==0
-            print(availability)
             if (data['size'] == "Short" and availability):
                 pro = product_detail.objects.get(id=data['id'])
                 Cart.objects.create(
@@ -1055,11 +1034,9 @@ class pageIndex(APIView):
     def post(self, request):
         try:
             products = []
-            print(request.data['parent']=="best seller")
             # Add by Rohan - 30/12/22
             # Reason - Changing view all functionality becuase for requirement of sending header menu from backend
             if (request.data['category']=="0" and request.data['parent']!="ready to ship" and request.data['parent']!="best seller"):
-                print("run1")
                 # products = product_detail.objects.filter(category="partywear") | product_detail.objects.filter(category="kurti") | product_detail.objects.filter(
                 #     category="casual") | product_detail.objects.filter(category="wedding_wear") | product_detail.objects.filter(category="formal")
                 menu=Menus.objects.get(menu=request.data['parent'])
@@ -1069,16 +1046,13 @@ class pageIndex(APIView):
             # Added by Rohan -5/1/22
             # Reason- Adding ready to wear functionality where all ready to ship product shown on this link
             elif (request.data['parent']=="ready to ship" and request.data['category']=="0"):
-                print("run2")
                 products=product_detail.objects.filter(ready_to_ship=True)
                 
             elif(request.data['parent']=="best seller" and request.data['category']=="0"):
-                print("run")
                 products=product_detail.objects.filter(bestSeller=True)
   
             # End of code
             else:
-                print("run3")
                 products = product_detail.objects.filter(
                     category=request.data['category'])
                 

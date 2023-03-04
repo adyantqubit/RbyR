@@ -3,7 +3,7 @@ import API from "./api";
 // export const Authenticate = async (payload) => {
 //   const response = await API.post("login_react/", payload, {
 //     headers: { "Content-Type": "application/json" },
-//   }).catch((err) => console.log("Failed to authenticate the user."));
+//   }).catch((err) => console.log("0"));
 //   console.log(response.data);
 //   return response ? response.data : {};
 // };
@@ -11,7 +11,7 @@ import API from "./api";
 export const SlideShowApi = async () => {
   const response = await API.get("login_react/", {
         headers: { "Content-Type": "application/json" },
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   console.log(response.data);
   return response ? response.data : {};
 };
@@ -20,7 +20,7 @@ export const SlideShowApi = async () => {
 export const check2 = async () => {
   const response = await API.get("check/", {
         headers: { "Content-Type": "application/json" },
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   console.log(response.data);
   return response ? response.data : {};
 };
@@ -30,7 +30,7 @@ export const check2 = async () => {
 export const getCart = async (access_token) => {
   const response = await API.get("cartUpdate/", {
         headers: { "Content-Type": "application/json",'authorization':`Bearer ${access_token}` },
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   console.log(response.data);
   return response ? response.data : {};
 };
@@ -38,21 +38,21 @@ export const getCart = async (access_token) => {
 export const getCategoryProduct = async (category) => {
   const response = await API.get(`getCategoryProduct/${category}/`, {
         headers: { "Content-Type": "application/json"},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
 export const picApi = async () => {
   const response = await API.get(`car/`, {
         headers: { "Content-Type": "application/json"},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
 export const DetailApi = async (id) => {
   const response = await API.get(`detail/${id}/`, {
         headers: { "Content-Type": "application/json"},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
@@ -60,7 +60,7 @@ export const DetailApi = async (id) => {
 export const regenaratingTokenApi = async (id) => {
   const response = await API.post(`refresh/`,id, {
         headers: { "Content-Type": "application/json"},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
@@ -70,28 +70,28 @@ export const regenaratingTokenApi = async (id) => {
 export const LikeUpdate = async (id) => {
   const response = await API.get(`likedUpdate/`, {
         headers: { "Content-Type": "application/json", 'authorization':`Bearer ${id}`},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
 export const getCardHomeImagesApi = async () => {
   const response = await API.get(`cardimages/`, {
         headers: { "Content-Type": "application/json"},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
 export const CartQuantityApi = async ({data,access_token}) => {
   const response = await API.post(`increament/`,data, {
         headers: { "Content-Type": "application/json",'authorization':`Bearer ${access_token}`},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
 export const CartQuantityApi2 = async ({data,access_token}) => {
   const response = await API.post(`decreament/`,data, {
         headers: { "Content-Type": "application/json",'authorization':`Bearer ${access_token}`},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
@@ -99,7 +99,7 @@ export const CartQuantityApi2 = async ({data,access_token}) => {
 export const invoiceApi = async (data,access_token) => {
   const response = await API.post(`invoice_post/`,data, {
         headers: { "Content-Type": "application/json",'authorization':`Bearer ${access_token}`},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
@@ -108,14 +108,14 @@ export const invoiceApi = async (data,access_token) => {
 export const shpingcheckApi = async (data,access_token) => {
   const response = await API.post(`shpping_orderCheck/`,data, {
         headers: { "Content-Type": "application/json",'authorization':`Bearer ${access_token}`},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
 export const billingcheckApi = async (data,access_token) => {
   const response = await API.post(`billing_orderCheck/`,data, {
         headers: { "Content-Type": "application/json",'authorization':`Bearer ${access_token}`},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
@@ -123,7 +123,7 @@ export const billingcheckApi = async (data,access_token) => {
 export const cartDeleteApi = async ({access}) => {
   const response = await API.get(`cart_delete/`, {
         headers: { "Content-Type": "application/json",'authorization':`Bearer ${access}`},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
@@ -131,7 +131,7 @@ export const cartDeleteApi = async ({access}) => {
 export const InvoiveGetApi = async ({access}) => {
   const response = await API.get(`invoie_get/`, {
         headers: { "Content-Type": "application/json",'authorization':`Bearer ${access}`},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
@@ -140,7 +140,7 @@ export const InvoiveSingleGetApi = async ({access,data}) => {
   console.log(access)
   const response = await API.put(`invoiesingle/`,data, {
         headers: { "Content-Type": "application/json",'authorization':`Bearer ${access}`},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
@@ -148,14 +148,14 @@ export const InvoiveSingleGetApi = async ({access,data}) => {
 export const TransactionGetApi = async ({access}) => {
   const response = await API.get(`transaction_get/`, {
         headers: { "Content-Type": "application/json",'authorization':`Bearer ${access}`},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
 export const ShippingGetApi = async ({access}) => {
   const response = await API.get(`shipping_get/`, {
         headers: { "Content-Type": "application/json",'authorization':`Bearer ${access}`},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
@@ -163,14 +163,14 @@ export const ShippingGetApi = async ({access}) => {
 export const ShippingUpdateApi = async ({access,billingData}) => {
   const response = await API.put(`shipping_update/`,billingData ,{
         headers: { "Content-Type": "application/json",'authorization':`Bearer ${access}`},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
 export const ShippingDeleteApi = async ({access,id}) => {
   const response = await API.put(`shipping_delete/`,id,{
         headers: { "Content-Type": "application/json",'authorization':`Bearer ${access}`},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
@@ -178,7 +178,7 @@ export const ShippingDeleteApi = async ({access,id}) => {
 export const getQrDetailApi=async () => {
   const response = await API.get(`getQR/`, {
         headers: { "Content-Type": "application/json"},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
@@ -187,7 +187,7 @@ export const getQrDetailApi=async () => {
 export const getFAQList = async () => {
   const response = await API.get("faq/", {
         headers: { "Content-Type": "application/json" },
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 // End of code addition
@@ -197,7 +197,7 @@ export const getFAQList = async () => {
 export const getContactUsDetail = async () => {
   const response = await API.get("contact-us/", {
         headers: { "Content-Type": "application/json" },
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 // End of code addition
@@ -207,7 +207,7 @@ export const getContactUsDetail = async () => {
 export const getTermsAndConditionsDetail = async () => {
   const response = await API.get("terms-and-conditions/", {
         headers: { "Content-Type": "application/json" },
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 // End of code addition
@@ -217,7 +217,7 @@ export const getTermsAndConditionsDetail = async () => {
 export const getPrivacyPoliciesDetail = async () => {
   const response = await API.get("privacy-policy/", {
         headers: { "Content-Type": "application/json" },
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 // End of code addition
@@ -227,7 +227,7 @@ export const getPrivacyPoliciesDetail = async () => {
 export const getDeliveryAndShippingPoliciesDetail = async () => {
   const response = await API.get("delivery-and-shipping-policy/", {
         headers: { "Content-Type": "application/json" },
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 // End of code addition
@@ -237,7 +237,7 @@ export const getDeliveryAndShippingPoliciesDetail = async () => {
 export const getRefundPoliciesDetail = async () => {
   const response = await API.get("refund-policy/", {
         headers: { "Content-Type": "application/json" },
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 // End of code addition
@@ -247,7 +247,7 @@ export const getRefundPoliciesDetail = async () => {
 export const getCancellationPoliciesDetail = async () => {
   const response = await API.get("cancellation-policy/", {
         headers: { "Content-Type": "application/json" },
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 // End of code addition
@@ -257,7 +257,7 @@ export const getCancellationPoliciesDetail = async () => {
 export const getStoreLocatorDetail = async () => {
   const response = await API.get("store-locator/", {
         headers: { "Content-Type": "application/json" },
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 // End of code addition
@@ -267,7 +267,7 @@ export const getStoreLocatorDetail = async () => {
 export const getBridalDetail = async () => {
   const response = await API.get("bridal/", {
         headers: { "Content-Type": "application/json" },
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 // End of code addition
@@ -277,7 +277,7 @@ export const getBridalDetail = async () => {
 export const getSocialLinkDetail = async () => {
   const response = await API.get("social-link/", {
         headers: { "Content-Type": "application/json" },
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 // End of code addition
@@ -287,7 +287,7 @@ export const getSocialLinkDetail = async () => {
 export const postBridalDetails = async (data) => {
   const response = await API.post(`save-bridal-details/`,data, {
         headers: { "Content-Type": "application/json"},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 // End of code addition
@@ -297,7 +297,7 @@ export const postBridalDetails = async (data) => {
 export const getCopyrightDetails = async () => {
   const response = await API.get("copyright/", {
         headers: { "Content-Type": "application/json" },
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 // End of code addition
@@ -307,7 +307,7 @@ export const getCopyrightDetails = async () => {
 export const postEmailDetails = async (data) => {
   const response = await API.post(`save-email/`,data, {
         headers: { "Content-Type": "application/json"},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 // End of code addition
@@ -316,7 +316,7 @@ export const postEmailDetails = async (data) => {
 export const InstagramCollections = async () => {
   const response = await API.get(`get-instagram-posts/`, {
         headers: { "Content-Type": "application/json"},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
@@ -326,14 +326,14 @@ export const InstagramCollections = async () => {
 export const getSearchedProducts = async (parameter) => {
   const response = await API.get(`search-products/${parameter}`, {
         headers: { "Content-Type": "application/json"},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 
 // export const getProfileData = async () => {
 //   const response = await API.get(`profile/`, {
 //         headers: { "Content-Type": "application/json",'authorization':`Bearer ${localStorage.getItem('access_token')}`},
-//       }).catch((err) => console.log("Failed to authenticate the user."));
+//       }).catch((err) => console.log("0"));
 //   return response ? response.data : {};
 // };
 // End of code addition
@@ -344,7 +344,7 @@ export const getSearchedProducts = async (parameter) => {
 export const getLogoAndCover = async () => {
   const response = await API.get(`logo-and-cover/`, {
         headers: { "Content-Type": "application/json"},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 // End of code addition
@@ -355,7 +355,7 @@ export const getLogoAndCover = async () => {
 export const getFooterDescriptionDetail = async () => {
   const response = await API.get(`footer-description/`, {
         headers: { "Content-Type": "application/json"},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 // End of code addition
@@ -366,7 +366,7 @@ export const getFooterDescriptionDetail = async () => {
 export const getWomenSizeChartDetail = async () => {
   const response = await API.get(`women-size-chart/`, {
         headers: { "Content-Type": "application/json"},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 // End of code addition
@@ -376,7 +376,7 @@ export const getWomenSizeChartDetail = async () => {
 export const postCustomTailoredDetails = async (data) => {
   const response = await API.post(`save-custom-tailored-details/`,data, {
         headers: { "Content-Type": "application/json"},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 // End of code addition
@@ -386,7 +386,7 @@ export const postCustomTailoredDetails = async (data) => {
 export const getWhatsappContactDetail = async () => {
   const response = await API.get(`whatsapp-contact-number/`, {
         headers: { "Content-Type": "application/json"},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
 // End of code addition
@@ -395,6 +395,6 @@ export const getWhatsappContactDetail = async () => {
 export const LikeDeleteApi = async (data,access) => {
   const response = await API.post(`likeDelete/`,data, {
         headers: { "Content-Type": "application/json",'authorization':`Bearer ${access}`},
-      }).catch((err) => console.log("Failed to authenticate the user."));
+      }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };

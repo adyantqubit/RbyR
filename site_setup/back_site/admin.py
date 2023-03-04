@@ -514,7 +514,7 @@ class StoreLocatorAdmin(admin.ModelAdmin):
         return True if StoreLocator.objects.count() < 2  else False
     def get_form(self, request, obj=None, **kwargs):
         form = super(StoreLocatorAdmin, self).get_form(request, obj, **kwargs)
-        form.base_fields['address'].widget.cha
+        form.base_fields['address'].widget.attrs['style']='width: 100%'
         form.base_fields['city'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['address'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['phoneNumber'].widget.attrs['style'] = 'width: 100%;'

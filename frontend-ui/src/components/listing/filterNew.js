@@ -36,10 +36,6 @@ const FilterNew = ({ scrolling }) => {
 
   }, [tempallpro])
 
-  useEffect(() => {
-    console.log("-------------", allCategoryAvai, allColorAvai)
-
-  }, [allCategoryAvai, allColorAvai])
 
 
 
@@ -51,7 +47,6 @@ const FilterNew = ({ scrolling }) => {
     selectedColor.push(e.currentTarget.textContent.toLowerCase())
     setSelectedColor([...selectedColor])
 
-    console.log(selectedColor)
     // setCategoryProduct([...tempallpro])
     // var filtered=tempallpro.filter(c=>selectedColor.includes(c.color))
     // setCategoryProduct([...filtered])
@@ -163,7 +158,6 @@ const FilterNew = ({ scrolling }) => {
   function setMinMAx(min, max) {
     setmaxValue(max)
     setminValue(min)
-    console.log(min, max)
     // var filtered=tempprice.filter(c=>c.price>min&&c.price<max)
     // setCategoryProduct([...filtered])
     // setTempsprice([...filtered])

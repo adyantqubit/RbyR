@@ -141,7 +141,7 @@ export function DrawerFooter() {
 
     var data = cart;
     var access_token = localStorage.getItem('access_token')
-    await UploadCartApi({ data, access_token }).then(r => console.log(r))
+    await UploadCartApi({ data, access_token })
   }
 
   const promos = useRef()
@@ -161,7 +161,6 @@ export function DrawerFooter() {
       await CouponCheck(data).then(r => {
         if (r.error) { 
           setError(r)
-          console.log(r)
         }
         else {
           setOffer(r)
@@ -207,9 +206,7 @@ export function DrawerFooter() {
     setCoupon(false)
   }
 
-  useEffect(() => {
-    console.log(afterColumnTotalOfferAdd(offer, cart, taxRate).coupon)
-  }, [offer, taxRate])
+ 
   
 
   async function cartChecking() {
@@ -265,7 +262,7 @@ export function DrawerFooter() {
         nav("/placeorder")
 
       }
-    }).catch(err=>console.log(err))
+    })
 
   }
   }

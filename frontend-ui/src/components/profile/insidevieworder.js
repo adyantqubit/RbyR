@@ -47,7 +47,6 @@ const InsideOrder = () => {
     await InvoiveSingleGetApi({ access, data }).then(r => {
       setState(r.history)
       allData = r
-      console.log(allData)
       setAllData(allData)
     })
 
@@ -104,7 +103,7 @@ const InsideOrder = () => {
 
     var access = localStorage.getItem("access_token")
 
-    await cartDeleteApi({ access }).then(r => console.log(r))
+    await cartDeleteApi({ access })
 
 
     for (const details of allData.history) {
@@ -125,7 +124,7 @@ const InsideOrder = () => {
       var access_token = localStorage.getItem("access_token")
 
       cart.push(NewCartData)
-      const resp = await cartsaveApi({ data, access_token }).then(r => console.log(r));
+      const resp = await cartsaveApi({ data, access_token })
 
     }
     
@@ -207,9 +206,9 @@ const InsideOrder = () => {
             <div className={style.column1}>
               <div className={style.column1header}>MY ACCOUNT</div>
               <hr style={{ color: "black" }}></hr>
-              <div className={style.column1text} onClick={e => setShowEditable(!true)}><Link to="/userprofile" style={{ textDecoration: "none", color: "#8c8c8c" }}>MY PROFILE</Link></div>
-              <div className={style.column1text} onClick={e => setshipEditCond(true)}><Link to="/shippindprofile" style={{ textDecoration: "none", color: "#8c8c8c" }} >MY SHIPPING DETAILS</Link></div>
-              <div className={style.column1text}><Link to="/profile" style={{ textDecoration: "none", color: "#8c8c8c" }}>MY ORDERS</Link></div>
+              <div className={style.column1text} onClick={e => setShowEditable(!true)}><Link to="/userprofile" style={{ textDecoration: "none", color: "#212121" }}>MY PROFILE</Link></div>
+              <div className={style.column1text} onClick={e => setshipEditCond(true)}><Link to="/shippindprofile" style={{ textDecoration: "none", color: "#212121" }} >MY SHIPPING DETAILS</Link></div>
+              <div className={style.column1text}><Link to="/profile" style={{ textDecoration: "none", color: "#212121" }}>MY ORDERS</Link></div>
 
             </div>
             <div className={style.column2}>
@@ -271,7 +270,6 @@ const InsideOrder = () => {
                   var p = product.filter(p => p.id == s.product_id)[0]
 
                   if((typeof p)==='undefined'){
-                   console.log("something went wrong")
                   }else
                   return <div className={style.tablerowhead} style={i % 2 == 0 ? { marginTop: "10px" } : { marginTop: "10px" }}>
                     <div className={style.rowitem3}>

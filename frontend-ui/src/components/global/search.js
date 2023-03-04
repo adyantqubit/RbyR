@@ -94,7 +94,6 @@ const Search = () => {
       selectedCategory.includes(a.category)||selectedCategory.includes(a.menu)
       ))
 
-      console.log(selectedCategory.length)
       if(selectedCategory.length==0)
       setFilteredPersons(allResult)
   }

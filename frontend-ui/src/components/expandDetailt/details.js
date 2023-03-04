@@ -101,15 +101,12 @@ const Details = (props) => {
       await getCategoryProduct("partywear").then((r) => {
         setCategoryProduct([...r.category]);
         settemAllpro([...r.category]);
-        console.log(r.category);
       });
 
     else {
-      console.log("hit may like api")
       await getCategoryProduct(category).then((r) => {
         setCategoryProduct([...r.category]);
         settemAllpro([...r.category]);
-        console.log(r.category);
       });
     }
   };
@@ -286,9 +283,8 @@ const Details = (props) => {
     };
 
     var access_token = localStorage.getItem("access_token");
-    const resp = await cartsaveApi({ data, access_token }).then((r) =>
-      console.log(r)
-    );
+    const resp = await cartsaveApi({ data, access_token })
+
 
     if (
       cart.filter((i) => {
@@ -379,7 +375,6 @@ const Details = (props) => {
   // End of code addition
   const scroller = useRef()
   function scrolling(e) {
-    console.log()
     scroller.current.scrollTop = 0
   }
 

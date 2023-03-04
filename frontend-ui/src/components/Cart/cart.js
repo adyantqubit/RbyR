@@ -120,7 +120,6 @@ const CartSItem = (props) => {
     await increamentCheck(data).then(r => {
       if (r.success == true) {
         con = true;
-        console.log("present in stock", r)
       }
       else if (r.error) {
         // document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
@@ -134,7 +133,6 @@ const CartSItem = (props) => {
           key: 1
         });
         con = false;
-        console.log("stock is not present", r)
       }
 
     })
@@ -257,7 +255,7 @@ const CartSItem = (props) => {
 
   async function increamentApi(data) {
     var access_token = localStorage.getItem('access_token')
-    await CartQuantityApi({ data, access_token }).then(r => console.log(r))
+    await CartQuantityApi({ data, access_token }).then(r => console.log(""))
   }
   const confirm = (pro) => {
     cartSave(pro)
@@ -305,14 +303,10 @@ const CartSItem = (props) => {
     setCoupon(false)
   }
 
-  useEffect(() => {
-    console.log(afterColumnTotalOfferAdd(offer, cart, taxRate).coupon)
-  }, [offer, taxRate])
 
 
   async function cartChecking() {
 
-    console.log(userdata.email.length)
 
     if(userdata.email.length==0){
       
@@ -529,7 +523,7 @@ const CartSItem = (props) => {
                   <img src={config.apiBaseURL + pro.img_main} style={{width:"100%"}} onClick={e => openDetail(pro)}></img>
                   </div>
                   <div className={styles.column2}>
-                    <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>{console.log(windowSize)}
+                    <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                       <h3 className={style.heading} style={{ maxWidth: "80%", color: "black", fontSize: "16px",whiteSpace: windowSize.innerWidth<768?"nowrap":"normal", lineHeight: "26px", letterSpacing: "2.5px", overflow: windowSize.innerWidth<768?"hidden":"none",textOverflow: windowSize.innerWidth<768?"ellipsis":"normal" }}>{pro.title}</h3>
                       {/* <span className={style.delete} style={{fontSize:"32px",alignSelf:"start"}} onClick={e=>cartSave(pro)}>x</span> */}
                       <Popconfirm placement="bottomLeft" title={text} onConfirm={e => confirm(pro)} okText="OK" cancelText="Cancel">

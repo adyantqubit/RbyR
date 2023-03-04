@@ -33,7 +33,6 @@ function Slideshow() {
 
   const fun = async () => {
     await picApi().then((r) => {
-      console.log(reportError)
       setpay([...r.j]);
       setpay2([...r.h]);
       setGif(r.Gif)
@@ -76,7 +75,6 @@ function Slideshow() {
     else if(windowSize.innerWidth>800)
     setVisibleImg(pay)
 
-    console.log(pay,pay2)
   },[windowSize,pay,pay2])
 
 
@@ -91,8 +89,6 @@ function Slideshow() {
         {visible.map((item) => (
           <Carousel.Item>
             <Link to={`/listing/${item.category}/0`}>
-              {" "}
-              {console.log(item.src)}
               <img
                 className={style.dblock}
                 // src={pay[0].src}

@@ -10,7 +10,6 @@ const Sort = () => {
 
 
   function closeSortPage() {
-    console.log("hit")
     setSortUi(false)
   }
 

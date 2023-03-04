@@ -31,7 +31,6 @@ const Slider = ({scrollTop}) => {
 
   const nav = useNavigate();
   function openDetail(id) {
-    console.log(window)
     window.scrollTo({
       top: 0, 
       behavior: 'smooth'

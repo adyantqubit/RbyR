@@ -52,7 +52,6 @@ function Converter() {
 			 if(info.INR)
 	         if(localStorage.getItem("currency") && !localStorage.getItem("access_token")){
 				var value=info[`${localStorage.getItem("currency")}`]
-				console.log("............................",value)
 				setCurrency({name: value[2], value: value[0], sign: value[1] })		
 
 			 }
@@ -62,7 +61,6 @@ function Converter() {
 
 	async function CurrencySaverGet() {
 		await CurrencySaverGetter().then(r => {
-			console.log(r)
 			if (r)
 				setCurrency({ name: r.currency, sign: r.currency_sign, value: info[r.currency][0] })
 			else

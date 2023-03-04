@@ -91,7 +91,6 @@ function Footer2() {
   async function instagramApi() {
     await InstagramCollections().then((r) => {
       if (!r.error) {
-        console.log(r);
         setInstagramCollections(r);
       } else
         notification.open({

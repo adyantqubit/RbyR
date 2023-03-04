@@ -41,7 +41,6 @@ const Bridal = () => {
 
   const saveBridalDetails =async (formData)=> {
     var sub=document.getElementById('date').value
-    console.log(sub)
     const bridalDetail ={
       firstName:formData.firstName,
       lastName:formData.lastName,

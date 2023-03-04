@@ -155,7 +155,7 @@ const increament=(CartProduct)=>{
 
   async function increamentApi(data){
     var access_token=localStorage.getItem('access_token')
-    await CartQuantityApi({data,access_token}).then(r=>console.log(r))
+    await CartQuantityApi({data,access_token})
   }
   const confirm = (pro) => {
     cartSave(pro)
