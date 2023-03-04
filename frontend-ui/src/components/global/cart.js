@@ -238,7 +238,7 @@ export function DrawerFooter() {
             description:
               <span>Product ${c.name} size ${c.size} is out of stock <br />
                 Please move this item  to Wishlist.</span>,
-            style: { backgroundColor: "#D2042D", color: "white" },
+            style: { backgroundColor: "var(--bannerColor)", color: "white" },
             duration: 20,
 
           });

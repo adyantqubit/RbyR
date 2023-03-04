@@ -328,9 +328,9 @@ const Bridal = () => {
                       if (!value) {
                         return Promise.reject();
                       }
-                      if (value.length != 10) {
+                      if (value.length < 10) {
                         return Promise.reject(
-                          "Contact number should be 10 digits long"
+                          "Contact number should be atleast 10 digits long"
                         );
                       }
                       return Promise.resolve();
@@ -339,7 +339,7 @@ const Bridal = () => {
                 ]}
                 hasFeedback
               >
-                <Input className={style.formInput} maxLength={10} />
+                <Input className={style.formInput} maxLength={15} />
               </Form.Item>
 
               {/* <Form.Item

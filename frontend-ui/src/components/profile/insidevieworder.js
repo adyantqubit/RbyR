@@ -256,7 +256,7 @@ const InsideOrder = () => {
                 </span>
               </div>
 
-              <div className={style.table} style={{ border: "1px solid white", marginTop: "20px" }}>
+              <div className={style.table} style={{ border: "none", marginTop: "20px" }}>
                 <div className={style.tablerowhead2}>
                   <div className={style.rowitem1} style={{ justifyContent: "start", color: "black" }}>Product Name</div>
                   <div className={style.rowitem2} style={{ color: "black" }}>Status</div>

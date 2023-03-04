@@ -336,7 +336,7 @@ const CartSItem = (props) => {
             description:
               <span>Product ${c.name} size ${c.size} is out of stock <br />
                 Please move this item  to Wishlist.</span>,
-            style: { backgroundColor: "var(--backgroundColorPrimary)", color: "white" },
+            style: { backgroundColor: "var(--bannerColor)", color: "white" },
             duration: 20,
 
           });

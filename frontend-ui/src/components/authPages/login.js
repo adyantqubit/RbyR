@@ -268,7 +268,7 @@ const Login = () => {
 					</Popup>:null} */}
 						<Link to="/terms" onCLick={(e)=>{
 					      window.open("/terms").onload(e=>document.title="terms")
-						}} target="_blank" title='Terms and Condition' style={{fontSize:"12px",letterSpacing:"1.2px"}}> I accept terms and conditions.</Link>   
+						}} target="_blank" title='Terms and Condition' style={{fontSize:"12px",textDecoration:"underline",letterSpacing:"1.2px"}}> I accept terms and conditions.</Link>   
 					</span>} />
 
 					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button style={{paddingTop:"0",marginTop:"0"}} class="butto" type='submit'>Sign up</button>}
