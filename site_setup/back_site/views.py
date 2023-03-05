@@ -46,8 +46,8 @@ class User2API(APIView,):
         datai = image.objects.all()
         serializers1 = product_serializer(datap, many=True)
         serializers2 = image_serializer(datai, many=True)
-        menus= Menus.objects.all()
-        submenus=subMenu.objects.all()
+        menus= Menus.objects.all().order_by("id")
+        submenus=subMenu.objects.all().order_by("id")
         
         
         # Added by Rohan -28/12/22

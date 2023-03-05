@@ -36,10 +36,14 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const { access_token, refresh_token } = getToken()
 
-  const [logo, setLogo] = useState("https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg");
-  const { setReload, setCategorySelected, firstTimeLoadFunctions, menus, setMenus } = CartState()
+  const { setReload, setCategorySelected, firstTimeLoadFunctions, menus, setMenus ,  whatsappContactNumber, setWhatsappContactNumber,logo, setLogo
+  } = CartState()
   const [left, setLeft] = useState(0)
 
+  // useEffect(() => {
+  //   // getLogoAndCoverDetail();
+  //   getWhatsappContactNumber()
+  // }, []);
   // Added by Rohan - 30/12/22
   // Reason- Giving dynamic padding to sub menus - means all sub menu shown below parent menus
   // useEffect(() => {
@@ -76,6 +80,8 @@ const Navbar = () => {
   const closec = () => {
     setClass(false)
   };
+
+
 
   const navigate = useNavigate()
   const dispatch = useDispatch();
@@ -115,7 +121,6 @@ const Navbar = () => {
 
     if (localStorage.getItem('login')) {
       toast.success(<div style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px" }}>Successfully Logged In.
-        <div style={{ fontSize: "13px", color: "black", letterSpacing: "1.4px" }}>You Are Logged In</div>
       </div>,
         { position: toast.POSITION.TOP_RIGHT, duration: 1000, style: { top: "20vh", right: "2vw", background: "var(--bannerColor)" } },
       )   
@@ -149,10 +154,7 @@ const Navbar = () => {
     nav("/cart")
   }
 
-  useEffect(() => {
-    // getLogoAndCoverDetail();
-    getWhatsappContactNumber()
-  }, []);
+ 
 
   // const getLogoAndCoverDetail = async () => {
 
@@ -161,17 +163,7 @@ const Navbar = () => {
   //     setLogo(coverAndLogoData[0].logo);
   //   }
   // };
-
-  const [whatsappContactNumber, setWhatsappContactNumber] = useState(false);
-
-  const getWhatsappContactNumber = async () => {
-    const whatsappContactNumberData = await getWhatsappContactDetail();
-    if (whatsappContactNumberData) {
-      setWhatsappContactNumber(whatsappContactNumberData[0].whatsappNmber);
-      setLogo(whatsappContactNumberData[0].logo);
-
-    }
-  };
+  
 
   var refc = useRef()
 

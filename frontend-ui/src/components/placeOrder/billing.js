@@ -145,7 +145,7 @@ const Billing = () => {
 
               <div className={styles.header} id="header">
                 <div className={styles.headerTexts}>
-                  <div className={styles.columnitem1head}>BILLING To</div>
+                  <div className={styles.columnitem1head}>BILLING TO</div>
                   <hr style={{ color: "black" }}></hr>
                   <div><span className={styles.userinfoText2} > {checkoutDetails.billingData.firstname} {checkoutDetails.billingData.lastname}</span></div>
                   <div><span className={styles.userinfoText2}> {checkoutDetails.billingData.street}, {checkoutDetails.billingData.houseno}</span><span className={styles.userinfoText2}> {checkoutDetails.billingData.city}, </span></div>
@@ -174,7 +174,7 @@ const Billing = () => {
 
               <div className={styles.shippingDetail}>
                 <span className={styles.columnitem1head}>
-                  SHIPPING TO:-
+                  SHIPPING TO
                 </span>
                 <hr style={{ color: "black" }}></hr>
                 <span className={styles.userinfoText2}>{checkoutDetails.shippingData.firstname} {checkoutDetails.shippingData.lastname}, {checkoutDetails.shippingData.street} {checkoutDetails.shippingData.houseno}, {checkoutDetails.shippingData.city} -{checkoutDetails.shippingData.zipcode}, {checkoutDetails.shippingData.state} {checkoutDetails.shippingData.country}, {checkoutDetails.shippingData.number}

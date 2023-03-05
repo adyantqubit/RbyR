@@ -51,6 +51,7 @@ function Footer2() {
         if (emailData.msg) {
           notification.open({
             message: "",
+            style:{marginTop:"20px"},
             description: "Subscribed to email updates successfully",
             onClick: () => {},
             style:{backgroundColor: "var(--bannerColor)"},
@@ -60,6 +61,7 @@ function Footer2() {
           if (emailData.error) {
             notification.open({
               message:"",
+              style:{marginTop:"20px"},
               description: emailData.error,
               onClick: () => {},
               style:{backgroundColor: "var(--bannerColor)"},
@@ -68,6 +70,7 @@ function Footer2() {
           } else {
             notification.open({
               message: "",
+              style:{marginTop:"20px"},
               description: "Email subscription failed",
               onClick: () => {},
               style:{backgroundColor: "var(--bannerColor)"},
@@ -79,6 +82,7 @@ function Footer2() {
     } else {
       notification.open({
         message: "",
+        style:{marginTop:"20px"},
         description: "Please provide a valid email format",
         onClick: () => {},
         style:{backgroundColor: "var(--bannerColor)"},
@@ -95,6 +99,7 @@ function Footer2() {
       } else
         notification.open({
           message:"",
+          style:{marginTop:"20px"},
           description: "Instagram Post Not Found",
           onClick: () => {},
           style:{backgroundColor: "var(--bannerColor)"},

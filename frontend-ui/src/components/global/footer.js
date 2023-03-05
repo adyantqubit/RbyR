@@ -44,6 +44,8 @@ function Footer() {
         if(emailData.msg){
           notification.open({
             message: "",
+            style:{marginTop:"20px"},
+            style:{backgroundColor: "var(--bannerColor)"},
             description:
               'Subscribed to email updates successfully',
             onClick: () => {
@@ -54,6 +56,8 @@ function Footer() {
           if(emailData.error){
             notification.open({
               message: "",
+              style:{marginTop:"20px"},
+              style:{backgroundColor: "var(--bannerColor)"},
               description:
                 emailData.error,
               onClick: () => {
@@ -64,6 +68,8 @@ function Footer() {
           }else{
             notification.open({
               message: "",
+              style:{marginTop:"20px"},
+              style:{backgroundColor: "var(--bannerColor)"},
               description:
                 'Email subscription failed',
               onClick: () => {
@@ -78,6 +84,8 @@ function Footer() {
     }else{
       notification.open({
         message: "",
+        style:{marginTop:"20px"},
+        style:{backgroundColor: "var(--bannerColor)"},
         description:
           'Please provide a valid email format',
         onClick: () => {

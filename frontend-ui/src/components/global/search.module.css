@@ -64,7 +64,7 @@
 
 .categoryItems::-webkit-scrollbar
 {
-	height: 2px;
+	height: 4px;
 	background-color: #F5F5F5;
 }
 

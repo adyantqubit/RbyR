@@ -52,6 +52,13 @@
     text-align: center;
 }
 
+.ant-notification {
+
+    margin-top: 23vh !important;
+
+}
+
+
 .ant-btn-primary {
     width:70%;
     min-height: 35px;
@@ -159,6 +166,12 @@ color:white
 
 .ant-drawer-body::-webkit-scrollbar{
     display: none;
+}
+
+@media screen and (max-width: 900px){
+    .ant-notification {
+        margin-top: 10vh !important;
+    }
 }
 
 @media screen and (max-width: 800px){

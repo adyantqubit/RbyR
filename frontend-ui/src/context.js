@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { shippingTickGet, TaxGet } from "./api/orderApis";
-import { check2, getCart, getLike, LikeUpdate, regenaratingTokenApi } from "./api/service";
+import { check2, getCart, getLike, getWhatsappContactDetail, LikeUpdate, regenaratingTokenApi } from "./api/service";
 import { unSetUserToken } from "./Redux-manage/features/authSlice";
 import { unSetUserInfo } from "./Redux-manage/features/userSlice";
 import { getToken, removeToken, storeToken } from "./Redux-manage/services/localStorageService";
@@ -78,8 +78,20 @@ const Context = ({ children }) => {
   const [allCategory, setAllCategory] = useState([])
   const [allResult, setAllResult] = useState([])
 
+  const [logo, setLogo] = useState(null);
+
+  const [whatsappContactNumber, setWhatsappContactNumber] = useState(false);
+  const getWhatsappContactNumber = async () => {
+    const whatsappContactNumberData = await getWhatsappContactDetail();
+    if (whatsappContactNumberData) {
+      setWhatsappContactNumber(whatsappContactNumberData[0].whatsappNmber);
+      setLogo(whatsappContactNumberData[0].logo);
+
+    }
+  };
   //product updation
   useEffect(() => {
+    getWhatsappContactNumber()
     firstTimeLoadFunctions()
   }, [])
 
@@ -129,7 +141,6 @@ const Context = ({ children }) => {
   function Notify() {
 
     toast.success(<div style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px" }}>Successfully Logged out.
-      <div style={{ fontSize: "13px", color: "black", letterSpacing: "1.4px" }}>You are logged out</div>
     </div>,
       { position: toast.POSITION.TOP_RIGHT, duration: 1000, style: { top: "20vh", right: "2vw", background: "var(--bannerColor)" } },
     )
@@ -362,7 +373,8 @@ const Context = ({ children }) => {
 
   //filter
   return (
-    <Cart.Provider value={{ video, setVideo, allResult, setAllResult, allCategory, setAllCategory, nullpage, setNullPage, menus, setMenu, searchmsg, setSearchMsg, filteredPersons, setFilteredPersons, selectedCategory, setCategorySelected, reload, setReload, firstTimeLoadFunctions, showEditable, setShowEditable, shipEditcond, setshipEditCond, cartEnd, setCartEnd, taxRate, setTaxRate, offer, setOffer, availablitySelect, setAvailablity, latestSelect, setLatestSelect, defaultShiping, setDefaultShipping, orders, setOrder, paymentflow, setPaymentflow, shippingflow, setShipingflow, checkoutDetails, setCheckoutDetails, userdata, setUserData, to, setTo, currency, setCurrency, sizeSelected, setSizeSelected, con, setcon, htl, sethtl, lth, setLth, tempsprice, setTempsprice, filterui, setfilterUi, maxValue, setmaxValue, minValue, setminValue, allCategoryAvai, setAllCategoryAvai, allColorAvai, setAllColorAvai, selectedColor, setSelectedColor, tempallpro, settemAllpro, sortui, setSortUi, product, cart, setCart, setProduct, setcheck, checked1, checked2, image, setImage, like, setLike, setCondition, condition, openLikedrawer, setLikeDrawer, openCartdrawer, setCartDrawer, CategoryProduct, setCategoryProduct }}>
+    <Cart.Provider value={{   whatsappContactNumber, setWhatsappContactNumber,logo, setLogo
+,      video, setVideo, allResult, setAllResult, allCategory, setAllCategory, nullpage, setNullPage, menus, setMenu, searchmsg, setSearchMsg, filteredPersons, setFilteredPersons, selectedCategory, setCategorySelected, reload, setReload, firstTimeLoadFunctions, showEditable, setShowEditable, shipEditcond, setshipEditCond, cartEnd, setCartEnd, taxRate, setTaxRate, offer, setOffer, availablitySelect, setAvailablity, latestSelect, setLatestSelect, defaultShiping, setDefaultShipping, orders, setOrder, paymentflow, setPaymentflow, shippingflow, setShipingflow, checkoutDetails, setCheckoutDetails, userdata, setUserData, to, setTo, currency, setCurrency, sizeSelected, setSizeSelected, con, setcon, htl, sethtl, lth, setLth, tempsprice, setTempsprice, filterui, setfilterUi, maxValue, setmaxValue, minValue, setminValue, allCategoryAvai, setAllCategoryAvai, allColorAvai, setAllColorAvai, selectedColor, setSelectedColor, tempallpro, settemAllpro, sortui, setSortUi, product, cart, setCart, setProduct, setcheck, checked1, checked2, image, setImage, like, setLike, setCondition, condition, openLikedrawer, setLikeDrawer, openCartdrawer, setCartDrawer, CategoryProduct, setCategoryProduct }}>
       {children}
     </Cart.Provider>
   );
