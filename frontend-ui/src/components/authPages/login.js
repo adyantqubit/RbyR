@@ -219,7 +219,7 @@ const Login = () => {
 							{/* {server_error.password2?<Typography style={{color:"red",paddingLeft:10,fontSize:10,position:"absolute",top:"310px",left:"150px",right:"0",fontSize:"0.8rem"}}>{server_error.password2[0]}</Typography>:" "} */}
 
 							<FormControlLabel style={{ paddingLeft: "70px" }} control={<Checkbox value={true} name="tc" id="tc" />} label={<span style={{ fontSize: '0.8rem' }}>
-								<Link to="/terms#Terms_and_Conditions" target="_blank" title='Terms and Condition' style={{ fontSize: "12px", textDecoration: "underline", letterSpacing: "1.2px" }}> I accept terms and conditions.</Link>
+								<Link to="/termAndCondition#Terms_and_Conditions" target="_blank" title='Terms and Condition' style={{ fontSize: "12px", textDecoration: "underline", letterSpacing: "1.2px" }}> I accept terms and conditions.</Link>
 							</span>} />
 
 							{isLoading ? <CircularProgress style={{ margin: "20px", marginLeft: "140px" }} /> : <button style={{ paddingTop: "0", marginTop: "0" }} class="butto" type='submit'>Sign up</button>}

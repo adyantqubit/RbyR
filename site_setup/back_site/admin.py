@@ -683,7 +683,7 @@ class Transaction_historyAdmin(admin.ModelAdmin):
     ,"tax","grand_total","payment_status","date")
     readonly_fields=("order_no","user_no","coupon_discount","shipping_price","subtotal_price"
     ,"tax","grand_total","date")
-    ordering=("order_no","date")
+    ordering=("-order_no","date")
     list_filter=("payment_status","date")
     search_fields=("user_no__name",)
     list_per_page=10
@@ -871,7 +871,7 @@ class UserModelAdmin(BaseUserAdmin):
     # that reference specific fields on auth.User.
     list_display = ('name','email', 'tc','contact_number', 'is_admin','is_active')
     list_filter = ('is_admin','is_active')
-    ordering=("name",)
+    ordering=("-id",)
     search_fields=("name","email")
     list_per_page=10
     fieldsets = (

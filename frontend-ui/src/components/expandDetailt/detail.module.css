@@ -472,7 +472,7 @@
 
   .button {
     width:40%;
-    min-height:45px;
+    min-height:35px;
     margin-top: 3%;
     display: flex;
     /* align-self: flex-start; */
@@ -498,7 +498,7 @@
 
   .button2 {
     width:40%;
-    min-height:45px;
+    min-height:35px;
     margin-top: 3%;
     display: flex;
     /* align-self: flex-start; */
@@ -525,8 +525,8 @@
   }
 
   .button3 {
-    width:82%;
-    height:45px;
+    width:82.5%;
+    height:35px;
     margin-top: 3%;
     display: flex;
     /* align-self: flex-start; */

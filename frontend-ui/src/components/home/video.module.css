@@ -137,6 +137,7 @@
         height: auto !important;
         background-color: #f2f2f2;
         padding: 2px;
+        margin-right: 10px;
     }
     /* .card{
         min-height: 10vh !important;

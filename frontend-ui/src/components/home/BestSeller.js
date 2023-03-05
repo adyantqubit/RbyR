@@ -58,7 +58,7 @@ const BestSeller = () => {
                                     onMouseLeave={e => swapImage(i)} />
                                 <div className={style.absolute}>
                                     <div className={style.name}>{m.title}</div>
-                                    <div className={style.name}>{currency.sign}{m.price*currency.value}</div>
+                                    <div className={style.name}>{currency.sign}{(m.price*currency.value).toFixed(2)}</div>
                                 </div>
                             </div>
                         // <Carousel.Item
@@ -79,7 +79,7 @@ const BestSeller = () => {
                                 />
                                 <div className={style.absolute}>
                                     <div className={style.name}>{m.title}</div>
-                                    <div className={style.name}>{currency.sign}{m.price*currency.value}</div>
+                                    <div className={style.name}>{currency.sign}{(m.price*currency.value).toFixed(2)}</div>
                                 </div>
                             </div>
                     })}

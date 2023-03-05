@@ -96,9 +96,9 @@ const Billing = () => {
 
   // Added by Ashish Dewangan on 11-12-2022
   // Reason - To navigate to homepage when we click on continue shopping
-       const goToHomePage =()=>{
-        nav('/')
-       }
+  const goToHomePage = () => {
+    nav('/')
+  }
   // End of comment
   return (
     < >
@@ -117,7 +117,7 @@ const Billing = () => {
                     <div ><span className={styles.userinfoText}>Account Number:</span><span className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
                     <div ><span className={styles.userinfoText}>UPI ID:</span><span className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div>
                   </div>
-                  <div style={{ height: "60px", width: "100%" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To admin After paying  at {storeLocatorDetails != null ? parse("PHONE:" + storeLocatorDetails[0].phoneNumber) : null}</span></div>
+                  <div style={{ height: "60px", width: "100%" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To Admin After paying At {storeLocatorDetails != null ? parse("PHONE:" + storeLocatorDetails[0].phoneNumber) : null}</span></div>
                 </div>
               </div> : <div>The qr Code getting error</div>
             :
@@ -129,13 +129,13 @@ const Billing = () => {
         content={() => componentRef.current}
         
       /> */}
-        <div style={{ width: "100%", display: "flex", justifyContent: "center" }}> 
-        <button className={style.shopbtn1} style={{ width: "50%" }} onClick={e => window.print()}>
-          Print this out
-        </button> 
+        <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+          <button className={style.shopbtn1} style={{ width: "50%" }} onClick={e => window.print()}>
+            Print this out
+          </button>
         </div>
         <div className={styles.main} id="main" >
-          {checkoutDetails.userInfo ? <div className={styles.invoice}  id="invoice">
+          {checkoutDetails.userInfo ? <div className={styles.invoice} id="invoice">
             <div id="section-to-print"
             // ref={componentRef}
             >
@@ -158,7 +158,7 @@ const Billing = () => {
                   <hr style={{ color: "black" }}></hr>
                   <div><span className={styles.userinfoText2}> Invoice Date: </span><span className={styles.userinfoText2}>{checkoutDetails.date.split("-").reverse().join("-")}</span></div>
                   <div><span className={styles.userinfoText2}>Order No:</span><span className={styles.userinfoText2}>{checkoutDetails.orderno}</span></div>
-                  <div><span className={styles.userinfoText2} style={{whiteSpace:"nowrap"}}>Payment Mode:</span><span className={styles.userinfoText2} style={{whiteSpace:"nowrap"}}>{checkoutDetails.payment.split("p").join(" p").toUpperCase()}</span></div>
+                  <div><span className={styles.userinfoText2} style={{ whiteSpace: "nowrap" }}>Payment Mode:</span><span className={styles.userinfoText2} style={{ whiteSpace: "nowrap" }}>{checkoutDetails.payment.split("p").join(" p").toUpperCase()}</span></div>
                 </div>
 
                 {storeLocatorDetails != null ?
@@ -174,8 +174,9 @@ const Billing = () => {
 
               <div className={styles.shippingDetail}>
                 <span className={styles.columnitem1head}>
-                  Shipping To:-
+                  SHIPPING TO:-
                 </span>
+                <hr style={{ color: "black" }}></hr>
                 <span className={styles.userinfoText2}>{checkoutDetails.shippingData.firstname} {checkoutDetails.shippingData.lastname}, {checkoutDetails.shippingData.street} {checkoutDetails.shippingData.houseno}, {checkoutDetails.shippingData.city} -{checkoutDetails.shippingData.zipcode}, {checkoutDetails.shippingData.state} {checkoutDetails.shippingData.country}, {checkoutDetails.shippingData.number}
                 </span>
               </div>
@@ -186,31 +187,31 @@ const Billing = () => {
                   <span className={`${styles.columnitem1head} ${styles.header2} ${styles.show}`} id="show" style={{ "textAlign": "center" }}> Quantity</span>
                   <span className={`${styles.columnitem1head} ${styles.header2} ${styles.show2}`} id="show2" style={{ "textAlign": "center" }}> Qty</span>
                   <span className={`${styles.columnitem1head} ${styles.header2}`} > Price</span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{border:"none",outline:"none"}}>Total</span>
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ border: "none", outline: "none" }}>Total</span>
 
                 </div>
                 {checkoutDetails.cart.map(c =>
                   <div className={styles.billingheader2} id="footer" style={{ marginTop: "5px", background: "var(--backgroundColorSecondary)" }}>
-                    <span className={styles.protitle} > {c.title} ({ SizeGetter(c.size)})</span>
+                    <span className={styles.protitle} > {c.title} ({SizeGetter(c.size)})</span>
                     <span className={`${styles.protitle2} ${styles.show}`} > {c.quantity}</span>
                     <span className={`${styles.protitle2} ${styles.show2}`} > {c.quantity}</span>
                     <span className={styles.protitle2} >{checkoutDetails.currency_sign}{(c.price * checkoutDetails.currency_value).toFixed(2)}</span>
-                    <span className={styles.protitle2} style={{  paddingLeft: "5px",border:"none",outline:"none" }}> {checkoutDetails.currency_sign} {(c.price * c.quantity * checkoutDetails.currency_value).toFixed(2)}</span>
+                    <span className={styles.protitle2} style={{ paddingLeft: "5px", border: "none", outline: "none" }}> {checkoutDetails.currency_sign} {(c.price * c.quantity * checkoutDetails.currency_value).toFixed(2)}</span>
                   </div>
                 )}
 
                 <div className={styles.billingfooter} id="footer" >
                   <span className={`${styles.columnitem1head}`} >Subtotal :-</span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ borderRight: "1px solid black", whiteSpace: "nowrap",border:"none",outline:"none",width:"auto" }}>{checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).subtotal * checkoutDetails.currency_value).toFixed(2)}</span>
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ borderRight: "1px solid black", whiteSpace: "nowrap", border: "none", outline: "none", width: "auto" }}>{checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).subtotal * checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
 
                 <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`}  >Shipping charges :-</span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto",border:"none",outline:"none" }} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).shipping * checkoutDetails.currency_value).toFixed(2)}</span>
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto", border: "none", outline: "none" }} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).shipping * checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
                 <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`}  >GST Charges :-</span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto",border:"none",outline:"none" }} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).tax * checkoutDetails.currency_value).toFixed(2)}</span>
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto", border: "none", outline: "none" }} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).tax * checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
                 {/* Commented by - Ashish Dewangan on 15-02-2023
                 Reason - To Hide offer/Coupon/promocode from bill */}
@@ -223,13 +224,13 @@ const Billing = () => {
                   <span className={`${styles.columnitem1head}`} style={{ color: "black", borderBottom: "1px solid black" }}></span>
                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", borderBottom: "1px solid black", width: "50%" }} ></span>
                 </div>
-                
+
                 <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`}  >Grand Total :- </span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto",border:"none",outline:"none" }} > {checkoutDetails.currency_sign} 
-                  {/* {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}
-                  {/* {checkoutDetails.CouponDiscount ?((afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value)- (checkoutDetails.CouponDiscount* checkoutDetails.currency_value)).toFixed(2) :(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}
-                   {checkoutDetails.grand?(checkoutDetails.grand*checkoutDetails.currency_value).toFixed(2):afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand}
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto", border: "none", outline: "none" }} > {checkoutDetails.currency_sign}
+                    {/* {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}
+                    {/* {checkoutDetails.CouponDiscount ?((afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value)- (checkoutDetails.CouponDiscount* checkoutDetails.currency_value)).toFixed(2) :(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}
+                    {checkoutDetails.grand ? (checkoutDetails.grand * checkoutDetails.currency_value).toFixed(2) : afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand}
                   </span>
                 </div>
 
@@ -245,12 +246,12 @@ const Billing = () => {
         </div>
 
         {/* <div style={{width:"100%",display:"flex",justifyContent:"center",background:"#f2f2f2"}}> <button className={style.shopbtn1} style={{width:"50%"}} onClick={e=>nav('/')}>Continue Shopping</button> */}
-     <div style={{width:"100%",display:"flex",justifyContent:"center",paddingBottom:"50px"}}> 
-     <Button type="primary" className={style.userInfoButton} onClick={goToHomePage}>
-     Continue Shopping
-    </Button>
-     {/* <div className={style.shopbtn1} style={{width:"50%"}} onClick={}></div> */}
-     </div> 
+        <div style={{ width: "100%", display: "flex", justifyContent: "center", paddingBottom: "50px" }}>
+          <Button type="primary" className={style.userInfoButton} onClick={goToHomePage}>
+            Continue Shopping
+          </Button>
+          {/* <div className={style.shopbtn1} style={{width:"50%"}} onClick={}></div> */}
+        </div>
 
         <div className={styles.foot} >
           <Footer />

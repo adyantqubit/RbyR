@@ -44,6 +44,7 @@ import AboutUs from './components/Abouts/AboutUs';
 import Editorialpage from './components/Abouts/EditorialPage';
 import Categories from './components/listing/Categories';
 import Test from './components/test/Test';
+import TermsWithoutHeader from './components/footer pages/tacWithoutHeader';
 
 function App() {
   // notification.destroy()
@@ -73,6 +74,7 @@ function App() {
 
     <Route path='/custom' element={<Contact/>} />
     <Route path='/terms' element={<Terms/>} />
+    <Route path="/termAndCondition" element={<TermsWithoutHeader/>}/>
     <Route path='/profile' element={<MyOrders/>} />
     <Route path='/insideorder/:orderid' element={<InsideOrder/>} />
 
