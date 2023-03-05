@@ -54,7 +54,7 @@
 
 .ant-notification {
 
-    margin-top: 23vh !important;
+    margin-top: 5vh !important;
 
 }
 
@@ -170,7 +170,7 @@ color:white
 
 @media screen and (max-width: 900px){
     .ant-notification {
-        margin-top: 10vh !important;
+        margin-top: 5vh !important;
     }
 }
 

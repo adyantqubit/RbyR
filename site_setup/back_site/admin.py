@@ -619,7 +619,7 @@ class EmailSubscriptionAdmin(admin.ModelAdmin):
     list_display=("email","subscribe")
     list_filter=("subscribe",)
     search_fields=("email",)
-    ordering=("email",)
+    ordering=("-id",)
     list_per_page=10
     def get_form(self, request, obj=None, **kwargs):
         form = super(EmailSubscriptionAdmin, self).get_form(request, obj, **kwargs)

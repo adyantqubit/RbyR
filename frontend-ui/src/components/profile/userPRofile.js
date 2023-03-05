@@ -349,7 +349,7 @@ const UserProfile = () => {
 
                               <div className={styles.firstInput} style={{ padding: "0" }}>
 
-                                <input className={styles.inputr} type={showNewPass2 ? "text" : "password"} name="pswd" required onChange={e => { if (e.target.value.length > 0) setVisiblePassreg2(true); else setVisiblePassreg2(false) }} />
+                                <input className={styles.inputr} type={showNewPass2 ? "text" : "password"} name="pswd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required onChange={e => { if (e.target.value.length > 0) setVisiblePassreg2(true); else setVisiblePassreg2(false) }} />
                                 {visiblepassReg2 ? showNewPass2 ? <AiFillEye style={{ fontSize: "20px" }} onClick={e => setNewPass2(false)} /> : <AiFillEyeInvisible style={{ fontSize: "20px" }} onClick={e => setNewPass2(true)} /> : null}
 
                                 {error.non_field_errors && error.non_field_errors[0] == "New password should not be matched with old" ? <Typography style={{ color: "red", fontSize: 12 }}>{error.non_field_errors[0]}</Typography> : " "}
@@ -360,7 +360,7 @@ const UserProfile = () => {
                               <label className={styles.firstName} htmlFor='last'>Confirm New Password*</label>
                               <div className={styles.firstInput} style={{ padding: "0" }}>
 
-                                <input className={styles.inputr} type={showNewPass3 ? "text" : "password"} name="pswd2" required onChange={e => { if (e.target.value.length > 0) setVisiblePassreg3(true); else setVisiblePassreg3(false) }} />
+                                <input className={styles.inputr} type={showNewPass3 ? "text" : "password"} name="pswd2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required onChange={e => { if (e.target.value.length > 0) setVisiblePassreg3(true); else setVisiblePassreg3(false) }} />
 
                                 {visiblepassReg3 ? showNewPass3 ? <AiFillEye style={{ fontSize: "20px" }} onClick={e => setNewPass3(false)} /> : <AiFillEyeInvisible style={{ fontSize: "20px" }} onClick={e => setNewPass3(true)} /> : null}
 
