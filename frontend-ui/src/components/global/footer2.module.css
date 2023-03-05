@@ -170,7 +170,7 @@
     height: 38px;
     padding:5px;
     font-size:14px;
-    border: 1px solid var(--inputBorderColor);
+    border:none;
 }
 
 .emailBox:focus{

@@ -1,5 +1,5 @@
 import { notification } from "antd";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useLayoutEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { shippingTickGet, TaxGet } from "./api/orderApis";
@@ -90,8 +90,11 @@ const Context = ({ children }) => {
     }
   };
   //product updation
-  useEffect(() => {
+  useLayoutEffect(() => {
     getWhatsappContactNumber()
+  }, [])
+
+  useEffect(() => {
     firstTimeLoadFunctions()
   }, [])
 
@@ -303,7 +306,7 @@ const Context = ({ children }) => {
         tempSize = tempSize.filter(c => c[`${s}`] > 0)
       })
 
-   
+
 
     // price
     // commented by -Rohan- 21/2/23
@@ -373,8 +376,10 @@ const Context = ({ children }) => {
 
   //filter
   return (
-    <Cart.Provider value={{   whatsappContactNumber, setWhatsappContactNumber,logo, setLogo
-,      video, setVideo, allResult, setAllResult, allCategory, setAllCategory, nullpage, setNullPage, menus, setMenu, searchmsg, setSearchMsg, filteredPersons, setFilteredPersons, selectedCategory, setCategorySelected, reload, setReload, firstTimeLoadFunctions, showEditable, setShowEditable, shipEditcond, setshipEditCond, cartEnd, setCartEnd, taxRate, setTaxRate, offer, setOffer, availablitySelect, setAvailablity, latestSelect, setLatestSelect, defaultShiping, setDefaultShipping, orders, setOrder, paymentflow, setPaymentflow, shippingflow, setShipingflow, checkoutDetails, setCheckoutDetails, userdata, setUserData, to, setTo, currency, setCurrency, sizeSelected, setSizeSelected, con, setcon, htl, sethtl, lth, setLth, tempsprice, setTempsprice, filterui, setfilterUi, maxValue, setmaxValue, minValue, setminValue, allCategoryAvai, setAllCategoryAvai, allColorAvai, setAllColorAvai, selectedColor, setSelectedColor, tempallpro, settemAllpro, sortui, setSortUi, product, cart, setCart, setProduct, setcheck, checked1, checked2, image, setImage, like, setLike, setCondition, condition, openLikedrawer, setLikeDrawer, openCartdrawer, setCartDrawer, CategoryProduct, setCategoryProduct }}>
+    <Cart.Provider value={{
+      whatsappContactNumber, setWhatsappContactNumber, logo, setLogo
+      , video, setVideo, allResult, setAllResult, allCategory, setAllCategory, nullpage, setNullPage, menus, setMenu, searchmsg, setSearchMsg, filteredPersons, setFilteredPersons, selectedCategory, setCategorySelected, reload, setReload, firstTimeLoadFunctions, showEditable, setShowEditable, shipEditcond, setshipEditCond, cartEnd, setCartEnd, taxRate, setTaxRate, offer, setOffer, availablitySelect, setAvailablity, latestSelect, setLatestSelect, defaultShiping, setDefaultShipping, orders, setOrder, paymentflow, setPaymentflow, shippingflow, setShipingflow, checkoutDetails, setCheckoutDetails, userdata, setUserData, to, setTo, currency, setCurrency, sizeSelected, setSizeSelected, con, setcon, htl, sethtl, lth, setLth, tempsprice, setTempsprice, filterui, setfilterUi, maxValue, setmaxValue, minValue, setminValue, allCategoryAvai, setAllCategoryAvai, allColorAvai, setAllColorAvai, selectedColor, setSelectedColor, tempallpro, settemAllpro, sortui, setSortUi, product, cart, setCart, setProduct, setcheck, checked1, checked2, image, setImage, like, setLike, setCondition, condition, openLikedrawer, setLikeDrawer, openCartdrawer, setCartDrawer, CategoryProduct, setCategoryProduct
+    }}>
       {children}
     </Cart.Provider>
   );

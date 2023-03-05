@@ -9,7 +9,7 @@ import config from '../../api/config'
 // import Carousel from 'react-grid-carousel'
 
 const BestSeller = () => {
-    const { product, setProduct,currency } = CartState()
+    const { product, setProduct,currency,setCategorySelected } = CartState()
     const [bestProducts, setbest] = useState([])
     const [imageSwap, setImageSwap] = useState(false)
     const nav = useNavigate()
@@ -90,7 +90,7 @@ const BestSeller = () => {
                 </div>
                 <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
                     {bestProducts.length > 12 ?
-                        <button onClick={e => nav(`/listing/best seller/0`)} className={`${style.button_arounder} ${style.button_b}`}>View More</button> :
+                        <button onClick={e =>{setCategorySelected([]); nav(`/listing/best seller/0`) }} className={`${style.button_arounder} ${style.button_b}`}>View More</button> :
                         null}
                 </div>
 

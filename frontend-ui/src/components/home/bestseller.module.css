@@ -129,7 +129,7 @@
   
   .button_arounder {
     font-size: 18px;
-    background: var(--backgroundColorPrimary);
+    background: #3c3c3c;
     color: hsl(190deg, 10%, 95%);
     letter-spacing: var(--letterSpacingHeading);
     box-shadow: 0 0px 0px hsla(190deg, 15%, 5%, .2);

@@ -136,7 +136,7 @@
         min-height: 20vh !important;
         height: auto !important;
         background-color: #f2f2f2;
-        padding: 2px;
+        padding: 2px 5px;
         margin-right: 10px;
     }
     /* .card{
