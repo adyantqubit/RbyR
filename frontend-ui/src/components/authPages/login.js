@@ -148,7 +148,7 @@ const Login = () => {
 		<>
 			<Navbar />
 			<div class="bod">
-				<ToastContainer />
+				<ToastContainer key={1} limit={1} enableMultiContainer={false}/>
 
 			
 				<div class="mai">

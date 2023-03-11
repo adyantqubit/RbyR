@@ -94,7 +94,7 @@ const UserInfo = () => {
                         {checkoutDetails.userInfo?
                         <input className={styles.firstInput} type="text" name="last" defaultValue={checkoutDetails.userInfo.lastname} />
                         :
-                        <input className={styles.firstInput} type="text" name="last" defaultValue={userdata.name.substring(hasWhiteSpaceforLast(userdata.name),userdata.name.length)} />
+                        <input className={styles.firstInput} type="text" name="last" defaultValue={userdata.name.substring(hasWhiteSpaceforLast(userdata.name),userdata.name.length).trim()} />
                         }
                     </div>
                 </div>

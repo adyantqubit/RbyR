@@ -111,11 +111,11 @@ const Payment = () => {
     //  checkoutDetails['CouponDiscount']=afterColumnTotalOfferAdd(offer,cart,taxRate).coupon
     checkoutDetails['ShippingCharges'] = afterColumnTotalOfferAdd(offer, cart, taxRate).shipping
     checkoutDetails['SubTotal'] = afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal
-    checkoutDetails['tax'] = afterColumnTotalOfferAdd(offer, cart, taxRate).tax
+    // checkoutDetails['tax'] = afterColumnTotalOfferAdd(offer, cart, taxRate).tax
     checkoutDetails['grand'] = afterColumnTotalOfferAdd(offer, cart, taxRate).Grand
     checkoutDetails['currency_sign'] = currency.sign
     checkoutDetails['currency_value'] = currency.value
-    checkoutDetails["promocode"] = offer.promocode
+    // checkoutDetails["promocode"] = offer.promocode
     checkoutDetails['date'] = new Date().toISOString().slice(0, 10)
 
 

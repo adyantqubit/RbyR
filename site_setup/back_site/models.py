@@ -371,8 +371,8 @@ window_CHOICES = (
 class Head_img(models.Model):
     src=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100)   
-    label=models.CharField(max_length=100,default="slider")
-    about=models.CharField(max_length=200,default="here you have to write something")
+    # label=models.CharField(max_length=100,default="slider")
+    # about=models.CharField(max_length=200,default="here you have to write something")
     Menu=models.ForeignKey(Menus,on_delete=models.CASCADE,blank=True,null=True)
     category=models.CharField(max_length=50)
     display_on=models.CharField(max_length=20,choices=window_CHOICES,default="window")
@@ -546,10 +546,10 @@ class Transaction_history(models.Model):
     order_no=models.BigIntegerField()
     payment_status=models.CharField(max_length=50,choices=status,default="pending")
     user_no=models.ForeignKey(User,on_delete=models.CASCADE)    
-    coupon_discount=models.BigIntegerField()
+    # coupon_discount=models.BigIntegerField()
     shipping_price=models.BigIntegerField()
     subtotal_price=models.BigIntegerField()
-    tax=models.BigIntegerField()
+    # tax=models.BigIntegerField()
     grand_total=models.BigIntegerField()
 
     #Commented by Rohan 10/12/22
@@ -640,6 +640,9 @@ class Tax(models.Model):
     class Meta:
             verbose_name_plural = "Tax Setting"
     #End of code addition
+    def save(self,*args,**kwargs):
+        self.tax_rate=0       
+        super().save(*args,**kwargs)
     
 class ImportantNoticeToBuy(models.Model):
     point1=models.CharField(max_length=200)
@@ -880,6 +883,8 @@ class EmailSubscription(models.Model):
     subscribe=models.BooleanField(default=True)
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
+    date=models.DateField(('Date'), null=False, blank=False, auto_now=True)
+
     def __str__(self) -> str:
          return "Email subscription by user for updates"
     class Meta:

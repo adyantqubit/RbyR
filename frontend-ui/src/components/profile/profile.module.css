@@ -270,6 +270,24 @@
     width:90%;
 }
 
+.userinfoLable{
+    color: #8c8c8c;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+    font-family: 'MyFont';
+}
+
+.userinfoText{
+    color: #212121;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 1.2px;
+    font-weight: 800;
+    font-family: 'MyFont';
+}
+
 .inputr:focus{
     border-color: white;
 }
@@ -286,7 +304,7 @@
 }
 
 .box{
-    width:200px;
+    width:auto;
     height:100px;
 }
 

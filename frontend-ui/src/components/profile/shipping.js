@@ -284,7 +284,7 @@ const handleButtonClicknum = (msg) => {
 
                 shippingAddress.map((s,i)=>(
                     <div className={styles.columnFirstName} onClick={e=>setAddress(s)}>
-                        {i+1}
+                        {/* {i+1} */}
                         <div className={styles.boxAddress}>
                            
                             <div className={styles.addressInformation}>

@@ -66,6 +66,7 @@ const UserProfile = () => {
       password2: data.get('pswd2'),
     }
     const res = await changeUserPassword({ actualData, access_token });
+    console.log("-----------passwordUpdate------------------")
 
     if (res.error) {
       setError(res.error.data.errors)
@@ -147,7 +148,7 @@ const UserProfile = () => {
     //Reason- Adding Phone number change functionality
     var userData = {
       firstname: data.get('first'),
-      lastname: data.get('last'),
+      lastname: data.get('last').trim(),
       email: data.get('email'),
       contact: data.get('number')
     }
@@ -159,7 +160,7 @@ const UserProfile = () => {
 
     if (!data.get('oldpswd'))
       await userUpdate(userData).then(r => {
-        
+        console.log("-----------userupdaterun------------------")
         userData = r;
         setUserData(userData);
         // Create an instance of Notyf
@@ -210,7 +211,7 @@ const UserProfile = () => {
       <Navbar />
       {/* commented by Rohan - date 14/12/22
           reason - Here toastify notfication show  */}
-      <ToastContainer />
+      {/* <ToastContainer key={1} limit={1} enableMultiContainer={false} rtl={false} /> */}
       {/* {end of code} */}
 
       <div className={style.Container} >
@@ -241,8 +242,9 @@ const UserProfile = () => {
                   {!showEditable ?
                     <div className={styles.usedetailShow} >
                       <div className={style.box} style={{ border: "0.1rem solid grey", height: "auto", padding: "5px" }}>
-                        <div ><span className={styles.userinfoText} style={{ wordBreak: "break-all" }}>{userdata.name}</span></div>
-                        <div ><span className={styles.userinfoText} style={{ wordBreak: "break-all" }}> {userdata.email}</span></div>
+                        <div ><span className={style.userinfoText}  style={{ wordBreak: "break-all" }}>Name : </span><span className={style.userinfoLable} style={{ wordBreak: "break-all" }}>{userdata.name}</span></div>
+                        <div ><span className={style.userinfoText}  style={{ wordBreak: "break-all" }}>Email : </span><span className={style.userinfoLable} style={{ wordBreak: "break-all" }}> {userdata.email}</span></div>
+                        <div ><span className={style.userinfoText}  style={{ wordBreak: "break-all" }}>Contact : </span><span className={style.userinfoLable} style={{ wordBreak: "break-all" }}> {userdata.contact}</span></div>
                       </div>
                     </div>
                     :
@@ -265,7 +267,7 @@ const UserProfile = () => {
                           <div className={styles.columnFirstName}>
                             <label className={styles.firstName} htmlFor='last'>LAST NAME*</label>
 
-                            <input className={styles.firstInput} type="text" defaultValue={userdata.name.substring(hasWhiteSpaceforLast(userdata.name), userdata.name.length)} name="last"/>
+                            <input className={styles.firstInput} type="text" defaultValue={userdata.name.substring(hasWhiteSpaceforLast(userdata.name), userdata.name.length).trim()} name="last"/>
 
                           </div>
                         </div>

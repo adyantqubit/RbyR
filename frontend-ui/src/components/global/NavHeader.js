@@ -40,6 +40,28 @@ const Navbar = () => {
   } = CartState()
   const [left, setLeft] = useState(0)
 
+
+  useEffect(()=>{
+    if (localStorage.getItem('login')) {
+      toast.success(<div style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px" }}>Successfully Logged In.
+      </div>,
+        { position: toast.POSITION.TOP_RIGHT, duration: 1000, style: { top: "20vh", right: "2vw", background: "var(--bannerColor)" } },
+      )   
+
+      localStorage.removeItem('login')
+    }
+
+    
+    if (localStorage.getItem('register')) {
+      toast.success(<div style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px" }}>Successfully Registered.
+      </div>,
+        { position: toast.POSITION.TOP_RIGHT, duration: 1000, style: { top: "20vh", right: "2vw", background: "var(--bannerColor)" } },
+      )   
+
+      localStorage.removeItem('register')
+    }
+  },[])
+
   // useEffect(() => {
   //   // getLogoAndCoverDetail();
   //   getWhatsappContactNumber()
@@ -119,14 +141,7 @@ const Navbar = () => {
         name: data.name,
       })
 
-    if (localStorage.getItem('login')) {
-      toast.success(<div style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px" }}>Successfully Logged In.
-      </div>,
-        { position: toast.POSITION.TOP_RIGHT, duration: 1000, style: { top: "20vh", right: "2vw", background: "var(--bannerColor)" } },
-      )   
-
-      localStorage.removeItem('login')
-    }
+   
   }, [data, isSuccess])
 
   useEffect(() => {
@@ -169,7 +184,7 @@ const Navbar = () => {
 
   return (
     <div style={{ width: "100%" }} >
-      <ToastContainer />
+      <ToastContainer key={1} limit={1} enableMultiContainer={false}/>
       <div className={style.contain} style={{ borderBottom: "1px solid white" }}>
         <div className={style.whatsappBanner} style={{ color: "white", display: "flex", minHeight: "25px", justifyContent: "center", fontSize: ".75rem", letterSpacing: ".6px", fontStyle: "bold", fontWeight: "600" }}>
           {/* Commented and modified by - Ashish Dewangan on 16-02-2023

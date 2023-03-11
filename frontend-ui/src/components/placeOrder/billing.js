@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import config from '../../api/config'
 import { cartDeleteApi, getQrDetailApi, getStoreLocatorDetail } from '../../api/service'
 import { CartState } from '../../context'
-import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing'
+import { afterColumnTotalOfferAdd, toWords, toWorduS } from '../../Redux-manage/services/billing'
 import { getToken } from '../../Redux-manage/services/localStorageService'
 import Navbar from '../global/NavHeader'
 import styles from './billing.module.css'
@@ -209,10 +209,10 @@ const Billing = () => {
                   <span className={`${styles.columnitem1head}`}  >Shipping charges : </span>
                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto", border: "none", outline: "none" }} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).shipping * checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
-                <div className={styles.billingtexts}>
+                {/* <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`}  >GST Charges : </span>
                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto", border: "none", outline: "none" }} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).tax * checkoutDetails.currency_value).toFixed(2)}</span>
-                </div>
+                </div> */}
                 {/* Commented by - Ashish Dewangan on 15-02-2023
                 Reason - To Hide offer/Coupon/promocode from bill */}
                 {/* <div className={styles.billingtexts}>
@@ -231,6 +231,15 @@ const Billing = () => {
                     {/* {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}
                     {/* {checkoutDetails.CouponDiscount ?((afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value)- (checkoutDetails.CouponDiscount* checkoutDetails.currency_value)).toFixed(2) :(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}
                     {checkoutDetails.grand ? (checkoutDetails.grand * checkoutDetails.currency_value).toFixed(2) : afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand}
+                  </span>
+                </div>
+
+                <div className={styles.billingtexts}>
+                  <span className={`${styles.columnitem1head}`}  >Total price in words : </span>
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto", border: "none", outline: "none" }} > {checkoutDetails.currency_sign=="?" ?
+                    checkoutDetails.grand ?toWords.convert((checkoutDetails.grand * checkoutDetails.currency_value).toFixed(2)) : toWords.convert(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand)
+                    :
+                    checkoutDetails.grand ?toWorduS.convert((checkoutDetails.grand * checkoutDetails.currency_value).toFixed(2)) : toWorduS.convert(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand)}
                   </span>
                 </div>
 

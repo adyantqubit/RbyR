@@ -308,11 +308,11 @@ export function DrawerFooter() {
             <span style={{ marginLeft: "15px", textTransform: "uppercase", fontWeight: "600" }}>Shipping Charges</span>
             <span style={{ marginRight: "15px", fontWeight: "600" }}>{currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).shipping * currency.value).toFixed(2)}</span>
           </div>
-
+{/* 
           <div className={style.subTotal}>
             <span style={{ marginLeft: "15px", textTransform: "uppercase", fontWeight: "600" }}>GST Charges</span>
             <span style={{ marginRight: "15px", fontWeight: "600" }}>{currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).tax * currency.value).toFixed(2)}</span>
-          </div>
+          </div> */}
           {/* Commented by - Ashish Dewangan on 15-02-2023
           Reason - To hide promocode/offer functionality from cart drawer  */}
           {/* <div className={style.promo}>

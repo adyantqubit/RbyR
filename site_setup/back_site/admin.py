@@ -182,26 +182,26 @@ class CurrencySelectedAdmin(admin.ModelAdmin):
 
 # Added By Rohan - 31/12/22
 # Reason - To shwing on Admin
-@admin.register(HomeGifImages)
-class HomeGIF_imgAdmin(admin.ModelAdmin):
-    list_display=("category","Gif_image")
-    readonly_fields=("category","menu")
+# @admin.register(HomeGifImages)
+# class HomeGIF_imgAdmin(admin.ModelAdmin):
+#     list_display=("category","Gif_image")
+#     readonly_fields=("category","menu")
     
-    def get_form(self, request, obj, **kwargs):
-        form = super(HomeGIF_imgAdmin, self).get_form(request, obj, **kwargs)
-        form.base_fields['Menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
-        form.base_fields['sub'].label_from_instance = lambda inst: "{} : {}".format(inst.Menu.menu,inst.sub)
-        return form    
+#     def get_form(self, request, obj, **kwargs):
+#         form = super(HomeGIF_imgAdmin, self).get_form(request, obj, **kwargs)
+#         form.base_fields['Menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
+#         form.base_fields['sub'].label_from_instance = lambda inst: "{} : {}".format(inst.Menu.menu,inst.sub)
+#         return form    
     
-@admin.register(HomeNormalImages)
-class HomeNormal_imgAdmin(admin.ModelAdmin):
-    list_display=("category","image")  
-    readonly_fields=("category","menu")
-    def get_form(self, request, obj, **kwargs):
-        form = super(HomeNormal_imgAdmin, self).get_form(request, obj, **kwargs)
-        form.base_fields['Menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
-        form.base_fields['sub'].label_from_instance = lambda inst: "{} : {}".format(inst.Menu.menu,inst.sub)
-        return form    
+# @admin.register(HomeNormalImages)
+# class HomeNormal_imgAdmin(admin.ModelAdmin):
+#     list_display=("category","image")  
+#     readonly_fields=("category","menu")
+#     def get_form(self, request, obj, **kwargs):
+#         form = super(HomeNormal_imgAdmin, self).get_form(request, obj, **kwargs)
+#         form.base_fields['Menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
+#         form.base_fields['sub'].label_from_instance = lambda inst: "{} : {}".format(inst.Menu.menu,inst.sub)
+#         return form    
     
 admin.site.register(Home_video)      
 #End of code
@@ -616,9 +616,10 @@ class CopyrightAdmin(admin.ModelAdmin):
     #End of code addition
 @admin.register(EmailSubscription)
 class EmailSubscriptionAdmin(admin.ModelAdmin):
-    list_display=("email","subscribe")
+    list_display=("email","subscribe","date")
     list_filter=("subscribe",)
-    search_fields=("email",)
+    search_fields=("email","date")
+    readonly_fields=("date",)
     ordering=("-id",)
     list_per_page=10
     def get_form(self, request, obj=None, **kwargs):
@@ -679,10 +680,16 @@ class InstagramCollectionAdmin(admin.ModelAdmin):
 #admin.site.register(Transaction_history)
 @admin.register(Transaction_history)
 class Transaction_historyAdmin(admin.ModelAdmin):
-    list_display=("order_no","user_no","coupon_discount","shipping_price","subtotal_price"
-    ,"tax","grand_total","payment_status","date")
-    readonly_fields=("order_no","user_no","coupon_discount","shipping_price","subtotal_price"
-    ,"tax","grand_total","date")
+    list_display=("order_no","user_no",
+                #   "coupon_discount",
+                  "shipping_price","subtotal_price",
+                #   "tax",
+    "grand_total","payment_status","date")
+    readonly_fields=("order_no","user_no",
+                    #  "coupon_discount",
+                     "shipping_price","subtotal_price",
+                    #  "tax",
+    "grand_total","date")
     ordering=("-order_no","date")
     list_filter=("payment_status","date")
     search_fields=("user_no__name",)
@@ -769,22 +776,22 @@ class ImportantNoticeToBuyAdmin(admin.ModelAdmin):
 #Added by Ashish on 21-11-2022
 #To have footer text in the table
     #admin.site.register(FooterDescription)
-@admin.register(FooterDescription)    
-class FooterDescriptionAdmin(admin.ModelAdmin):
-    list_display=(subtitle_one,content_one,subtitle_two,content_two,subtitle_three,content_three,subtitle_four,content_four,)
-    def has_add_permission(self, request):
-        return not FooterDescription.objects.exists() 
-    def get_form(self, request, obj=None, **kwargs):
-        form = super(FooterDescriptionAdmin, self).get_form(request, obj, **kwargs)
-        form.base_fields['subtitle1'].widget.attrs['style'] = 'width: 100%;'
-        form.base_fields['subtitle2'].widget.attrs['style'] = 'width: 100%;'
-        form.base_fields['subtitle3'].widget.attrs['style'] = 'width: 100%;'
-        form.base_fields['subtitle4'].widget.attrs['style'] = 'width: 100%;'
-        form.base_fields['content1'].widget.attrs['style'] = 'width: 100%;'
-        form.base_fields['content2'].widget.attrs['style'] = 'width: 100%;'
-        form.base_fields['content3'].widget.attrs['style'] = 'width: 100%;'
-        form.base_fields['content4'].widget.attrs['style'] = 'width: 100%;'
-        return form       
+# @admin.register(FooterDescription)    
+# class FooterDescriptionAdmin(admin.ModelAdmin):
+#     list_display=(subtitle_one,content_one,subtitle_two,content_two,subtitle_three,content_three,subtitle_four,content_four,)
+#     def has_add_permission(self, request):
+#         return not FooterDescription.objects.exists() 
+#     def get_form(self, request, obj=None, **kwargs):
+#         form = super(FooterDescriptionAdmin, self).get_form(request, obj, **kwargs)
+#         form.base_fields['subtitle1'].widget.attrs['style'] = 'width: 100%;'
+#         form.base_fields['subtitle2'].widget.attrs['style'] = 'width: 100%;'
+#         form.base_fields['subtitle3'].widget.attrs['style'] = 'width: 100%;'
+#         form.base_fields['subtitle4'].widget.attrs['style'] = 'width: 100%;'
+#         form.base_fields['content1'].widget.attrs['style'] = 'width: 100%;'
+#         form.base_fields['content2'].widget.attrs['style'] = 'width: 100%;'
+#         form.base_fields['content3'].widget.attrs['style'] = 'width: 100%;'
+#         form.base_fields['content4'].widget.attrs['style'] = 'width: 100%;'
+#         return form       
 #End of code addition
 # End of code modification
 

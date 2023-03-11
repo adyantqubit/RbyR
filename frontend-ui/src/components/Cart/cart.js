@@ -618,10 +618,10 @@ const CartSItem = (props) => {
                   <span style={{ marginRight: "15px", fontWeight: "600" }}>{currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).shipping * currency.value).toFixed(2)}</span>
                 </div>
 
-                <div className={style.subTotal}>
+                {/* <div className={style.subTotal}>
                   <span style={{ marginLeft: "15px", fontWeight: "600" }}>GST CHARGES</span>
                   <span style={{ marginRight: "15px", fontWeight: "600" }}>{currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).tax * currency.value).toFixed(2)}</span>
-                </div>
+                </div> */}
 
                 {/* Commented by - Ashish Dewangan on 15-02-2023
                 Reason - To hide coupon/promocode functionality */}

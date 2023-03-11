@@ -36,7 +36,7 @@ export const Home = () => {
     <div className={style.home}>
       <NavHeader/>
       <Slideshow />
-      <ToastContainer />
+      <ToastContainer key={1} limit={1} enableMultiContainer={false}/>
       <div className={style.foot}>
       <Video url={video}/>
       <Footer2 />

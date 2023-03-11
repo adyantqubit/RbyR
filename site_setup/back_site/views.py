@@ -385,8 +385,12 @@ class Invoice(APIView):
                used.save()
             # end of the code
                 
-            tran = Transaction_history.objects.create(order_no=num, payment_status="pending", user_no=request.user, coupon_discount=request.data['CouponDiscount'], shipping_price=request.data[
-                                                      'ShippingCharges'], subtotal_price=request.data['SubTotal'], tax=request.data['tax'], grand_total=request.data['grand'])
+            tran = Transaction_history.objects.create(order_no=num, payment_status="pending", user_no=request.user, 
+                                                    #   coupon_discount=request.data['CouponDiscount'], 
+                                                      shipping_price=request.data[
+                                                      'ShippingCharges'], subtotal_price=request.data['SubTotal'], 
+                                                    #   tax=request.data['tax'],
+                                                      grand_total=request.data['grand'])
             tran.save()
             return Response({"order_no": tran.order_no, 'cart': cartdata})
         except:
