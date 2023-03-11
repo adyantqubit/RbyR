@@ -117,7 +117,7 @@ const Billing = () => {
                     <div ><span className={styles.userinfoText}>Account Number:</span><span className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
                     <div ><span className={styles.userinfoText}>UPI ID:</span><span className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div>
                   </div>
-                  <div style={{ height: "60px", width: "100%" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To Admin After paying At {storeLocatorDetails != null ? parse("PHONE:" + storeLocatorDetails[0].phoneNumber) : null}</span></div>
+                  <div style={{ height: "60px", width: "100%" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To Admin After Paying At {storeLocatorDetails != null ? parse("PHONE:" + storeLocatorDetails[0].phoneNumber) : null}</span></div>
                 </div>
               </div> : <div>The qr Code getting error</div>
             :
@@ -234,12 +234,13 @@ const Billing = () => {
                   </span>
                 </div>
 
-                <div className={styles.billingtexts}>
-                  <span className={`${styles.columnitem1head}`}  >Total price in words : </span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto", border: "none", outline: "none" }} > {checkoutDetails.currency_sign=="₹" ?
-                    checkoutDetails.grand ?toWords.convert((checkoutDetails.grand * checkoutDetails.currency_value).toFixed(2)) : toWords.convert(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand)
+                <div className={styles.billingtexts} style={{ marginTop: "-10px" }}>
+                  {/* <span className={`${styles.columnitem1head}`}  ></span>  */}
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto", border: "none", outline: "none" }} >{`(`} {checkoutDetails.currency_sign == "₹" ?
+                    checkoutDetails.grand ? toWords.convert((checkoutDetails.grand * checkoutDetails.currency_value).toFixed(2)) : toWords.convert(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand)
                     :
-                    checkoutDetails.grand ?toWorduS.convert((checkoutDetails.grand * checkoutDetails.currency_value).toFixed(2)) : toWorduS.convert(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand)}
+                    checkoutDetails.grand ? toWorduS.convert((checkoutDetails.grand * checkoutDetails.currency_value).toFixed(2)) : toWorduS.convert(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand)}
+                    {` )`}
                   </span>
                 </div>
 
