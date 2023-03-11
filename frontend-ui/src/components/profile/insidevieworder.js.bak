@@ -281,9 +281,9 @@ const InsideOrder = () => {
                       </span>
                     </div>
                     <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto"}}  >Order Status:- </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >{s.order_status}</span></div>
-                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >Price : </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >{s.selected_currency_sign} {(s.price * s.selected_currency_value).toFixed(2)}</span></div>
-                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >Quantity : </span><span className={style.userinfoText3} > {s.quantity} </span></div>
-                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >Total : </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >{s.selected_currency_sign} {(p.price * s.quantity * s.selected_currency_value).toFixed(2)}</span></div>
+                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >Price :- </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >{s.selected_currency_sign} {(s.price * s.selected_currency_value).toFixed(2)}</span></div>
+                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >Quantity :- </span><span className={style.userinfoText3} > {s.quantity} </span></div>
+                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >Total :-</span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >{s.selected_currency_sign} {(p.price * s.quantity * s.selected_currency_value).toFixed(2)}</span></div>
                   </div>
                 }
                 )}

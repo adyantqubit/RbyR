@@ -7,9 +7,6 @@
   display:none !important;
 }
 
-.floating-whatsapp-button{
-  right: 1rem !important;
-}
 .rcw-sender{
   justify-content: space-around;
 }

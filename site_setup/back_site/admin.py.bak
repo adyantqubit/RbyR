@@ -742,15 +742,15 @@ class Online_QrAdmin(admin.ModelAdmin):
 # Commented and modified by Ashish on 28-11-2022
 # To customize admin panel
     #admin.site.register(Tax)
-# @admin.register(Tax)    
-# class TaxAdmin(admin.ModelAdmin):
-#     list_display=("tax_rate",)
-#     def has_add_permission(self, request):
-#         return not Tax.objects.exists()
-#     def get_form(self, request, obj=None, **kwargs):
-#         form = super(TaxAdmin, self).get_form(request, obj, **kwargs)
-#         form.base_fields['tax_rate'].widget.attrs['style'] = 'width: 100%;'
-#         return form    
+@admin.register(Tax)    
+class TaxAdmin(admin.ModelAdmin):
+    list_display=("tax_rate",)
+    def has_add_permission(self, request):
+        return not Tax.objects.exists()
+    def get_form(self, request, obj=None, **kwargs):
+        form = super(TaxAdmin, self).get_form(request, obj, **kwargs)
+        form.base_fields['tax_rate'].widget.attrs['style'] = 'width: 100%;'
+        return form    
 # End of code modification
 
 

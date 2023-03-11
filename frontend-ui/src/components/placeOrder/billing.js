@@ -236,7 +236,7 @@ const Billing = () => {
 
                 <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`}  >Total price in words : </span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto", border: "none", outline: "none" }} > {checkoutDetails.currency_sign=="?" ?
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto", border: "none", outline: "none" }} > {checkoutDetails.currency_sign=="₹" ?
                     checkoutDetails.grand ?toWords.convert((checkoutDetails.grand * checkoutDetails.currency_value).toFixed(2)) : toWords.convert(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand)
                     :
                     checkoutDetails.grand ?toWorduS.convert((checkoutDetails.grand * checkoutDetails.currency_value).toFixed(2)) : toWorduS.convert(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand)}
