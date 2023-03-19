@@ -55,7 +55,7 @@ const Contact = () => {
                     </span>
                   </div>
                   <div className={`${style.column} ${style.col2}`}>
-                    <img  src={config.apiBaseURL+contact.contactUsImage}></img>
+                    <img  src={config.staticBaseURL+contact.contactUsImage}></img>
                   </div>
                 </div>
               );

@@ -48,7 +48,7 @@ const Categories = () => {
                         {/* listing all category of parent menu */}
                         {list != null ? list[`${parent}`]?.map(s =>
                             <div className={style.card}>
-                                <img className={style.img} src={ config.apiBaseURL+ s.img} />
+                                <img className={style.img} src={ config.staticBaseURL+ s.img} />
                                 <div className={style.absoluteBox}>
                                     <div className={style.menu}>{s.category}</div>
                                     <button className={style.button} onClick={e => jumpIntoProductPage(s)}>View Products</button>

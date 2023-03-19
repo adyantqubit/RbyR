@@ -43,20 +43,20 @@ const ResponsiveSlider = (props) => {
     <>
     <ImageSlider effectDelay={1000} autoPlayDelay={2000}>
         <Slide>
-            <img alt="img2" className={style.sliderImg} src={props.response=="frontend"?props.img1:config.apiBaseURL+props.img1}/>
+            <img alt="img2" className={style.sliderImg} src={props.response=="frontend"?props.img1:config.staticBaseURL+props.img1}/>
         </Slide>
         <Slide>   
-            <img alt="img2" className={style.sliderImg} src={props.response=="frontend"?props.img2:config.apiBaseURL+props.img2} />
+            <img alt="img2" className={style.sliderImg} src={props.response=="frontend"?props.img2:config.staticBaseURL+props.img2} />
         </Slide>
         <Slide>
-            <img alt="img1" className={style.sliderImg} src={props.response=="frontend"?props.img3:config.apiBaseURL+props.img3} />
+            <img alt="img1" className={style.sliderImg} src={props.response=="frontend"?props.img3:config.staticBaseURL+props.img3} />
         </Slide>
         </ImageSlider>
         </>
         :<>
-        <img className={style.sliderImg} src={props.response=="frontend"?props.img1:config.apiBaseURL+props.img1}></img>
-        <img className={style.sliderImg} src={props.response=="frontend"?props.img2:config.apiBaseURL+props.img2}></img>
-        <img className={style.sliderImg} src={props.response=="frontend"?props.img3:config.apiBaseURL+props.img3}></img>
+        <img className={style.sliderImg} src={props.response=="frontend"?props.img1:config.staticBaseURL+props.img1}></img>
+        <img className={style.sliderImg} src={props.response=="frontend"?props.img2:config.staticBaseURL+props.img2}></img>
+        <img className={style.sliderImg} src={props.response=="frontend"?props.img3:config.staticBaseURL+props.img3}></img>
         </>
         }
     </div>

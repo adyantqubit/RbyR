@@ -75,7 +75,7 @@ class product_detailAdmin(admin.ModelAdmin):
         form.base_fields['XXL'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['price'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['XXXL'].widget.attrs['style'] = 'width: 100%;'
-        form.base_fields['about'].widget.attrs['style'] = 'width: 100%;'
+        # form.base_fields['about'].widget.attrs['style'] = 'dispaly: 100%;'
         form.base_fields['img_main'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['img_sub1'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['img_sub2'].widget.attrs['style'] = 'width: 100%;'

@@ -11,7 +11,7 @@ import {
 } from "../../api/service";
 import { useEffect, useState } from "react";
 import { notification } from "antd";
-import {IoChevronForwardOutline} from "react-icons/io5";
+import { IoChevronForwardOutline } from "react-icons/io5";
 import config from "../../api/config";
 
 function Footer2() {
@@ -51,30 +51,30 @@ function Footer2() {
         if (emailData.msg) {
           notification.open({
             message: "",
-            style:{marginTop:"20px"},
+            style: { marginTop: "20px" },
             description: "Subscribed to email updates successfully",
-            onClick: () => {},
-            style:{backgroundColor: "var(--bannerColor)"},
-            key:1
+            onClick: () => { },
+            style: { backgroundColor: "var(--bannerColor)" },
+            key: 1
           });
         } else {
           if (emailData.error) {
             notification.open({
-              message:"",
-              style:{marginTop:"20px"},
+              message: "",
+              style: { marginTop: "20px" },
               description: emailData.error,
-              onClick: () => {},
-              style:{backgroundColor: "var(--bannerColor)"},
-              key:1
+              onClick: () => { },
+              style: { backgroundColor: "var(--bannerColor)" },
+              key: 1
             });
           } else {
             notification.open({
               message: "",
-              style:{marginTop:"20px"},
+              style: { marginTop: "20px" },
               description: "Email subscription failed",
-              onClick: () => {},
-              style:{backgroundColor: "var(--bannerColor)"},
-              key:1
+              onClick: () => { },
+              style: { backgroundColor: "var(--bannerColor)" },
+              key: 1
             });
           }
         }
@@ -82,12 +82,12 @@ function Footer2() {
     } else {
       notification.open({
         message: "",
-        style:{marginTop:"20px"},
+        style: { marginTop: "20px" },
         description: "Please provide a valid email format",
-        onClick: () => {},
-        style:{backgroundColor: "var(--bannerColor)"},
+        onClick: () => { },
+        style: { backgroundColor: "var(--bannerColor)" },
 
-        key:1
+        key: 1
       });
     }
   };
@@ -98,12 +98,12 @@ function Footer2() {
         setInstagramCollections(r);
       } else
         notification.open({
-          message:"",
-          style:{marginTop:"20px"},
+          message: "",
+          style: { marginTop: "20px" },
           description: "Instagram Post Not Found",
-          onClick: () => {},
-          style:{backgroundColor: "var(--bannerColor)"},
-          key:1
+          onClick: () => { },
+          style: { backgroundColor: "var(--bannerColor)" },
+          key: 1
         });
     });
   }
@@ -111,7 +111,7 @@ function Footer2() {
   return (
     <div className={style.App}>
 
-      
+
       {instagramCollections != null ? (
         <div className={style.instagramContainer}>
           <a
@@ -128,27 +128,27 @@ function Footer2() {
             href={instagramCollections.instagram_post1_link}
           >
 
-            
-    {/* Added By Rohan kansari
+
+            {/* Added By Rohan kansari
     reason- This div is not needed. style is not define for this div so i m replacing it.
     jira issue-RBYR184 */}
             {/* <div className={style.instagramItem}> */}
 
-              <img
-                className={style.instagramImage}
-                src={config.apiBaseURL+ instagramCollections.instagram_post1}
-              ></img>
+            <img
+              className={style.instagramImage}
+              src={config.staticBaseURL + instagramCollections.instagram_post1}
+            ></img>
             {/* </div> */}
           </a>
           <a
             className={style.instagramLink}
             href={instagramCollections.instagram_post2_link}
           >
-             {/* <div className={style.instagramItem}> */}
-              <img
-                className={style.instagramImage}
-                src={ config.apiBaseURL+ instagramCollections.instagram_post2}
-              ></img>
+            {/* <div className={style.instagramItem}> */}
+            <img
+              className={style.instagramImage}
+              src={config.staticBaseURL + instagramCollections.instagram_post2}
+            ></img>
             {/* </div> */}
           </a>
           <a
@@ -156,10 +156,10 @@ function Footer2() {
             href={instagramCollections.instagram_post3_link}
           >
             {/* <div className={style.instagramItem}> */}
-              <img
-                className={style.instagramImage}
-                src={ config.apiBaseURL+ instagramCollections.instagram_post3}
-              ></img>
+            <img
+              className={style.instagramImage}
+              src={config.staticBaseURL + instagramCollections.instagram_post3}
+            ></img>
             {/* </div> */}
           </a>
           <a
@@ -167,10 +167,10 @@ function Footer2() {
             href={instagramCollections.instagram_post4_link}
           >
             {/* <div className={style.instagramItem}> */}
-              <img
-                className={style.instagramImage}
-                src={config.apiBaseURL+ instagramCollections.instagram_post4}
-              ></img>
+            <img
+              className={style.instagramImage}
+              src={config.staticBaseURL + instagramCollections.instagram_post4}
+            ></img>
             {/* </div> */}
           </a>
           <a
@@ -178,10 +178,10 @@ function Footer2() {
             href={instagramCollections.instagram_post5_link}
           >
             {/* <div className={style.instagramItem}> */}
-              <img
-                className={style.instagramImage}
-                src={config.apiBaseURL+ instagramCollections.instagram_post5}
-              ></img>
+            <img
+              className={style.instagramImage}
+              src={config.staticBaseURL + instagramCollections.instagram_post5}
+            ></img>
             {/* </div> */}
 
             {/* End of the code */}
@@ -189,7 +189,7 @@ function Footer2() {
         </div>
       ) : null}
 
-      
+
 
       <div style={{ height: "40px", borderBottom: "1px solid #7c7c7c" }}></div>
       <div className={style.row}>
@@ -241,17 +241,17 @@ function Footer2() {
 
         <div className={style.column3}>
           <h1 className={style.heading}>THE COMPANY</h1>
-        <Link to="/aboutRR"
+          <Link to="/aboutRR"
             style={{ textDecoration: "none", color: "white" }}
-           >
-            <span
-            className={style.span}
-            
           >
-            World of RbyR
-          </span> 
-           </Link>
-            
+            <span
+              className={style.span}
+
+            >
+              World of RbyR
+            </span>
+          </Link>
+
           <Link
             to="/store-locator"
             style={{ textDecoration: "none", color: "white" }}
@@ -271,8 +271,18 @@ function Footer2() {
                 marginTop: "7px",
               }}
             >
-              <FaFacebookF style={{ color: "var(--iconsColor)", fontSize: "25px" }} />
-              <TiSocialInstagram style={{ color: "var(--iconsColor)", fontSize: "25px" }} />
+
+              {socialLinks.length > 0 ? (
+                <>
+                  {socialLinks.map((socialLink) => { 
+                  return <img src={config.staticBaseURL+socialLink.logo} style={{color:"var(--iconsColor)",width:"25px",height:"25px"}} alt=""/>
+                  })
+                  }
+                  </>
+                  ) 
+                  : null}
+              {/* <FaFacebookF style={{ color: "var(--iconsColor)", fontSize: "25px" }} />
+              <TiSocialInstagram style={{ color: "var(--iconsColor)", fontSize: "25px" }} /> */}
               {/* Commented by - Ashish Dewangan on 15-02-2023
               Reason - To hide Twitter link */}
               {/* <FaTwitter style={{ color: "grey", fontSize: "25px" }} /> */}
@@ -303,7 +313,7 @@ function Footer2() {
                             marginLeft: "10px",
                           }}
                         > */}
-                          <a
+                        <a
                           href={socialLink.link}
                           className={style.span}
                           style={{
@@ -338,10 +348,10 @@ function Footer2() {
               id="emailAddress"
             />
             <button
-            className={style.emailBoxButton}
+              className={style.emailBoxButton}
               onClick={subscribeToEmailUpdate}
             >
-              <IoChevronForwardOutline style={{ fontSize: "25px",color:"white" }} />
+              <IoChevronForwardOutline style={{ fontSize: "25px", color: "white" }} />
             </button>
           </div>
         </div>
@@ -355,8 +365,8 @@ function Footer2() {
           {" "}
           {copyrights.length > 0
             ? copyrights.map((copyright) => {
-                return copyright.title;
-              })
+              return copyright.title;
+            })
             : "© 2022 RR. ALL RIGHTS RESERVED"}
         </span>
         <span
@@ -370,7 +380,7 @@ function Footer2() {
               fontFamily: "Rawson-Regular",
               fontSize: "16px",
               fontWeight: "20",
-              color:"#212121",
+              color: "#212121",
               textDecoration: "none",
             }}
           >

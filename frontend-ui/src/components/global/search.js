@@ -193,10 +193,10 @@ const Search = () => {
               {filteredPersons.map((p) => {
                 return (
                   <div className={styles.item}>
-                    <Link to={`/listing/${p.menu}/${p.category}/detail/${p.id}`}>
+                    <Link to={`/listing/${p.menu}/${p.category}/detail/${p.id}`} onClick={onClose}>
                       <img
                         className={styles.searchedImage}
-                        src={config.apiBaseURL + p.img_main}
+                        src={config.staticBaseURL + p.img_main}
                         onClick={(e) => openDetail(p)}
                       ></img>
                     </Link>

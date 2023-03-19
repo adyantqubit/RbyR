@@ -78,7 +78,7 @@ const AboutUs = () => {
                                     width="100%" height="100%"
                                     src={`${response.video_url}?autoplay=1&amp;controls=0&amp;showinfo=0&amp;modestbranding=1&amp;&rel=1&amp;`} id="widget2"></iframe>
                                 {/* <ReactPlayer className={style.img1} url='https://youtu.be/bbkBuqC1rU4' /> */}
-                                <img className={style.img2} src={config.apiBaseURL + response.top_image}></img>
+                                <img className={style.img2} src={config.staticBaseURL + response.top_image}></img>
                             </div>
                         </div>
 

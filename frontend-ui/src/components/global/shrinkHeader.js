@@ -138,7 +138,7 @@ const ShrinkHeader = () => {
             <Converter />
             <Link to="/">
               {/* <img alt="header" src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" className={style.img}></img> */}
-              <img src={config.apiBaseURL + logo} alt="Logo" className={style.img} />
+              <img src={config.staticBaseURL + logo} alt="Logo" className={style.img} />
             </Link>
           </div>
 

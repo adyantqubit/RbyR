@@ -33,7 +33,7 @@ export  function ImageSwapper() {
     return (
       <div>
 
-        <img className={style.imgswap} src={config.apiBaseURL+currentImage} />
+        <img className={style.imgswap} src={config.staticBaseURL+currentImage} />
 
       </div>
         

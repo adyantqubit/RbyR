@@ -175,7 +175,7 @@ const increament=(CartProduct)=>{
   
     
     <div  style={{width:"100%",height:"230px",marginBottom:"20px",paddingLeft:"15px",display:"flex",background:"#f2f2f2"}}>
-    <img src={config.apiBaseURL+pro.img_main} style={{width:"30%",height:'230px'}} onClick={e=>openDetail(pro)}></img>
+    <img src={config.staticBaseURL+pro.img_main} style={{width:"30%",height:'230px'}} onClick={e=>openDetail(pro)}></img>
      <div style={{width:"65%",display:"flex",flexDirection:"column"}}>
              <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}> 
                 <h3 className={style.heading} style={{color:"black",fontSize: "18px",lineHeight: "26px",letterSpacing: "2.5px"}}>{pro.title}</h3>

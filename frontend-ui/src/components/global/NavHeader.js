@@ -203,7 +203,7 @@ const Navbar = () => {
 
         <div className={style.logo}>
           {/* <img src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" alt="Logo" onClick={openHome}/> */}
-          <img src={config.apiBaseURL + logo} alt="Logo" onClick={openHome} />
+          <img src={config.staticBaseURL + logo} alt="Logo" onClick={openHome} />
         </div>
 
         <nav className={style.navbar}>

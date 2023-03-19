@@ -234,7 +234,7 @@ const InsideOrder = () => {
                     <div style={{ background: "white",width:'100%' }}>
                       {onlineDetail != null ?
                         <div className={styles.payBox} style={{width:"100%"}}>
-                          <img src={config.apiBaseURL + onlineDetail.qr_img}
+                          <img src={config.staticBaseURL + onlineDetail.qr_img}
                             className={styles.img} />
                           <div className={styles.payTitle}>
                             <div>
@@ -274,7 +274,7 @@ const InsideOrder = () => {
                   return <div className={style.tablerowhead} style={i % 2 == 0 ? { marginTop: "10px" } : { marginTop: "10px" }}>
                     <div className={style.rowitem3}>
                   
-                    <img src={(typeof p.img_main)==='undefined'?null: config.apiBaseURL + p.img_main} className={style.imgresponsive} onClick={e=>nav(`/listing/${p.menu}/${p.category}/detail/${p.id}`)} />
+                    <img src={(typeof p.img_main)==='undefined'?null: config.staticBaseURL + p.img_main} className={style.imgresponsive} onClick={e=>nav(`/listing/${p.menu}/${p.category}/detail/${p.id}`)} />
                   
                       <span className={style.imgTitle}>
                         {p.title} ({SizeGetter(s.size)})

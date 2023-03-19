@@ -471,7 +471,7 @@ const CartSItem = (props) => {
                 {result ? <div style={{ width: "100%", marginBottom: "20px", paddingLeft: "15px", display: "flex", background: 'WHITE' }}>
                    
                    <div className={styles.column1}>
-                  <img src={config.apiBaseURL + pro.img_main} style={{width:"100%"}} onClick={e => openDetail(pro)}></img>
+                  <img src={config.staticBaseURL + pro.img_main} style={{width:"100%"}} onClick={e => openDetail(pro)}></img>
                    </div>
                   <div className={styles.column2}>
 
@@ -520,7 +520,7 @@ const CartSItem = (props) => {
                 </div> : <div className={styles.columnContainer} style={{ width: "100%", marginBottom: "20px", paddingLeft: "15px", display: "flex" }}>
                 <div className={styles.column1}>
 
-                  <img src={config.apiBaseURL + pro.img_main} style={{width:"100%"}} onClick={e => openDetail(pro)}></img>
+                  <img src={config.staticBaseURL + pro.img_main} style={{width:"100%"}} onClick={e => openDetail(pro)}></img>
                   </div>
                   <div className={styles.column2}>
                     <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>

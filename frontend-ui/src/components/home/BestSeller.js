@@ -52,7 +52,7 @@ const BestSeller = () => {
                                 onClick={e => {  nav(`/listing/${m.menu}/${m.category}/detail/${m.id}`) }}
                             >
                                 <img
-                                    src={config.apiBaseURL + m.img_main}
+                                    src={config.staticBaseURL + m.img_main}
                                     className={style.img}
                                     onMouseEnter={e => swapImage(i)}
                                     onMouseLeave={e => swapImage(i)} />
@@ -74,7 +74,7 @@ const BestSeller = () => {
                                 onClick={e => { nav(`/listing/${m.menu}/${m.category}/detail/${m.id}`) }}
                             >
                                 <img
-                                    src={config.apiBaseURL + m.img_main}
+                                    src={config.staticBaseURL + m.img_main}
                                     className={style.img}
                                 />
                                 <div className={style.absolute}>

@@ -421,8 +421,8 @@ const Details = (props) => {
             <div className={styles["container02"]} >
               <div className={styles["image"]}>
                 <InnerImageZoom
-                  src={config.apiBaseURL + details.img_main}
-                  zoomSrc={config.apiBaseURL + details.img_main}
+                  src={config.staticBaseURL + details.img_main}
+                  zoomSrc={config.staticBaseURL + details.img_main}
                 />
               </div>
               {/* {scroller.current.scrollTop?:null} */}
@@ -788,7 +788,7 @@ const Details = (props) => {
                         style={{ width: "100%", height: "100%" }}
                         src={
                           womenSizeChart.length > 0
-                            ? config.apiBaseURL + womenSizeChart
+                            ? config.staticBaseURL + womenSizeChart
                             : "/women_size_chart.jpg"
                         }
                       /> */}
@@ -1156,32 +1156,32 @@ const Details = (props) => {
             <div className={styles.image_gallery}>
               <div className={styles.column}>
                 <div className={styles.image_item}>
-                  {details.img_sub1 != "/null" ?
+                  {details.img_sub1 != "/media/null" ?
                     <InnerImageZoom
                       className={styles.img}
-                      src={config.apiBaseURL + details.img_sub1}
-                      zoomSrc={config.apiBaseURL + details.img_sub1}
+                      src={config.staticBaseURL + details.img_sub1}
+                      zoomSrc={config.staticBaseURL + details.img_sub1}
                     /> : null}
 
                 </div>
               </div>
               <div className={styles.column}>
                 <div className={styles.image_item}>
-                  {details.img_sub2 != "/null" ?
+                  {details.img_sub2 != "/media/null" ?
                     <InnerImageZoom
                       className={styles.img}
-                      src={config.apiBaseURL + details.img_sub2}
-                      zoomSrc={config.apiBaseURL + details.img_sub2}
+                      src={config.staticBaseURL + details.img_sub2}
+                      zoomSrc={config.staticBaseURL + details.img_sub2}
                     /> : null}
                 </div>
               </div>
               <div className={styles.column}>
                 <div className={styles.image_item}>
-                  {details.img_sub3 != "/null" ?
+                  {details.img_sub3 != "/media/null" ?
                     <InnerImageZoom
                       className={styles.img}
-                      src={config.apiBaseURL + details.img_sub3}
-                      zoomSrc={config.apiBaseURL + details.img_sub3}
+                      src={config.staticBaseURL + details.img_sub3}
+                      zoomSrc={config.staticBaseURL + details.img_sub3}
                     /> : null}
                 </div>
               </div>

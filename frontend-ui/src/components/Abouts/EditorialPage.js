@@ -44,7 +44,7 @@ const Editorialpage = () => {
      if(response!=null){
      var arr=[]
       response.map(m=>{
-        var i=config.apiBaseURL+m.TopImage1
+        var i=config.staticBaseURL+m.TopImage1
         arr.push(i)
       })
 
@@ -72,7 +72,7 @@ const Editorialpage = () => {
                  <div className={style.card}>
                  <div style={{ position: "relative" }}>
                      <img 
-                     src={config.apiBaseURL +i.TopImage1} 
+                     src={config.staticBaseURL +i.TopImage1} 
                      onClick={() => i.product?null:openImageViewer(index)}/>
                      {i.product?
                      <div className={style.overlay}>

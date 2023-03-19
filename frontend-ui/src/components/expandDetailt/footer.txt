@@ -22,7 +22,7 @@
 
               <img
                 className={style.instagramImage}
-                src={config.apiBaseURL+ instagramCollections.instagram_post1}
+                src={config.staticBaseURL+ instagramCollections.instagram_post1}
               ></img>
             {/* </div> */}
           </a>
@@ -33,7 +33,7 @@
              {/* <div className={style.instagramItem}> */}
               <img
                 className={style.instagramImage}
-                src={ config.apiBaseURL+ instagramCollections.instagram_post2}
+                src={ config.staticBaseURL+ instagramCollections.instagram_post2}
               ></img>
             {/* </div> */}
           </a>
@@ -44,7 +44,7 @@
             {/* <div className={style.instagramItem}> */}
               <img
                 className={style.instagramImage}
-                src={ config.apiBaseURL+ instagramCollections.instagram_post3}
+                src={ config.staticBaseURL+ instagramCollections.instagram_post3}
               ></img>
             {/* </div> */}
           </a>
@@ -55,7 +55,7 @@
             {/* <div className={style.instagramItem}> */}
               <img
                 className={style.instagramImage}
-                src={config.apiBaseURL+ instagramCollections.instagram_post4}
+                src={config.staticBaseURL+ instagramCollections.instagram_post4}
               ></img>
             {/* </div> */}
           </a>
@@ -66,7 +66,7 @@
             {/* <div className={style.instagramItem}> */}
               <img
                 className={style.instagramImage}
-                src={config.apiBaseURL+ instagramCollections.instagram_post5}
+                src={config.staticBaseURL+ instagramCollections.instagram_post5}
               ></img>
             {/* </div> */}
 

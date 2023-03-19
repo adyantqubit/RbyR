@@ -241,7 +241,7 @@ class subMenu(models.Model):
 class product_detail(models.Model):
     id=models.AutoField(primary_key=True)
     title=models.CharField(max_length=100)
-    about=models.CharField(max_length=300)
+    # about=models.CharField(max_length=300)
     upper_menu=models.ForeignKey(Menus,on_delete=models.CASCADE,null=True,blank=True)
     subMenu=models.ForeignKey(subMenu,on_delete=models.CASCADE,null=True,blank=True)
     
@@ -809,6 +809,8 @@ class StoreLocator(models.Model):
 #Reason - To create Social Links table
 class SocialLink(models.Model):
     linkName=models.CharField(max_length=255)
+    logo=models.ImageField(upload_to='None/', height_field=None,\
+           width_field=None, max_length=100)
     link=models.CharField(max_length=255)
 #End of code addition
     #Added by Ashish Dewangan on 28-11-2022

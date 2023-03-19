@@ -1044,16 +1044,16 @@ class pageIndex(APIView):
                 # products = product_detail.objects.filter(category="partywear") | product_detail.objects.filter(category="kurti") | product_detail.objects.filter(
                 #     category="casual") | product_detail.objects.filter(category="wedding_wear") | product_detail.objects.filter(category="formal")
                 menu=Menus.objects.get(menu=request.data['parent'])
-                products=product_detail.objects.filter(upper_menu=menu)
+                products=product_detail.objects.filter(upper_menu=menu).order_by("id")
             # End of code
             
             # Added by Rohan -5/1/22
             # Reason- Adding ready to wear functionality where all ready to ship product shown on this link
             elif (request.data['parent']=="ready to ship" and request.data['category']=="0"):
-                products=product_detail.objects.filter(ready_to_ship=True)
+                products=product_detail.objects.filter(ready_to_ship=True).order_by("id")
                 
             elif(request.data['parent']=="best seller" and request.data['category']=="0"):
-                products=product_detail.objects.filter(bestSeller=True)
+                products=product_detail.objects.filter(bestSeller=True).order_by("id")
   
             # End of code
             else:
@@ -1062,19 +1062,19 @@ class pageIndex(APIView):
                 
 
             if (request.data['lth'] and request.data['availablity']):
-                products = products.filter(available=True).order_by("price")
+                products = products.filter(available=True).order_by("price").order_by("id")
             elif (request.data['htl'] and request.data['availablity']):
-                products = products.filter(available=True).order_by("-price")
+                products = products.filter(available=True).order_by("-price").order_by("id")
             elif (request.data['latest'] and request.data['availablity']):
-                products = products.filter(available=True).order_by('-date')
+                products = products.filter(available=True).order_by('-date').order_by("id")
             elif (request.data['htl']):
-                products = products.order_by("-price")
+                products = products.order_by("-price").order_by("id")
             elif (request.data['lth']):
-                products = products.order_by("price")
+                products = products.order_by("price").order_by("id")
             elif (request.data['latest']):
-                products = products.order_by("-date")
+                products = products.order_by("-date").order_by("id")
             elif (request.data['availablity']):
-                products = products.filter(available=True)
+                products = products.filter(available=True).order_by("id")
 
 
             colors = []

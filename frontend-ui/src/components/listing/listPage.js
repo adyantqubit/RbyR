@@ -157,8 +157,11 @@ const ListPage = () => {
 
           console.log(CategoryProduct)
           setAllCategoryAvai([...r.categories])
-          setCategoryProduct([...CategoryProduct, ...r.products])
-          settemAllpro([...tempallpro, ...r.products])
+          var temp=r.products.filter(c=>CategoryProduct.filter(g=>g.id==c.id).length==0)
+          var temp2=r.products.filter(c=>tempallpro.filter(g=>g.id==c.id).length==0)
+          console.log("----------------------temp--------jksks---------------",temp,temp2)
+          setCategoryProduct([...CategoryProduct, ...temp])
+          settemAllpro([...tempallpro, ...temp2])
           setAllColorAvai(r.colors)
           setReload(true);
         }
@@ -267,7 +270,7 @@ const ListPage = () => {
             {CategoryProduct.length > 0 ? CategoryProduct.map((p, i) => (
 
               <div className={style.card} onClick={e => openDetail(p)}>
-                <img src={config.apiBaseURL + p.img_main} className={style.img}></img>
+                <img src={config.staticBaseURL + p.img_main} className={style.img}></img>
                 <div className={style.title} ><span>{p.title}</span></div>
                 <div className={style.price} >{currency.sign} {(p.price * currency.value).toFixed(2)}</div>
                 {p.ready_to_ship ?

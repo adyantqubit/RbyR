@@ -108,7 +108,7 @@ const Billing = () => {
           {checkoutDetails.payment == "onlinepay" ?
             onlineDetail != null ?
               <div className={styles.payBox}>
-                <img src={config.apiBaseURL + onlineDetail.qr_img}
+                <img src={config.staticBaseURL + onlineDetail.qr_img}
                   className={styles.img} />
                 <div className={styles.payTitle}>
                   <div >

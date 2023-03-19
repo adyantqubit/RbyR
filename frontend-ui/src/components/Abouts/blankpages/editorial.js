@@ -61,7 +61,7 @@ const Editorial = () => {
             <div className={style.Top2Images}>
                 <div className={style.InnerImgContainer}>
                     <img className={style.img1} src={image} style={{width:"100%"}}></img>
-                    {/* <img className={style.img2} src={config.apiBaseURL+response.TopImage2}></img> */}
+                    {/* <img className={style.img2} src={config.staticBaseURL+response.TopImage2}></img> */}
                 </div>
             </div>
 

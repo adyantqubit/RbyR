@@ -79,7 +79,7 @@ const Slider2 = ({scrollTop}) => {
                     style={{cursor:"pointer",padding:"5px auto"}} >
                       <img
                         className={style.img}
-                        src={config.apiBaseURL + cart.img_main}
+                        src={config.staticBaseURL + cart.img_main}
                         style={{ width: "350px" }}
                         onClick={(e) => {openDetail(cart);scrollTop()}}
                       />

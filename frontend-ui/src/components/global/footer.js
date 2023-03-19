@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { getSocialLinkDetail, getCopyrightDetails,postEmailDetails } from "../../api/service";
 import { useEffect, useState } from "react";
 import { notification } from "antd";
+import config from "../../api/config";
 
 function Footer() {
   const [socialLinks, setSocialLinks] = useState([]);
@@ -176,8 +177,17 @@ function Footer() {
                 marginTop: "7px",
               }}
             >
-              <FaFacebookF style={{ color: "var(--iconsColor)", fontSize: "25px" }} />
-              <TiSocialInstagram style={{ color: "var(--iconsColor)", fontSize: "25px" }} />
+              {socialLinks.length > 0 ? (
+                <>
+                  {socialLinks.map((socialLink) => { 
+                  return <img src={config.staticBaseURL+socialLink.logo} style={{color:"var(--iconsColor)",width:"25px",height:"25px"}} alt=""/>
+                  })
+                  }
+                  </>
+                  ) 
+                  : null}
+              {/* <FaFacebookF style={{ color: "var(--iconsColor)", fontSize: "25px" }} />
+              <TiSocialInstagram style={{ color: "var(--iconsColor)", fontSize: "25px" }} /> */}
               {/* Commented by - Ashish Dewangan on 15-02-2023
               Reason - To hide twitter link */}
               {/* <FaTwitter style={{ color: "grey", fontSize: "25px" }} /> */}

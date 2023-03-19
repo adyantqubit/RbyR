@@ -39,7 +39,7 @@ const Features = () => {
         if(response!=null){
         var arr=[]
          response.map(m=>{
-           var i=config.apiBaseURL+m.magzine_img
+           var i=config.staticBaseURL+m.magzine_img
            arr.push(i)
          })
    
@@ -56,7 +56,7 @@ const Features = () => {
                 <div className={style.imageContainer} >
 
                  {response?.map((i,index)=>
-                 <img src={config.apiBaseURL+i.magzine_img} className={style.img} onClick={()=>{openImageViewer(index)}}/>
+                 <img src={config.staticBaseURL+i.magzine_img} className={style.img} onClick={()=>{openImageViewer(index)}}/>
                  )}
                  
             {isViewerOpen && (

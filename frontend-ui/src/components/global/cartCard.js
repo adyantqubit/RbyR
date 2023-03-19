@@ -267,7 +267,7 @@ const CartCard = (props) => {
         <>
           <div style={{ width: "100%", height: "auto", marginBottom: "30px", paddingLeft: "15px", display: "flex",backgroundColor:"var(--backgroundColorSecondary)" }}>
           <div className={styles.column1}>
-            <img src={config.apiBaseURL + pro.img_main} style={{width:"100%"}} onClick={e => openDetail(pro)}></img>
+            <img src={config.staticBaseURL + pro.img_main} style={{width:"100%"}} onClick={e => openDetail(pro)}></img>
           </div>
             <div className={styles.column2} >
               <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>

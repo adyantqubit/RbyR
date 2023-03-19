@@ -62,7 +62,7 @@ const ProductListing = () => {
 
         {cart.map(c =>
           <div className={styles.cartBox}>
-            <img src={config.apiBaseURL + c.img_main} className={styles.img}></img>
+            <img src={config.staticBaseURL + c.img_main} className={styles.img}></img>
             <div className={styles.productInfo}>
               <span className={styles.titlepro}>{c.title}</span>
               <span className={styles.userinfoText} style={{ color: "black" }}>{currency.sign}{(c.price * currency.value).toFixed(2)}</span>

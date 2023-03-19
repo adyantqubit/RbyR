@@ -34,7 +34,7 @@ const StoreLocator = () => {
                     <div className={style.item}>
                       <div className={style.itemTitle}>{parse(""+storeLocatorDetail.city)}</div>
                       <div className={style.itemContent}>
-                        <img className={style.itemImage} src={config.apiBaseURL+storeLocatorDetail.storeImage}/>
+                        <img className={style.itemImage} src={config.staticBaseURL+storeLocatorDetail.storeImage}/>
                         <div className={style.itemBody}>
                           <div className={style.itemText}>
                           {parse(""+storeLocatorDetail.address)}

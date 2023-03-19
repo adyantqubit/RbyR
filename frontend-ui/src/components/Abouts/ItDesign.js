@@ -30,8 +30,8 @@ const ItDesign = () => {
             {/* Top 2 images shown */}
             <div className={style.Top2Images}>
                 <div className={style.InnerImgContainer}>
-                    <img className={style.img1} src={config.apiBaseURL+response.TopImage1}></img>
-                    <img className={style.img2} src={config.apiBaseURL+response.TopImage2}></img>
+                    <img className={style.img1} src={config.staticBaseURL+response.TopImage1}></img>
+                    <img className={style.img2} src={config.staticBaseURL+response.TopImage2}></img>
                 </div>
             </div>
 

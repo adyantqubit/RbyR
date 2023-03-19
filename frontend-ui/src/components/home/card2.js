@@ -34,7 +34,7 @@ const CArd2 = (props) => {
                   <img
                     alt=""
                     className={style.imgswap}
-                    src={config.apiBaseURL +props.imgArray[0].image}
+                    src={config.staticBaseURL +props.imgArray[0].image}
                   />
                 {/* </div> */}
 
@@ -55,7 +55,7 @@ const CArd2 = (props) => {
                     <img
                       alt=""
                       className={style.imgswap}
-                      src={config.apiBaseURL + props.imgArray[1].image}
+                      src={config.staticBaseURL + props.imgArray[1].image}
                     />
                   {/* </div> */}
 

@@ -93,7 +93,7 @@ function Slideshow() {
                 className={style.dblock}
                 // src={pay[0].src}
 
-                src={config.apiBaseURL + item.src}
+                src={config.staticBaseURL + item.src}
                 alt="First slide"
               />
             </Link>

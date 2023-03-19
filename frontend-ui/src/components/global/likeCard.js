@@ -64,7 +64,7 @@ const LikeCard = (props) => {
             <div className={style.wishContainer}>
               <img
                 className={style.wishImage}
-                src={config.apiBaseURL + l.img_main}
+                src={config.staticBaseURL + l.img_main}
                 onClick={(e) => openDetail(l)}
               ></img>
               <div className={style.wishItem}>

@@ -26,7 +26,7 @@ const Card = (props) => {
               <img
                     alt=""
                     className={style.imgswap}
-                    src={config.apiBaseURL +  props.imgArray[0].Gif_image}
+                    src={config.staticBaseURL +  props.imgArray[0].Gif_image}
                   />
               <div className={style.text}>
                 <a className={style.linkText}  href={`listing/${props.imgArray[0].menu}/${props.imgArray[0].category}`}>
@@ -46,7 +46,7 @@ const Card = (props) => {
                 <img
                     alt=""
                     className={style.imgswap}
-                    src={config.apiBaseURL + props.imgArray[1].Gif_image}
+                    src={config.staticBaseURL + props.imgArray[1].Gif_image}
                   />
 
                 {/* End of comment */}

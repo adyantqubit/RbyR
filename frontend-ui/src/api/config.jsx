@@ -1,8 +1,8 @@
-const baseURL = "http://192.168.1.50:8000/";
+const baseURL = "http://localhost:80";
 
 const config = {
-  apiBaseURL: `${baseURL}`,
-  staticBaseURL: `${baseURL}/static/`,
+  apiBaseURL: `${baseURL}/api/`,
+  staticBaseURL: `${baseURL}/`,
   apiTimeout: 500000,
 };
 
