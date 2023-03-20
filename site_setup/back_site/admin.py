@@ -203,7 +203,9 @@ class CurrencySelectedAdmin(admin.ModelAdmin):
 #         form.base_fields['sub'].label_from_instance = lambda inst: "{} : {}".format(inst.Menu.menu,inst.sub)
 #         return form    
     
-admin.site.register(Home_video)      
+@admin.register(Home_video)
+class HomeVideoAdmin(admin.ModelAdmin):
+    list_display=("Video_url",)   
 #End of code
 
 

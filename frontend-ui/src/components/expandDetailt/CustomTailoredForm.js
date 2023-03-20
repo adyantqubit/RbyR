@@ -34,18 +34,20 @@ function CustomTailoredForm() {
     );
     if (customTailoredPostResponse) {
       if (customTailoredPostResponse.msg) {
-        
+
         notification.open({
           message: "",
           description: "Custom tailored request posted successfully",
-          onClick: () => {},
+          onClick: () => { },
+          style: { backgroundColor: "var(--bannerColor)" },
         });
         customTailoredRequestForm.resetFields();
       } else {
         notification.open({
           message: "Message",
           description: "Some problem occured while posting the data",
-          onClick: () => {},
+          onClick: () => { },
+          style: { backgroundColor: "var(--bannerColor)" },
         });
       }
     }

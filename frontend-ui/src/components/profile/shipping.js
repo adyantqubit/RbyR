@@ -21,7 +21,7 @@ import { notification } from 'antd';
 
 const ShippingProfile = () => {
     // notification.destroy()
-    const [shippingAddress,setShippingAddress,]=useState([])
+    const [shippingAddress,setShippingAddress]=useState([])
     const {defaultShiping,setDefaultShipping,shipEditcond,setshipEditCond,setShowEditable}=CartState()
     var [ isAlertVisiblepin, setIsAlertVisiblepin ] = React.useState(false);
 var [ isAlertVisiblenum, setIsAlertVisiblenum ] = React.useState(false);
@@ -81,7 +81,8 @@ const handleButtonClicknum = (msg) => {
          shipTick(s.id)
         // setCond(!cond)
         setDefaultShipping(s)
-      
+        setShippingAddress(shippingAddress.sort((a,b)=>b.id-a.id))
+        // console.log(shippingAddress.sort((a,b)=>a.id-b.id))
     }
 
 
@@ -91,7 +92,7 @@ const handleButtonClicknum = (msg) => {
     }
 
    async function shipTick(id){
-        await shippingTick(id).then(r=>setShippingAddress(r))
+        await shippingTick(id).then(r=>setShippingAddress(r.sort((a,b)=>a.id-b.id)))
     }
 
 
@@ -284,7 +285,7 @@ const handleButtonClicknum = (msg) => {
 
                 shippingAddress.map((s,i)=>(
                     <div className={styles.columnFirstName} onClick={e=>setAddress(s)}>
-                        {/* {i+1} */}
+                        {console.log(s,"-",i)}
                         <div className={styles.boxAddress}>
                            
                             <div className={styles.addressInformation}>

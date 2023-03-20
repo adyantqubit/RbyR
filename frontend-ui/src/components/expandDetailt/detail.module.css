@@ -685,6 +685,13 @@
       }
 
   }
+ 
+  
+  @media only screen and (max-width: 1000px) {
+     .container{
+      padding-top: 70px;
+     }
+  }
 
 @media only screen and (max-width: 768px) {
 
@@ -709,13 +716,13 @@
     width: 60%;
   }
 
-    .container {
-        width: 100%;
-        display: flex;
-        margin-bottom:50px;
-        padding-top:10vh;
-      }
-
+  .container{
+    padding-top: 70px;
+    width: 100%;
+    display: flex;
+    margin-bottom:50px;
+   }
+ 
     
 
     .container02 {

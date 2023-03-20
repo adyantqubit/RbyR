@@ -46,7 +46,8 @@
 
 .headerContainer {
     width: 100%;
-    min-height: 60px;
+    max-height: 50px;
+    min-height: 50px;
     /* height: 10vh; */
     background-color: var(--backgroundColorPrimary);
     display: flex;
@@ -55,6 +56,8 @@
 
 
 }
+
+
 
 
 .humbergerDiv {

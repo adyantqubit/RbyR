@@ -18,7 +18,7 @@ const Context = ({ children }) => {
   const [product, setProduct] = useState([]);
   const [condition, setCondition] = useState(false)
   const [cart, setCart] = useState([])
-  const [CategoryProduct, setCategoryProduct] = useState([]);
+  var [CategoryProduct, setCategoryProduct] = useState([]);
   const [image, setImage] = useState([]);
   const [like, setLike] = useState([])
   const [con, setcon] = useState(false)

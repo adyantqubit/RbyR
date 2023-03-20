@@ -273,6 +273,7 @@ class shippingOrder(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
+        print(request.data)
         shippingData = request.data
         shippingData['user_id'] = request.user.id
         serialize2 = shippingSerializer(data=shippingData)
@@ -281,8 +282,11 @@ class shippingOrder(APIView):
                 ship = serialize2.save()
                 return Response({"shipping_id": ship.id})
         except:
-            ship = usershippingDetail.objects.get(
-                street=request.data['street'], city=request.data['city'], number=request.data['number'], user_id=request.user)
+            ship = usershippingDetail.objects.get(lastname=request.data['lastname'],firstname=request.data['firstname'],
+                                         street=request.data['street'],city=request.data['city'],
+                                         houseno=request.data['houseno'],state=request.data["state"],
+                                         zipcode=request.data['zipcode'],country=request.data["country"],
+                                         number=request.data['number'],user_id=request.data['user_id'])
             return Response({"shipping_id": ship.id})
         return Response(request.data)
 
@@ -292,6 +296,7 @@ class billingOrder(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
+        print(request.data)
         billingData = request.data
         billingData['user_id'] = request.user.id
         serialize2 = billingSerializer(data=billingData)
@@ -300,8 +305,11 @@ class billingOrder(APIView):
                 bill = serialize2.save()
                 return Response({"billing_id": bill.id})
         except:
-            bill = userbillingDetail.objects.get(
-                street=request.data['street'], city=request.data['city'], number=request.data['number'], user_id=request.user)
+            bill = userbillingDetail.objects.get(lastname=request.data['lastname'],firstname=request.data['firstname'],
+                                         street=request.data['street'],city=request.data['city'],
+                                         houseno=request.data['houseno'],state=request.data["state"],
+                                         zipcode=request.data['zipcode'],country=request.data["country"],
+                                         number=request.data['number'],user_id=request.data['user_id'])
             return Response({"billing_id": bill.id})
         return Response(request.data)
 
@@ -479,7 +487,7 @@ class ShippingGetApi(APIView):
         serialize = 6
         if usershippingDetail.objects.filter(user_id=request.user) is not None:
             serialize = shippingSerializer(
-                usershippingDetail.objects.filter(user_id=request.user), many=True)
+                usershippingDetail.objects.filter(user_id=request.user).order_by("id"), many=True)
         else:
             return Response({})
         return Response(serialize.data)
@@ -658,7 +666,7 @@ class ShippingTick(APIView):
 
     def get(self, request):
         try:
-            return Response(shippingSerializer(usershippingDetail.objects.filter(user_id=request.user), many=True).data)
+            return Response(shippingSerializer(usershippingDetail.objects.filter(user_id=request.user).order_by("firstname"), many=True).data)
         except:
             return Response({"error": "Nothing Found"})
 
@@ -1076,7 +1084,7 @@ class pageIndex(APIView):
             elif (request.data['availablity']):
                 products = products.filter(available=True).order_by("id")
 
-
+            print(products.count())
             colors = []
             for product in products:
                 if product.color in colors:

@@ -82,7 +82,8 @@ const ListPage = () => {
 
     console.log("On category change call-----------", CategoryProduct, reload)
     setPageIndex(0)
-    setCategoryProduct([])
+    CategoryProduct=[]
+    setCategoryProduct(CategoryProduct)
     settemAllpro([])
   }
 
@@ -159,7 +160,6 @@ const ListPage = () => {
           setAllCategoryAvai([...r.categories])
           var temp=r.products.filter(c=>CategoryProduct.filter(g=>g.id==c.id).length==0)
           var temp2=r.products.filter(c=>tempallpro.filter(g=>g.id==c.id).length==0)
-          console.log("----------------------temp--------jksks---------------",temp,temp2)
           setCategoryProduct([...CategoryProduct, ...temp])
           settemAllpro([...tempallpro, ...temp2])
           setAllColorAvai(r.colors)
@@ -267,23 +267,44 @@ const ListPage = () => {
             // style={sortui?{opacity:"0.7"}:null}
             ref={lastref}>
 
-            {CategoryProduct.length > 0 ? CategoryProduct.map((p, i) => (
+            {CategoryProduct.length > 0 ? CategoryProduct.map((p, i) => {
+              var temp =false;
+              if(parent!="ready to ship"&&parent!="best seller")
+              if(category!=0){
+                if(p.category==category){
+                   temp =true;
+                }
+                else{
+                  temp=false;
+                }
+              }else{
+                if(p.menu==parent){
+                  temp =true;
+               }
+               else{
+                 temp=false;
+               }
+              }
+              else{
+               temp=true
+              }
 
-              <div className={style.card} onClick={e => openDetail(p)}>
-                <img src={config.staticBaseURL + p.img_main} className={style.img}></img>
-                <div className={style.title} ><span>{p.title}</span></div>
-                <div className={style.price} >{currency.sign} {(p.price * currency.value).toFixed(2)}</div>
-                {p.ready_to_ship ?
-                  <div className={style.readyContainer}>
-                    <div className={style.readyBox}>
-                      <img src={logo} className={style.readyIcon} />
-                      Ready To Ship
+              if(temp)
+              return  <div className={style.card} onClick={e => openDetail(p)}>
+                  <img src={config.staticBaseURL + p.img_main} className={style.img}></img>
+                  <div className={style.title} ><span>{p.title}</span></div>
+                  <div className={style.price} >{currency.sign} {(p.price * currency.value).toFixed(2)}</div>
+                  {p.ready_to_ship ?
+                    <div className={style.readyContainer}>
+                      <div className={style.readyBox}>
+                        <img src={logo} className={style.readyIcon} />
+                        Ready To Ship
+                      </div>
                     </div>
-                  </div>
-                  : null}
-              </div>
+                    : null}
+                </div>
 
-            )) :
+                }) :
               nullpage ? null : <div style={{ width: "100%" }}>
                 <div class="centered">
                   <div class="blob-1"></div>

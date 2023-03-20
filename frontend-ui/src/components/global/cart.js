@@ -269,8 +269,11 @@ export function DrawerFooter() {
 
 
   async function DefaultShipping() {
+    checkoutDetails['shippingData'] = {};
     await shippingTickGet().then(r => r.map(s => {
       if (s.isSelected) {
+
+        console.log("------------------------------",s)
         const shippingData = {
           firstname: s.firstname,
           lastname: s.lastname,

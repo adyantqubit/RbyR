@@ -230,10 +230,20 @@ body {background: #333}
     }
     }
 
+    @media (max-width:1000px){
+      .bod{
+           padding-top: 70px;
+      }
+
+       .container{
+        padding-top: 70px;
+       }      
+  }
+
 @media (max-width: 768px) {
 
   .container{
-    padding-top:60px;
+    padding-top:70px;
   }
 
   .foot{

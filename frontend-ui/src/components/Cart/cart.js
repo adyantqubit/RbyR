@@ -369,8 +369,11 @@ const CartSItem = (props) => {
 
 
   async function DefaultShipping() {
+    checkoutDetails['shippingData'] ={}
     await shippingTickGet().then(r => r.map(s => {
       if (s.isSelected) {
+        console.log("------------------------------",checkoutDetails)
+      
         const shippingData = {
           firstname: s.firstname,
           lastname: s.lastname,

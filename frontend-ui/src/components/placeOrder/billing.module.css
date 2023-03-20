@@ -294,12 +294,20 @@
     .payBox{
         width:70%;
     }
+
+    .container{
+        padding-top: 70px;
+    }
 }
 
 @media (max-width: 768px) {
 
     .foot{
         margin-top:-60px;
+    }
+
+    .container{
+        padding-top: 70px;
     }
 
     .header2{

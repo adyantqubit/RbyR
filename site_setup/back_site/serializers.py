@@ -261,7 +261,11 @@ class shippingSerializer(serializers.ModelSerializer):
         fields="__all__"     
         
     def validate(self,attrs):
-            if usershippingDetail.objects.filter(street=attrs.get('street'),city=attrs.get('city'),number=attrs.get('number'),user_id=attrs.get('user_id')).exists():
+            if usershippingDetail.objects.filter(lastname=attrs.get('lastname'),firstname=attrs.get('firstname'),
+                                         street=attrs.get('street'),city=attrs.get('city'),
+                                         houseno=attrs.get('houseno'),state=attrs.get("state"),
+                                         zipcode=attrs.get('zipcode'),country=attrs.get("country"),
+                                         number=attrs.get('number'),user_id=attrs.get('user_id')).exists():
                 raise serializers.ValidationError("this is already exist")
             
             return attrs        
@@ -272,7 +276,11 @@ class billingSerializer(serializers.ModelSerializer):
         fields="__all__"
         
     def validate(self,attrs):
-     if userbillingDetail.objects.filter(street=attrs.get('street'),city=attrs.get('city'),number=attrs.get('number'),user_id=attrs.get('user_id')).exists():
+     if userbillingDetail.objects.filter(lastname=attrs.get('lastname'),firstname=attrs.get('firstname'),
+                                         street=attrs.get('street'),city=attrs.get('city'),
+                                         houseno=attrs.get('houseno'),state=attrs.get("state"),
+                                         zipcode=attrs.get('zipcode'),country=attrs.get("country"),
+                                         number=attrs.get('number'),user_id=attrs.get('user_id')).exists():
         raise serializers.ValidationError("this is already exist")
             
      return attrs     
