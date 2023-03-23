@@ -157,20 +157,26 @@ class User(AbstractBaseUser):
         return self.is_admin
   
 
-category = (
-    ('partywear','Party wear'),
-    ('kurti', 'Kurti'),
-    ('casual','Casual'),
-    ('wedding_wear','Wedding Wear'),
-    ('formal','Formal'),
-    ('luxury_pret','Luxury pret'),
-    ('rbyr_man','RBYR Men'),
-    ('ready_to_wear','Ready To Wear'),
-    ('world_of_rbyr','World Of RBYR')
-)
+# category = (
+#     ('partywear','Party wear'),
+#     ('kurti', 'Kurti'),
+#     ('casual','Casual'),
+#     ('wedding_wear','Wedding Wear'),
+#     ('formal','Formal'),
+#     ('luxury_pret','Luxury pret'),
+#     ('rbyr_man','RBYR Men'),
+#     ('ready_to_wear','Ready To Wear'),
+#     ('world_of_rbyr','World Of RBYR')
+# )
 
 # Added by Rohan on 27-12-2022
 #Reason - Adding category and menus name from backend
+
+GEEKS_CHOICES =(
+    ("1", "Show subMenu with image"),
+    ("2", "Show instant filter for subMenu"),
+)
+
 
 class Menus(models.Model):
     menu=models.CharField(max_length=13)
@@ -178,6 +184,8 @@ class Menus(models.Model):
     # Reason- giving image showing functionality for each category and filteration option
     Show_subMenu_with_image=models.BooleanField(default=False)
     show_instant_filter_for_subMenu=models.BooleanField(default=False)
+    Choose_menu_type = models.CharField(max_length=40,choices=GEEKS_CHOICES,default="1")
+
     # end of code - 17/2/23
     
     # Added by Rohan - on - 18/2/23
@@ -200,6 +208,19 @@ class Menus(models.Model):
                slide.category=self.menu      
                slide.save() 
             #    super().save(*args,**kwargs)  
+            
+        # This line is used to save any one option of menu type
+        print(self.Choose_menu_type)
+
+        if self.Choose_menu_type=="1":
+            self.Show_subMenu_with_image=True
+            self.show_instant_filter_for_subMenu=False
+            print("------------------",self.Choose_menu_type)
+        else: 
+            self.show_instant_filter_for_subMenu=True 
+            self.Show_subMenu_with_image=False
+            print("------------------",self.Choose_menu_type)
+
      
         super().save(*args,**kwargs)   
         #End of code

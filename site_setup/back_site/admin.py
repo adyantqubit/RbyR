@@ -919,16 +919,18 @@ admin.site.register(User, UserModelAdmin)
 @admin.register(Menus)
 class Menu_Detail(admin.ModelAdmin):
     list_display=("menu",)
+    exclude=("show_instant_filter_for_subMenu","Show_subMenu_with_image",)
     # ordering =("menu",)
     # readonly_fields=('menu',)
     # search_fields=("menu",)
     # list_filter=("menu",)
     # list_per_page=10
-    # def get_form(self, request, obj=None, **kwargs):
-    #     form = super(Menu_Detail, self).get_form(request, obj, **kwargs)
-    #     form.base_fields['menu'].widget.attrs['style'] = 'width: 100%;'
-    #     # form.base_fields['category'].widget.attrs['style'] = 'width: 100%;
-    #     return form  
+    def get_form(self, request, obj=None, **kwargs):
+        form = super(Menu_Detail, self).get_form(request, obj, **kwargs)
+        form.base_fields['Choose_menu_type'].widget.attrs['style'] = 'width:100%;'
+   
+        # form.base_fields['category'].widget.attrs['style'] = 'width: 100%;
+        return form   
     def has_add_permission(self, request):
         return not Menus.objects.count()>=4
       

@@ -707,7 +707,7 @@ class updateUser(APIView):
 # Reason - To have FAQ functionality
 class FAQView(APIView):
     def get(self, request):
-        faqs = FAQ.objects.all().values()
+        faqs = FAQ.objects.all().order_by("qno").values()
         faqList = {}
         faqList['faqs'] = faqs
         return Response(faqList)

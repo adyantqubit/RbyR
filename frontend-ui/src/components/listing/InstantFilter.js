@@ -4,8 +4,9 @@
 import React from 'react'
 import { CartState } from '../../context'
 import style from './instantFilter.module.css'
+import {TiTick} from "react-icons/ti"
 
-const InstantFilter = () => {
+const InstantFilter = () => {    
     const { selectedCategory, setCategorySelected, CategoryProduct, setCategoryProduct, tempallpro, settemAllpro, allCategoryAvai, setAllCategoryAvai } = CartState()
 
 
@@ -32,8 +33,8 @@ const InstantFilter = () => {
                 {allCategoryAvai ?
                     allCategoryAvai.map(c => {
                         return selectedCategory.indexOf(c.toLowerCase()) == -1 ?
-                            <div className={style.category} onClick={e => toggleSelect(e)}>{c}</div> :
-                            <div className={style.pointedCategory} onClick={e => toggleSelect(e)}><div className={style.circle}></div>{c}</div>
+                            <div className={style.category} onClick={e => toggleSelect(e)}><span className={style.BlnkCircle}/>{c}</div> :
+                            <div className={style.pointedCategory} onClick={e => toggleSelect(e)}><div className={style.BlnkCircle}><TiTick style={{fontSize:"20px",width:"10px",height:"10px"}}/></div>{c}</div>
                     }
                     ) : null}
 

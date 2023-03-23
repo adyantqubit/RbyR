@@ -42,7 +42,21 @@ function Footer2() {
 
   const subscribeToEmailUpdate = async () => {
     var email = document.getElementById("emailAddress");
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
+    if(email.value.length==0){
+      notification.open({
+        message: "",
+        style:{marginTop:"20px"},
+        style:{backgroundColor: "var(--bannerColor)"},
+        description:
+          'Please enter email id',
+        onClick: () => {
+        },
+        key:1
+
+      });
+    }
+
+    else if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
       const data = {
         email: email.value,
       };
