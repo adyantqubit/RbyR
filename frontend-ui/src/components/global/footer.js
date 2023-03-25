@@ -287,6 +287,8 @@ function Footer() {
               })
             : "© 2022 RR. ALL RIGHTS RESERVED"}
         </span>
+
+        <a href="https://adyant.co.in/" target="_blank">
         <span
           className={style.span2}
           style={{ fontSize: "15px", marginRight: "10px" }}
@@ -304,6 +306,7 @@ function Footer() {
             ADYANT
           </span>
         </span>
+        </a>
       </div>
     </div>
   );

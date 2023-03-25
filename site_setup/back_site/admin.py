@@ -48,8 +48,9 @@ class ProductAdmin(admin.ModelAdmin):
  
 @admin.register(product_detail)
 class product_detailAdmin(admin.ModelAdmin):
-    list_display=(short_title,"menu","category","XS","S","M","L","XL","XXL","XXXL","price","color")
+    list_display=(short_title,"menu","category","S","M","L","XL","price","color")
     ordering =("title",)
+    exclude=("XS","XXXL","XXL")
     
     readonly_fields=('search_key','category','menu')
     search_fields=("title","category","color")
@@ -157,9 +158,9 @@ class CartAdmin(admin.ModelAdmin):
 
 #Added by Rohan 7/12/22 
 # reason to save currency
-@admin.register(CurrencySelected)
-class CurrencySelectedAdmin(admin.ModelAdmin):
-    list_display=("user","currency","currency_value","currency_sign")
+# @admin.register(CurrencySelected)
+# class CurrencySelectedAdmin(admin.ModelAdmin):
+#     list_display=("user","currency","currency_value","currency_sign")
 #end of code
 
 # Commented and modified by Ashish Dewangan on 27-11-2022

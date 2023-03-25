@@ -42,16 +42,16 @@ function Footer2() {
 
   const subscribeToEmailUpdate = async () => {
     var email = document.getElementById("emailAddress");
-    if(email.value.length==0){
+    if (email.value.length == 0) {
       notification.open({
         message: "",
-        style:{marginTop:"20px"},
-        style:{backgroundColor: "var(--bannerColor)"},
+        style: { marginTop: "20px" },
+        style: { backgroundColor: "var(--bannerColor)" },
         description:
           'Please enter email id',
         onClick: () => {
         },
-        key:1
+        key: 1
 
       });
     }
@@ -288,13 +288,13 @@ function Footer2() {
 
               {socialLinks.length > 0 ? (
                 <>
-                  {socialLinks.map((socialLink) => { 
-                  return <img src={config.staticBaseURL+socialLink.logo} style={{color:"var(--iconsColor)",width:"25px",height:"25px"}} alt=""/>
+                  {socialLinks.map((socialLink) => {
+                    return <img src={config.staticBaseURL + socialLink.logo} style={{ color: "var(--iconsColor)", width: "25px", height: "25px" }} alt="" />
                   })
                   }
-                  </>
-                  ) 
-                  : null}
+                </>
+              )
+                : null}
               {/* <FaFacebookF style={{ color: "var(--iconsColor)", fontSize: "25px" }} />
               <TiSocialInstagram style={{ color: "var(--iconsColor)", fontSize: "25px" }} /> */}
               {/* Commented by - Ashish Dewangan on 15-02-2023
@@ -383,24 +383,26 @@ function Footer2() {
             })
             : "© 2022 RR. ALL RIGHTS RESERVED"}
         </span>
-        <span
-          className={style.span2}
-          style={{ fontSize: "15px", marginRight: "10px" }}
-        >
-          {" "}
-          Powered by{" "}
+        <a href="https://adyant.co.in/" target="_blank">
           <span
-            style={{
-              fontFamily: "Rawson-Regular",
-              fontSize: "16px",
-              fontWeight: "20",
-              color: "#212121",
-              textDecoration: "none",
-            }}
+            className={style.span2}
+            style={{ fontSize: "15px", marginRight: "10px" }}
           >
-            ADYANT
+            {" "}
+            Powered by{" "}
+            <span
+              style={{
+                fontFamily: "Rawson-Regular",
+                fontSize: "16px",
+                fontWeight: "20",
+                color: "#212121",
+                textDecoration: "none",
+              }}
+            >
+              ADYANT
+            </span>
           </span>
-        </span>
+        </a>
       </div>
     </div>
   );

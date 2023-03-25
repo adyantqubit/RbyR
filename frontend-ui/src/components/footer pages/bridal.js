@@ -8,28 +8,22 @@ import config from "../../api/config";
 import "./bridal.css";
 import { postBridalDetails } from "../../api/service";
 import {
-  Button,
   Checkbox,
   Form,
   Input,
-  InputNumber,
-  Select,
-  Upload,
-  message,
-  DatePicker,
   notification
-  
+
 } from "antd";
 const Bridal = () => {
   notification.destroy()
-  const {TextArea} = Input;
+  const { TextArea } = Input;
   const [bridalText, setBridalText] = useState([]);
   const [bridalForm] = Form.useForm();
-  
+
 
   useEffect(() => {
     getBridalText();
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0)
   }, []);
 
   const getBridalText = async () => {
@@ -39,47 +33,50 @@ const Bridal = () => {
     }
   };
 
-  const saveBridalDetails =async (formData)=> {
-    var sub=document.getElementById('date').value
-    const bridalDetail ={
-      firstName:formData.firstName,
-      lastName:formData.lastName,
-      email:formData.email,
-      zipCode:formData.zipCode,
-      message:formData.message,
-      contactNumber:formData.contactNumber,
-      dateOfWedding:document.getElementById('date').value?document.getElementById('date').value:null,
-      termsAndCondition:formData.termsAndConditions
+  const saveBridalDetails = async (formData) => {
+
+    const bridalDetail = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      zipCode: formData.zipCode,
+      message: formData.message,
+      contactNumber: formData.contactNumber,
+      dateOfWedding: document.getElementById('date').value ? document.getElementById('date').value : null,
+      termsAndCondition: formData.termsAndConditions
     }
 
-          // dateOfWedding:formData.dateOfWedding,
+    // dateOfWedding:formData.dateOfWedding,
 
 
-    const bridalPostResponse= await postBridalDetails(bridalDetail);
-    if(bridalPostResponse){
-      if(bridalPostResponse.msg){
+    const bridalPostResponse = await postBridalDetails(bridalDetail);
+    if (bridalPostResponse) {
+      if (bridalPostResponse.msg) {
+        bridalForm.resetFields()
         notification.open({
           message: "",
           description:
             'Bridal details posted successfully',
           onClick: () => {
           },
-          key:1,
+          key: 1,
+          style: { backgroundColor: "var(--bannerColor)" },
         });
         // bridalForm.resetFields();
-      }else{
+      } else {
         notification.open({
           message: 'Message',
           description:
             'Some problem occured while posting the data',
           onClick: () => {
           },
-          key:1,
+          key: 1,
+          style: { backgroundColor: "var(--bannerColor)" },
         });
       }
-      
+
     }
-    
+
   }
 
   return (
@@ -91,7 +88,7 @@ const Bridal = () => {
             {bridalText.map((bridal) => {
               return (
                 <div className={style.row}>
-                  <div className={`${style.column} ${style.col1}`} style={{ maxHeight: "60vh",overflow:"auto" }}>
+                  <div className={`${style.column} ${style.col1}`} style={{ maxHeight: "60vh", overflow: "auto" }}>
                     <span className={style.title}>{parse(bridal.title)}</span>
                     <span className={style.subtitle}>
                       {parse(bridal.subtitle1)}
@@ -115,7 +112,7 @@ const Bridal = () => {
         )}
 
         <Form className={style.form}
-        layout="vertical"
+          layout="vertical"
           form={bridalForm}
           name="registerBridalInfo"
           onFinish={saveBridalDetails}
@@ -123,10 +120,10 @@ const Bridal = () => {
           <div className={style.row}>
             <div className={`${style.column} ${style.formInputContainer}`}>
               <Form.Item
-             
+
                 name="firstName"
-                label={<label style={{ color: "black" ,fontWeight:"500"}}>First name</label>}
-                
+                label={<label style={{ color: "black", fontWeight: "500" }}>First name</label>}
+
                 rules={[
                   {
                     required: true,
@@ -154,12 +151,12 @@ const Bridal = () => {
                 ]}
                 hasFeedback
               >
-                <Input  className={style.formInput}  maxLength={50} />
+                <Input className={style.formInput} maxLength={50} />
               </Form.Item>
               <Form.Item
-                
+
                 name="lastName"
-                label={<label style={{ color: "black",fontWeight:"500" }}>Last name</label>}
+                label={<label style={{ color: "black", fontWeight: "500" }}>Last name</label>}
                 rules={[
                   {
                     required: true,
@@ -191,8 +188,8 @@ const Bridal = () => {
               </Form.Item>
               <Form.Item
                 name="email"
-                label={<label style={{ color: "black",fontWeight:"500" }}>E-mail address</label>}
-                
+                label={<label style={{ color: "black", fontWeight: "500" }}>E-mail address</label>}
+
                 // rules={[
                 //   {
                 //     required: true,
@@ -203,13 +200,13 @@ const Bridal = () => {
                 // ]}
                 hasFeedback
               >
-                <Input  className={style.formInput} maxLength={50} />
+                <Input className={style.formInput} maxLength={50} />
               </Form.Item>
 
               <Form.Item
                 name="zipCode"
-                label={<label style={{ color: "black" ,fontWeight:"500"}}>ZIP code</label>}
-                
+                label={<label style={{ color: "black", fontWeight: "500" }}>ZIP code</label>}
+
                 rules={[
                   {
                     required: true,
@@ -237,15 +234,15 @@ const Bridal = () => {
                 ]}
                 hasFeedback
               >
-                <Input  className={style.formInput} maxLength={6} />
+                <Input className={style.formInput} maxLength={6} />
               </Form.Item>
 
-              
+
 
               <Form.Item
                 name="message"
-                label={<label style={{ color: "black",fontWeight:"500" }}>Message to our consultants</label>}
-                
+                label={<label style={{ color: "black", fontWeight: "500" }}>Message to our consultants</label>}
+
                 rules={[
                   {
                     required: true,
@@ -268,7 +265,7 @@ const Bridal = () => {
                 ]}
                 hasFeedback
               >
-                <TextArea className={style.formInput} rows={4} style={{paddingLeft: "0px"}}  maxLength={255} />
+                <TextArea className={style.formInput} rows={4} style={{ paddingLeft: "0px" }} maxLength={255} />
               </Form.Item>
 
             </div>
@@ -309,8 +306,8 @@ const Bridal = () => {
 
               <Form.Item
                 name="contactNumber"
-                label={<label style={{ color: "black",fontWeight:"500" }}>Contact number</label>}
-               
+                label={<label style={{ color: "black", fontWeight: "500" }}>Contact number</label>}
+
                 rules={[
                   {
                     required: true,
@@ -356,9 +353,9 @@ const Bridal = () => {
               >
                 <DatePicker disabledDate={d => !d  || d.isSameOrBefore(Date()) } className={style.formInput} maxLength={50} />
               </Form.Item> */}
-              
-              <label style={{ color: "black" ,fontWeight:"500"}}>Date of wedding</label>              
-              <input type="date" id="date" className={style.formInput} style={{marginBottom:"20px"}}/>
+
+              <label style={{ color: "black", fontWeight: "500" }}>Date of wedding</label>
+              <input type="date" id="date" className={style.formInput} style={{ marginBottom: "20px" }} />
 
 
               <Form.Item
@@ -370,11 +367,11 @@ const Bridal = () => {
                       value ? Promise.resolve() : Promise.reject(new Error('You must accept the terms and conditions')),
                   },
                 ]}
-                
+
               >
-                <div style={{display:"flex"}}>
-                <Checkbox style={{paddingRight:"10px"}} id="termsAndConditionsCheck"></Checkbox>
-                <label className={style.lbl} for="termsAndConditionsCheck">I understand and agree that registration on or use of the site constitutes agreement to its User Agreement and Privacy Policy.</label>
+                <div style={{ display: "flex" }}>
+                  <Checkbox style={{ paddingRight: "10px" }} id="termsAndConditionsCheck"></Checkbox>
+                  <label className={style.lbl} for="termsAndConditionsCheck">I understand and agree that registration on or use of the site constitutes agreement to its User Agreement and Privacy Policy.</label>
                 </div>
               </Form.Item>
               <input type="submit" value="BOOK NOW" className={style.itemButton} ></input>
@@ -382,7 +379,7 @@ const Bridal = () => {
           </div>
         </Form>
 
-        <div className={style.footerMargin} style={{ paddingTop: "80px"}}>
+        <div className={style.footerMargin} style={{ paddingTop: "80px" }}>
           <Footer />
         </div>
       </div>
