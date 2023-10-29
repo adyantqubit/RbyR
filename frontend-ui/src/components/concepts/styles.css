@@ -8,6 +8,8 @@ font-weight: 600;
 .Dropdown-control{
   height:35px;
   background:var(--backgroundColorPrimary);
+  /* background: #d8d8cd; */
+
   color:black;
   border:0;
 }

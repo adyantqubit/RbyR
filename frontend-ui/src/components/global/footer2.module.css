@@ -8,6 +8,8 @@
 .App{
     width:100%;
     background-color: var(--backgroundColorPrimary);
+    /* background: linear-gradient(to right,#bcbfaf,#ffffff,#aeae98); */
+
     height:auto;
 }
 
@@ -147,12 +149,14 @@
     justify-content: space-between;
     align-items: center;
     background: var(--backgroundColorPrimary);
+    /* background: linear-gradient(to right,#bcbfaf,#ffffff,#aeae98); */
+
     margin-top: 15px;
 }
 .instagramLink{
     width:16.5%;
     height:200px;
-    background-color: var(--backgroundColorPrimary);
+    /* background-color: var(--backgroundColorPrimary); */
     display: flex;
     flex-direction: column;
     text-align: center;

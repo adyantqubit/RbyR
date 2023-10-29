@@ -61,10 +61,18 @@ function Converter() {
 
 	async function CurrencySaverGet() {
 		await CurrencySaverGetter().then(r => {
-			if (r)
-				setCurrency({ name: r?.currency, sign: r?.currency_sign, value: info[r?.currency][0] })
+			{/* Modification and addition by Om Shrivastava on 29-10-23
+            Reason : When data is null then I need to add the condition */}
+			// if (r)
+			// 	setCurrency({ name: r?.currency, sign: r?.currency_sign, value: info[r?.currency][0] })
+			// else
+			// 	setCurrency({ name: "INR", value: info[r?.currency][0], sign: "₹" })
+			if (r!=null && r!=undefined)
+				setCurrency({ name: r.currency?r.currency:"INR", sign: r.currency_sign?r.currency_sign:"₹" , value:r.currency && info[r.currency]? info[r?.currency][0]:"inr" })
 			else
-				setCurrency({ name: "INR", value: info[r?.currency][0], sign: "₹" })
+				setCurrency({ name: "INR", value: "inr", sign: "₹" })
+			// End of Modification and addition by Om Shrivastava on 29-10-23
+            // Reason : When data is null then I need to add the condition
 		})
 	}
 

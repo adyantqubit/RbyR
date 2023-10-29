@@ -165,9 +165,16 @@ const Billing = () => {
                   <div className={styles.headerTexts}>
                     <div className={styles.columnitem1head}>VENDOR DETAILS</div>
                     <hr style={{ color: "black" }}></hr>
-                    <div className={styles.userinfoText2}>{parse("" + storeLocatorDetails[0].address)}</div>
+                    {/* Modification and addition by Om Shrivastava on 29-10-23
+                    Reason : When data is null then I need to add the condition */}
+                    {/* <div className={styles.userinfoText2}>{parse("" + storeLocatorDetails[0].address)}</div>
                     <div><span className={styles.userinfoText2}>{parse("PHONE:" + storeLocatorDetails[0].phoneNumber)}</span></div>
-                    <div><span className={styles.userinfoText2}>{parse("" + storeLocatorDetails[0].email)}</span></div>
+                    <div><span className={styles.userinfoText2}>{parse("" + storeLocatorDetails[0].email)}</span></div> */}
+                    <div className={styles.userinfoText2}>{parse("" + storeLocatorDetails[0]?.address)}</div>
+                    <div><span className={styles.userinfoText2}>{parse("PHONE:" + storeLocatorDetails[0]?.phoneNumber)}</span></div>
+                    <div><span className={styles.userinfoText2}>{parse("" + storeLocatorDetails[0]?.email)}</span></div>
+                  {/* End of Modification and addition by Om Shrivastava on 29-10-23
+                    Reason : When data is null then I need to add the condition */}
                   </div> : null}
 
               </div>
