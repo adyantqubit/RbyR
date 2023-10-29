@@ -79,15 +79,27 @@
     align-self: center;
     align-items: flex-start;
     flex-direction: column;
+    /* Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacing */
+  font-family: var(--fontFamily);
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacin  */
   }
   .heading {
     font-size: 24px;
     line-height: 32px;
     width: 70%;
-    letter-spacing: 1.2px;
+    /* letter-spacing: 1.2px; */
     margin-top: 4%; 
-    font-family: 'Rawson-Regular' !important;
+    /* font-family: 'Rawson-Regular' !important; */
     font-weight: 500;
+    /* Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacing */
+  font-family: var(--fontFamily);
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacin  */
   }
   .text {
     margin-top: 2.5%;
@@ -174,11 +186,17 @@
 
     font-size: 14px;
     line-height: 22px;
-    letter-spacing: 1.2px;
+    /* letter-spacing: 1.2px; */
     color: #5a5a5a;
-    font-family: 'Rawson-Regular';
+    /* font-family: 'Rawson-Regular'; */
     font-weight: 500;
     margin: 0;
+    /* Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacing */
+  font-family: var(--fontFamily);
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacin  */
   }
   .container06 {
     flex: 0 0 auto;
@@ -194,15 +212,27 @@
     font-family: 'Rawson-Regular';
     font-weight: 600;
     margin-right: 5px;
+    /* Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacing */
+  font-family: var(--fontFamily);
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacin  */
   }
 
   .textDescription {
    
     font-size: 0.9em;
-    letter-spacing: 1px;
+    /* letter-spacing: 1px; */
     color: #5a5a5a;
-    font-family: 'Rawson-Regular';
+    /* font-family: 'Rawson-Regular'; */
     font-weight: 500;
+    /* Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacing */
+  font-family: var(--fontFamily);
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacin  */
   }
   .container06,.container07{
     margin-top: 15px;
@@ -389,9 +419,15 @@
     /* margin-right: 10px; */
     font-size: 16px;
     line-height: 24px;
-    letter-spacing: 1.4px;
-    font-family: 'Rawson-Regular';
+    /* letter-spacing: 1.4px;
+    font-family: 'Rawson-Regular'; */
     font-weight: 600;
+    /* Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacing */
+  font-family: var(--fontFamily);
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacin  */
   }
  .hoverableSubtitle:hover{
     color:black;
@@ -425,10 +461,16 @@
     cursor: pointer;
     border-bottom: 1px solid grey;
     font-size: 0.9em;
-    letter-spacing: 1px;
+    /* letter-spacing: 1px; */
     color: #5a5a5a;
-    font-family: 'Rawson-Regular';
+    /* font-family: 'Rawson-Regular'; */
     font-weight: 500;
+    /* Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacing */
+  font-family: var(--fontFamily);
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacin  */
   }
   .textLink:hover{
     color:black;

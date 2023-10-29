@@ -65,21 +65,32 @@
     padding:0 20%;
     font-size: 24px;
     line-height: 32px;
-    letter-spacing: 3px;
-    font-family: 'MyFont';
+    /* letter-spacing: 3px;
+    font-family: 'MyFont'; */
     font-weight: 500;
     margin: 0;
     color: var(--textColorPrimary);
     margin-top: 5px;
-
+/* Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacing */
+  font-family: var(--fontFamily);
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacin  */
 }
 
 .head2{
     padding:0 20%;
     font-size: 24px;
     line-height: 32px;
-    letter-spacing: 3px;
-    font-family: 'MyFont';
+    /* letter-spacing: 3px;
+    font-family: 'MyFont'; */
+    /* Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacing */
+  font-family: var(--fontFamily);
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacin  */
     font-weight: 500;
     color: var(--textColorPrimary);
     margin-top:40px;
@@ -90,8 +101,14 @@
     padding:0 20%;
     font-size: 18px;
     line-height: 26px;
-    letter-spacing: 1px;
-    font-family: 'Rawson-Regular';
+    /* letter-spacing: 1px;
+    font-family: 'Rawson-Regular'; */
+    /* Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacing */
+  font-family: var(--fontFamily);
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacin  */
     font-weight: 400;
     color: var(--textColorPrimary);
 }

@@ -50,7 +50,13 @@ const RefundPolicy = () => {
               })}
             </>
           ) : (
-            <div>Refund policy currently not available</div>
+            <div
+              // Addition by Om Shrivastava on 28-10-23
+            // Reason: Need to add styling part 
+            style={{fontFamily:'Lora',letterSpacing:'1px'}}
+            // End of addition by Om Shrivastava on 28-10-23
+            // Reason: Need to add styling part 
+            >Refund policy currently not available</div>
           )}
         </div>
 

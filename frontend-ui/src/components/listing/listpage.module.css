@@ -33,9 +33,17 @@
   font-size: 11px;
   text-transform: uppercase;
   line-height: 22px;
-  letter-spacing: 1.2px;
+  /* letter-spacing: 1.2px; */
   font-weight: 600;
-  font-family: 'MyFont';
+  /* font-family: 'MyFont'; */
+  /* Modification and addition by Om Shrivastava on 27-10-23
+  Reason : need to add the font family  */
+  /* letter-spacing: 2px; */
+  /* font-family: 'MyFont'; */
+  font-family: var(--fontFamily);;
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 27-10-23
+  Reason : need to add the font family  */
   
 }
 
@@ -69,8 +77,15 @@
  
   font-size: 24px;
   line-height: 32px;
-  letter-spacing: 2px;
-  font-family: 'MyFont';
+ 
+  /* Modification and addition by Om Shrivastava on 27-10-23
+  Reason : need to add the font family  */
+  /* letter-spacing: 2px; */
+  /* font-family: 'MyFont'; */
+  font-family: var(--fontFamily);;
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 27-10-23
+  Reason : need to add the font family  */
   font-weight: 550;
   
   text-transform: uppercase;
@@ -151,7 +166,12 @@ justify-content: space-between;
 
 .price{
   font-size: 16px;
-  font-family: 'MyFont';
+  /* Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Change the font family */
+  /* font-family: 'MyFont'; */
+  font-family: "Lora";
+  /* End of Modification and addition by Om Shrivastava on 27-10-23 
+  Reason : Change the font family */
   font-weight: 400;
   text-align: end;
   padding: 0%;
@@ -163,14 +183,22 @@ justify-content: space-between;
  .title{
   font-size: 14px;
   line-height: 22px;
-  letter-spacing: 1.2px;
+  /* letter-spacing: 1.2px; */
   word-break: normal;
   display:flex;
   color:#323232;
   text-align: center;
   justify-content: center;
   text-transform:initial;
-  font-family: 'MyFont' !important;
+  /* font-family: 'MyFont' !important; */
+  /* Modification and addition by Om Shrivastava on 27-10-23
+  Reason : need to add the font family  */
+  /* letter-spacing: 2px; */
+  /* font-family: 'MyFont'; */
+  font-family: var(--fontFamily);;
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 27-10-23
+  Reason : need to add the font family  */
  }
 
  @media (max-width: 1200px)
@@ -534,6 +562,12 @@ justify-content: space-between;
     font-family: 'MyFont';
     font-weight: 600;
     margin: 0 ;
+     /* Modification and addition by Om Shrivastava on 28-10-23
+  Reason : Remove the letter spacing */
+  font-family: var(--fontFamily);
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 28-10-23
+  Reason : Remove the letter spacing  */
 }
 
 .shopbtn1:hover{

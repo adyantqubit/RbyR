@@ -26,8 +26,14 @@
 }
 
 .topText {
-    background: var(--bannerColor);
-    color: var(--textColorPrimary);
+     /* Modification and addition by Om Shrivastava on 19-10-23
+  Reason : Set the background color  */
+    /* background: var(--bannerColor);
+    color: var(--textColorPrimary); */
+    background-color: black;
+    color: white;
+     /* End of Modification and addition by Om Shrivastava on 19-10-23
+  Reason : Set the background color  */
     display: flex;
     justify-content: center;
     font-size: 9px;
@@ -38,7 +44,12 @@
 .number {
     text-decoration: none;
     outline: none;
-    color: var(--textColorPrimary);
+/* Modification and addition by Om Shrivastava on 19-10-23
+  Reason : Set the background color  */
+    /* color: var(--textColorPrimary); */
+    color: white;
+/* End of Modification and addition by Om Shrivastava on 19-10-23
+  Reason : Set the background color  */
     margin-top: 1px;
     font-size: 9px;
 }

@@ -44,7 +44,7 @@ class User2API(APIView,):
     def get(self, request):
         datap = product_detail.objects.all()
         datai = image.objects.all()
-        serializers1 = product_serializer(datap, many=True)
+        serializers1 = product_serializer(datap, many=True) 
         serializers2 = image_serializer(datai, many=True)
         menus= Menus.objects.all().order_by("id")
         submenus=subMenu.objects.all().order_by("id")

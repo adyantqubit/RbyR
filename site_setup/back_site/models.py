@@ -112,7 +112,7 @@ class MyUserManager(BaseUserManager):
         )
         user.is_admin = True
         user.save(using=self._db)
-        return user
+        return user 
     
 
 class User(AbstractBaseUser):
@@ -283,7 +283,7 @@ class product_detail(models.Model):
     fabric=models.CharField(max_length=50,default="Chiffon")
     made_in=models.CharField(max_length=30,default="India")
     style_code=models.CharField(max_length=30,default="AAIR-129-KTH")
-    XS=models.BigIntegerField(default=30)
+    XS=models.BigIntegerField(default=30,null=True,blank=True)
     S=models.BigIntegerField(default=30)
     M=models.BigIntegerField(default=30)
     L=models.BigIntegerField(default=30)
@@ -293,6 +293,11 @@ class product_detail(models.Model):
     date = models.DateTimeField(default=now, blank=True)
     available=models.BooleanField(default=True)
     shipping_charges=models.BigIntegerField(default=100)
+    # Modification and addition by Om Shrivastava on 22-10-23
+    # Reason : Add the is active feature of the product table
+    is_active = models.BooleanField(default=True)
+    # End of modification and addition by Om Shrivastava on 22-10-23
+    # Reason : Add the is active feature of the product table
 
     #Added by Ashish dewangan on 23-11-2022
     #Reason - to have shipping days and ready to wear functionality for product
@@ -1040,7 +1045,12 @@ class CustomTailoredForm(models.Model):
 class LogoAndNumber(models.Model):
     logo=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100)
-    whatsappNmber=models.BigIntegerField(validators=[validate_phone_number])
+    # Modification and addition by Om Shrivastava on 28-10-23
+    # Reason : Need to change the spelling of the whatsapp number
+    # whatsappNmber=models.BigIntegerField(validators=[validate_phone_number])
+    whatsappNmber=models.BigIntegerField(validators=[validate_phone_number],verbose_name="Whatsapp Number")
+    # End of Modification and addition by Om Shrivastava on 28-10-23
+    # Reason : Need to change the spelling of the whatsapp number
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self):
@@ -1137,7 +1147,12 @@ class Editorial(models.Model):
         super().save(*args,**kwargs) 
         
 class WorldOfRByRContent(models.Model):
-    video_url=models.CharField(max_length=400)
+    # Modification and additionn by Om shrivastava on 28-10-23
+    # Reason : Remove the mandatory field
+    # video_url=models.CharField(max_length=400)
+    video_url=models.CharField(max_length=400,null=True,blank=True)
+    # End of Modification and additionn by Om shrivastava on 28-10-23
+    # Reason : Remove the mandatory field
     top_image=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100)
     title1=models.CharField(max_length=50)

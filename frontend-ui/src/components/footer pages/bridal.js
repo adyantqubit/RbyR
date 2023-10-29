@@ -98,10 +98,22 @@ const Bridal = () => {
                     </span>
                   </div>
                   <div className={`${style.column} ${style.col2}`}>
+                  {/* //  Modification and addition by Om Shrivastava on 20-10-23
+                    // Reason : when image is not add then show the blank div */  }
+                    {bridal.bridalImage ? 
                     <img
                       className={style.bridalImg}
-                      src={config.staticBaseURL + bridal.bridalImage}
+                    //  Modification and addition by Om Shrivastava on 20-10-23
+                    // Reason : Need to add right path for the image */
+                      // src={config.staticBaseURL + bridal.bridalImage}
+                      src={config.staticBaseURL +"media/"+ bridal.bridalImage}
+                    //  End of modification and addition by Om Shrivastava on 20-10-23
+                    // Reason : Need to add right path for the image */
                     ></img>
+                    :<></>
+                    }
+                {/* //  End of Modification and addition by Om Shrivastava on 20-10-23
+                    // Reason : when image is not add then show the blank div */  }
                   </div>
                 </div>
               );

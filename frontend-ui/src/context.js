@@ -89,6 +89,7 @@ const Context = ({ children }) => {
 
     }
   };
+  // console.log(logo,'context img')
   //product updation
   useLayoutEffect(() => {
     getWhatsappContactNumber()

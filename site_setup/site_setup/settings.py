@@ -29,7 +29,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['192.168.1.24']
 
 
 # Application definition
@@ -160,7 +160,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-Base_url="http://192.168.1.50:3000"
+Base_url="http://192.168.1.24:3000"
 
 
 import os
@@ -178,7 +178,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_WHITELIST = [
      "http://localhost:3000",
-     "http://192.168.1.50:3000",
+     "http://192.168.1.24:3000",
 ]
 
 # Django project settings.py
@@ -200,7 +200,7 @@ EMAIL_HOST_PASSWORD = 'dvzgndsfzrxpbchx'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-# CSRF_TRUSTED_ORIGINS=['https://*.192.168.1.5']
+# CSRF_TRUSTED_ORIGINS=['https://*.192.168.1.24']
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=20),
@@ -237,5 +237,5 @@ PASSWORD_RESET_TIMEOUT = 1800 # 30 mint, in seconds
 
 CORS_ALLOWED_ORIGINS=[
     "http://localhost:3000",
-    "http://192.168.1.50:3000",
+    "http://192.168.1.24:3000",
 ]

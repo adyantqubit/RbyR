@@ -15,6 +15,12 @@ font-weight: 600;
 .Dropdown-option{
   padding:2px 10px;
   font-size: 14px;
+   /* Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacing */
+  font-family: var(--fontFamily);
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacin  */
 }
 
 .Dropdown-option:hover{
@@ -30,6 +36,12 @@ font-weight: 600;
 .Dropdown-placeholder{
   height: 20px;
   padding-bottom: 2px;
+  /* Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacing */
+  font-family: var(--fontFamily);
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacin  */
 }
 
 .Dropdown-arrow{

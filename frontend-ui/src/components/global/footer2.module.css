@@ -90,7 +90,13 @@
     line-height: 26px;
     letter-spacing: 2px;
     font-weight: 520;
-    font-family: 'MyFont';
+    /* font-family: 'MyFont'; */
+    /* Modification and addition by Om Shrivastava on 27-10-23
+    Reason : Remove the letter spacing */
+    font-family: var(--fontFamily);
+    letter-spacing: var(--letterSpacing);
+    /* End of Modification and addition by Om Shrivastava on 27-10-23
+    Reason : Remove the letter spacin  */
     margin: 0;
     white-space: wrap;
 }
@@ -99,8 +105,14 @@
     margin-top: 15px;
     font-size: 13px;
     line-height: 20px;
-    letter-spacing: 1px;
-    font-family: 'MyFont';
+    /* letter-spacing: 1px; */
+    /* font-family: 'MyFont'; */
+     /* Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacing */
+  font-family: var(--fontFamily);
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacin  */
     font-weight: 500;
     color: var(--textColorSecondary) !important;
 

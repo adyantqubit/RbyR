@@ -14,7 +14,13 @@ const BestSeller = () => {
     const [imageSwap, setImageSwap] = useState(false)
     const nav = useNavigate()
     useEffect(() => {
-        setbest(product.filter(p => p.bestSeller == true))
+        // Modification and addition by Om Shrivastava on 22-10-23
+        // Reason : Need to set the is_active feature of this page
+        // setbest(product.filter(p => p.bestSeller == true ))
+        setbest(product.filter(p => p.bestSeller == true && p.is_active==true))
+        // End of Modification and addition by Om Shrivastava on 22-10-23
+        // Reason : Need to set the is_active feature of this page
+
     }, [product])
 
 
@@ -26,10 +32,13 @@ const BestSeller = () => {
         setImageSwap(!imageSwap)
 
     }
+    console.log(bestProducts,'datass')
     return (
         <>
             <div className={style.container}>
-
+            {/* Modification and addition by Om Shrivastava on 28-10-23
+            Reason : Add the condition for best products  */}
+            {bestProducts?.length > 0 ?
 
                 <div className={style.branding}>
                     {/* <img src={image2} className={style.bestImg}/> */}
@@ -39,6 +48,9 @@ const BestSeller = () => {
                     <div className={style.heading}> Best seller </div>
 
                 </div>
+                :null}
+                 {/* End of modification and addition by Om Shrivastava on 28-10-23
+            Reason : Add the condition for best products  */}
                 <div className={style.sliderContainer}>
 
                     {/* <Carousel cols={2} rows={1} gap={10}> */}

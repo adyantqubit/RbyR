@@ -68,20 +68,32 @@
     font-size: 24px;
     line-height: 32px;
     width: 60%;
-    letter-spacing: 3px;
-    font-family: 'MyFont';
+    /* letter-spacing: 3px;
+    font-family: 'MyFont'; */
     font-weight: 500;
     margin: 0;
     color: var(--textColorPrimary);
     margin-top: 5px;
+     /* Modification and addition by Om Shrivastava on 28-10-23
+  Reason : Remove the letter spacing */
+  font-family: var(--fontFamily);
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 28-10-23
+  Reason : Remove the letter spacing  */
 }
 
 .subtitle{
     margin-top: 15px;
     font-size: 18px;
     width:80%;
-    letter-spacing: 3px;
-    font-family: 'MyFont';
+    /* letter-spacing: 3px;
+    font-family: 'MyFont'; */
+     /* Modification and addition by Om Shrivastava on 28-10-23
+  Reason : Remove the letter spacing */
+  font-family: var(--fontFamily);
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 28-10-23
+  Reason : Remove the letter spacing  */
     font-weight: 500;
     color: var(--textColorPrimary);
     word-wrap: break-word;

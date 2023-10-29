@@ -22,14 +22,6 @@ import ReactPlayer from 'react-player'
 import { WorldOfRR } from '../../api/orderApis'
 
 
-
-
-
-
-
-
-
-
 const AboutUs = () => {
     const [response, setResponse] = useState(null)
     const [response2, setResponse2] = useState(null)
@@ -46,9 +38,6 @@ const AboutUs = () => {
         )
     }
 
-
-
-
     if (response != null)
         return (
             <>
@@ -57,7 +46,6 @@ const AboutUs = () => {
                     <div className={style.contain}>
 
                         {/* Paragraph 1*/}
-
                         <div className={`${style.TextContainer} ${style.Top2Images}`}>
                             <div className={style.InnerImgContainer}>
                                 <div className={style.AboutContent} >
@@ -72,13 +60,33 @@ const AboutUs = () => {
 
                         {/* Top content video and images */}
                         <div className={style.TextContainer}>
-                            <div className={style.InnerImgContainer}>
+                            <div 
+                            // className={style.InnerImgContainer}
+                    className={response.video_url?  `${style.InnerImgContainer}` : `${style.InnerImgDisableContainer}`}
+                            
+                            >
+                                {response.video_url ?
                                 <iframe className={style.img1} frameborder="0"
                                     allowfullscreen="1"
                                     width="100%" height="100%"
                                     src={`${response.video_url}?autoplay=1&amp;controls=0&amp;showinfo=0&amp;modestbranding=1&amp;&rel=1&amp;`} id="widget2"></iframe>
+                                :<>
+                                </>}
                                 {/* <ReactPlayer className={style.img1} url='https://youtu.be/bbkBuqC1rU4' /> */}
-                                <img className={style.img2} src={config.staticBaseURL + response.top_image}></img>
+                                {/* // Modification and addition by Om Shrivastava on 20-10-23
+                                // Reason : When image is not show then certain div is not shown  */}
+                                {response.top_image?
+                                <img className={style.img2}
+                                // Modification and addition by Om Shrivastava on 20-10-23
+                                // Reason : When image is not show then certain div is not shown  
+                                // src={config.staticBaseURL + response.top_image}
+                                src={response.top_image ?config.staticBaseURL + response.top_image: null}
+                                // Endd of modification and addition by Om Shrivastava on 20-10-23
+                                // Reason : When image is not show then certain div is not shown
+                                ></img>
+                                :<></>}
+                                {/* // End of modification and addition by Om Shrivastava on 20-10-23
+                                // Reason : When image is not show then certain div is not shown  */}
                             </div>
                         </div>
 

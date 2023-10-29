@@ -164,6 +164,12 @@
 	border-radius: 5px;
 	transition: .2s ease-in;
 	cursor: pointer;
+	 /* Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacing */
+  font-family: var(--fontFamily);
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacin  */
 }
 .butto:hover{
 	background: #6d44b8;
@@ -180,6 +186,12 @@
 .logi .labe{
 	color: #573b8a;
 	transform: scale(.6);
+	 /* Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacing */
+  font-family: var(--fontFamily);
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 27-10-23
+  Reason : Remove the letter spacin  */
 }
 
 @media (max-width:100px){

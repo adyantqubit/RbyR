@@ -38,7 +38,15 @@
     /* padding: 0 2%; */
     height: auto;
 }
-
+ /* Addition by Om Shrivastava on 28-10-23
+    Reason : Add the css when user disable the field */
+.InnerImgDisableContainer{
+    display: flex;
+    justify-content: center;
+    height: auto;  
+}
+ /* End of Addition by Om Shrivastava on 28-10-23
+    Reason : Add the css when user disable the field */
 .img1 {
     width: 66%;
     height: auto;
@@ -68,12 +76,17 @@
 .headerText{
     font-size: 24px;
     line-height: 32px;
-    letter-spacing: 3px;
-    font-family: 'MyFont2' !important;
+    /* letter-spacing: 3px;
+    font-family: 'MyFont2' !important; */
     font-weight: 500;
     text-transform: uppercase;
     color: #212121;
-
+ /* Modification and addition by Om Shrivastava on 28-10-23
+  Reason : Remove the letter spacing */
+  font-family: var(--fontFamily);
+  letter-spacing: var(--letterSpacing);
+  /* End of Modification and addition by Om Shrivastava on 28-10-23
+  Reason : Remove the letter spacing  */
 }
 
 .para{
@@ -99,6 +112,15 @@
         flex-direction: column;
         gap:10px;
     }
+    /* Addition by Om Shrivastava on 28-10-23
+    Reason : Add the css when user disable the field */
+    .InnerImgDisableContainer {
+        display: flex;
+        flex-direction: column;
+        gap:10px;
+    }
+    /* End of Addition by Om Shrivastava on 28-10-23
+    Reason : Add the css when user disable the field  */
     .Top2Images {
         padding: 4% 2%;
     }

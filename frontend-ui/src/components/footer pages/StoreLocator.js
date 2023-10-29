@@ -34,7 +34,16 @@ const StoreLocator = () => {
                     <div className={style.item}>
                       <div className={style.itemTitle}>{parse(""+storeLocatorDetail.city)}</div>
                       <div className={style.itemContent}>
-                        <img className={style.itemImage} src={config.staticBaseURL+storeLocatorDetail.storeImage}/>
+                        {/* Modification and addition by Om Shrivastava on 19-10-23
+                        Reason : Need to set the path of the store locator image */}
+                        {/* <img className={style.itemImage} 
+                        src={config.staticBaseURL+storeLocatorDetail.storeImage}
+                        /> */}
+                        <img className={style.itemImage} 
+                        src={config.staticBaseURL+'media/'+storeLocatorDetail.storeImage}
+                        />
+                         {/* End of modification and addition by Om Shrivastava on 19-10-23
+                        Reason : Need to set the path of the store locator image */}
                         <div className={style.itemBody}>
                           <div className={style.itemText}>
                           {parse(""+storeLocatorDetail.address)}
@@ -57,7 +66,13 @@ const StoreLocator = () => {
               })}
             </>
           ) : (
-            <div>Store details currently not available</div>
+            <div  
+              // Addition by Om Shrivastava on 28-10-23
+            // Reason: Need to add styling part 
+            style={{fontFamily:'Lora',letterSpacing:'1px'}}
+            // End of addition by Om Shrivastava on 28-10-23
+            // Reason: Need to add styling part 
+            >Store details currently not available</div>
           )}
           {/* <div className={style.item}>
               <div className={style.itemTitle}>RAIPUR</div>

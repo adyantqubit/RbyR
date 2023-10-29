@@ -47,16 +47,13 @@ function Footer2() {
         message: "",
         style: { marginTop: "20px" },
         style: { backgroundColor: "var(--bannerColor)" },
-        description:
-          'Please enter email id',
-        onClick: () => {
-        },
-        key: 1
-
+        description: "Please enter email id",
+        onClick: () => {},
+        key: 1,
       });
-    }
-
-    else if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
+    } else if (
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)
+    ) {
       const data = {
         email: email.value,
       };
@@ -67,9 +64,9 @@ function Footer2() {
             message: "",
             style: { marginTop: "20px" },
             description: "Subscribed to email updates successfully",
-            onClick: () => { },
+            onClick: () => {},
             style: { backgroundColor: "var(--bannerColor)" },
-            key: 1
+            key: 1,
           });
         } else {
           if (emailData.error) {
@@ -77,18 +74,18 @@ function Footer2() {
               message: "",
               style: { marginTop: "20px" },
               description: emailData.error,
-              onClick: () => { },
+              onClick: () => {},
               style: { backgroundColor: "var(--bannerColor)" },
-              key: 1
+              key: 1,
             });
           } else {
             notification.open({
               message: "",
               style: { marginTop: "20px" },
               description: "Email subscription failed",
-              onClick: () => { },
+              onClick: () => {},
               style: { backgroundColor: "var(--bannerColor)" },
-              key: 1
+              key: 1,
             });
           }
         }
@@ -98,10 +95,10 @@ function Footer2() {
         message: "",
         style: { marginTop: "20px" },
         description: "Please provide a valid email format",
-        onClick: () => { },
+        onClick: () => {},
         style: { backgroundColor: "var(--bannerColor)" },
 
-        key: 1
+        key: 1,
       });
     }
   };
@@ -115,22 +112,32 @@ function Footer2() {
           message: "",
           style: { marginTop: "20px" },
           description: "Instagram Post Not Found",
-          onClick: () => { },
+          onClick: () => {},
           style: { backgroundColor: "var(--bannerColor)" },
-          key: 1
+          key: 1,
         });
     });
   }
-
+  // Adition by Om Shrivastava on 20-10-23
+  // Reason : Add the condition when the data is not show  
+  const isObjectEmpty = (objectName) => {
+    if(objectName!=null || objectName!=undefined){
+    return Object.keys(objectName)?.length === 0
+    }
+  }
+  // End of adition by Om Shrivastava on 20-10-23
+  // Reason : Add the condition when the data is not show  
+  // console.log(isObjectEmpty(instagramCollections));
   return (
     <div className={style.App}>
-
-
-      {instagramCollections != null ? (
+       {/* // Adition by Om Shrivastava on 20-10-23
+  // Reason : Add the condition when the data is not show  */}
+   {/* {instagramCollections .length>0 ? ( */}
+      {isObjectEmpty(instagramCollections) != true ? 
         <div className={style.instagramContainer}>
           <a
             className={style.instagramLink}
-            href={instagramCollections.instagram_home_link}
+            href={instagramCollections?.instagram_home_link}
           >
             <div className={style.instagramTextContainer}>
               <div className={style.instaBox}>FOLLOW US</div>
@@ -139,72 +146,72 @@ function Footer2() {
           </a>
           <a
             className={style.instagramLink}
-            href={instagramCollections.instagram_post1_link}
+            href={instagramCollections?.instagram_post1_link}
           >
-
-
             {/* Added By Rohan kansari
-    reason- This div is not needed. style is not define for this div so i m replacing it.
-    jira issue-RBYR184 */}
+            reason- This div is not needed. style is not define for this div so i m replacing it.
+            jira issue-RBYR184 */}
             {/* <div className={style.instagramItem}> */}
 
             <img
               className={style.instagramImage}
-              src={config.staticBaseURL + instagramCollections.instagram_post1}
+              src={config.staticBaseURL + instagramCollections?.instagram_post1}
             ></img>
             {/* </div> */}
           </a>
           <a
             className={style.instagramLink}
-            href={instagramCollections.instagram_post2_link}
+            href={instagramCollections?.instagram_post2_link}
           >
             {/* <div className={style.instagramItem}> */}
             <img
               className={style.instagramImage}
-              src={config.staticBaseURL + instagramCollections.instagram_post2}
+              src={config.staticBaseURL + instagramCollections?.instagram_post2}
             ></img>
             {/* </div> */}
           </a>
           <a
             className={style.instagramLink}
-            href={instagramCollections.instagram_post3_link}
+            href={instagramCollections?.instagram_post3_link}
           >
             {/* <div className={style.instagramItem}> */}
             <img
               className={style.instagramImage}
-              src={config.staticBaseURL + instagramCollections.instagram_post3}
+              src={config.staticBaseURL + instagramCollections?.instagram_post3}
             ></img>
             {/* </div> */}
           </a>
           <a
             className={style.instagramLink}
-            href={instagramCollections.instagram_post4_link}
+            href={instagramCollections?.instagram_post4_link}
           >
             {/* <div className={style.instagramItem}> */}
             <img
               className={style.instagramImage}
-              src={config.staticBaseURL + instagramCollections.instagram_post4}
+              src={config.staticBaseURL + instagramCollections?.instagram_post4}
             ></img>
             {/* </div> */}
           </a>
           <a
             className={style.instagramLink}
-            href={instagramCollections.instagram_post5_link}
+            href={instagramCollections?.instagram_post5_link}
           >
             {/* <div className={style.instagramItem}> */}
             <img
               className={style.instagramImage}
-              src={config.staticBaseURL + instagramCollections.instagram_post5}
+              src={config.staticBaseURL + instagramCollections?.instagram_post5}
             ></img>
             {/* </div> */}
 
             {/* End of the code */}
           </a>
         </div>
-      ) : null}
 
-
-
+      :
+        null
+          }
+      {/* // End of adition by Om Shrivastava on 20-10-23
+        // Reason : Add the condition when the data is not show  */}
       <div style={{ height: "40px", borderBottom: "1px solid #7c7c7c" }}></div>
       <div className={style.row}>
         <div className={style.column1}>
@@ -255,15 +262,11 @@ function Footer2() {
 
         <div className={style.column3}>
           <h1 className={style.heading}>THE COMPANY</h1>
-          <Link to="/aboutRR"
+          <Link
+            to="/aboutRR"
             style={{ textDecoration: "none", color: "white" }}
           >
-            <span
-              className={style.span}
-
-            >
-              World of RbyR
-            </span>
+            <span className={style.span}>World of RbyR</span>
           </Link>
 
           <Link
@@ -285,16 +288,23 @@ function Footer2() {
                 marginTop: "7px",
               }}
             >
-
               {socialLinks.length > 0 ? (
                 <>
                   {socialLinks.map((socialLink) => {
-                    return <img src={config.staticBaseURL + socialLink.logo} style={{ color: "var(--iconsColor)", width: "25px", height: "25px" }} alt="" />
-                  })
-                  }
+                    return (
+                      <img
+                        src={config.staticBaseURL + socialLink.logo}
+                        style={{
+                          color: "var(--iconsColor)",
+                          width: "25px",
+                          height: "25px",
+                        }}
+                        alt=""
+                      />
+                    );
+                  })}
                 </>
-              )
-                : null}
+              ) : null}
               {/* <FaFacebookF style={{ color: "var(--iconsColor)", fontSize: "25px" }} />
               <TiSocialInstagram style={{ color: "var(--iconsColor)", fontSize: "25px" }} /> */}
               {/* Commented by - Ashish Dewangan on 15-02-2023
@@ -365,7 +375,9 @@ function Footer2() {
               className={style.emailBoxButton}
               onClick={subscribeToEmailUpdate}
             >
-              <IoChevronForwardOutline style={{ fontSize: "25px", color: "white" }} />
+              <IoChevronForwardOutline
+                style={{ fontSize: "25px", color: "white" }}
+              />
             </button>
           </div>
         </div>
@@ -379,8 +391,8 @@ function Footer2() {
           {" "}
           {copyrights.length > 0
             ? copyrights.map((copyright) => {
-              return copyright.title;
-            })
+                return copyright.title;
+              })
             : "© 2022 RR. ALL RIGHTS RESERVED"}
         </span>
         <a href="https://adyant.co.in/" target="_blank">

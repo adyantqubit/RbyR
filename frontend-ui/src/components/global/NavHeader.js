@@ -28,7 +28,7 @@ import { CartState } from '../../context';
 import { notification } from 'antd';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import logoimg from '../../logo.jfif'
 
 const Navbar = () => {
   notification.destroy()
@@ -191,19 +191,39 @@ const Navbar = () => {
           Reason - open link in new tab */}
           {/* <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
             style={{ textDecoration: "none", textTransform: "uppercase", outline: "none", color: "black", fontSize: ".75rem", fontWeight: "300", marginTop: "8px" }}> */}
+          {/* Modification and addition by Om Shrivastava on 28-10-23
+            Reason : Change the content when admin can't enter the message */}
+          {whatsappContactNumber ? 
           <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
-            style={{ textDecoration: "none", textTransform: "uppercase", outline: "none", color: "black", fontSize: ".85rem", fontWeight: "700", marginTop: "8px" }}
+           /* Modification and addition by Om Shrivastava on 19-10-23
+            Reason : Set the color of the content  */
+           // style={{ textDecoration: "none", textTransform: "uppercase", outline: "none", color: "black", fontSize: ".85rem", fontWeight: "700", marginTop: "8px" }}
+            style={{ textDecoration: "none", textTransform: "uppercase", outline: "none", color: "white", fontSize: ".85rem", fontWeight: "700", marginTop: "8px" }}
+            /* End of modification and addition by Om Shrivastava on 19-10-23
+            Reason : Set the color of the content  */
             target="_blank"
           >
             {/* End of code modification */}
+           
             FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT | +91
             {whatsappContactNumber ? whatsappContactNumber : " Not added"}
+            
           </a>
+          :"Welcome to RbyR"}
+          {/* End of modification and addition by Om Shrivastava on 28-10-23
+            Reason : Change the content when admin can't enter the message */}
         </div>
 
         <div className={style.logo}>
           {/* <img src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" alt="Logo" onClick={openHome}/> */}
-          <img src={config.staticBaseURL + logo} alt="Logo" onClick={openHome} />
+          {/* Modification and addition by Om Shrivastava on 19-10-23
+          Reason : Need to set the path of the store locator image */}
+          {/* <img src={config.staticBaseURL + logo} alt="Logo" onClick={openHome} /> */}
+          <img src={config.staticBaseURL +'media/'+ logo} alt="Logo" onClick={openHome} />
+           {/* <img src={logoimg}  onClick={openHome} /> */}
+          {/* End of modification and addition by Om Shrivastava on 19-10-23
+          Reason : Need to set the path of the store locator image */}
+          
         </div>
 
         <nav className={style.navbar}>

@@ -70,7 +70,13 @@ notification.destroy()
               })}
             </>
           ) : (
-            <div>No Terms and Conditions are present</div>
+            <div 
+            // Addition by Om Shrivastava on 28-10-23
+            // Reason: Need to add styling part 
+            style={{fontFamily:'Lora',letterSpacing:'1px'}}
+            // End of addition by Om Shrivastava on 28-10-23
+            // Reason: Need to add styling part 
+            >No Terms and Conditions are present</div>
           )}
         </div>
 

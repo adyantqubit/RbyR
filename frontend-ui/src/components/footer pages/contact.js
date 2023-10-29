@@ -55,7 +55,12 @@ const Contact = () => {
                     </span>
                   </div>
                   <div className={`${style.column} ${style.col2}`}>
-                    <img  src={config.staticBaseURL+contact.contactUsImage}></img>
+                    {/* Modification and addition by Om Shrivastava on 20-10-23
+                    Reason : Need to add right path for the image */}
+                    {/* <img  src={config.staticBaseURL+contact.contactUsImage}></img> */}
+                    <img  src={config.staticBaseURL+"media/"+contact.contactUsImage}></img>
+                    {/* Modification and addition by Om Shrivastava on 20-10-23
+                    Reason : Need to add right path for the image */}
                   </div>
                 </div>
               );

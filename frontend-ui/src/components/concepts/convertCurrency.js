@@ -62,9 +62,9 @@ function Converter() {
 	async function CurrencySaverGet() {
 		await CurrencySaverGetter().then(r => {
 			if (r)
-				setCurrency({ name: r.currency, sign: r.currency_sign, value: info[r.currency][0] })
+				setCurrency({ name: r?.currency, sign: r?.currency_sign, value: info[r?.currency][0] })
 			else
-				setCurrency({ name: "INR", value: info[r.currency][0], sign: "₹" })
+				setCurrency({ name: "INR", value: info[r?.currency][0], sign: "₹" })
 		})
 	}
 

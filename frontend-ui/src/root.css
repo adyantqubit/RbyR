@@ -1,13 +1,44 @@
 :root {
     /* ---------------------------banner color ----------------- */ 
-    --bannerColor:#8e6ea6;
+    /* Modification and addition by Om Shrivastava on 18-10-23
+    Reason : change the header color */
+    /* --bannerColor:#8e6ea6; */
+    
+    --bannerColor:#bbe26c;
+    /* --bannerColor:#14b563; */
+
+
+    /* End of modification and adition by Om Shrivastava on 18-10-23
+    Reason : change the header color */
     --videoBackgroundColor:#dfcfec;
     /* ---------------------------background color 1 ----------------- */ 
-    --backgroundColorPrimary: #e7dfe9;
+
+    /* Modification and addition by Om Shrivastava on 18-10-23
+    Reason : change the header color */
+    /* --backgroundColorPrimary: #e7dfe9; */
+
+    --backgroundColorPrimary:#fee9e2;
+
+
     
+    /* --backgroundColorPrimary: #f8e9e4;  light reddish brown*/
+    /* --backgroundColorPrimary: #e4e3e8;  gray color */
+
 
     /* ---------------------------background color 2 ----------------- */ 
-    --backgroundColorSecondary: #f7f7f7;
+   /* Modification and addition by Om Shrivastava on 18-10-23
+    Reason : change the header color */ 
+    /* --backgroundColorSecondary: #f7f7f7; */
+
+    --backgroundColorSecondary: #fef2f1;
+    /* --backgroundColorSecondary: #f8f8f8; */
+
+    /* Modification and addition by Om Shrivastava on 27-10-23
+    Reason : Add the globally font family and letter spacing  */
+    --fontFamily : "Lora";
+    --letterSpacing : 1px;
+    /* End of modification and addition by Om Shrivastava on 27-10-23
+    Reason : Add the globally font family and letter spacing */
     
     /* ---------------------------text 1----------------- */
     --textColorPrimary: black;

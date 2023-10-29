@@ -19,14 +19,24 @@
    a {
     text-decoration: none;
     font-size: 1.2rem;
-    font-family: "Rawson-Regular";
+    /* Modification and addition by Om Shrivastava on 27-10-23
+    Reason : Set the font family of the anchor tag */
+    /* font-family: "Rawson-Regular"; */
+    font-family: "Lora";
+    /*End of modification and addition by Om Shrivastava on 27-10-23
+    Reason : Set the font family of the anchor tag */
     cursor: pointer;
    }
 
    .al{
     
     text-decoration: none;
-    letter-spacing: 3px !important;
+    /* Modification and addition by Om Shrivastava on 27-10-23
+    Reason : Remove the letter spacing */
+    /* letter-spacing: 3px !important; */
+    letter-spacing: var(--letterSpacing) !important;
+    /* End ofModification and addition by Om Shrivastava on 27-10-23
+    Reason : Remove the letter spacing */
     /* text-transform: uppercase; */
     font-size: 16px;
     line-height: 24px;
@@ -69,7 +79,14 @@
 
 /* NAVBAR STYLING STARTS */
 .whatsappBanner{
-  background-color: var(--bannerColor);
+  /* Modification and addition by Om Shrivastava on 19-10-23
+  Reason : Set the background color  */
+  /* background-color: var(--bannerColor); */
+  background-color: black;
+  color: white;
+ /* End of Modification and addition by Om Shrivastava on 19-10-23
+  Reason : Set the background color  */
+
 }
 .navbar {
     display: flex;

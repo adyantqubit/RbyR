@@ -75,14 +75,17 @@ const Video = (props) => {
     </div>
   }
 
-
+console.log(props.url,'checkkkkk')
   return (
     <>
-
-      <div className={style.container}>
+    {/* Modification and addition by Om Shrivastava on 20-10-23
+    Reason : Add the condition when data is null */}
+    {props.url?.length> 0 ?
+      <div className={style.container} >
 
         {/* <div className={style.heading}> Best seller product of RBYR </div> */}
         <div className={style.sliderContainer}>
+          
           <Carousel cols={drawerwidth?1:3} rows={1} gap="10px">
 
             {props.url?.map(u => <Carousel.Item
@@ -98,6 +101,11 @@ const Video = (props) => {
           </Carousel>
         </div>
       </div>
+      : <>
+      
+      </>}
+      {/* End of modification and addition by Om Shrivastava on 20-10-23
+      Reason : Add the condition when data is null */}
 
       {
         showVideo ?
