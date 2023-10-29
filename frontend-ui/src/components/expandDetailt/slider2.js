@@ -64,7 +64,7 @@ const Slider2 = ({ scrollTop }) => {
               marginBottom: "20px",
             }}
           >
-            YOU MAY ALSO LIKEeeeeeee
+            YOU MAY ALSO LIKE
           </div>
           <Carousel cols={4} rows={1} gap={10} style={{ width: "100%" }}>
             
