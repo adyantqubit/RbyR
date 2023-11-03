@@ -22,8 +22,12 @@
 }
 
 .card {
+   /* Modification and addition by Om Shrivastava on 02-11-23
+   Reason : Set the width and height in mobile view  */
     /* margin: auto 0; */
     width: 29%;
+/* End of modification and addition by Om Shrivastava on 02-11-23
+   Reason : Set the width and height in mobile view  */
     min-height: 200px;
     position: relative;
     background-color: transparent;
@@ -67,7 +71,6 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     row-gap: 15px;
-
 }
 
 .absolute {
@@ -263,3 +266,26 @@ Reason : Add the media queries for the image and div */
 }
 /* Moification and addition by Om Shrivastava on 21-10-23
 Reason : Add the media queries for the image and div */
+
+/* Modification and addition by Om Shrivastava on 02-11-23
+Reason : Need to set the row gap between these contents */
+@media (max-width: 520px) {
+    .card{
+       width: 48%;
+    }
+     .sliderContainer{
+        row-gap: 12px;
+        column-gap: 12px;
+     }  
+     .name{
+        font-size: 18px;
+     } 
+    }
+@media (max-width: 390px) {
+       
+         .name{
+            font-size: 12px;
+         } 
+        }
+ /* End of moification and addition by Om Shrivastava on 21-10-23
+Reason : Add the media queries for the image and div */   

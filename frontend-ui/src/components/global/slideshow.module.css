@@ -9,9 +9,18 @@
 }
 
 .dblock{
+    /* Modification and addition by Om Shrivastava on 03-11-23
+    Reason : Need to set the banner height  */
     min-height:550px;
     width: 100vw;
     object-fit:cover;
+    /* min-height:550px; */
+    /* min-height: 15vh;
+    height: 50vh;
+    width: 100vw; */
+    /* object-fit:cover; */
+    /* End of Modification and addition by Om Shrivastava on 03-11-23
+    Reason : Need to set the banner height */
 }
 
 
