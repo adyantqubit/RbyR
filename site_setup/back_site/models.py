@@ -317,6 +317,12 @@ class product_detail(models.Model):
     bestSeller=models.BooleanField(default=False)
     #End of code addition
 
+    # Added by Om Shrivastava on 04-11-23
+    # Reason : Need to add the care tip field in product details page
+    careTip = models.CharField(max_length=250,null=True,blank=True)
+    # End of addition by Om Shrivastava on 04-11-23
+    # Reason : Need to add the care tip field in product details page
+
     def save(self,*args, **kwargs):
         # self.productName_with_category =  self.product_name+self.category_name.category
         if self.subMenu is not None:
@@ -672,9 +678,16 @@ class Tax(models.Model):
     
 class ImportantNoticeToBuy(models.Model):
     point1=models.CharField(max_length=200)
-    point2=models.CharField(max_length=200)
-    point3=models.CharField(max_length=200)
-
+    # Modification and addition by Om Shrivastava on 04-11-23
+    # Reason : Need to remove the mandatory field 
+    # point2=models.CharField(max_length=200)
+    # point3=models.CharField(max_length=200)
+    point2=models.CharField(max_length=200,null=True,blank=True)
+    point3=models.CharField(max_length=200,null=True,blank=True)
+    # End of Modification and addition by Om Shrivastava on 04-11-23
+    # Reason : Need to remove the mandatory field
+    # End of modification on 04-11-23
+    # Reason : End 
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self):
@@ -704,9 +717,14 @@ class FAQ(models.Model):
 class ContactUs(models.Model):
     subtitle1=models.CharField(max_length=255)
     content1=RichTextField(null=True,blank=True)
-    subtitle2=models.CharField(max_length=255)
+
+    # subtitle2=models.CharField(max_length=255)
+    subtitle2=models.CharField(max_length=255,null=True,blank=True)
     content2=RichTextField(null=True,blank=True)
-    subtitle3=models.CharField(max_length=255)
+
+    # subtitle3=models.CharField(max_length=255)
+    subtitle3=models.CharField(max_length=255,null=True,blank=True)
+
     content3=RichTextField(null=True,blank=True)
     contactUsImage=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100,default='None/a1.jpg')
@@ -727,13 +745,28 @@ class TermAndCondition(models.Model):
     content1=RichTextField(null=True,blank=True)
     subtitle1=models.CharField(max_length=255)
     content2=RichTextField(null=True,blank=True)
-    subtitle2=models.CharField(max_length=255)
+    # Modification and addition by Om Shrivastava on 04-11-23
+    # Reason : Need to remove the mandatory field
+    # subtitle2=models.CharField(max_length=255)
+    subtitle2=models.CharField(max_length=255,null=True,blank=True)
     content3=RichTextField(null=True,blank=True)
-    subtitle3=models.CharField(max_length=255)
+    # End of Modification and addition by Om Shrivastava on 04-11-23
+    # Reason : Need to remove the mandatory field
+    # Modification and addition by Om Shrivastava on 04-11-23
+    # Reason : Need to remove the mandatory field
+    # subtitle3=models.CharField(max_length=255)
+    subtitle3=models.CharField(max_length=255,null=True,blank=True)
+    # End of Modification and addition by Om Shrivastava on 04-11-23
+    # Reason : Need to remove the mandatory field
     content4=RichTextField(null=True,blank=True)
-    subtitle4=models.CharField(max_length=255)
+    # Modification and addition by Om Shrivastava on 04-11-23
+    # Reason : Need to remove the mandatory field
+    # subtitle4=models.CharField(max_length=255)
+    subtitle4=models.CharField(max_length=255,null=True,blank=True)
+    # End of Modification and addition by Om Shrivastava on 04-11-23
+    # Reason : Need to remove the mandatory field
     content5=RichTextField(null=True,blank=True)
-#End of code addition
+    #End of code addition
 
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name

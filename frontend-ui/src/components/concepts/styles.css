@@ -7,11 +7,16 @@ font-weight: 600;
 }
 .Dropdown-control{
   height:35px;
-  background:var(--backgroundColorPrimary);
-  /* background: #d8d8cd; */
+  /* background:var(--backgroundColorPrimary); */
+  background: #d8d8cd;
 
   color:black;
   border:0;
+  /* Addition by Om Shrivastava on 04-11-23
+  Reason : Need to give the width of dropdown */
+  width: 70px;
+  /* End of addition by Om Shrivastava on 04-11-23
+  Reason : Need to give the width of dropdown */
 }
 
 .Dropdown-option{

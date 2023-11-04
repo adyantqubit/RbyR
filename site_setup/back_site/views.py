@@ -883,7 +883,10 @@ class InstagrampostRetrive(APIView):
 class SearchProductView(APIView):
     def get(self, request, query):
         # print("query----------------------",query.replace(" ",""))
-        AllProduct = product_detail.objects.all()
+        
+        # AllProduct = product_detail.objects.all()
+        AllProduct = product_detail.objects.filter(is_active=True)
+
         wordsArray = query.split()
         import itertools
         permutations = list(itertools.permutations(wordsArray))

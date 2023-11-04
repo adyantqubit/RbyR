@@ -293,7 +293,12 @@ function Footer2() {
                   {socialLinks.map((socialLink) => {
                     return (
                       <img
-                        src={config.staticBaseURL + socialLink.logo}
+                        // Modification and addition by Om Shrivastava on 04-11-23
+                        // Reason : Need to set the url of the image
+                        // src={config.staticBaseURL + socialLink.logo}
+                        src={config.staticBaseURL +'media/'+ socialLink.logo}
+                        // End of Modification and addition by Om Shrivastava on 04-11-23
+                        // Reason : Need to set the url of the image
                         style={{
                           color: "var(--iconsColor)",
                           width: "25px",
@@ -393,7 +398,13 @@ function Footer2() {
             ? copyrights.map((copyright) => {
                 return copyright.title;
               })
-            : "© 2022 RR. ALL RIGHTS RESERVED"}
+              // Modification and addition by Om Shrivastava on 04-11-23
+              // Reason : No need to show the hardcode content
+            // : "© 2022 RR. ALL RIGHTS RESERVED"}
+            : ""}
+            {/* // End of modification and addition by Om Shrivastava on 04-11-23
+              // Reason : No need to show the hardcode content */}
+
         </span>
         <a href="https://adyant.co.in/" target="_blank">
           <span

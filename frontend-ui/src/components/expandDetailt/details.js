@@ -149,6 +149,7 @@ const Details = (props) => {
     });
   }
 
+  console.log(details,'check all data')
   // Added by Ashish Dewangan on 24-11-2022
   // Reason - To display whatsapp contact number
   const getWhatsappContactNumber = async () => {
@@ -974,6 +975,20 @@ const Details = (props) => {
                       {details.style_code}
                     </span>
                   </div>
+
+                  {/* Addition by Om Shrivastava on 04-11-23
+                  Reason : Set the Care tip functionality */}
+                  {details?.careTip && details.careTip.length>0?
+                  <div className={styles["container06"]}>
+                    <span className={styles["textLabel"]}>Care Tip </span>
+                    <span className={styles["textLabel"]}>:</span>
+                    <span className={styles["textDescription"]}>
+                      {details.careTip}
+                    </span>
+                  </div>
+                  :null}
+                  {/* End of Addition by Om Shrivastava on 04-11-23
+                  Reason : Set the Care tip functionality */}
 
                   {/* Commented and modified by Ashish Dewangan on 23-11-2022
                   Reason - To have standard shipping and ready to ship functionality */}

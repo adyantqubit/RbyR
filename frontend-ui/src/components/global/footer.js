@@ -194,7 +194,7 @@ function Footer() {
               {socialLinks.length > 0 ? (
                 <>
                   {socialLinks.map((socialLink) => { 
-                  return <img src={config.staticBaseURL+socialLink.logo} style={{color:"var(--iconsColor)",width:"25px",height:"25px"}} alt=""/>
+                  return <img src={config.staticBaseURL+'media/'+socialLink.logo} style={{color:"var(--iconsColor)",width:"25px",height:"25px"}} alt=""/>
                   })
                   }
                   </>

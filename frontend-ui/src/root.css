@@ -4,7 +4,9 @@
     Reason : change the header color */
     /* --bannerColor:#8e6ea6; */
     
-    --bannerColor:#bbe26c;
+    /* --bannerColor:#bbe26c; */
+    --bannerColor:#b7c796b9;
+
     /* --bannerColor:#14b563; */
 
 
@@ -30,7 +32,9 @@
     Reason : change the header color */ 
     /* --backgroundColorSecondary: #f7f7f7; */
 
-    --backgroundColorSecondary: #fef2f1;
+    /* --backgroundColorSecondary: #fef2f1; */
+    --backgroundColorSecondary: #fdfdfd;
+
     /* --backgroundColorSecondary: #f8f8f8; */
 
     /* Modification and addition by Om Shrivastava on 27-10-23

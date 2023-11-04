@@ -43,7 +43,12 @@
     height: 93%;
 
     filter: brightness(90%);
-    box-shadow: 3px 3px 8px 1px black;
+    /* Modification and addition by Om Shrivastava on 04-11-23
+    Reason : Need to decrease the box shadow*/
+    /* box-shadow: 3px 3px 8px 1px black; */
+    box-shadow: 0px 0px 5px 1px black;
+    /* End of modification and addition by Om Shrivastava on 04-11-23
+    Reason : Need to decrease the box shadow*/
     transition: all .6s ease;
 }
 
@@ -75,9 +80,13 @@
 
 .absolute {
     position: absolute;
+    /* Modification and addition by Om Shrivastava on 04-11-23
+    Reason : Set the bottom space */
     /* bottom: 15px; */
-    bottom: 37px;
-
+    /* bottom: 37px; */
+    bottom: 45px;
+    /* End of modification and addition by Om Shrivastava on 04-11-23
+    Reason : Set the bottom space */
     left: 0;
     padding-left: 15px;
     width: 100%;

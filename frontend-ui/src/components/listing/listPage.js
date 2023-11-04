@@ -205,10 +205,10 @@ const ListPage = () => {
   }
 
   let counter = 0;
-for (const obj of CategoryProduct) {
-  counter++;
-}
-console.log(counter)
+  for (const obj of CategoryProduct) {
+    counter++;
+  }
+  console.log(counter);
   return (
     <>
       {/* {showOptions?<NavHeader/>:null} */}
@@ -243,24 +243,28 @@ console.log(counter)
                     // paddingLeft: "5%",
                     fontWeight: "550",
                     whiteSpace: "nowrap",
-                    display:'flex',
-                    justifyContent:'space-between',
-                    width:'100%'
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "100%",
                   }}
                 >
+                  <div>{parent.split("_").join(" ")}</div>
                   <div>
-                  {parent.split("_").join(" ")}
-                  </div>
-                  <div>
-                 {CategoryProduct && CategoryProduct.length > 0? 
-                  <span style={{ fontSize: "17px", fontWeight: "lighter",textTransform:'capitalize',paddingLeft:'20px' }}>
-                    {" "}
-                   
-                    Products ({counter})
-                  </span>
-:<span>
-  
-</span>}
+                    {CategoryProduct && CategoryProduct.length > 0 ? (
+                      <span
+                        style={{
+                          fontSize: "17px",
+                          fontWeight: "lighter",
+                          textTransform: "capitalize",
+                          paddingLeft: "20px",
+                        }}
+                      >
+                        {" "}
+                        Products ({counter})
+                      </span>
+                    ) : (
+                      <span></span>
+                    )}
                   </div>
                 </div>
               )}

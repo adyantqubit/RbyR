@@ -7,8 +7,8 @@
 
 .App{
     width:100%;
-    background-color: var(--backgroundColorPrimary);
-    /* background: linear-gradient(to right,#bcbfaf,#ffffff,#aeae98); */
+    /* background-color: var(--backgroundColorPrimary); */
+    background: linear-gradient(to right,#bcbfaf,#ffffff,#aeae98);
 
     height:auto;
 }
@@ -148,8 +148,8 @@
     /* height: 50%; */
     justify-content: space-between;
     align-items: center;
-    background: var(--backgroundColorPrimary);
-    /* background: linear-gradient(to right,#bcbfaf,#ffffff,#aeae98); */
+    /* background: var(--backgroundColorPrimary); */
+    background: linear-gradient(to right,#bcbfaf,#ffffff,#aeae98);
 
     margin-top: 15px;
 }
