@@ -10,7 +10,7 @@ import { getToken, removeToken, storeToken } from "./Redux-manage/services/local
 import { useGetCartProductQuery, useGetLikedProductQuery } from "./Redux-manage/services/userAuthapi";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const Cart = createContext();
+const Cart = createContext(); 
 
 
 const Context = ({ children }) => {

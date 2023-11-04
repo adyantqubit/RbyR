@@ -89,7 +89,8 @@
   font-weight: 550;
   
   text-transform: uppercase;
-  color:#212121
+  color:#212121;
+  /* padding-left: 5%; */
 }
 
 .filter{
@@ -122,6 +123,8 @@
    width: 100%;;
 justify-content: space-between;
  flex-wrap: wrap;
+
+ padding: 12px 60px;
 }
 
 /* .img{
@@ -794,5 +797,10 @@ justify-content: space-between;
 }
 
 
+ }
+ @media (max-width: 360px) {
+  .TopContent{
+    padding-left: 0px;
+  }
  }
 

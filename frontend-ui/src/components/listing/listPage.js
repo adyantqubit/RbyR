@@ -204,6 +204,11 @@ const ListPage = () => {
     }
   }
 
+  let counter = 0;
+for (const obj of CategoryProduct) {
+  counter++;
+}
+console.log(counter)
   return (
     <>
       {/* {showOptions?<NavHeader/>:null} */}
@@ -232,17 +237,32 @@ const ListPage = () => {
                   {/* categoryyyyy */}
                 </span>
               ) : (
-                <span
+                <div
                   className={style.TopContent}
                   style={{
-                    paddingLeft: "5%",
+                    // paddingLeft: "5%",
                     fontWeight: "550",
                     whiteSpace: "nowrap",
+                    display:'flex',
+                    justifyContent:'space-between',
+                    width:'100%'
                   }}
                 >
-                  {/* parenttttttt */}
+                  <div>
                   {parent.split("_").join(" ")}
-                </span>
+                  </div>
+                  <div>
+                 {CategoryProduct && CategoryProduct.length > 0? 
+                  <span style={{ fontSize: "17px", fontWeight: "lighter",textTransform:'capitalize',paddingLeft:'20px' }}>
+                    {" "}
+                   
+                    Products ({counter})
+                  </span>
+:<span>
+  
+</span>}
+                  </div>
+                </div>
               )}
 
               {/* commented by -rohan- on - 18/2/23
@@ -350,22 +370,20 @@ const ListPage = () => {
                             </div>
                           ) : null}
                         </div>
-                      ) : (
-                        // <div style={{ width: "100%", textAlign: "center" }}>
-                        //   <div
-                        //     className={style.noresult}
-                        //     style={{ width: "100%", textAlign: "center" }}
-                        //   >
-                        //     No products found !
-                        //   </div>
-                        //   <span style={{ fontSize: "14px" }}>
-                        //     Please change Your search criteria and try again. If
-                        //     still not finding anything relevant, please visit
-                        //     the Home page and try out some of our bestsellers!
-                        //   </span>
-                        // </div>
-                        null
-                      )}
+                      ) : // <div style={{ width: "100%", textAlign: "center" }}>
+                      //   <div
+                      //     className={style.noresult}
+                      //     style={{ width: "100%", textAlign: "center" }}
+                      //   >
+                      //     No products found !
+                      //   </div>
+                      //   <span style={{ fontSize: "14px" }}>
+                      //     Please change Your search criteria and try again. If
+                      //     still not finding anything relevant, please visit
+                      //     the Home page and try out some of our bestsellers!
+                      //   </span>
+                      // </div>
+                      null}
                     </>
                   );
               })
@@ -378,7 +396,7 @@ const ListPage = () => {
               </div>
             )}
 
-            {nullpage && CategoryProduct.length == 0  ? (
+            {nullpage && CategoryProduct.length == 0 ? (
               <div style={{ width: "100%", textAlign: "center" }}>
                 <div
                   className={style.noresult}
@@ -386,7 +404,13 @@ const ListPage = () => {
                 >
                   No products found !
                 </div>
-                <span style={{ fontSize: "14px", fontFamily:'Lora',letterSpacing:'1px' }}>
+                <span
+                  style={{
+                    fontSize: "14px",
+                    fontFamily: "Lora",
+                    letterSpacing: "1px",
+                  }}
+                >
                   Please change Your search criteria and try again. If still not
                   finding anything relevant, please visit the Home page and try
                   out some of our bestsellers!

@@ -1052,7 +1052,12 @@ class pageIndex(APIView):
                 # products = product_detail.objects.filter(category="partywear") | product_detail.objects.filter(category="kurti") | product_detail.objects.filter(
                 #     category="casual") | product_detail.objects.filter(category="wedding_wear") | product_detail.objects.filter(category="formal")
                 menu=Menus.objects.get(menu=request.data['parent'])
-                products=product_detail.objects.filter(upper_menu=menu).order_by("id")
+                # Modification and addition by Om Shrivastava on 03-11-23
+                # Reason : When the product is_active then it show on frontendside
+                # products=product_detail.objects.filter(upper_menu=menu).order_by("id")
+                products=product_detail.objects.filter(upper_menu=menu,is_active = True).order_by("id")
+                # End of Modification and addition by Om Shrivastava on 03-11-23
+                # Reason : When the product is_active then it show on frontendside
             # End of code
             
             # Added by Rohan -5/1/22
@@ -1108,7 +1113,7 @@ class pageIndex(APIView):
             
             return Response({"products": serialize.data, "colors": colors,"categories":categories})
         except:
-            return Response({"error": True})
+            return Response({"error": True}) 
     # end of code Addition
 
 
