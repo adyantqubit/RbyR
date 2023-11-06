@@ -243,7 +243,7 @@ const InsideOrder = () => {
                               <div ><span className={styles.userinfoText} style={{ whiteSpace: "nowrap" }}>Account Number:</span><span className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
                               <div ><span className={styles.userinfoText}>UPI ID:</span><span className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div>
                             </div>
-                            <div style={{ height: "60px", width: "100%" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To admin After paying  at {storeLocatorDetails != null ? parse("PHONE:"+storeLocatorDetails[0].phoneNumber) : null}</span></div>
+                            <div style={{ height: "60px", width: "100%" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To admin After paying  at {storeLocatorDetails != null ? parse("PHONE:"+storeLocatorDetails[0]?.phoneNumber) : null}</span></div>
 
                           </div>
 
@@ -353,7 +353,7 @@ const InsideOrder = () => {
 
               </div>
 
-              <div style={{ height: "60px", width: "100%", marginTop: "40px" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To admin After paying  at {storeLocatorDetails != null ? parse("PHONE:"+storeLocatorDetails[0].phoneNumber) : null}</span></div>
+              <div style={{ height: "60px", width: "100%", marginTop: "40px" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To admin After paying  at {storeLocatorDetails != null ? parse("PHONE:"+storeLocatorDetails[0]?.phoneNumber) : null}</span></div>
 
 
             </div>

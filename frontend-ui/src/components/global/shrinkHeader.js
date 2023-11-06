@@ -73,8 +73,8 @@ const ShrinkHeader = () => {
   const getWhatsappContactNumber = async () => {
     const whatsappContactNumberData = await getWhatsappContactDetail();
     if (whatsappContactNumberData) {
-      setWhatsappContactNumber(whatsappContactNumberData[0].whatsappNmber);
-      setLogo(whatsappContactNumberData[0].logo);
+      setWhatsappContactNumber(whatsappContactNumberData[0]?.whatsappNmber);
+      setLogo(whatsappContactNumberData[0]?.logo);
 
     }
   };
