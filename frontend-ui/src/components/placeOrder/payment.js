@@ -214,8 +214,7 @@ const Payment = () => {
             I agree to {` `}
           </label>
           }
-        />
-        <Link to="/termAndCondition#Terms_And_Condition" target="_blank" style={{ fontSize: "15px", textDecoration: "underline", paddingTop: "5px" }}>
+        /> <Link to="/termAndCondition#Terms_And_Condition" target="_blank" style={{ fontSize: "14px",paddingLeft:'2px', textDecoration: "underline", paddingTop: "3.5px",letterSpacing:'1.5px' }}>
           {" "} Terms and conditions</Link>
         {required ? <Typography style={{ color: "red", fontSize: "13px", marginLeft: "30px" }}>Please accept terms and conditions.</Typography> : null}
       </div>

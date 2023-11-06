@@ -1,7 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import config from "../../api/config";
-import { DetailApi, getCategoryProduct, LikeDeleteApi } from "../../api/service";
+import {
+  DetailApi,
+  getCategoryProduct,
+  LikeDeleteApi,
+} from "../../api/service";
 import Footer from "../global/footer";
 import Navbar from "../global/NavHeader";
 import { bounce } from "react-animations";
@@ -11,7 +15,7 @@ import { BackTop, Modal, notification } from "antd";
 // import projectStyles from '.style.module.css'
 import styles from "./detail.module.css";
 import "./detail.scss";
-import "./like.scss"
+import "./like.scss";
 import "./details.css";
 import Size from "./Size.css";
 import { message } from "antd";
@@ -46,11 +50,10 @@ const sty = StyleSheet.create({
   },
 });
 
-
 const Details = (props) => {
-  notification.destroy()
+  notification.destroy();
   const { id } = useParams();
-  const nav = useNavigate()
+  const nav = useNavigate();
   const [details, setDetails] = useState(null);
   const [size, setSize] = useState("");
   const { con, setcon, setCartDrawer, openCartdrawer } = CartState();
@@ -102,7 +105,6 @@ const Details = (props) => {
         setCategoryProduct([...r.category]);
         settemAllpro([...r.category]);
       });
-
     else {
       await getCategoryProduct(category).then((r) => {
         setCategoryProduct([...r.category]);
@@ -111,13 +113,9 @@ const Details = (props) => {
     }
   };
 
-
   useEffect(() => {
     gettingDetail();
-  }, [id])
-
-
-
+  }, [id]);
 
   useEffect(() => {
     if (details) {
@@ -130,26 +128,22 @@ const Details = (props) => {
         recents != null &&
         recents.filter((r) => r.id === details.id).length == 0
       ) {
-        recents.splice(0, 0, details)
+        recents.splice(0, 0, details);
         // recents.push(details);
         localStorage.setItem("recentview", JSON.stringify(recents));
       }
 
-      window.scrollTo(0, 0)
-
+      window.scrollTo(0, 0);
     }
-
   }, [details]);
 
   async function gettingDetail() {
-
-
     await DetailApi(id).then((r) => {
       setDetails({ ...r });
     });
   }
 
-  console.log(details,'check all data')
+  console.log(details, "check all data");
   // Added by Ashish Dewangan on 24-11-2022
   // Reason - To display whatsapp contact number
   const getWhatsappContactNumber = async () => {
@@ -218,10 +212,7 @@ const Details = (props) => {
   //   )
   // }
 
-
   async function AddToCart(details) {
-
-
     setPushData(false);
     if (!size.length > 0) {
       setSizecond(true);
@@ -230,16 +221,23 @@ const Details = (props) => {
 
     if (details.available == false) {
       notification.error({
-        message: <div style={{ fontSize: "18px", color: "black" }}>Not Available !</div>,
-        description:
-          `No More Stock Available`,
+        message: (
+          <div style={{ fontSize: "18px", color: "black" }}>
+            Not Available !
+          </div>
+        ),
+        description: `No More Stock Available`,
         className: "custom-class",
-        style: { backgroundColor: "#8c8c8c", color: "black", marginTop: "10vh" },
+        style: {
+          backgroundColor: "#8c8c8c",
+          color: "black",
+          marginTop: "10vh",
+        },
         duration: 2,
-        key: 1
+        key: 1,
       });
-      notAvai = true
-      setNotAvai(true)
+      notAvai = true;
+      setNotAvai(true);
     }
 
     if (!notAvai)
@@ -263,8 +261,7 @@ const Details = (props) => {
         } else if (size == "Short") {
           if (details.S < 1) setNotAvai(true);
           else saveCart(details);
-        }
-        else if (size == "Extra Short") {
+        } else if (size == "Extra Short") {
           if (details.XS < 1) setNotAvai(true);
           else saveCart(details);
         }
@@ -284,8 +281,7 @@ const Details = (props) => {
     };
 
     var access_token = localStorage.getItem("access_token");
-    const resp = await cartsaveApi({ data, access_token })
-
+    const resp = await cartsaveApi({ data, access_token });
 
     if (
       cart.filter((i) => {
@@ -374,32 +370,33 @@ const Details = (props) => {
     }
   }
   // End of code addition
-  const scroller = useRef()
+  const scroller = useRef();
   function scrolling(e) {
-    scroller.current.scrollTop = 0
+    scroller.current.scrollTop = 0;
   }
 
   // Added by rohan - 19/2/23
   // Reason-Adding buy now functionality so user able to add product in cart and redirect on cart page
   function buyNow(detail) {
-
     if (size.length == 0) {
-      setPushData(true)
+      setPushData(true);
     } else {
       cart.filter((i) => {
         if (i.id == detail.id) if (i.size == size) return i;
-      }).length > 0 ?
-        nav("/cart") :
-        AddToCart(detail)
+      }).length > 0
+        ? nav("/cart")
+        : AddToCart(detail);
     }
   }
   // end of code - 19/2/23
 
-  async function likeDelete(product){
-    const data={
-      id:product.id
-    }
-    await LikeDeleteApi(data,localStorage.getItem('access_token')).then(r=> console.log(r))
+  async function likeDelete(product) {
+    const data = {
+      id: product.id,
+    };
+    await LikeDeleteApi(data, localStorage.getItem("access_token")).then((r) =>
+      console.log(r)
+    );
 
     if (like.filter((l) => l.id === product.id).length > 0) {
       const p = like.filter((i) => i.id !== product.id);
@@ -409,17 +406,14 @@ const Details = (props) => {
     }
   }
 
-
   return (
-
-    <div style={{ maxHeight: "100vh" }} id="scrolling"  >
-
+    <div style={{ maxHeight: "100vh" }} id="scrolling">
       <Navbar />
 
       {details ? (
         <div className={styles["container"]} ref={scroller}>
-          <div className={styles["container01"]} >
-            <div className={styles["container02"]} >
+          <div className={styles["container01"]}>
+            <div className={styles["container02"]}>
               <div className={styles["image"]}>
                 <InnerImageZoom
                   src={config.staticBaseURL + details.img_main}
@@ -437,23 +431,30 @@ const Details = (props) => {
                   {/* End of comment */}
                   <span className={styles["subtitle"]}>
                     {" "}
-
                     {currency.sign}{" "}
                     {(details.price * currency.value).toFixed(2)}
                   </span>
                   {/* Added by - Ashish Dewangan on 17-02-2023
                   Reason - To add a horizontal line after price */}
-                  <div style={{ borderBottom: "1px solid lightgrey", width: "90%", marginTop: "15px" }}></div>
+                  <div
+                    style={{
+                      borderBottom: "1px solid lightgrey",
+                      width: "90%",
+                      marginTop: "15px",
+                    }}
+                  ></div>
                   {/* End of code addition */}
                   <div className={styles["container05"]}>
-
                     <div
                       class={sizeCond ? sty : "rating-container face"}
                       className={styles.sizeSlection}
                     >
-                      <span className={`${styles["textLabel"]} ${styles.sizeMargin}`}>Size : </span>
+                      <span
+                        className={`${styles["textLabel"]} ${styles.sizeMargin}`}
+                      >
+                        Size :{" "}
+                      </span>
                       {pushData ? (
-
                         <Shake>
                           <div>
                             {" "}
@@ -497,7 +498,6 @@ const Details = (props) => {
                                   for={details.id * 44}
                                   className={`${styles.subtitle} ${styles.customSubtitle}`}
                                   style={{ textDecoration: "none" }}
-
                                 >
                                   <input
                                     type="radio"
@@ -514,7 +514,6 @@ const Details = (props) => {
                                   for={details.id * 88}
                                   className={`${styles.subtitle} ${styles.customSubtitle}`}
                                   style={{ textDecoration: "none" }}
-
                                 >
                                   <input
                                     type="radio"
@@ -531,7 +530,6 @@ const Details = (props) => {
                                   for={details.id * 108}
                                   className={`${styles.subtitle} ${styles.customSubtitle}`}
                                   style={{ textDecoration: "none" }}
-
                                 >
                                   <input
                                     type="radio"
@@ -541,7 +539,6 @@ const Details = (props) => {
                                     value="Extra Large"
                                     onChange={(e) => onChange(e.target.value)}
                                     style={{ textDecoration: "none" }}
-
                                   />
                                   <span class="span">XL</span>
                                 </label>
@@ -595,7 +592,9 @@ const Details = (props) => {
                           </div>
                         </Shake>
                       ) : (
-                        <div style={{ display: "flex", flexDirection: 'column' }}>
+                        <div
+                          style={{ display: "flex", flexDirection: "column" }}
+                        >
                           <div class="rating">
                             <form class="rating-form">
                               {/* Commented by - Ashish Dewangan on 17-02-2023
@@ -620,7 +619,6 @@ const Details = (props) => {
                                 for={details.id}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
                                 style={{ textDecoration: "none" }}
-
                               >
                                 <input
                                   type="radio"
@@ -637,7 +635,6 @@ const Details = (props) => {
                                 for={details.id * 44}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
                                 style={{ textDecoration: "none" }}
-
                               >
                                 <input
                                   type="radio"
@@ -654,7 +651,6 @@ const Details = (props) => {
                                 for={details.id * 88}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
                                 style={{ textDecoration: "none" }}
-
                               >
                                 <input
                                   type="radio"
@@ -671,7 +667,6 @@ const Details = (props) => {
                                 for={details.id * 108}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
                                 style={{ textDecoration: "none" }}
-
                               >
                                 <input
                                   type="radio"
@@ -733,7 +728,6 @@ const Details = (props) => {
                           ) : null}
                         </div>
                       )}
-
                     </div>
 
                     {/* <div className={styles.charts}> */}
@@ -766,7 +760,9 @@ const Details = (props) => {
                     <Modal
                       style={{ top: 0 }}
                       className={styles["modalStyleCustomTailored"]}
-                      bodyStyle={{ backgroundColor: "var(--modalBodyBackgroundColor)" }}
+                      bodyStyle={{
+                        backgroundColor: "var(--modalBodyBackgroundColor)",
+                      }}
                       footer={null}
                       title="CUSTOM TAILORED"
                       visible={isCustomTailoredVisible}
@@ -798,7 +794,6 @@ const Details = (props) => {
                     {/* End of code addition */}
                   </div>
 
-
                   <div
                     className={` ${styles["customButtonContainer"]} `}
                     style={{}}
@@ -818,9 +813,7 @@ const Details = (props) => {
                           className={` ${styles["button"]} `}
                           onClick={(e) => AddToCart(details)}
                         >
-                          <span style={{ margin: "auto" }}>
-                            ADD TO BAG
-                          </span>
+                          <span style={{ margin: "auto" }}>ADD TO BAG</span>
                         </button>
                       )}
 
@@ -828,59 +821,54 @@ const Details = (props) => {
                         className={` ${styles["button2"]} `}
                         onClick={(e) => buyNow(details)}
                       >
-                        <span style={{ margin: "auto" }}>
-
-                          BUY NOW
-
-                        </span>
+                        <span style={{ margin: "auto" }}>BUY NOW</span>
                       </button>
-
-                      
                     </div>
 
                     {like.filter((l) => l.id === details.id).length > 0 ? (
-                        // <AiFillHeart
-                        //   style={{
-                        //     color: "red",
-                        //     width: "25px",
-                        //     height: "25px",
-                        //   }}
-                        //   onClick={(e) => LikedSave(details)}
-                        // />
-                        <button
-                          className={` ${styles["button3"]} `}
-                          onClick={(e) => likeDelete(details)}
-                        >
-                          <span style={{ margin: "auto", paddingLeft: "10px" }}>
-                            REMOVE TO WISHLIST
-                          </span>
-                          <div class="placement">
-                            <div class="heart is-active" onClick={(e) => LikedSave(details)}></div>
-                          </div>
-                        </button>
-
-                      ) : (
-                        // <AiOutlineHeart
-                        //   style={{
-                        //     width: "25px",
-                        //     height: "25px",
-                        //   }}
-                        //   onClick={(e) => LikedSave(details)}
-                        // />
-                        <button
-                          className={` ${styles["button3"]} `}
-                          onClick={(e) => LikedSave(details)}
-                        >
-                          <span style={{ margin: "auto" }}>
-                            ADD TO WISHLIST
-                          </span>
-                          <div class="placement">
-                            <div class="heart" onClick={(e) => LikedSave(details)}></div>
-                          </div>
-                        </button>
-
-                      )}
-
+                      // <AiFillHeart
+                      //   style={{
+                      //     color: "red",
+                      //     width: "25px",
+                      //     height: "25px",
+                      //   }}
+                      //   onClick={(e) => LikedSave(details)}
+                      // />
+                      <button
+                        className={` ${styles["button3"]} `}
+                        onClick={(e) => likeDelete(details)}
+                      >
+                        <span style={{ margin: "auto", paddingLeft: "10px" }}>
+                          REMOVE TO WISHLIST
+                        </span>
+                        <div class="placement">
+                          <div
+                            class="heart is-active"
+                            onClick={(e) => LikedSave(details)}
+                          ></div>
+                        </div>
+                      </button>
+                    ) : (
+                      // <AiOutlineHeart
+                      //   style={{
+                      //     width: "25px",
+                      //     height: "25px",
+                      //   }}
+                      //   onClick={(e) => LikedSave(details)}
+                      // />
+                      <button
+                        className={` ${styles["button3"]} `}
+                        onClick={(e) => LikedSave(details)}
+                      >
+                        <span style={{ margin: "auto" }}>ADD TO WISHLIST</span>
+                        <div class="placement">
+                          <div
+                            class="heart"
+                            onClick={(e) => LikedSave(details)}
+                          ></div>
+                        </div>
+                      </button>
+                    )}
 
                     {/* <div className={` ${styles["iconButtonsContainer"]} `}> */}
                     {/* {like.filter((l) => l.id === details.id).length > 0 ? (
@@ -924,7 +912,6 @@ const Details = (props) => {
                     {/* End of code modification */}
                     {/* </div> */}
                   </div>
-
 
                   {/* Commented and modified by - Ashish Dewangan on 17-02-2023
                   Reason - To hide unnecessary details
@@ -978,15 +965,15 @@ const Details = (props) => {
 
                   {/* Addition by Om Shrivastava on 04-11-23
                   Reason : Set the Care tip functionality */}
-                  {details?.careTip && details.careTip.length>0?
-                  <div className={styles["container06"]}>
-                    <span className={styles["textLabel"]}>Care Tip </span>
-                    <span className={styles["textLabel"]}>:</span>
-                    <span className={styles["textDescription"]}>
-                      {details.careTip}
-                    </span>
-                  </div>
-                  :null}
+                  {details?.careTip && details.careTip.length > 0 ? (
+                    <div className={styles["container06"]}>
+                      <span className={styles["textLabel"]}>Care Tip </span>
+                      <span className={styles["textLabel"]}>:</span>
+                      <span className={styles["textDescription"]}>
+                        {details.careTip}
+                      </span>
+                    </div>
+                  ) : null}
                   {/* End of Addition by Om Shrivastava on 04-11-23
                   Reason : Set the Care tip functionality */}
 
@@ -1033,7 +1020,6 @@ const Details = (props) => {
                         className={styles["textLabel"]}
                         style={{ display: "inline-block", marginRight: "3px" }}
                       >
-
                         {/* Standard Shipping{" "} */}
                         Delivery Time{" "}
                       </span>
@@ -1122,21 +1108,23 @@ const Details = (props) => {
                     > Contact Us  </Link> */}
                     <Link
                       to="/refund-policy"
-                      className={styles["subtitle", "hoverableSubtitle"]}
+                      className={styles[("subtitle", "hoverableSubtitle")]}
                       style={{
                         textDecoration: "none",
                         letterSpacing: "1px",
                         fontSize: "14px",
                       }}
-                    > Return Policy  </Link>
+                    >
+                      {" "}
+                      Return Policy{" "}
+                    </Link>
                     <Link
                       to="/delivery-policy"
-                      className={styles["subtitle", "hoverableSubtitle"]}
+                      className={styles[("subtitle", "hoverableSubtitle")]}
                       style={{
                         textDecoration: "none",
                         letterSpacing: "1px",
                         fontSize: "14px",
-
                       }}
                     >
                       | Shipping Policy
@@ -1171,33 +1159,35 @@ const Details = (props) => {
             <div className={styles.image_gallery}>
               <div className={styles.column}>
                 <div className={styles.image_item}>
-                  {details.img_sub1 != "/media/null" ?
+                  {details.img_sub1 != "/media/null" ? (
                     <InnerImageZoom
                       className={styles.img}
                       src={config.staticBaseURL + details.img_sub1}
                       zoomSrc={config.staticBaseURL + details.img_sub1}
-                    /> : null}
-
+                    />
+                  ) : null}
                 </div>
               </div>
               <div className={styles.column}>
                 <div className={styles.image_item}>
-                  {details.img_sub2 != "/media/null" ?
+                  {details.img_sub2 != "/media/null" ? (
                     <InnerImageZoom
                       className={styles.img}
                       src={config.staticBaseURL + details.img_sub2}
                       zoomSrc={config.staticBaseURL + details.img_sub2}
-                    /> : null}
+                    />
+                  ) : null}
                 </div>
               </div>
               <div className={styles.column}>
                 <div className={styles.image_item}>
-                  {details.img_sub3 != "/media/null" ?
+                  {details.img_sub3 != "/media/null" ? (
                     <InnerImageZoom
                       className={styles.img}
                       src={config.staticBaseURL + details.img_sub3}
                       zoomSrc={config.staticBaseURL + details.img_sub3}
-                    /> : null}
+                    />
+                  ) : null}
                 </div>
               </div>
             </div>
@@ -1250,11 +1240,18 @@ const Details = (props) => {
             <Slider />
           </div> */}
 
-          <div style={{ width: "100%", zIndex: "1" }} >
+          <div style={{ width: "100%", zIndex: "1" }}>
             <Slider2 scrollTop={scrolling} />
             <Slider scrollTop={scrolling} />
           </div>
-
+          <div style={{marginBottom:'12px'}}>
+            <a
+              href="/"
+              class="btn-flip"
+              data-back="Back to Collection"
+              data-front="Back to Collection"
+            ></a>
+          </div>
           {/* Commented by - Ashish Dewangan on 15-02-2023
             Reason - To hide the text that appear after footer */}
           {/* <div className={styles.foot}> */}
@@ -1267,10 +1264,7 @@ const Details = (props) => {
       ) : (
         "loading"
       )}
-
     </div>
-
-
   );
 };
 

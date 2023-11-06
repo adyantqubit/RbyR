@@ -40,8 +40,12 @@
     width: 100%;
 
     /* height: 100%; */
-    height: 93%;
-
+    /* Modification and addition by Om Shrivastava on 05-11-23
+    Reason : Need to set the height of the image*/
+    /* height: 93%; */
+    height: 85%;
+    /* End of modification and addition by Om Shrivastava on 05-11-23
+    Reason : Need to set the height of the image*/
     filter: brightness(90%);
     /* Modification and addition by Om Shrivastava on 04-11-23
     Reason : Need to decrease the box shadow*/
@@ -84,7 +88,12 @@
     Reason : Set the bottom space */
     /* bottom: 15px; */
     /* bottom: 37px; */
-    bottom: 45px;
+    /* Modification and addition by Om Shrivastava on 05-11-23
+    Reason : Need to set the bottom content  */
+    /* bottom: 45px; */
+    bottom: 90px;
+    /* End of Modification and addition by Om Shrivastava on 05-11-23
+    Reason : Need to set the bottom content */
     /* End of modification and addition by Om Shrivastava on 04-11-23
     Reason : Set the bottom space */
     left: 0;
