@@ -55,7 +55,8 @@
   }
 
   .font{
-    font-family: "MyFont";
+    font-family: var(--fontFamily);
+
     color:var(--textColorPrimary);
   }
 

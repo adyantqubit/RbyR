@@ -65,7 +65,7 @@ const Chat = () => {
   //  console.log(document.getElementsByClassName('floating-whatsapp-button')[0].childNodes[0].style.animation)
   }}>
   <FloatingWhatsApp
-  avatar={logo?config.staticBaseURL+ logo:logoavatar}
+  avatar={logo?config.staticBaseURL+"media/"+ logo:logoavatar}
   phoneNumber={`+91 ${whatsappContactNumber}`} 
   onSubmit	={e=>handleNewUserMessage(e)}
   accountName="RBYR Exclusive"

@@ -199,7 +199,7 @@ const ShrinkHeader = () => {
           {/* Added by -Rohan 30/12/22
               Reason- showing parent menu coming from backend */}
           <Link to="/" className={style.drawerMenu} onClick={toggleDrawer}>
-            HOME
+            Home
           </Link>
           {
             menus?.map((m, i) => {
@@ -230,7 +230,7 @@ const ShrinkHeader = () => {
 
           <Link to={`/listing/ready to ship/0`} className={style.drawerMenu}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer() }}>
-              <span>READY TO SHIP</span> <AiOutlineRight />
+              <span>Ready to ship</span> <AiOutlineRight />
             </div>
           </Link>
 
@@ -243,7 +243,7 @@ const ShrinkHeader = () => {
           </Link> */}
           <Link to="/AboutRR" className={style.drawerMenu}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer() }}>
-              <span>WORLD OF RbyR</span> <AiOutlineRight />
+              <span>World of RbyR</span> <AiOutlineRight />
             </div>
           </Link>
           {/* End of code modification */}
@@ -251,7 +251,7 @@ const ShrinkHeader = () => {
 
           
           <Link to='/custom' className={style.drawerMenu} onClick={toggleDrawer}>
-            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> CONTACT US</span> </div>
+            <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }}><span> Contact us</span> </div>
           </Link>
 
           <div className={style.drawerMenu} >
@@ -266,7 +266,7 @@ const ShrinkHeader = () => {
                 toggleDrawer()
               }
             }}>
-              <span> MY ACCOUNT</span><AiOutlineRight />
+              <span> My account</span><AiOutlineRight />
             </div>
           </div>
         </div>

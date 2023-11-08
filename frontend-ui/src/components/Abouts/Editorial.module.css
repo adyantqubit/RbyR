@@ -88,7 +88,8 @@
     border-width: 2px;
     border-style: solid;
     border-color: #323232;
-    font-family: 'MyFont2';
+    font-family: var(--fontFamily);
+
     -webkit-border-image: initial;
     -o-border-image: initial;
     border-image: initial;
@@ -116,7 +117,8 @@
    font-size: 18px;
    line-height: 26px;
    letter-spacing: 1px;
-   font-family: 'MyFont2';
+   font-family: var(--fontFamily);
+
    font-weight: 500;
    color:white;
 
@@ -128,7 +130,8 @@
     font-size: 18px;
     line-height: 26px;
     letter-spacing: 1px;
-    font-family: 'MyFont2';
+    font-family: var(--fontFamily);
+
     font-weight: 500;
 
 }

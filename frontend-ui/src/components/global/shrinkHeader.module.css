@@ -185,3 +185,12 @@
         height: 40px;
     }
 }
+@media (max-width: 470px) {
+    .img {
+        height: 50px;
+        width: 90px;
+    }
+    .number{
+        margin-top: 0px;
+    }
+}

@@ -10,7 +10,8 @@
 }
 
 @font-face {
-  font-family: 'MyFont';
+     font-family: var(--fontFamily);
+
   src: local('MyFont'), url(../../assets/font/RawsonAltRegular.woff) format('woff');
   /* other formats include: 'woff2', 'truetype, 'opentype',
                             'embedded-opentype', and 'svg' */
@@ -35,11 +36,13 @@
   line-height: 22px;
   /* letter-spacing: 1.2px; */
   font-weight: 600;
-  /* font-family: 'MyFont'; */
+  /*    font-family: var(--fontFamily);
+ */
   /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : need to add the font family  */
   /* letter-spacing: 2px; */
-  /* font-family: 'MyFont'; */
+  /*    font-family: var(--fontFamily);
+ */
   font-family: var(--fontFamily);;
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
@@ -81,7 +84,8 @@
   /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : need to add the font family  */
   /* letter-spacing: 2px; */
-  /* font-family: 'MyFont'; */
+  /*    font-family: var(--fontFamily);
+ */
   font-family: var(--fontFamily);;
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
@@ -98,7 +102,8 @@
     line-height: 22px;
     letter-spacing: 1.2px;
     text-transform: uppercase;
-    font-family: 'MyFont';
+    font-family: var(--fontFamily);
+
   font-weight: 550;
   color:#212121
 
@@ -172,7 +177,7 @@ justify-content: space-between;
   /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : Change the font family */
   /* font-family: 'MyFont'; */
-  font-family: "Lora";
+  font-family: var(--fontFamily);
   /* End of Modification and addition by Om Shrivastava on 27-10-23 
   Reason : Change the font family */
   font-weight: 400;
@@ -317,7 +322,8 @@ justify-content: space-between;
     font-size: 18px;
     line-height: 26px;
     letter-spacing: 2.5px;
-    font-family: 'MyFont';
+       font-family: var(--fontFamily);
+
     font-weight: 500;
     color: #000;
     text-transform: uppercase;
@@ -330,7 +336,8 @@ justify-content: space-between;
     letter-spacing: 1.2px;
     /* color: #8c8c8c; */
     text-transform: uppercase;
-    font-family: 'MyFont';
+       font-family: var(--fontFamily);
+
     font-weight: 500;
 
 }
@@ -341,7 +348,8 @@ justify-content: space-between;
   letter-spacing: 1.2px;
   color: #000;
   text-transform: uppercase;
-  font-family: 'MyFont';
+     font-family: var(--fontFamily);
+
   font-weight: 500;
 
 }
@@ -449,7 +457,8 @@ justify-content: space-between;
   font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
-    font-family: 'MyFont';
+       font-family: var(--fontFamily);
+
     font-weight: 500;
     margin: 0;
 }
@@ -461,7 +470,8 @@ justify-content: space-between;
   letter-spacing: 1px;
   color: var(--textColorPrimary);
   text-transform: uppercase;
-  font-family: 'MyFont';
+     font-family: var(--fontFamily);
+
   font-weight: 500;
   margin: 0;
   
@@ -511,7 +521,8 @@ justify-content: space-between;
   letter-spacing: 1px;
   color: #8c8c8c;
   text-transform: uppercase;
-  font-family: 'MyFont';
+     font-family: var(--fontFamily);
+
   font-weight: 500;
   margin: 0;
 
@@ -562,7 +573,8 @@ justify-content: space-between;
   font-size: 20px;
     line-height: 28px;
     letter-spacing: 2.5px;
-    font-family: 'MyFont';
+       font-family: var(--fontFamily);
+
     font-weight: 600;
     margin: 0 ;
      /* Modification and addition by Om Shrivastava on 28-10-23
@@ -584,7 +596,8 @@ justify-content: space-between;
   height: 30px;
   text-align: center;
   padding:4px 0;
-  font-family: "MyFont";
+  font-family: var(--fontFamily);
+
   letter-spacing: 1.2px;
   background-color: #000;
   color:white;
@@ -678,6 +691,7 @@ justify-content: space-between;
   .bottom{
     margin-top: -15px;
     justify-content: center;
+
   }
   
 
@@ -813,6 +827,11 @@ justify-content: space-between;
   .readyBox{
     font-size: 10px;
   }
+  .category{
+    gap: 12px;
+
+  }
+  
    /* End of addition by Om Shrivastava on 06-11-23
   Reason : Set the font size */
  }

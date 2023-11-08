@@ -1,7 +1,8 @@
 @import '../../root.css';
 
 @font-face {
-    font-family: 'MyFont';
+        font-family: "MyFont";
+
     src: local('MyFont'), url(../../assets/font/RawsonAltRegular.woff) format('woff');
     /* other formats include: 'woff2', 'truetype, 'opentype',
                               'embedded-opentype', and 'svg' */
@@ -199,7 +200,8 @@
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
-    font-family: 'MyFont';
+        font-family: var(--fontFamily);
+
     white-space: nowrap;
 }
 
@@ -208,7 +210,8 @@
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
-    font-family: 'MyFont';
+        font-family: var(--fontFamily);
+
 }
 
 .userinfoTextHIDE {
@@ -217,7 +220,8 @@
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
-    font-family: 'MyFont';
+        font-family: var(--fontFamily);
+
 }
 
 .userinfoText2 {
@@ -225,7 +229,8 @@
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
-    font-family: 'MyFont';
+        font-family: var(--fontFamily);
+
 }
 
 .details {
@@ -283,7 +288,8 @@
     line-height: 22px;
     letter-spacing: 1.2px;
     font-weight: 600;
-    font-family: 'MyFont';
+        font-family: var(--fontFamily);
+
 }
 
 .userinfoText {
@@ -292,7 +298,8 @@
     line-height: 22px;
     letter-spacing: 1.2px;
     font-weight: 800;
-    font-family: 'MyFont';
+        font-family: var(--fontFamily);
+
 }
 
 .inputr:focus {
@@ -332,7 +339,8 @@
     /* color: white !important; */
     text-align: center;
     opacity: 1;
-    font-family: 'MyFont';
+        font-family: var(--fontFamily);
+
     position: relative;
     font-weight: normal;
     text-transform: uppercase;

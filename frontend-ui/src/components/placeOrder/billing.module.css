@@ -62,7 +62,8 @@
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
-    font-family: 'MyFont';
+    font-family: var(--fontFamily);
+
 }
 
 .userinfoText2{
@@ -71,7 +72,8 @@
     word-break: normal;
     line-height: 22px;
     letter-spacing: 1.2px;
-    font-family: 'MyFont';
+    font-family: var(--fontFamily);
+
 }
 
 .invoice{
@@ -92,7 +94,8 @@
     font-size: 30px;
     height:100%;
     color: var(--textColorSecondary);
-    font-family: 'MyFont';
+    font-family: var(--fontFamily);
+
     text-align: center;
     letter-spacing:2px;
 }
@@ -114,7 +117,8 @@
 
 .columnitem1head{
     margin-top:5px;
-    font-family: 'MyFont';
+    font-family: var(--fontFamily);
+
     font-weight: 400;
     color:var(--textColorPrimary);
     font-size: 16px;

@@ -269,7 +269,7 @@ const Navbar = () => {
                   <Link  className={style.al} to="/listing/world_of_rbyr" onClick={e=>setCategorySelected([])} style={{textTransform:"none"}}>WORLD OF RbyR</Link>
                 </li> */}
                 <li className={style.services}>
-                  <Link className={style.al} to="/" style={{ fontSize: "16px" }}>HOME</Link>
+                  <Link className={style.al} to="/" style={{ fontSize: "16px" }}>Home</Link>
                 </li>
 
                 {menus?.map((m, i) => {
@@ -308,11 +308,11 @@ const Navbar = () => {
                 })}
 
                 <li className={style.services}>
-                  <Link className={style.al} to="/listing/ready to ship/0" style={{ fontSize: "16px" }} onClick={e => setCategorySelected([])}>READY TO SHIP</Link>
+                  <Link className={style.al} to="/listing/ready to ship/0" style={{ fontSize: "16px" }} onClick={e => setCategorySelected([])}>Ready to ship</Link>
                 </li>
 
                 <li className={style.services}>
-                  <Link className={style.al} to="/aboutRR" style={{ fontSize: "16px" }}>WORLD OF RbyR</Link>
+                  <Link className={style.al} to="/aboutRR" style={{ fontSize: "16px" }}>World of RbyR</Link>
                   {/* Commented by - Ashish Dewangan on 15-02-2023
                   Reason - To hide submenu of world of rbyr */}
                   {/*                 

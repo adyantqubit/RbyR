@@ -5,7 +5,8 @@
     /* --bannerColor:#8e6ea6; */
     
     /* --bannerColor:#bbe26c; */
-    --bannerColor:#b7c796b9;
+    /* --bannerColor:#b7c796b9; */
+    --bannerColor:#dfd6cb;
 
     /* --bannerColor:#14b563; */
 
@@ -39,7 +40,9 @@
 
     /* Modification and addition by Om Shrivastava on 27-10-23
     Reason : Add the globally font family and letter spacing  */
-    --fontFamily : "Lora";
+    /* --fontFamily : "Lora"; */
+    --fontFamily : "sans-serif";
+
     --letterSpacing : 1px;
     /* End of modification and addition by Om Shrivastava on 27-10-23
     Reason : Add the globally font family and letter spacing */

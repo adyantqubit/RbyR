@@ -8,7 +8,7 @@ font-weight: 600;
 .Dropdown-control{
   height:35px;
   /* background:var(--backgroundColorPrimary); */
-  background: #d8d8cd;
+  /* background: #d8d8cd; */
 
   color:black;
   border:0;
@@ -80,6 +80,9 @@ font-weight: 600;
   }
 }
 
+.Dropdown-control {
+  background-color: #ced0c4;
+}
 
 @media only screen and (max-width: 768px) {
   .right{

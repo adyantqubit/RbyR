@@ -155,7 +155,9 @@
 	justify-content: center;
 	display: block;
 	color: #fff;
-	background: #573b8a;
+	/* background: #573b8a; */
+	background: black;
+
 	font-size: 1em;
 	font-weight: bold;
 	margin-top: 20px;
@@ -172,7 +174,9 @@
   Reason : Remove the letter spacin  */
 }
 .butto:hover{
-	background: #6d44b8;
+	/* background: #6d44b8; */
+	background: rgb(77, 72, 72);
+
 }
 .logi{
 	width: 80%;
@@ -184,7 +188,9 @@
 	transition: .8s ease-in-out;
 }
 .logi .labe{
-	color: #573b8a;
+	/* color: #573b8a; */
+	color: black;
+
 	transform: scale(.6);
 	 /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacing */

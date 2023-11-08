@@ -22,7 +22,7 @@
     /* Modification and addition by Om Shrivastava on 27-10-23
     Reason : Set the font family of the anchor tag */
     /* font-family: "Rawson-Regular"; */
-    font-family: "Lora";
+    font-family: var(--fontFamily);
     /*End of modification and addition by Om Shrivastava on 27-10-23
     Reason : Set the font family of the anchor tag */
     cursor: pointer;
@@ -150,6 +150,7 @@
     max-width: 70%;
     justify-content: center;
     font-size: 16px;
+    gap: 12px;
    }
    .menu li:hover {
     /* transition: 0.3s ease; */
@@ -421,7 +422,8 @@ input[type=checkbox]:checked ~ .menu{
   .action .menu2 .ul .l {
 	list-style: none;
 	padding: 8px 0;
-  font-family: "MyFont";
+  font-family: var(--fontFamily);
+
   letter-spacing: 1.2px;
 	border-top: 1px solid rgba(0, 0, 0, 0.05);
 	display: flex;

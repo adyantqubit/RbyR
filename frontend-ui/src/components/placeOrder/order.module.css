@@ -24,7 +24,8 @@
     letter-spacing: 1.4px;
     font-weight: 550;
     display: flex;
-    font-family: 'MyFont';
+    font-family: var(--fontFamily);
+
     flex-direction: column;
     justify-content: center;
     padding: 0 5%;
@@ -32,7 +33,8 @@
 }
 
 .headText {
-    font-family: "MyFont2";
+    font-family: var(--fontFamily);
+
     border-bottom: 1px solid #8c8c8c;
     padding-bottom: 15px;
     padding-top: 6vh;
@@ -127,7 +129,8 @@
 
 .columnitem1head {
     margin-top: 15px;
-    font-family: 'MyFont';
+      font-family: var(--fontFamily);
+
     font-weight: 400;
     color: black;
     font-size: 16px;
@@ -166,7 +169,8 @@
     line-height: 20px;
     letter-spacing: 1px;
     color: black;
-    font-family: 'MyFont';
+      font-family: var(--fontFamily);
+
 }
 
 .firstInput {
@@ -246,7 +250,8 @@
     color: var(--btnTextColorSecondary) !important;
     text-align: center;
     opacity: 1;
-    font-family: 'MyFont';
+      font-family: var(--fontFamily);
+
     position: relative;
     font-weight: normal;
     text-transform: uppercase;
@@ -283,7 +288,8 @@
     color: white;
     text-align: center;
     opacity: 1;
-    font-family: 'MyFont';
+      font-family: var(--fontFamily);
+
     position: relative;
     font-weight: normal;
     outline: none;
@@ -321,7 +327,8 @@
     color: white !important;
     text-align: center;
     opacity: 1;
-    font-family: 'MyFont';
+      font-family: var(--fontFamily);
+
     position: relative;
     font-weight: normal;
     text-transform: uppercase;
@@ -352,7 +359,8 @@
     line-height: 22px;
     letter-spacing: 1.2px;
     font-weight: 600;
-    font-family: 'MyFont';
+      font-family: var(--fontFamily);
+
 }
 
 .userinfoText2 {
@@ -361,7 +369,8 @@
     line-height: 22px;
     letter-spacing: 1.2px;
     font-weight: 600;
-    font-family: 'MyFont';
+      font-family: var(--fontFamily);
+
 }
 
 .userinfoText3 {
@@ -370,7 +379,8 @@
     line-height: 22px;
     letter-spacing: 1.2px;
     font-weight: 500;
-    font-family: 'MyFont2';
+    font-family: var(--fontFamily);
+
 }
 
 .ship {
@@ -384,7 +394,8 @@
     line-height: 20px;
     letter-spacing: 1px;
     /* padding: 2px 5px; */
-    font-family: "MyFont";
+        font-family: var(--fontFamily);
+
     /* border: .1rem solid black; */
     font-weight: 600;
     cursor: pointer;
@@ -465,7 +476,8 @@
     line-height: 22px;
     letter-spacing: 1.2px;
     color: black;
-    font-family: "MyFont";
+        font-family: var(--fontFamily);
+
     font-weight: 500;
 }
 
@@ -493,7 +505,8 @@
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
-    font-family: 'MyFont';
+    font-family: var(--fontFamily);
+
     color: black;
     font-weight: 600;
 }

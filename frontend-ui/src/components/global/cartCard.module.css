@@ -14,7 +14,8 @@
   letter-spacing: 2.5px;
   margin-left: 15px;
   width:85%;
-   font-family: 'MyFont' !important;
+  font-family: var(--fontFamily);
+
 }
 
 .apply{
@@ -33,7 +34,8 @@
 
 .price{
   font-size: 16px;
-  font-family: 'MyFont';
+     font-family: var(--fontFamily);
+
   font-weight: 400;
   
 }
@@ -130,7 +132,8 @@
 
 .summ{
  
-  font-family: 'MyFont';
+     font-family: var(--fontFamily);
+
   font-weight: 600;
   margin: 15px;
   padding-top: 20px;
@@ -151,7 +154,8 @@
   line-height: 24px;
   letter-spacing: 1.4px;
   color:var(--textColorSecondary);
-  font-family: 'MyFont';
+     font-family: var(--fontFamily);
+
 }
 
 .shopbtn1{
@@ -193,7 +197,8 @@
  color: var(--btnTextColorSecondary) !important;
  text-align: center;
  opacity: 1;
- font-family: 'MyFont';
+    font-family: var(--fontFamily);
+
  position: relative;
  font-weight: normal;
  text-transform: uppercase;
@@ -435,7 +440,8 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-       font-family: 'MyFont' !important;
+      font-family: var(--fontFamily);
+
     }
 
     .buttons{

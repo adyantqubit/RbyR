@@ -411,7 +411,7 @@ const ListPage = () => {
                 <span
                   style={{
                     fontSize: "14px",
-                    fontFamily: "Lora",
+                    fontFamily: "sans-serif",
                     letterSpacing: "1px",
                   }}
                 >

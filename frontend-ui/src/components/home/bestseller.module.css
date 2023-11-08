@@ -121,7 +121,8 @@
     border: none;
     transition: all .5s ease;
     background: transparent;
-    font-family: "MyFont";
+    font-family: var(--fontFamily);
+
 }
 
 .button:hover {

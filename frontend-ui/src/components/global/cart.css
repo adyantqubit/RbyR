@@ -34,7 +34,8 @@
   line-height: 26px;
   letter-spacing: 2.5px;
   margin-left: 15px;
-   font-family: 'MyFont' !important;
+  font-family: var(--fontFamily);
+
 }
 
 .ant-popover-buttons {
@@ -65,7 +66,8 @@
     background:#5c5c5c;
     color:white;
     font-size: 16px;
-    font-family: 'MyFont';
+    font-family: var(--fontFamily);
+
     border: none;
     letter-spacing: 2px;
     border: 0px solid white;
@@ -98,7 +100,8 @@
     color:white;
     min-height: 35px;
     font-size: 16px;
-    font-family: 'MyFont';
+    font-family: var(--fontFamily);
+
     letter-spacing: 2px;
     border: 0px solid white;
 

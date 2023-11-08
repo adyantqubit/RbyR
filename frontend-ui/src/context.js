@@ -180,12 +180,10 @@ const Context = ({ children }) => {
     await regenaratingTokenApi(data).then(r => {
       if (r.error) {
 
-
         removeToken()
         setLike([])
         this.clearInterval()
         window.location.reload(false)
-
 
       }
       else {
@@ -263,7 +261,7 @@ const Context = ({ children }) => {
   //Default Shipping Get
 
   async function DefaultShipping() {
-    await shippingTickGet().then(r => r.map(s => {
+    await shippingTickGet().then(r => r?.map(s => {
       if (s.isSelected) {
         const shippingData = {
           firstname: s.firstname,
