@@ -802,5 +802,18 @@ justify-content: space-between;
   .TopContent{
     padding-left: 0px;
   }
+  /* Addition by Om Shrivastava on 06-11-23
+  Reason : Set the font size */
+  .title{
+    font-size: 12px;
+  }
+  .price{
+    font-size: 12px;
+  }
+  .readyBox{
+    font-size: 10px;
+  }
+   /* End of addition by Om Shrivastava on 06-11-23
+  Reason : Set the font size */
  }
 

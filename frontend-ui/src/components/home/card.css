@@ -29,8 +29,14 @@ body{
 
 
 img {
-  height: auto;
-  max-width: 100%;
+  /* Modification and addition by Om Shrivastava on 06-11-23
+  Reason : Set the width and height  */
+  /* height: auto; */
+  height: 450px;
+  width: 310px;
+  /* max-width: 100%; */
+   /* Edd of  Modification and addition by Om Shrivastava on 06-11-23
+  Reason : Set the width and height  */
   vertical-align: middle;
 }
 
@@ -130,3 +136,18 @@ img {
   font-weight: 400;
 }
 
+@media only screen and (max-width: 578px) {
+  img{
+    width:250px;
+    height: 320px;
+  }
+  
+}
+
+@media only screen and (max-width: 420px) {
+  img{
+    width:150px;
+    height: 220px;
+  }
+  
+}

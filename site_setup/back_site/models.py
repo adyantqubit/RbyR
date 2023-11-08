@@ -631,6 +631,11 @@ class Online_Qr(models.Model):
     bank_name=models.CharField(max_length=30)
     account_number=models.CharField(max_length=18)
     upi_id=models.CharField(max_length=50)
+    # Addition by Om Shrivastava on 08-11-23
+    # Reason : Set the contact number 
+    contact_number=models.CharField(max_length=20,validators=[validate_phone_number],null=True)
+    # Addition by Om Shrivastava on 08-11-23
+    # Reason : Set the contact number 
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self):

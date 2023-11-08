@@ -41,14 +41,26 @@ const Contact = () => {
                     </span>
 
                     <span className={style.head2}>
-                      {parse(contact.subtitle2)}
+                       {/* Modification and addition by Om Shrivastava on 08-11-23
+                      Reason : When the data is not there then no need to show this div  */}
+                      {contact && contact.subtitle2 ? 
+                    parse(contact.subtitle2)
+                    :null}
+                     {/* End of modification and addition by Om Shrivastava on 08-11-23
+                      Reason : When the data is not there then no need to show this div  */}
                     </span>
                     <span dangerouslySetInnerHTML={{__html:contact.content2}} className={style.body}>
                       {/* {parse(contact.content2)} */}
                     </span>
 
                     <span className={style.head2}>
-                      {parse(contact.subtitle3)}
+                      {/* Modification and addition by Om Shrivastava on 08-11-23
+                      Reason : When the data is not there then no need to show this div  */}
+                      {contact && contact.subtitle3 ? 
+                    parse(contact.subtitle3)
+                    :null}
+                     {/* End of modification and addition by Om Shrivastava on 08-11-23
+                      Reason : When the data is not there then no need to show this div  */}
                     </span>
                     <span  dangerouslySetInnerHTML={{__html:contact.content3}} className={style.body}>
                       {/* {parse(contact.content3)} */}

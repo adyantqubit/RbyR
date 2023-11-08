@@ -45,16 +45,18 @@ import Editorialpage from './components/Abouts/EditorialPage';
 import Categories from './components/listing/Categories';
 import Test from './components/test/Test';
 import TermsWithoutHeader from './components/footer pages/tacWithoutHeader';
+import { CartState } from './context';
 
 function App() {
   // notification.destroy()
+
+
   var access_token=0;
   useEffect(()=>{
      access_token=localStorage.getItem("access_token")
 
   },[localStorage.getItem("access_token")])
 
-  
   return (
     <>
     

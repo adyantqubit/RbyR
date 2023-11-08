@@ -107,6 +107,7 @@ const Navbar = () => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch();
+  
   const { data, isSuccess } = useGetLoggedUserQuery(access_token)
   const [userdata, setUserData] = useState({
     email: "",

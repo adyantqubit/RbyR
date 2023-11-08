@@ -300,6 +300,7 @@ class QrDetailSerializer(serializers.ModelSerializer):
          class Meta:
            model=Online_Qr
            fields="__all__"            
+        #    fields=['qr_img','name','bank_name','upi_id','contact_number','account_number']
            
 class promocodeSerilizer(serializers.ModelSerializer):
     class Meta:

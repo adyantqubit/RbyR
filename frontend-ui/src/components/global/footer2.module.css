@@ -133,7 +133,12 @@
 .socialLinksTab{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    /* Modification and addition by Om Shrivastava on 06-11-23
+    Reason : Set the space  */
+    /* justify-content: space-between; */
+    justify-content: start;
+    /* End of Modification and addition by Om Shrivastava on 06-11-23
+    Reason : Set the space */
 }
 .copyrightText{
     display: flex;
@@ -290,8 +295,13 @@
         width: 5%;
         min-width: 33px;
     }
-
+ 
     .column5{
         max-width: 200px;
+/* Modification and addition by Om Shrivastava on 06-11-23
+    Reason : Set the space  */
+        padding-left: 0px;
+ /* Modification and addition by Om Shrivastava on 06-11-23
+    Reason : Set the space  */
     }
 }

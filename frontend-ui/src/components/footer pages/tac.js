@@ -47,20 +47,40 @@ notification.destroy()
                     {/* {parse(termAndCondition.content2)} */}
                     </span>
 
-                    <span className={style.subTitle}>{parse(termAndCondition.subtitle2)}</span>
+                    <span className={style.subTitle}>
+                                 {/* Modification and addition by Om Shrivastava on 08-11-23
+                      Reason : When the data is not there then no need to show this div  */}
+                      {termAndCondition && termAndCondition.subtitle2 ? 
+                    parse(termAndCondition.subtitle2)
+                    :null}
+                     {/* End of modification and addition by Om Shrivastava on 08-11-23
+                      Reason : When the data is not there then no need to show this div  */}
+                      </span>
                     <span dangerouslySetInnerHTML={{__html:termAndCondition.content3}} className={style.content}>
                     {/* {parse(termAndCondition.content3)} */}
                     </span>
 
                     <span className={style.subTitle}>
-                    {parse(termAndCondition.subtitle3)}
+                      {/* Modification and addition by Om Shrivastava on 08-11-23
+                      Reason : When the data is not there then no need to show this div  */}
+                      {termAndCondition && termAndCondition.subtitle3 ? 
+                    parse(termAndCondition.subtitle3)
+                    :null}
+                     {/* End of modification and addition by Om Shrivastava on 08-11-23
+                      Reason : When the data is not there then no need to show this div  */}
                     </span>
                     <span dangerouslySetInnerHTML={{__html:termAndCondition.content4}} className={style.content}>
                     {/* {parse(termAndCondition.content4)} */}
                     </span>
 
                     <span className={style.subTitle}>
-                    {parse(termAndCondition.subtitle4)}
+                      {/* Modification and addition by Om Shrivastava on 08-11-23
+                      Reason : When the data is not there then no need to show this div  */}
+                      {termAndCondition && termAndCondition.subtitle4 ? 
+                    parse(termAndCondition.subtitle4)
+                    :null}
+                     {/* End of modification and addition by Om Shrivastava on 08-11-23
+                      Reason : When the data is not there then no need to show this div  */}
                     </span>
                     <span dangerouslySetInnerHTML={{__html:termAndCondition.content5}} className={style.content}>
                     {/* {parse(termAndCondition.content5)} */}

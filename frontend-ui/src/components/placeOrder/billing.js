@@ -81,7 +81,12 @@ const Billing = () => {
           account_number: r.account_number,
           bank_name: r.bank_name,
           qr_img: r.qr_img,
-          upi_id: r.upi_id
+          upi_id: r.upi_id,
+          // Added by Om Shrivastava on 08-11-23
+          // Reason : Set the contact number 
+          contact_number: r.contact_number,
+          // End of Added by Om Shrivastava on 08-11-23
+          // Reason : Set the contact number 
         }
         setonlineDetail(data)
       }
@@ -92,7 +97,7 @@ const Billing = () => {
   }
 
 
-
+console.log(onlineDetail)
 
   // Added by Ashish Dewangan on 11-12-2022
   // Reason - To navigate to homepage when we click on continue shopping
@@ -117,7 +122,12 @@ const Billing = () => {
                     <div ><span className={styles.userinfoText}>Account Number:</span><span className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
                     <div ><span className={styles.userinfoText}>UPI ID:</span><span className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div>
                   </div>
-                  <div style={{ height: "60px", width: "100%" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To Admin After Paying At {storeLocatorDetails != null ? parse("PHONE:" + storeLocatorDetails[0]?.phoneNumber) : null}</span></div>
+                  {/* Modification and addition by Om Shrivastava on 08-11-23
+                  Reason : Set the contact number of payment time */}
+                  {/* <div style={{ height: "60px", width: "100%" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To Admin After Paying At {storeLocatorDetails != null ? parse("PHONE:" + storeLocatorDetails[0]?.phoneNumber) : null}</span></div> */}
+                  <div style={{ height: "60px", width: "100%" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To Admin After Paying At PHONE:{onlineDetail.contact_number}</span></div>
+                  {/* End of Modification and addition by Om Shrivastava on 08-11-23
+                  Reason : Set the contact number of payment time  */}
                 </div>
               </div> : <div>The qr Code getting error</div>
             :

@@ -10,14 +10,26 @@ import CArd2 from "./card2";
 import Chat from "../expandDetailt/chat";
 import Footer2 from "../global/footer2";
 import { getLogoAndCover } from "../../api/service";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import style from './home.module.css'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import style from "./home.module.css";
 import { notification } from "antd";
 import { CartState } from "../../context";
+import Loader from "../Loader/Loader";
 export const Home = () => {
   // const [logoAndCover, setLogoAndCover] = useState([]);
-  const {video , setVideo}=CartState()
+  const { video, setVideo } = CartState();
+  const {
+    setReload,
+    setCategorySelected,
+    firstTimeLoadFunctions,
+    menus,
+    setMenus,
+    whatsappContactNumber,
+    setWhatsappContactNumber,
+    logo,
+    setLogo,
+  } = CartState();
   // useEffect(() => {
   //   getLogoAndCoverDetail();
   // }, []);
@@ -26,27 +38,35 @@ export const Home = () => {
   //   const coverAndLogoData = await getLogoAndCover();
   //   alert(JSON.stringify(coverAndLogoData))
   //   setLogoAndCover(coverAndLogoData);
-   
+
   // };
-  notification.destroy()
-  useEffect(()=>{
-    window.scrollTo(0,0)
-  },[])
+  notification.destroy();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // alert(menus);
+
   return (
-    <div className={style.home}>
-      <NavHeader/>
-      <Slideshow />
-      <div className={style.foot}>
-      <Video url={video}/>
-      <Footer2 />
-      </div>
-      {/* <Card /> */}
-      {/* <CArd2 /> */}
-      {/* <Video /> */}
-      {/* <Footer2 />
+    <>
+      {menus && menus.length > 0 ? (
+        <div className={style.home}>
+          <NavHeader />
+          <Slideshow />
+          <div className={style.foot}>
+            <Video url={video} />
+            <Footer2 />
+          </div>
+          {/* <Card /> */}
+          {/* <CArd2 /> */}
+          {/* <Video /> */}
+          {/* <Footer2 />
       <Below /> */}
           {/* <Chat/> */}
-
-    </div>
+        </div>
+      ) : <>
+      <Loader/>
+      </>}
+    </>
   );
 };
