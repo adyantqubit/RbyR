@@ -11,11 +11,11 @@
   color:black;
   font-size: 18px;
   line-height: 26px;
-  letter-spacing: 2.5px;
+  letter-spacing: 1px;
   margin-left: 15px;
   width:85%;
   font-family: var(--fontFamily);
-
+  font-weight: bold;
 }
 
 .apply{
@@ -33,10 +33,9 @@
 }
 
 .price{
-  font-size: 16px;
+  font-size: 17px;
      font-family: var(--fontFamily);
 
-  font-weight: 400;
   
 }
 
@@ -73,6 +72,8 @@
 
 .size{
   color: var(--textColorSecondary);
+  font-size: 15px;
+  font-weight: 500;
 }
 .delete{
   padding-left: 0;
@@ -88,14 +89,15 @@
 }
 
 .shipping{
-  font-size: 12px;
+  font-size: 15px;
     line-height: 20px;
     letter-spacing: 1px;
     color: var(--textColorSecondary);
+    font-weight: 600;
 }
 
 .showSize{
-  color: #323232;
+  color: black;
   font-size: 15px;
   line-height: 24px;
   letter-spacing: 0.8px;
@@ -178,7 +180,7 @@
     -webkit-transition: all 250ms ease 0s;
     -o-transition: all 250ms ease 0s;
     transition: all 250ms ease 0s;
-    border-width: 2px;
+    border-width: 1px;
     border-style: solid;
     font-weight: 500;
     border:2px solid var(--btnBorderColorPrimary);
@@ -232,7 +234,7 @@
 .shopbtn1:hover{
   background-color: var(--btnHoverBackgroundColorPrimary);
   color: var(--btnTextHoverColorPrimary);
-  border: 2px solid var(--btnBorderHoverColorPrimary);
+  border: 1px solid var(--btnBorderHoverColorPrimary);
 }
 
 .shopbtn2{
@@ -475,8 +477,8 @@
     }
 
     .showSize{
-      font-weight: 500;
-      font-size: 14px;
+      font-weight: 600;
+      font-size: 15px;
     }
 
   }

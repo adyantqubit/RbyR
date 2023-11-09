@@ -61,7 +61,7 @@ const UserInfo = () => {
         <div className={styles.columnitem1head}>
             
             <span>1. USER DETAILS
-            <IoIosCheckmarkCircle style={{fontSize:"37px",color:"black",backgroundColor: "transparent",marginLeft:"15px",position:"relative",bottom:"5px"}}/>    
+            <IoIosCheckmarkCircle style={{fontSize:"37px",color:"#57b957",backgroundColor: "transparent",marginLeft:"15px",position:"relative",bottom:"5px"}}/>    
             </span>
 
             {/* comment on 17/11/22-Rohan Kansari 

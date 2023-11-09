@@ -145,7 +145,7 @@ justify-content: space-between;
   position: sticky;
   top: 0;
   align-items: center;
-  background-color: var(--backgroundColorPrimary);
+  background-color: #f1cdd9;
 }
 
 .cardContainer{
@@ -334,7 +334,7 @@ justify-content: space-between;
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
-    /* color: #8c8c8c; */
+    /* color: black; */
     text-transform: uppercase;
        font-family: var(--fontFamily);
 
@@ -519,7 +519,7 @@ justify-content: space-between;
   font-size: 13px;
   line-height: 20px;
   letter-spacing: 1px;
-  color: #8c8c8c;
+  color: black;
   text-transform: uppercase;
      font-family: var(--fontFamily);
 

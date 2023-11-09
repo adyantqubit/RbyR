@@ -572,8 +572,9 @@
     color: rgb(255, 254, 254);
     background-color: rgb(58, 57, 57);
     border:0px solid rgb(177, 175, 175);
-    background-color: #3c3c3c;
-    color: #f2f2f2;
+    background: var(--btnBackgroundColorPrimary);
+    color: var(--btnTextColorPrimary);
+    border: 1px solid black;
   }
 
   .button2:hover{

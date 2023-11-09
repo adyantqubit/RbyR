@@ -82,8 +82,18 @@
     
 
 /* ---------------------------button 1----------------- */
-    --btnBackgroundColorPrimary:black;
-    --btnTextColorPrimary:white;
+    /* --btnBackgroundColorPrimary:black; */
+    /* --btnBackgroundColorPrimary: #f3c850; */
+    --btnBackgroundColorPrimary:  #f1cdd9;
+    /* --btnBackgroundColorPrimary:  #b7ffb7; */
+    /* --btnBackgroundColorPrimary:   #c5c5b6; */
+
+   
+
+   
+    /* --btnTextColorPrimary:white; */
+    --btnTextColorPrimary:black;
+
     --btnBorderColorPrimary:black;
     --btnHoverBackgroundColorPrimary:#f7f7f7;
     --btnTextHoverColorPrimary:black;

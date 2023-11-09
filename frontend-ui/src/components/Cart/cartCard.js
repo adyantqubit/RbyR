@@ -198,7 +198,7 @@ const increament=(CartProduct)=>{
 
               <div style={{height:"100px",display:"flex",flexDirection:"column"}}></div>
               <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
-                    <div style={{color:"black",alignSelf:"start",marginLeft:"20px",color:"#8c8c8c"}}> Quantity</div>
+                    <div style={{color:"black",alignSelf:"start",marginLeft:"20px",color:"black"}}> Quantity</div>
                         <div style={{height:"20px",width:"100px",display:"flex",flexDirection:"row"}}>
                             <div style={{height:"20px",width:"10px",marginRight:"10px"}}>
                               <div style={{height:"6px",textAlign:"center",border:"2px solid white",background:"#ededed",borderRadius:"5px",padding:"0.5rem"}} onClick={e=>decreament(pro)}>

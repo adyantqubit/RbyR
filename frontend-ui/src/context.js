@@ -112,7 +112,7 @@ const Context = ({ children }) => {
         description:
           `You are Log out`,
         className: "custom-class",
-        style: { backgroundColor: "var(--bannerColor)", color: "black", marginTop: "10vh" },
+        style: { backgroundColor: "red", color: "black", marginTop: "10vh" },
         duration: 2,
         key: 1
       });
@@ -146,7 +146,7 @@ const Context = ({ children }) => {
 
     toast.success(<div style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px" }}>Successfully Logged out.
     </div>,
-      { position: toast.POSITION.TOP_RIGHT, duration: 1000, style: { top: "20vh", right: "2vw", background: "var(--bannerColor)" } },
+      { position: toast.POSITION.TOP_RIGHT, duration: 1000, style: { top: "20vh", right: "2vw", background: "#f1cdd9" } },
     )
   }
 

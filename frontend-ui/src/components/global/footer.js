@@ -40,7 +40,7 @@ function Footer() {
       notification.open({
         message: "",
         style:{marginTop:"20px"},
-        style:{backgroundColor: "var(--bannerColor)"},
+        style:{backgroundColor: "#f1cdd9"},
         description:
           'Please enter email id',
         onClick: () => {
@@ -60,7 +60,7 @@ function Footer() {
           notification.open({
             message: "",
             style:{marginTop:"20px"},
-            style:{backgroundColor: "var(--bannerColor)"},
+            style:{backgroundColor: "#f1cdd9"},
             description:
               'Subscribed to email updates successfully',
             onClick: () => {
@@ -72,7 +72,7 @@ function Footer() {
             notification.open({
               message: "",
               style:{marginTop:"20px"},
-              style:{backgroundColor: "var(--bannerColor)"},
+              style:{backgroundColor: "#f1cdd9"},
               description:
                 emailData.error,
               onClick: () => {
@@ -84,7 +84,7 @@ function Footer() {
             notification.open({
               message: "",
               style:{marginTop:"20px"},
-              style:{backgroundColor: "var(--bannerColor)"},
+              style:{backgroundColor: "#f1cdd9"},
               description:
                 'Email subscription failed',
               onClick: () => {
@@ -100,7 +100,7 @@ function Footer() {
       notification.open({
         message: "",
         style:{marginTop:"20px"},
-        style:{backgroundColor: "var(--bannerColor)"},
+        style:{backgroundColor: "#f1cdd9"},
         description:
           'Please provide a valid email format',
         onClick: () => {

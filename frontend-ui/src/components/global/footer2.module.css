@@ -201,7 +201,7 @@
 .emailBoxButton{
     width: 20%;
     height: 38px;
-    background: var(--btnBackgroundColorPrimary);
+    background: black;
     border: 0px solid var(--btnBorderColorPrimary);
     color:var(--buttonTextColor);
 }

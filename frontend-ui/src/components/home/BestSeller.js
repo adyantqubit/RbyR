@@ -42,9 +42,9 @@ const BestSeller = () => {
 
                 <div className={style.branding}>
                     {/* <img src={image2} className={style.bestImg}/> */}
-                    <div className={style.paragraph}>
+                    {/* <div className={style.paragraph}>
                         Our products
-                    </div>
+                    </div> */}
                     <div className={style.heading}> Best seller </div>
 
                 </div>

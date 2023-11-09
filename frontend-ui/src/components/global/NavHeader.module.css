@@ -48,6 +48,7 @@
     height: 80px;
     cursor: pointer;
     white-space: nowrap;
+    font-family: Noto Serif;
    }
 
    .al2{
@@ -406,7 +407,7 @@ input[type=checkbox]:checked ~ .menu{
 	font-size: 18px;
 	padding: 5px 0;
 	font-weight: 500;
-	color: #555;
+	color: black;
 	line-height: 1.5em;
   word-break:normal;
 
@@ -429,7 +430,6 @@ input[type=checkbox]:checked ~ .menu{
 	display: flex;
 	align-items: center;
   text-decoration: none;
-
   }
   
   .action .menu2 .ul .l .img {
@@ -446,7 +446,8 @@ input[type=checkbox]:checked ~ .menu{
   .action .menu2 .ul .l .a {
 	display: inline-block;
 	text-decoration: none;
-	color: #555;
+	color: black;
+
 	font-weight: 500;
 	transition: 0.5s;
   text-decoration: none;

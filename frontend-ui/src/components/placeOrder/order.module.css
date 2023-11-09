@@ -35,7 +35,7 @@
 .headText {
     font-family: var(--fontFamily);
 
-    border-bottom: 1px solid #8c8c8c;
+    border-bottom: 1px solid black;
     padding-bottom: 15px;
     padding-top: 6vh;
     font-size: 16px;
@@ -88,8 +88,8 @@
     letter-spacing: 2px;
     font-weight: 500;
 
-    background-color: #323232;
-    color: white;
+    background: var(--btnBackgroundColorPrimary);
+    color: var(--btnTextColorPrimary);
     text-align: center;
     opacity: 1;
     position: relative;
@@ -99,9 +99,9 @@
     -webkit-transition: all 250ms ease 0s;
     -o-transition: all 250ms ease 0s;
     transition: all 250ms ease 0s;
-    border-width: 2px;
+    border-width: 1px;
     border-style: solid;
-    border-color: #323232;
+    border-color: black;
     -webkit-border-image: initial;
     -o-border-image: initial;
     border-image: initial;
@@ -354,7 +354,7 @@
 .usedetailShow {}
 
 .userinfoText {
-    color: #8c8c8c;
+    color: black;
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;

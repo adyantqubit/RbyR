@@ -58,7 +58,7 @@
 }
 
 .userinfoText{
-    color: #8c8c8c;
+    color: black;
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
@@ -137,7 +137,9 @@
 .billingheader{
     width: 100%;
 
-    background-color:  var(--backgroundColorPrimary);
+    /* background-color:  var(--backgroundColorPrimary); */
+    background-color:  #dee3de;
+
     margin-top: 30px;
     display: flex;
 }
@@ -194,7 +196,7 @@
 
 .billingfooter{
     width: 100%;
-    background-color:  var(--videoBackgroundColor);
+    /* background-color:  var(--videoBackgroundColor); */
     margin-top: 30px;
     display: flex;
     padding: 0 15px;

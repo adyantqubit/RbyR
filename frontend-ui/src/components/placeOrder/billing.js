@@ -274,7 +274,7 @@ console.log(onlineDetail)
 
         {/* <div style={{width:"100%",display:"flex",justifyContent:"center",background:"#f2f2f2"}}> <button className={style.shopbtn1} style={{width:"50%"}} onClick={e=>nav('/')}>Continue Shopping</button> */}
         <div style={{ width: "100%", display: "flex", justifyContent: "center", paddingBottom: "50px" }}>
-          <Button type="primary" className={style.userInfoButton} onClick={goToHomePage}>
+          <Button type="primary" className={style.userInfoButton} style={{backgroundColor:'#f1cdd9'}} onClick={goToHomePage}>
             Continue Shopping
           </Button>
           {/* <div className={style.shopbtn1} style={{width:"50%"}} onClick={}></div> */}
