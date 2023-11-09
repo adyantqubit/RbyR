@@ -45,7 +45,7 @@ font-weight: 600;
   padding-bottom: 2px;
   /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: "Noto-serif";
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacin  */
