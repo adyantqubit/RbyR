@@ -33,24 +33,34 @@ const PrivacyPolicy = () => {
                 return (
                   <div className={style.column}>
                     <span className={style.title}>
-                      {parse(privacyPolicy.title1)}
+                      {parse(privacyPolicy?.title1)} 
                     </span>
                     <span className={style.content}>
-                      {parse(privacyPolicy.content1)}
+                      {privacyPolicy && privacyPolicy.content1 ? 
+                    parse(privacyPolicy.content1)
+                    :null}
                     </span>
 
                     <span className={style.subTitle}>
-                      {parse(privacyPolicy.subtitle1)}
+                      {privacyPolicy && privacyPolicy.subtitle1 ? 
+                    parse(privacyPolicy.subtitle1)
+                    :null}
                     </span>
 
                     <span className={style.content}>
-                      {parse(privacyPolicy.content2)}
+                      {privacyPolicy && privacyPolicy.content2 ? 
+                    parse(privacyPolicy.content2)
+                    :null}
                     </span>
                     <span className={style.subTitle}>
-                      {parse(privacyPolicy.subtitle2)}
+                    {privacyPolicy && privacyPolicy.content3 ? 
+                    parse(privacyPolicy.subtitle2)
+                    :null}
                     </span>
                     <span className={style.content}>
-                      {parse(privacyPolicy.content3)}
+                      {privacyPolicy && privacyPolicy.content3 ? 
+                    parse(privacyPolicy.content3)
+                    :null}
                     </span>
                   </div>
                 );
@@ -64,7 +74,7 @@ const PrivacyPolicy = () => {
             // End of addition by Om Shrivastava on 28-10-23
             // Reason: Need to add styling part 
             >Privacy policy currently not available</div>
-          )}
+          )} 
         </div>
 
         <div className={style.footerMargin} style={{paddingTop:"100px" }}>

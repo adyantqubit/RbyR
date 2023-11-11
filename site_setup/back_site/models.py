@@ -706,7 +706,12 @@ class ImportantNoticeToBuy(models.Model):
 class FAQ(models.Model):
     qno=models.AutoField(primary_key=True)
     question=models.CharField(max_length=255)
-    answer=RichTextField(null=True,blank=True)
+    # Modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+    # answer=RichTextField(null=True,blank=True)
+    answer=models.TextField(null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
 
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
@@ -721,16 +726,30 @@ class FAQ(models.Model):
 #Reason - To create contact us table
 class ContactUs(models.Model):
     subtitle1=models.CharField(max_length=255)
-    content1=RichTextField(null=True,blank=True)
-
+    # End of modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+    # content1=RichTextField(null=True,blank=True)
+    content1 = models.TextField(null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+    
     # subtitle2=models.CharField(max_length=255)
     subtitle2=models.CharField(max_length=255,null=True,blank=True)
-    content2=RichTextField(null=True,blank=True)
+    # Modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+    # content2=RichTextField(null=True,blank=True)
+    content2=models.TextField(null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
 
     # subtitle3=models.CharField(max_length=255)
     subtitle3=models.CharField(max_length=255,null=True,blank=True)
-
-    content3=RichTextField(null=True,blank=True)
+    # Modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+    # content3=RichTextField(null=True,blank=True)
+    content3=models.TextField(null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
     contactUsImage=models.ImageField(upload_to='None/', height_field=None,\
            width_field=None, max_length=100,default='None/a1.jpg')
 
@@ -747,14 +766,31 @@ class ContactUs(models.Model):
 #Reason - To create T&C table
 class TermAndCondition(models.Model):
     title1=models.CharField(max_length=255)
-    content1=RichTextField(null=True,blank=True)
+    # Modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+    # content1=RichTextField(null=True,blank=True)
+    content1=models.TextField(null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+    # End of modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
     subtitle1=models.CharField(max_length=255)
-    content2=RichTextField(null=True,blank=True)
+    # Modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+    # content2=RichTextField(null=True,blank=True)
+    content2=models.TextField(null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
     # Modification and addition by Om Shrivastava on 04-11-23
     # Reason : Need to remove the mandatory field
     # subtitle2=models.CharField(max_length=255)
     subtitle2=models.CharField(max_length=255,null=True,blank=True)
-    content3=RichTextField(null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+    # content3=RichTextField(null=True,blank=True)
+    content3=models.TextField(null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
     # End of Modification and addition by Om Shrivastava on 04-11-23
     # Reason : Need to remove the mandatory field
     # Modification and addition by Om Shrivastava on 04-11-23
@@ -763,14 +799,25 @@ class TermAndCondition(models.Model):
     subtitle3=models.CharField(max_length=255,null=True,blank=True)
     # End of Modification and addition by Om Shrivastava on 04-11-23
     # Reason : Need to remove the mandatory field
-    content4=RichTextField(null=True,blank=True)
+    # Modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+    # content4=RichTextField(null=True,blank=True)
+    content4=models.TextField(null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
     # Modification and addition by Om Shrivastava on 04-11-23
     # Reason : Need to remove the mandatory field
     # subtitle4=models.CharField(max_length=255)
     subtitle4=models.CharField(max_length=255,null=True,blank=True)
     # End of Modification and addition by Om Shrivastava on 04-11-23
     # Reason : Need to remove the mandatory field
-    content5=RichTextField(null=True,blank=True)
+
+    # Modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+    # content5=RichTextField(null=True,blank=True)
+    content5=models.TextField(null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
     #End of code addition
 
     #Added by Ashish Dewangan on 28-11-2022
@@ -786,10 +833,14 @@ class TermAndCondition(models.Model):
 class PrivacyPolicy(models.Model):
     title1=models.CharField(max_length=255)
     content1=models.TextField()
-    subtitle1=models.CharField(max_length=255)
-    content2=models.TextField()
-    subtitle2=models.CharField(max_length=255)
-    content3=models.TextField()
+    # Modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Set the null and blank true 
+    subtitle1=models.CharField(max_length=255,null=True,blank=True)
+    content2=models.TextField(null=True,blank=True)
+    subtitle2=models.CharField(max_length=255,null=True,blank=True)
+    content3=models.TextField(null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Set the null and blank true 
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self):
@@ -803,9 +854,20 @@ class PrivacyPolicy(models.Model):
 #Reason - To create T&C table
 class DeliveryAndShippingPolicy(models.Model):
     title1=models.CharField(max_length=255)
-    content1=RichTextField(null=True,blank=True)
+    # Modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+    # content1=RichTextField(null=True,blank=True)
+    content1=models.TextField(null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
     title2=models.CharField(max_length=255)
-    content2=RichTextField(null=True,blank=True)
+    # Modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+    # content2=RichTextField(null=True,blank=True)
+    content2=models.TextField(null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+
 
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
@@ -820,9 +882,21 @@ class DeliveryAndShippingPolicy(models.Model):
 #Reason - To create Refund policy table
 class RefundPolicy(models.Model):
     title1=models.CharField(max_length=255)
-    content1=RichTextField(null=True,blank=True)
+    # Modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+    # content1=RichTextField(null=True,blank=True)
+    content1=models.TextField(null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+
     subtitle1=models.CharField(max_length=255)
-    content2=RichTextField(null=True,blank=True)
+    # Modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+    # content2=RichTextField(null=True,blank=True)
+    content2=models.TextField(null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+
 #End of code addition
 
     #Added by Ashish Dewangan on 28-11-2022
@@ -837,9 +911,19 @@ class RefundPolicy(models.Model):
 #Reason - To create Cancellation policy table
 class CancellationPolicy(models.Model):
     title1=models.CharField(max_length=255)
-    content1=RichTextField(null=True,blank=True)
+    # Modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+    # content1=RichTextField(null=True,blank=True)
+    content1=models.TextField(null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
     subtitle1=models.CharField(max_length=255)
-    content2=RichTextField(null=True,blank=True)
+    # Modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
+    # content2=RichTextField(null=True,blank=True)
+    content2=models.TextField(null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 10-11-23
+    # Reason : Need to change the richtextfield to charfield
 
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name

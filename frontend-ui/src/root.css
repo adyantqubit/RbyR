@@ -20,7 +20,12 @@
     Reason : change the header color */
     /* --backgroundColorPrimary: #e7dfe9; */
 
-    --backgroundColorPrimary:#fee9e2;
+    /* Addition by Om Shrivastava on 10-11-23
+Reason : Set the padding and margin of antd notification */
+    /* --backgroundColorPrimary:#fee9e2; */
+    --backgroundColorPrimary:#f1cdd9;
+/* End of addition by Om Shrivastava on 10-11-23
+Reason : Set the padding and margin of antd notification */
 
 
     

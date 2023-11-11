@@ -4,7 +4,19 @@
     /* other formats include: 'woff2', 'truetype, 'opentype',
                               'embedded-opentype', and 'svg' */
   }
+/* Addition by Om Shrivastava on 10-11-23
+Reason : Set the padding and margin of antd notification */
+  /* .ant-notification-notice {
+    padding: 2px 2px !important;
+    margin-bottom: 0px !important;
+  } */
 
+  .ant-notification-notice{
+    padding: 5px ;
+  }
+  
+  /* End of Addition by Om Shrivastava on 10-11-23
+Reason : Set the padding and margin of antd notification  */
 .App{
     width:100%;
     /* background-color: var(--backgroundColorPrimary); */
@@ -206,6 +218,10 @@
     color:var(--buttonTextColor);
 }
     
+/* .ant-notification .ant-notification-notice-wrapper .ant-notification-notice{
+    padding: 0%;
+    background-color: red;
+  } */
 
 @media (max-width: 768px) {
 
