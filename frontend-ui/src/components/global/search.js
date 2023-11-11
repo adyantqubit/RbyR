@@ -170,8 +170,9 @@ const Search = () => {
          Reason-category selection ui and functionality */}
 
         <div className={styles.categoryContainer}>
-            <div className={styles.filterTitle}>FILTER BY CATEGORIES</div>
-
+          {/* Commented by Om Shrivastava on 11-11-23 */}
+            {/* <div className={styles.filterTitle}>FILTER BY CATEGORIES</div> */}
+          {/* End of commented code by Om Shrivastava on 11-11-23 */}
             <div className={styles.categoryItems}>
               {allCategory?.map(m=>
                selectedCategory.includes(m)?
@@ -210,7 +211,12 @@ const Search = () => {
               })}
             </>
           ) : (
-            <div>{msg}</div>
+            // Modification and addition by Om Shrivastava on 11-11-23
+            // Reason : Apply some designing in message
+            // <div>{msg}</div>
+            <div style={{display:"flex",justifyContent:'center',alignItems:'center',width:'100vw'}}>{msg}</div>
+            // End of modification and addition by Om Shrivastava on 11-11-23
+            // Reason : Apply some designing in message
           )}
         </div>
       </Drawer>

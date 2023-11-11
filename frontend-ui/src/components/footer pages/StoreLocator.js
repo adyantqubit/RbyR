@@ -57,7 +57,7 @@ const StoreLocator = () => {
                           <div className={style.itemText}>
                           {parse(""+storeLocatorDetail.timing)}
                           </div>
-                          <div className={style.itemButton}><a className={style.itemButton} href={`https://www.google.com/maps/search/?api=1&query=${storeLocatorDetail.address.replace( /(<([^>]+)>)/ig, '')}`}>GET DIRECTIONS</a></div>
+                          <div style={{border:'1px solid black'}} className={style.itemButton}><a className={style.itemButton} href={`https://www.google.com/maps/search/?api=1&query=${storeLocatorDetail.address.replace( /(<([^>]+)>)/ig, '')}`}>GET DIRECTIONS</a></div>
                         </div>
                       </div>
                     </div>

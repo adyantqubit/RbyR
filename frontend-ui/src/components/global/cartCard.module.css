@@ -183,7 +183,7 @@
     border-width: 1px;
     border-style: solid;
     font-weight: 500;
-    border:2px solid var(--btnBorderColorPrimary);
+    border:1px solid var(--btnBorderColorPrimary);
     -webkit-border-image: initial;
     -o-border-image: initial;
     border-image: initial;

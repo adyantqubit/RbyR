@@ -144,7 +144,7 @@ a{
     color: var(--textColorPrimary);
 }
 a:hover{
-    color: var(--textHoverColorPrimary);
+   color: black;
     
 }
 
