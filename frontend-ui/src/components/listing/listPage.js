@@ -356,7 +356,12 @@ const ListPage = () => {
                         >
                           <img
                             src={config.staticBaseURL + p.img_main}
-                            className={style.img}
+                            // Modification and addition by Om Shrivastava on 15-11-23
+                            // Reason : Need to add the classname of the image
+                            // className={style.img}
+                            className={style.bestSellerImage}
+                            // End of modification and addition by Om Shrivastava on 15-11-23
+                            // Reason : Need to add the classname of the image
                           ></img>
                           <div className={style.title}>
                             <span>{p.title}</span>

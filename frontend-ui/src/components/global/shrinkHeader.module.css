@@ -185,6 +185,17 @@
         height: 40px;
     }
 }
+/* Addition by Om Shrivastava on 15-11-23
+Reason : Set the width and height of logo  */
+@media (max-width: 768px) {
+
+    .img {
+        height: 50px;
+        width: 110px;
+    }
+}
+/* End of Addition by Om Shrivastava on 15-11-23
+Reason : Set the width and height of logo */
 @media (max-width: 470px) {
     .img {
         height: 50px;

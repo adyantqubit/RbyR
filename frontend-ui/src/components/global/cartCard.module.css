@@ -74,6 +74,11 @@
   color: var(--textColorSecondary);
   font-size: 15px;
   font-weight: 500;
+  /* Addition by Om Shrivastva on 16-11-23
+  Reason : Set the font family */
+font-family: var(--fontFamily);
+  /* End of addition by Om Shrivastva on 16-11-23
+  Reason : Set the font family  */
 }
 .delete{
   padding-left: 0;
@@ -94,6 +99,11 @@
     letter-spacing: 1px;
     color: var(--textColorSecondary);
     font-weight: 600;
+    /* Addition by Om Shrivastva on 16-11-23
+  Reason : Set the font family */
+font-family: var(--fontFamily);
+/* End of addition by Om Shrivastva on 16-11-23
+Reason : Set the font family  */
 }
 
 .showSize{
@@ -102,6 +112,11 @@
   line-height: 24px;
   letter-spacing: 0.8px;
   font-weight: 600;
+  /* Addition by Om Shrivastva on 16-11-23
+  Reason : Set the font family */
+font-family: var(--fontFamily);
+/* End of addition by Om Shrivastva on 16-11-23
+Reason : Set the font family  */
 }
 
 .footerCon{
@@ -188,6 +203,11 @@
     -o-border-image: initial;
     border-image: initial;
     text-decoration: none;
+    /* Addition by Om Shrivastva on 16-11-23
+  Reason : Set the font family */
+font-family: var(--fontFamily);
+/* End of addition by Om Shrivastva on 16-11-23
+Reason : Set the font family  */
 }
 
 .userInfoButton{
@@ -399,8 +419,7 @@
     display:flex;
     flex-direction:column;
   }
-
-
+  
   @media (max-width: 768px) {
 
     .gaping{

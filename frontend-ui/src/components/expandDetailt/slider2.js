@@ -57,14 +57,19 @@ const Slider2 = ({ scrollTop }) => {
           }}
         >
           <div
-            style={{
-              fontSize: "20px",
-              lineHeight: "32px",
-              letterSpacing: "3px",
-              marginBottom: "20px",
-            }}
+          // Modification and addition by Om Shrivastava on 16-11-23
+          // Reason : Apply the css in external file
+            // style={{
+            //   fontSize: "20px",
+            //   lineHeight: "32px",
+            //   letterSpacing: "3px",
+            //   marginBottom: "20px",
+            // }}
+            className={styles.likedContain}
+            // End of Modification and addition by Om Shrivastava on 16-11-23
+          // Reason : Apply the css in external file
           >
-            YOU MAY ALSO LIKE
+            YOU MAY ALSO LIKE 
           </div>
           <Carousel cols={4} rows={1} gap={10} style={{ width: "100%" }}>
             
@@ -79,9 +84,16 @@ const Slider2 = ({ scrollTop }) => {
                     {cart.is_active == true ? (
                       <>
                         <img
-                          className={style.img}
+                          // className={style.img}
+                          className={style.img12}
+
                           src={config.staticBaseURL + cart.img_main}
-                          style={{ width: "350px" }}
+                          // Modification and addition by Om Shrivastava on 16-11-23
+                          // Reason : Fix the image height and width
+                          // style={{width:'350px'}}
+                          style={{ width: "320px",height:'320px' }}
+                          // End of modification and addition by Om Shrivastava on 16-11-23
+                          // Reason : Fix the image height and width
                           onClick={(e) => {
                             openDetail(cart);
                             scrollTop();
@@ -95,6 +107,7 @@ const Slider2 = ({ scrollTop }) => {
                             fontSize: ".8rem",
                             color: "#323232",
                           }}
+                          // className={styles.productName}
                           onClick={(e) => {
                             openDetail(cart);
                             scrollTop();

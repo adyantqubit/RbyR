@@ -58,7 +58,7 @@ const Slider = ({scrollTop}) => {
             paddingLeft: "4%",
           }}
         >
-          RECENTLY VIEWED PRODUCTS
+          RECENTLY VIEWED PRODUCTSbackuppppp
           
         </div>
 
@@ -196,7 +196,7 @@ const Slider2 = ({scrollTop}) => {
             paddingLeft: "4%",
           }}
         >
-          YOU MAY ALSO LIKE
+          YOU MAY ALSO LIKEbackuppppppppp
         </div>
         <Carousel responsive={responsive} style={{ width: "100%" }}>
           {CategoryProduct

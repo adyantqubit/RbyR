@@ -209,6 +209,16 @@ justify-content: space-between;
   Reason : need to add the font family  */
  }
 
+ /* Addition by Om Shrivastava on 15-11-23
+ Reason : Add the class of the image */
+ .bestSellerImage{
+  height: 340px;
+  width: 440px;
+
+    /* filter: brightness(100%); */
+ }
+/* End of addition by Om Shrivastava on 15-11-23
+ Reason : Add the class of the image */
  @media (max-width: 1200px)
 {
   .card{
@@ -232,6 +242,9 @@ justify-content: space-between;
 
   .cardContainer{
     gap: 0;
+  }
+  .img12{
+    border: 2px solid green;
   }
  }
 
@@ -810,8 +823,17 @@ justify-content: space-between;
   overflow-y:auto;
 }
 
-
  }
+
+ /* Addition by Om shrivastava on 15-11-23
+ Reason : Add the media query for the best seller image */
+ @media (max-width: 768px) {
+  .bestSellerImage{
+    height: 350px;
+    width: 320px;
+  }}
+/* End of addition by Om shrivastava on 15-11-23
+ Reason : Add the media query for the best seller image */
  @media (max-width: 360px) {
   .TopContent{
     padding-left: 0px;
@@ -829,10 +851,20 @@ justify-content: space-between;
   }
   .category{
     gap: 12px;
-
+    /* Modification and addition by Om Shrivastava on 15-11-23
+    Reason : Set the width and padding of this div */
+    width: 320px;
+    padding: 0;
+     /* End of modification and addition by Om Shrivastava on 15-11-23
+    Reason : Set the width and padding of this div */
   }
   
    /* End of addition by Om Shrivastava on 06-11-23
   Reason : Set the font size */
+
+  .bestSellerImage{
+    height: 220px;
+    width: 220px;
+  }
  }
 

@@ -595,7 +595,7 @@ const CartSItem = (props) => {
                           }}
                         >
                           <span className={style.shipping}>
-                            Standard Shipping:
+                            Standard Shipping1111:
                           </span>
                           {/* {pro.ready_to_ship?
                 <span className={style.shipping}> {pro.ready_to_ship_days}</span>:
@@ -715,7 +715,7 @@ const CartSItem = (props) => {
                                   ? "nowrap"
                                   : "normal",
                               lineHeight: "26px",
-                              letterSpacing: "2.5px",
+                              letterSpacing: "1px",
                               overflow:
                                 windowSize.innerWidth < 768 ? "hidden" : "none",
                               textOverflow:

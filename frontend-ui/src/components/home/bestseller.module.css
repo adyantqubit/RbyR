@@ -43,10 +43,21 @@
     /* Modification and addition by Om Shrivastava on 05-11-23
     Reason : Need to set the height of the image*/
     /* height: 93%; */
-    height: 85%;
+
+    /* Modification and addition by Om Shrivastava on 15-11-23
+    Reason : Set the height and width */
+    /* height: 85%; */
+    height: 520px;
+    /* End of modification and addition by Om Shrivastava on 15-11-23
+    Reason : Set the height and width */
+
     /* End of modification and addition by Om Shrivastava on 05-11-23
     Reason : Need to set the height of the image*/
-    filter: brightness(90%);
+    /* Commented by Om Shrivastava on 15-11-23
+    Reason : Remove the brightness of the image */
+    /* filter: brightness(90%); */
+    /* End of commented by Om Shrivastava on 15-11-23
+    Reason : Remove the brightness of the image */
     /* Modification and addition by Om Shrivastava on 04-11-23
     Reason : Need to decrease the box shadow*/
     /* box-shadow: 3px 3px 8px 1px black; */
@@ -91,7 +102,12 @@
     /* Modification and addition by Om Shrivastava on 05-11-23
     Reason : Need to set the bottom content  */
     /* bottom: 45px; */
-    bottom: 90px;
+    /* Modification and addition by Om Shrivastava on 15-11-23
+    Reason : Set the bottom space */
+    /* bottom: 90px; */
+    bottom: 2px;
+    /* End of Modification and addition by Om Shrivastava on 15-11-23
+    Reason : Set the bottom space  */
     /* End of Modification and addition by Om Shrivastava on 05-11-23
     Reason : Need to set the bottom content */
     /* End of modification and addition by Om Shrivastava on 04-11-23
@@ -216,6 +232,11 @@
     /* .card{
         width: 95%;
     } */
+
+    .name{
+        font-size: 15px;
+    }
+    
   }
 
 
@@ -277,8 +298,15 @@ Reason : Add the media queries for the image and div */
     bottom: 2px;
 }
  .img{
-    height: 100%;
-    filter: brightness(90%);
+   /* Modification and addition by Om Shrivastava on 15-11-23
+    Reason : Set the bottom space */
+    /* height: 100%; */
+    height: 220px;
+    /*Commented code by Om Shrivastava on 15-11-23
+    Reason : Remove the brightness of the image*/
+    /* filter: brightness(90%); */
+    /* End of Commented code by Om Shrivastava on 15-11-23
+    Reason : Remove the brightness of the image */
     box-shadow: 3px 3px 8px 1px black;
     transition: all .6s ease;
  }   

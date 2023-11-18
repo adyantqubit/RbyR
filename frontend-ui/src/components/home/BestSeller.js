@@ -27,12 +27,21 @@ const BestSeller = () => {
     function swapImage(i) {
         let temp = bestProducts[i].img_main;
         bestProducts[i].img_main = bestProducts[i].img_sub1
-        bestProducts[i].img_sub1 = temp
+
+       let imgg2 = bestProducts[i].img_sub2
+        bestProducts[i].img_sub1 = imgg2
+        bestProducts[i].img_sub2= temp
+
+        // bestProducts[i].img_sub1 = temp
         setbest(bestProducts)
         setImageSwap(!imageSwap)
 
     }
     console.log(bestProducts,'datass')
+
+    const newArray = bestProducts.map(({L,M,S,XL,XS,XXL,XXXL,is_active,available,bestSeller,careTip,category,color,date,description,fabric,like,menu,price,ready_to_ship,ready_to_ship_days,search_key,shipping_charges,shipping_days,style_code,subMenu,title,upper_menu,made_in, ...rest }) => rest);
+    console.log(newArray);
+
     return (
         <>
             <div className={style.container}>

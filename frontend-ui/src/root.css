@@ -46,7 +46,17 @@ Reason : Set the padding and margin of antd notification */
     /* Modification and addition by Om Shrivastava on 27-10-23
     Reason : Add the globally font family and letter spacing  */
     /* --fontFamily : "Lora"; */
-    --fontFamily : "sans-serif";
+    /* Modification and addition by Om Shrivastava on 16-11-23
+    Reason : Set the fontfamily  */
+    /* --fontFamily : "sans-serif"; */
+    /* --fontFamily : "Lato";
+    --fontFamily : "Montserrat"; */
+    --fontFamily : "Oswald";
+    /* End of Modification and addition by Om Shrivastava on 16-11-23
+    Reason : Set the fontfamily */
+    /* --fontFamily : "sans-serif"; */
+    /* --fontFamily : "sans-serif"; */
+
 
     --letterSpacing : 1px;
     /* End of modification and addition by Om Shrivastava on 27-10-23

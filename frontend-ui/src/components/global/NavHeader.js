@@ -43,7 +43,14 @@ const Navbar = () => {
 
   useEffect(()=>{
     if (localStorage.getItem('login')) {
-      toast.success(<div style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px" }}>Successfully Logged In.
+      toast.success(<div 
+        // Modification and addition by Om Shrivastava on 16-11-23
+        // Reason : Add the class for show the message
+      // style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px" }}
+      className={style.alertMsg} 
+      // End of modification and addition by Om Shrivastava on 16-11-23
+        // Reason : Add the class for show the message
+      >Successfully Logged In.
       </div>,
         { position: toast.POSITION.TOP_RIGHT, duration: 1000, style: { top: "20vh", right: "2vw", background: "#f1cdd9" } },
       )   

@@ -253,6 +253,13 @@ input[type=checkbox]{
     color:var(--iconsColor);
   }
 
+  .alertMsg{
+    font-family: var(--fontFamily);
+    font-size: 18px;
+    color: var(--textColorPrimary);
+    letter-spacing: 1.4px;
+  }
+
   @media (max-width: 1200px) {
     .navbar{
       margin-top: -5px;

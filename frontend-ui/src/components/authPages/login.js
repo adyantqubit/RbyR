@@ -74,7 +74,9 @@ const Login = () => {
 			setLike([])
 			if (JSON.parse(localStorage.getItem("cart")))
 				setCart([...JSON.parse(localStorage.getItem("cart"))])
-			toast.success(<div style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px" }}>Successfully Logged In.
+			toast.success(<div  
+			class='successMsg'
+			style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px" }}>Suceeeeeeeeecessfully Logged In.
 			</div>,
 				{ position: toast.POSITION.TOP_RIGHT, duration: 1000, style: { top: "20vh", right: "2vw", background: "#f1cdd9" } },
 			)

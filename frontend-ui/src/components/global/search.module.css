@@ -112,7 +112,7 @@
      margin-bottom: 10px;
   }
   .searchedImage{
-    /* height: 350px; */
+    height: 350px;
     width: 100%;
   }
   .price{
@@ -128,6 +128,11 @@
     overflow:auto;
     margin-top: 5px;
     color: black;
+    /* Addition by Om Shrivastava on 16-11-23
+    Reason : Add the font family of the search section */
+    font-family: var(--fontFamily);
+    /* End of addition by Om Shrivastava on 16-11-23
+    Reason : Add the font family of the search section */
    }
   
    .title{
@@ -145,6 +150,13 @@
     margin-top: 5px;
     color: black;
    }
+    /* Addition by Om Shrivastava on 16-11-23
+    Reason : Add the font family of the search section */
+    .productName{
+    font-family: var(--fontFamily);
+  }
+    /* End of addition by Om Shrivastava on 16-11-23
+    Reason : Add the font family of the search section */
    @media (max-width: 768px) {
     .searchedImage{
       height: 220px;

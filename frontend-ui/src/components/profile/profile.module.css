@@ -187,7 +187,13 @@
     width: 14%;
     min-height: 40px;
     text-align: center;
-    color: #7c7c7c;
+    /* Modification and addition by Om Shrivastava on 16-11-23
+    Reason : Need to apply the global color */
+    /* color: #7c7c7c; */
+    color: var(--textColorPrimary);
+    /* End of modification and addition by Om Shrivastava on 16-11-23
+    Reason : Need to apply the global color */
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -462,7 +468,12 @@
     .rowitem2 {
         justify-content: start;
         flex-direction: row;
-        padding-left: 15px;
+        /* Modification and addition by Om Shrivastava on 16-11-23
+        Reason : Set the alignment  */
+        /* padding-left: 15px; */
+        padding-left: 190px;
+        /* End of Modification and addition by Om Shrivastava on 16-11-23
+        Reason : Set the alignment */
         width: 100%;
     }
 

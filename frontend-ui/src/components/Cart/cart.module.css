@@ -73,6 +73,11 @@
     letter-spacing:2.5px;
     font-weight:500;
     border-bottom:.001em solid rgba(140, 140, 140, 0.5);
+    /* Addition by Om Shrivastava on 16-11-23
+  Reason : Add the font family  */
+    font-family: var(--fontFamily);
+    /* End of addition by Om Shrivastava on 16-11-23
+  Reason : Add the font family  */
   }
 
   .buttons{

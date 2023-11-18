@@ -10,6 +10,8 @@ import { getToken, removeToken, storeToken } from "./Redux-manage/services/local
 import { useGetCartProductQuery, useGetLikedProductQuery } from "./Redux-manage/services/userAuthapi";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import '../src/root.css'
+
 const Cart = createContext(); 
 
 
@@ -108,7 +110,13 @@ const Context = ({ children }) => {
     if (localStorage.getItem('logout')) {
       localStorage.removeItem('logout')
       notification.error({
-        message: <div style={{ fontSize: "18px", color: "black" }}>Successfully Logged Out. </div>,
+        message: <div 
+        // Addition by Om Shrivastava on 16-11-23
+        // Reasonf : Add the fontFamily
+        style={{ fontSize: "18px", color: "black",fontFamily:"var(--fontFamily)" }}
+        // End of addition by Om Shrivastava on 16-11-23
+        // Reasonf : Add the fontFamily
+        >Successfully Logged Out. </div>,
         description:
           `You are Log out`,
         className: "custom-class",
@@ -144,7 +152,14 @@ const Context = ({ children }) => {
 
   function Notify() {
 
-    toast.success(<div style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px" }}>Successfully Logged out.
+    toast.success(<div
+      // Modification and addition by Om Shrivastava on 16-11-23
+        // Reason : Add the class for show the message
+      style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px",fontFamily:"var(--fontFamily)"}}
+      // className={style.alertMsg} 
+      // End of modification and addition by Om Shrivastava on 16-11-23
+        // Reason : Add the class for show the message
+     >Successfully Logged out.
     </div>,
       { position: toast.POSITION.TOP_RIGHT, duration: 1000, style: { top: "20vh", right: "2vw", background: "#f1cdd9" } },
     )
