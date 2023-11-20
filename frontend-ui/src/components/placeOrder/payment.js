@@ -214,7 +214,12 @@ const Payment = () => {
             I agree to {` `}
           </label>
           }
-        /> <Link to="/termAndCondition#Terms_And_Condition" target="_blank" style={{ fontSize: "14px",paddingLeft:'2px', textDecoration: "underline", paddingTop: "3.5px",letterSpacing:'1.5px' }}>
+          // Modification and addition by Om Shrivastava on 19-11-23
+          // Reason : Fix the page blank issue
+        // /> <Link to="/termAndCondition#Terms_And_Condition" target="_blank" style={{ fontSize: "14px",paddingLeft:'2px', textDecoration: "underline", paddingTop: "3.5px",letterSpacing:'1.5px' }}>
+        /> <Link to="/terms" target="_blank" style={{ fontSize: "14px",paddingLeft:'2px', textDecoration: "underline", paddingTop: "3.5px",letterSpacing:'1.5px' }}>
+         {/* End of Modification and addition by Om Shrivastava on 19-11-23
+          // Reason : Fix the page blank issue */}
           {" "} Terms and conditions</Link>
         {required ? <Typography style={{ color: "red", fontSize: "13px", marginLeft: "30px" }}>Please accept terms and conditions.</Typography> : null}
       </div>

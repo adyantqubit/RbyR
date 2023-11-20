@@ -6,7 +6,13 @@
     
     /* --bannerColor:#bbe26c; */
     /* --bannerColor:#b7c796b9; */
-    --bannerColor:#dfd6cb;
+    /* Modification and addition by Om Shrivastava on 19-11-23
+    Reason : Need to change the color */
+    /* --bannerColor:#dfd6cb; */
+    --bannerColor:#f1cdd9;
+    /* End of Modification and addition by Om Shrivastava on 19-11-23
+    Reason : Need to change the color */
+    
 
     /* --bannerColor:#14b563; */
 

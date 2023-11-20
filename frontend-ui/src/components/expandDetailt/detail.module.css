@@ -471,7 +471,12 @@
   }
   .textLink{
     cursor: pointer;
-    border-bottom: 1px solid grey;
+    /* Addition by Om Shrivastava on 19-11-23 
+    Reason : Add the border bottom color */
+    /* border-bottom: 1px solid grey; */
+    border-bottom: 1px solid blue;
+    /* Addition by Om Shrivastava on 19-11-23 
+    Reason : Add the border bottom color */
     font-size: 0.9em;
     /* letter-spacing: 1px; */
      /* Modification and addition by Om Shrivastava on 05-11-23

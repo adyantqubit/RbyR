@@ -119,7 +119,7 @@ const UserProfile = () => {
 
   function Notify() {
 
-    toast.success(<div style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px" }}>Successfully updated.
+    toast.success(<div style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px",fontFamily:'var(--fontFamily)' }}>Successfully updated.
       <div style={{ fontSize: "13px", color: "black", letterSpacing: "1.4px" }}>Your User Credentials has been updated</div>
     </div>,
       { position: toast.POSITION.TOP_RIGHT, duration: 1000, style: { top: "20vh", right: "2vw", background: "var(--bannerColor)" } },

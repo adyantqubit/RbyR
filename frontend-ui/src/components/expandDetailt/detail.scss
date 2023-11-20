@@ -32,6 +32,8 @@ $speed: 0.5s;
 		opacity: 0;
 		width: 100%;
 		color: black;
+		// color: #f1cdd9;
+
 		display: block;
 		transition: $speed;
 		position: absolute;
@@ -48,13 +50,18 @@ $speed: 0.5s;
 		top: 0;
 		left: 0;
 		opacity: 1;
-		color: white;
+		// color: white;
+		color: black;
+
 		display: block;
 		padding: 0 15px;
 		line-height: 40px;
 		transition: $speed;
 		position: relative;
-		background: black;
+		// background: black;
+		background: #f1cdd9;
+        border: 2px solid black;
+
 
 		content: attr(data-front);
 		transform: translateY(0) rotateX(0);

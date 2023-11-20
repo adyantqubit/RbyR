@@ -195,7 +195,8 @@ const handleButtonClicknum = (msg) => {
                      
           }
         
-        
+          // Addition by Om Shrivastava on 19-11-23
+        // Reason : Need to add the function, when user change the contact number then now page is blank so I fixed issue
           function validatesNum(evt) {
             var theEvent = evt || window.event;
           
@@ -214,9 +215,9 @@ const handleButtonClicknum = (msg) => {
                 var data="Please Enter Only Number"
                 handleButtonClicknum(data)
               }
-        
-              
           }
+         // End of addition by Om Shrivastava on 19-11-23
+        // Reason : Need to add the function, when user change the contact number then now page is blank so I fixed issue
         
           
 
@@ -245,6 +246,32 @@ const handleButtonClicknum = (msg) => {
 // function scroll(e){
 // e.scrollTop=0
 // }
+
+function validatesNum(evt) { 
+    var theEvent = evt || window.event;
+
+    // Handle paste
+    // if (theEvent.type === 'paste') {
+    //     key = evt.clipboardData.getData('text/plain');
+    // } else {
+    //     // Handle key press
+    //     var key = theEvent.keyCode || theEvent.which;
+    //     key = String.fromCharCode(key);
+    // }
+    // var regex = /^0|[1-9]\d*$/
+    // var regExp = /[a-zA-Z]/g;
+     
+    // console.log(regExp.test(evt))
+
+    // if (!regex.test(evt)) {
+    //     theEvent.returnValue = false;
+    //     if (theEvent.preventDefault) theEvent.preventDefault();
+    //     var data = "Please Enter Only Number"
+    //     handleButtonClicknum(data)
+    // }
+
+
+}
     
     
   return (
@@ -402,6 +429,11 @@ const handleButtonClicknum = (msg) => {
                             className={styles.firstInput}
                             // style={{width:"70%",marginLeft:"15%"}}
                             limitMaxLength={15}
+                            // Addition by Om Shrivastava on 19-11-23
+                            // Reason : Need to add the onchange, when user change the contact number then now page is blank so I fixed issue
+                            onChange={e=>{validatesNum(e)}}
+                            // End of Addition by Om Shrivastava on 19-11-23
+                            // Reason : Need to add the onchange, when user change the contact number then now page is blank so I fixed issue
                             />
                         {/* <input className={styles.firstInput} name='numberb' onKeyPress={validatesNum} maxlength={10} defaultValue={defaultShiping.number} required/> */}
                         {isAlertVisiblenum&&<span asp-validation-for="Code" class="text-danger col-sm-4">{numerror}</span>}
@@ -411,7 +443,7 @@ const handleButtonClicknum = (msg) => {
 
                 <div style={{display:"flex",flexWrap:"wrap",gap:"10px"}}>
                     <button className={styles.userInfoButton} type='submit'>
-                    UPDATE SHiPPING
+                    UPDATE22222 SHiPPING
                 </button>
                 {/* <button className={styles.userInfoButton} style={{marginLeft:"10px"}} onClick={e=>shippingDelete(e,defaultShiping.id)}>
                     DELETE 

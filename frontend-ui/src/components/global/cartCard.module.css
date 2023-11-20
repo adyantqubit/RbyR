@@ -9,13 +9,21 @@
 
 .heading{
   color:black;
-  font-size: 18px;
+  /* Modification and addition by Om Shrivastava on 19-11-23
+  Reason : Change the font size */
+  /* font-size: 17px; */
+  font-size: 15px;
+/* End of modification and addition by Om Shrivastava on 19-11-23
+  Reason : Change the font size */
   line-height: 26px;
   letter-spacing: 1px;
   margin-left: 15px;
   width:85%;
   font-family: var(--fontFamily);
+/* Commented by Om Shrivastava on 19-11-23  */
   font-weight: bold;
+/* End of Commented by Om Shrivastava on 19-11-23  */
+
 }
 
 .apply{
@@ -33,9 +41,13 @@
 }
 
 .price{
-  font-size: 17px;
-     font-family: var(--fontFamily);
-
+  /* Modification and addition by Om Shrivastava on 19-11-23
+  Reason : Change the font size */
+  /* font-size: 17px; */
+  font-size: 15px;
+/* End of modification and addition by Om Shrivastava on 19-11-23
+  Reason : Change the font size */
+  font-family: var(--fontFamily);
   
 }
 
@@ -43,23 +55,29 @@
   width: 100%;
   height:20px;
   display: flex;
+  /* Addition by Om Shrivastava on 19-11-23
+  REason : Add the space */
+  padding-top: 5px;
+  /* End of  Addition by Om Shrivastava on 19-11-23
+  REason : Add the space */
 }
 
 .radius{
   width:auto;
   display: flex;
   background-color:#ededed;
-  padding-top: 2px;
-  padding: 2px;
+  /* padding-top: 2px; */
+  /* padding: 2px; */
   border-radius: 10px;
 }
 
 .quantity{
   width:auto;
   display: flex;
-  font-size: 15px;
+  font-size: 11px;
   font-weight: 600;
-  color:#444
+  /* color:#444; */
+  color: black;
 }
 
 .operatorContainer{
@@ -72,7 +90,7 @@
 
 .size{
   color: var(--textColorSecondary);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   /* Addition by Om Shrivastva on 16-11-23
   Reason : Set the font family */
@@ -94,11 +112,19 @@ font-family: var(--fontFamily);
 }
 
 .shipping{
-  font-size: 15px;
+  /* Modification and addition by Om Shrivastava on 19-11-23
+  Reason : Add the font size  */
+  /* font-size: 15px; */
+  font-size: 14px;
+/* End of Modification and addition by Om Shrivastava on 19-11-23
+  Reason : Add the font size */
     line-height: 20px;
     letter-spacing: 1px;
     color: var(--textColorSecondary);
-    font-weight: 600;
+/* Commented by Om Shrivastava on 19-11-23 */
+    /* font-weight: 600; */
+/* End of Commented by Om Shrivastava on 19-11-23 */
+
     /* Addition by Om Shrivastva on 16-11-23
   Reason : Set the font family */
 font-family: var(--fontFamily);
@@ -108,10 +134,17 @@ Reason : Set the font family  */
 
 .showSize{
   color: black;
-  font-size: 15px;
+  /* Modification and addition by Om Shrivastava on 19-11-23
+  Reason : Add the font size  */
+  /* font-size: 15px; */
+  font-size: 13px;
+/* End of Modification and addition by Om Shrivastava on 19-11-23
+  Reason : Add the font size */
   line-height: 24px;
   letter-spacing: 0.8px;
-  font-weight: 600;
+/* Commented by Om Shrivastava on 19-11-23 */
+  /* font-weight: 600; */
+/* End of Commented by Om Shrivastava on 19-11-23  */
   /* Addition by Om Shrivastva on 16-11-23
   Reason : Set the font family */
 font-family: var(--fontFamily);
@@ -154,10 +187,15 @@ Reason : Set the font family  */
   font-weight: 600;
   margin: 15px;
   padding-top: 20px;
-  color:#4f4f4f;
+  /* Modification and addition by Om Shrivastava on 19-11-23
+  Reason : Need to add the color  */
+  /* color:#4f4f4f; */
+  color:black;
+/* End of modification and addition by Om Shrivastava on 19-11-23
+  Reason : Need to add the color  */
   font-size: 18px;
   line-height: 26px;
-  letter-spacing: 2.5px;
+  letter-spacing: 1.5px;
 }
 
 
@@ -167,7 +205,7 @@ Reason : Set the font family  */
   justify-content: space-between;
   margin-top: 10px;
   margin:15px 0;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 24px;
   letter-spacing: 1.4px;
   color:var(--textColorSecondary);
@@ -197,7 +235,9 @@ Reason : Set the font family  */
     transition: all 250ms ease 0s;
     border-width: 1px;
     border-style: solid;
-    font-weight: 500;
+    /* font-weight: 500; */
+    font-weight: bold;
+
     border:1px solid var(--btnBorderColorPrimary);
     -webkit-border-image: initial;
     -o-border-image: initial;
@@ -240,7 +280,9 @@ Reason : Set the font family  */
 }
 
 .gaping{
-  height:50%;
+  /* height:50%; */
+  height:4%;
+
   display:flex;
   flex-direction:column;
 }
@@ -306,7 +348,12 @@ Reason : Set the font family  */
 }
 
 .buttons{
-  padding: 30px 15px;
+  /* Modification and addition by Om Shrivastava on 19-11-23
+  Reason : Need to decrease the padding */
+  /* padding: 30px 15px; */
+  padding: 20px 15px;
+/*End of modification and addition by Om Shrivastava on 19-11-23
+  Reason : Need to decrease the padding */
   display: flex;
   flex-direction: row;
   gap:10px;

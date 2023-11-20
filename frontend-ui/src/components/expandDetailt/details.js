@@ -1052,6 +1052,11 @@ const Details = (props) => {
                     <span
                       onClick={showCustomTailoredForm}
                       className={styles["textLink"]}
+                      // Added by Om Shrivastava on 19-11-23
+                      // Reason : Add the color
+                      style={{color:'blue'}}
+                      // End of addition by Om Shrivastava on 19-11-23
+                      // Reason : Add the color
                     >
                       Submit
                     </span>{" "}
@@ -1086,9 +1091,15 @@ const Details = (props) => {
                         marginRight: "3px",
                         // fontSize: "1em",
                         // borderBottom:"1px solid grey",
+                        // Added by Om Shrivastava on 19-11-23
+                      // Reason : Add the color
+                    color:'blue'
+                      // End of addition by Om Shrivastava on 19-11-23
+                      // Reason : Add the color
                       }}
                       href={`https://wa.me/+91${whatsappContactNumber}?text=Product : ${details.title}  |  Category : ${details.category}`}
                       target="_blank"
+                       
                     >
                       {/* End of code modification */}
                       Whatsapp

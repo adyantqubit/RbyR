@@ -68,7 +68,12 @@ const Chat = () => {
   avatar={logo?config.staticBaseURL+"media/"+ logo:logoavatar}
   phoneNumber={`+91 ${whatsappContactNumber}`} 
   onSubmit	={e=>handleNewUserMessage(e)}
-  accountName="RBYR Exclusive"
+  // Modification and addition by Om Shrivastava on 19-11-23
+  // Reason : Need to change the heading
+  // accountName="RBYR Exclusive"
+  accountName="RbyR Exclusive"
+  // End of modification and addition by Om Shrivastava on 19-11-23
+  // Reason : Need to change the heading
   />
 </div>
   )

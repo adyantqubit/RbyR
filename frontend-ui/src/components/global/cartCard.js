@@ -267,8 +267,13 @@ const CartCard = (props) => {
         <>
           <div style={{ width: "100%", height: "auto", marginBottom: "30px", paddingLeft: "15px", display: "flex",backgroundColor:"var(--backgroundColorSecondary)" }}>
           <div className={styles.column1}>
-            <img src={config.staticBaseURL + pro.img_main} style={{width:"100%"}} onClick={e => openDetail(pro)}></img>
-          </div>
+            {/* Modification and addition by Om Shrivastava on 19-11-23
+            Reason : Need to add the height of the image */}
+            {/* <img src={config.staticBaseURL + pro.img_main} style={{width:"100%"}} onClick={e => openDetail(pro)}></img> */}
+            <img src={config.staticBaseURL + pro.img_main} style={{width:"120px",height:'150px'}} onClick={e => openDetail(pro)}></img>
+         {/* End of Modification and addition by Om Shrivastava on 19-11-23
+            Reason : Need to add the height of the image  */}
+         </div>
             <div className={styles.column2} >
               <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                 <h3 className={styles.heading}>{pro.title}</h3>
@@ -280,20 +285,25 @@ const CartCard = (props) => {
               </div>
 
               <div style={{ color: "black", marginLeft: "20px" }} className={styles.price}> {currency.sign}{(pro.price * currency.value).toFixed(2)}</div>
-              <div style={{ color: "black", marginLeft: "20px", marginTop: "8px" }}>
+              {/* Modification and addition by Om Shrivastava on 19-11-23
+              Reason : Need to remove the margintop */}
+              {/* <div style={{ color: "black", marginLeft: "20px", marginTop: "8px" }}> */}
+              <div style={{ color: "black", marginLeft: "20px",marginTop: "2px" }}>
+              {/* End of addition by Om Shrivastava on 19-11-23 
+              Reason : Need to remove the margintop*/}
                 <span className={styles.size}>Size :</span>
                 <span className={styles.showSize}> {SizeGetter(pro.size)}</span>
               </div>
-              <div style={{ color: "black", marginLeft: "20px", marginTop: "8px" }}>
-                <span className={styles.shipping}>Standard Shipping:</span>
+              {/* <div style={{ color: "black", marginLeft: "20px", marginTop: "8px" }}> */}
+              <div style={{ color: "black", marginLeft: "20px",marginTop: "2px"  }}>
+
+                <span className={styles.shipping} style={{fontSize:'14px'}}>Standard Shipping:</span>
                 {pro.ready_to_ship ?
                   <span className={styles.shipping}> {pro.ready_to_ship_days}</span> :
                   <span className={styles.shipping}> {pro.shipping_days}</span>}
 
               </div>
-
               <div className={styles.gaping} ></div>
-
               <div className={styles.qtyContainer}>
                 <div className={styles.operatorContainer}>
                   <span className={styles.radius} onClick={e => decreament(pro)}><HiMinus fontSize={15} /></span>

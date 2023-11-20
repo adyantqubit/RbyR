@@ -303,12 +303,12 @@ export function DrawerFooter() {
           </div>
 
           <div className={style.subTotal}>
-            <span style={{ marginLeft: "15px", textTransform: "uppercase", fontWeight: "600" }}>SubTotal</span>
-            <span style={{ marginRight: "15px", fontWeight: "600" }}>{currency.sign} {(getTotalPrice() * currency.value).toFixed(2)}</span>
+            <span style={{ marginLeft: "15px", fontWeight:'400' }}>SubTotal</span>
+            <span style={{ marginRight: "15px",fontWeight: "600" }}>{currency.sign} {(getTotalPrice() * currency.value).toFixed(2)}</span>
 
           </div>
           <div className={style.subTotal}>
-            <span style={{ marginLeft: "15px", textTransform: "uppercase", fontWeight: "600" }}>Shipping Charges</span>
+            <span style={{ marginLeft: "15px",fontWeight:'400'   }}>Shipping Charges</span>
             <span style={{ marginRight: "15px", fontWeight: "600" }}>{currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).shipping * currency.value).toFixed(2)}</span>
           </div>
 {/* 
@@ -343,7 +343,7 @@ export function DrawerFooter() {
           <hr style={{ color: "black" }}></hr>
           <div className={style.subTotal} style={{ marginTop: "25px",fontSize:"16px" }}>
             <span style={{ marginLeft: "15px", fontWeight: "600",fontSize:"18px" }}>Total</span>
-            <span style={{ fontSize: "20px", fontWeight: "600", marginRight: "15px", fontSize: "21px", lineHeight: "32px", letterSpacing: "3px" }}>{currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).Grand * currency.value).toFixed(2)}</span>
+            <span style={{ fontSize: "20px", fontWeight: "600", marginRight: "15px", fontSize: "21px", lineHeight: "32px", letterSpacing: "2px" }}>{currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).Grand * currency.value).toFixed(2)}</span>
           </div>
 
           <div className={style.buttons} >
