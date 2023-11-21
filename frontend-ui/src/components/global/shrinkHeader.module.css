@@ -193,6 +193,10 @@ Reason : Set the width and height of logo  */
         height: 50px;
         width: 110px;
     }
+    .main{
+    background: linear-gradient(to right,#bcbfaf,#aeae98);
+
+    }
 }
 /* End of Addition by Om Shrivastava on 15-11-23
 Reason : Set the width and height of logo */

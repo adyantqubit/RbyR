@@ -230,6 +230,9 @@ Reason : Set the padding and margin of antd notification  */
     }
     .App{
         margin-top: 60px;
+    background: linear-gradient(to right,#bcbfaf,#aeae98);
+
+
     }
     .row{
         display:flex;

@@ -52,7 +52,12 @@
 
 .subTitle{
     padding:0 16%;
-    font-size: 22px;
+    font-size: 19px;
+    /* Modification and addition by Om Shrivastava on 20-11-23
+    Reason : Set the font weight */
+    font-weight: 600;
+    /* Modification and addition by Om Shrivastava on 20-11-23
+    Reason : Set the font weight */
     line-height: 32px;
     /* letter-spacing: 3px;
     font-family: 'MyFont'; */
@@ -68,7 +73,7 @@
 
 .content{
     padding:0 16%;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 26px;
     /* letter-spacing: 1px;
     font-family: 'Rawson-Regular'; */

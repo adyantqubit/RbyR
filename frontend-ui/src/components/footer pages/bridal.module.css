@@ -65,12 +65,12 @@
 }
 
 .title{
-    font-size: 24px;
+    font-size: 19px;
     line-height: 32px;
     width: 60%;
     /* letter-spacing: 3px;
     font-family: 'MyFont'; */
-    font-weight: 500;
+    font-weight: 600;
     margin: 0;
     color: var(--textColorPrimary);
     margin-top: 5px;

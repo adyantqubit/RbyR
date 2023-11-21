@@ -48,8 +48,8 @@ function Footer2() {
         style: { marginTop: "20px" },
         style: { backgroundColor: 
           
-          // "var(--bannerColor)"
-          "linear-gradient(to right,#f187a3,#e699ad)" },
+          "var(--bannerColor)"},
+          // "linear-gradient(to right,#f187a3,#e699ad)" },
         description: "Please enter email id",
         onClick: () => {},
         key: 1,

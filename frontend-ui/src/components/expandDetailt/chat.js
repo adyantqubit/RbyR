@@ -8,6 +8,7 @@ import { getWhatsappContactDetail } from '../../api/service';
 
 import logoavatar from "../../assets/photos/rbyr_logo2.jpg"
 import config from '../../api/config';
+import whatsAppLogo from '../../../src/whatsAppLogo.PNG'
 
 const Chat = () => {
   const [whatsappContactNumber, setWhatsappContactNumber] = useState(false);
@@ -65,7 +66,13 @@ const Chat = () => {
   //  console.log(document.getElementsByClassName('floating-whatsapp-button')[0].childNodes[0].style.animation)
   }}>
   <FloatingWhatsApp
-  avatar={logo?config.staticBaseURL+"media/"+ logo:logoavatar}
+  // Modification and addition by Om Shrivastava on 20-11-23
+  // Reason : Add the image 
+  // avatar={logo?config.staticBaseURL+"media/"+ logo:logoavatar}
+  
+  avatar={whatsAppLogo}
+  // End of modification and addition by Om Shrivastava on 20-11-23
+  // Reason : Add the image
   phoneNumber={`+91 ${whatsappContactNumber}`} 
   onSubmit	={e=>handleNewUserMessage(e)}
   // Modification and addition by Om Shrivastava on 19-11-23

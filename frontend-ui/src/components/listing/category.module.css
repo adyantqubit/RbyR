@@ -47,6 +47,9 @@
     height: 100%;
     transition: all .8s ease-in;
     filter: brightness(70%);
+/* width: 340px;
+height: 440px; */
+
 
 }
 
@@ -74,9 +77,10 @@
     min-width: 50%;
     min-height: 50px;
     border:  1px solid white;
-    background-color: transparent;
     text-align: start;
-    color: var(--btnTextColorPrimary);
+    background-color: var(--btnBackgroundColorPrimary);
+  color:white;
+    
     
      /* "to left" / "to right" - affects initial color */
      background: linear-gradient(to left, transparent 50%,var(--btnBackgroundColorPrimary) 50%) right;
@@ -93,6 +97,7 @@
         /* color: var(--btnTextHoverColor) !important; */
         /* background-color: var(--btnHoverBackgroundColor); */
         background-position: left;
+        color: var(--btnTextColorPrimary);
 }
 
 @media (max-width:767px) {

@@ -443,7 +443,7 @@ function validatesNum(evt) {
 
                 <div style={{display:"flex",flexWrap:"wrap",gap:"10px"}}>
                     <button className={styles.userInfoButton} type='submit'>
-                    UPDATE22222 SHiPPING
+                    UPDATE SHiPPING
                 </button>
                 {/* <button className={styles.userInfoButton} style={{marginLeft:"10px"}} onClick={e=>shippingDelete(e,defaultShiping.id)}>
                     DELETE 

@@ -54,7 +54,7 @@ const BestSeller = () => {
                     {/* <div className={style.paragraph}>
                         Our products
                     </div> */}
-                    <div className={style.heading}> Best seller </div>
+                    <div className={style.heading}> Best Seller </div>
 
                 </div>
                 :null}

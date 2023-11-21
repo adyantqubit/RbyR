@@ -42,7 +42,7 @@ function Footer() {
         style:{marginTop:"20px"},
         style:{backgroundColor: "#f1cdd9",padding:'8px',borderRadius:'10px'},
         description:
-          'Please enter email id',
+          'Please enter emailwww id',
         onClick: () => {
         },
         key:1
