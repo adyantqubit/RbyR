@@ -3,7 +3,9 @@
 .tacContainer{
 
     position: relative;
-    top:100px;
+    /* top:100px; */
+    top:80px;
+
     height: auto;
     width:100%;
     background:var(--backgroundColorSecondary);
@@ -32,7 +34,7 @@
 
 .title{
     padding:0 20%;
-    font-size: 30px;
+    font-size: 28px;
     line-height: 32px;
     /* letter-spacing: 3px;
     font-family: 'MyFont'; */
@@ -73,8 +75,8 @@
 
 .content{
     padding:0 16%;
-    font-size: 18px;
-    line-height: 26px;
+    font-size: 15px;
+    line-height: 23px;
     /* letter-spacing: 1px;
     font-family: 'Rawson-Regular'; */
     color: var(--textColorPrimary);
@@ -88,9 +90,21 @@
 
 @media screen and (max-width:768px) {
     .tacContainer{
-        top:5vh;
+        /* top:5vh; */
+        top:-2vh;
+
     }
     .subTitle,.content,.title{
         padding:0 5%;
+    }
+   
+    .title{
+        font-size: 23px;
+    }
+    .subTitle{
+        font-size: 16px;
+    }
+    .content{
+        font-size: 13px;
     }
 }

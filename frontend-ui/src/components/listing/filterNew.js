@@ -179,7 +179,7 @@ const FilterNew = ({ scrolling }) => {
         <div className={style.filterInner}>
           <div className={style.filterheader}>
             <div className={style.filterHeaderInner} >
-              <span className={style.headtitle1}>FILTER BY</span>
+              <span className={style.headtitle1} >FILTER BY</span>
               <span>
                 <span className={style.headtitle2} onClick={e => { setSelectedColor([]); setSizeSelected([]); closeSortPage(); setMinMAx(2000, 200000) }} style={{ cursor: "pointer" }}>clear All</span>
                 <span className={style.headtitle3} style={{ marginLeft: "15px", cursor: "pointer" }} onClick={closeSortPage}>Apply filter</span>

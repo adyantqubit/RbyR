@@ -8,6 +8,8 @@ import { useResetPasswordMutation } from "../../Redux-manage/services/userAuthap
 import Navbar from '../global/NavHeader'
 import { notification } from 'antd';
 import {AiFillEye,AiFillEyeInvisible} from 'react-icons/ai'
+import '../../../src/root.css'
+import './resetPassword.css'
 
 
 const ResetPassword = () => {
@@ -40,16 +42,20 @@ const ResetPassword = () => {
       if(res.data){
 
        setError(null)
+
        notification.error({
         message: <div style={{fontSize:"18px",color:"black"}}>Successfully Password Udated. </div>,
         description:
         `Successfully Password Update`,
         className:"custom-class",
-        style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"5vh"},
+        style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"55vh"},
         duration:5,
         key:1
         });
        setMsg(res.data)
+      // alert('settttttttt')
+
+      // console.log('settttttttttt')
        navigate("/")
        navigate("/login")
       }   
@@ -57,13 +63,15 @@ const ResetPassword = () => {
   return (
     <>
     <Navbar/>
-    <div class="bod">
+    <div class="bod parentDiv">
     <div class="mai" style={{height:"50vh"}}>  	
-			<div class="signu" style={{marginTop:"5vh"}}>
+			<div class="signu" 
+      // style={{marginTop:"5vh"}}
+      >
 				<form  id="password-change-form" onSubmit={handleSubmit}>
-					<label class="labe" aria-hidden="true" style={{fontSize:"1.6rem"}}>Change Password</label>
+					<label class="labe" aria-hidden="true" style={{fontSize:"1.6rem",fontFamily:'var(--fontFamily)'}}>Change Password</label>
 					{error!=null ? <Alert severity="error" style={{margin:"0 60px"}}>{error.non_field_errors}</Alert> : ""}
-                    {msg.msg ? <Alert severity="success"  style={{margin:"0 50px"}}>successfully changed</Alert> : ""}
+                    {msg.msg ? <Alert severity="success"  style={{margin:"0 50px"}}>Successfully changed</Alert> : ""}
 										
            <span class="inpu3" style={{margin:"20px 0",marginLeft:"15%",background:"#e0dede"}}>
 						<input class="inpu4" type={showNewPass2?"text":"password"} name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
@@ -84,7 +92,7 @@ const ResetPassword = () => {
             </span>
 					{/* <input style={{marginBottom:"0"}} class="inpu" type="password" name="pswd2" placeholder="Confirm Password" required=""/> */}
 
-					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button class="butto" style={{backgroundColor:"black",}} type='submit'>Change</button>}
+					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button class="butto" style={{backgroundColor:"var(--btnBackgroundColorPrimary)",color:'var(--btnTextColorPrimary)',border:'1px solid var(--btnBorderColorPrimary)'}} type='submit'>Change</button>}
 				</form>
 			</div>
 	</div>

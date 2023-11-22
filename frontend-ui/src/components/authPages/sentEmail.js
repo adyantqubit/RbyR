@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useSendPasswordResetEmailMutation } from "../../Redux-manage/services/userAuthapi";
 import Navbar from '../global/NavHeader';
 import { notification } from 'antd';
+import '../../../src/root.css'
 
 const SentEmail = () => {
   notification.destroy()
@@ -40,7 +41,7 @@ const SentEmail = () => {
     <Navbar/>
     <div class="bod">
     <div class="mai" style={{height:"50vh"}}>  	
-			<div class="signu" style={{marginTop:"5vh"}}>
+			<div class="signu">
 				<form  id="password-reset-email-form" onSubmit={handleSubmit}>
 					<label class="labe" aria-hidden="true" style={{fontSize:"1.6rem"}}>Change Password</label>
 					{error?.non_field_errors? <Alert severity="error" style={{margin:"0 60px"}}>{error?.non_field_errors[0]}</Alert> : ""}
@@ -55,7 +56,7 @@ const SentEmail = () => {
           <span class="butto" style={{backgroundColor:"#000000",textAlign:"center",padding:"8px 0",cursor:"not-allowed"}} >Send Email</span>
           :
           // <button class="butto" style={{backgroundColor:"#573b8a",}} type='submit'>Send Email</button>}
-          <button class="butto" style={{backgroundColor:"black",}} type='submit'>Send Email</button>}
+          <button class="butto" style={{backgroundColor:"var(--btnBackgroundColorPrimary)",color:'var(--btnTextColorPrimary)',border:'1px solid var(--btnBorderColorPrimary)'}} type='submit'>Send Email</button>}
 
 
 					
