@@ -69,7 +69,9 @@ notification.destroy()
               })}
             </>
           ) : (
-            <div>No Terms and Conditions are present</div>
+            // <div>No Terms and Conditions are present</div>
+            <div>Terms and Condition are not available</div>
+
           )}
         </div>
 
