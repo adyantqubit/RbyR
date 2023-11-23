@@ -169,14 +169,23 @@
     line-height: 20px;
     letter-spacing: 1px;
     color: black;
-      font-family: var(--fontFamily);
-      text-transform: uppercase;
+    font-family: var(--fontFamily);
+    /* Commented by Om Shrivastava on 22--11-23
+    Reason : No need to add the uppercase data */
+    /* text-transform: uppercase; */
+    /* End of  Commented by Om Shrivastava on 22--11-23
+    Reason : No need to add the uppercase data */
+      
 
 }
 
 .firstInput {
+    /* Modification and addition by Om Shrivastava 
+    Reason : Set the width of the input */
     width: 100%;
-
+    /* width: 70%; */
+/* End of Modification and addition by Om Shrivastava 
+    Reason : Set the width of the input */
     height: 36px;
     border: 1px solid rgba(140, 140, 140, 0.5);
     padding: 0 8px;
@@ -356,20 +365,20 @@
 
 .userinfoText {
     color: black;
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 12px;
+    line-height: 18px;
     letter-spacing: 1.2px;
-    font-weight: 600;
+    font-weight: 400;
       font-family: var(--fontFamily);
 
 }
 
 .userinfoText2 {
     color: #323232;
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 12px;
+    line-height: 18px;
     letter-spacing: 1.2px;
-    font-weight: 600;
+    /* font-weight: 600; */
       font-family: var(--fontFamily);
 
 }
@@ -511,6 +520,15 @@
     color: black;
     font-weight: 600;
 }
+/* Addition by Om Shrivastava on 22-11-23
+Reaosn : Add the css  */
+.productData{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: auto;
+}
+/* End of Addition by Om Shrivastava on 22-11-23
+Reaosn : Add the css  */
 
 @media (max-width: 1200px) {
 

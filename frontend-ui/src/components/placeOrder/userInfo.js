@@ -82,7 +82,7 @@ const UserInfo = () => {
             <form onSubmit={handleSubmit}>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFirstName}>
-                        <label className={styles.firstName} htmlFor='first'>FIRST NAME*</label>
+                        <label className={styles.firstName} htmlFor='first'>First Name<span style={{color:'red'}}>*</span></label>
                         {checkoutDetails.userInfo?
                         <input className={styles.firstInput} type="text" name="first" defaultValue={checkoutDetails.userInfo.firstname} required/>
                         :
@@ -90,7 +90,7 @@ const UserInfo = () => {
                         }
                     </div>
                     <div className={styles.columnFirstName}>
-                        <label className={styles.firstName} htmlFor='last'>LAST NAME*</label>
+                        <label className={styles.firstName} htmlFor='last'>Last Name<span style={{color:'red'}}>*</span></label>
                         {checkoutDetails.userInfo?
                         <input className={styles.firstInput} type="text" name="last" defaultValue={checkoutDetails.userInfo.lastname} />
                         :
@@ -100,7 +100,7 @@ const UserInfo = () => {
                 </div>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFirstName}>
-                        <label className={styles.firstName} htmlFor='email'>Email ADDRESS*</label>
+                        <label className={styles.firstName} htmlFor='email'>Email Address<span style={{color:'red'}}>*</span></label>
                         {checkoutDetails.userInfo?
                         <input className={styles.firstInput} type="text" name="email" defaultValue={checkoutDetails.userInfo.email} required/>
                         :

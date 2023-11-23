@@ -1031,6 +1031,8 @@ const CartSItem = (props) => {
             </div>
           ) : null}
         </div>
+
+
       </div>
 
       <div className={style.footerCon} style={{ width: "100%" }}>
@@ -1141,7 +1143,7 @@ const CartSItem = (props) => {
                     <Link
                       to="/custom"
                       style={{
-                        color: "var(--textColorSecondary)",
+                        color: "blue",
                         textDecoration: "underline",
                         fontSize: "13px",
                         lineHeight: "20px",
@@ -1154,7 +1156,7 @@ const CartSItem = (props) => {
                     <Link
                       to="/delivery-policy"
                       style={{
-                        color: "var(--textColorSecondary)",
+                        color: "blue",
                         textDecoration: "underline",
                         fontSize: "13px",
                         lineHeight: "20px",
