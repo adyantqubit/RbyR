@@ -45,7 +45,10 @@
 .img{
     padding:8px;
     max-width:50%;
-    height: auto;
+    height: 150px;
+    width: 150px;
+
+    /* height: auto; */
     /* height:100%; */
 }
 
@@ -57,6 +60,39 @@
     justify-content: space-between;
 }
 
+.continueShopbtn {
+    width: 50% !important;
+    font-size: 13px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    background-color: var(--btnBackgroundColorPrimary);
+    color: var(--btnTextColorPrimary);
+    text-align: center;
+    opacity: 1;
+    font-family: var(--fontFamily);
+  
+    position: relative;
+    font-weight: normal;
+    text-transform: uppercase;
+    padding: 0 18px;
+    -webkit-transition: all 250ms ease 0s;
+    -o-transition: all 250ms ease 0s;
+    transition: all 250ms ease 0s;
+    border-width: 2px;
+    border-style: solid;
+    border: 1px solid var(--btnBorderColorSecondary) !important;
+    -webkit-border-image: initial;
+    -o-border-image: initial;
+    border-image: initial;
+    text-decoration: none;
+    border-radius: 0;
+  }
+
+  .continueShopbtn:hover {
+    background-color: var(--btnHoverBackgroundColorPrimary);
+    color: var(--btnTextHoverColorPrimary);
+    border: 1px solid var(--btnBorderHoverColorPrimary);
+  }
 .userinfoText{
     color: black;
     font-size: 14px;
@@ -311,6 +347,10 @@
     .foot{
         margin-top:-60px;
     }
+
+    .continueShopbtn {
+        width: 100% !important;
+      }
 
     .container{
         padding-top: 70px;

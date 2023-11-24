@@ -280,7 +280,9 @@ const ListPage = () => {
           ) : null}
         </div>
 
-        <div
+        {/* Commented by Om Shrivastava on 23-11-23
+Reason : Need to comment the filter functionality  */}
+        {/* <div
           className={style.filterContainres}
           style={{
             zIndex: "0",
@@ -296,7 +298,7 @@ const ListPage = () => {
               >
                 {/* <span className={style.shopbtn1}
                   onClick={e => setSortUi(true)}>SORT BY</span> */}
-                <span
+        {/* <span
                   className={style.shopbtn1}
                   onClick={(e) => setfilterUi(true)}
                 >
@@ -305,7 +307,11 @@ const ListPage = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
+        {/* */}
+
+        {/* End of commented code by Om Shrivastava on 23-11-23
+Reason : Need to comment the filter functionality */}
 
         {/* Added by rohan - on -18/2/23
             Reason- spliting content into two columns one for fliter and one for showing product */}
