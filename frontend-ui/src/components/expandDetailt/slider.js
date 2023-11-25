@@ -92,12 +92,12 @@ const Slider = ({ scrollTop }) => {
                 <Carousel.Item 
                 style={{cursor:"pointer",padding:"5px auto"}}>
                   <img
-                    className={style.img}
+                    className={style.img12}
                     src={config.staticBaseURL + cart.img_main}
                      // Modification and addition by Om Shrivastava on 16-11-23
                     // Reason : Fix the image height and width
                     // style={{width:'350px'}}
-                    style={{ width: "320px",height:'320px' }}
+                    // style={{ width: "320px",height:'320px' }}
                     // End of modification and addition by Om Shrivastava on 16-11-23
                     // Reason : Fix the image height and width
                     onClick={(e) => { openDetail(cart); scrollTop() }}

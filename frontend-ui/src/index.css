@@ -15,9 +15,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-
-
+/* Addition by Om Shrivastava on 24-11-23
+Reason : Set the antd closing icon  */
+.ant-notification-notice-close{
+  top: 2px;
+  right: 2px;
+  font-size: 12px;
+    }
+/* End of Addition by Om Shrivastava on 24-11-23
+Reason : Set the antd closing icon */
 /* #video {
   position: relative !important;
   padding-bottom: 56.25% !important;

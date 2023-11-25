@@ -12,7 +12,7 @@
 
 .contain{
    
-    height:auto;
+    height:auto; 
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -42,6 +42,12 @@
     margin-top: 5px;
     text-align: center;
     margin-bottom: 3vh;
+     /* Modification and addition by Om Shrivastava on 25-11-23
+    Reason : Change the font family */
+    /* font-family: 'Rawson-Regular'; */
+    font-family: var(--fontFamily);
+    /* End of modification and addition by Om Shrivastava on 25-11-23
+    Reason : Change the font family */
 }
 
 .subTitle{
@@ -52,6 +58,12 @@
     font-family: 'MyFont';
     margin-top: 20px;
     color: var(--textColorPrimary);
+     /* Modification and addition by Om Shrivastava on 25-11-23
+    Reason : Change the font family */
+    /* font-family: 'Rawson-Regular'; */
+    font-family: var(--fontFamily);
+    /* End of modification and addition by Om Shrivastava on 25-11-23
+    Reason : Change the font family */
 }
 
 .content{
@@ -59,7 +71,12 @@
     font-size: 14px;
     line-height: 26px;
     letter-spacing: 1px;
-    font-family: 'Rawson-Regular';
+    /* Modification and addition by Om Shrivastava on 25-11-23
+    Reason : Change the font family */
+    /* font-family: 'Rawson-Regular'; */
+    font-family: var(--fontFamily);
+    /* End of modification and addition by Om Shrivastava on 25-11-23
+    Reason : Change the font family */
     color: var(--textColorPrimary);
 }
 

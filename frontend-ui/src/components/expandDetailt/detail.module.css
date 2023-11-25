@@ -100,6 +100,11 @@
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacin  */
+/* Addition by Om Shrivastava on 24-11-23
+Reason : Set the capitalize property  */
+  text-transform: capitalize;
+  /* End of Addition by Om Shrivastava on 24-11-23
+Reason : Set the capitalize property  */
   }
   .text {
     margin-top: 2.5%;

@@ -436,13 +436,17 @@ const Details = (props) => {
                   </span>
                   {/* Added by - Ashish Dewangan on 17-02-2023
                   Reason - To add a horizontal line after price */}
-                  <div
+                  {/* Commented by Om Shrivastava on 24-11-23
+                  Reason : No need to show this line */}
+                  {/* <div
                     style={{
                       borderBottom: "1px solid lightgrey",
                       width: "90%",
                       marginTop: "15px",
                     }}
-                  ></div>
+                  ></div> */}
+                  {/* End of Commented by Om Shrivastava on 24-11-23
+                  Reason : No need to show this line  */}
                   {/* End of code addition */}
                   <div className={styles["container05"]}>
                     <div

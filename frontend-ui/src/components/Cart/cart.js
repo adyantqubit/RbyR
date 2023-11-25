@@ -1150,7 +1150,7 @@ const CartSItem = (props) => {
                         letterSpacing: "1px",
                       }}
                     >
-                      Contact Us{" "}
+                      Contact Us
                     </Link>{" "}
                     |{" "}
                     <Link

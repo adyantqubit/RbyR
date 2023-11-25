@@ -120,6 +120,11 @@
   Reason : Remove the letter spacin  */
     font-weight: 400;
     color: var(--textColorPrimary);
+    /* Addition by Om shrivastava on 24-11-23
+    REason : Need to set the justify  */
+    text-align: justify;
+    /* End of Addition by Om shrivastava on 24-11-23
+    REason : Need to set the justify  */
 }
 
 .footerMargin{
@@ -133,7 +138,12 @@
     }
     
     .head{
-        margin-top:6vh;
+        /* Modification and addition by Om Shrivastava on 24-11-23
+        Reason : Need to remove the padding top */
+        /* margin-top:6vh; */
+        margin-top:2vh;
+        /* End of Modification and addition by Om Shrivastava on 24-11-23
+        Reason : Need to remove the padding top */
         font-size: 14px;
         padding: 0 3%;
     }

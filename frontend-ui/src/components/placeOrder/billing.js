@@ -109,23 +109,32 @@ console.log(onlineDetail)
     < >
       <Navbar />
       <div className={styles.container} id="scrolled" >
-        <div className={styles.main}>
+        <div className={styles.main} >
           {checkoutDetails.payment == "onlinepay" ?
             onlineDetail != null ?
-              <div className={styles.payBox}>
+              <div className={styles.payBox} style={{backgroundColor:'rgb(243 243 243)',height:'160px',marginTop:'2px'}} >
                 <img src={config.staticBaseURL + onlineDetail.qr_img}
-                  className={styles.img} />
-                <div className={styles.payTitle}>
+                  className={styles.img} 
+                  style={{border:'1px solid black'}}
+                  />
+                  
+                <div className={styles.payTitle} >
                   <div >
-                    <div ><span className={styles.userinfoText}>Name:</span><span className={styles.userinfoText2} >{onlineDetail.name}</span ></div>
+                    {/* <div ><span className={styles.userinfoText}>Name:</span><span className={styles.userinfoText2} >{onlineDetail.name}</span ></div>
                     <div ><span className={styles.userinfoText}>Bank Name:</span><span className={styles.userinfoText2}>{onlineDetail.bank_name}</span></div>
                     <div ><span className={styles.userinfoText}>Account Number:</span><span className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
-                    <div ><span className={styles.userinfoText}>UPI ID:</span><span className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div>
+                    <div ><span className={styles.userinfoText}>UPI ID:</span><span className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div> */}
+                  {/* <div style={{fontSize:'14px',color:'blue',marginLeft:'-5px'}} className={styles.payTitle}>Account Details : </div> */}
+                    <div style={{paddingTop:'3px'}}><span style={{fontSize:'12px',fontWeight:'bold'}} className={styles.userinfoText2}>{onlineDetail.bank_name}</span></div>
+                    <div ><span style={{fontSize:'12px',fontWeight:'bold',letterSpacing:'0.5px'}} className={styles.userinfoText}>Name &nbsp;&nbsp;: </span><span style={{fontSize:'12px'}} className={styles.userinfoText2} >{onlineDetail.name}</span ></div>
+                    <div ><span style={{fontSize:'12px',fontWeight:'bold',letterSpacing:'0.5px'}} className={styles.userinfoText}>Ac/No &nbsp;: </span><span style={{fontSize:'12px'}} className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
+                  <div ><span style={{fontSize:'12px',fontWeight:'bold',letterSpacing:'0.5px'}} className={styles.userinfoText}>UPI ID&nbsp;: </span><span style={{fontSize:'12px',}} className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div> 
+  
                   </div>
                   {/* Modification and addition by Om Shrivastava on 08-11-23
                   Reason : Set the contact number of payment time */}
                   {/* <div style={{ height: "60px", width: "100%" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To Admin After Paying At {storeLocatorDetails != null ? parse("PHONE:" + storeLocatorDetails[0]?.phoneNumber) : null}</span></div> */}
-                  <div style={{ height: "60px", width: "100%" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To Admin After Paying At PHONE:{onlineDetail.contact_number}</span></div>
+                  <div style={{ height: "60px", width: "100%",paddingTop:'2px' }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all',fontSize:'11px' }}> Please Confirm To Admin After Paying At <b>phone:</b>{onlineDetail.contact_number}</span></div>
                   {/* End of Modification and addition by Om Shrivastava on 08-11-23
                   Reason : Set the contact number of payment time  */}
                 </div>
@@ -219,12 +228,12 @@ console.log(onlineDetail)
 
                 <div className={styles.billingfooter} id="footer" >
                   <span className={`${styles.columnitem1head}`} >Subtotal : </span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ borderRight: "1px solid black", whiteSpace: "nowrap", border: "none", outline: "none", width: "auto" }}> {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).subtotal * checkoutDetails.currency_value).toFixed(2)}</span>
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ borderRight: "1px solid black", whiteSpace: "nowrap", border: "none", outline: "none", width: "auto" }}> {checkoutDetails.currency_sign}{(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).subtotal * checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
 
                 <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`}  >Shipping charges : </span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto", border: "none", outline: "none" }} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).shipping * checkoutDetails.currency_value).toFixed(2)}</span>
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto", border: "none", outline: "none" }} > {checkoutDetails.currency_sign}{(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).shipping * checkoutDetails.currency_value).toFixed(2)}</span>
                 </div>
                 {/* <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`}  >GST Charges : </span>

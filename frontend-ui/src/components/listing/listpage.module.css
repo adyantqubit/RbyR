@@ -217,6 +217,11 @@ justify-content: space-between;
 
     /* filter: brightness(100%); */
  }
+
+ .img12{
+  height: 320px;
+  width: 320px;
+ }
 /* End of addition by Om Shrivastava on 15-11-23
  Reason : Add the class of the image */
  @media (max-width: 1200px)
@@ -243,9 +248,7 @@ justify-content: space-between;
   .cardContainer{
     gap: 0;
   }
-  .img12{
-    border: 2px solid green;
-  }
+ 
  }
 
 
@@ -834,6 +837,38 @@ justify-content: space-between;
   }}
 /* End of addition by Om shrivastava on 15-11-23
  Reason : Add the media query for the best seller image */
+
+ @media (max-width: 520px) {
+  .TopContent{
+    padding-left: 0px;
+  }
+  
+  .title{
+    font-size: 12px;
+  }
+  .price{
+    font-size: 12px;
+  }
+  .readyBox{
+    font-size: 10px;
+  }
+  .category{
+    gap: 12px;
+    width: 320px;
+    padding: 0;
+  }
+  
+  .bestSellerImage{
+    height: 250px;
+    width: 220px;
+  }
+  .img12{
+    height: 300px;
+    width: 250px;
+  }
+ }
+
+
  @media (max-width: 360px) {
   .TopContent{
     padding-left: 0px;
@@ -863,7 +898,7 @@ justify-content: space-between;
   Reason : Set the font size */
 
   .bestSellerImage{
-    height: 220px;
+    height: 250px;
     width: 220px;
   }
  }

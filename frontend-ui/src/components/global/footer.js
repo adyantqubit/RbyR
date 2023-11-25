@@ -40,9 +40,9 @@ function Footer() {
       notification.open({
         message: "",
         style:{marginTop:"20px"},
-        style:{backgroundColor: "#f1cdd9",padding:'8px',borderRadius:'10px'},
+        style:{backgroundColor: "#f1cdd9",padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
         description:
-          'Please enter emailwww id',
+          'Please enter email id',
         onClick: () => {
         },
         key:1

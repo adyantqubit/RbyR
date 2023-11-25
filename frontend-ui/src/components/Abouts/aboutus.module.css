@@ -96,6 +96,11 @@
     color: #212121;
     font-weight: 500;
     font-family: var(--fontFamily);
+    /* Added by Om Shrivastava on 24-11-23
+    Reason : Set the text justify property  */
+    text-align: justify;
+    /* End of addition by Om Shrivastava on 24-11-23
+    Reason : Set the text justify property  */
 }
 
 .sliderImg{

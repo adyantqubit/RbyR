@@ -65,9 +65,14 @@
 
 
 .ant-btn-primary {
-    width:70%;
+    /* Modification and addition by Om Shrivastava on 24-11-23
+    Reason : Set the width  */
+    /* width:30%; */
+    width:50%;
+  /* End of modification and addition by Om Shrivastava on 24-11-23
+    Reason : Set the width  */
     min-height: 35px;
-    background:#5c5c5c;
+    background:black;
     color:white;
     font-size: 16px;
     font-family: var(--fontFamily);
@@ -85,11 +90,11 @@
     visibility: hidden;
 }
 
-.ant-btn-primary:hover {
+/* .ant-btn-primary:hover {
     background:#5c5c5c;
     color:white;
     border: none;
-}
+} */
 
 .ant-btn:focus{
     background-color: #5c5c5c;
@@ -99,8 +104,13 @@
 
 
 .ant-btn-default {
-    width:30%;
-    background:#5c5c5c;
+    /* Modification and addition by Om Shrivastava on 24-11-23
+    Reason : Set the width  */
+    /* width:30%; */
+    width:50%;
+  /* End of modification and addition by Om Shrivastava on 24-11-23
+    Reason : Set the width  */
+    background:black;
     color:white;
     min-height: 35px;
     font-size: 16px;

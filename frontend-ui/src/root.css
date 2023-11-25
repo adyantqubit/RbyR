@@ -19,7 +19,10 @@
 
     /* End of modification and adition by Om Shrivastava on 18-10-23
     Reason : change the header color */
-    --videoBackgroundColor:#dfcfec;
+    /* --videoBackgroundColor:#dfcfec; */
+    --videoBackgroundColor:#f1cdd9;
+
+    
     /* ---------------------------background color 1 ----------------- */ 
 
     /* Modification and addition by Om Shrivastava on 18-10-23
@@ -57,7 +60,15 @@ Reason : Set the padding and margin of antd notification */
     /* --fontFamily : "sans-serif"; */
     /* --fontFamily : "Lato";
     --fontFamily : "Montserrat"; */
-    --fontFamily : "Oswald";
+    /* Modification and addition by Om Shrivastava on 24-11-23
+    Reason : Set the font family */
+    /* --fontFamily : "Oswald";
+    --fontFamily : "Baskerville"; */
+    /* --fontFamily : "cursive"; */
+    --fontFamily : "Lato";
+   /* End of Modification and addition by Om Shrivastava on 24-11-23
+    Reason : Set the font family */
+
     /* End of Modification and addition by Om Shrivastava on 16-11-23
     Reason : Set the fontfamily */
     /* --fontFamily : "sans-serif"; */
