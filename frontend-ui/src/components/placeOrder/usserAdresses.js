@@ -194,7 +194,7 @@ const UsserAdresses = () => {
                 action = false
 
             }
-            else if (data.get('numberb').length == 0) {
+            else if (data.get('numberb')?.length == 0) {
                 setRequired({ "numberb": "This field is required." })
                 document.getElementById('numberb').focus()
                 // document.getElementById('number').scrollTop(0)
@@ -434,11 +434,11 @@ const UsserAdresses = () => {
                    
                 
                 }}>
-                    <div className={styles.columnitem1head}>2. SHIPPING I666NFO</div>
+                    <div className={styles.columnitem1head}>2. SHIPPING INFO</div>
                     <form onSubmit={RequiredValidate} autocomplete="off">
                         <div className={styles.columnitem1content1}>
                             <div className={styles.columnFirstName}>
-                                <label className={styles.firstName} htmlFor='first'>First name<span style={{color:'red'}}>*</span></label>
+                                <label className={styles.firstName} htmlFor='first'>First Name<span style={{color:'red'}}>*</span></label>
                                 {checkoutDetails.shippingData ?
                                     <>
                                         <input className={styles.firstInput} name='first' autocomplete="nope" id="first" maxLength={19} onKeyPress={validate} onChange={e=>setRequired({})} defaultValue={checkoutDetails.shippingData.firstname} />
@@ -454,7 +454,7 @@ const UsserAdresses = () => {
                                 }
                             </div>
                             <div className={styles.columnFirstName}>
-                                <label className={styles.firstName} htmlFor='b'>Last name<span style={{color:'red'}}>*</span></label>
+                                <label className={styles.firstName} htmlFor='b'>Last Name<span style={{color:'red'}}>*</span></label>
                                 {checkoutDetails.shippingData ?
                                     <>
                                         <input className={styles.firstInput} name='last' autocomplete="nope" id='last' maxLength={19} onKeyPress={validate} onChange={e=>setRequired({})} defaultValue={checkoutDetails.shippingData.lastname} />
@@ -471,7 +471,7 @@ const UsserAdresses = () => {
                         <div className={styles.columnitem1content1}>
                             <div className={styles.columnFullName}>
 
-                                <label className={styles.firstName} htmlFor='street'>Street name<span style={{color:'red'}}>*</span></label>
+                                <label className={styles.firstName} htmlFor='street'>Street Name<span style={{color:'red'}}>*</span></label>
                                 {checkoutDetails.shippingData ?
                                     <>
                                         <input className={styles.firstInput} id="street" autocomplete="nope" maxLength={180} onKeyPress={e => validateWhitespace(e, "street")} onChange={e=>setRequired({})} name='street' defaultValue={checkoutDetails.shippingData.street} />
@@ -487,7 +487,7 @@ const UsserAdresses = () => {
                         </div>
                         <div className={styles.columnitem1content1}>
                             <div className={styles.columnFullName}>
-                                <label className={styles.firstName} htmlFor='street'>House/Apartment number<span style={{color:'red'}}>*</span></label>
+                                <label className={styles.firstName} htmlFor='street'>House/Apartment Number<span style={{color:'red'}}>*</span></label>
                                 {checkoutDetails.shippingData ?
                                     <>
                                         <input className={styles.firstInput} id="flatno" autocomplete="nope" name='flatno' onKeyPress={e => validateWhitespace(e, "flatno")} onChange={e=>setRequired({})} maxLength={10} defaultValue={checkoutDetails.shippingData.houseno} />
@@ -534,7 +534,7 @@ const UsserAdresses = () => {
                         </div>
                         <div className={styles.columnitem1content1}>
                             <div className={styles.columnFirstName}>
-                                <label className={styles.firstName} htmlFor='first'>Zip-code<span style={{color:'red'}}>*</span></label>
+                                <label className={styles.firstName} htmlFor='first'>Zip-Code<span style={{color:'red'}}>*</span></label>
                                 {checkoutDetails.shippingData ?
                                     <> <input className={styles.firstInput} name='pincode' id='pincode' autocomplete="nope" onKeyPress={validatesPin} onKeyUp={validatesPin} onChange={e=>setRequired({})} maxLength={6} defaultValue={checkoutDetails.shippingData.zipcode} />
                                         {required.pincode ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
@@ -633,7 +633,7 @@ const UsserAdresses = () => {
                             <>
                                 <div className={styles.columnitem1content1}>
                                     <div className={styles.columnFirstName}>
-                                        <label className={styles.firstName} htmlFor='first'>First name *</label>
+                                        <label className={styles.firstName} htmlFor='first'>First Name<span style={{color:'red'}}>*</span></label>
                                         {checkoutDetails.billingData ?
                                             <>
                                                 <input className={styles.firstInput} autocomplete="nope" name='firstb' id="firstb" maxLength={19} onKeyPress={validate} defaultValue={checkoutDetails.billingData.firstname} />
@@ -647,7 +647,7 @@ const UsserAdresses = () => {
                                         }
                                     </div>
                                     <div className={styles.columnFirstName}>
-                                        <label className={styles.firstName} htmlFor='b'>Last name *</label>
+                                        <label className={styles.firstName} htmlFor='b'>Last Name<span style={{color:'red'}}>*</span></label>
                                         {checkoutDetails.billingData ?
                                             <>
                                                 <input className={styles.firstInput} autocomplete="nope" name='lastb' id="firstb" maxLength={19} onKeyPress={validate} defaultValue={checkoutDetails.billingData.lastname} />
@@ -664,7 +664,7 @@ const UsserAdresses = () => {
                                 <div className={styles.columnitem1content1}>
                                     <div className={styles.columnFullName}>
 
-                                        <label className={styles.firstName} htmlFor='street'>Street name *</label>
+                                        <label className={styles.firstName} htmlFor='street'>Street Name<span style={{color:'red'}}>*</span></label>
                                         {checkoutDetails.billingData ?
                                             <>
                                                 <input className={styles.firstInput} autocomplete="nope" name='streetb' maxLength={180} id="streetb" onKeyPress={e => validateWhitespace(e, "streetb")} defaultValue={checkoutDetails.billingData.street} />
@@ -679,7 +679,7 @@ const UsserAdresses = () => {
                                 </div>
                                 <div className={styles.columnitem1content1}>
                                     <div className={styles.columnFullName}>
-                                        <label className={styles.firstName} htmlFor='street'>House/Apartment number *</label>
+                                        <label className={styles.firstName} htmlFor='street'>House/Apartment Number<span style={{color:'red'}}>*</span></label>
                                         {checkoutDetails.billingData ?
                                             <>
                                                 <input className={styles.firstInput} autocomplete='nope' name='flatnob' maxLength={19} id="flatb" onKeyPress={e => validateWhitespace(e, "flatb")} defaultValue={checkoutDetails.billingData.houseno} />
@@ -695,7 +695,7 @@ const UsserAdresses = () => {
                                 </div>
                                 <div className={styles.columnitem1content1}>
                                     <div className={styles.columnFirstName}>
-                                        <label className={styles.firstName} htmlFor='first'>City *</label>
+                                        <label className={styles.firstName} htmlFor='first'>City<span style={{color:'red'}}>*</span></label>
                                         {checkoutDetails.billingData ?
 
                                             <>
@@ -728,7 +728,7 @@ const UsserAdresses = () => {
                                 </div>
                                 <div className={styles.columnitem1content1}>
                                     <div className={styles.columnFirstName}>
-                                        <label className={styles.firstName} htmlFor='first'>Zip-code *</label>
+                                        <label className={styles.firstName} htmlFor='first'>Zip-Code<span style={{color:'red'}}>*</span></label>
                                         {checkoutDetails.billingData ?
                                             <>
                                                 <input className={styles.firstInput} autocomplete="nope" name='pincodeb' id="pincodeb" onKeyPress={validatesPin} maxLength={6} defaultValue={checkoutDetails.billingData.zipcode} />
@@ -745,7 +745,7 @@ const UsserAdresses = () => {
                                             </>}
                                     </div>
                                     <div className={styles.columnFirstName}>
-                                        <label className={styles.firstName} htmlFor='last'>Country *</label>
+                                        <label className={styles.firstName} htmlFor='last'>Country<span style={{color:'red'}}>*</span></label>
                                         {checkoutDetails.billingData ?
                                             <select className={styles.countrypicker} defaultValue={value2} onChange={changeHandler2}>
                                                 {list.map(l => {
@@ -763,7 +763,7 @@ const UsserAdresses = () => {
                                 </div>
                                 <div className={styles.columnitem1content1}>
                                     <div className={styles.columnFullName}>
-                                        <label className={styles.firstName} htmlFor='street'>Phone Number *</label>
+                                        <label className={styles.firstName} htmlFor='street'>Phone Number<span style={{color:'red'}}>*</span></label>
                                         {checkoutDetails.billingData ?
                                             <>
                                             <PhoneInput

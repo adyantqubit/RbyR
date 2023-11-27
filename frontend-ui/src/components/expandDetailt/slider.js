@@ -1,35 +1,33 @@
-import React, { useState, useEffect } from 'react'
-import Carousel from 'react-grid-carousel'
+import React, { useState, useEffect } from "react";
+import Carousel from "react-grid-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import config from "../../api/config";
 import { CartState } from "../../context";
 
 import style from "../listing/listpage.module.css";
-import styles from "./slider.module.css"
-import logo from "../../assets/photos/rts-icon.svg"
+import styles from "./slider.module.css";
+import logo from "../../assets/photos/rts-icon.svg";
 
 const Slider = ({ scrollTop }) => {
   const { CategoryProduct, con, setcon, currency } = CartState();
   const recentlyViews = [];
-  const [recentlyViewedProducts, setRecentlyViewedProducts] = useState([])
-  
-  const {id}=useParams()
+  const [recentlyViewedProducts, setRecentlyViewedProducts] = useState([]);
+
+  const { id } = useParams();
 
   useEffect(() => {
     func();
-  }, [])
+  }, []);
   function func() {
-    var storage = JSON.parse(localStorage.getItem("recentview"))
+    var storage = JSON.parse(localStorage.getItem("recentview"));
     if (storage && storage.length > 1) {
       for (var i = 0; i < storage.length; i++) {
-        if (i > 0)
-          recentlyViews.push(storage[i])
+        if (i > 0) recentlyViews.push(storage[i]);
       }
-      setRecentlyViewedProducts(recentlyViews)
+      setRecentlyViewedProducts(recentlyViews);
     }
   }
-
 
   const responsive = {
     superLargeDesktop: {
@@ -56,51 +54,62 @@ const Slider = ({ scrollTop }) => {
     // console.log(window)
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
       /* you can also use 'auto' behaviour
          in place of 'smooth' */
     });
 
-    if(id.category.length!=0)
-    nav(`/listing/${id.menu}/${id.category}/detail/${id.id}`);
-    else
-    nav(`/listing/${id.menu}/0/detail/${id.id}`)
+    if (id.category.length != 0)
+      nav(`/listing/${id.menu}/${id.category}/detail/${id.id}`);
+    else nav(`/listing/${id.menu}/0/detail/${id.id}`);
   }
 
   return (
     <>
-     {recentlyViewedProducts.length>0
-
-? <div className={styles.sliderContainer}
-        style={{ display: "flex", flexDirection: "column", padding: "0 8%", marginBottom: "9vh" }}
-      >
+      {recentlyViewedProducts.length > 0 ? (
         <div
-          className={styles.header}
+          className={styles.sliderContainer}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            padding: "0 8%",
+            // Addition by Om Shrivastava on 25-11-23
+            // Reason : Set the margin top
+            marginTop: "18px",
+            // End of addition by Om Shrivastava on 25-11-23
+            // Reason : Set the margin top
+
+            // Commented by Om Shrivastava on 25-11-23
+            // Reason : Comment this code
+            // marginBottom: "9vh"
+            // End of commentd code by Om Shrivastava on 25-11-23
+            // Reason : Comment this code
+          }}
         >
-          RECENTLY VIEWED PRODUCTS
+          <div className={styles.header}>RECENTLY VIEWED PRODUCTS</div>
 
-        </div>
-
-        <Carousel cols={4} rows={1} gap={10} style={{ width: "100%" }}>
-          {/* {JSON.parse(localStorage.getItem("recentview")) &&
+          <Carousel cols={4} rows={1} gap={10} style={{ width: "100%" }}>
+            {/* {JSON.parse(localStorage.getItem("recentview")) &&
           JSON.parse(localStorage.getItem("recentview")).length > 0 */}
 
-
-          { recentlyViewedProducts.map((cart) => {
-
+            {recentlyViewedProducts.map((cart) => {
               return (
-                <Carousel.Item 
-                style={{cursor:"pointer",padding:"5px auto"}}>
+                <Carousel.Item
+                  style={{ cursor: "pointer", padding: "5px auto" }}
+                >
                   <img
                     className={style.img12}
                     src={config.staticBaseURL + cart.img_main}
-                     // Modification and addition by Om Shrivastava on 16-11-23
+                    // Modification and addition by Om Shrivastava on 16-11-23
                     // Reason : Fix the image height and width
                     // style={{width:'350px'}}
                     // style={{ width: "320px",height:'320px' }}
                     // End of modification and addition by Om Shrivastava on 16-11-23
                     // Reason : Fix the image height and width
-                    onClick={(e) => { openDetail(cart); scrollTop() }}
+                    onClick={(e) => {
+                      openDetail(cart);
+                      scrollTop();
+                    }}
                   />
                   <div
                     style={{
@@ -108,42 +117,55 @@ const Slider = ({ scrollTop }) => {
                       textTransform: "capitalize",
                       fontWeight: "600",
                       fontSize: ".8rem",
-                      color: "var(--textColorPrimary)"
+                      color: "var(--textColorPrimary)",
                     }}
-                    onClick={(e) => {openDetail(cart);scrollTop()}}
+                    onClick={(e) => {
+                      openDetail(cart);
+                      scrollTop();
+                    }}
                   >
                     {cart.title}
                   </div>
-                  <div style={{ textAlign: "center", fontSize: ".9rem", fontWeight: "500", color: "var(--textColorPrimary)" }}>
+                  <div
+                    style={{
+                      textAlign: "center",
+                      fontSize: ".9rem",
+                      fontWeight: "500",
+                      color: "var(--textColorPrimary)",
+                    }}
+                  >
                     {" "}
-                    {currency.sign}{" "}
-                    {(cart.price * currency.value).toFixed(2)}
+                    {currency.sign} {(cart.price * currency.value).toFixed(2)}
                   </div>
 
                   {/* Commented by Rohan - 16/12/22
                       Reason - Adding representation of Reading to ship items  */}
 
-                  {cart.ready_to_ship?
-                  <div className={styles.readyContainer} 
-                  onClick={(e) => { openDetail(cart); scrollTop() }}
-                  style={{cursor:"pointer"}}>
-                  <div className={styles.readyBox}>
-                    <img src={logo} className={styles.readyIcon} />
-                    Ready To Ship
-                  </div>
-                </div>
-                :null}
+                  {cart.ready_to_ship ? (
+                    <div
+                      className={styles.readyContainer}
+                      onClick={(e) => {
+                        openDetail(cart);
+                        scrollTop();
+                      }}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <div className={styles.readyBox}>
+                        <img src={logo} className={styles.readyIcon} />
+                        Ready To Ship
+                      </div>
+                    </div>
+                  ) : null}
 
-                {/* End of code */}
-                  
+                  {/* End of code */}
                 </Carousel.Item>
               );
             })}
-            
 
-          {/* <div>.</div> */}
-        </Carousel>
-      </div>: null}
+            {/* <div>.</div> */}
+          </Carousel>
+        </div>
+      ) : null}
     </>
   );
 };

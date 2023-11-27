@@ -229,7 +229,11 @@ Reason : Set the padding and margin of antd notification  */
         white-space: nowrap;
     }
     .App{
+        /* // Commented by Om Shrivastava on 25-11-23
+        // Reason : Comment this code */
         margin-top: 60px;
+        /* // End of commentd code by Om Shrivastava on 25-11-23
+        // Reason : Comment this code */
     background: linear-gradient(to right,#bcbfaf,#aeae98);
 
 

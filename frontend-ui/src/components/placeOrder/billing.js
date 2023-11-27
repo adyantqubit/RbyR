@@ -112,7 +112,7 @@ console.log(onlineDetail)
         <div className={styles.main} >
           {checkoutDetails.payment == "onlinepay" ?
             onlineDetail != null ?
-              <div className={styles.payBox} style={{backgroundColor:'rgb(243 243 243)',height:'160px',marginTop:'2px'}} >
+              <div className={styles.payBox} style={{backgroundColor:'rgb(243 243 243)',height:'160px',marginTop:'2px',border:'1px solid black'}} >
                 <img src={config.staticBaseURL + onlineDetail.qr_img}
                   className={styles.img} 
                   style={{border:'1px solid black'}}
@@ -148,7 +148,7 @@ console.log(onlineDetail)
         content={() => componentRef.current}
         
       /> */}
-        <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+        <div style={{ width: "100%", display: "flex", justifyContent: "center",paddingTop:'10px' }}>
           <button className={style.shopbtn1} style={{ width: "50%" }} onClick={e => window.print()}>
             Print this out
           </button>

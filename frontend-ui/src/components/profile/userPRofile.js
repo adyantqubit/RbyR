@@ -216,8 +216,17 @@ const UserProfile = () => {
 
       <div className={style.Container} >
         <div className={style.centerContainer}>
-          <div className={style.containerHeader}><Link to="/" className={style.containerHeader}>Homepage</Link> / My Account</div>
-          <div className={style.main}>
+          <div className={style.containerHeader}>
+            {/* Addition by Om Shrivastava on 25-11-23
+            Reason : Set the Padding top */}
+            <div style={{paddingTop:'12px',display:'flex',flexDirection:'row'}}>
+            <Link to="/" className={style.containerHeader}>Homepage</Link>
+             / My Account
+              {/* End of addition by Om Shrivastava on 25-11-23
+            Reason : Set the Padding top */}
+             </div>
+             </div>
+          <div className={style.main} style={{marginTop:'-30px'}}>
             <div className={style.column1}>
               <div className={style.column1header}>MY ACCOUNT</div>
               <hr style={{ color: "black" }}></hr>
@@ -230,13 +239,13 @@ const UserProfile = () => {
             <div className={style.column2}>
               <div className={style.column2header}>
                 <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                  <span>USER DETAILS</span>
-                  <span className={`${styles.userinfoText} ${style.hovers}`} style={{ cursor: "pointer" }} onClick={e => setShowEditable(true)}>{!showEditable ? "EDIT YOUR PROFILE" : null}
+                  <span style={{fontWeight:'600'}}>USER DETAILS</span>
+                  <span className={`${styles.userinfoText} ${style.hovers}`} style={{ cursor: "pointer",color:'blue',paddingTop:'3px' }} onClick={e => setShowEditable(true)}>{!showEditable ? "EDIT YOUR PROFILE" : null}
                   </span>
                 </div>
               </div>
-              <hr style={{ color: "black" }}></hr>
-              <>
+              {/* <hr style={{ color: "black" }}></hr> */}
+              <div >
                 <div className={styles.columnitem1}>
 
                   {!showEditable ?
@@ -248,8 +257,8 @@ const UserProfile = () => {
                       </div>
                     </div>
                     :
-                    <>
-                      <div className={styles.columnitem1head}>1. USER DETAILS</div>
+                    <div className={styles.editFormDiv} >
+                      {/* <div className={styles.columnitem1head}>1. USER DETAILS</div> */}
                       <form onSubmit={e => updateProfie(e)} onLoad={e=>
                       {
                         var input= document.getElementsByClassName('PhoneInputInput')[0];
@@ -259,13 +268,13 @@ const UserProfile = () => {
                       }}>
                         <div className={styles.columnitem1content1}>
                           <div className={styles.columnFirstName}>
-                            <label className={styles.firstName} htmlFor='first'>FIRST NAME*</label>
+                            <label className={styles.firstName} htmlFor='first'>First Name<span style={{color:'red'}}>*</span></label>
 
                             <input className={styles.firstInput} type="text" defaultValue={userdata.name.substring(0, hasWhiteSpace(userdata.name))} name="first" required />
 
                           </div>
                           <div className={styles.columnFirstName}>
-                            <label className={styles.firstName} htmlFor='last'>LAST NAME*</label>
+                            <label className={styles.firstName} htmlFor='last'>Last Name<span style={{color:'red'}}>*</span></label>
 
                             <input className={styles.firstInput} type="text" defaultValue={userdata.name.substring(hasWhiteSpaceforLast(userdata.name), userdata.name.length).trim()} name="last"/>
 
@@ -273,7 +282,7 @@ const UserProfile = () => {
                         </div>
                         <div className={styles.columnitem1content1}>
                           <div className={styles.columnFirstName}>
-                            <label className={styles.firstName} htmlFor='email'>EMAIL ADDRESS*</label>
+                            <label className={styles.firstName} htmlFor='email'>Email Address<span style={{color:'red'}}>*</span></label>
 
                             <input className={styles.firstInput} type="email" defaultValue={userdata.email} name="email" required />
 
@@ -281,7 +290,7 @@ const UserProfile = () => {
 
                           {/* Commented by rohan- date 14/12/22 */}
                           <div className={styles.columnFirstName}>
-                            <label className={styles.firstName} htmlFor='last'>Contact Number*</label>
+                            <label className={styles.firstName} htmlFor='last'>Contact Number<span style={{color:'red'}}>*</span></label>
 
                             <PhoneInput
                             international
@@ -316,7 +325,7 @@ const UserProfile = () => {
 
                             style={{ cursor: "pointer", width: "17px", marginLeft: "10px" }}
                             labelStyle={{ marginLeft: 5, userSelect: "none" }}
-                            label={<label className={styles.firstName} htmlFor='street' style={{ fontSize: "14px", fontStyle: "bold", letterSpacing: "1.5px", paddingBottom: "2px" }}>Change My Password</label>}
+                            label={<label className={styles.firstName} htmlFor='street' style={{ fontSize: "14px", fontStyle: "bold", letterSpacing: "1.5px", paddingBottom: "2px",fontWeight:'600' }}>Change My Password</label>}
                           />
                         </div>
 
@@ -326,7 +335,7 @@ const UserProfile = () => {
                           <div className={styles.columnitem1content1}>
                             {/* {error.non_field_errors? <Alert severity="error"  style={{margin:"0",width:"100%"}}>{error.non_field_errors[0]}</Alert> : ""} */}
                             <div className={styles.columnFirstName}>
-                              <label className={styles.firstName} htmlFor='current'>Current Password*</label>
+                              <label className={styles.firstName} htmlFor='current'>Current Password<span style={{color:'red'}}>*</span></label>
 
                               <div className={styles.firstInput} style={{ padding: "0" }}>
 
@@ -347,7 +356,7 @@ const UserProfile = () => {
 
                           <div className={styles.columnitem1content1}>
                             <div className={styles.columnFirstName}>
-                              <label className={styles.firstName} htmlFor='first'>New Password*</label>
+                              <label className={styles.firstName} htmlFor='first'>New Password<span style={{color:'red'}}>*</span></label>
 
                               <div className={styles.firstInput} style={{ padding: "0" }}>
 
@@ -359,7 +368,7 @@ const UserProfile = () => {
 
                             </div>
                             <div className={styles.columnFirstName}>
-                              <label className={styles.firstName} htmlFor='last'>Confirm New Password*</label>
+                              <label className={styles.firstName} htmlFor='last'>Confirm New Password<span style={{color:'red'}}>*</span></label>
                               <div className={styles.firstInput} style={{ padding: "0" }}>
 
                                 <input className={styles.inputr} type={showNewPass3 ? "text" : "password"} name="pswd2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required onChange={e => { if (e.target.value.length > 0) setVisiblePassreg3(true); else setVisiblePassreg3(false) }} />
@@ -391,11 +400,11 @@ const UserProfile = () => {
                         </div>
 
                       </form>
-                    </>}
+                    </div>}
 
 
                 </div>
-              </>
+              </div>
             </div>
           </div>
         </div>

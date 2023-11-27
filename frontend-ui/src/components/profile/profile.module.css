@@ -55,6 +55,7 @@
 
     width: 85%;
     min-height: 70vh;
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -293,7 +294,11 @@
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
-    font-weight: 600;
+    /* Modification and addition by Om Shrivastava on 25-11-23
+    Reason : Set the font weight */
+    /* font-weight: 600; */
+    font-weight: 400;
+
         font-family: var(--fontFamily);
 
 }
@@ -485,6 +490,6 @@
         padding-top: 20px;
     }
 
-
+  
 
 }

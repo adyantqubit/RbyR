@@ -129,14 +129,25 @@ const Payment = () => {
         nav("/billing")
       }
       else{
-        notification.error({
-          message: <div style={{ fontSize: "18px", color: "white" }}>Sorry! Something went wrong. </div>,
-          description:
-            `Facing issue in generating bill! please contact to the our customer support.`,
-          style: { backgroundColor: "#D2042D", color: "white" },
-          duration: 20,
-          key:1
-        });
+
+        // Modification and addition by Om Shrivastava on 26-11-23
+        // REason : Need to remove the error
+        // notification.error({
+        //   message: <div style={{ fontSize: "18px", color: "white" }}>Sorry! Something went wrong. </div>,
+        //   description:
+        //     `Facing issue in generating bill! please contact to the our customer support.`,
+        //   style: { backgroundColor: "#D2042D", color: "white" },
+        //   duration: 20,
+        //   key:1
+        // });
+
+        checkoutDetails['orderno'] = r.order_no
+        sessionStorage.setItem('checkoutDetails', JSON.stringify(checkoutDetails))
+        deleteFromCart()
+        nav("/billing")
+        
+        // End of modifiaction and addition by Om Shrivastava on 26-11-23
+        // REason : Need to remove the error
         // nav("/cart")
         // window.localStorage.clear()
       } 

@@ -341,7 +341,12 @@ export function DrawerFooter() {
           </div> : null} */}
           {/* End of comment */}
           <hr style={{ color: "black" }}></hr>
-          <div className={style.subTotal} style={{ marginTop: "25px",fontSize:"16px" }}>
+          <div className={style.subTotal}
+           style={{
+            // Commented by Om on 26-11-23 Reason : No need to show the gap
+            //  marginTop: "25px",
+            // End of Commented by Om on 26-11-23 Reason : No need to show the gap Reason 
+           fontSize:"16px" }}>
             <span style={{ marginLeft: "15px", fontWeight: "600",fontSize:"18px" }}>Total</span>
             <span style={{ fontSize: "20px", fontWeight: "600", marginRight: "15px", fontSize: "21px", lineHeight: "32px", letterSpacing: "2px" }}>{currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).Grand * currency.value).toFixed(2)}</span>
           </div>

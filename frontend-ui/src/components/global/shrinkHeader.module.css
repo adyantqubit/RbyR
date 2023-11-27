@@ -156,7 +156,11 @@
 .drawerMenu:hover {
   color: var(--textColorSecondary);
 }
-
+@media (max-width : 520px){
+    /* .headerMenu{
+        padding-top: 1px;
+    } */
+}
 @media (max-width: 380px) {
   .responsiveHeader {
     display: block;
@@ -172,7 +176,12 @@
 
   .headerMenu {
     width: 45%;
-    margin-top: 8px;
+    /* Modification and addition by Om Shrivastava on 25-11-23
+    Reason : Need to decrease the margin in top site */
+    /* margin-top: 8px; */
+    margin-top: 5px;
+    /* End of mModification and addition by Om Shrivastava on 25-11-23
+    Reason : Need to decrease the margin in top site */
   }
 }
 

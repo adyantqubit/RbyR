@@ -338,6 +338,10 @@ class Invoice(APIView):
                     "user_no": request.user.id,
                     "billing_id": instancebilling.id,
                     "shipping_id": instanceshipping.id,
+
+                    # "billing_value":   "Name: "+instanceshipping.id,
+                   
+
                     "product_id": cart['id'],
                     "quantity": cart['quantity'],
                     "price": cart['price'] ,
@@ -452,7 +456,7 @@ class InvoiceSingleget(APIView):
         billingSeri = billingSerializer(
             userbillingDetail.objects.get(id=billing))
         transactionSeri = transactionHistorySerialize(
-            Transaction_history.objects.get(order_no=orderno))
+            Transaction_history.objects.get(order_no=orderno)) 
         return Response({"history": serialize.data, "shipping": shippingSeri.data, "billing": billingSeri.data, "transaction": transactionSeri.data})
 
 

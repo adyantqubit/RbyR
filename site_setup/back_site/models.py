@@ -546,7 +546,14 @@ class product_orders(models.Model):
     user_no=models.ForeignKey(User,on_delete=models.CASCADE,blank=True)
     billing_id=models.ForeignKey(userbillingDetail,on_delete=models.CASCADE)  
     shipping_id=models.ForeignKey(usershippingDetail,on_delete=models.CASCADE)
-    product_id=models.ForeignKey(product_detail,on_delete=models.CASCADE)  
+    product_id=models.ForeignKey(product_detail,on_delete=models.CASCADE) 
+    # Addition by Om Shrivastava on 26-11-23
+    # Reason : Set the biiling, shipping and product value
+    billing_value = models.TextField(null=True,blank=True)
+    shipping_value = models.TextField(null=True,blank=True) 
+    product_value = models.TextField(null=True,blank=True) 
+    # End of Addition by Om Shrivastava on 26-11-23
+    # Reason : Set the biiling, shipping and product value
     quantity=models.BigIntegerField()          
     price=models.BigIntegerField()
     total_price=models.BigIntegerField()

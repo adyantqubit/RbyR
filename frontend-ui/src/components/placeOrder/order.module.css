@@ -269,9 +269,9 @@
     -webkit-transition: all 250ms ease 0s;
     -o-transition: all 250ms ease 0s;
     transition: all 250ms ease 0s;
-    border-width: 2px;
+    border-width: 1px;
     border-style: solid;
-    /* border-color: #323232; */
+    border-color: black;
     -webkit-border-image: initial;
     -o-border-image: initial;
     border-image: initial;
@@ -598,4 +598,11 @@ Reaosn : Add the css  */
         flex-direction: column;
 
     }
+    /* addition by Om Shrivastava on 25-11-23
+    Reason : Set the height and widht in mobile view */
+    /* .editFormDiv{
+        height: 73.5vh;
+    } */
+    /* End of addition by Om Shrivastava on 25-11-23
+    Reason : Set the height and widht in mobile view  */
 }

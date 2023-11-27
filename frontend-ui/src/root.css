@@ -65,7 +65,13 @@ Reason : Set the padding and margin of antd notification */
     /* --fontFamily : "Oswald";
     --fontFamily : "Baskerville"; */
     /* --fontFamily : "cursive"; */
-    --fontFamily : "Lato";
+    /* --fontFamily : "Lato"; */
+    /* Modification and addition by Om Shrivastava on 25-11-23
+    Reason : Add the font family */
+    --fontFamily : "Noto Serif";
+    /* End of modification and addition by Om Shrivastava on 25-11-23
+    Reason : Add the font family  */
+    
    /* End of Modification and addition by Om Shrivastava on 24-11-23
     Reason : Set the font family */
 

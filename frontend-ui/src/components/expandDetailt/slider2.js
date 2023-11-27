@@ -52,8 +52,12 @@ const Slider2 = ({ scrollTop }) => {
             display: "flex",
             flexDirection: "column",
             padding: "0 8%",
-            margin: "50px 0",
-            marginBottom: "5vh",
+            // Modification and addition by Om Shrivastava on 25-11-23
+            // Reason : Set the margin 
+            // margin: "50px 0",
+            margin: "5px 0",
+            // End of addition and modification by Om Shrivastava on 25-11-23
+            // Reason : Set the margin
           }}
         >
           <div

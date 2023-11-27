@@ -595,7 +595,7 @@ const CartSItem = (props) => {
                           }}
                         >
                           <span className={style.shipping}>
-                            Standard Shipping1111:
+                            Standard Shipping:
                           </span>
                           {/* {pro.ready_to_ship?
                 <span className={style.shipping}> {pro.ready_to_ship_days}</span>:
@@ -1172,7 +1172,6 @@ const CartSItem = (props) => {
           ) : null}
         </div>
       </div>
-
       <div className={styles.sliderShow} style={{ marginTop: "-80px" }}>
         <div
           className={styles.columnContainer}
@@ -1184,7 +1183,11 @@ const CartSItem = (props) => {
               className={styles.columnContainer}
               style={{
                 width: "100vw",
-                height: "90vh",
+                // Commented by Om shrivastava on 25-11-23
+                // Reason : Need to remove the height of the div
+                // height: "90vh",
+                // End of commented code Commented by Om shrivastava on 25-11-23
+                // Reason : Need to remove the height of the div
                 marginBottom: "50px",
                 zIndex: "0",
               }}

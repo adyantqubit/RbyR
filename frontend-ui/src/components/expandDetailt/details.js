@@ -1259,7 +1259,7 @@ const Details = (props) => {
             <Slider2 scrollTop={scrolling} />
             <Slider scrollTop={scrolling} />
           </div>
-          <div style={{marginBottom:'12px'}}>
+          <div style={{marginBottom:'12px',marginTop:'12px'}}>
             <a
               href="/"
               class="btn-flip"

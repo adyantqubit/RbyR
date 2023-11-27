@@ -89,15 +89,17 @@
 .Toastify__progress-bar{
     visibility: hidden;
 }
-
-/* .ant-btn-primary:hover {
-    background:#5c5c5c;
+/* Addition by Om shirvastava on 25-11-23
+Reason : Set the hover property */
+.ant-btn-primary:hover {
+    background:black;
     color:white;
     border: none;
-} */
-
+}
+/* End of Addition by Om shirvastava on 25-11-23
+Reason : Set the hover property */
 .ant-btn:focus{
-    background-color: #5c5c5c;
+    background-color: black;
     color:white;
     border: none;
 }
@@ -153,7 +155,7 @@ color:white
 }
 
 .ant-btn-default:hover {
-    background:#5c5c5c;
+    background:black;
     color:white;
 }
 

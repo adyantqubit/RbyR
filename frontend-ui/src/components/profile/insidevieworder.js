@@ -32,6 +32,7 @@ const InsideOrder = () => {
     getStoreLocator();
   }, []);
 
+  console.log(states,'checkkkk')
   const getStoreLocator = async () => {
     const storeLocatorData = await getStoreLocatorDetail();
     if (storeLocatorData) {
@@ -56,6 +57,7 @@ const InsideOrder = () => {
     qrDetails()
   }, [])
 
+console.log(allData,'checkkkkkk')
 
   function getPrice(orde) {
     var t = 0;
@@ -273,7 +275,9 @@ const InsideOrder = () => {
                   }else
                   return <div className={style.tablerowhead} style={i % 2 == 0 ? { marginTop: "10px" } : { marginTop: "10px" }}>
                     <div className={style.rowitem3}>
-                  
+                  {console.log(p,'updated data')}
+                  {console.log(s,'not updated data')}
+
                     <img src={(typeof p.img_main)==='undefined'?null: config.staticBaseURL + p.img_main} className={style.imgresponsive} onClick={e=>nav(`/listing/${p.menu}/${p.category}/detail/${p.id}`)} />
                   
                       <span className={style.imgTitle}>
@@ -281,20 +285,39 @@ const InsideOrder = () => {
                       </span>
                     </div>
                     <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto"}}  >Order Status:- </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >{s.order_status}</span></div>
-                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >Price : </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >{s.selected_currency_sign} {(s.price * s.selected_currency_value).toFixed(2)}</span></div>
-                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >Quantity : </span><span className={style.userinfoText3} > {s.quantity} </span></div>
-                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >Total : </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >{s.selected_currency_sign} {(p.price * s.quantity * s.selected_currency_value).toFixed(2)}</span></div>
+                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >
+                      Price : </span>
+                    <span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >
+                      {s.selected_currency_sign} {(s.price * s.selected_currency_value).toFixed(2)}</span></div>
+                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >
+                      Quantity : </span><span className={style.userinfoText3} > 
+                      {s.quantity} </span></div>
+                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >
+                      Total : </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >
+                        {/* Modification and addition by Om Shrivastava on 26-11-23
+                        Reason : Need to set the correct value */}
+                        {/* {s.selected_currency_sign} {(p.price * s.quantity * s.selected_currency_value).toFixed(2)}</span></div> */}
+                        {s.selected_currency_sign} {(s.price * s.quantity * s.selected_currency_value).toFixed(2)}</span></div>
+                  {/* End of Modification and addition by Om Shrivastava on 26-11-23
+                        Reason : Need to set the correct value */}
                   </div>
                 }
                 )}
 
-
-
                 <div className={style.totalBox} >
                   {allData != null ?
+                    
                     <div className={style.box} style={{ borderTop: "1px solid black" }}>
-                      <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "start" }}>Sub Total</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}>{states[0].selected_currency_sign}{(allData.transaction.subtotal_price * states[0].selected_currency_value).toFixed(2)}</span></div>
-                      <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "start" }}>Shipping Charges</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}>{states[0].selected_currency_sign}{(allData.transaction.shipping_price * states[0].selected_currency_value).toFixed(2)}</span></div>
+                      <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "start" }}>
+                        Sub Total</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}>
+                          {/* {states[0].selected_currency_sign} */}
+                          {/* {s.price} */}
+                          {(allData.transaction.subtotal_price * states[0].selected_currency_value).toFixed(2)}
+                          </span></div>
+                      <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "start" }}>
+                        Shipping Charges</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}>
+                          {states[0].selected_currency_sign}
+                          {(allData.transaction.shipping_price * states[0].selected_currency_value).toFixed(2)}</span></div>
                       {/* <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "start" }}>Tax</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}>{states[0].selected_currency_sign}{(allData.transaction.tax * states[0].selected_currency_value).toFixed(2)}</span></div> */}
                       {/* Commented by - Ashish Dewangan on 15-02-2023
                       End of comment */}
@@ -302,7 +325,10 @@ const InsideOrder = () => {
                       {/* End of comment */}
                       <hr style={{ color: "black" }}></hr>
                       <div className={style.textlight1}>
-                        <span style={{ fontWeight: "600", width: "50%", textAlign: "start" }}>Total</span><span style={{ fontWeight: "600", width: "50%", textAlign: "end" }}> {states[0].selected_currency_sign} {(allData.transaction.grand_total * states[0].selected_currency_value).toFixed(2)}</span>
+                        <span style={{ fontWeight: "600", width: "50%", textAlign: "start" }}>Total
+                        </span><span style={{ fontWeight: "600", width: "50%", textAlign: "end" }}>
+                           {states[0].selected_currency_sign}
+                            {(allData.transaction.grand_total * states[0].selected_currency_value).toFixed(2)}</span>
                       </div>
                       <Button type="primary" className={style.userInfoButton} style={{ width: "100%", marginTop: "15px" }} onClick={e => nav("/billing")}>
                         Get Invoice

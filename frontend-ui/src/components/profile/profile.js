@@ -77,10 +77,17 @@ const MyOrders = () => {
     <Navbar/>
     <div className={style.Container} >
         <div className={style.centerContainer}>
-          <div className={style.containerHeader}><Link to="/"  className={style.containerHeader}>Homepage</Link> / My Account</div>
+          <div className={style.containerHeader}>
+          <div style={{paddingTop:'12px',display:'flex',flexDirection:'row'}}>
+          
+            <Link to="/"  className={style.containerHeader}>Homepage</Link> / My Account
+
+          </div>
+          </div>
+
           <div className={style.main}>
             <div className={style.column1}>
-              <div className={style.column1header}>MY ACCOUNT</div>
+              <div className={style.column1header}>MY ACCOUNT</div>  
               <hr style={{color:"black"}}></hr>
               <div className={style.column1text} onClick={e=>setShowEditable(!true)}><Link to="/userprofile" style={{textDecoration:"none",color:"#212121"}}>MY PROFILE</Link></div>
               <div className={style.column1text} onClick={e=>setshipEditCond(true)}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#212121"}} >MY SHIPPING DETAILS</Link></div>
@@ -88,20 +95,20 @@ const MyOrders = () => {
 
             </div>
             <div className={style.column2}>
-            <div className={style.column2header}>MY ORDERS</div>
+            <div style={{color:'black',fontWeight:"600"}} className={style.column2header}>MY ORDERS</div>
             <hr style={{color:"black"}}></hr>
 
             {orders.length>0&&tran.length>0? <div className={style.table} >
                 <div className={style.tablerowheadtable}>
-                  <div className={style.rowheadText}>Order ID</div>
+                  <div style={{color:'black',fontWeight:"600"}} className={style.rowheadText}>Order ID</div>
                   <br style={{color:"blue"}}></br>
-                  <div className={`${style.rowheadText} `}>Date</div>
+                  <div style={{color:'black',fontWeight:"600"}} className={`${style.rowheadText} `}>Date</div>
 
-                  <div className={`${style.rowheadText} ${style.rowtexthide}`}>Name</div>
-                  <div className={`${style.rowheadText} ${style.rowtexthide}`}>Price</div>
-                  <div className={`${style.rowheadText} ${style.rowtexthide}`}>Payment Type</div>
-                  <div className={`${style.rowheadText} ${style.rowtexthide}`}>Status</div>
-                  <div className={`${style.rowheadText} ${style.rowtexthide}`}></div>
+                  <div style={{color:'black',fontWeight:"600"}} className={`${style.rowheadText} ${style.rowtexthide}`}>Name</div>
+                  <div style={{color:'black',fontWeight:"600"}} className={`${style.rowheadText} ${style.rowtexthide}`}>Price</div>
+                  <div style={{color:'black',fontWeight:"600"}} className={`${style.rowheadText} ${style.rowtexthide}`}>Payment Type</div>
+                  <div style={{color:'black',fontWeight:"600"}} className={`${style.rowheadText} ${style.rowtexthide}`}>Status</div>
+                  <div  className={`${style.rowheadText} ${style.rowtexthide}`}></div>
                 </div>
                 <hr style={{color:"black"}}></hr>
 

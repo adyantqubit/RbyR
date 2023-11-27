@@ -58,6 +58,11 @@
   padding-top: 5px;
   /* End of  Addition by Om Shrivastava on 19-11-23
   REason : Add the space */
+  /* Addition by Om Shrivastava on 26-11-23
+  Reason : Need to set the padding above the - and + button */
+  margin-top: -12px;
+   /* Addition by Om Shrivastava on 26-11-23
+  Reason : Need to set the padding above the - and + button */
 }
 
 .radius {

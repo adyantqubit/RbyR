@@ -279,7 +279,11 @@ function validatesNum(evt) {
     <Navbar/>
     <div className={style.Container} >
         <div className={style.centerContainer}>
-          <div className={style.containerHeader}><Link to="/"  className={style.containerHeader}>Homepage</Link>/ My Account</div>
+          <div className={style.containerHeader}>
+          <div style={{paddingTop:'12px',display:'flex',flexDirection:'row'}}>
+            <Link to="/"  className={style.containerHeader}>Homepage</Link>/ My Account
+            </div>
+            </div>
           <div className={style.main}>
             <div className={style.column1}>
               <div className={style.column1header} >MY ACCOUNT</div>
@@ -292,10 +296,12 @@ function validatesNum(evt) {
             <div className={style.column2}>
             <div className={style.column2header} >
                 <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
-                    <span>SHIPPING DETAILS</span>
+                    <span style={{fontWeight:'600'}}>SHIPPING DETAILS</span>
                    
                     {shippingAddress!=null&&shippingAddress.length>0?
-                     <span className={styles.userinfoText} style={{textDecoration:"underline",cursor:"pointer"}} onClick={e=>jumpToEdit()}>
+                     <span className={styles.userinfoText} style={{
+                        // textDecoration:"underline",
+                        cursor:"pointer",color:'blue'}} onClick={e=>jumpToEdit()}>
                         {shipEditcond&&shippingAddress.filter(s=>s.isSelected==true).length>0?"Edit Configuration":null}
                     </span> :
                     null}
