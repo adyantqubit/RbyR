@@ -29,7 +29,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.24']
+ALLOWED_HOSTS = ['192.168.1.5']
 
 
 # Application definition
@@ -160,7 +160,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-Base_url="http://192.168.1.24:3000"
+Base_url="http://192.168.1.5:3000"
 
 
 import os
@@ -178,7 +178,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_WHITELIST = [
      "http://localhost:3000",
-     "http://192.168.1.24:3000",
+     "http://192.168.1.5:3000",
 ]
 
 # Django project settings.py
@@ -193,14 +193,28 @@ CSRF_COOKIE_HTTPONLY = True
 # EMAIL_HOST_USER="adyant.rohan@gmail.com"
 # EMAIL_HOST_PASSWORD="dvzgndsfzrxpbchx"
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'adyant.rohan@gmail.com'
-EMAIL_HOST_PASSWORD = 'dvzgndsfzrxpbchx'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+# Modification and addition by Om Shrivastava on 22-11-23
+# Reason : Need to Add new Email and password 
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'adyant.rohan@gmail.com'
+# EMAIL_HOST_PASSWORD = 'dvzgndsfzrxpbchx'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
 
-# CSRF_TRUSTED_ORIGINS=['https://*.192.168.1.24']
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'    
+
+EMAIL_HOST= 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+
+EMAIL_HOST_USER = 'tq.buildcon@gmail.com'
+EMAIL_HOST_PASSWORD = 'xoodgdrderlwlsgz'
+
+# End of modification and addition by Om Shrivastava on 22-11-23
+# Reason : Need to Add new Email and password 
+
+# CSRF_TRUSTED_ORIGINS=['https://*.192.168.1.5']
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=20),
@@ -237,5 +251,5 @@ PASSWORD_RESET_TIMEOUT = 1800 # 30 mint, in seconds
 
 CORS_ALLOWED_ORIGINS=[
     "http://localhost:3000",
-    "http://192.168.1.24:3000",
+    "http://192.168.1.5:3000",
 ]
