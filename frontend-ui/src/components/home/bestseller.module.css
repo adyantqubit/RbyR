@@ -129,6 +129,11 @@
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacin  */
+  /* Addition by Om shrivastava on 29-11-23
+  Reason : Add the text transform */
+  text-transform: capitalize;
+  /* End of Addition by Om shrivastava on 29-11-23
+  Reason : Add the text transform */
 }
 
 .button {
@@ -193,7 +198,17 @@
     font-size: 18px;
     background: var(--btnBackgroundColorPrimary);
     color: var(--btnTextColorPrimary);
-    letter-spacing: var(--letterSpacingHeading);
+/* Modification and addition by Om Shrivastava on 27-11-23
+Reason : Set the letter spacing */
+    /* letter-spacing: var(--letterSpacingHeading); */
+    letter-spacing: 1px;
+/* End of modification and addition by Om Shrivastava on 27-11-23
+Reason : Set the letter spacing  */
+/* Addition by Om Shrivastava on 27-11-23
+Reason : Set the Font family */
+font-family: var(--fontFamily);
+/* End of Addition by Om Shrivastava on 27-11-23
+Reason : Set the Font family */
     box-shadow: 0 0px 0px hsla(190deg, 15%, 5%, .2);
     transform: translateY(0);
     border-top-left-radius: 0px;

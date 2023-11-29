@@ -5,6 +5,8 @@ import style from "./CancellationPolicy.module.css";
 import { getCancellationPoliciesDetail } from "../../api/service";
 import parse from "html-react-parser";
 import { notification } from 'antd';
+import stylee from './globalFooterFile.module.css'
+
 const CancellationPolicy = () => {
   notification.destroy()
   const [cancellationPolicies, setCancellationPolicies] = useState([]);
@@ -51,7 +53,20 @@ const CancellationPolicy = () => {
               })}
             </>
           ) : (
-            <div>Cancellation policy currently not available </div>
+                   // Addition and modification by Om shrivastava on 27-11-23
+          // Reason : Set the height and width
+          <div className={stylee.footerOrderCancellationNullContent}
+          // style={{height:'35vh'}}
+          >
+            
+            <div 
+            // style={{border:'1px solid black'}}
+            >
+            Order Cancellation Policy Details Are Not Available
+            </div>
+            </div>
+            // End of addition and modification by Om shrivastava on 27-11-23
+          // Reason : Set the height and width
           )}
         </div>
 

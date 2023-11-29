@@ -239,7 +239,7 @@ const Payment = () => {
         {/* Addition by Om Shrivastava on 25-11-23
         Reason : Set the correct path */}
         <Link to="/termAndCondition#Terms_and_Conditions" target="_blank" title='Terms and Condition'
-        style={{ fontSize: "14px",paddingLeft:'2px', textDecoration: "underline", paddingTop: "3.5px",letterSpacing:'1.5px' }}>
+        style={{ fontSize: "14px",paddingLeft:'2px', textDecoration: "underline", paddingTop: "3.5px",letterSpacing:'1px',fontFamily:'var(--fontFamily)'}}>
         {/* End of Addition by Om Shrivastava on 25-11-23
         Reason : Set the correct path  */}
         {/* /> <Link to="/terms" target="_blank" style={{ fontSize: "14px",paddingLeft:'2px', textDecoration: "underline", paddingTop: "3.5px",letterSpacing:'1.5px' }}> */}

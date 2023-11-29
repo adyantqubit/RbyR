@@ -1,0 +1,51 @@
+.footerNullContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 19.7vh;
+    font-size: 15px;
+    /* border: 1px solid red; */
+    font-family: var(--fontFamily);
+}
+.footerTermsNullContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36.7vh;
+    font-size: 15px;
+    font-family: var(--fontFamily);
+}
+.footerPrivacyNullContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 22.5vh;
+    font-size: 15px;
+    font-family: var(--fontFamily);
+}
+.footerRefundNullContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 31vh;
+    font-size: 15px;
+    font-family: var(--fontFamily);
+}
+.footerOrderCancellationNullContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24.6vh;
+    font-size: 15px;
+    font-family: var(--fontFamily);
+}
+
+@media (max-width: 480px) {
+    .footerNullContent{
+       margin-top: 25%;
+    }
+    .footerPrivacyNullContent{
+        margin-top: 10%;
+        height: 15vh;
+    }
+}

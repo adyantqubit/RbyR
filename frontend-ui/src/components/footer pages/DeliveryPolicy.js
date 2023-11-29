@@ -6,6 +6,8 @@ import style from "./DeliveryPolicy.module.css";
 import { getDeliveryAndShippingPoliciesDetail } from "../../api/service";
 import parse from "html-react-parser";
 import { notification } from 'antd';
+import stylee from './globalFooterFile.module.css'
+
 const DeliveryPolicy = () => {
   notification.destroy()
   const [deliveryAndShippingPolicies, setDeliveryAndShippingPolicies] =
@@ -52,13 +54,20 @@ const DeliveryPolicy = () => {
               })}
             </>
           ) : (
+                  // Addition and modification by Om shrivastava on 27-11-23
+          // Reason : Set the height and width
+          <div className={stylee.footerPrivacyNullContent}
+          // style={{height:'35vh'}}
+          >
+            
             <div 
-              // Addition by Om Shrivastava on 28-10-23
-            // Reason: Need to add styling part 
-            style={{fontFamily:'Sens-serif',letterSpacing:'1px'}}
-            // End of addition by Om Shrivastava on 28-10-23
-            // Reason: Need to add styling part 
-            >Delivery policy currently not available</div>
+            // style={{border:'1px solid black'}}
+            >
+            Delivery Policy Details Are Not Available
+            </div>
+            </div>
+            // End of addition and modification by Om shrivastava on 27-11-23
+          // Reason : Set the height and width
           )}
           {/* <div className={style.column}>
             <span className={style.title}>DELIVERY & SHIPPING POLICY</span>

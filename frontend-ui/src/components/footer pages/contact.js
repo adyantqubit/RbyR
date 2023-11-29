@@ -6,6 +6,8 @@ import { getContactUsDetail } from "../../api/service";
 import parse from "html-react-parser";
 import config from "../../api/config";
 import { notification } from 'antd';
+import stylee from './globalFooterFile.module.css'
+
 const Contact = () => {
   notification.destroy()
   const [contactUs, setContactUs] = useState([]);
@@ -31,10 +33,19 @@ const Contact = () => {
           <>
             {contactUs.map((contact) => {
               return (
+                <>
+                {/* Commented by Om Shrivastava on 27-11-23
+                      Reason : Set this content in heading  */}
+                    <div style={{color:'black',textAlign:'center',fontWeight:'bold',fontSize:'28px',fontFamily:'var(--fontFamily)',paddingBottom:'15px'}}> {parse(contact.subtitle1)}</div> 
+{/* End of Commented by Om Shrivastava on 27-11-23
+                      Reason : Set this content in heading    */}
                 <div className={style.contain}>
+  
                   <div className={`${style.column} ${style.col1}`}>
                     <span className={style.head}>
-                      {parse(contact.subtitle1)}
+                      {/* Commented by Om Shrivastava on 27-11-23
+                      Reason : Set this content in heading  */}
+                      {/* {parse(contact.subtitle1)} */}
                     </span>
                     <span dangerouslySetInnerHTML={{__html:contact.content1}} className={style.body}>
                       {/* {parse(contact.content1)} */}
@@ -75,11 +86,25 @@ const Contact = () => {
                     Reason : Need to add right path for the image */}
                   </div>
                 </div>
+                </>
               );
             })}
           </>
         ) : (
-          <div>No Contact Detail is present</div>
+          // Addition and modification by Om shrivastava on 27-11-23
+          // Reason : Set the height and width
+          <div className={stylee.footerNullContent}
+          // style={{height:'18vh'}}
+          >
+            
+            <div 
+            // style={{border:'1px solid black'}}
+            >
+            Contact Details Are Not Available
+            </div>
+            </div>
+            // End of addition and modification by Om shrivastava on 27-11-23
+          // Reason : Set the height and width
         )}
 
         {/* </div> */}

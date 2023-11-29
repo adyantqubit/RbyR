@@ -33,6 +33,7 @@ const Bridal = () => {
     }
   };
 
+
   const saveBridalDetails = async (formData) => {
 
     const bridalDetail = {
@@ -53,6 +54,7 @@ const Bridal = () => {
     if (bridalPostResponse) {
       if (bridalPostResponse.msg) {
         bridalForm.resetFields()
+
         notification.open({
           message: "",
           description:
@@ -120,7 +122,13 @@ const Bridal = () => {
             })}
           </>
         ) : (
-          <div>Please provide Bridal detail</div>
+          // Modification and addition by Om shrivastava on 27-11-23
+          // Reason : Set the designing of content
+          // <div>Please provide Bridal detail</div>
+          <div className={style.divContent} >Please provide Bridal detail</div>
+          // End of Modification and addition by Om shrivastava on 27-11-23
+          // Reason : Set the designing of content
+
         )}
 
         <Form className={style.form}
@@ -367,7 +375,7 @@ const Bridal = () => {
               </Form.Item> */}
 
               <label style={{ color: "black", fontWeight: "500" }}>Date of wedding</label>
-              <input type="date" id="date" className={style.formInput} style={{ marginBottom: "20px" }} />
+              <input type="date" id="date" value="reset" className={style.formInput} style={{ marginBottom: "20px" }} />
 
 
               <Form.Item

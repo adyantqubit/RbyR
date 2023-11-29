@@ -5,6 +5,8 @@ import style from "./PrivacyPolicy.module.css";
 import { getPrivacyPoliciesDetail } from "../../api/service";
 import parse from "html-react-parser";
 import { notification } from 'antd';
+import stylee from './globalFooterFile.module.css'
+
 const PrivacyPolicy = () => {
   notification.destroy()
   const [privacyPolicies, setPrivacyPolicies] = useState([]);
@@ -67,13 +69,20 @@ const PrivacyPolicy = () => {
               })}
             </>
           ) : (
+                // Addition and modification by Om shrivastava on 27-11-23
+          // Reason : Set the height and width
+          <div className={stylee.footerPrivacyNullContent}
+          // style={{height:'35vh'}}
+          >
+            
             <div 
-             // Addition by Om Shrivastava on 28-10-23
-            // Reason: Need to add styling part 
-            style={{fontFamily:'sans-serif',letterSpacing:'1px'}}
-            // End of addition by Om Shrivastava on 28-10-23
-            // Reason: Need to add styling part 
-            >Privacy policy currently not available</div>
+            // style={{border:'1px solid black'}}
+            >
+            Privacy Policy Details Are Not Available
+            </div>
+            </div>
+            // End of addition and modification by Om shrivastava on 27-11-23
+          // Reason : Set the height and width
           )} 
         </div>
 

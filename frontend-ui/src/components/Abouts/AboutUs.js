@@ -20,6 +20,7 @@ import img9 from './assets/img9.jpg'
 import ResponsiveSlider from './responsiveSlider'
 import ReactPlayer from 'react-player'
 import { WorldOfRR } from '../../api/orderApis'
+import stylee from '../footer pages/globalFooterFile.module.css'
 
 
 const AboutUs = () => {
@@ -42,7 +43,9 @@ const AboutUs = () => {
         return (
             <>
                 <Navbar />
-                <div className={style.container}>
+                <div className={style.container}
+                //  style={{border:'2px solid black'}}
+                 >
                     <div className={style.contain}>
 
                         {/* Paragraph 1*/}
@@ -70,8 +73,23 @@ const AboutUs = () => {
                                     allowfullscreen="1"
                                     width="100%" height="100%"
                                     src={`${response.video_url}?autoplay=1&amp;controls=0&amp;showinfo=0&amp;modestbranding=1&amp;&rel=1&amp;`} id="widget2"></iframe>
-                                :<>
-                                </>}
+                                :
+                                       // Addition and modification by Om shrivastava on 27-11-23
+          // Reason : Set the height and width
+          <div className={stylee.footerPrivacyNullContent}
+          // style={{height:'35vh'}}
+          >
+            
+            <div 
+            // style={{border:'1px solid black'}}
+            >
+            World Of RbyR Details Are Not Available
+            </div>
+            </div>
+            // End of addition and modification by Om shrivastava on 27-11-23
+          // Reason : Set the height and width
+                                
+                                }
                                 {/* <ReactPlayer className={style.img1} url='https://youtu.be/bbkBuqC1rU4' /> */}
                                 {/* // Modification and addition by Om Shrivastava on 20-10-23
                                 // Reason : When image is not show then certain div is not shown  */}
@@ -84,7 +102,9 @@ const AboutUs = () => {
                                 // Endd of modification and addition by Om Shrivastava on 20-10-23
                                 // Reason : When image is not show then certain div is not shown
                                 ></img>
-                                :<></>}
+                                :<>
+                                
+                                </>}
                                 {/* // End of modification and addition by Om Shrivastava on 20-10-23
                                 // Reason : When image is not show then certain div is not shown  */}
                             </div>
@@ -171,7 +191,8 @@ const AboutUs = () => {
 
 
                 </div>
-                <div className={style.foot}>
+
+                <div className={style.foot} style={{marginBottom:'-10%'}}>
                     <Footer />
                 </div>
             </>

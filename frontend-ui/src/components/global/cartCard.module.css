@@ -23,6 +23,11 @@
   /* Commented by Om Shrivastava on 19-11-23  */
   font-weight: bold;
   /* End of Commented by Om Shrivastava on 19-11-23  */
+  /* Addition by Om shrivastava on 29-11-23
+  Reason : Add the text transform */
+  text-transform: capitalize;
+  /* End of Addition by Om shrivastava on 29-11-23
+  Reason : Add the text transform */
 }
 
 .apply {

@@ -229,6 +229,11 @@
     font-family: var(--fontFamily);
     /* End of addition by Om Shrivastava on 24-11-23
     Reason : Set the font family   */
+    /* Addition by Om shrivastava on 29-11-23
+  Reason : Add the text transform */
+  text-transform: capitalize;
+  /* End of Addition by Om shrivastava on 29-11-23
+  Reason : Add the text transform */
 }
 .protitle2{
     color:var(--textColorPrimary);

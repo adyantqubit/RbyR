@@ -8,6 +8,8 @@ import Navbar from "../global/NavHeader";
 import style from "./FAQ.module.css";
 import parse from "html-react-parser";
 import { notification } from 'antd';
+import stylee from './globalFooterFile.module.css'
+
 
 const FAQ = () => {
   notification.destroy()
@@ -47,14 +49,17 @@ const FAQ = () => {
     <div>
       <Navbar />
       <div className={style.faqContainer}>
+      <div style={{color:'black',textAlign:'center',fontWeight:'bold',fontSize:'28px',fontFamily:'var(--fontFamily)',paddingBottom:'15px'}}> FAQ</div> 
+
         <div className={style.row}>
             {
-              (FAQs.length>0)?
+              (FAQs.length<0)?
               <>
                 {
                  
                  FAQs.map((faq)=>{
                     return (
+                      
                       <div className={style.item} key={faq.qno}>
                         <div className={`${style.itemText} ${style.question}`} id={faq.qno} onClick={showHideAnswer}>
                           {serialNumber}. {faq.question}
@@ -72,15 +77,20 @@ const FAQ = () => {
                 }
               </>
               :
-              <div className={`${style.itemText} ${style.answer} `}
-               // Addition by Om Shrivastava on 28-10-23
-            // Reason: Need to add styling part 
-            style={{fontFamily:'sans-serif',letterSpacing:'1px'}}
-            // End of addition by Om Shrivastava on 28-10-23
-            // Reason: Need to add styling part 
-              >
-                No Questions Are Present Currently!
-              </div>
+                // Addition and modification by Om shrivastava on 27-11-23
+          // Reason : Set the height and width
+          <div className={stylee.footerNullContent}
+          // style={{height:'35vh'}}
+          >
+            
+            <div 
+            // style={{border:'1px solid black'}}
+            >
+            Questions And Answers Are Not Available
+            </div>
+            </div>
+            // End of addition and modification by Om shrivastava on 27-11-23
+          // Reason : Set the height and width
             }
         </div>
 

@@ -38,8 +38,13 @@ const Categories = () => {
         <>
             <Navbar />
             <div className={style.container}>
-                <div className={style.heading}>
+                {/* <div className={style.heading}>
                     ALL COLLECTIONS
+                </div> */}
+
+                <div style={{display:'flex',flexDirection:'row',justifyContent:'space-around'}} className={style.heading}>
+                    <div className={style.headingSection} > ALL COLLECTIONS</div>
+                    <div></div>
                 </div>
 
                 <div className={style.listContainer}>

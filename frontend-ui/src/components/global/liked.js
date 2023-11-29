@@ -68,7 +68,7 @@ const LikeDrawer = () => {
       {/* <Drawer width={600} title="Likes" placement="right" onClose={onClose} open={openLikedrawer}></Drawer> */}
       <Drawer
         width={drawerwidth}
-        title={<div className="likeTitle">Wis222hlist</div>}
+        title={<div className="likeTitle">Wishlist</div>}
         // title="Wishlist"
         placement="right"
         onClose={onClose}

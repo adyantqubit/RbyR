@@ -24,6 +24,14 @@ Reason : Set the antd closing icon  */
     }
 /* End of Addition by Om Shrivastava on 24-11-23
 Reason : Set the antd closing icon */
+/* Added by Om Shrivastava on 27-11-23
+Reason : Set the checkbox color */
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: black;
+  border-color: black !important;
+}
+/* End of Added by Om Shrivastava on 27-11-23
+Reason : Set the checkbox color*/
 /* #video {
   position: relative !important;
   padding-bottom: 56.25% !important;

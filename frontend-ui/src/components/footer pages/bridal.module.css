@@ -129,14 +129,30 @@
     background-color: var(--btnBackgroundColorPrimary);
     font-size: 15px;
     letter-spacing: 1px;
-    font-family: 'Rawson-Regular';
+    /* Modification and addition by Om Shrivastava on 27-11-23
+    Reason : Set the font family */
+    /* font-family: 'Rawson-Regular'; */
+    font-family: var(--fontFamily);
+    /*End of Modification and addition by Om Shrivastava on 27-11-23
+    Reason : Set the font family */
     color: var(--btnTextColorPrimary);
-    border: 2px solid var(--btnBorderColorPrimary)
+    border: 1px solid var(--btnBorderColorPrimary)
 }
 .lbl{
     color: var(--textColorPrimary);
     letter-spacing:1px;
     font-weight:500;
+}
+
+.divContent{
+    text-align: left;
+    font-size: 17px;
+    color: black;
+    font-weight: 500;
+    display: flex;
+    padding-left: 150px;
+    /* padding: 0 10%; */
+
 }
 @media screen and (max-width:768px) {
     .container{
@@ -183,6 +199,16 @@
     .lbl{
        
         font-weight: 400;
+    }
+    .divContent{
+        text-align: left;
+    font-size: 15px;
+    color: black;
+    font-weight: 500;
+    display: flex;
+    padding: 0 10%; 
+    padding-left: 10px;
+
     }
 }
 @media screen and (max-width:400px) {

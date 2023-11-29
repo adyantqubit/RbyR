@@ -149,7 +149,12 @@ class UserPasswordResetSerializer(serializers.ModelSerializer):
           uid=self.context.get('uid')
           token=self.context.get('token')
           if password != password2:
-            raise serializers.ValidationError("Password and confirm Password doesn't match")
+            # Modification and addition by Om Shrivastava on 27-11-23
+            # Reason : Need to change the message
+            # raise serializers.ValidationError("Password and confirm Password doesn't match")
+            raise serializers.ValidationError("Password and Confirm Password doesn't match")
+            # End of Modification and addition by Om Shrivastava on 27-11-23
+            # Reason : Need to change the message
           id=smart_str(urlsafe_base64_decode(uid))
           user=User.objects.get(id=id)
           if not PasswordResetTokenGenerator().check_token(user,token):

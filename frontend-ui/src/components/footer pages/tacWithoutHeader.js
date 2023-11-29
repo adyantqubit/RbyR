@@ -6,6 +6,8 @@ import { getTermsAndConditionsDetail } from "../../api/service";
 import parse from "html-react-parser";
 import {IoMdArrowRoundBack} from "react-icons/io"
 import { notification } from 'antd';
+import stylee from './globalFooterFile.module.css'
+
 const TermsWithoutHeader = () => {
 notification.destroy()
   const [termsAndConditions, setTermsAndConditions] = useState([]);
@@ -69,8 +71,20 @@ notification.destroy()
               })}
             </>
           ) : (
-            // <div>No Terms and Conditions are present</div>
-            <div>Terms and Condition are not available</div>
+             // Addition and modification by Om shrivastava on 27-11-23
+          // Reason : Set the height and width
+          <div className={stylee.footerTermsNullContent}
+          // style={{height:'35vh'}}
+          >
+            
+            <div 
+            // style={{border:'1px solid black'}}
+            >
+            Terms And Conditions Details Are Not Available
+            </div>
+            </div>
+            // End of addition and modification by Om shrivastava on 27-11-23
+          // Reason : Set the height and width
 
           )}
         </div>

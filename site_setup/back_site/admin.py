@@ -48,7 +48,12 @@ class ProductAdmin(admin.ModelAdmin):
  
 @admin.register(product_detail)
 class product_detailAdmin(admin.ModelAdmin):
-    list_display=(short_title,"menu","category","S","M","L","XL","price","color")
+    # Modification and addition by Om Shrivastava on 11-11-23
+    # Reason : Need to display the is active field 
+    # list_display=(short_title,"menu","category","S","M","L","XL","price","color")
+    list_display=(short_title,"menu","category","S","M","L","XL","price","color",'is_active')
+    # End of Modification and addition by Om Shrivastava on 11-11-23
+    # Reason : Need to display the is active field
     ordering =("title",)
     exclude=("XS","XXXL","XXL")
     

@@ -53,10 +53,23 @@ const SentEmail = () => {
 					{error?.email?<Typography style={{color:"red",paddingLeft:"70px",fontSize:"0.8rem"}}>{error?.email[0]}</Typography>:" "}
 
 					{isLoading?
-          <span class="butto" style={{backgroundColor:"#000000",textAlign:"center",padding:"8px 0",cursor:"not-allowed"}} >Send Email</span>
+          <span class="butto" style={{
+            backgroundColor:"var(--btnBackgroundColorPrimary)",
+          textAlign:"center",padding:"8px 0",
+          cursor:"not-allowed"}} >
+            {/* Modification and addition by Om Shrivastava on 27-11-23
+            Reason : Change the message */}
+            {/* Send Email</span> */}
+            Update</span>
+          // End of Modification and addition by Om Shrivastava on 27-11-23
+          // Reason : Change the message 
           :
           // <button class="butto" style={{backgroundColor:"#573b8a",}} type='submit'>Send Email</button>}
-          <button class="butto" style={{backgroundColor:"var(--btnBackgroundColorPrimary)",color:'var(--btnTextColorPrimary)',border:'1px solid var(--btnBorderColorPrimary)'}} type='submit'>Send Email</button>}
+          <button class="butto" 
+          style={{
+            backgroundColor:"var(--btnBackgroundColorPrimary)",
+          color:'var(--btnTextColorPrimary)',
+          border:'1px solid var(--btnBorderColorPrimary)'}} type='submit'>Send Email</button>}
 
 
 					

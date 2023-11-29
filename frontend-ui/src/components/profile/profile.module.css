@@ -346,8 +346,7 @@
     font-size: 14px;
     cursor: pointer;
     letter-spacing: 2px;
-    background-color: #323232;
-    /* color: white !important; */
+    
     text-align: center;
     opacity: 1;
         font-family: var(--fontFamily);
@@ -367,7 +366,14 @@
     border-image: initial;
     text-decoration: none;
     border-radius: 0;
+    background-color: var(--btnBackgroundColorPrimary);
+    color: var(--btnTextColorPrimary);
 }
+.userInfoButton:hover {
+    background-color: var(--btnHoverBackgroundColorPrimary);
+    color: var(--btnTextHoverColorPrimary);
+    border: 1px solid var(--btnBorderHoverColorPrimary);
+  }
 
 .imgresponsive {
     width: 30%;
@@ -379,6 +385,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* Addition by Om shrivastava on 29-11-23
+  Reason : Add the text transform */
+  text-transform: capitalize;
+  /* End of Addition by Om shrivastava on 29-11-23
+  Reason : Add the text transform */
 }
 
 @media (max-width: 1000px) {
@@ -493,3 +504,13 @@
   
 
 }
+/* Addition by Om Shrivastava on 29-11-23
+REason : Set the alignment */
+@media (max-width: 480px) {
+    .rowitem2{
+        padding-left: 70px;
+        width: 90vw;
+    }
+}
+/* End of Addition by Om Shrivastava on 29-11-23
+REason : Set the alignment  */

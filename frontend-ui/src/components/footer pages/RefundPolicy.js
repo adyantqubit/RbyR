@@ -5,6 +5,8 @@ import style from "./RefundPolicy.module.css";
 import { getRefundPoliciesDetail } from "../../api/service";
 import parse from "html-react-parser";
 import { notification } from 'antd';
+import stylee from './globalFooterFile.module.css'
+
 const RefundPolicy = () => {
   notification.destroy()
   const [refundPolicies, setRefundPolicies] = useState([]);
@@ -50,13 +52,21 @@ const RefundPolicy = () => {
               })}
             </>
           ) : (
-            <div
-              // Addition by Om Shrivastava on 28-10-23
-            // Reason: Need to add styling part 
-            style={{fontFamily:'sans-serif',letterSpacing:'1px'}}
-            // End of addition by Om Shrivastava on 28-10-23
-            // Reason: Need to add styling part 
-            >Refund policy currently not available</div>
+                  // Addition and modification by Om shrivastava on 27-11-23
+          // Reason : Set the height and width
+          <div className={stylee.footerRefundNullContent}
+          // style={{height:'35vh'}}
+          >
+            
+            <div 
+            // style={{border:'1px solid black'}}
+            >
+            Return Policy Details Are Not Available
+            </div>
+            </div>
+            // End of addition and modification by Om shrivastava on 27-11-23
+          // Reason : Set the height and width
+
           )}
         </div>
 

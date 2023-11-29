@@ -89,7 +89,12 @@ console.log(allData,'checkkkkkk')
           account_number: r.account_number,
           bank_name: r.bank_name,
           qr_img: r.qr_img,
-          upi_id: r.upi_id
+          upi_id: r.upi_id,
+          // Addition by Om Shirvastava on 27-11-23
+          // Reason : Get the phone number 
+          contact_number: r.contact_number
+          // End of addiition by Om Shirvastava on 27-11-23
+          // Reason : Get the phone number 
         }
         setonlineDetail(data)
       }
@@ -242,19 +247,38 @@ console.log(allData,'checkkkkkk')
                     UPI Scanner
                   </Button>
                   <Modal title="Scan To Pay" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                    {/* Addition by Om Shirvastava on 27-11-23
+                    Reason : Set the color */}
                     <div style={{ background: "white",width:'100%' }}>
                       {onlineDetail != null ?
-                        <div className={styles.payBox} style={{width:"100%"}}>
+                        <div className={styles.payBox} style={{width:"100%",backgroundColor:'#f3f3f3'}}>
+                          {/* End of addition by Om Shirvastava on 27-11-23
+                    Reason : Set the color */}
                           <img src={config.staticBaseURL + onlineDetail.qr_img}
                             className={styles.img} />
                           <div className={styles.payTitle}>
                             <div>
-                              <div ><span className={styles.userinfoText}>Name:</span><span className={styles.userinfoText2} >{onlineDetail.name}</span ></div>
+                              {/* Modification and addition by Om Shrivastava on 27-11-23
+                              Reason : Change the designing pattern */}
+                              {/* <div ><span className={styles.userinfoText}>Name:</span><span className={styles.userinfoText2} >{onlineDetail.name}</span ></div>
                               <div ><span className={styles.userinfoText}>Bank Name:</span><span className={styles.userinfoText2}>{onlineDetail.bank_name}</span></div>
                               <div ><span className={styles.userinfoText} style={{ whiteSpace: "nowrap" }}>Account Number:</span><span className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
-                              <div ><span className={styles.userinfoText}>UPI ID:</span><span className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div>
+                              <div ><span className={styles.userinfoText}>UPI ID:</span><span className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div> */}
+                              <div ><span  style={{fontSize:'12px',fontWeight:'bold'}} className={styles.userinfoText2}>{onlineDetail.bank_name}</span></div>
+                              <div ><span  style={{fontSize:'12px',fontWeight:'bold'}} className={styles.userinfoText}>Name &nbsp;&nbsp;: </span><span style={{fontSize:'12px'}} className={styles.userinfoText2} >{onlineDetail.name}</span ></div>
+                              <div ><span  style={{fontSize:'12px',fontWeight:'bold',whiteSpace: "nowrap" }} className={styles.userinfoText} >A/C No : </span><span style={{fontSize:'12px'}} className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
+                              <div ><span  style={{fontSize:'12px',fontWeight:'bold'}} className={styles.userinfoText}>UPI ID : </span><span style={{fontSize:'12px'}} className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div>
+                           {/* End of Modification and addition by Om Shrivastava on 27-11-23
+                              Reason : Change the designing pattern */}
                             </div>
-                            <div style={{ height: "60px", width: "100%" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To admin After paying  at {storeLocatorDetails != null ? parse("PHONE:"+storeLocatorDetails[0]?.phoneNumber) : null}</span></div>
+                            <div style={{ height: "60px", width: "100%",paddingTop:'2px' }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all',fontSize:'11px' }}> Please Confirm To admin After paying  at 
+                            {/* Modification and addition by Om shhrivastava on 27-11-23
+                            Reason : Set the Contact number */}
+                            {/* {storeLocatorDetails != null ? parse("PHONE:"+storeLocatorDetails[0]?.phoneNumber) : null} */}
+                            {onlineDetail != null ?onlineDetail.contact_number:null}
+                             {/* Modification and addition by Om shhrivastava on 27-11-23
+                            Reason : Set the Contact number */}
+                            </span></div>
 
                           </div>
 
@@ -268,11 +292,11 @@ console.log(allData,'checkkkkkk')
 
               <div className={style.table} style={{ border: "none", marginTop: "20px" , marginBottom: "40px"}}>
                 <div className={style.tablerowhead2}>
-                  <div className={style.rowitem1} style={{ justifyContent: "start", color: "black" }}>Product Name</div>
-                  <div className={style.rowitem2} style={{ color: "black" }}>Order Status</div>
-                  <div className={style.rowitem2} style={{ color: "black" }}>Price</div>
-                  <div className={style.rowitem2} style={{ color: "black" }}>Qty</div>
-                  <div className={style.rowitem2} style={{ color: "black" }}>SubTotal</div>
+                  <div className={style.rowitem1} style={{ justifyContent: "start", color: "black",fontWeight:'500' }}>Product Name</div>
+                  <div className={style.rowitem2} style={{ color: "black",fontWeight:'500' }}>Order Status</div>
+                  <div className={style.rowitem2} style={{ color: "black",fontWeight:'500' }}>Price</div>
+                  <div className={style.rowitem2} style={{ color: "black",fontWeight:'500' }}>Qty</div>
+                  <div className={style.rowitem2} style={{ color: "black",fontWeight:'500' }}>SubTotal</div>
                 </div>
                 <hr style={{ color: "black" }}></hr>
 

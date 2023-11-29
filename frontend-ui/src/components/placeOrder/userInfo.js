@@ -58,7 +58,12 @@ const UserInfo = () => {
   <>
    {/* when user info is sibmitted then this will appear */}
    <div className={styles.columnitem1_1}>
-        <div className={styles.columnitem1head}>
+           
+        <div 
+        // className={styles.columnitem1head} 
+                        className={`${styles.columnitem1head} ${styles.setWidth}`}
+
+        >
             
             <span>1. USER DETAILS
             <IoIosCheckmarkCircle style={{fontSize:"37px",color:"#57b957",backgroundColor: "transparent",marginLeft:"15px",position:"relative",bottom:"5px"}}/>    
@@ -66,7 +71,7 @@ const UserInfo = () => {
 
             {/* comment on 17/11/22-Rohan Kansari 
                 purpose - hide changable functionality */}
-            <span className={styles.change} onClick={e=>setCond(false)}>Edit</span>
+            <span className={styles.change} style={{color:'blue'}}onClick={e=>setCond(false)}>Edit</span>
         
         </div>
         <div className={styles.usedetailShow}>
@@ -78,7 +83,9 @@ const UserInfo = () => {
   :
   <>
        <div className={styles.columnitem1}>
-            <div className={styles.columnitem1head}>1. USER DETAILS</div>
+            <div className={styles.columnitem1head} 
+            // style={{display:'flex',justifyContent:'space-around',border:'1px solid red'}}
+            >1. USER DETAILS</div>
             <form onSubmit={handleSubmit}>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFirstName}>

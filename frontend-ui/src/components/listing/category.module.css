@@ -5,6 +5,10 @@
  background-color: var(--backgroundColorSecondary);
 }
 
+.headingSection{
+    font-family: var(--fontFamily);
+    font-weight: 500;
+}
 .heading{
     height:15vh;
     width: 100%;

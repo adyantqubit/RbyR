@@ -126,7 +126,9 @@
 .columnitem1_1 {
     width: 100%;
 }
-
+.setWidth{
+    width: 30vw;
+}
 .columnitem1head {
     margin-top: 15px;
       font-family: var(--fontFamily);
@@ -519,6 +521,11 @@
 
     color: black;
     font-weight: 600;
+    /* Addition by Om shrivastava on 29-11-23
+  Reason : Add the text transform */
+  text-transform: capitalize;
+  /* End of Addition by Om shrivastava on 29-11-23
+  Reason : Add the text transform */
 }
 /* Addition by Om Shrivastava on 22-11-23
 Reaosn : Add the css  */
@@ -598,6 +605,8 @@ Reaosn : Add the css  */
         flex-direction: column;
 
     }
+
+
     /* addition by Om Shrivastava on 25-11-23
     Reason : Set the height and widht in mobile view */
     /* .editFormDiv{
@@ -606,3 +615,8 @@ Reaosn : Add the css  */
     /* End of addition by Om Shrivastava on 25-11-23
     Reason : Set the height and widht in mobile view  */
 }
+
+@media (max-width: 768px) {
+.setWidth{
+width: 80vw;
+    }}

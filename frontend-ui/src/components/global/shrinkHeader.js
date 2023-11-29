@@ -6,7 +6,7 @@
 import { React, useEffect, useState } from 'react'
 import Drawer from 'react-modern-drawer'
 import { GiHamburgerMenu } from 'react-icons/gi'
-import { CgProfile } from "react-icons/cg";
+import { CgBox, CgProfile ,CgVoicemailO, CgVoicemailR} from "react-icons/cg";
 //import styles 👇
 import 'react-modern-drawer/dist/index.css'
 import style from './shrinkHeader.module.css'
@@ -31,6 +31,7 @@ import Converter from '../concepts/convertCurrency';
 import { useGetLoggedUserQuery } from '../../Redux-manage/services/userAuthapi';
 import { getLogoAndCover } from "../../api/service";
 import config from '../../api/config';
+import { MdOutlineEmail } from 'react-icons/md';
 const text = 'Are you sure you want to logout?';
 
 
@@ -230,7 +231,10 @@ const ShrinkHeader = () => {
 
           <Link to={`/listing/ready to ship/0`} className={style.drawerMenu}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer() }}>
-              <span>Ready to ship</span> <AiOutlineRight />
+              <span>Ready to ship</span> 
+{/* Commented */}
+              {/* <AiOutlineRight /> */}
+{/* End */}
             </div>
           </Link>
 
@@ -243,7 +247,10 @@ const ShrinkHeader = () => {
           </Link> */}
           <Link to="/AboutRR" className={style.drawerMenu}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer() }}>
-              <span>World of RbyR</span> <AiOutlineRight />
+              <span>World of RbyR</span> 
+
+              {/* <AiOutlineRight /> */}
+
             </div>
           </Link>
           {/* End of code modification */}
@@ -324,7 +331,11 @@ const ShrinkHeader = () => {
             <Link to="" className={style.drawerMenu} >
               <div style={{ width: "100%" }} >
                 <div style={{ color: "var(--textColorPrimary)", letterSpacing: "1.2px", width: "100%", textAlign: "center" }}> <CgProfile style={{ margin: "0 10px 0 0" }} />{userdata.name}</div>
-                <div style={{ color: "var(--textColorSecondary)", letterSpacing: "1.2px", width: "100%", textAlign: "center" }}>{userdata.email}</div>
+                <div style={{ color: "var(--textColorSecondary)", letterSpacing: "1.2px", width: "100%", textAlign: "center" }}>
+                <MdOutlineEmail style={{ margin: "0 10px 0 0" }} />
+                  {userdata.email}
+                  
+                  </div>
               </div>
             </Link> : null}
 

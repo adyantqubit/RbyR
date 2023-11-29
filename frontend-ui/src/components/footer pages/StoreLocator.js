@@ -6,6 +6,9 @@ import parse from "html-react-parser";
 import { getStoreLocatorDetail } from "../../api/service";
 import config from "../../api/config";
 import { notification } from 'antd';
+import stylee from './globalFooterFile.module.css'
+
+
 const StoreLocator = () => {
   notification.destroy()
   const [storeLocatorDetails, setStoreLocator] = useState([]);
@@ -66,13 +69,21 @@ const StoreLocator = () => {
               })}
             </>
           ) : (
-            <div  
-              // Addition by Om Shrivastava on 28-10-23
-            // Reason: Need to add styling part 
-            style={{fontFamily:'sans-serif',letterSpacing:'1px'}}
-            // End of addition by Om Shrivastava on 28-10-23
-            // Reason: Need to add styling part 
-            >Store details currently not available</div>
+            // Addition and modification by Om shrivastava on 27-11-23
+          // Reason : Set the height and width
+          <div className={stylee.footerRefundNullContent}
+          // style={{height:'35vh'}}
+          >
+            
+            <div 
+            // style={{border:'1px solid black'}}
+            >
+            Store Locator Details Are Not Available
+            </div>
+            </div>
+            // End of addition and modification by Om shrivastava on 27-11-23
+          // Reason : Set the height and width
+
           )}
           {/* <div className={style.item}>
               <div className={style.itemTitle}>RAIPUR</div>
