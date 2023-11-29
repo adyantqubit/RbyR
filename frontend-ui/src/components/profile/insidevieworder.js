@@ -189,6 +189,15 @@ console.log(allData,'checkkkkkk')
       checkoutDetails['currency_sign'] = allData.history[0].selected_currency_sign
       checkoutDetails['currency_value'] = allData.history[0].selected_currency_value
       checkoutDetails['date']=allData.history[0].date
+      /**
+       * Added by - Ashish Dewangan on 27-11-2023
+       * Reason - To store purchased item list in checkout details
+       */
+      checkoutDetails["purchased_products_list"]=allData.history
+      /**
+       * End of code addition by - Ashish Dewangan on 27-11-2023
+       * Reason - To store purchased item list in checkout details
+       */
     }
 
 
@@ -257,7 +266,7 @@ console.log(allData,'checkkkkkk')
                 </span>
               </div>
 
-              <div className={style.table} style={{ border: "none", marginTop: "20px" }}>
+              <div className={style.table} style={{ border: "none", marginTop: "20px" , marginBottom: "40px"}}>
                 <div className={style.tablerowhead2}>
                   <div className={style.rowitem1} style={{ justifyContent: "start", color: "black" }}>Product Name</div>
                   <div className={style.rowitem2} style={{ color: "black" }}>Order Status</div>
@@ -338,7 +347,7 @@ console.log(allData,'checkkkkkk')
                 </div>
 
 
-                <div style={{ width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", flexWrap: "wrap", marginTop: '150px', gap: "20px" }}>
+                <div style={{ width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", flexWrap: "wrap", marginTop: '60px', gap: "20px" }}>
 
                   <div className={styles.addressInformation} style={{ minWidth: "150px", maxWidth: "150px" }}>
                     <div ><span className={styles.userinfoText} >Shipping Address</span></div>
@@ -378,9 +387,12 @@ console.log(allData,'checkkkkkk')
                 </div>
 
               </div>
-
-              <div style={{ height: "60px", width: "100%", marginTop: "40px" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To admin After paying  at {storeLocatorDetails != null ? parse("PHONE:"+storeLocatorDetails[0]?.phoneNumber) : null}</span></div>
-
+              
+              {/* Commented by - Ashish Dewangan on 27-11-2023
+              Reason - No need to show this information */}
+              {/* <div style={{ height: "60px", width: "100%", marginTop: "40px" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To admin After paying  at {storeLocatorDetails != null ? parse("PHONE:"+storeLocatorDetails[0]?.phoneNumber) : null}</span></div> */}
+              {/* End of Comment by - Ashish Dewangan on 27-11-2023
+              Reason - No need to show this information */}
 
             </div>
           </div>

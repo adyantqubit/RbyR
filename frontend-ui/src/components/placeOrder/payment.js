@@ -118,12 +118,20 @@ const Payment = () => {
     // checkoutDetails["promocode"] = offer.promocode
     checkoutDetails['date'] = new Date().toISOString().slice(0, 10)
 
-
     await invoiceApi(checkoutDetails, access_token).then(r => {
       
       if(r.order_no)
       {
         checkoutDetails['orderno'] = r.order_no
+        /**
+         * Added by - Ashish Dewangan on 27-11-2023
+         * Reason - To add purchased items to checkout details
+         */
+        checkoutDetails['purchased_products_list']=r.purchased_products
+        /**
+         * End of code addition by - Ashish Dewangan on 27-11-2023
+         * Reason - To add purchased items to checkout details
+         */
         sessionStorage.setItem('checkoutDetails', JSON.stringify(checkoutDetails))
         deleteFromCart()
         nav("/billing")

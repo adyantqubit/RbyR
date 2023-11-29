@@ -563,7 +563,11 @@ class product_orders(models.Model):
     selected_currency_sign=models.CharField(max_length=255)
     selected_currency_value=models.FloatField()
     order_status=models.CharField(max_length=50,choices=order_status,default="processing",blank=True,null=True)
-
+    # Added by - Ashish Dewangan on 27-11-2023
+    # Reason - Added column for shipping charges
+    shipping_charges=models.BigIntegerField(default=100)
+    # End of code addition by - Ashish Dewangan on 27-11-2023
+    # Reason - Added column for shipping charges
     
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name

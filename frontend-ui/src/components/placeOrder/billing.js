@@ -180,32 +180,46 @@ console.log(onlineDetail)
                   <div><span className={styles.userinfoText2} style={{ whiteSpace: "nowrap" }}>Payment Mode:</span><span className={styles.userinfoText2} style={{ whiteSpace: "nowrap" }}>{checkoutDetails.payment.split("p").join(" p").toUpperCase()}</span></div>
                 </div>
 
-                {storeLocatorDetails != null ?
+                {/* Commented and modified by - Ashish Dewangan on 27-11-2023
+                Reason - TO hide vendor details and arrange shipping details on same line  */}
+                  {/* {storeLocatorDetails != null ?
                   <div className={styles.headerTexts}>
                     <div className={styles.columnitem1head}>VENDOR DETAILS</div>
                     <hr style={{ color: "black" }}></hr>
-                    {/* Modification and addition by Om Shrivastava on 29-10-23
-                    Reason : When data is null then I need to add the condition */}
-                    {/* <div className={styles.userinfoText2}>{parse("" + storeLocatorDetails[0].address)}</div>
-                    <div><span className={styles.userinfoText2}>{parse("PHONE:" + storeLocatorDetails[0].phoneNumber)}</span></div>
-                    <div><span className={styles.userinfoText2}>{parse("" + storeLocatorDetails[0].email)}</span></div> */}
+                    
                     <div className={styles.userinfoText2}>{parse("" + storeLocatorDetails[0]?.address)}</div>
                     <div><span className={styles.userinfoText2}>{parse("PHONE:" + storeLocatorDetails[0]?.phoneNumber)}</span></div>
                     <div><span className={styles.userinfoText2}>{parse("" + storeLocatorDetails[0]?.email)}</span></div>
-                  {/* End of Modification and addition by Om Shrivastava on 29-10-23
-                    Reason : When data is null then I need to add the condition */}
-                  </div> : null}
+                  
+                  </div> 
+                  : null} */}
 
+              {storeLocatorDetails != null ?
+                  <div className={styles.headerTexts}>
+                    <div className={styles.columnitem1head}>SHIPPING TO</div>
+                    <hr style={{ color: "black" }}></hr>
+                    
+                    <div className={styles.userinfoText2}>{checkoutDetails.shippingData.firstname} {checkoutDetails.shippingData.lastname}, {checkoutDetails.shippingData.street} {checkoutDetails.shippingData.houseno}, {checkoutDetails.shippingData.city} -{checkoutDetails.shippingData.zipcode}, {checkoutDetails.shippingData.state} {checkoutDetails.shippingData.country}, {checkoutDetails.shippingData.number}</div>
+                  
+                  </div> 
+                  : null}
+                {/* End of comment and modified by - Ashish Dewangan on 27-11-2023
+                Reason - TO hide vendor details and arrange shipping details on same line  */}
+                 
               </div>
 
-              <div className={styles.shippingDetail}>
+              {/* Commented by - Ashish Dewangan on 27-11-2023
+              Reason - To rearrange shipping details */}
+              {/* <div className={styles.shippingDetail}>
                 <span className={styles.columnitem1head}>
                   SHIPPING TO
                 </span>
                 <hr style={{ color: "black" }}></hr>
                 <span className={styles.userinfoText2}>{checkoutDetails.shippingData.firstname} {checkoutDetails.shippingData.lastname}, {checkoutDetails.shippingData.street} {checkoutDetails.shippingData.houseno}, {checkoutDetails.shippingData.city} -{checkoutDetails.shippingData.zipcode}, {checkoutDetails.shippingData.state} {checkoutDetails.shippingData.country}, {checkoutDetails.shippingData.number}
                 </span>
-              </div>
+              </div> */}
+              {/* End of comment by - Ashish Dewangan on 27-11-2023
+              Reason - To rearrange shipping details */}
 
               <div className={styles.billingmain}>
                 <div className={styles.billingheader} id="footer">
@@ -216,7 +230,18 @@ console.log(onlineDetail)
                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ border: "none", outline: "none" }}>Total</span>
 
                 </div>
-                {checkoutDetails.cart.map(c =>
+                {/* Commented and modified by - Ashish Dewangan on 27-11-2023
+                Reason - To show items from purchased items table instead of  items tables */}
+                {/* {checkoutDetails.cart.map(c =>
+                  <div className={styles.billingheader2} id="footer" style={{ marginTop: "5px", background: "var(--backgroundColorSecondary)" }}>
+                    <span className={styles.protitle} > {c.title} ({SizeGetter(c.size)})</span>
+                    <span className={`${styles.protitle2} ${styles.show}`} > {c.quantity}</span>
+                    <span className={`${styles.protitle2} ${styles.show2}`} > {c.quantity}</span>
+                    <span className={styles.protitle2} >{checkoutDetails.currency_sign}{(c.price * checkoutDetails.currency_value).toFixed(2)}</span>
+                    <span className={styles.protitle2} style={{ paddingLeft: "5px", border: "none", outline: "none" }}> {checkoutDetails.currency_sign} {(c.price * c.quantity * checkoutDetails.currency_value).toFixed(2)}</span>
+                  </div>
+                )} */}
+                   {checkoutDetails.purchased_products_list.map(c =>
                   <div className={styles.billingheader2} id="footer" style={{ marginTop: "5px", background: "var(--backgroundColorSecondary)" }}>
                     <span className={styles.protitle} > {c.title} ({SizeGetter(c.size)})</span>
                     <span className={`${styles.protitle2} ${styles.show}`} > {c.quantity}</span>
@@ -225,15 +250,27 @@ console.log(onlineDetail)
                     <span className={styles.protitle2} style={{ paddingLeft: "5px", border: "none", outline: "none" }}> {checkoutDetails.currency_sign} {(c.price * c.quantity * checkoutDetails.currency_value).toFixed(2)}</span>
                   </div>
                 )}
+                {/* End of code modification by - Ashish Dewangan on 27-11-2023
+                Reason - To show items from purchased items table instead of  items tables */}
 
                 <div className={styles.billingfooter} id="footer" >
                   <span className={`${styles.columnitem1head}`} >Subtotal : </span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ borderRight: "1px solid black", whiteSpace: "nowrap", border: "none", outline: "none", width: "auto" }}> {checkoutDetails.currency_sign}{(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).subtotal * checkoutDetails.currency_value).toFixed(2)}</span>
+                  {/* Commented and modified by - Ashish Dewangan on 27-11-2023
+                  Reason - To show details from purchased items tables rather than items table */}
+                  {/* <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ borderRight: "1px solid black", whiteSpace: "nowrap", border: "none", outline: "none", width: "auto" }}> {checkoutDetails.currency_sign}{(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).subtotal * checkoutDetails.currency_value).toFixed(2)}</span> */}
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ borderRight: "1px solid black", whiteSpace: "nowrap", border: "none", outline: "none", width: "auto" }}> {checkoutDetails.currency_sign}{(afterColumnTotalOfferAdd(offer, checkoutDetails.purchased_products_list, taxRate).subtotal * checkoutDetails.currency_value).toFixed(2)}</span>
+                  {/* End of code modification by - Ashish Dewangan on 27-11-2023
+                  Reason - To show details from purchased items tables rather than items table */}
                 </div>
 
                 <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`}  >Shipping charges : </span>
-                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto", border: "none", outline: "none" }} > {checkoutDetails.currency_sign}{(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).shipping * checkoutDetails.currency_value).toFixed(2)}</span>
+                  {/* Commented and modified by - Ashish Dewangan on 27-11-2023
+                  Reason - To show details from purchased items tables rather than items table */}
+                  {/* <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto", border: "none", outline: "none" }} > {checkoutDetails.currency_sign}{(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).shipping * checkoutDetails.currency_value).toFixed(2)}</span> */}
+                  <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto", border: "none", outline: "none" }} > {checkoutDetails.currency_sign}{(afterColumnTotalOfferAdd(offer, checkoutDetails.purchased_products_list, taxRate).shipping * checkoutDetails.currency_value).toFixed(2)}</span>
+                  {/* End of code modification by - Ashish Dewangan on 27-11-2023
+                  Reason - To show details from purchased items tables rather than items table */}
                 </div>
                 {/* <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`}  >GST Charges : </span>

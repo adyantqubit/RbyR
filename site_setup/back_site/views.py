@@ -349,7 +349,12 @@ class Invoice(APIView):
                     "size": cart['size'],
                     "payment_mode": request.data['payment'],
                     "selected_currency_sign": request.data['currency_sign'],
-                    "selected_currency_value": request.data['currency_value']
+                    "selected_currency_value": request.data['currency_value'],
+                    # Added by - Ashish Dewangan on 27-11-2023
+                    # Reason - To add Shipping charges details in purchased items
+                    "shipping_charges":request.data['ShippingCharges']
+                    # End of code addition by - Ashish Dewangan on 27-11-2023
+                    # Reason - To add Shipping charges details in purchased items
                 }
                 
                 
@@ -404,7 +409,15 @@ class Invoice(APIView):
                                                     #   tax=request.data['tax'],
                                                       grand_total=request.data['grand'])
             tran.save()
-            return Response({"order_no": tran.order_no, 'cart': cartdata})
+
+            # Commented and modified by - Ashish Dewangan on 27-11-2023
+            # Reason - To send purchased items to frontend
+            # return Response({"order_no": tran.order_no, 'cart': cartdata})
+            purchased_products=product_orders.objects.filter(order_no=tran.order_no)
+            purchased_products_serializer=invoiceSerializer(purchased_products,many=True)
+            return Response({"order_no": tran.order_no, 'cart': cartdata,'purchased_products':purchased_products_serializer.data})
+            # End of code modification by - Ashish Dewangan on 27-11-2023
+            # Reason - To send purchased items to frontend
         except:
             return Response({"error": "Facing issue on generating bill please contact to Admin"})
 

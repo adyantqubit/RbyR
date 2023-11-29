@@ -286,6 +286,11 @@ class billingSerializer(serializers.ModelSerializer):
      return attrs     
     
 class invoiceSerializer(serializers.ModelSerializer):
+    # Added by - Ashish Dewangan on 27-11-2023
+    # Reason - To serialize product title 
+    title=serializers.CharField(source="product_id.title",required=False,allow_null=True)
+    # End of code addition by - Ashish Dewangan on 27-11-2023
+    # Reason - To serialize product title
     class Meta:
         model=product_orders
         fields="__all__"
