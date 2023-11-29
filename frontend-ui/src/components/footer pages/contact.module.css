@@ -14,7 +14,11 @@
     height: auto;
     width:100%;
     background:var(--backgroundColorSecondary);
-    padding-top: 35vh;
+    /* Modification and addition by Om Shrivastava on 29-11-23
+    Reason : set the height */
+    /* padding-top: 35vh; */
+    padding-top: 25vh;
+
     max-height: 100vh;
     /* overflow-y: scroll; */
 }
@@ -46,23 +50,42 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    gap:100px;
+    /* Modification and addition by Om shrivastava on 29-11-23
+    Reason : Set the designing */
+    /* justify-content: center; */
+    justify-content: space-around;
+/* End of Modification and addition by Om shrivastava on 29-11-23
+    Reason : Set the designing  */
+    /* gap:100px; */
     background:var(--backgroundColorSecondary);
 }
-
+.headingName{
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    font-size: 28px;
+    font-family: var(--fontFamily);
+    padding-bottom: 15px;
+}
 .column{
     height:auto;
+    /* width:35%; */
     width:35%;
+
     background:var(--backgroundColorSecondary);
     display: flex;
     flex-direction: column;
   
 }
-
+.col1{
+    width: 50%;
+}
+.col2{
+    width: 40%;
+}
 
 .head{
-    padding:0 20%;
+    /* padding:0 20%; */
     font-size: 24px;
     line-height: 32px;
     /* letter-spacing: 3px;
@@ -85,10 +108,19 @@
 }
 
 .head2{
-    padding:0 20%;
+    /* Commmented by Om Shrhivastgava on 29-11-23
+    Reason : Remove the padding */
+    /* padding:0 20%; */
+    /* End of Commmented by Om Shrhivastgava on 29-11-23
+    Reason : Remove the padding */
     /* Modification and addition by Om Shrivastava on 20-11-23
     Reason : Set the font size */
-    font-size: 15px;
+    /* Modification and addition by Om Shrivastava on 29-11-23
+    Reason : Set the font size */
+    /* font-size: 18px; */
+    font-size: 19px;
+    /*End of Modification and addition by Om Shrivastava on 29-11-23
+    Reason : Set the font size */
     line-height: 32px;
     /* End of Modification and addition by Om Shrivastava on 20-11-23
     Reason : Set the font size  */
@@ -107,8 +139,13 @@
 }
 
 .body{
-    padding:0 20%;
-    font-size: 18px;
+    /* padding:0 20%; */
+    /* Modification and addition by Om Shrivastava on 29-11-23
+    Reason : Set the font size */
+    /* font-size: 18px; */
+    font-size: 15px;
+    /*End of Modification and addition by Om Shrivastava on 29-11-23
+    Reason : Set the font size */
     line-height: 26px;
     /* letter-spacing: 1px;
     font-family: 'Rawson-Regular'; */
@@ -157,7 +194,8 @@
         font-size: 13px;
         padding: 0 3%;
         line-height: 20px;
-        width: 65%;
+        
+        /* width: 65%; */
     }
     .contain{
         flex-direction: column;
@@ -175,5 +213,9 @@
         width: 100%;
         order: 1;
     }
-  
+  /* Addition by Om Shrivastava on 29-11-23
+  Reason : Add the font size */
+  .headingName{
+    font-size: 23px;
+  }
 }

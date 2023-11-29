@@ -67,7 +67,7 @@
 .title{
     font-size: 19px;
     line-height: 32px;
-    width: 60%;
+    /* width: 60%; */
     /* letter-spacing: 3px;
     font-family: 'MyFont'; */
     font-weight: 600;
@@ -85,7 +85,7 @@
 .subtitle{
     margin-top: 15px;
     font-size: 18px;
-    width:80%;
+    /* width:80%; */
     /* letter-spacing: 3px;
     font-family: 'MyFont'; */
      /* Modification and addition by Om Shrivastava on 28-10-23
@@ -103,7 +103,7 @@
     width:90%;
 }
 .form{
-    margin-top: 10vh;
+    margin-top: 2vh;
 }
 .formInput{
     border: 1px solid gray;

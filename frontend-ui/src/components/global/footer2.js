@@ -142,9 +142,9 @@ function Footer2() {
             className={style.instagramLink}
             href={instagramCollections?.instagram_home_link}
           >
-            <div className={style.instagramTextContainer}>
-              <div className={style.instaBox}>FOLLOW US</div>
-              <div className={style.instaText}>ON INSTAGRAM</div>
+            <div className={style.instagramTextContainer} >
+              <h5 style={{padding:'0',margin:'0'}} className={style.instaBox}>Follow Us</h5>
+              <h5 style={{padding:'0',margin:'0'}} className={style.instaText}>On Instagram</h5>
             </div>
           </a>
           <a

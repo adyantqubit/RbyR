@@ -73,7 +73,7 @@ const Slider2 = ({ scrollTop }) => {
             // End of Modification and addition by Om Shrivastava on 16-11-23
           // Reason : Apply the css in external file
           >
-            YOU MAY ALSO LIKE 
+            YOU MAY ALSO LIKE
           </div>
           <Carousel cols={4} rows={1} gap={10} style={{ width: "100%" }}>
             
@@ -110,6 +110,11 @@ const Slider2 = ({ scrollTop }) => {
                             fontWeight: "600",
                             fontSize: ".8rem",
                             color: "#323232",
+                            // Addition by Om Shrivastava on 29-11-23
+                      // Reason : Add the letterspacing 
+                      letterSpacing:'1px'
+                      // End of Addition by Om Shrivastava on 29-11-23
+                      // Reason : Add the letterspacing
                           }}
                           // className={styles.productName}
                           onClick={(e) => {

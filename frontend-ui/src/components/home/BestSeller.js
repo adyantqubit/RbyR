@@ -78,7 +78,7 @@ const BestSeller = () => {
                                     onMouseEnter={e => swapImage(i)}
                                     onMouseLeave={e => swapImage(i)} />
                                 <div className={style.absolute}>
-                                    <div className={style.name}>{m.title}</div>
+                                    <div className={style.name}>{m.title.toLowerCase()}</div>
                                     <div className={style.name}>{currency.sign}{(m.price*currency.value).toFixed(2)}</div>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@ const BestSeller = () => {
                                     className={style.img}
                                 />
                                 <div className={style.absolute}>
-                                    <div className={style.name}>{m.title}</div>
+                                    <div className={style.name}>{m.title.toLowerCase()}</div>
                                     <div className={style.name}>{currency.sign}{(m.price*currency.value).toFixed(2)}</div>
                                 </div>
                             </div>

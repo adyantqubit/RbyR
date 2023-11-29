@@ -432,7 +432,9 @@ Reason : Set the capitalize property  */
     font-weight: 100;
   }
   .subtitle {
-    margin-top:20px;
+    /* Commented by Om  */
+    margin-top:8px;
+/* End of commented  */
     /* margin-right: 10px; */
     font-size: 16px;
     line-height: 24px;
@@ -706,7 +708,7 @@ Reason : Set the capitalize property  */
   }
 
   .sizeMargin{
-    margin-top:20px
+    margin-top:8px
   }
 
 @keyframes shake {
@@ -830,7 +832,9 @@ Reason : Set the capitalize property  */
       border-bottom: 2px solid #c4c0c0; */
       width: 100%;
       align-items: center;
-      margin-top: 15px;
+
+      /* margin-top: 15px; */
+      margin-top: 10px;
     }
     .chatInputBox{
       width:60%;

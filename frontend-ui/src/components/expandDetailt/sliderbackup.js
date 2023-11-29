@@ -58,7 +58,7 @@ const Slider = ({scrollTop}) => {
             paddingLeft: "4%",
           }}
         >
-          RECENTLY VIEWED PRODUCTSbackuppppp
+          RECENTLY VIEWED PRODUCTS
           
         </div>
 

@@ -118,6 +118,11 @@ const Slider = ({ scrollTop }) => {
                       fontWeight: "600",
                       fontSize: ".8rem",
                       color: "var(--textColorPrimary)",
+                      // Addition by Om Shrivastava on 29-11-23
+                      // Reason : Add the letterspacing 
+                      letterSpacing:'1px'
+                      // End of Addition by Om Shrivastava on 29-11-23
+                      // Reason : Add the letterspacing
                     }}
                     onClick={(e) => {
                       openDetail(cart);

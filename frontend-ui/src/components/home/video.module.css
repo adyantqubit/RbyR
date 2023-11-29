@@ -17,7 +17,7 @@ border-bottom: 1px solid black;
    
     
     /* height: 300px; */
-    padding: 30px;
+    /* padding: 30px; */
     /* background-color: var(--backgroundColorPrimary); */
     /* filter: brightness(50%); */
     /* box-shadow: 0px 2px 12px black inset; */
@@ -143,7 +143,9 @@ border-bottom: 1px solid black;
 
     .video{
         min-width: 70vw;
-        min-height: 20vh !important;
+        /* min-height: 20vh !important; */
+        min-height: 25vh !important;
+
         height: auto !important;
         background-color: #f2f2f2;
         padding: 2px 5px;

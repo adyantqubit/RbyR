@@ -53,7 +53,7 @@ const FAQ = () => {
 
         <div className={style.row}>
             {
-              (FAQs.length<0)?
+              (FAQs.length>0)?
               <>
                 {
                  
@@ -94,7 +94,15 @@ const FAQ = () => {
             }
         </div>
 
-        <div className={style.footerMargin} style={{ paddingTop: "80px"}}>
+        <div 
+        // Modification and addition by Om Shrivastava on 29-11-23
+        // Reason : Set the spacing
+        // className={style.footerMargin} 
+        className={stylee.footerSpacing} 
+        // style={{ paddingTop: "80px"}}
+        // End of Modification and addition by Om Shrivastava on 29-11-23
+        // Reason : Set the spacing
+        >
           <Footer />
         </div>
       </div>

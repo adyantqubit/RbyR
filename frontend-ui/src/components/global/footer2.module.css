@@ -167,8 +167,11 @@ Reason : Set the padding and margin of antd notification  */
     align-items: center;
     /* background: var(--backgroundColorPrimary); */
     background: linear-gradient(to right,#bcbfaf,#ffffff,#aeae98);
-
-    margin-top: 15px;
+/* Commented by Om Shrivastava on 29-11-23
+Reason : Set the margin top */
+    /* margin-top: 15px; */
+    /* End of  Commented by Om Shrivastava on 29-11-23
+Reason : Set the margin top  */
 }
 .instagramLink{
     width:16.5%;
@@ -183,13 +186,20 @@ Reason : Set the padding and margin of antd notification  */
     /* object-fit: cover; */
     width:100%;
     height:200px;
+    display: flex;
+    flex-direction: row;
 }
 
 .instaBox{
     color: var(--textColorPrimary);
     font-size: 24px;
     line-height: 32px;
-    letter-spacing: 3px;
+    /* letter-spacing: 3px; */
+    letter-spacing: 1.5px;
+    font-family: var(--fontFamily);
+    padding: 0;
+    margin: 0;
+
 }
 .instaText{
     color: var(--textColorPrimary);
@@ -197,6 +207,9 @@ Reason : Set the padding and margin of antd notification  */
     line-height: 32px;
     letter-spacing: 1.7px;
     font-weight: 500;
+    padding: 0;
+    margin: 0;
+
 }
 .emailBox{
     width: 80%;
@@ -223,6 +236,11 @@ Reason : Set the padding and margin of antd notification  */
     background-color: red;
   } */
 
+  .instagramTextContainer{
+    background-color: var(--backgroundColorPrimary);
+    
+}
+
 @media (max-width: 768px) {
 
     .heading{
@@ -231,7 +249,7 @@ Reason : Set the padding and margin of antd notification  */
     .App{
         /* // Commented by Om Shrivastava on 25-11-23
         // Reason : Comment this code */
-        margin-top: 60px;
+        /* margin-top: 60px; */
         /* // End of commentd code by Om Shrivastava on 25-11-23
         // Reason : Comment this code */
     background: linear-gradient(to right,#bcbfaf,#aeae98);
@@ -295,6 +313,7 @@ Reason : Set the padding and margin of antd notification  */
         justify-content: center;
         align-items: center;
         height:130px;
+        background-color: var(--backgroundColorPrimary);
         
     }
     .instagramImage{

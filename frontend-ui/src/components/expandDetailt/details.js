@@ -424,12 +424,12 @@ const Details = (props) => {
 
               <div className={styles["container03"]}>
                 <div className={styles["container04"]}>
-                  <h1 className={styles["heading"]}>{details.title}</h1>
+                  <h1 className={styles["heading"]}>{details.title.toLowerCase()}</h1>
                   {/* Commented by - Ashish Dewangan on 17-02-2023
                   Reason - To hide description and to have simple UI */}
                   {/* <h1 className={styles["subtitle"]}>{details.about}</h1> */}
                   {/* End of comment */}
-                  <span className={styles["subtitle"]}>
+                  <span style={{marginTop:'2px'}} className={styles["subtitle"]}>
                     {" "}
                     {currency.sign}{" "}
                     {(details.price * currency.value).toFixed(2)}
@@ -1128,21 +1128,25 @@ const Details = (props) => {
                         textDecoration: "none",
                         letterSpacing: "1px",
                         fontSize: "14px",
+                        color:'blue',
+                        borderBottom:'1px solid blue'
+
                       }}
                     >
                       {" "}
                       Return Policy{" "}
-                    </Link>
-                    <Link
+                    </Link> <span> |</span> <Link
                       to="/delivery-policy"
                       className={styles[("subtitle", "hoverableSubtitle")]}
                       style={{
                         textDecoration: "none",
                         letterSpacing: "1px",
                         fontSize: "14px",
+                        color:'blue',
+                        borderBottom:'1px solid blue'
                       }}
                     >
-                      | Shipping Policy
+                      Shipping Policy
                     </Link>
                   </span>
                   {/* Commented by - Ashish Dewangan on 17-02-2023

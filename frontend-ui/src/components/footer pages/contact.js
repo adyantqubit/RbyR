@@ -36,7 +36,9 @@ const Contact = () => {
                 <>
                 {/* Commented by Om Shrivastava on 27-11-23
                       Reason : Set this content in heading  */}
-                    <div style={{color:'black',textAlign:'center',fontWeight:'bold',fontSize:'28px',fontFamily:'var(--fontFamily)',paddingBottom:'15px'}}> {parse(contact.subtitle1)}</div> 
+                    <div className={style.headingName}
+                    // style={{color:'black',textAlign:'center',fontWeight:'bold',fontSize:'28px',fontFamily:'var(--fontFamily)',paddingBottom:'15px'}}
+                    > {parse(contact.subtitle1)}</div> 
 {/* End of Commented by Om Shrivastava on 27-11-23
                       Reason : Set this content in heading    */}
                 <div className={style.contain}>
@@ -109,7 +111,15 @@ const Contact = () => {
 
         {/* </div> */}
 
-        <div className={style.footerMargin} style={{ paddingTop: "80px" }}>
+        <div 
+       // Modification and addition by Om Shrivastava on 29-11-23
+        // Reason : Set the spacing
+        // className={style.footerMargin} 
+        // className={stylee.footerSpacing} 
+        // style={{ paddingTop: "80px"}}
+        // End of Modification and addition by Om Shrivastava on 29-11-23
+        // Reason : Set the spacing
+        >
           <Footer />
         </div>
       </div>

@@ -137,12 +137,15 @@ const Bridal = () => {
           name="registerBridalInfo"
           onFinish={saveBridalDetails}
         >
+          {/* Modification and addition by Om Shrivastava on 29-11-23
+          Reason : Need to add the asterik sign and remove the field */}
           <div className={style.row}>
             <div className={`${style.column} ${style.formInputContainer}`}>
               <Form.Item
-
+                required={false}
                 name="firstName"
-                label={<label style={{ color: "black", fontWeight: "500" }}>First name</label>}
+                label={<label style={{ color: "black", fontWeight: "500" }}>First name <span style={{color:'red'}}> *</span>
+                </label>}
 
                 rules={[
                   {
@@ -171,12 +174,13 @@ const Bridal = () => {
                 ]}
                 hasFeedback
               >
+               
                 <Input className={style.formInput} maxLength={50} />
               </Form.Item>
               <Form.Item
-
+required={false}
                 name="lastName"
-                label={<label style={{ color: "black", fontWeight: "500" }}>Last name</label>}
+                label={<label style={{ color: "black", fontWeight: "500" }}>Last name <span style={{color:'red'}}> *</span></label>}
                 rules={[
                   {
                     required: true,
@@ -207,8 +211,9 @@ const Bridal = () => {
                 <Input className={style.formInput} maxLength={50} />
               </Form.Item>
               <Form.Item
+              required={false}
                 name="email"
-                label={<label style={{ color: "black", fontWeight: "500" }}>E-mail address</label>}
+                label={<label style={{ color: "black", fontWeight: "500" }}>E-mail address <span style={{color:'red'}}> *</span></label>}
 
                 // rules={[
                 //   {
@@ -224,8 +229,9 @@ const Bridal = () => {
               </Form.Item>
 
               <Form.Item
+              required={false}
                 name="zipCode"
-                label={<label style={{ color: "black", fontWeight: "500" }}>ZIP code</label>}
+                label={<label style={{ color: "black", fontWeight: "500" }}>ZIP code <span style={{color:'red'}}> *</span></label>}
 
                 rules={[
                   {
@@ -260,8 +266,9 @@ const Bridal = () => {
 
 
               <Form.Item
+              required={false}
                 name="message"
-                label={<label style={{ color: "black", fontWeight: "500" }}>Message to our consultants</label>}
+                label={<label style={{ color: "black", fontWeight: "500" }}>Message to our consultants <span style={{color:'red'}}> *</span></label>}
 
                 rules={[
                   {
@@ -325,8 +332,9 @@ const Bridal = () => {
               </Form.Item> */}
 
               <Form.Item
+              required={false}
                 name="contactNumber"
-                label={<label style={{ color: "black", fontWeight: "500" }}>Contact number</label>}
+                label={<label style={{ color: "black", fontWeight: "500" }}>Contact number <span style={{color:'red'}}> *</span></label>}
 
                 rules={[
                   {
@@ -375,10 +383,11 @@ const Bridal = () => {
               </Form.Item> */}
 
               <label style={{ color: "black", fontWeight: "500" }}>Date of wedding</label>
-              <input type="date" id="date" value="reset" className={style.formInput} style={{ marginBottom: "20px" }} />
+              <input type="date" id="date" className={style.formInput} style={{ marginBottom: "20px" }} />
 
 
               <Form.Item
+              required={false}
                 name="termsAndConditions"
                 valuePropName="checked"
                 rules={[

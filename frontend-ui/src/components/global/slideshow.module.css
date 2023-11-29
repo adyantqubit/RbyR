@@ -45,7 +45,12 @@
     .dblock{
         overflow: hidden;
         max-width: initial;
-        height: 85vh;
+        /* Modification and addition by Om Shirvastava on 29-11-23
+        Reason : Set the height  */
+        /* height: 85vh; */
+        height: 50vh;
+        /* End of  Modification and addition by Om Shirvastava on 29-11-23
+        Reason : Set the height   */
     }
   /* End of code addition */
 }

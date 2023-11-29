@@ -40,7 +40,7 @@ $speed: 0.5s;
 		// background: #adadaf;
 		// background: #5d6bad;
 		background: white;
-        border: 2px solid black;
+        border: 1px solid black;
 		content: attr(data-back);
 		transform: translateY(-50%) rotateX(90deg);
         font-size: 14px;
@@ -60,9 +60,9 @@ $speed: 0.5s;
 		position: relative;
 		// background: black;
 		background: #f1cdd9;
-        border: 2px solid black;
+        border: 1px solid black;
 
-
+font-weight: 600;
 		content: attr(data-front);
 		transform: translateY(0) rotateX(0);
 

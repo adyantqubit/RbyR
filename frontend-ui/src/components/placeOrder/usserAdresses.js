@@ -621,7 +621,7 @@ const UsserAdresses = () => {
                                 borderColor="#000"
                                 style={{ cursor: "pointer", width: "17px", marginLeft: "10px" }}
                                 labelStyle={{ marginLeft: 5, userSelect: "none" }}
-                                label={<label className={styles.firstName} htmlFor='street'>Billing Address Is Same as Shipping Address</label>}
+                                label={<label className={styles.firstName} htmlFor='street'>Billing Address Is Same As Shipping Address</label>}
                             />
 
                         </div>
