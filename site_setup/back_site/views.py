@@ -20,6 +20,7 @@ from site_setup.settings import SIMPLE_JWT
 from django.utils.timezone import timedelta
 from django.db.models.functions import TruncMonth
 from django.db.models import Sum, Avg
+from django.core.files.base import ContentFile
 
 
 def specific_string():
@@ -338,10 +339,6 @@ class Invoice(APIView):
                     "user_no": request.user.id,
                     "billing_id": instancebilling.id,
                     "shipping_id": instanceshipping.id,
-
-                    # "billing_value":   "Name: "+instanceshipping.id,
-                   
-
                     "product_id": cart['id'],
                     "quantity": cart['quantity'],
                     "price": cart['price'] ,
@@ -352,15 +349,41 @@ class Invoice(APIView):
                     "selected_currency_value": request.data['currency_value'],
                     # Added by - Ashish Dewangan on 27-11-2023
                     # Reason - To add Shipping charges details in purchased items
-                    "shipping_charges":request.data['ShippingCharges']
+                    "shipping_charges":request.data['ShippingCharges'],
                     # End of code addition by - Ashish Dewangan on 27-11-2023
                     # Reason - To add Shipping charges details in purchased items
+                    
+                    # Added by - Ashish Dewangan on 29-11-2023
+                    # Reason - To save item's name in product orders table
+                    "product_name":cart["title"],
+                    # End of code addition by - Ashish Dewangan on 29-11-2023
+                    # Reason - To save item's name in product orders table
+                    
                 }
                 
                 
+                # Commented and modified by - Ashish Dewangan on 29-11-2023
+                # Reason - To copy image of product to product orders table
+                # serialize3 = invoiceSerializer(data=data)
+                # if serialize3.is_valid(raise_exception=True):
+                #     serialize3.save()
                 serialize3 = invoiceSerializer(data=data)
+                saved_product=None
                 if serialize3.is_valid(raise_exception=True):
-                    serialize3.save()
+                    saved_product=serialize3.save()
+
+                try:
+                    if saved_product:
+                        ordered_product =product_orders.objects.get(id=saved_product.id)
+                        product=product_detail.objects.get(id=cart['id'])
+                        copied_image=ContentFile(product.img_main.read())
+                        copied_name=product.img_main.name.split("/")[-1]+str(datetime.datetime.now())+".jpg"
+                        ordered_product.product_image.save(copied_name,copied_image)
+                except Exception as e:
+                    print(e)
+                # End of code modification by - Ashish Dewangan on 29-11-2023
+                # Reason - To copy image of product to product orders table        
+                    
 
                 if (cart['size'] == "Short"):
                     pro = product_detail.objects.get(id=cart['id'])
@@ -401,13 +424,35 @@ class Invoice(APIView):
                used= couponUsed.objects.create(user=request.user,used=request.data['promocode'])
                used.save()
             # end of the code
+
+            # Commented and modified by - Ashish Dewangan on 29-11-2023
+            # Reason - To save shipping details in transaction history
+            # tran = Transaction_history.objects.create(order_no=num, payment_status="pending", user_no=request.user, 
+            #                                         #   coupon_discount=request.data['CouponDiscount'], 
+            #                                           shipping_price=request.data[
+            #                                           'ShippingCharges'], subtotal_price=request.data['SubTotal'], 
+            #                                         #   tax=request.data['tax'],
+            #                                           grand_total=request.data['grand'])
                 
             tran = Transaction_history.objects.create(order_no=num, payment_status="pending", user_no=request.user, 
                                                     #   coupon_discount=request.data['CouponDiscount'], 
                                                       shipping_price=request.data[
                                                       'ShippingCharges'], subtotal_price=request.data['SubTotal'], 
                                                     #   tax=request.data['tax'],
-                                                      grand_total=request.data['grand'])
+                                                      grand_total=request.data['grand'],
+                                                      firstname=instanceshipping.firstname,
+                                                      lastname=instanceshipping.lastname,
+                                                      street=instanceshipping.street,
+                                                      houseno=instanceshipping.houseno,
+                                                      city=instanceshipping.city,
+                                                      state=instanceshipping.state,
+                                                      zipcode=instanceshipping.zipcode,
+                                                      country=instanceshipping.country,
+                                                      number=instanceshipping.number)
+            # End of code modification by - Ashish Dewangan on 29-11-2023
+            # Reason - To save shipping details in transaction history
+
+            
             tran.save()
 
             # Commented and modified by - Ashish Dewangan on 27-11-2023

@@ -143,22 +143,35 @@ console.log(allData,'checkkkkkk')
 
   useEffect(() => {
     if (allData != null) {
+      /**
+       * Commented and modified by - Ashish Dewangan on 29-11-2023
+       * Reason - shipping data was added on billing details and billing data was added on shipping details
+       */
+      // var billingData = {
+      //   firstname: allData.shipping.firstname,
+      //   lastname: allData.shipping.lastname,
+      //   street: allData.shipping.street,
+      //   houseno: allData.shipping.houseno,
+      //   city: allData.shipping.city,
+      //   state: allData.shipping.state,
+      //   zipcode: allData.shipping.zipcode,
+      //   country: allData.shipping.country,
+      //   number: allData.shipping.number
+      // }
+
+      // var shippingData = {
+      //   firstname: allData.billing.firstname,
+      //   lastname: allData.billing.lastname,
+      //   street: allData.billing.street,
+      //   houseno: allData.billing.houseno,
+      //   city: allData.billing.city,
+      //   state: allData.billing.state,
+      //   zipcode: allData.billing.zipcode,
+      //   country: allData.billing.country,
+      //   number: allData.billing.number
+      // }
+
       var billingData = {
-        firstname: allData.shipping.firstname,
-        lastname: allData.shipping.lastname,
-        street: allData.shipping.street,
-        houseno: allData.shipping.houseno,
-        city: allData.shipping.city,
-        state: allData.shipping.state,
-        zipcode: allData.shipping.zipcode,
-        country: allData.shipping.country,
-        number: allData.shipping.number
-      }
-
-
-
-
-      var shippingData = {
         firstname: allData.billing.firstname,
         lastname: allData.billing.lastname,
         street: allData.billing.street,
@@ -169,6 +182,23 @@ console.log(allData,'checkkkkkk')
         country: allData.billing.country,
         number: allData.billing.number
       }
+
+      var shippingData = {
+        firstname: allData.transaction.firstname,
+        lastname: allData.transaction.lastname,
+        street: allData.transaction.street,
+        houseno: allData.transaction.houseno,
+        city: allData.transaction.city,
+        state: allData.transaction.state,
+        zipcode: allData.transaction.zipcode,
+        country: allData.transaction.country,
+        number: allData.transaction.number
+      }
+      /**
+       * End of code modification by - Ashish Dewangan on 29-11-2023
+       * Reason - shipping data was added on billing details and billing data was added on shipping details
+       */
+
       checkoutDetails['shippingData'] = shippingData;
       checkoutDetails['billingData'] = billingData;
       checkoutDetails['userInfo'] = {
@@ -311,10 +341,20 @@ console.log(allData,'checkkkkkk')
                   {console.log(p,'updated data')}
                   {console.log(s,'not updated data')}
 
-                    <img src={(typeof p.img_main)==='undefined'?null: config.staticBaseURL + p.img_main} className={style.imgresponsive} onClick={e=>nav(`/listing/${p.menu}/${p.category}/detail/${p.id}`)} />
-                  
+                    {/* Commented and modified by - Ashish Dewangan on 29-11-2023
+                    Reason - To show image from product orders not from items */}
+                    {/* <img src={(typeof p.img_main)==='undefined'?null: config.staticBaseURL + p.img_main} className={style.imgresponsive} onClick={e=>nav(`/listing/${p.menu}/${p.category}/detail/${p.id}`)} /> */}
+                    <img src={(typeof s.product_image)==='undefined'?null: config.staticBaseURL + s.product_image} className={style.imgresponsive} onClick={e=>nav(`/listing/${p.menu}/${p.category}/detail/${p.id}`)} />
+                    {/* End of code modification by - Ashish Dewangan on 29-11-2023
+                    Reason - To show image from product orders not from items */}
+
                       <span className={style.imgTitle}>
-                        {p.title} ({SizeGetter(s.size)})
+                        {/* Commented and modified by - Ashish Dewangan on 29-11-2023
+                        Reason - To show product name which was at the time of purchase */}
+                        {/* {s.title} ({SizeGetter(s.size)}) */}
+                        {s.product_name} ({SizeGetter(s.size)})
+                        {/* Commented and modified by - Ashish Dewangan on 29-11-2023
+                        Reason - To show product name which was at the time of purchase */}
                       </span>
                     </div>
                     <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto"}}  >Order Status:- </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >{s.order_status}</span></div>
@@ -376,10 +416,18 @@ console.log(allData,'checkkkkkk')
                   <div className={styles.addressInformation} style={{ minWidth: "150px", maxWidth: "150px" }}>
                     <div ><span className={styles.userinfoText} >Shipping Address</span></div>
                     {allData != null ? <>
-                      <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.shipping.firstname} {allData.shipping.lastname}</span></div>
+                    {/* Commented and modified by - Ashish Dewangan on 29-11-2023
+                    Reason - To show shipping details from trasaction history instead of shipping table */}
+                      {/* <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.shipping.firstname} {allData.shipping.lastname}</span></div>
                       <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.shipping.street} </span><span className={styles.userinfoText2} style={{ color: "black" }}>{allData.shipping.houseno},</span></div>
                       <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.shipping.city} - </span><span className={styles.userinfoText2} style={{ color: "black" }}>{allData.shipping.zipcode},</span></div>
-                      <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.shipping.state} </span></div>
+                      <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.shipping.state} </span></div> */}
+                      <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.transaction.firstname} {allData.transaction.lastname}</span></div>
+                      <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.transaction.street} </span><span className={styles.userinfoText2} style={{ color: "black" }}>{allData.transaction.houseno},</span></div>
+                      <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.transaction.city} - </span><span className={styles.userinfoText2} style={{ color: "black" }}>{allData.transaction.zipcode},</span></div>
+                      <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.transaction.state} </span></div>
+                    {/* End of code modification by - Ashish Dewangan on 29-11-2023
+                    Reason - To show shipping details from trasaction history instead of shipping table */}
                     </>
                       : null}
                   </div>

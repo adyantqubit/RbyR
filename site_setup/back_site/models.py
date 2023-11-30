@@ -547,13 +547,6 @@ class product_orders(models.Model):
     billing_id=models.ForeignKey(userbillingDetail,on_delete=models.CASCADE)  
     shipping_id=models.ForeignKey(usershippingDetail,on_delete=models.CASCADE)
     product_id=models.ForeignKey(product_detail,on_delete=models.CASCADE) 
-    # Addition by Om Shrivastava on 26-11-23
-    # Reason : Set the biiling, shipping and product value
-    billing_value = models.TextField(null=True,blank=True)
-    shipping_value = models.TextField(null=True,blank=True) 
-    product_value = models.TextField(null=True,blank=True) 
-    # End of Addition by Om Shrivastava on 26-11-23
-    # Reason : Set the biiling, shipping and product value
     quantity=models.BigIntegerField()          
     price=models.BigIntegerField()
     total_price=models.BigIntegerField()
@@ -568,7 +561,20 @@ class product_orders(models.Model):
     shipping_charges=models.BigIntegerField(default=100)
     # End of code addition by - Ashish Dewangan on 27-11-2023
     # Reason - Added column for shipping charges
-    
+
+    # Added by - Ashish Dewangan on 29-11-2023
+    # Reason - Added column for product name
+    product_name=models.CharField(max_length=100,null=True,blank=True,default='')
+    # End of code addition by - Ashish Dewangan on 29-11-2023
+    # Reason - Added column for product name
+
+    # Added by - Ashish Dewangan on 29-11-2023
+    # Reason - To save image of product
+    product_image=models.ImageField(upload_to='product_orders/', height_field=None,\
+           width_field=None, max_length=100,null=True,blank=True)  
+    # End of code addition by - Ashish Dewangan on 29-11-2023
+    # Reason - To save image of product
+
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self):
@@ -598,6 +604,21 @@ class Transaction_history(models.Model):
     #Commented by Rohan 10/12/22
     # I make change on datefield to auto not before i am using today() function so while migrating transactiona history date changes
     date=models.DateField(('ordered date'), null=False, blank=False, auto_now=True)
+
+    # Added by - Ashish Dewangan on 29-11-2023
+    # Reason - To save shipping details on transaction history
+    firstname=models.CharField(max_length=20,null=True,blank=True,default='')
+    lastname=models.CharField(max_length=20,null=True,blank=True,default='')
+    street=models.CharField(max_length=200,null=True,blank=True,default='')
+    houseno=models.CharField(max_length=20,null=True,blank=True,default='')
+    city=models.CharField(max_length=30,null=True,blank=True,default='')
+    state=models.CharField(max_length=30,null=True,blank=True,default='')
+    zipcode=models.CharField(max_length=20,null=True,blank=True,default='')
+    country=models.CharField(max_length=30,null=True,blank=True,default='')
+    number=models.CharField(max_length=20,null=True,blank=True,default='')
+    # End of code addition by - Ashish Dewangan on 29-11-2023
+    # Reason - To save shipping details on transaction history
+
     def save(self,*args,**kwargs):
         if (self.payment_status=="cancle"):
           pros= product_orders.objects.filter(order_no=self.order_no)
@@ -635,6 +656,8 @@ class Transaction_history(models.Model):
             verbose_name_plural = "Transaction Histories"
     #End of code addition              
     
+
+
 class Online_Qr(models.Model):
     qr_img=models.ImageField(upload_to='None/', height_field=None,\
         width_field=None, max_length=100)

@@ -261,12 +261,28 @@ class usershippingDetailAdmin(admin.ModelAdmin):
 # admin.site.register(product_orders,InvoiceAdmin)
 @admin.register(product_orders)
 class product_ordersAdmin(admin.ModelAdmin):
-    list_display=("id","order_no","user_no","product_id","billing_id","shipping_id","quantity"
+    # Commented and modified by - Ashish Dewangan on 29-11-2023
+    # Reason - To show product name instead of product id
+    # list_display=("id","order_no","user_no","product_id","billing_id","shipping_id","quantity"
+    # ,"price","size","payment_mode","date")
+    list_display=("id","order_no","user_no","product_name","billing_id","shipping_id","quantity"
     ,"price","size","payment_mode","date")
+    # End of code modification by - Ashish Dewangan on 29-11-2023
+    # Reason - To show product name instead of product id
+
     list_filter=("date","payment_mode","price","user_no")
     search_fields=("product_id__title","user_no__name")
+
+    # Commented and modified by - Ashish Dewangan on 29-11-2023
+    # Reason - To make shipping_charges, product_name and product_image read only
+    # readonly_fields=("id","order_no","user_no","product_id","billing_id","shipping_id","quantity"
+    # ,"price","total_price","size","payment_mode","date","selected_currency_sign","selected_currency_value")
     readonly_fields=("id","order_no","user_no","product_id","billing_id","shipping_id","quantity"
-    ,"price","total_price","size","payment_mode","date","selected_currency_sign","selected_currency_value")
+    ,"price","total_price","size","payment_mode","date","selected_currency_sign","selected_currency_value"
+    ,"shipping_charges","product_name","product_image")
+    # End of code modification by - Ashish Dewangan on 29-11-2023
+    # Reason - To make shipping_charges, product_name and product_image read only
+
     ordering=("-order_no",)
     list_per_page=10
     def has_add_permission(self, request):
@@ -693,11 +709,22 @@ class Transaction_historyAdmin(admin.ModelAdmin):
                   "shipping_price","subtotal_price",
                 #   "tax",
     "grand_total","payment_status","date")
+
+    # Commented and modified by - Ashish Dewangan on 29-11-2023
+    # Reason - To make shipping details read only
+    # readonly_fields=("order_no","user_no",
+    #                 #  "coupon_discount",
+    #                  "shipping_price","subtotal_price",
+    #                 #  "tax",
+    # "grand_total","date")
     readonly_fields=("order_no","user_no",
                     #  "coupon_discount",
                      "shipping_price","subtotal_price",
                     #  "tax",
-    "grand_total","date")
+    "grand_total","date","firstname","lastname","street","houseno","city","state","zipcode","country","number")
+    # End of code modification by - Ashish Dewangan on 29-11-2023
+    # Reason - To make shipping details read only
+    
     ordering=("-order_no","date")
     list_filter=("payment_status","date")
     search_fields=("user_no__name",)
