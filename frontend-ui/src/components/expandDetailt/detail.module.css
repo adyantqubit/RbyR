@@ -53,6 +53,12 @@
     background-color: var(--backgroundColorSecondary);
     justify-content: flex-start;
   }
+ 
+  /* 
+  Commented and modified by - Ashish Dewangan on 30-11-2023
+  Reason - To adjust image size
+  */
+  /*
   .image {
     width: 55%;
     height: auto;
@@ -61,7 +67,7 @@
     padding-left:12%;
     padding-right: 12%;
     padding-bottom: 5%;
-  }
+  } 
   .container03 {
     flex: 0 0 auto;
     width: 45%;
@@ -70,6 +76,29 @@
     align-items: flex-start;
     flex-direction: column;
   }
+  */
+
+  .image {
+    width: 40%;
+    height: 100%;
+    object-fit: cover;
+    padding-top: 2%;
+    padding-left:7%;
+    padding-right: 7%;
+    padding-bottom: 5%;
+  }
+  .container03 {
+    flex: 0 0 auto;
+    width: 60%;
+    height: fit-content;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  /* 
+  End of code modification by - Ashish Dewangan on 30-11-2023
+  Reason - To adjust image size
+  */
   .container04 {
     flex: 0 0 auto;
     width: 100%;

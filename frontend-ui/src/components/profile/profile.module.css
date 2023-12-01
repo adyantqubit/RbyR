@@ -247,7 +247,7 @@
 }
 
 .rowitem1 {
-    width: 50%;
+    width: 20%;
     min-height: 40px;
     text-align: start;
     color: black;
@@ -255,10 +255,16 @@
     flex-direction: row;
     justify-content: center;
 }
-
+.itemName{
+    width:40% !important;
+    /* display: -webkit-box;
+    -webkit-line-clamp:1;
+    -webkit-box-orient:vertical; */
+    overflow:hidden;
+}
 .rowitem2 {
     width: 15%;
-    min-height: 40px;
+    /* min-height: 40px; */
     text-align: center;
     color: black;
     display: flex;
@@ -267,6 +273,23 @@
 
 }
 
+.imgTag {
+    width: 15%;
+    min-height: 40px;
+    text-align: start;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.dataContainer{
+    display:flex;
+    width:80%;
+}
+.imgresponsive{
+    width: 100%;
+    
+}
 .rowitem3 {
     width: 50%;
     min-height: 40px;
@@ -376,7 +399,7 @@
   }
 
 .imgresponsive {
-    width: 30%;
+    width: 100%;
 }
 
 .imgTitle {
@@ -450,7 +473,7 @@
 
     .tablerowhead {
         display: flex;
-        flex-direction: column;
+        /* flex-direction: column; */
         justify-content: space-between;
     }
 
@@ -475,10 +498,21 @@
     .rowitem3 {
         width: 100%
     }
+    .imgTag{
+        width:40%;
+    }
+    .dataContainer{
+        flex-direction: column;
+        width:60%;
+    }
 
     .userinfoTextHIDE {
         display: block;
         width: 20%;
+    }
+    .itemName{
+        width:100% !important;
+        overflow:hidden;
     }
 
     .rowitem2 {
@@ -487,10 +521,10 @@
         /* Modification and addition by Om Shrivastava on 16-11-23
         Reason : Set the alignment  */
         /* padding-left: 15px; */
-        padding-left: 190px;
+        padding-left: 10px;
         /* End of Modification and addition by Om Shrivastava on 16-11-23
         Reason : Set the alignment */
-        width: 100%;
+        /* width: 100%; */
     }
 
     .userinfoText3 {
@@ -508,8 +542,12 @@
 REason : Set the alignment */
 @media (max-width: 480px) {
     .rowitem2{
-        padding-left: 70px;
-        width: 90vw;
+        padding-left: 10px;
+        /* width: 90vw; */
+    }
+    .itemName{
+        width:100% !important;
+        overflow:hidden;
     }
 }
 /* End of Addition by Om Shrivastava on 29-11-23

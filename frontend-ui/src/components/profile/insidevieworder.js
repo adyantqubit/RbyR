@@ -322,11 +322,15 @@ console.log(allData,'checkkkkkk')
 
               <div className={style.table} style={{ border: "none", marginTop: "20px" , marginBottom: "40px"}}>
                 <div className={style.tablerowhead2}>
-                  <div className={style.rowitem1} style={{ justifyContent: "start", color: "black",fontWeight:'500' }}>Product Name</div>
-                  <div className={style.rowitem2} style={{ color: "black",fontWeight:'500' }}>Order Status</div>
-                  <div className={style.rowitem2} style={{ color: "black",fontWeight:'500' }}>Price</div>
-                  <div className={style.rowitem2} style={{ color: "black",fontWeight:'500' }}>Qty</div>
-                  <div className={style.rowitem2} style={{ color: "black",fontWeight:'500' }}>SubTotal</div>
+                
+                  <div className={style.imgTag} ></div>
+                  <div className={style.dataContainer}>
+                    <div className={`${style.rowitem2} ${style.itemName}`} style={{ justifyContent: "start", color: "black",fontWeight:'500' }}>Product Name</div>
+                    <div className={style.rowitem2} style={{ color: "black",fontWeight:'500' }}>Order Status</div>
+                    <div className={style.rowitem2} style={{ color: "black",fontWeight:'500' }}>Price</div>
+                    <div className={style.rowitem2} style={{ color: "black",fontWeight:'500' }}>Qty</div>
+                    <div className={style.rowitem2} style={{ color: "black",fontWeight:'500' }}>SubTotal</div>
+                  </div>
                 </div>
                 <hr style={{ color: "black" }}></hr>
 
@@ -337,43 +341,41 @@ console.log(allData,'checkkkkkk')
                   if((typeof p)==='undefined'){
                   }else
                   return <div className={style.tablerowhead} style={i % 2 == 0 ? { marginTop: "10px" } : { marginTop: "10px" }}>
-                    <div className={style.rowitem3}>
-                  {console.log(p,'updated data')}
-                  {console.log(s,'not updated data')}
-
-                    {/* Commented and modified by - Ashish Dewangan on 29-11-2023
-                    Reason - To show image from product orders not from items */}
-                    {/* <img src={(typeof p.img_main)==='undefined'?null: config.staticBaseURL + p.img_main} className={style.imgresponsive} onClick={e=>nav(`/listing/${p.menu}/${p.category}/detail/${p.id}`)} /> */}
-                    <img src={(typeof s.product_image)==='undefined'?null: config.staticBaseURL + s.product_image} className={style.imgresponsive} onClick={e=>nav(`/listing/${p.menu}/${p.category}/detail/${p.id}`)} />
-                    {/* End of code modification by - Ashish Dewangan on 29-11-2023
-                    Reason - To show image from product orders not from items */}
-
-                      <span className={style.imgTitle}>
-                        {/* Commented and modified by - Ashish Dewangan on 29-11-2023
-                        Reason - To show product name which was at the time of purchase */}
-                        {/* {s.title} ({SizeGetter(s.size)}) */}
-                        {s.product_name} ({SizeGetter(s.size)})
-                        {/* Commented and modified by - Ashish Dewangan on 29-11-2023
-                        Reason - To show product name which was at the time of purchase */}
-                      </span>
+                    <div className={style.imgTag} >
+                      {/* Commented and modified by - Ashish Dewangan on 29-11-2023
+                      Reason - To show image from product orders not from items */}
+                      {/* <img src={(typeof p.img_main)==='undefined'?null: config.staticBaseURL + p.img_main} className={style.imgresponsive} onClick={e=>nav(`/listing/${p.menu}/${p.category}/detail/${p.id}`)} /> */}
+                      <img src={(typeof s.product_image)==='undefined'?null: config.staticBaseURL + s.product_image} className={style.imgresponsive} onClick={e=>nav(`/listing/${p.menu}/${p.category}/detail/${p.id}`)} />
+                      {/* End of code modification by - Ashish Dewangan on 29-11-2023
+                      Reason - To show image from product orders not from items */}
                     </div>
-                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto"}}  >Order Status:- </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >{s.order_status}</span></div>
-                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >
-                      Price : </span>
-                    <span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >
-                      {s.selected_currency_sign} {(s.price * s.selected_currency_value).toFixed(2)}</span></div>
-                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >
-                      Quantity : </span><span className={style.userinfoText3} > 
-                      {s.quantity} </span></div>
-                    <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap"}} >
-                      Total : </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >
-                        {/* Modification and addition by Om Shrivastava on 26-11-23
-                        Reason : Need to set the correct value */}
-                        {/* {s.selected_currency_sign} {(p.price * s.quantity * s.selected_currency_value).toFixed(2)}</span></div> */}
-                        {s.selected_currency_sign} {(s.price * s.quantity * s.selected_currency_value).toFixed(2)}</span></div>
-                  {/* End of Modification and addition by Om Shrivastava on 26-11-23
-                        Reason : Need to set the correct value */}
-                  </div>
+                    <div className={style.dataContainer} >
+                      <div className={`${style.rowitem2} ${style.itemName}`} >
+                          {/* Commented and modified by - Ashish Dewangan on 29-11-2023
+                          Reason - To show product name which was at the time of purchase */}
+                          {/* {s.title} ({SizeGetter(s.size)}) */}
+                          <span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} > {s.product_name} ({SizeGetter(s.size)})</span>
+                          {/* Commented and modified by - Ashish Dewangan on 29-11-2023
+                          Reason - To show product name which was at the time of purchase */}
+                      </div>
+                      <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto"}}  >Order Status:- </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >{s.order_status}</span></div>
+                      <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto"}} >
+                        Price : </span>
+                      <span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >
+                        {s.selected_currency_sign} {(s.price * s.selected_currency_value).toFixed(2)}</span></div>
+                      <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto"}} >
+                        Quantity : </span><span className={style.userinfoText3} > 
+                        {s.quantity} </span></div>
+                      <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto"}} >
+                        Total : </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >
+                          {/* Modification and addition by Om Shrivastava on 26-11-23
+                          Reason : Need to set the correct value */}
+                          {/* {s.selected_currency_sign} {(p.price * s.quantity * s.selected_currency_value).toFixed(2)}</span></div> */}
+                          {s.selected_currency_sign} {(s.price * s.quantity * s.selected_currency_value).toFixed(2)}</span></div>
+                      {/* End of Modification and addition by Om Shrivastava on 26-11-23
+                            Reason : Need to set the correct value */}
+                      </div>
+                    </div>
                 }
                 )}
 

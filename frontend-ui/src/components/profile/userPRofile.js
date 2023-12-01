@@ -300,7 +300,7 @@ const UserProfile = () => {
                             className={styles.firstInput}
                             // style={{width:"70%",marginLeft:"15%"}}
                             onChange={e=>{
-                              userdata.contact=e;
+                              // userdata.contact=e;
                               setIsAlertVisiblenum(false)}} 
                             limitMaxLength={15}
                             />
