@@ -71,4 +71,9 @@
     border:1px solid black;
     margin: 8px 0;
     margin-right: 5px;
+    /* Addition by Om shrivastava on 30-11-23
+    Reason : Set the font family */
+    font-family: var(--fontFamily);
+    /* End of  Addition by Om shrivastava on 30-11-23
+    Reason : Set the font family */
 }

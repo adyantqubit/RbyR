@@ -369,19 +369,20 @@
     color: black;
     font-size: 12px;
     line-height: 18px;
-    letter-spacing: 1.2px;
+    letter-spacing: 0.5px;
     font-weight: 400;
       font-family: var(--fontFamily);
-
+/* border: 1px solid red; */
 }
 
 .userinfoText2 {
     color: #323232;
     font-size: 12px;
     line-height: 18px;
-    letter-spacing: 1.2px;
+    letter-spacing: 0.5px;
     /* font-weight: 600; */
       font-family: var(--fontFamily);
+      /* border: 1px solid blue; */
 
 }
 
@@ -411,6 +412,11 @@
     /* border: .1rem solid black; */
     font-weight: 600;
     cursor: pointer;
+    /* Addition by Om Shrivastava on 30-11-23
+    REason : Set the height, width and color */
+    color: blue;
+    margin-bottom: 1%;
+    /* border: 1px solid red; */
 }
 
 .change:hover {
@@ -500,11 +506,22 @@
 
 }
 
-.img {
+/* .img {
     width: 35%;
     padding-left: 0;
     padding-top: 10px;
     padding-bottom: 10px;
+
+    border: 1px solid yellow;
+} */
+.listedImage{
+    width: 100px;
+    height: 150px;
+    padding-left: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    /* border: 1px solid yellow; */
 }
 
 .productInfo {
@@ -514,9 +531,9 @@
 }
 
 .titlepro {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 22px;
-    letter-spacing: 1.2px;
+    letter-spacing: 0.5px;
     font-family: var(--fontFamily);
 
     color: black;
@@ -605,7 +622,12 @@ Reaosn : Add the css  */
         flex-direction: column;
 
     }
-
+.change{
+    margin-bottom: 3%;
+}
+.listedImage{
+width: 70px;
+height: 120px;}
 
     /* addition by Om Shrivastava on 25-11-23
     Reason : Set the height and widht in mobile view */

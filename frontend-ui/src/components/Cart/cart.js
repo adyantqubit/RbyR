@@ -515,7 +515,9 @@ const CartSItem = (props) => {
                       <div className={styles.column1}>
                         <img
                           src={config.staticBaseURL + pro.img_main}
-                          style={{ width: "100%" }}
+                          // style={{ width: "100%" }}
+                          style={{ width: "140px",height:'170px' }}
+
                           onClick={(e) => openDetail(pro)}
                         ></img>
                       </div>
@@ -692,7 +694,9 @@ const CartSItem = (props) => {
                       <div className={styles.column1}>
                         <img
                           src={config.staticBaseURL + pro.img_main}
-                          style={{ width: "100%" }}
+                          // style={{ width: "100%" }}
+                          style={{ width: "140px",height:'170px' }}
+
                           onClick={(e) => openDetail(pro)}
                         ></img>
                       </div>

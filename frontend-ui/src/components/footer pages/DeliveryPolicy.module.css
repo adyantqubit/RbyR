@@ -5,7 +5,9 @@
     height: auto;
     width:100%;
     background:var(--backgroundColorSecondary);
-    padding-top: 30vh;
+    /* padding-top: 30vh; */
+    padding-top: 25vh;
+
     max-height: 100vh;
     /* overflow-y: scroll; */
 }
@@ -91,7 +93,9 @@
 
 .content{
     padding:0 16%;
-    font-size: 18px;
+    /* font-size: 18px; */
+    font-size: 15px;
+
     line-height: 22px;
     /* letter-spacing: 1px;
     font-family: 'Rawson-Regular'; */
@@ -121,6 +125,9 @@
     }
     .contain{
         /* margin-bottom: 13vh; */
+    }
+    .content{
+        font-size: 13px;
     }
  
 }

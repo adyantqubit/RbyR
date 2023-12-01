@@ -108,7 +108,12 @@ const ProductListing = () => {
             >
               <img
                 src={config.staticBaseURL + c.img_main}
-                className={styles.img}
+                // Modification and addition by Om Shrivastava on 30-11-23
+                // Reason : Add new class name
+                // className={styles.img}
+                className={styles.listedImage}
+                // End of Modification and addition by Om Shrivastava on 30-11-23
+                // Reason : Add new class name
                 // Added by Om Shrivastava on 22-11-23
                 // Reason : Apply the onlcick for navigation
                 style={{cursor:'pointer'}}

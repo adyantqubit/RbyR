@@ -140,19 +140,19 @@ const Payment = () => {
 
         // Modification and addition by Om Shrivastava on 26-11-23
         // REason : Need to remove the error
-        // notification.error({
-        //   message: <div style={{ fontSize: "18px", color: "white" }}>Sorry! Something went wrong. </div>,
-        //   description:
-        //     `Facing issue in generating bill! please contact to the our customer support.`,
-        //   style: { backgroundColor: "#D2042D", color: "white" },
-        //   duration: 20,
-        //   key:1
-        // });
+        notification.error({
+          message: <div style={{ fontSize: "18px", color: "white" }}>Sorry! Something went wrong. </div>,
+          description:
+            `Facing issue in generating bill! please contact to the our customer support.`,
+          style: { backgroundColor: "#D2042D", color: "white" },
+          duration: 20,
+          key:1
+        });
 
-        checkoutDetails['orderno'] = r.order_no
-        sessionStorage.setItem('checkoutDetails', JSON.stringify(checkoutDetails))
-        deleteFromCart()
-        nav("/billing")
+        // checkoutDetails['orderno'] = r.order_no
+        // sessionStorage.setItem('checkoutDetails', JSON.stringify(checkoutDetails))
+        // deleteFromCart()
+        // nav("/billing")
         
         // End of modifiaction and addition by Om Shrivastava on 26-11-23
         // REason : Need to remove the error
@@ -181,7 +181,7 @@ const Payment = () => {
 
       <div className={styles.boxpay} id="online">
         <div style={{ display: "flex", justifyContent: "space-between" }} onClick={selectop}>
-          <span className={styles.userinfoText}>Pay via Scanner</span>
+          <span style={{fontSize:'14px'}} className={styles.userinfoText}>Pay via Scanner</span>
           {/* {tickop ? */}
           {true ?
             <IoMdCheckmark style={{ fontSize: "25", color: "black", fontWeight: "20", backgroundColor: "transparent", border: "none" }} />
@@ -195,8 +195,8 @@ const Payment = () => {
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }} 
         // onClick={onSelect}
         >
-          <strike className={styles.userinfoText}>Cash On Delivery</strike>
-          <h6 style={{ fontSize: "12px" }}>(Currently not available)</h6>
+          <strike style={{fontSize:'14px'}} className={styles.userinfoText}>Cash On Delivery</strike>
+          <h6 style={{ fontSize: "12px",fontFamily:'var(--fontFamily)' }}>(Currently not available)</h6>
 
           {tick ?
             <IoMdCheckmark style={{ fontSize: "25", color: "black", fontWeight: "20", backgroundColor: "transparent", border: "none" }} />
@@ -209,8 +209,8 @@ const Payment = () => {
 
       <div className={styles.boxpay} >
 
-        <strike className={styles.userinfoText}>Pay via debit/credit cards</strike>
-        <h6 style={{ fontSize: "12px" }}>(Currently not available)</h6>
+        <strike style={{fontSize:'14px'}} className={styles.userinfoText}>Pay via debit/credit cards</strike>
+        <h6 style={{ fontSize: "12px",fontFamily:'var(--fontFamily)' }}>(Currently not available)</h6>
 
       </div>
 
@@ -239,13 +239,13 @@ const Payment = () => {
         {/* Addition by Om Shrivastava on 25-11-23
         Reason : Set the correct path */}
         <Link to="/termAndCondition#Terms_and_Conditions" target="_blank" title='Terms and Condition'
-        style={{ fontSize: "14px",paddingLeft:'2px', textDecoration: "underline", paddingTop: "3.5px",letterSpacing:'1px',fontFamily:'var(--fontFamily)'}}>
+        style={{ fontSize: "14px",paddingLeft:'2px', textDecoration: "underline", paddingTop: "3.5px",color :" blue ",letterSpacing:'1.5px',fontFamily:'var(--fontFamily)'}}>
         {/* End of Addition by Om Shrivastava on 25-11-23
         Reason : Set the correct path  */}
         {/* /> <Link to="/terms" target="_blank" style={{ fontSize: "14px",paddingLeft:'2px', textDecoration: "underline", paddingTop: "3.5px",letterSpacing:'1.5px' }}> */}
          {/* End of Modification and addition by Om Shrivastava on 19-11-23
           // Reason : Fix the page blank issue */}
-          {" "} Terms and conditions</Link>
+          {" "} Terms and Conditions</Link>
         {required ? <Typography style={{ color: "red", fontSize: "13px", marginLeft: "30px" }}>Please accept terms and conditions.</Typography> : null}
       </div>
 

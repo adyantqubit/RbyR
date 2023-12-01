@@ -229,9 +229,15 @@ const Details = (props) => {
         description: `No More Stock Available`,
         className: "custom-class",
         style: {
-          backgroundColor: "#8c8c8c",
+          // Modification and addition by Om Shrivastava on 30-11-23 
+          // Reason : Set the font color, and font family
+          // backgroundColor: "#8c8c8c",
+          backgroundColor: "var(--bannerColor)",
           color: "black",
           marginTop: "10vh",
+          fontFamily:'var(--fontFamily)'
+          // End of Modification and addition by Om Shrivastava on 30-11-23 
+          // Reason : Set the font color, and font family
         },
         duration: 2,
         key: 1,
@@ -1129,7 +1135,8 @@ const Details = (props) => {
                         letterSpacing: "1px",
                         fontSize: "14px",
                         color:'blue',
-                        borderBottom:'1px solid blue'
+                        borderBottom:'1px solid blue',
+                        fontWeight:'500'
 
                       }}
                     >
@@ -1143,7 +1150,8 @@ const Details = (props) => {
                         letterSpacing: "1px",
                         fontSize: "14px",
                         color:'blue',
-                        borderBottom:'1px solid blue'
+                        borderBottom:'1px solid blue',
+                        fontWeight:'500'
                       }}
                     >
                       Shipping Policy

@@ -96,6 +96,15 @@
   color:#212121;
   /* padding-left: 5%; */
 }
+/* Addition by Om shrivastava on 30-11-23
+Reason : Add the class name for the total product label */
+.totalProduct{
+  font-size: 17px;
+  text-transform: capitalize;
+  padding-left: 20px;
+}
+/* End of addition by Om shrivastava on 30-11-23
+Reason : Add the class name for the total product label */
 
 .filter{
   font-size: 14px;
@@ -157,7 +166,12 @@ justify-content: space-between;
   flex-wrap: wrap;
   gap:35px;
  padding-bottom: 50px;
-  justify-content: space-evenly;
+/* Modification and addtion by Om shirvastava on 30-11-23
+Reason : Set the content in left side */
+  /* justify-content: space-evenly; */
+  padding-left: 5%;
+  /* *End of Modification and addtion by Om shirvastava on 30-11-23
+  Reason : Set the content in left side */ 
 }
 
 .Container::-webkit-scrollbar{
@@ -252,6 +266,11 @@ justify-content: space-between;
 
   .cardContainer{
     gap: 0;
+  }
+
+  .cardContainer{
+    justify-content: space-evenly;
+    padding-left: 0px;
   }
  
  }
@@ -870,6 +889,10 @@ justify-content: space-between;
   .img12{
     height: 300px;
     width: 250px;
+  }
+  .totalProduct{
+    font-size: 13px;
+    padding-bottom: 2%;
   }
  }
 

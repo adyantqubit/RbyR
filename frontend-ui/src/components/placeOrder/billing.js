@@ -243,12 +243,7 @@ console.log(onlineDetail)
                 )} */}
                    {checkoutDetails.purchased_products_list.map(c =>
                   <div className={styles.billingheader2} id="footer" style={{ marginTop: "5px", background: "var(--backgroundColorSecondary)" }}>
-                    {/* Commented and modified by - Ashish Dewangan on 29-11-2023
-                    Reason - To show product name which was at the time of purchase */}
-                    {/* <span className={styles.protitle} > {c.title} ({SizeGetter(c.size)})</span> */}
-                    <span className={styles.protitle} > {c.product_name} ({SizeGetter(c.size)})</span>
-                    {/* End of code modification by - Ashish Dewangan on 29-11-2023
-                    Reason - To show product name which was at the time of purchase */}
+                    <span className={styles.protitle} > {c.title} ({SizeGetter(c.size)})</span>
                     <span className={`${styles.protitle2} ${styles.show}`} > {c.quantity}</span>
                     <span className={`${styles.protitle2} ${styles.show2}`} > {c.quantity}</span>
                     <span className={styles.protitle2} >{checkoutDetails.currency_sign}{(c.price * checkoutDetails.currency_value).toFixed(2)}</span>

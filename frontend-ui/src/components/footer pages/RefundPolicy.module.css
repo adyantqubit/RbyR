@@ -5,7 +5,10 @@
     height: auto;
     width:100%;
     background:var(--backgroundColorSecondary);
-    padding-top: 30vh;
+
+    /* padding-top: 30vh; */
+    padding-top: 25vh;
+
     max-height: 100vh;
     overflow-y: scroll;
 }
@@ -54,7 +57,9 @@
 
 .title{
     padding:0 20%;
-    font-size: 30px;
+    /* font-size: 30px; */
+    font-size: 28px;
+
     line-height: 32px;
     /* letter-spacing: 3px;
     font-family: 'MyFont'; */
@@ -91,7 +96,9 @@
 
 .content{
     padding:0 16%;
-    font-size: 18px;
+    /* font-size: 18px; */
+    font-size: 15px;
+
     line-height: 22px;
     /* letter-spacing: 1px;
     font-family: 'Rawson-Regular'; */

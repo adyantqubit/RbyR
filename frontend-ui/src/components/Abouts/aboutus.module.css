@@ -90,7 +90,9 @@
 }
 
 .para{
-    font-size: 16px;
+    /* font-size: 16px; */
+    font-size: 15px;
+
     line-height: 24px;
     letter-spacing: 0.8px;
     color: #212121;
@@ -159,5 +161,8 @@
     }
     .container{
         padding-bottom: 0px ;
+    }
+    .para{
+        font-size: 13px;
     }
 }

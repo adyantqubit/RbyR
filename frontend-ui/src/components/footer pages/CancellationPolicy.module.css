@@ -37,7 +37,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    padding-top: 7vh;
+    /* padding-top: 7vh; */
     justify-content: space-around;
     background:var(--backgroundColorSecondary);
     padding-bottom: 30vh;
@@ -56,7 +56,9 @@
 
 .title{
     padding:0 20%;
-    font-size: 30px;
+    /* font-size: 30px; */
+    font-size: 28px;
+
     line-height: 32px;
     /* letter-spacing: 3px;
     font-family: 'MyFont'; */
@@ -94,7 +96,9 @@
 
 .content{
     padding:0 16%;
-    font-size: 18px;
+    /* font-size: 18px; */
+    font-size: 15px;
+
     line-height: 22px;
     /* letter-spacing: 1px;
     font-family: 'Rawson-Regular'; */
@@ -125,6 +129,12 @@
     .contain{
         padding-top: 5vh;
         margin-bottom: 7vh;
+    }
+    .content{
+        font-size: 13px;
+    }
+    .title{
+        font-size: 23px;
     }
  
 }

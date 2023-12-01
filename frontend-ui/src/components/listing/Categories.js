@@ -42,7 +42,14 @@ const Categories = () => {
                     ALL COLLECTIONS
                 </div> */}
 
-                <div style={{display:'flex',flexDirection:'row',justifyContent:'space-around'}} className={style.heading}>
+                <div 
+                style={{display:'flex',
+                // paddingLeft:'5%',
+                // flexDirection:'row',justifyContent:
+                // 'space-around',
+                paddingTop:'2.5%'
+            }}
+                 className={style.heading}>
                     <div className={style.headingSection} > ALL COLLECTIONS</div>
                     <div></div>
                 </div>

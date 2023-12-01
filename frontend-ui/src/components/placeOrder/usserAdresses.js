@@ -610,7 +610,7 @@ const UsserAdresses = () => {
 
                         <div className={styles.columnitem1content1} style={{margin:"15px 0"}}>
                             <Checkbox
-                                icon={<Icon.FiCheck color="white" size={16} style={{ background: "black" }} />}
+                                icon={<Icon.FiCheck color="white" size={16} style={{ background: "#57b957" }} />}
                                 name="my-input"
                                 checked={!billingInfo}
                                 onChange={(value, event) => {
@@ -812,7 +812,15 @@ const UsserAdresses = () => {
 
                 :
                 <div className={styles.columnitem1_1} style={{ marginTop: "20px" }}>
-                    <div className={styles.columnitem1head}>
+                    <div 
+                    // Modification and addition by Om Shrivastava on 30-11-23
+                    // Reason : Set the width and height 
+                    // className={styles.columnitem1head}
+                    className={`${styles.columnitem1head} ${styles.setWidth}`}
+                    // End of Modification and addition by Om Shrivastava on 30-11-23
+                    // Reason : Set the width and height  
+                    >
+
                         <span>2. SHIPPING INFO
                             <IoIosCheckmarkCircle style={{
                                 fontSize: "37px", color: "#57b957", backgroundColor: "transparent"

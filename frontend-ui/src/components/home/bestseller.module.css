@@ -338,7 +338,10 @@ Reason : Add the media queries for the image and div */
     Reason : Remove the brightness of the image */
     box-shadow: 3px 3px 8px 1px black;
     transition: all .6s ease;
- }   
+ }  
+ .heading{
+    margin-bottom: 5px;
+ } 
 }
 /* Moification and addition by Om Shrivastava on 21-10-23
 Reason : Add the media queries for the image and div */
@@ -356,10 +359,16 @@ Reason : Need to set the row gap between these contents */
      .name{
         font-size: 14px;
      } 
-     .container{
+     /* Modification and addition by Om Shrivastava on 30-11-23
+     Reason : Set the padding  */
+     /* .container{
         padding: 25px 25px 0px 25px;
-
+     } */
+     .container{
+        padding: 0px 25px 0px 25px;
      }
+    /* Modification and addition by Om Shrivastava on 30-11-23
+     Reason : Set the padding  */
     }
 @media (max-width: 390px) {
        

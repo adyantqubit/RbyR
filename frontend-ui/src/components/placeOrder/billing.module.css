@@ -29,6 +29,7 @@
     display: flex;
     height: auto;
     justify-content: center;
+    padding-top: 1%;
    
 }
 
@@ -48,6 +49,7 @@
     height: 150px;
     width: 150px;
 
+    margin: 3px 0px 0px 3px;
     /* height: auto; */
     /* height:100%; */
 }
@@ -227,7 +229,7 @@
     /* Addition by Om Shrivastava on 24-11-23
     Reason : Set the font family */
     font-family: var(--fontFamily);
-    /* End of addition by Om Shrivastava on 24-11-23
+    /* End of addition by Om Shrivastava on 24-11-23 
     Reason : Set the font family   */
     /* Addition by Om shrivastava on 29-11-23
   Reason : Add the text transform */
@@ -363,6 +365,9 @@
 }
 
 @media (max-width: 768px) {
+    .main{
+        padding-top: 0%;
+    }
 
     .foot{
         margin-top:-60px;

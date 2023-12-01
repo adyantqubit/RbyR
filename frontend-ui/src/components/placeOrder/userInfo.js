@@ -75,8 +75,8 @@ const UserInfo = () => {
         
         </div>
         <div className={styles.usedetailShow}>
-            <div ><span className={styles.userinfoText}>Username:</span><span className={styles.userinfoText2}> {checkoutDetails.userInfo.firstname} {checkoutDetails.userInfo.lastname}</span></div>
-            <div ><span className={styles.userinfoText}>Email Address:</span><span className={styles.userinfoText2}> {checkoutDetails.userInfo.email}</span></div>
+            <div ><span style={{fontSize:'14px'}} className={styles.userinfoText}>Username:</span><span style={{fontSize:'14px'}}  className={styles.userinfoText2}> {checkoutDetails.userInfo.firstname} {checkoutDetails.userInfo.lastname}</span></div>
+            <div ><span style={{fontSize:'14px'}} className={styles.userinfoText}>Email Address:</span><span style={{fontSize:'14px'}}  className={styles.userinfoText2}> {checkoutDetails.userInfo.email}</span></div>
         </div>
     </div>
 </>
@@ -97,7 +97,7 @@ const UserInfo = () => {
                         }
                     </div>
                     <div className={styles.columnFirstName}>
-                        <label className={styles.firstName} htmlFor='last'>Last Name<span style={{color:'red'}}>*</span></label>
+                        <label className={styles.firstName} htmlFor='last'>Last Name</label>
                         {checkoutDetails.userInfo?
                         <input className={styles.firstInput} type="text" name="last" defaultValue={checkoutDetails.userInfo.lastname} />
                         :

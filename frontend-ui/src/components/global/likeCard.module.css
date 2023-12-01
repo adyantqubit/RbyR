@@ -139,7 +139,12 @@
   }
 
   .emptyWishList{
-    color: #4f4f4f;
+    /* Modification and addition by Om Shrivastava on 30-11-23
+    Reason : Set the color  */
+    /* color: #4f4f4f; */
+    color: black;
+/* End of Modification and addition by Om Shrivastava on 30-11-23
+    Reason : Set the color  */
     height: 100%;
     padding: 15px;
     flex-direction: column;

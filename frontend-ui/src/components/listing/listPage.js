@@ -249,15 +249,18 @@ const ListPage = () => {
                   }}
                 >
                   <div>{parent.split("_").join(" ")}</div>
-                  <div>
+                  <div 
+                  className={style.totalProduct}
+                  >
                     {CategoryProduct && CategoryProduct.length > 0 ? (
                       <span
-                        style={{
-                          fontSize: "17px",
-                          fontWeight: "lighter",
-                          textTransform: "capitalize",
-                          paddingLeft: "20px",
-                        }}
+                      className={style.totalProduct}
+                        // style={{
+                        //   fontSize: "17px",
+                        //   fontWeight: "lighter",
+                        //   textTransform: "capitalize",
+                        //   paddingLeft: "20px",
+                        // }}
                       >
                         {" "}
                         Products ({counter})
@@ -370,7 +373,9 @@ Reason : Need to comment the filter functionality */}
                             // Reason : Need to add the classname of the image
                           ></img>
                           <div className={style.title}>
-                            <span>{p.title}</span>
+                            {/* <span>{p.title}</span> */}
+                            <span>{p.title.toLowerCase()}</span>
+
                           </div>
                           <div className={style.price}>
                             {currency.sign}{" "}
