@@ -230,12 +230,19 @@ class Menus(models.Model):
             raise ValidationError("Can only create five Menu instances. Try editing/removing one of the existing instances.") 
 
     def __str__(self):
-         return self.menu      
+         return self.menu
+
+    # Added by - Ashish Dewangan on 02-12-2023
+    # Reason - To changed display name from menuss to menus on sidebar
+    class Meta:
+            verbose_name_plural = "Menus"      
+    # Added by - Ashish Dewangan on 02-12-2023
+    # Reason - To changed display name from menuss to menus on sidebar    
  
 class subMenu(models.Model):
     # Added by Rohan- on -17/2/23
     # reason - Showing images for category
-    image=models.ImageField(upload_to='None/', height_field=None,\
+    image=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
     # End of code
     sub=models.CharField(max_length=15)
@@ -268,13 +275,13 @@ class product_detail(models.Model):
     
     menu=models.CharField(max_length=50,null=True,blank=True)
     category=models.CharField(max_length=50,null=True,blank=True)
-    img_main=models.ImageField(upload_to='None/', height_field=None,\
+    img_main=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)  
-    img_sub1=models.ImageField(upload_to='None/', height_field=None,\
+    img_sub1=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100,default="null") 
-    img_sub2=models.ImageField(upload_to='None/', height_field=None,\
+    img_sub2=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100,default="null") 
-    img_sub3=models.ImageField(upload_to='None/', height_field=None,\
+    img_sub3=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100,default="null") 
     like=models.BigIntegerField(default=0, validators=[MaxValueValidator(999999999)])
     price=models.DecimalField(decimal_places=2,max_digits=10)
@@ -401,8 +408,15 @@ window_CHOICES = (
     ('Mobile','For Mobile')
 ) 
 class Head_img(models.Model):
-    src=models.ImageField(upload_to='None/', height_field=None,\
-           width_field=None, max_length=100)   
+    # Commented and modified by - Ashish Dewangan on 02-12-2023
+    # Reason - To change label name of column
+    # src=models.ImageField(upload_to='None/', height_field=None,\
+    #        width_field=None, max_length=100) 
+    src=models.ImageField(upload_to='Images/', height_field=None,\
+           width_field=None, max_length=100, verbose_name="Cover image")   
+    # End of code modification by - Ashish Dewangan on 02-12-2023
+    # Reason - To change label name of column
+
     # label=models.CharField(max_length=100,default="slider")
     # about=models.CharField(max_length=200,default="here you have to write something")
     Menu=models.ForeignKey(Menus,on_delete=models.CASCADE,blank=True,null=True)
@@ -430,7 +444,7 @@ class Head_img(models.Model):
 # HomeCard_Img is generating Issuebeacuse all content in one model so making different model for each  
 # Content according to our need
 class HomeGifImages(models.Model):
-    Gif_image=models.ImageField(upload_to='None/', height_field=None,\
+    Gif_image=models.ImageField(upload_to='Images/', height_field=None,\
     width_field=None, max_length=100)   
     Menu=models.ForeignKey(Menus,on_delete=models.CASCADE,blank=True,null=True)
     sub=models.ForeignKey(subMenu,on_delete=models.CASCADE,blank=True,null=True)
@@ -443,7 +457,7 @@ class HomeGifImages(models.Model):
         super().save(*args,**kwargs) 
   
 class HomeNormalImages(models.Model):
-    image=models.ImageField(upload_to='None/', height_field=None,\
+    image=models.ImageField(upload_to='Images/', height_field=None,\
     width_field=None, max_length=100)   
     Menu=models.ForeignKey(Menus,on_delete=models.CASCADE,blank=True,null=True)
     sub=models.ForeignKey(subMenu,on_delete=models.CASCADE,blank=True,null=True)
@@ -461,22 +475,22 @@ class Home_video(models.Model):
 # End of code    
 
 # class HomeCard_img(models.Model):
-#     img_top1=models.ImageField(upload_to='None/', height_field=None,\
+#     img_top1=models.ImageField(upload_to='Images/', height_field=None,\
 #     width_field=None, max_length=100)
 #     category_top1=models.CharField(max_length=50,choices=category,default="casual")
-#     img_top1_1=models.ImageField(upload_to='None/', height_field=None,\
+#     img_top1_1=models.ImageField(upload_to='Images/', height_field=None,\
 #     width_field=None, max_length=100)
 #     category_top1_1=models.CharField(max_length=50,choices=category,default="casual")
-#     img_top2=models.ImageField(upload_to='None/', height_field=None,\
+#     img_top2=models.ImageField(upload_to='Images/', height_field=None,\
 #     width_field=None, max_length=100)
 #     category_top2=models.CharField(max_length=50,choices=category,default="casual")
-#     img_top2_1=models.ImageField(upload_to='None/', height_field=None,\
+#     img_top2_1=models.ImageField(upload_to='Images/', height_field=None,\
 #     width_field=None, max_length=100)
 #     category_top2_1=models.CharField(max_length=50,choices=category,default="casual")
-#     img_top3=models.ImageField(upload_to='None/', height_field=None,\
+#     img_top3=models.ImageField(upload_to='Images/', height_field=None,\
 #     width_field=None, max_length=100)
 #     category_top3=models.CharField(max_length=50,choices=category,default="casual")
-#     img_top4=models.ImageField(upload_to='None/', height_field=None,\
+#     img_top4=models.ImageField(upload_to='Images/', height_field=None,\
 #     width_field=None, max_length=100)
 #     category_top4=models.CharField(max_length=50,choices=category,default="casual")
 #     video_url=models.CharField(max_length=200,default="")
@@ -505,7 +519,7 @@ class usershippingDetail(models.Model):
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self) -> str:
-         return "User - "+self.firstname+" "+self.lastname+". Phone no - "+str(self.number)+". Address - "+self.houseno+" "+self.street+" "+self.city+" "+self.state+" "+self.country+". "+self.zipcode
+         return "User - "+self.firstname+" "+self.lastname+"."
     class Meta:
             verbose_name_plural = "User's Shipping Details"
     #End of code addition
@@ -526,7 +540,7 @@ class userbillingDetail(models.Model):
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self) -> str:
-         return "User - "+self.firstname+" "+self.lastname+". Phone no - "+str(self.number)+". Address - "+self.houseno+" "+self.street+" "+self.city+" "+self.state+" "+self.country+". "+self.zipcode
+         return "User - "+self.firstname+" "+self.lastname+"."
     class Meta:
             verbose_name_plural = "User's Billing Details"
     #End of code addition
@@ -546,7 +560,11 @@ class product_orders(models.Model):
     user_no=models.ForeignKey(User,on_delete=models.CASCADE,blank=True)
     billing_id=models.ForeignKey(userbillingDetail,on_delete=models.CASCADE)  
     shipping_id=models.ForeignKey(usershippingDetail,on_delete=models.CASCADE)
-    product_id=models.ForeignKey(product_detail,on_delete=models.CASCADE) 
+    # Added by - Ashish Dewangan on 29-11-2023
+    # Reason - Added column for product name
+    product_name=models.CharField(max_length=100,null=True,blank=True,default='')
+    # End of code addition by - Ashish Dewangan on 29-11-2023
+    # Reason - Added column for product name 
     quantity=models.BigIntegerField()          
     price=models.BigIntegerField()
     total_price=models.BigIntegerField()
@@ -563,17 +581,12 @@ class product_orders(models.Model):
     # Reason - Added column for shipping charges
 
     # Added by - Ashish Dewangan on 29-11-2023
-    # Reason - Added column for product name
-    product_name=models.CharField(max_length=100,null=True,blank=True,default='')
-    # End of code addition by - Ashish Dewangan on 29-11-2023
-    # Reason - Added column for product name
-
-    # Added by - Ashish Dewangan on 29-11-2023
     # Reason - To save image of product
     product_image=models.ImageField(upload_to='product_orders/', height_field=None,\
            width_field=None, max_length=100,null=True,blank=True)  
     # End of code addition by - Ashish Dewangan on 29-11-2023
     # Reason - To save image of product
+    product_id=models.ForeignKey(product_detail,on_delete=models.CASCADE)
 
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
@@ -659,7 +672,7 @@ class Transaction_history(models.Model):
 
 
 class Online_Qr(models.Model):
-    qr_img=models.ImageField(upload_to='None/', height_field=None,\
+    qr_img=models.ImageField(upload_to='Images/', height_field=None,\
         width_field=None, max_length=100)
     name=models.CharField(max_length=50)
     bank_name=models.CharField(max_length=30)
@@ -784,8 +797,8 @@ class ContactUs(models.Model):
     content3=models.TextField(null=True,blank=True)
     # End of modification and addition by Om Shrivastava on 10-11-23
     # Reason : Need to change the richtextfield to charfield
-    contactUsImage=models.ImageField(upload_to='None/', height_field=None,\
-           width_field=None, max_length=100,default='None/a1.jpg')
+    contactUsImage=models.ImageField(upload_to='Images/', height_field=None,\
+           width_field=None, max_length=100,default='None/a1.jpg',verbose_name="Contact Us Image")
 
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
@@ -976,7 +989,7 @@ class StoreLocator(models.Model):
     phoneNumber=models.BigIntegerField(validators=[validate_phone_number])
     email=models.CharField(max_length=50)
     timing=models.CharField(max_length=50)
-    storeImage=models.ImageField(upload_to='None/', height_field=None,\
+    storeImage=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
 #End of code addition
     #Added by Ashish Dewangan on 28-11-2022
@@ -991,7 +1004,7 @@ class StoreLocator(models.Model):
 #Reason - To create Social Links table
 class SocialLink(models.Model):
     linkName=models.CharField(max_length=255)
-    logo=models.ImageField(upload_to='None/', height_field=None,\
+    logo=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
     link=models.CharField(max_length=255)
 #End of code addition
@@ -1009,7 +1022,7 @@ class Bridal(models.Model):
     title=models.CharField(max_length=255,validators=[validate_title])
     subtitle1=models.TextField(default="",blank=True)
     subtitle2=models.TextField(default="",blank=True)
-    bridalImage=models.ImageField(upload_to='None/', height_field=None,\
+    bridalImage=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
@@ -1023,14 +1036,14 @@ class Bridal(models.Model):
 #Added by Ashish on 17-11-2022
 #Reason - To create bridalDetails table
 class BridalForm(models.Model):
-    firstName=models.CharField(max_length=255)
-    lastName=models.CharField(max_length=255)
+    firstName=models.CharField(max_length=255,verbose_name="First Name")
+    lastName=models.CharField(max_length=255,verbose_name="Last Name")
     email=models.CharField(max_length=255,blank=True,null=True)
-    contactNumber=models.BigIntegerField()
+    contactNumber=models.BigIntegerField(verbose_name="Contact Number")
     zipCode=models.BigIntegerField()
     message=models.TextField()
-    dateOfWedding=models.DateField(blank=True,null=True)
-    termsAndCondition=models.BooleanField()
+    dateOfWedding=models.DateField(blank=True,null=True,verbose_name="Date Of Wedding")
+    termsAndCondition=models.BooleanField(verbose_name="Terms And Conditions")
     
     # Added by Rohan -22/12/22-2022
     #Reason - To remove time from date and time field
@@ -1080,19 +1093,19 @@ class EmailSubscription(models.Model):
 #Reason - To get Intagram photos
 class InstagramCollection(models.Model):
     instagram_home_link=models.CharField(max_length=255)
-    instagram_post1=models.ImageField(upload_to='None/', height_field=None,\
+    instagram_post1=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
     instagram_post1_link=models.CharField(max_length=255)
-    instagram_post2=models.ImageField(upload_to='None/', height_field=None,\
+    instagram_post2=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
     instagram_post2_link=models.CharField(max_length=255)
-    instagram_post3=models.ImageField(upload_to='None/', height_field=None,\
+    instagram_post3=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
     instagram_post3_link=models.CharField(max_length=255)
-    instagram_post4=models.ImageField(upload_to='None/', height_field=None,\
+    instagram_post4=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
     instagram_post4_link=models.CharField(max_length=255)
-    instagram_post5=models.ImageField(upload_to='None/', height_field=None,\
+    instagram_post5=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
     instagram_post5_link=models.CharField(max_length=255)
 
@@ -1108,17 +1121,17 @@ class InstagramCollection(models.Model):
 #Added by Ashish on 19-11-2022
 #Reason - To save logo and cover in the table
 class LogoAndCover(models.Model):
-    logo=models.ImageField(upload_to='None/', height_field=None,\
+    logo=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
-    cover1=models.ImageField(upload_to='None/', height_field=None,\
+    cover1=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
-    cover2=models.ImageField(upload_to='None/', height_field=None,\
+    cover2=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
-    cover3=models.ImageField(upload_to='None/', height_field=None,\
+    cover3=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
-    cover4=models.ImageField(upload_to='None/', height_field=None,\
+    cover4=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
-    cover5=models.ImageField(upload_to='None/', height_field=None,\
+    cover5=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
     #End of code addition
 
@@ -1155,7 +1168,7 @@ class FooterDescription(models.Model):
 #Reason - To save size chart image
 #Jira issue no - RBYR-193
 class WomenClothSizeChart(models.Model):
-    image=models.ImageField(upload_to='None/', height_field=None,\
+    image=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
@@ -1199,7 +1212,7 @@ class CustomTailoredForm(models.Model):
 #Added by Ashish on 24-11-2022
 #Reason - To save whatsapp number in table
 class LogoAndNumber(models.Model):
-    logo=models.ImageField(upload_to='None/', height_field=None,\
+    logo=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
     # Modification and addition by Om Shrivastava on 28-10-23
     # Reason : Need to change the spelling of the whatsapp number
@@ -1232,19 +1245,19 @@ class CurrencySelected(models.Model):
 # Added by Rohan on 30-12-22
 # Reason - It Design page of RR content
 class ItDesignContent(models.Model):
-    TopImage1=models.ImageField(upload_to='None/', height_field=None,\
+    TopImage1=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
-    TopImage2=models.ImageField(upload_to='None/', height_field=None,\
+    TopImage2=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
     HeaderText=models.CharField(max_length=50)
     description1=models.TextField(max_length=200)
     description2=models.TextField(max_length=500)
     descriptionHighlight=models.CharField(max_length=100)
-    sliderImg1=models.ImageField(upload_to='None/', height_field=None,\
+    sliderImg1=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
-    sliderImg2=models.ImageField(upload_to='None/', height_field=None,\
+    sliderImg2=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
-    sliderImg3=models.ImageField(upload_to='None/', height_field=None,\
+    sliderImg3=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
     contactHeader=models.CharField(max_length=50)
     contactDescription=models.TextField(max_length=100)
@@ -1255,7 +1268,7 @@ class ItDesignContent(models.Model):
 #Reason - Saving celebrity data and their shoot
 
 class Celebrity(models.Model):
-    TopImage1=models.ImageField(upload_to='None/', height_field=None,\
+    TopImage1=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
     ModelName=models.CharField(max_length=50)
     productTitle=models.CharField(max_length=200)
@@ -1281,7 +1294,7 @@ class Celebrity(models.Model):
 # Created by Rohan - 5/1/23
 # Reason - To save all Editorial data and aboutus content
 class Editorial(models.Model):
-    TopImage1=models.ImageField(upload_to='None/', height_field=None,\
+    TopImage1=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
     ModelName=models.CharField(max_length=50)
     MagzineName=models.CharField(max_length=200)
@@ -1309,40 +1322,47 @@ class WorldOfRByRContent(models.Model):
     video_url=models.CharField(max_length=400,null=True,blank=True)
     # End of Modification and additionn by Om shrivastava on 28-10-23
     # Reason : Remove the mandatory field
-    top_image=models.ImageField(upload_to='None/', height_field=None,\
+    top_image=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
     title1=models.CharField(max_length=50)
     description1=models.TextField()
     
+    # Added by - Ashish Dewangan on 02-12-2023
+    # Reason - To display title when displaying row 
+    def __str__(self):
+         return self.title1
+    # End of code addition by - Ashish Dewangan on 02-12-2023
+    # Reason - To display title when displaying row
+
     # --------------------------
     # commented by Rohan-on 16/2/23
     # reason-removing this rows to this table and making new table to making dynamic row to show
     # ---------------------------
     
-    # img1=models.ImageField(upload_to='None/', height_field=None,\
+    # img1=models.ImageField(upload_to='Images/', height_field=None,\
     #        width_field=None, max_length=100)
-    # img2=models.ImageField(upload_to='None/', height_field=None,\
+    # img2=models.ImageField(upload_to='Images/', height_field=None,\
     #        width_field=None, max_length=100)
-    # img3=models.ImageField(upload_to='None/', height_field=None,\
+    # img3=models.ImageField(upload_to='Images/', height_field=None,\
     #        width_field=None, max_length=100)
     # title2=models.CharField(max_length=50)
     # description2=models.TextField()
-    # img4=models.ImageField(upload_to='None/', height_field=None,\
+    # img4=models.ImageField(upload_to='Images/', height_field=None,\
     #        width_field=None, max_length=100)
-    # img5=models.ImageField(upload_to='None/', height_field=None,\
+    # img5=models.ImageField(upload_to='Images/', height_field=None,\
     #        width_field=None, max_length=100)
-    # img6=models.ImageField(upload_to='None/', height_field=None,\
+    # img6=models.ImageField(upload_to='Images/', height_field=None,\
     #        width_field=None, max_length=100)
     # title3=models.CharField(max_length=50)
     # description3=models.TextField()
     # description4=models.TextField()
     # description5=models.TextField()
     # description6=models.TextField()
-    # img7=models.ImageField(upload_to='None/', height_field=None,\
+    # img7=models.ImageField(upload_to='Images/', height_field=None,\
     #        width_field=None, max_length=100)
-    # img8=models.ImageField(upload_to='None/', height_field=None,\
+    # img8=models.ImageField(upload_to='Images/', height_field=None,\
     #        width_field=None, max_length=100)
-    # img9=models.ImageField(upload_to='None/', height_field=None,\
+    # img9=models.ImageField(upload_to='Images/', height_field=None,\
     #        width_field=None, max_length=100)
     # title4=models.CharField(max_length=50)
     # description7=models.TextField()
@@ -1355,18 +1375,26 @@ class WorldOfRByRContent(models.Model):
     
     
 class worldOfRByRRow(models.Model):
-    img1=models.ImageField(upload_to='None/', height_field=None,\
+    img1=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
-    img2=models.ImageField(upload_to='None/', height_field=None,\
+    img2=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
-    img3=models.ImageField(upload_to='None/', height_field=None,\
+    img3=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
     title=models.CharField(max_length=50)
     description1=models.TextField()
     description2=models.TextField()
+
+    
+    # Added by - Ashish Dewangan on 02-12-2023
+    # Reason - To display title when displaying row 
+    def __str__(self):
+         return self.title
+    # End of code addition by - Ashish Dewangan on 02-12-2023
+    # Reason - To display title when displaying row
     
 class Feature(models.Model):
-    magzine_img=models.ImageField(upload_to='None/', height_field=None,\
+    magzine_img=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)    
 
 

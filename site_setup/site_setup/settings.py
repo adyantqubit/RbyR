@@ -150,7 +150,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'GMT'
+# Commented and modified by - Ashish Dewangan on 02-12-2023
+# Reason - To set server's time zone
+# TIME_ZONE = 'GMT'
+TIME_ZONE = 'Asia/Kolkata'
+# End of code modification by - Ashish Dewangan on 02-12-2023
+# Reason - To set server's time zone
 
 USE_I18N = True
 

@@ -34,8 +34,8 @@ Reason - To show dashboard with revenue, todays orders and pending list -->
                             <h6 class="fw-extrabold mb-2" style="display: inline-block;width: 30%;text-align: right;">{{ revenue.totalCancelledOrders }}</h6>
                         </div>
                         <h5 style="width:100%;padding-top:15px;border-bottom:5px solid grey"></h5>
-                        <h6 class="fw-extrabold mb-2" style="display: inline-block;width: 60%;">Total Revenue</h6>
-                        <h5 class="fw-extrabold mb-2" style="display: inline-block;width: 30%;text-align: right;">
+                        <h6 class="fw-extrabold mb-2" style="display: inline-block;width: 100%;text-align: center;">Total Revenue</h6>
+                        <h5 class="fw-extrabold mb-2" style="display: inline-block;width: 100%;text-align: center;font-size: 14px;">
                             {% if revenue.totalRevenue %} Rs.{{revenue.totalRevenue|floatformat:2}} {% else %} 0 {% endif %}
                         </h5>
                     </div>

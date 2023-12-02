@@ -3,6 +3,7 @@ from .models import *
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.text import Truncator
 
+
 # Register your models here.
 
 
@@ -285,6 +286,7 @@ class product_ordersAdmin(admin.ModelAdmin):
 
     ordering=("-order_no",)
     list_per_page=10
+
     def has_add_permission(self, request):
         return False
     # def has_change_permission(self, request, obj=None):
