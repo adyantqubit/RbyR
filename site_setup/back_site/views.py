@@ -274,10 +274,20 @@ class shippingOrder(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        print(request.data)
         shippingData = request.data
         shippingData['user_id'] = request.user.id
-        serialize2 = shippingSerializer(data=shippingData)
+
+        # Commented and modified by - Ashish Dewangan on 02-12-2023
+        # Reason - If no shipping address is found then create it and make it default shipping address
+        # serialize2 = shippingSerializer(data=shippingData)
+        user=User.objects.get(id=shippingData['user_id'])
+        if userbillingDetail.objects.filter(user_id=user).count()>0:
+            serialize2 = shippingSerializer(data=shippingData)
+        else:
+            shippingData['isSelected']=True    
+            serialize2 = shippingSerializer(data=shippingData)
+        # Commented and modified by - Ashish Dewangan on 02-12-2023
+        # Reason - If no shipping address is found then create it and make it default shipping address    
         try:
             if serialize2.is_valid(raise_exception=True):
                 ship = serialize2.save()

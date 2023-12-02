@@ -14,7 +14,7 @@ import Checkbox from "react-custom-checkbox";
 import '../../context.css'
 
 const Payment = () => {
-  var { userdata, checkoutDetails, setCheckoutDetails, cartEnd, currency, cart, setCart, offer, setOffer, taxRate, setTaxRate } = CartState()
+  var { userdata, checkoutDetails, setCheckoutDetails, cartEnd, currency, cart, setCart, offer, setOffer, taxRate, setTaxRate ,setPaymentflow} = CartState()
   const nav = useNavigate()
   var [tick, setTick] = useState(false)
   var [tickop, setTickop] = useState(false)
@@ -142,6 +142,15 @@ const Payment = () => {
          * Reason - To add purchased items to checkout details
          */
         sessionStorage.setItem('checkoutDetails', JSON.stringify(checkoutDetails))
+        /**
+         * Added by - Ashish Dewangan on 02-12-2023
+         * Reason - To hide payment button after order is completed
+         */
+        setPaymentflow(false)
+        /**
+         * End of code addition by - Ashish Dewangan on 02-12-2023
+         * Reason - To hide payment button after order is completed
+         */
         deleteFromCart()
         nav("/billing")
       }

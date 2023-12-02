@@ -22,7 +22,15 @@ const Orderpage = (props) => {
   useEffect(() => {
     // if (!localStorage.getItem("access_token"))
     //   nav("/login")
-
+    /**
+     * Added by - Ashish Dewangan on 02-12-2023
+     * Reason - To hide payment button if procedd with payment button is not selected
+     */
+    setPaymentflow(false)
+    /**
+     * End of code addition by - Ashish Dewangan on 02-12-2023
+     * Reason - To hide payment button if procedd with payment button is not selected
+     */
    window.scrollTo(0,0)   
   }, [])
 
