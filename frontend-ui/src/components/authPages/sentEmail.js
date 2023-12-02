@@ -6,6 +6,7 @@ import { useSendPasswordResetEmailMutation } from "../../Redux-manage/services/u
 import Navbar from '../global/NavHeader';
 import { notification } from 'antd';
 import '../../../src/root.css'
+import '../../context.css'
 
 const SentEmail = () => {
   notification.destroy()

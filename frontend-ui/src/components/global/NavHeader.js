@@ -29,6 +29,7 @@ import { notification } from 'antd';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import logoimg from '../../logo.jfif'
+import '../../context.css'
 
 const Navbar = () => {
   notification.destroy()
@@ -52,7 +53,17 @@ const Navbar = () => {
         // Reason : Add the class for show the message
       >Successfully Logged In.
       </div>,
-        { position: toast.POSITION.TOP_RIGHT, duration: 1000, style: { top: "20vh", right: "2vw", background: "#f1cdd9" } },
+        { position: toast.POSITION.TOP_RIGHT, duration: 1000, 
+           // Modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+        className:'popupClass',
+        // style:{marginTop:"20px"},
+        // style:{backgroundColor: "#f1cdd9",
+        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+        // End of modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+          // style: { top: "20vh", right: "2vw", background: "#f1cdd9" } 
+        },
       )   
 
       localStorage.removeItem('login')

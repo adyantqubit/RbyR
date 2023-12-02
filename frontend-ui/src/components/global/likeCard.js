@@ -74,7 +74,7 @@ const LikeCard = (props) => {
                     className={style.wishItemTitle}
                     onClick={(e) => openDetail(l)}
                   >
-                    {l.title}
+                    {l.title.toLowerCase()}
                   </h3>
                   <TiDeleteOutline
                     className={style.wishItemCancelButton}

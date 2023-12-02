@@ -8,6 +8,7 @@ import { getSocialLinkDetail, getCopyrightDetails,postEmailDetails } from "../..
 import { useEffect, useState } from "react";
 import { notification } from "antd";
 import config from "../../api/config";
+import '../../context.css'
 
 function Footer() {
   const [socialLinks, setSocialLinks] = useState([]);
@@ -39,8 +40,14 @@ function Footer() {
     if(email.value.length==0){
       notification.open({
         message: "",
-        style:{marginTop:"20px"},
-        style:{backgroundColor: "#f1cdd9",padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+        // Modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+        className:'popupClass',
+        // style:{marginTop:"20px"},
+        // style:{backgroundColor: "#f1cdd9",
+        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+        // End of modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
         description:
           'Please enter email id',
         onClick: () => {
@@ -59,8 +66,14 @@ function Footer() {
         if(emailData.msg){
           notification.open({
             message: "",
-            style:{marginTop:"20px"},
-            style:{backgroundColor: "#f1cdd9"},
+              // Modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+        className:'popupClass',
+        // style:{marginTop:"20px"},
+        // style:{backgroundColor: "#f1cdd9",
+        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+        // End of modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
             description:
               'Subscribed to email updates successfully',
             onClick: () => {
@@ -71,8 +84,14 @@ function Footer() {
           if(emailData.error){
             notification.open({
               message: "",
-              style:{marginTop:"20px"},
-              style:{backgroundColor: "#f1cdd9"},
+              // Modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+        className:'popupClass',
+        // style:{marginTop:"20px"},
+        // style:{backgroundColor: "#f1cdd9",
+        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+        // End of modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
               description:
                 emailData.error,
               onClick: () => {
@@ -83,8 +102,14 @@ function Footer() {
           }else{
             notification.open({
               message: "",
-              style:{marginTop:"20px"},
-              style:{backgroundColor: "#f1cdd9"},
+               // Modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+        className:'popupClass',
+        // style:{marginTop:"20px"},
+        // style:{backgroundColor: "#f1cdd9",
+        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+        // End of modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
               description:
                 'Email subscription failed',
               onClick: () => {
@@ -99,8 +124,14 @@ function Footer() {
     }else{
       notification.open({
         message: "",
-        style:{marginTop:"20px"},
-        style:{backgroundColor: "#f1cdd9"},
+         // Modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+        className:'popupClass',
+        // style:{marginTop:"20px"},
+        // style:{backgroundColor: "#f1cdd9",
+        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+        // End of modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
         description:
           'Please provide a valid email format',
         onClick: () => {
@@ -113,7 +144,9 @@ function Footer() {
   }
 
   return (
-    <div className={style.App} style={{ borderTop: ".1em solid #7c7c7c" }}>
+    <div 
+    className={style.App} 
+    style={{ borderTop: ".1em solid #7c7c7c" }}>
       <div className={style.row}>
         <div className={style.column1}>
           <h1 className={style.heading}>CUSTOMER CARE</h1>

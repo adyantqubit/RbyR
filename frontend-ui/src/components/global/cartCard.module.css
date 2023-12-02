@@ -60,7 +60,9 @@
   display: flex;
   /* Addition by Om Shrivastava on 19-11-23
   REason : Add the space */
-  padding-top: 5px;
+  /* padding-top: 5px; */
+  padding-top: 10px;
+
   /* End of  Addition by Om Shrivastava on 19-11-23
   REason : Add the space */
   /* Addition by Om Shrivastava on 26-11-23

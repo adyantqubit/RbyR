@@ -20,7 +20,7 @@ import Msg from '../concepts/msgConfirm';
 import { Popconfirm, message, Modal, notification } from 'antd';
 import { increamentCheck } from '../../api/orderApis';
 import { SizeGetter } from './getSize';
-
+import '../../context.css'
 
 
 const text = 'Are you sure you would like to remove this item from the Shopping Cart?';
@@ -98,8 +98,16 @@ const CartCard = (props) => {
           message: <div style={{ fontSize: "18px", color: "black" }}>Out Of Stock. </div>,
           description:
             `No More Stock Available`,
-          className: "custom-class",
-          style: { backgroundColor: "#8c8c8c", color: "black", marginTop: "0vh" },
+          // className: "custom-class",
+          // style: { backgroundColor: "#8c8c8c", color: "black", marginTop: "0vh" },
+           // Modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+        className:'popupClass',
+        // style:{marginTop:"20px"},
+        // style:{backgroundColor: "#f1cdd9",
+        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+        // End of modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
           duration: 2,
           key: 1
         });
@@ -122,8 +130,16 @@ const CartCard = (props) => {
           message: <div style={{ fontSize: "18px", color: "black" }}>Out Of Stock. </div>,
           description:
             `No More Stock Available`,
-          className: "custom-class",
-          style: { backgroundColor: "var(--bannerColor)", color: "black", marginTop: "0vh" },
+          // className: "custom-class",
+          // style: { backgroundColor: "var(--bannerColor)", color: "black", marginTop: "0vh" },
+           // Modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+        className:'popupClass',
+        // style:{marginTop:"20px"},
+        // style:{backgroundColor: "#f1cdd9",
+        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+        // End of modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
           duration: 2,
           key: 1
         });

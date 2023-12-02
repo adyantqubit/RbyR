@@ -180,6 +180,7 @@
     overflow: hidden;
     /* border: 1px solid black; */
     width: 250px;
+    text-transform: capitalize;
   }
     /* End of addition by Om Shrivastava on 16-11-23
     Reason : Add the font family of the search section */

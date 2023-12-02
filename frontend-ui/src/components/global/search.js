@@ -314,7 +314,9 @@ const Search = () => {
                       ></img>
                     </Link>
                     <div className={styles.title}>
-                      <span className={styles.productName}>{p.title}</span>
+                      {/* <span className={styles.productName}>{p.title}</span> */}
+                      <span className={styles.productName}>{p.title.toLowerCase()}</span>
+
                     </div>
                     <div className={styles.price}> {p.category}</div>
                     <div className={styles.price}>

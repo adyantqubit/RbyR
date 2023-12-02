@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import { notification } from "antd";
 import { IoChevronForwardOutline } from "react-icons/io5";
 import config from "../../api/config";
+import '../../context.css'
 
 function Footer2() {
   const [socialLinks, setSocialLinks] = useState([]);
@@ -45,11 +46,14 @@ function Footer2() {
     if (email.value.length == 0) {
       notification.open({
         message: "",
-        style: { marginTop: "20px" },
-        style: { backgroundColor: 
-          
-          "var(--bannerColor)"},
-          // "linear-gradient(to right,#f187a3,#e699ad)" },
+         // Modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+        className:'popupClass',
+        // style:{marginTop:"20px"},
+        // style:{backgroundColor: "#f1cdd9",
+        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+        // End of modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
         description: "Please enter email id",
         onClick: () => {},
         key: 1,
@@ -96,7 +100,14 @@ function Footer2() {
     } else {
       notification.open({
         message: "",
-        style: { marginTop: "20px" },
+        // Modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+        className:'popupClass',
+        // style:{marginTop:"20px"},
+        // style:{backgroundColor: "#f1cdd9",
+        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+        // End of modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
         description: "Please provide a valid email format",
         onClick: () => {},
         style: { backgroundColor: "var(--bannerColor)" },

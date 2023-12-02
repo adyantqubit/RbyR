@@ -10,7 +10,8 @@ import { getToken, removeToken, storeToken } from "./Redux-manage/services/local
 import { useGetCartProductQuery, useGetLikedProductQuery } from "./Redux-manage/services/userAuthapi";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import '../src/root.css'
+import '../src/root.css';
+import './context.css';
 
 const Cart = createContext(); 
 
@@ -116,11 +117,19 @@ const Context = ({ children }) => {
         style={{ fontSize: "18px", color: "black",fontFamily:"var(--fontFamily)" }}
         // End of addition by Om Shrivastava on 16-11-23
         // Reasonf : Add the fontFamily
-        >Successfully Logged Out. </div>,
+        >Successfully Logged Out </div>,
         description:
           `You are Log out`,
-        className: "custom-class",
-        style: { backgroundColor: "red", color: "black", marginTop: "10vh" },
+        // className: "custom-class",
+        // style: { backgroundColor: "red", color: "black", marginTop: "10vh" },
+         // Modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+        className:'popupClass',
+        // style:{marginTop:"20px"},
+        // style:{backgroundColor: "#f1cdd9",
+        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+        // End of modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
         duration: 2,
         key: 1
       });
@@ -161,7 +170,10 @@ const Context = ({ children }) => {
         // Reason : Add the class for show the message
      >Successfully Logged out.
     </div>,
-      { position: toast.POSITION.TOP_RIGHT, duration: 1000, style: { top: "20vh", right: "2vw", background: "#f1cdd9" } },
+      { position: toast.POSITION.TOP_RIGHT, duration: 1000, 
+        className: 'popupClass'
+        // style: { top: "20vh", right: "2vw", background: "#f1cdd9" }
+       },
     )
   }
 

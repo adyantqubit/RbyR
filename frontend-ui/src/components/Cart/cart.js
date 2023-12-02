@@ -48,6 +48,7 @@ import { blue } from "@mui/material/colors";
 import { SizeGetter } from "../global/getSize";
 import Chat from "../expandDetailt/chat";
 import { TokenManage } from "../../hooks/globalFunctionUser";
+import '../../context.css'
 
 const text =
   "Are you sure you would like to remove this item from the Shopping Cart?";
@@ -164,12 +165,14 @@ const CartSItem = (props) => {
             </div>
           ),
           description: `No More Stock Available`,
-          className: "custom-class",
-          style: {
-            backgroundColor: "var(--bannerColor)",
-            color: "black",
-            marginTop: "10vh",
-          },
+         // Modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+        className:'popupClass',
+        // style:{marginTop:"20px"},
+        // style:{backgroundColor: "#f1cdd9",
+        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+        // End of modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
           duration: 2,
           key: 1,
         });

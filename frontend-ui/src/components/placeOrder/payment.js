@@ -11,6 +11,7 @@ import style from "../global/cartCard.module.css"
 import styles from './order.module.css'
 import { IoMdCheckmark } from 'react-icons/io'
 import Checkbox from "react-custom-checkbox";
+import '../../context.css'
 
 const Payment = () => {
   var { userdata, checkoutDetails, setCheckoutDetails, cartEnd, currency, cart, setCart, offer, setOffer, taxRate, setTaxRate } = CartState()
@@ -77,10 +78,18 @@ const Payment = () => {
           cartEnd = r.error_cart
           cartEnd.map(c => {
             notification.error({
-              message: <div style={{ fontSize: "18px", color: "white" }}>Out of stock</div>,
+              message: <div style={{ fontSize: "18px", color: "black" }}>Out of stock</div>,
+ // Modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+        className:'popupClass',
+        // style:{marginTop:"20px"},
+        // style:{backgroundColor: "#f1cdd9",
+        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+        // End of modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
               description:
                 `Product ${c.name} size ${c.size} is out of stock `,
-              style: { backgroundColor: "#D2042D", color: "white" },
+              // style: { backgroundColor: "#D2042D", color: "white" },
               duration: 20,
             });
           })

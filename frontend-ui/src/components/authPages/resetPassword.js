@@ -10,7 +10,7 @@ import { notification } from 'antd';
 import {AiFillEye,AiFillEyeInvisible} from 'react-icons/ai'
 import '../../../src/root.css'
 import './resetPassword.css'
-
+import '../../context.css'
 
 const ResetPassword = () => {
   notification.destroy()
@@ -47,8 +47,16 @@ const ResetPassword = () => {
         message: <div style={{fontSize:"18px",color:"black"}}>Successfully Password Udated. </div>,
         description:
         `Successfully Password Update`,
-        className:"custom-class",
-        style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"55vh"},
+        // className:"custom-class",
+        // style: { backgroundColor:"#8c8c8c",color:"black",marginTop:"55vh"},
+         // Modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+        className:'popupClass',
+        // style:{marginTop:"20px"},
+        // style:{backgroundColor: "#f1cdd9",
+        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+        // End of modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
         duration:5,
         key:1
         });

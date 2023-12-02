@@ -35,7 +35,7 @@ import {
   RadiusUprightOutlined,
 } from '@ant-design/icons';
 
-
+import '../../context.css'
 
 
 const UserProfile = () => {
@@ -122,7 +122,17 @@ const UserProfile = () => {
     toast.success(<div style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px",fontFamily:'var(--fontFamily)' }}>Successfully updated.
       <div style={{ fontSize: "13px", color: "black", letterSpacing: "1.4px" }}>Your User Credentials has been updated</div>
     </div>,
-      { position: toast.POSITION.TOP_RIGHT, duration: 1000, style: { top: "20vh", right: "2vw", background: "var(--bannerColor)" } },
+      { position: toast.POSITION.TOP_RIGHT, duration: 1000,
+       // Modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+        className:'popupClass',
+        // style:{marginTop:"20px"},
+        // style:{backgroundColor: "#f1cdd9",
+        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+        // End of modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+
+         },
     )
   }
 

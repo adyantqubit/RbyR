@@ -1,3 +1,7 @@
+/* @import "@fontsource/noto-serif"; */
+/* @import "@fontsource/lato"; */
+
+
 .container {
     width: 100%;
     height: 400px;
@@ -83,17 +87,22 @@
   }
   .wishContainer{
     width: 90%;
-    height: 300px;
+    /* height: 300px; */
     margin-top: 3%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-left: 5%;
     margin-right: 5%;
+    align-items: center;
   }
   .wishImage{
-    width: 40%; 
-    height: auto;
+    /* width: 40%; 
+    height: auto; */
+    /* height: 170px;
+    width: 140px; */
+    height: 400px;
+    width: 200px;
   }
   .wishItem{
     width: 60%;
@@ -112,12 +121,16 @@
     padding-left: 20px;
     width: 85%;
     word-wrap: break-word;
+    text-transform: capitalize;
+    font-family: var(--fontFamily);
   }
   .wishItemCancelButton{
     width: 15%;
     height: 32px;
     padding-left: 2%;
-  }
+    padding-bottom: 5%;
+
+      }
 
   .wishItemCancelButton:hover{
     transform: scale(1.2);
@@ -135,7 +148,8 @@
     margin-top: 10px;
     text-transform: capitalize;
     font-weight: 500;   
-    word-wrap: break-word;             
+    word-wrap: break-word; 
+    font-family: var(--fontFamily);            
   }
 
   .emptyWishList{
@@ -191,4 +205,23 @@
     .wishContainer{
       height:auto;
     }
+    /* Addition and modification by Om Shrivastava on 01-12-23
+    Reason : Set the height and width of wishlist image in mobile view */
+    .wishImage{
+      height: 120px;
+      width: 100px;
+      /* border: 2px solid red; */
+    }
+    .wishItemTitle{
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    .itemText{
+      font-size: 13px;
+      margin-top:3px;
+      font-weight: 400;
+    }
+    /* End of Addition and modification by Om Shrivastava on 01-12-23
+    REason : Set the height and width of wishlist image in mobile view */
   }
