@@ -106,30 +106,9 @@ const ShrinkHeader = () => {
         contact: data.contact_number
       })
 
-      /**
-       * A  dded by - Ashish Dewangan on 03-12-2023
-       * Reason - To get latest user details when page changes
-       */ 
-      setUserDetails()
-      /**
-       * Added by - Ashish Dewangan on 03-12-2023
-       * Reason - To get latest user details when page changes
-       */
   }, [data, isSuccess])
 
-  const setUserDetails=async ()=>{
-    const response= await getProfileData();
-    if(response){
-      setUserData((previousValue)=>{
-        
-        previousValue.email= response?.email
-        previousValue.name= response?.name
-        previousValue.contact= response?.contact_number
-        
-        return {...previousValue};
-      });
-    }
-  }
+
 
   function settingMenus(menuName, index) {
     if (menus[index][`${menuName[0]}`].length > 0) {

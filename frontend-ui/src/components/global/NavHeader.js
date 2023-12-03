@@ -164,7 +164,7 @@ const Navbar = () => {
      * Added by - Ashish Dewangan on 03-12-2023
      * Reason - To get latest user details when page changes
      */
-      setUserDetails()
+      // setUserDetails()
     /**
      * End of code addition by - Ashish Dewangan on 03-12-2023
      * Reason - To get latest user details when page changes
