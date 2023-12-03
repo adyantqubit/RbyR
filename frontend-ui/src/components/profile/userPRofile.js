@@ -249,7 +249,7 @@ const UserProfile = () => {
             <div className={style.column2}>
               <div className={style.column2header}>
                 <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                  <span style={{fontWeight:'600'}}>USER DETAILSrr</span>
+                  <span style={{fontWeight:'600'}}>USER DETAILS</span>
                   <span className={`${styles.userinfoText} ${style.hovers}`} style={{ cursor: "pointer",color:'blue',paddingTop:'3px' }} onClick={e => setShowEditable(true)}>{!showEditable ? "EDIT YOUR PROFILE" : null}
                   </span>
                 </div>
