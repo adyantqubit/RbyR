@@ -17,6 +17,7 @@ import styles from "./detail.module.css";
 import "./detail.scss";
 import "./like.scss";
 import "./details.css";
+
 import Size from "./Size.css";
 import { message } from "antd";
 import { CartState } from "../../context";
@@ -27,7 +28,8 @@ import {
 import Slider from "./slider";
 import { AiFillHeart, AiOutlineHeart, AiOutlineWhatsApp } from "react-icons/ai";
 import Below from "../global/below";
-import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
+// import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
+import "./innerZoom.css";
 import InnerImageZoom from "react-inner-image-zoom";
 import Slider2 from "./slider2";
 import Shake from "react-reveal/Shake";
@@ -421,6 +423,7 @@ const Details = (props) => {
           <div className={styles["container01"]}>
             <div className={styles["container02"]}>
               <div className={styles["image"]}>
+                
                 <InnerImageZoom
                   src={config.staticBaseURL + details.img_main}
                   zoomSrc={config.staticBaseURL + details.img_main}
@@ -768,7 +771,16 @@ const Details = (props) => {
                     {/* </div> */}
 
                     <Modal
-                      style={{ top: 0 }}
+                    /**
+                     * Commented and modified by - Ashish Dewangan on 03-12-2023
+                     * Reason - To give some space at top
+                     */
+                      // style={{ top: 0 }}
+                      style={{ top: "5vh" }}
+                      /**
+                     * End of code modification by - Ashish Dewangan on 03-12-2023
+                     * Reason - To give some space at top
+                     */
                       className={styles["modalStyleCustomTailored"]}
                       bodyStyle={{
                         backgroundColor: "var(--modalBodyBackgroundColor)",

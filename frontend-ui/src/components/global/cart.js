@@ -79,9 +79,9 @@ const Cart = () => {
         {cart && cart.length > 0 ? <span class='badge badge-warning' id='lblCartCount'>{cart.length}</span> : null}
         {/* <i class="fa" >&#xf07a;</i> */}
         {cart && cart.length > 0 ?
-          <i class="fa-solid fa-bag-shopping" style={{ fontSize: "20px", position: "relative", color: "grey",color:"var(--iconsColor)" }} ></i>
+          <i class="fa-solid fa-bag-shopping" style={{ fontSize: "20px", position: "relative", color: "yellow" }} ></i>
           :
-          <i class="fa-solid fa-bag-shopping" style={{ fontSize: "20px", position: "relative", color: "grey",color:"var(--iconsColor)" }}></i>
+          <i class="fa-solid fa-bag-shopping" style={{ fontSize: "20px", position: "relative", color: "yellow" }}></i>
         }
       </span>
       {/* <Button type="primary" onClick={showDrawer}>

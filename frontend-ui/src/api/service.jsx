@@ -330,12 +330,12 @@ export const getSearchedProducts = async (parameter) => {
   return response ? response.data : {};
 };
 
-// export const getProfileData = async () => {
-//   const response = await API.get(`profile/`, {
-//         headers: { "Content-Type": "application/json",'authorization':`Bearer ${localStorage.getItem('access_token')}`},
-//       }).catch((err) => console.log("0"));
-//   return response ? response.data : {};
-// };
+export const getProfileData = async () => {
+  const response = await API.get(`profile/`, {
+        headers: { "Content-Type": "application/json",'authorization':`Bearer ${localStorage.getItem('access_token')}`},
+      }).catch((err) => console.log("0"));
+  return response ? response.data : {};
+};
 // End of code addition
 
 // Added by Ashish dewangan on 19-11-2022

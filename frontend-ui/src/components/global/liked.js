@@ -59,7 +59,7 @@ const LikeDrawer = () => {
         Open
       </Button> */}
       <AiFillHeart
-        style={{ marginTop: "10px", fontSize: "20px", color: "var(--iconsColor)" }}
+        style={{ marginTop: "10px", fontSize: "20px", color: "red" }}
         onClick={showDrawer}
         type="primary"
       />

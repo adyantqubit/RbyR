@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './order.module.css'
 import style from '../global/cartCard.module.css'
 import {TiTick} from 'react-icons/ti'
@@ -90,29 +90,45 @@ const UserInfo = () => {
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='first'>First Name<span style={{color:'red'}}>*</span></label>
-                        {checkoutDetails.userInfo?
+                        {/* Commented and modified by - Ashish Dewangan on 03-12-2023
+                        Reason - To fill user's details by default on textboxes */}
+                        {/* {checkoutDetails.userInfo?
                         <input className={styles.firstInput} type="text" name="first" defaultValue={checkoutDetails.userInfo.firstname} required/>
                         :
                         <input className={styles.firstInput} type="text" name="first" defaultValue={userdata.name.substring(0,hasWhiteSpace(userdata.name))} required/>
-                        }
+                        } */}
+                       
+                        <input className={styles.firstInput} type="text" name="first" defaultValue={userdata.name.substring(0,hasWhiteSpace(userdata.name))} required/>
+                         {/* End of code modification by - Ashish Dewangan on 03-12-2023
+                        Reason - To fill user's details by default on textboxes */}
                     </div>
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='last'>Last Name</label>
-                        {checkoutDetails.userInfo?
+                        {/* Commented and modified by - Ashish Dewangan on 03-12-2023
+                        Reason - To fill user's details by default on textboxes */}
+                        {/* {checkoutDetails.userInfo?
                         <input className={styles.firstInput} type="text" name="last" defaultValue={checkoutDetails.userInfo.lastname} />
                         :
                         <input className={styles.firstInput} type="text" name="last" defaultValue={userdata.name.substring(hasWhiteSpaceforLast(userdata.name),userdata.name.length).trim()} />
-                        }
+                        } */}
+                        <input className={styles.firstInput} type="text" name="last" defaultValue={userdata.name.substring(hasWhiteSpaceforLast(userdata.name),userdata.name.length).trim()} />
+                        {/*End of code modification by - Ashish Dewangan on 03-12-2023
+                        Reason - To fill user's details by default on textboxes */}
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='email'>Email Address<span style={{color:'red'}}>*</span></label>
-                        {checkoutDetails.userInfo?
+                        {/* Commented and modified by - Ashish Dewangan on 03-12-2023
+                        Reason - To fill user's details by default on textboxes */}
+                        {/* {checkoutDetails.userInfo?
                         <input className={styles.firstInput} type="text" name="email" defaultValue={checkoutDetails.userInfo.email} required/>
                         :
                         <input className={styles.firstInput} type="email" name="email" defaultValue={userdata.email} required/>
-                        }
+                        } */}
+                        <input className={styles.firstInput} type="email" name="email" defaultValue={userdata.email} required/>
+                        {/* End of code modification by - Ashish Dewangan on 03-12-2023
+                        Reason - To fill user's details by default on textboxes */}
                     </div>
                 </div>
                 <button className={styles.shopbtn2} style={{margin:"15px 5px",width:"300px",minHeight:"45px"}} >

@@ -26,7 +26,7 @@ import { unSetUserInfo } from '../../Redux-manage/features/userSlice';
 import { unSetUserToken } from '../../Redux-manage/features/authSlice';
 import { removeToken } from '../../Redux-manage/services/localStorageService';
 import { notification, Popconfirm } from 'antd';
-import { getWhatsappContactDetail } from '../../api/service';
+import { getProfileData, getWhatsappContactDetail } from '../../api/service';
 import Converter from '../concepts/convertCurrency';
 import { useGetLoggedUserQuery } from '../../Redux-manage/services/userAuthapi';
 import { getLogoAndCover } from "../../api/service";
@@ -98,14 +98,38 @@ const ShrinkHeader = () => {
   const { data, isSuccess } = useGetLoggedUserQuery(localStorage.getItem('access_token'))
 
   useEffect(() => {
+    
     if (data && isSuccess)
       setUserData({
         email: data.email,
         name: data.name,
         contact: data.contact_number
       })
+
+      /**
+       * A  dded by - Ashish Dewangan on 03-12-2023
+       * Reason - To get latest user details when page changes
+       */ 
+      setUserDetails()
+      /**
+       * Added by - Ashish Dewangan on 03-12-2023
+       * Reason - To get latest user details when page changes
+       */
   }, [data, isSuccess])
 
+  const setUserDetails=async ()=>{
+    const response= await getProfileData();
+    if(response){
+      setUserData((previousValue)=>{
+        
+        previousValue.email= response?.email
+        previousValue.name= response?.name
+        previousValue.contact= response?.contact_number
+        
+        return {...previousValue};
+      });
+    }
+  }
 
   function settingMenus(menuName, index) {
     if (menus[index][`${menuName[0]}`].length > 0) {
@@ -136,7 +160,12 @@ const ShrinkHeader = () => {
             <GiHamburgerMenu onClick={toggleDrawer} fontSize="30px" color='var(--iconsColor)' />
           </div>
           <div className={style.logo}>
-            <Converter />
+            {/* Commented and modified by - Ashish Dewangan on 03-12-2023
+              Reason - To hide currency selector from header */}
+            {/* <Converter /> */}
+            <div></div>
+            {/* End of code modification by - Ashish Dewangan on 03-12-2023
+              Reason - To hide currency selector from header */}
             <Link to="/">
               {/* <img alt="header" src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" className={style.img}></img> */}
                {/* Modification and addition by Om Shrivastava on 19-10-23
@@ -165,14 +194,14 @@ const ShrinkHeader = () => {
                 href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
                 target="_blank">
                 {/* End of code modification */}
-                <BsWhatsapp className={styles.icons} fontSize={24} />
+                <BsWhatsapp className={styles.icons} fontSize={24} style={{color:"green"}}/>
               </a>
             </div>
             <div className={style.headerMenuitem} >
               <LikeDrawer />
             </div>
             <div className={style.headerMenuitem} style={{ paddingTop: "10px", width: "20px" }} >
-              <Cart style={{ display: "none" }} />
+              <Cart style={{ display: "none",color:"yellow" }}  />
             </div>
 
           </div>

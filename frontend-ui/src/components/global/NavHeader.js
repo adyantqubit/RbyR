@@ -160,8 +160,38 @@ const Navbar = () => {
         name: data.name,
       })
 
-   
+    /**
+     * Added by - Ashish Dewangan on 03-12-2023
+     * Reason - To get latest user details when page changes
+     */
+      setUserDetails()
+    /**
+     * End of code addition by - Ashish Dewangan on 03-12-2023
+     * Reason - To get latest user details when page changes
+     */
   }, [data, isSuccess])
+
+  /**
+   * Added by - Ashish Dewangan on 03-12-2023
+   * Reason - To get latest user details when page changes
+   */
+  const setUserDetails=async ()=>{
+    const response= await getProfileData();
+    if(response){
+      setUserData((previousValue)=>{
+        
+        previousValue.email= response?.email
+        previousValue.name= response?.name
+        previousValue.contact= response?.contact_number
+        
+        return {...previousValue};
+      });
+    }
+  }
+  /**
+   * End of code addition by - Ashish Dewangan on 03-12-2023
+   * Reason - To get latest user details when page changes
+   */
 
   useEffect(() => {
     if (data && isSuccess)
@@ -253,7 +283,12 @@ const Navbar = () => {
             <label htmlFor="checkbox_toggle" className={style.hamburger}>&#9776;</label>
 
             <div style={{ display: "flex", justifyContent: "space-around" }}>
-              <Converter />
+              {/* Commented and modified by - Ashish Dewangan on 03-12-2023
+              Reason - To hide currency selector from header */}
+              {/* <Converter /> */}
+              <div></div>
+              {/* End of code modification by - Ashish Dewangan on 03-12-2023
+              Reason - To hide currency selector from header */}
               <div className={style.menu}>
                 {/* <li style={{height:"40px"}}><a className={style.al} href="/">Home</a></li>
                 <li className={style.services} onMouseEnter={openc} onMouseLeave={closec}>
@@ -368,7 +403,7 @@ const Navbar = () => {
                   {/* <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} > */}
                   <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} target="_blank">
                     {/* End of code modification */}
-                    <BsWhatsapp className={style.icons} />
+                    <BsWhatsapp className={style.icons} style={{color:"green"}}/>
                   </a>
                 </div>
                 <div><LikedDrawer /></div>

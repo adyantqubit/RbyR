@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { InvoiveGetApi, TransactionGetApi } from '../../api/service'
+import { InvoiveGetApi, TransactionGetApi, getProfileData } from '../../api/service'
 import Footer from '../global/footer'
 import Navbar from '../global/NavHeader'
 import style from "./profile.module.css"
@@ -20,13 +20,14 @@ import { userUpdate } from '../../api/orderApis'
 import { message, notification } from 'antd'
 import Checkbox from "react-custom-checkbox";
 import * as Icon from "react-icons/fi";
-import { useChangeUserPasswordMutation } from '../../Redux-manage/services/userAuthapi'
-import { getToken } from '../../Redux-manage/services/localStorageService'
+import { useChangeUserPasswordMutation,useGetLoggedUserQuery } from '../../Redux-manage/services/userAuthapi'
+import { getToken, removeToken } from '../../Redux-manage/services/localStorageService'
 import { useSelector } from 'react-redux'
 import { Alert, duration, Typography } from '@mui/material'
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai"
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
+
 
 import {
   RadiusBottomleftOutlined,
@@ -54,8 +55,41 @@ const UserProfile = () => {
 
 
   useEffect(() => {
+  
     window.scrollTo(0, 0)
+    /**
+     * Added by - Ashish Dewangan on 03-12-2023
+     * Reason - To get latest user details when page changes
+     */
+    setUserData({email:"",name:"",contact:""})
+    setUserDetails();
+    /**
+     * End of code addition by - Ashish Dewangan on 03-12-2023
+     * Reason - To get latest user details when page changes
+     */
   }, [])
+
+/**
+ * Added by - Ashish Dewangan on 03-12-2023
+ * Reason - To get latest user details when page changes
+ */
+  const setUserDetails=async ()=>{
+    const response= await getProfileData();
+    if(response){
+      setUserData((previousValue)=>{
+        
+        previousValue.email= response?.email
+        previousValue.name= response?.name
+        previousValue.contact= response?.contact_number
+        
+        return {...previousValue};
+      });
+    }
+  }
+  /**
+ * End of code addition by - Ashish Dewangan on 03-12-2023
+ * Reason - To get latest user details when page changes
+ */
 
   const handleSubmit = async (event, userData) => {
     event.preventDefault();
@@ -72,7 +106,7 @@ const UserProfile = () => {
       setError(res.error.data.errors)
     } else {
       const msg = {
-        msg: "suxccesfully Done"
+        msg: "succesfully Done"
       }
       setError(msg)
     }
@@ -83,7 +117,7 @@ const UserProfile = () => {
 
         userData = r;
         setUserData(userData)
-
+      
         Notify()
 
         setShowEditable(false)
@@ -143,8 +177,6 @@ const UserProfile = () => {
     event.preventDefault();
 
     window.scrollTo(0, 0)
-
-    
 
     var data = new FormData(event.currentTarget);
 

@@ -3,8 +3,18 @@
 Reason - To style cutom tailored form */
 .formContainer{
     width: 100%;
-    margin-top: 3vh;
-    margin-bottom: 3vh;
+    /*
+    Commented and modified by - Ashish Dewangan on 03-12-2023
+    Reason - To add scroller 
+     */
+    /* margin-top: 3vh; */
+    /* margin-bottom: 3vh; */
+    max-height: 80vh;
+    overflow-y: scroll;
+    /*
+    End of code modification by - Ashish Dewangan on 03-12-2023
+    Reason - To add scroller 
+     */
     background-color: var(--backgroundColorPrimary);
 }
 .form{
