@@ -12,10 +12,6 @@ Reason : Create the globally popup file */
   background-color: var(--btnBackgroundColorPrimary) !important;
 
   font-family: var(--fontFamily);
-
-  /* padding: 5px 5px 10px 5px !important;
-    border-radius: 10px !important;
-    width: 200px !important; */
 }
 
 .ant-notification-notice-close {
@@ -34,12 +30,12 @@ Reason : Create the globally popup file */
   text-transform: uppercase;
 }
 
-.popupClassLoggedIn{
+.popupClassLoggedIn {
   top: 13vh;
   right: 2vw;
   font-size: 12;
   color: black;
-  font-weight: 600;
+  font-weight: 500;
   background-color: var(--btnBackgroundColorPrimary) !important;
   font-family: var(--fontFamily);
 }
@@ -51,7 +47,7 @@ Reason : Create the globally popup file */
     font-size: 12;
     background-color: var(--btnBackgroundColorPrimary) !important;
     font-family: var(--fontFamily);
-    font-weight: 400;
+    font-weight: 500;
     /* padding: 5px 5px 13px 5px !important;
         border-radius: 10px !important;
         width: 300px !important; */
@@ -60,7 +56,7 @@ Reason : Create the globally popup file */
     font-size: 20px;
     padding-bottom: 2px;
   }
-  .popupClassLoggedIn{
+  .popupClassLoggedIn {
     top: 9vh;
     right: 2.4px;
     font-size: 12;

@@ -70,7 +70,8 @@
 }
 
 .AboutContent{
-    width: 58%;
+    /* width: 58%; */
+    width: 100%;
 }
 
 .headerText{

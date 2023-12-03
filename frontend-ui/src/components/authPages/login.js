@@ -245,12 +245,12 @@ const Login = () => {
 							<label style={{color:'rgb(59 59 224)'}} class="labe" htmlFor="ch" aria-hidden="true" tabIndex={-1} onClick={e => window.scrollTo(0, 0)}>Login</label>
 							{/* {error.none_field_errors? <Alert severity="error"  style={{margin:"0 45px"}}>{error.none_field_errors[0]}</Alert>:" "} */}
 
-							<input class="inpu" type="email" tabIndex={-1} style={{ marginBottom: "0", background: "transparent" }} name="email" placeholder="E-mail*" required="" />
+							<input class="inpu" type="email" tabIndex={-1} style={{ marginBottom: "0", background: "white" }} name="email" placeholder="E-mail*" required="" />
 							{error.email ? <Typography style={{ color: "red", paddingLeft: "50px", fontSize: "12px", }}>{error.email[0]}</Typography> : " "}
 							{error.none_field_errors ? <Typography style={{ color: "red", width: "80%", paddingLeft: "50px", marginTop: "5px", fontSize: "12px", lineHeight: "12px" }}>{error.none_field_errors[0]}
 								<Link to="/custom" style={{ color: "blue", fontSize: "12px", textDecoration: "underline" }}> Contact us</Link></Typography> : " "}
 
-							<span class="inpu3" tabIndex={-1} style={{ marginTop: "20px", height: "40px", marginLeft: "15%", background: "#eeeeee", border: "1px solid black" }}>
+							<span class="inpu3" tabIndex={-1} style={{ marginTop: "20px", height: "40px", marginLeft: "15%", background: "white", border: "1px solid black" }}>
 								<input class="inpu4" tabIndex={-1} type={showNewPass3 ? "text" : "password"} style={{ width: "90%", background: "transparent", height: "40px", border: "none" }} name="pswd" placeholder="Password*" required="" onChange={e => { if (e.target.value.length > 0) setVisiblePassreg3(true); else setVisiblePassreg3(false) }} />
 								{visiblepassReg3 ? showNewPass3 ? <AiFillEye style={{ marginTop: "10px", marginRight: "5px" }} onClick={e => setNewPass3(false)} /> : <AiFillEyeInvisible style={{ marginTop: "10px", marginRight: "5px" }} onClick={e => setNewPass3(true)} /> : null}
 							</span>

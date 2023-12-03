@@ -100,7 +100,7 @@ const LikeCard = (props) => {
         <div className={style.emptyWishList}>
           <span>Your Wishlist is empty.</span>
           <br></br>
-          <span className={style.para}>Don't hesitate and <Link to="/" className={style.para2} style={{color:"blue",fontWeight:'500'}} onClick={e=>setLikeDrawer(false)}>browse our catalog</Link> to find something beautiful for You!</span>
+          <span className={style.para}>Don't hesitate and <Link to="/" className={style.para2} style={{color:"rgb(59, 59, 224)",fontWeight:'500'}} onClick={e=>setLikeDrawer(false)}>browse our catalog</Link> to find something beautiful for You!</span>
         </div>
       )}
     </div>

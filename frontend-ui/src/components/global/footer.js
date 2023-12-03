@@ -329,10 +329,10 @@ function Footer() {
           Powered by{" "}
           <span
             style={{
-              fontFamily: "Rawson-Medium",
+              fontFamily: "var(--fontFamily)",
               fontSize: "16px",
               fontWeight: "20",
-              color:"#212121",
+              color:"black",
               textDecoration: "none",
             }}
           >

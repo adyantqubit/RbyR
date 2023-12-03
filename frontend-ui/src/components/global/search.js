@@ -249,7 +249,8 @@ const Search = () => {
                 fontSize: "15px",
                 color: "var(--textColorPrimary)",
                 width: "91%",
-                paddingLeft: "10px",
+                paddingLeft: "5px",
+                paddingRight:'5px',
               }}
               value={searchmsg}
               onChange={(e) => {

@@ -933,17 +933,26 @@ const Details = (props) => {
                   <span className={styles["text04"]}>
                     {details.description}
                   </span>
-                  <div className={styles["container06"]}>
+
+                  {/* <div className={styles["container06"]}>
                     <span className={styles["textLabel"]}>Fabric</span>
                     <span className={styles["textLabel"]}>:</span>
                     <span className={styles["textDescription"]}>
                       {details.fabric}
                     </span>
+                  </div> */}
+                  <div className={styles["detailsContainer"]} >
+                    <span className={styles["textHeading"]} >Fabric</span>
+                    <span className={styles["colon"]} >:</span>
+                    <span className={styles["textContent"]} >
+                      {details.fabric}
+                    </span>
                   </div>
-                  <div className={styles["container07"]}>
-                    <span className={styles["textLabel"]}>Color </span>
-                    <span className={styles["textLabel"]}> : </span>
-                    <span className={styles["textDescription"]}>
+
+                  <div className={styles["detailsContainer"]}>
+                    <span className={styles["textHeading"]}>Color </span>
+                    <span className={styles["colon"]}> : </span>
+                    <span className={styles["textContent"]}>
                       {details.color}
                     </span>
                   </div>
@@ -965,10 +974,10 @@ const Details = (props) => {
                     PRODUCT DETAILS
                   </h1> */}
 
-                  <div className={styles["container06"]}>
-                    <span className={styles["textLabel"]}>Style Code </span>
-                    <span className={styles["textLabel"]}>:</span>
-                    <span className={styles["textDescription"]}>
+                  <div className={styles["detailsContainer"]}>
+                    <span className={styles["textHeading"]}>Style Code </span>
+                    <span className={styles["colon"]}>:</span>
+                    <span className={styles["textContent"]}>
                       {details.style_code}
                     </span>
                   </div>
@@ -976,10 +985,10 @@ const Details = (props) => {
                   {/* Addition by Om Shrivastava on 04-11-23
                   Reason : Set the Care tip functionality */}
                   {details?.careTip && details.careTip.length > 0 ? (
-                    <div className={styles["container06"]}>
-                      <span className={styles["textLabel"]}>Care Tip </span>
-                      <span className={styles["textLabel"]}>:</span>
-                      <span className={styles["textDescription"]}>
+                    <div className={styles["detailsContainer"]}>
+                      <span className={styles["textHeading"]}>Care Tip </span>
+                      <span className={styles["colon"]}>:</span>
+                      <span className={styles["textContent"]}>
                         {details.careTip}
                       </span>
                     </div>
@@ -1012,37 +1021,34 @@ const Details = (props) => {
                     </div> */}
 
                   {details.ready_to_ship == true ? (
-                    <div className={styles["container07"]}>
-                      <span className={styles["textLabel"]}>
+                    <div className={styles["detailsContainer"]}>
+                      <span className={styles["textHeading"]}>
                         Ready to ship{" "}
                       </span>
-                      <span className={styles["textLabel"]}> : </span>
+                      <span className={styles["colon"]}> : </span>
                       <span
-                        className={styles["textDescription"]}
+                        className={styles["textContent"]}
                         style={{ display: "inline-block", marginRight: "3px" }}
                       >
                         {" " + details.ready_to_ship_days}
                       </span>
                     </div>
                   ) : (
-                    <div className={styles["container07"]}>
+                    <div className={styles["detailsContainer"]}>
                       <span
-                        className={styles["textLabel"]}
-                        style={{ display: "inline-block", marginRight: "3px" }}
+                        className={styles["textHeading"]}
+                        // style={{ display: "inline-block", marginRight: "3px" }}
                       >
                         {/* Standard Shipping{" "} */}
                         Delivery Time{" "}
-                      </span>
-                      <span
-                        className={styles["textLabel"]}
-                        style={{ display: "inline-block", marginRight: "3px" }}
+                      </span> <span
+                        className={styles["colon"]}
+                        // style={{ display: "inline-block", marginRight: "3px" }}
                       >
-                        {" "}
-                        :{" "}
-                      </span>
+                       : </span>
                       <span
-                        className={styles["textDescription"]}
-                        style={{ display: "inline-block", marginRight: "3px" }}
+                        className={styles["textContent"]}
+                        // style={{ display: "inline-block", marginRight: "3px" }}
                       >
                         {" " + details.shipping_days}
                       </span>
@@ -1064,7 +1070,7 @@ const Details = (props) => {
                       className={styles["textLink"]}
                       // Added by Om Shrivastava on 19-11-23
                       // Reason : Add the color
-                      style={{color:'blue'}}
+                      style={{color:'rgb(59, 59, 224)'}}
                       // End of addition by Om Shrivastava on 19-11-23
                       // Reason : Add the color
                     >
@@ -1103,7 +1109,7 @@ const Details = (props) => {
                         // borderBottom:"1px solid grey",
                         // Added by Om Shrivastava on 19-11-23
                       // Reason : Add the color
-                    color:'blue'
+                    color:'rgb(59, 59, 224)'
                       // End of addition by Om Shrivastava on 19-11-23
                       // Reason : Add the color
                       }}
@@ -1134,9 +1140,9 @@ const Details = (props) => {
                         textDecoration: "none",
                         letterSpacing: "1px",
                         fontSize: "14px",
-                        color:'blue',
-                        borderBottom:'1px solid blue',
-                        fontWeight:'500'
+                        color:'rgb(59, 59, 224)',
+                        borderBottom:'1px solid rgb(59, 59, 224)',
+                        // fontWeight:'500'
 
                       }}
                     >
@@ -1149,9 +1155,9 @@ const Details = (props) => {
                         textDecoration: "none",
                         letterSpacing: "1px",
                         fontSize: "14px",
-                        color:'blue',
-                        borderBottom:'1px solid blue',
-                        fontWeight:'500'
+                        color:'rgb(59, 59, 224)',
+                        borderBottom:'1px solid rgb(59, 59, 224)',
+                        // fontWeight:'500'
                       }}
                     >
                       Shipping Policy

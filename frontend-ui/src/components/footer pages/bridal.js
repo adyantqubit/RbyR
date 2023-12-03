@@ -7,25 +7,26 @@ import parse from "html-react-parser";
 import config from "../../api/config";
 import "./bridal.css";
 import { postBridalDetails } from "../../api/service";
-import {
-  Checkbox,
-  Form,
-  Input,
-  notification
-
-} from "antd";
-import '../../context.css'
+import { Checkbox, Form, Input, notification } from "antd";
+import "../../context.css";
 
 const Bridal = () => {
-  notification.destroy()
+  notification.destroy();
   const { TextArea } = Input;
   const [bridalText, setBridalText] = useState([]);
   const [bridalForm] = Form.useForm();
 
-
+  // Addition by Om shirvastava on 03-12-23
+  // Reason : Need to clear the date value when form is submit
+  function clearDateValue() {
+    var a = (document.getElementById("date").value = "");
+    console.log(a, "funcitonannnnn");
+  }
+  // End of Addition by Om shirvastava on 03-12-23
+  // Reason : Need to clear the date value when form is submit
   useEffect(() => {
     getBridalText();
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }, []);
 
   const getBridalText = async () => {
@@ -35,9 +36,7 @@ const Bridal = () => {
     }
   };
 
-
   const saveBridalDetails = async (formData) => {
-
     const bridalDetail = {
       firstName: formData.firstName,
       lastName: formData.lastName,
@@ -45,72 +44,70 @@ const Bridal = () => {
       zipCode: formData.zipCode,
       message: formData.message,
       contactNumber: formData.contactNumber,
-      dateOfWedding: document.getElementById('date').value ? document.getElementById('date').value : null,
-      termsAndCondition: formData.termsAndConditions
-    }
+      dateOfWedding: document.getElementById("date").value
+        ? document.getElementById("date").value
+        : null,
+      termsAndCondition: formData.termsAndConditions,
+    };
 
     // dateOfWedding:formData.dateOfWedding,
-
 
     const bridalPostResponse = await postBridalDetails(bridalDetail);
     if (bridalPostResponse) {
       if (bridalPostResponse.msg) {
-        bridalForm.resetFields()
-
+        bridalForm.resetFields();
+        clearDateValue();
+        // document.getElementById('date').value==null
         notification.open({
           message: "",
-          description:
-            'Bridal details posted successfully',
-          onClick: () => {
-          },
+          description: "Bridal details posted successfully",
+          onClick: () => {},
           key: 1,
           // style: { backgroundColor: "var(--bannerColor)" },
-           // Modification and addition by Om shrivastava on 01-12-23
-        // REason : Create the popup class to apply the designing
-        className:'popupClass',
-        // style:{marginTop:"20px"},
-        // style:{backgroundColor: "#f1cdd9",
-        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
-        // End of modification and addition by Om shrivastava on 01-12-23
-        // REason : Create the popup class to apply the designing
+          // Modification and addition by Om shrivastava on 01-12-23
+          // REason : Create the popup class to apply the designing
+          className: "popupClass",
+          // style:{marginTop:"20px"},
+          // style:{backgroundColor: "#f1cdd9",
+          // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+          // End of modification and addition by Om shrivastava on 01-12-23
+          // REason : Create the popup class to apply the designing
         });
         // bridalForm.resetFields();
       } else {
         notification.open({
-          message: 'Message',
-          description:
-            'Some problem occured while posting the data',
-          onClick: () => {
-          },
+          message: "Message",
+          description: "Some problem occured while posting the data",
+          onClick: () => {},
           key: 1,
           // style: { backgroundColor: "var(--bannerColor)" },
-           // Modification and addition by Om shrivastava on 01-12-23
-        // REason : Create the popup class to apply the designing
-        className:'popupClass',
-        // style:{marginTop:"20px"},
-        // style:{backgroundColor: "#f1cdd9",
-        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
-        // End of modification and addition by Om shrivastava on 01-12-23
-        // REason : Create the popup class to apply the designing
+          // Modification and addition by Om shrivastava on 01-12-23
+          // REason : Create the popup class to apply the designing
+          className: "popupClass",
+          // style:{marginTop:"20px"},
+          // style:{backgroundColor: "#f1cdd9",
+          // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+          // End of modification and addition by Om shrivastava on 01-12-23
+          // REason : Create the popup class to apply the designing
         });
       }
-
     }
-
-  }
+  };
 
   return (
     <>
       <Navbar />
       <div className={style.container}>
-      <div className='headingFooter'
-      > Bridal </div> 
+        <div className="headingFooter"> Bridal </div>
         {bridalText.length > 0 ? (
           <>
             {bridalText.map((bridal) => {
               return (
                 <div className={style.row}>
-                  <div className={`${style.column} ${style.col1}`} style={{ maxHeight: "60vh", overflow: "auto" }}>
+                  <div
+                    className={`${style.column} ${style.col1}`}
+                    style={{ maxHeight: "60vh", overflow: "auto" }}
+                  >
                     <span className={style.title}>{parse(bridal.title)}</span>
                     <span className={style.subtitle}>
                       {parse(bridal.subtitle1)}
@@ -120,22 +117,25 @@ const Bridal = () => {
                     </span>
                   </div>
                   <div className={`${style.column} ${style.col2}`}>
-                  {/* //  Modification and addition by Om Shrivastava on 20-10-23
-                    // Reason : when image is not add then show the blank div */  }
-                    {bridal.bridalImage ? 
-                    <img
-                      className={style.bridalImg}
-                    //  Modification and addition by Om Shrivastava on 20-10-23
-                    // Reason : Need to add right path for the image */
-                      // src={config.staticBaseURL + bridal.bridalImage}
-                      src={config.staticBaseURL +"media/"+ bridal.bridalImage}
-                    //  End of modification and addition by Om Shrivastava on 20-10-23
-                    // Reason : Need to add right path for the image */
-                    ></img>
-                    :<></>
-                    }
-                {/* //  End of Modification and addition by Om Shrivastava on 20-10-23
-                    // Reason : when image is not add then show the blank div */  }
+                    {/* //  Modification and addition by Om Shrivastava on 20-10-23
+                    // Reason : when image is not add then show the blank div */}
+                    {bridal.bridalImage ? (
+                      <img
+                        className={style.bridalImg}
+                        //  Modification and addition by Om Shrivastava on 20-10-23
+                        // Reason : Need to add right path for the image */
+                        // src={config.staticBaseURL + bridal.bridalImage}
+                        src={
+                          config.staticBaseURL + "media/" + bridal.bridalImage
+                        }
+                        //  End of modification and addition by Om Shrivastava on 20-10-23
+                        // Reason : Need to add right path for the image */
+                      ></img>
+                    ) : (
+                      <></>
+                    )}
+                    {/* //  End of Modification and addition by Om Shrivastava on 20-10-23
+                    // Reason : when image is not add then show the blank div */}
                   </div>
                 </div>
               );
@@ -145,13 +145,13 @@ const Bridal = () => {
           // Modification and addition by Om shrivastava on 27-11-23
           // Reason : Set the designing of content
           // <div>Please provide Bridal detail</div>
-          <div className={style.divContent} >Please provide Bridal detail</div>
+          <div className={style.divContent}>Please provide Bridal detail</div>
           // End of Modification and addition by Om shrivastava on 27-11-23
           // Reason : Set the designing of content
-
         )}
 
-        <Form className={style.form}
+        <Form
+          className={style.form}
           layout="vertical"
           form={bridalForm}
           name="registerBridalInfo"
@@ -164,9 +164,11 @@ const Bridal = () => {
               <Form.Item
                 required={false}
                 name="firstName"
-                label={<label style={{ color: "black", fontWeight: "500" }}>First name <span style={{color:'red'}}> *</span>
-                </label>}
-
+                label={
+                  <label style={{ color: "black", fontWeight: "500" }}>
+                    First name <span style={{ color: "red" }}> *</span>
+                  </label>
+                }
                 rules={[
                   {
                     required: true,
@@ -194,13 +196,16 @@ const Bridal = () => {
                 ]}
                 hasFeedback
               >
-               
                 <Input className={style.formInput} maxLength={50} />
               </Form.Item>
               <Form.Item
-required={false}
+                required={false}
                 name="lastName"
-                label={<label style={{ color: "black", fontWeight: "500" }}>Last name <span style={{color:'red'}}> *</span></label>}
+                label={
+                  <label style={{ color: "black", fontWeight: "500" }}>
+                    Last name <span style={{ color: "red" }}> *</span>
+                  </label>
+                }
                 rules={[
                   {
                     required: true,
@@ -231,10 +236,13 @@ required={false}
                 <Input className={style.formInput} maxLength={50} />
               </Form.Item>
               <Form.Item
-              required={false}
+                required={false}
                 name="email"
-                label={<label style={{ color: "black", fontWeight: "500" }}>E-mail address <span style={{color:'red'}}> *</span></label>}
-
+                label={
+                  <label style={{ color: "black", fontWeight: "500" }}>
+                    E-mail address <span style={{ color: "red" }}> *</span>
+                  </label>
+                }
                 // rules={[
                 //   {
                 //     required: true,
@@ -249,10 +257,13 @@ required={false}
               </Form.Item>
 
               <Form.Item
-              required={false}
+                required={false}
                 name="zipCode"
-                label={<label style={{ color: "black", fontWeight: "500" }}>ZIP code <span style={{color:'red'}}> *</span></label>}
-
+                label={
+                  <label style={{ color: "black", fontWeight: "500" }}>
+                    ZIP code <span style={{ color: "red" }}> *</span>
+                  </label>
+                }
                 rules={[
                   {
                     required: true,
@@ -283,13 +294,15 @@ required={false}
                 <Input className={style.formInput} maxLength={6} />
               </Form.Item>
 
-
-
               <Form.Item
-              required={false}
+                required={false}
                 name="message"
-                label={<label style={{ color: "black", fontWeight: "500" }}>Message to our consultants <span style={{color:'red'}}> *</span></label>}
-
+                label={
+                  <label style={{ color: "black", fontWeight: "500" }}>
+                    Message to our consultants{" "}
+                    <span style={{ color: "red" }}> *</span>
+                  </label>
+                }
                 rules={[
                   {
                     required: true,
@@ -312,9 +325,13 @@ required={false}
                 ]}
                 hasFeedback
               >
-                <TextArea className={style.formInput} rows={4} style={{ paddingLeft: "0px" }} maxLength={255} />
+                <TextArea
+                  className={style.formInput}
+                  rows={4}
+                  style={{ paddingLeft: "0px" }}
+                  maxLength={255}
+                />
               </Form.Item>
-
             </div>
             <div className={`${style.column} ${style.formInputContainer}`}>
               {/* <Form.Item
@@ -352,10 +369,13 @@ required={false}
               </Form.Item> */}
 
               <Form.Item
-              required={false}
+                required={false}
                 name="contactNumber"
-                label={<label style={{ color: "black", fontWeight: "500" }}>Contact number <span style={{color:'red'}}> *</span></label>}
-
+                label={
+                  <label style={{ color: "black", fontWeight: "500" }}>
+                    Contact number <span style={{ color: "red" }}> *</span>
+                  </label>
+                }
                 rules={[
                   {
                     required: true,
@@ -402,28 +422,50 @@ required={false}
                 <DatePicker disabledDate={d => !d  || d.isSameOrBefore(Date()) } className={style.formInput} maxLength={50} />
               </Form.Item> */}
 
-              <label style={{ color: "black", fontWeight: "500" }}>Date of wedding</label>
-              <input type="date" id="date" className={style.formInput} style={{ marginBottom: "20px" }} />
-
+              <label style={{ color: "black", fontWeight: "500" }}>
+                Date of wedding
+              </label>
+              <input
+                type="date"
+                id="date"
+                className={style.formInput}
+                style={{ marginBottom: "20px" }}
+              />
 
               <Form.Item
-              required={false}
+                required={false}
                 name="termsAndConditions"
                 valuePropName="checked"
                 rules={[
                   {
                     validator: (_, value) =>
-                      value ? Promise.resolve() : Promise.reject(new Error('You must accept the terms and conditions')),
+                      value
+                        ? Promise.resolve()
+                        : Promise.reject(
+                            new Error(
+                              "You must accept the terms and conditions"
+                            )
+                          ),
                   },
                 ]}
-
               >
                 <div style={{ display: "flex" }}>
-                  <Checkbox style={{ paddingRight: "10px" }} id="termsAndConditionsCheck"></Checkbox>
-                  <label className={style.lbl} for="termsAndConditionsCheck">I understand and agree that registration on or use of the site constitutes agreement to its User Agreement and Privacy Policy.</label>
+                  <Checkbox
+                    style={{ paddingRight: "10px" }}
+                    id="termsAndConditionsCheck"
+                  ></Checkbox>
+                  <label className={style.lbl} for="termsAndConditionsCheck">
+                    I understand and agree that registration on or use of the
+                    site constitutes agreement to its User Agreement and Privacy
+                    Policy.
+                  </label>
                 </div>
               </Form.Item>
-              <input type="submit" value="BOOK NOW" className={style.itemButton} ></input>
+              <input
+                type="submit"
+                value="BOOK NOW"
+                className={style.itemButton}
+              ></input>
             </div>
           </div>
         </Form>

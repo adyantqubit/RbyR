@@ -359,7 +359,9 @@ console.log(allData,'checkkkkkk')
                           {/* Commented and modified by - Ashish Dewangan on 29-11-2023
                           Reason - To show product name which was at the time of purchase */}
                           {/* {s.title} ({SizeGetter(s.size)}) */}
-                          <span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} > {s.product_name} ({SizeGetter(s.size)})</span>
+                          <span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >
+                             {s.product_name.toLowerCase()}
+                              ({SizeGetter(s.size)})</span>
                           {/* Commented and modified by - Ashish Dewangan on 29-11-2023
                           Reason - To show product name which was at the time of purchase */}
                       </div>

@@ -42,6 +42,17 @@ Reason : Set the checkbox color */
 }
 /* End of Added by Om Shrivastava on 27-11-23
 Reason : Set the checkbox color*/
+/* Addition by Om Shirvastava on 03-12-23 
+Reason : Set the hover functionality  */
+
+.ant-checkbox-inner{
+  border: 1px solid black ;
+}
+.ant-checkbox-inner:hover{
+  border: 1px solid black !important;
+}
+/* End of Addition by Om Shirvastava on 03-12-23 
+Reason : Set the hover functionality */
 /* #video {
   position: relative !important;
   padding-bottom: 56.25% !important;

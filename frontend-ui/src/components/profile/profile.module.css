@@ -218,7 +218,7 @@
     line-height: 22px;
     letter-spacing: 1.2px;
         font-family: var(--fontFamily);
-
+    text-transform: capitalize;
 }
 
 .userinfoTextHIDE {
