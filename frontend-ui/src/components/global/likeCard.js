@@ -57,10 +57,17 @@ const LikeCard = (props) => {
   }
 
   return (
-    <>
+    // Addition by Om Shrivastava on 02-12-23
+    // Reaosn : Set the grid property
+    <div className={style.mainDivDesign} 
+    // style={{border:'1px solid black',display:'grid',gridTemplateColumns:'auto auto',}}
+    >
       {like.length > 0 ? (
         like.map((l) => (
-          <div style={{marginBottom:"3%"}}>
+          <div style={{marginBottom:"3%"
+          
+          // flexWrap:'wrap'
+          }}>
             <div className={style.wishContainer}>
               <img
                 className={style.wishImage}
@@ -96,7 +103,9 @@ const LikeCard = (props) => {
           <span className={style.para}>Don't hesitate and <Link to="/" className={style.para2} style={{color:"blue",fontWeight:'500'}} onClick={e=>setLikeDrawer(false)}>browse our catalog</Link> to find something beautiful for You!</span>
         </div>
       )}
-    </>
+    </div>
+    // End of Addition by Om Shrivastava on 02-12-23
+    // Reaon : Set the grid property
   );
 };
 

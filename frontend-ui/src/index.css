@@ -77,7 +77,10 @@ Reason : Set the checkbox color*/
  @media (max-width: 768px){
   .ant-notification-notice-close {
       top: 9px !important;
-      right: 12px !important;
+      right: 10px !important;
       font-size: 14px !important;
+    }
+    .ant-notification-notice-close {
+      color: black !important;
     }
 } 

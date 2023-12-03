@@ -164,15 +164,22 @@ const Context = ({ children }) => {
     toast.success(<div
       // Modification and addition by Om Shrivastava on 16-11-23
         // Reason : Add the class for show the message
-      style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px",fontFamily:"var(--fontFamily)"}}
+      // style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px",fontFamily:"var(--fontFamily)"}}
       // className={style.alertMsg} 
       // End of modification and addition by Om Shrivastava on 16-11-23
         // Reason : Add the class for show the message
      >Successfully Logged out.
     </div>,
       { position: toast.POSITION.TOP_RIGHT, duration: 1000, 
-        className: 'popupClass'
-        // style: { top: "20vh", right: "2vw", background: "#f1cdd9" }
+           // Modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+        className:'popupClassLoggedIn',
+        // style:{marginTop:"20px"},
+        // style:{backgroundColor: "#f1cdd9",
+        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+        // End of modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+          // style: { top: "20vh", right: "2vw", background: "#f1cdd9" } 
        },
     )
   }

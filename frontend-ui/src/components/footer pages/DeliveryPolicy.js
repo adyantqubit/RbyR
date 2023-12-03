@@ -7,6 +7,7 @@ import { getDeliveryAndShippingPoliciesDetail } from "../../api/service";
 import parse from "html-react-parser";
 import { notification } from 'antd';
 import stylee from './globalFooterFile.module.css'
+import '../../context.css'
 
 const DeliveryPolicy = () => {
   notification.destroy()
@@ -29,7 +30,10 @@ const DeliveryPolicy = () => {
   return (
     <div>
       <Navbar />
+
       <div className={style.ppContainer}>
+      <div className='headingFooter'
+      > Delivery & Shipping Policy</div> 
         <div className={style.contain}>
           {deliveryAndShippingPolicies.length > 0 ? (
             <>

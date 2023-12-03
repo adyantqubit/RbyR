@@ -196,7 +196,7 @@ const Slider2 = ({scrollTop}) => {
             paddingLeft: "4%",
           }}
         >
-          YOU MAY ALSO LIKEbackuppppppppp
+          YOU MAY ALSO LIKE
         </div>
         <Carousel responsive={responsive} style={{ width: "100%" }}>
           {CategoryProduct

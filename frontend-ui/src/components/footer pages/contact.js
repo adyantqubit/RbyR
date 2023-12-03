@@ -7,6 +7,7 @@ import parse from "html-react-parser";
 import config from "../../api/config";
 import { notification } from 'antd';
 import stylee from './globalFooterFile.module.css'
+import '../../context.css'
 
 const Contact = () => {
   notification.destroy()
@@ -34,6 +35,10 @@ const Contact = () => {
             {contactUs.map((contact) => {
               return (
                 <>
+      <div className='headingFooter'
+      // style={{color:'black',textAlign:'center',fontWeight:'bold',fontSize:'32px',fontFamily:'var(--fontFamily)',paddingBottom:'15px'}}
+      > Contact Us</div> 
+
                 {/* Commented by Om Shrivastava on 27-11-23
                       Reason : Set this content in heading  */}
                     <div className={style.headingName}

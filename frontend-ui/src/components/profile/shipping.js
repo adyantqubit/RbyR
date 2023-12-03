@@ -302,7 +302,7 @@ function validatesNum(evt) {
                      <span className={styles.userinfoText} style={{
                         // textDecoration:"underline",
                         cursor:"pointer",color:'blue'}} onClick={e=>jumpToEdit()}>
-                        {shipEditcond&&shippingAddress.filter(s=>s.isSelected==true).length>0?"Edit Configuration":null}
+                        {shipEditcond&&shippingAddress.filter(s=>s.isSelected==true).length>0?"EDIT CONFIGURATION":null}
                     </span> :
                     null}
                 </div>

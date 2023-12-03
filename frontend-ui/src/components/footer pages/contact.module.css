@@ -58,14 +58,16 @@
     Reason : Set the designing  */
     /* gap:100px; */
     background:var(--backgroundColorSecondary);
+    padding-bottom: 1%;
 }
 .headingName{
     color: black;
-    text-align: center;
+    text-align: left;
     font-weight: bold;
-    font-size: 28px;
+    padding:0 2.5%;
+    font-size: 19px;
     font-family: var(--fontFamily);
-    padding-bottom: 15px;
+    /* padding-bottom: 15px; */
 }
 .column{
     height:auto;
@@ -194,7 +196,7 @@
         font-size: 13px;
         padding: 0 3%;
         line-height: 20px;
-        
+
         /* width: 65%; */
     }
     .contain{
@@ -216,6 +218,7 @@
   /* Addition by Om Shrivastava on 29-11-23
   Reason : Add the font size */
   .headingName{
-    font-size: 23px;
+    font-size: 16px;
+
   }
 }

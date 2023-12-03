@@ -103,6 +103,8 @@ const Bridal = () => {
     <>
       <Navbar />
       <div className={style.container}>
+      <div className='headingFooter'
+      > Bridal </div> 
         {bridalText.length > 0 ? (
           <>
             {bridalText.map((bridal) => {

@@ -249,7 +249,7 @@ const UserProfile = () => {
             <div className={style.column2}>
               <div className={style.column2header}>
                 <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                  <span style={{fontWeight:'600'}}>USER DETAILS</span>
+                  <span style={{fontWeight:'600'}}>USER DETAILSrr</span>
                   <span className={`${styles.userinfoText} ${style.hovers}`} style={{ cursor: "pointer",color:'blue',paddingTop:'3px' }} onClick={e => setShowEditable(true)}>{!showEditable ? "EDIT YOUR PROFILE" : null}
                   </span>
                 </div>
@@ -260,7 +260,7 @@ const UserProfile = () => {
 
                   {!showEditable ?
                     <div className={styles.usedetailShow} >
-                      <div className={style.box} style={{ border: "0.1rem solid grey", height: "auto", padding: "5px" }}>
+                      <div className={style.box} style={{  height: "auto", padding: "5px" }}>
                         <div ><span className={style.userinfoText}  style={{ wordBreak: "break-all" }}>Name : </span><span className={style.userinfoLable} style={{ wordBreak: "break-all" }}>{userdata.name}</span></div>
                         <div ><span className={style.userinfoText}  style={{ wordBreak: "break-all" }}>Email : </span><span className={style.userinfoLable} style={{ wordBreak: "break-all" }}> {userdata.email}</span></div>
                         <div ><span className={style.userinfoText}  style={{ wordBreak: "break-all" }}>Contact : </span><span className={style.userinfoLable} style={{ wordBreak: "break-all" }}> {userdata.contact}</span></div>

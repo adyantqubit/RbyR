@@ -127,14 +127,20 @@ console.log(onlineDetail)
                   {/* <div style={{fontSize:'14px',color:'blue',marginLeft:'-5px'}} className={styles.payTitle}>Account Details : </div> */}
                     <div style={{paddingTop:'3px'}}><span style={{fontSize:'12px',fontWeight:'bold'}} className={styles.userinfoText2}>{onlineDetail.bank_name}</span></div>
                     <div ><span style={{fontSize:'12px',fontWeight:'bold',letterSpacing:'0.5px'}} className={styles.userinfoText}>Name &nbsp;&nbsp;: </span><span style={{fontSize:'12px'}} className={styles.userinfoText2} >{onlineDetail.name}</span ></div>
-                    <div ><span style={{fontSize:'12px',fontWeight:'bold',letterSpacing:'0.5px'}} className={styles.userinfoText}>Ac/No &nbsp;: </span><span style={{fontSize:'12px'}} className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
+                    <div ><span style={{fontSize:'12px',fontWeight:'bold',letterSpacing:'0.5px'}} className={styles.userinfoText}>A/C No &nbsp;: </span><span style={{fontSize:'12px'}} className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
                   <div ><span style={{fontSize:'12px',fontWeight:'bold',letterSpacing:'0.5px'}} className={styles.userinfoText}>UPI ID&nbsp;: </span><span style={{fontSize:'12px',}} className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div> 
-  
+                  {/* Addition by Om Shrivastava on 02-12-23
+                  Reason : Set the design of the phone label */}
+                  <div ><span style={{fontSize:'12px',fontWeight:'bold',letterSpacing:'0.5px'}} className={styles.userinfoText}>Phone&nbsp;: </span><span style={{fontSize:'12px',}} className={styles.userinfoText2}>{onlineDetail.contact_number}</span></div> 
+  {/* End of addition by Om Shrivastava on 02-12-23
+                  Reason : Set the design of the phone label */}
                   </div>
                   {/* Modification and addition by Om Shrivastava on 08-11-23
                   Reason : Set the contact number of payment time */}
                   {/* <div style={{ height: "60px", width: "100%" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To Admin After Paying At {storeLocatorDetails != null ? parse("PHONE:" + storeLocatorDetails[0]?.phoneNumber) : null}</span></div> */}
-                  <div style={{ height: "60px", width: "100%",paddingTop:'2px' }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all',fontSize:'11px' }}> Please Confirm To Admin After Paying At <b>phone:</b>{onlineDetail.contact_number}</span></div>
+                  {/* <div style={{ height: "60px", width: "100%",paddingTop:'2px' }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all',fontSize:'11px' }}> Please Confirm To Admin After Paying At <b>phone:</b>{onlineDetail.contact_number}</span></div> */}
+                  <div style={{ height: "60px", width: "100%",paddingBottom:'2px' }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all',fontSize:'11px' }}> Please Confirm To Admin After Paying </span></div>
+                  
                   {/* End of Modification and addition by Om Shrivastava on 08-11-23
                   Reason : Set the contact number of payment time  */}
                 </div>
@@ -259,7 +265,7 @@ console.log(onlineDetail)
                 Reason - To show items from purchased items table instead of  items tables */}
 
                 <div className={styles.billingfooter} id="footer" >
-                  <span className={`${styles.columnitem1head}`} >Subtotal : </span>
+                  <span className={`${styles.columnitem1head}`} >Subtotal : &nbsp; </span>
                   {/* Commented and modified by - Ashish Dewangan on 27-11-2023
                   Reason - To show details from purchased items tables rather than items table */}
                   {/* <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ borderRight: "1px solid black", whiteSpace: "nowrap", border: "none", outline: "none", width: "auto" }}> {checkoutDetails.currency_sign}{(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).subtotal * checkoutDetails.currency_value).toFixed(2)}</span> */}
@@ -269,7 +275,7 @@ console.log(onlineDetail)
                 </div>
 
                 <div className={styles.billingtexts}>
-                  <span className={`${styles.columnitem1head}`}  >Shipping charges : </span>
+                  <span className={`${styles.columnitem1head}`}  >Shipping charges : &nbsp; </span>
                   {/* Commented and modified by - Ashish Dewangan on 27-11-2023
                   Reason - To show details from purchased items tables rather than items table */}
                   {/* <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto", border: "none", outline: "none" }} > {checkoutDetails.currency_sign}{(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).shipping * checkoutDetails.currency_value).toFixed(2)}</span> */}
@@ -294,7 +300,7 @@ console.log(onlineDetail)
                 </div>
 
                 <div className={styles.billingtexts}>
-                  <span className={`${styles.columnitem1head}`}  >Grand Total : </span>
+                  <span className={`${styles.columnitem1head}`}  >Grand Total : &nbsp;</span>
                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto", border: "none", outline: "none" }} > {checkoutDetails.currency_sign}
                     {/* {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}
                     {/* {checkoutDetails.CouponDiscount ?((afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value)- (checkoutDetails.CouponDiscount* checkoutDetails.currency_value)).toFixed(2) :(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}

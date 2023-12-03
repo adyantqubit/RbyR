@@ -6,6 +6,7 @@ import { getRefundPoliciesDetail } from "../../api/service";
 import parse from "html-react-parser";
 import { notification } from 'antd';
 import stylee from './globalFooterFile.module.css'
+import '../../context.css'
 
 const RefundPolicy = () => {
   notification.destroy()
@@ -26,6 +27,8 @@ const RefundPolicy = () => {
     <div>
       <Navbar />
       <div className={style.ppContainer}>
+      <div className='headingFooter'
+      > Return policy</div> 
         <div className={style.contain}>
           {refundPolicies.length > 0 ? (
             <>

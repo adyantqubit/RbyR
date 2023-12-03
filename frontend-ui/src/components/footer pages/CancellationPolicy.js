@@ -6,6 +6,7 @@ import { getCancellationPoliciesDetail } from "../../api/service";
 import parse from "html-react-parser";
 import { notification } from 'antd';
 import stylee from './globalFooterFile.module.css'
+import '../../context.css'
 
 const CancellationPolicy = () => {
   notification.destroy()
@@ -26,6 +27,8 @@ const CancellationPolicy = () => {
     <div>
       <Navbar />
       <div className={style.ppContainer}>
+      <div className='headingFooter'
+      > Order cancellation policy</div> 
         <div className={style.contain}>
           {cancellationPolicies.length > 0 ? (
             <>

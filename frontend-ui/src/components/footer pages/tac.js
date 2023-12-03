@@ -7,6 +7,7 @@ import parse from "html-react-parser";
 import {IoMdArrowRoundBack} from "react-icons/io"
 import { notification } from 'antd';
 import stylee from './globalFooterFile.module.css'
+import '../../context.css'
 
 const Terms = () => {
 notification.destroy()
@@ -29,6 +30,8 @@ notification.destroy()
     <div>
       <Navbar />
       <div className={style.tacContainer}>
+      <div className='headingFooter'
+      > Terms & Conditions</div> 
         <div className={style.contain}>
           
           {termsAndConditions.length > 0 ? (

@@ -9,7 +9,7 @@ import style from "./FAQ.module.css";
 import parse from "html-react-parser";
 import { notification } from 'antd';
 import stylee from './globalFooterFile.module.css'
-
+import '../../context.css'
 
 const FAQ = () => {
   notification.destroy()
@@ -49,7 +49,8 @@ const FAQ = () => {
     <div>
       <Navbar />
       <div className={style.faqContainer}>
-      <div style={{color:'black',textAlign:'center',fontWeight:'bold',fontSize:'28px',fontFamily:'var(--fontFamily)',paddingBottom:'15px'}}> FAQ</div> 
+      <div className='headingFooter'
+      > FAQ</div> 
 
         <div className={style.row}>
             {

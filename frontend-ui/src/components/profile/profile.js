@@ -76,7 +76,7 @@ const MyOrders = () => {
     <div className={style.scrolling} >
     <Navbar/>
     <div className={style.Container} >
-        <div className={style.centerContainer}>
+        <div className={style.centerContainer} >
           <div className={style.containerHeader}>
           <div style={{paddingTop:'12px',display:'flex',flexDirection:'row'}}>
           

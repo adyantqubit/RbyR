@@ -122,7 +122,14 @@ const ProductListing = () => {
                 // Reason : Apply the onlcick for navigation
               ></img>
               <div className={styles.productInfo}>
-                <span className={styles.titlepro}>{c.title}</span>
+                <span className={styles.titlepro}>
+                  {/* Modification and addition by Om Shrivastava on 02-12-23
+                  Reason : Set the lowercase of the font  */}
+                  {/* {c.title} */}
+                  {c.title.toLowerCase()}
+                  {/* End of  Modification and addition by Om Shrivastava on 02-12-23
+                  Reason : Set the lowercase of the font  */}
+                  </span>
                 <span
                   className={styles.userinfoText}
                   style={{ color: "black" }}

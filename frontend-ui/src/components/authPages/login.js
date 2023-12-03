@@ -76,18 +76,18 @@ const Login = () => {
 				setCart([...JSON.parse(localStorage.getItem("cart"))])
 			toast.success(<div  
 			class='successMsg'
-			style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px" }}>Successfully Logged In.
+			>Successfully Logged In.
 			</div>,
 				{ position: toast.POSITION.TOP_RIGHT, duration: 1000,
-					 // Modification and addition by Om shrivastava on 01-12-23
+		    // Modification and addition by Om shrivastava on 01-12-23
         // REason : Create the popup class to apply the designing
-        className:'popupClass',
+        className:'popupClassLoggedIn',
         // style:{marginTop:"20px"},
         // style:{backgroundColor: "#f1cdd9",
         // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
         // End of modification and addition by Om shrivastava on 01-12-23
         // REason : Create the popup class to apply the designing
-					
+          // style: { top: "20vh", right: "2vw", background: "#f1cdd9" } 					
 					},
 			)
 			firstTimeLoadFunctions()
@@ -167,9 +167,9 @@ const Login = () => {
 					<input type="checkbox" id="ch" aria-hidden="true" />
 					<div class="signu">
 						<form onSubmit={handleSubmit2}>
-							<label class="labe" htmlFor="ch" aria-hidden="true">Sign up</label>
+							<label style={{color:'rgb(59 59 224)'}} class="labe" htmlFor="ch" aria-hidden="true">Sign up</label>
 
-							<div style={{ fontSize: "14px", marginLeft: "15%" }}>Name *</div>
+							<div style={{ fontSize: "14px", marginLeft: "15%" }}>Name<span style={{color:'red'}}>*</span></div>
 							<input class="inpu2" type="text" name="txt" placeholder="User name" required />
 
 							<div style={{ height: "20px" }}>
@@ -177,7 +177,7 @@ const Login = () => {
 
 							</div>
 
-							<div style={{ fontSize: "14px", marginLeft: "15%" }}>Email *</div>
+							<div style={{ fontSize: "14px", marginLeft: "15%" }}>Email<span style={{color:'red'}}>*</span></div>
 							<input class="inpu2" type="email" name="email" placeholder="Email" required />
 							<div style={{ height: "20px" }}>
 								{server_error.email ? <Typography style={{ color: "red", fontSize: "14px", marginBottom: "10px", marginLeft: "15%" }}>
@@ -187,7 +187,7 @@ const Login = () => {
 
 							</div>
 
-							<div style={{ fontSize: "14px", marginLeft: "15%" }}>Phone Number *</div>
+							<div style={{ fontSize: "14px", marginLeft: "15%" }}>Phone Number<span style={{color:'red'}}>*</span></div>
 							<PhoneInput
 								international
 								placeholder="phone number"
@@ -203,7 +203,7 @@ const Login = () => {
 							</div>
 
 						
-							<div style={{ fontSize: "14px", marginLeft: "15%" }}>Password *</div>
+							<div style={{ fontSize: "14px", marginLeft: "15%" }}>Password<span style={{color:'red'}}>*</span></div>
 							<span class="inpu3" style={{ marginBottom: "0", flexDirection: "column", height: "auto", paddingLeft: "0px", gap: "10px" }}>
 								<span class="inpu4" style={{ width: "100%" }}>
 									<input class="inpu4" type={showNewPass2 ? "text" : "password"} name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
@@ -229,8 +229,8 @@ const Login = () => {
 
 							{/* {server_error.password2?<Typography style={{color:"red",paddingLeft:10,fontSize:10,position:"absolute",top:"310px",left:"150px",right:"0",fontSize:"0.8rem"}}>{server_error.password2[0]}</Typography>:" "} */}
 
-							<FormControlLabel style={{ paddingLeft: "70px" }} control={<Checkbox value={true} name="tc" id="tc" />} label={<span style={{ fontSize: '0.8rem' }}>
-								<Link to="/termAndCondition#Terms_and_Conditions" target="_blank" title='Terms and Condition' style={{ fontSize: "12px", textDecoration: "underline", letterSpacing: "1.2px" }}> I accept terms and conditions.</Link>
+							<FormControlLabel style={{ paddingLeft: "70px" }} control={<Checkbox style={{color:'green'}} value={true} name="tc" id="tc" />} label={<span style={{ fontSize: '0.8rem' }}>
+								<Link to="/termAndCondition#Terms_and_Conditions" target="_blank" title='Terms and Condition' style={{ fontSize: "12px", textDecoration: "underline", letterSpacing: "1.2px",color:'rgb(59 59 224)' }}> I accept terms and conditions.</Link>
 							</span>} />
 
 							{isLoading ? <CircularProgress style={{ margin: "20px", marginLeft: "140px" }} /> : <button style={{ paddingTop: "0", marginTop: "0" }} class="butto" type='submit'>Sign up</button>}
@@ -242,7 +242,7 @@ const Login = () => {
 					<div class="logi">
 						<form onSubmit={handleSubmit}>
 
-							<label class="labe" htmlFor="ch" aria-hidden="true" tabIndex={-1} onClick={e => window.scrollTo(0, 0)}>Login</label>
+							<label style={{color:'rgb(59 59 224)'}} class="labe" htmlFor="ch" aria-hidden="true" tabIndex={-1} onClick={e => window.scrollTo(0, 0)}>Login</label>
 							{/* {error.none_field_errors? <Alert severity="error"  style={{margin:"0 45px"}}>{error.none_field_errors[0]}</Alert>:" "} */}
 
 							<input class="inpu" type="email" tabIndex={-1} style={{ marginBottom: "0", background: "transparent" }} name="email" placeholder="E-mail*" required="" />
@@ -250,16 +250,16 @@ const Login = () => {
 							{error.none_field_errors ? <Typography style={{ color: "red", width: "80%", paddingLeft: "50px", marginTop: "5px", fontSize: "12px", lineHeight: "12px" }}>{error.none_field_errors[0]}
 								<Link to="/custom" style={{ color: "blue", fontSize: "12px", textDecoration: "underline" }}> Contact us</Link></Typography> : " "}
 
-							<span class="inpu3" tabIndex={-1} style={{ marginTop: "20px", height: "40px", marginLeft: "15%", background: "#e0dede", border: "1px solid black" }}>
+							<span class="inpu3" tabIndex={-1} style={{ marginTop: "20px", height: "40px", marginLeft: "15%", background: "#eeeeee", border: "1px solid black" }}>
 								<input class="inpu4" tabIndex={-1} type={showNewPass3 ? "text" : "password"} style={{ width: "90%", background: "transparent", height: "40px", border: "none" }} name="pswd" placeholder="Password*" required="" onChange={e => { if (e.target.value.length > 0) setVisiblePassreg3(true); else setVisiblePassreg3(false) }} />
 								{visiblepassReg3 ? showNewPass3 ? <AiFillEye style={{ marginTop: "10px", marginRight: "5px" }} onClick={e => setNewPass3(false)} /> : <AiFillEyeInvisible style={{ marginTop: "10px", marginRight: "5px" }} onClick={e => setNewPass3(true)} /> : null}
 							</span>
 							{error.password ? <Typography style={{ color: "red", paddingLeft: "50px", fontSize: "12px" }}>{error.password[0]}</Typography> : " "}
-							<Link to='/sendemail' tabIndex={-1} style={{ marginLeft: "50%", fontSize: "1em", color: "blue" }} class="underlineput">Forgot Password ?</Link>
+							<Link to='/sendemail' tabIndex={-1} style={{ marginLeft: "50%", fontSize: "1em", color: "rgb(59 59 224)" }} class="underlineput">Forgot Password ?</Link>
 
 							{isLoading ? <CircularProgress style={{ margin: "20px", marginLeft: "140px" }} /> : <button tabIndex={-1} class="butto" type='submit'>Login</button>}
-							<label tabIndex={-1} style={{ width: "100%", textAlign: "center" }}>OR</label>
-							<label tabIndex={-1} class="labe underlineput" style={{}} htmlFor="ch" aria-hidden="true" onClick={e => window.scrollTo(0, 0)}>Signup</label>
+							<label tabIndex={-1} style={{ width: "100%", textAlign: "center" }}>or</label>
+							<label style={{color:'rgb(59 59 224)'}} tabIndex={-1} class="labe underlineput"  htmlFor="ch" aria-hidden="true" onClick={e => window.scrollTo(0, 0)}>Signup</label>
 
 						</form>
 					</div>

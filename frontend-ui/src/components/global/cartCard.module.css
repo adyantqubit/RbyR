@@ -508,7 +508,15 @@ Reason : Set the font family  */
     justify-content: center;
     background-color: var(--backgroundColorSecondary) !important;
   }
-
+  /* Addition by Om shirvastava on 02-12-23
+  Reason : Set the hover property  */
+  .shopbtn1:hover {
+    background-color: var(--btnBackgroundColorPrimary);
+    color: var(--btnTextColorPrimary);
+    border: 1px solid var(--btnBorderColorPrimary);
+  }
+  /* End of Addition by Om shirvastava on 02-12-23
+  Reason : Set the hover property */
   .shopbtn1 {
     width: 100%;
     margin: 5px;

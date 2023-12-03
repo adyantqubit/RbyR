@@ -381,7 +381,7 @@
     -webkit-transition: all 250ms ease 0s;
     -o-transition: all 250ms ease 0s;
     transition: all 250ms ease 0s;
-    border-width: 2px;
+    border-width: 1px;
     border-style: solid;
     border-color: #323232;
     -webkit-border-image: initial;
@@ -393,9 +393,9 @@
     color: var(--btnTextColorPrimary);
 }
 .userInfoButton:hover {
-    background-color: var(--btnHoverBackgroundColorPrimary);
-    color: var(--btnTextHoverColorPrimary);
-    border: 1px solid var(--btnBorderHoverColorPrimary);
+        background-color: var(--btnHoverBackgroundColorPrimary);
+        color: var(--btnTextHoverColorPrimary);
+        border: 1px solid var(--btnBorderHoverColorPrimary);
   }
 
 .imgresponsive {
@@ -534,7 +534,11 @@
     .box {
         padding-top: 20px;
     }
-
+    .userInfoButton:hover {
+        background-color: var(--btnHoverBackgroundColorPrimary);
+        color: var(--btnTextHoverColorPrimary);
+        border: 1px solid var(--btnBorderHoverColorPrimary);
+  }
   
 
 }

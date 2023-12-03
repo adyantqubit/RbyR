@@ -6,6 +6,7 @@ import { getPrivacyPoliciesDetail } from "../../api/service";
 import parse from "html-react-parser";
 import { notification } from 'antd';
 import stylee from './globalFooterFile.module.css'
+import '../../context.css';
 
 const PrivacyPolicy = () => {
   notification.destroy()
@@ -28,6 +29,8 @@ const PrivacyPolicy = () => {
     <div>
       <Navbar />
       <div className={style.ppContainer}>
+      <div className='headingFooter'
+      > Privacy policy</div> 
         <div className={style.contain}>
           {privacyPolicies.length > 0 ? (
             <>

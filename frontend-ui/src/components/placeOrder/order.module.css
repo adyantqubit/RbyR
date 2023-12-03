@@ -543,6 +543,14 @@
   text-transform: capitalize;
   /* End of Addition by Om shrivastava on 29-11-23
   Reason : Add the text transform */
+  /* Added by Om Shrivastava on 02-12-23
+Reason : Set the width  */
+display: -webkit-box;
+-webkit-line-clamp: 1;
+-webkit-box-orient: vertical;
+overflow: hidden;
+/* Added by Om Shrivastava on 02-12-23
+Reason : Set the width  */
 }
 /* Addition by Om Shrivastava on 22-11-23
 Reaosn : Add the css  */

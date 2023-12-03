@@ -79,7 +79,7 @@
     font-family: var(--fontFamily);
   
     position: relative;
-    font-weight: normal;
+    font-weight: 600;
     text-transform: uppercase;
     padding: 0 18px;
     -webkit-transition: all 250ms ease 0s;
@@ -443,6 +443,11 @@
 
     .protitle2{
         width: 24%;
+    }
+    .continueShopbtn:hover{
+    background-color: var(--btnBackgroundColorPrimary);
+    color: var(--btnTextColorPrimary);
+    border: 1px solid var(--btnBorderColorPrimary);
     }
 }
 

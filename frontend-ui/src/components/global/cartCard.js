@@ -292,7 +292,12 @@ const CartCard = (props) => {
          </div>
             <div className={styles.column2} >
               <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                <h3 className={styles.heading}>{pro.title}</h3>
+                {/* Modification and addition by Om Shirvastava on 02-12-23
+                Reason : Add the lowercase property */}
+                {/* <h3 className={styles.heading}>{pro.title}</h3> */}
+                <h3 className={styles.heading}>{pro.title.toLowerCase()}</h3>
+                {/* End of  Modification and addition by Om Shirvastava on 02-12-23
+                Reason : Add the lowercase property  */}
                 {/* <span className={styles.delete} style={{fontSize:"32px",alignSelf:"start"}} onClick={e=>cartSave(pro)}>x</span> */}
                 <Popconfirm placement="bottomLeft" title={text} onConfirm={e => confirm(pro)} okText="OK" cancelText="Cancel">
                   {/* <span className={styles.delete} style={{ fontSize: "28px", alignSelf: "start" }} >x</span> */}

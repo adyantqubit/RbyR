@@ -298,14 +298,19 @@ console.log(allData,'checkkkkkk')
                               <div ><span  style={{fontSize:'12px',fontWeight:'bold'}} className={styles.userinfoText}>Name &nbsp;&nbsp;: </span><span style={{fontSize:'12px'}} className={styles.userinfoText2} >{onlineDetail.name}</span ></div>
                               <div ><span  style={{fontSize:'12px',fontWeight:'bold',whiteSpace: "nowrap" }} className={styles.userinfoText} >A/C No : </span><span style={{fontSize:'12px'}} className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
                               <div ><span  style={{fontSize:'12px',fontWeight:'bold'}} className={styles.userinfoText}>UPI ID : </span><span style={{fontSize:'12px'}} className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div>
+                              
+                              <div ><span  style={{fontSize:'12px',fontWeight:'bold'}} className={styles.userinfoText}>Phone : </span><span style={{fontSize:'12px'}} className={styles.userinfoText2}>
+                              {onlineDetail != null ?onlineDetail.contact_number:null}
+</span></div>
+                          
                            {/* End of Modification and addition by Om Shrivastava on 27-11-23
                               Reason : Change the designing pattern */}
                             </div>
-                            <div style={{ height: "60px", width: "100%",paddingTop:'2px' }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all',fontSize:'11px' }}> Please Confirm To admin After paying  at 
+                            <div style={{ height: "60px", width: "100%",paddingTop:'2px' }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all',fontSize:'11px' }}> Please Confirm To admin After paying 
                             {/* Modification and addition by Om shhrivastava on 27-11-23
                             Reason : Set the Contact number */}
                             {/* {storeLocatorDetails != null ? parse("PHONE:"+storeLocatorDetails[0]?.phoneNumber) : null} */}
-                            {onlineDetail != null ?onlineDetail.contact_number:null}
+                            {/* {onlineDetail != null ?onlineDetail.contact_number:null} */}
                              {/* Modification and addition by Om shhrivastava on 27-11-23
                             Reason : Set the Contact number */}
                             </span></div>

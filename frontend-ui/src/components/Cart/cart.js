@@ -351,7 +351,7 @@ const CartSItem = (props) => {
           cartEnd.map((c) => {
             notification.error({
               message: (
-                <div style={{ fontSize: "18px", color: "white" }}>
+                <div style={{  color: "black" }}>
                   Out of stock
                 </div>
               ),
@@ -361,7 +361,14 @@ const CartSItem = (props) => {
                   Please move this item to Wishlist.
                 </span>
               ),
-              style: { backgroundColor: "var(--bannerColor)", color: "white" },
+             // Modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+        className:'popupClass',
+        // style:{marginTop:"20px"},
+        // style:{backgroundColor: "#f1cdd9",
+        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+        // End of modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
               duration: 20,
             });
           });
@@ -731,7 +738,12 @@ const CartSItem = (props) => {
                                   : "normal",
                             }}
                           >
-                            {pro.title}
+                            {/* Modification and addition by Om Shirvastava on 02-12-23
+                Reason : Add the lowercase property */}
+                            {/* {pro.title} */}
+                            {pro.title.toLowerCase()}
+    {/*End of Modification and addition by Om Shirvastava on 02-12-23
+                Reason : Add the lowercase property */}
                           </h3>
                           {/* <span className={style.delete} style={{fontSize:"32px",alignSelf:"start"}} onClick={e=>cartSave(pro)}>x</span> */}
                           <Popconfirm
@@ -875,7 +887,7 @@ const CartSItem = (props) => {
                   }}
                   className={styles.font}
                 >
-                  Your Shopping Cart is empty.
+                  Your Shopping Cart is Empty.
                 </span>
                 <buton
                   className={styles.shopbtn2}

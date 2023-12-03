@@ -16,7 +16,7 @@
     width:100%;
     background:var(--backgroundColorSecondary);
     padding-top: 100px;
-    padding-top: 30vh;
+    padding-top: 24vh;
     max-height: 100vh;
     /* overflow-y: scroll; */
 }
