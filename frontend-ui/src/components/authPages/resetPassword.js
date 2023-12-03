@@ -100,7 +100,7 @@ const ResetPassword = () => {
             </span>
 					{/* <input style={{marginBottom:"0"}} class="inpu" type="password" name="pswd2" placeholder="Confirm Password" required=""/> */}
 
-					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button class="butto" style={{backgroundColor:"var(--btnBackgroundColorPrimary)",color:'var(--btnTextColorPrimary)',border:'1px solid var(--btnBorderColorPrimary)'}} type='submit'>Change</button>}
+					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button class="butto" style={{backgroundColor:"var(--btnBackgroundColorPrimary)",color:'var(--btnTextColorPrimary)',border:'1px solid var(--btnBorderColorPrimary)'}} type='submit'>Update</button>}
 				</form>
 			</div>
 	</div>

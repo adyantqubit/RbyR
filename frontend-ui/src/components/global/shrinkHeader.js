@@ -190,6 +190,7 @@ const ShrinkHeader = () => {
       <Drawer
         size="90%"
         open={isOpen}
+     style={{width:'70vw'}}
         onClose={e => { toggleDrawer() }}
         direction='left'
       >
@@ -292,6 +293,8 @@ const ShrinkHeader = () => {
         open={isOpen2}
         onClose={e => { toggleDrawer2(); toggleDrawer() }}
         direction='left'
+       
+        style={{width:'70vw'}}
       >
         {/* commented and modified by - Ashish Dewangan on 16-02-2023
         Reason - To have styling in seperate file */}

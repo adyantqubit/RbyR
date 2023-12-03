@@ -110,7 +110,10 @@
   .container{
     /* position:relative;
     top:23vh; */
+
     padding-top:153px;
+    /* padding-top:120px; */
+
     width:100%;
     background:var(--backgroundColorSecondary);
     display:flex;
@@ -274,7 +277,14 @@ body {background: #333}
 
     .heading{
       margin-bottom: 0px;
-      text-align: center;
+      /* Modification and addition by Om Shrivastava on 03-12-23
+      Reason : Need to align the text */
+      /* text-align: center; */
+      text-align: left;
+      padding-left: 4.5%;
+      /* End of Modification and addition by Om Shrivastava on 03-12-23
+      Reason : Need to align the text */
+
     }
 
     .column1{

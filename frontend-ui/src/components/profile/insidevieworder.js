@@ -247,7 +247,9 @@ console.log(allData,'checkkkkkk')
       <Navbar />
       <div className={style.Container}>
         <div className={style.centerContainer}>
+          <div style={{marginTop:'3%'}}>
           <div className={style.containerHeader}><Link to="/" className={style.containerHeader}>Homepage</Link> / My Account</div>
+          </div>
           <div className={style.main}>
             <div className={style.column1}>
               <div className={style.column1header}>MY ACCOUNT</div>
@@ -330,7 +332,7 @@ console.log(allData,'checkkkkkk')
                 
                   <div className={style.imgTag} ></div>
                   <div className={style.dataContainer}>
-                    <div className={`${style.rowitem2} ${style.itemName}`} style={{ justifyContent: "start", color: "black",fontWeight:'500' }}>Product Name</div>
+                    <div className={`${style.rowitem2} ${style.itemName}`} style={{ justifyContent: "start", color: "black",fontWeight:'500',paddingTop:'1.2%' }}>Product Name</div>
                     <div className={style.rowitem2} style={{ color: "black",fontWeight:'500' }}>Order Status</div>
                     <div className={style.rowitem2} style={{ color: "black",fontWeight:'500' }}>Price</div>
                     <div className={style.rowitem2} style={{ color: "black",fontWeight:'500' }}>Qty</div>
@@ -359,22 +361,22 @@ console.log(allData,'checkkkkkk')
                           {/* Commented and modified by - Ashish Dewangan on 29-11-2023
                           Reason - To show product name which was at the time of purchase */}
                           {/* {s.title} ({SizeGetter(s.size)}) */}
-                          <span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >
+                          <span className={style.userinfoText3} style={{whiteSpace:"nowrap",fontSize:'13px',fontWeight:'bold'}} >
                              {s.product_name.toLowerCase()}
                               ({SizeGetter(s.size)})</span>
                           {/* Commented and modified by - Ashish Dewangan on 29-11-2023
                           Reason - To show product name which was at the time of purchase */}
                       </div>
-                      <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto"}}  >Order Status:- </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >{s.order_status}</span></div>
-                      <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto"}} >
-                        Price : </span>
-                      <span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >
+                      <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto",fontSize:'13px',fontWeight:'bold'}}  >Order Status:&nbsp; </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap",fontSize:'13px'}} >{s.order_status}</span></div>
+                      <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto",fontSize:'13px',fontWeight:'bold'}} >
+                        Price :&nbsp; </span>
+                      <span className={style.userinfoText3} style={{whiteSpace:"nowrap",fontSize:'13px',}} >
                         {s.selected_currency_sign} {(s.price * s.selected_currency_value).toFixed(2)}</span></div>
-                      <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto"}} >
-                        Quantity : </span><span className={style.userinfoText3} > 
+                      <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto",fontSize:'13px',fontWeight:'bold'}} >
+                        Quantity : &nbsp;</span><span className={style.userinfoText3} style={{fontSize:'13px',}} > 
                         {s.quantity} </span></div>
-                      <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto"}} >
-                        Total : </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap"}} >
+                      <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto",fontSize:'13px',fontWeight:'bold'}} >
+                        Total : &nbsp;</span><span className={style.userinfoText3} style={{whiteSpace:"nowrap",fontSize:'13px',}} >
                           {/* Modification and addition by Om Shrivastava on 26-11-23
                           Reason : Need to set the correct value */}
                           {/* {s.selected_currency_sign} {(p.price * s.quantity * s.selected_currency_value).toFixed(2)}</span></div> */}
@@ -394,6 +396,11 @@ console.log(allData,'checkkkkkk')
                         Sub Total</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}>
                           {/* {states[0].selected_currency_sign} */}
                           {/* {s.price} */}
+                          {/* Addition by Om Shirvastava on 03-12-23
+                          Reason : Add the currency sign */}
+                          {states[0].selected_currency_sign}
+                          {/* End of addition by Om Shirvastava on 03-12-23
+                          Reason : Add the currency sign */}
                           {(allData.transaction.subtotal_price * states[0].selected_currency_value).toFixed(2)}
                           </span></div>
                       <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "start" }}>
@@ -423,7 +430,7 @@ console.log(allData,'checkkkkkk')
                 <div style={{ width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", flexWrap: "wrap", marginTop: '60px', gap: "20px" }}>
 
                   <div className={styles.addressInformation} style={{ minWidth: "150px", maxWidth: "150px" }}>
-                    <div ><span className={styles.userinfoText} >Shipping Address</span></div>
+                    <div ><span style={{fontWeight:'bold'}} className={styles.userinfoText} >Shipping Address</span></div>
                     {allData != null ? <>
                     {/* Commented and modified by - Ashish Dewangan on 29-11-2023
                     Reason - To show shipping details from trasaction history instead of shipping table */}
@@ -442,7 +449,7 @@ console.log(allData,'checkkkkkk')
                   </div>
 
                   <div className={styles.addressInformation} style={{ minWidth: "150px", maxWidth: "150px" }}>
-                    <div ><span className={styles.userinfoText} >Billing Address</span></div>
+                    <div ><span style={{fontWeight:'bold'}} className={styles.userinfoText} >Billing Address</span></div>
 
                     {allData != null ? <>
                       <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.billing.firstname} {allData.billing.lastname}</span></div>
@@ -454,13 +461,13 @@ console.log(allData,'checkkkkkk')
                   </div>
 
                   <div className={styles.addressInformation} style={{ minWidth: "150px", maxWidth: "150px" }}>
-                    <div ><span className={styles.userinfoText} >Shipping Method</span></div>
+                    <div ><span style={{fontWeight:'bold'}} className={styles.userinfoText} >Shipping Method</span></div>
                     <div style={{ maxWidth: "150px" }}><span className={styles.userinfoText2} style={{ color: "black" }}>Standard shipping </span></div>
                   </div>
 
                   <div className={styles.addressInformation} style={{ minWidth: "150px", maxWidth: "150px" }}>
                     {allData != null ? <>
-                      <div ><span className={styles.userinfoText} >Payment Status</span></div>
+                      <div ><span className={styles.userinfoText} style={{fontWeight:'bold'}} >Payment Status</span></div>
                       <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.history[0].payment_mode}-{allData.transaction.payment_status}</span></div>
                     </> : null}
                   </div>

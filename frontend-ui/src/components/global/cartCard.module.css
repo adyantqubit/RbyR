@@ -461,6 +461,12 @@ Reason : Set the font family  */
   flex-direction: column;
 }
 
+.cartEmptyImage{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 768px) {
   .gaping {
     height: 15px;
@@ -503,6 +509,9 @@ Reason : Set the font family  */
   .buttons {
     margin-top: -25px;
     padding: 30px 15px;
+    /* padding: 2px 2px 2px 2px; */
+    margin-right: 4.2%;
+
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;

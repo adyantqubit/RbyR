@@ -5,7 +5,7 @@
     height: auto;
     width:100%;
     background:var(--backgroundColorSecondary);
-    padding-top: 30vh;
+    padding-top: 25vh;
     min-height: 100vh;
     /* overflow-y: scroll; */
 }
@@ -46,7 +46,7 @@
 }
 .itemTitle{
     padding:0 20%;
-    font-size: 30px;
+    font-size: 20px;
     line-height: 32px;
     /* letter-spacing: 3px;
     font-family: 'MyFont'; */
@@ -54,7 +54,7 @@
     margin: 0;
     color: var(--textColorPrimary);
     text-align: center;
-    margin-bottom: 3vh;
+    /* margin-bottom: 3vh; */
      /* Modification and addition by Om Shrivastava on 28-10-23
   Reason : Remove the letter spacing */
   font-family: var(--fontFamily);

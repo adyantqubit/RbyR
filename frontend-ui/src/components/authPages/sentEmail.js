@@ -44,7 +44,7 @@ const SentEmail = () => {
     <div class="mai" style={{height:"50vh"}}>  	
 			<div class="signu">
 				<form  id="password-reset-email-form" onSubmit={handleSubmit}>
-					<label class="labe" aria-hidden="true" style={{fontSize:"1.6rem"}}>Change Password</label>
+					<label class="labe" aria-hidden="true" style={{fontSize:"25px",fontFamily:'var(--fontFamily)'}}>Change Password</label>
 					{error?.non_field_errors? <Alert severity="error" style={{margin:"0 60px"}}>{error?.non_field_errors[0]}</Alert> : ""}
                     {msg.msg ? <Alert severity="success" style={{margin:"0 60px"}}>Sent Successfully,Please Check your 
                     <a href="https://mail.google.com/" style={{fontSize:"16px",textDecoration:"underline",color:"blue"}}> Mail</a>
@@ -61,7 +61,7 @@ const SentEmail = () => {
             {/* Modification and addition by Om Shrivastava on 27-11-23
             Reason : Change the message */}
             {/* Send Email</span> */}
-            Update</span>
+            Send Email</span>
           // End of Modification and addition by Om Shrivastava on 27-11-23
           // Reason : Change the message 
           :

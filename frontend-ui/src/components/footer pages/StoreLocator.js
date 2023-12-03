@@ -28,6 +28,8 @@ const StoreLocator = () => {
     <div>
       <Navbar />
       <div className={style.storeContainer}>
+      <div className='headingFooter'
+      > Store Locator</div>
         <div className={style.row}>
           {storeLocatorDetails.length > 0 ? (
             <>

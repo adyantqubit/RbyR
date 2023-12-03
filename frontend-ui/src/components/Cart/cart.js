@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 import PropTypes from "prop-types";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BsDot } from "react-icons/bs";
+import { BsCartX, BsDot } from "react-icons/bs";
 import { MdClose } from "react-icons/md";
 
 import style from "../global/cartCard.module.css";
@@ -859,30 +859,33 @@ const CartSItem = (props) => {
               );
             })
           ) : (
-            <>
+            <div >
               {/* <div style={{ fontSize: "20px", color: "#7c7c7c", height: "100%", display: "flex", justifyContent: "center" }}>
               <span>Your Bag Is Empty</span>
                <div className={style.buttons} style={{ flexDirection: "column", background: "white" }}>
                 <buton className={style.shopbtn2} style={{ width: "100%", margin: "5px" }} onClick={e => cartChecking()} >Go To Checkout</buton>
               </div> 
             </div> */}
-
+<div className={style.cartEmptyImage}>
+                <BsCartX  style={{width:'80px',height:'100px'}}/>
+              </div>
               <div
                 style={{
                   width: "100%",
-                  minHeight: "60vh",
+                  // minHeight: "60vh",
                   height: "100%",
                   display: "flex",
                   flexDirection: "column",
                   alignContent: "center",
+                  marginTop:'4% auto'
                 }}
               >
                 <span
                   style={{
                     textAlign: "center",
-                    fontSize: "18px",
+                    fontSize: "15px",
                     lineHeight: "24px",
-                    letterSpacing: "1.75px",
+                    letterSpacing: "0.75px",
                     fontWeight: "500",
                   }}
                   className={styles.font}
@@ -893,7 +896,7 @@ const CartSItem = (props) => {
                   className={styles.shopbtn2}
                   style={{
                     width: "70%",
-                    margin: "5px auto",
+                    margin: "1% auto",
                     fontSize: "14px",
                     cursor: "pointer",
                     letterSpacing: "2px",
@@ -904,13 +907,15 @@ const CartSItem = (props) => {
                     fontWeight: "normal",
                     textTransform: "uppercase",
                     padding: "10px 18px",
+                    fontFamily : 'var(--fontFamily)'
                   }}
                   onClick={(e) => nav("/")}
                 >
                   BROWSE OUR CATALOG
                 </buton>
               </div>
-            </>
+              
+            </div>
           )}
 
           {cart.length > 0 ? (

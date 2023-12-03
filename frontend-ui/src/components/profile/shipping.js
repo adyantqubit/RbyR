@@ -357,27 +357,27 @@ function validatesNum(evt) {
             }}>
             <div className={styles.columnitem1content1} >
                 <div className={styles.columnFirstName}>
-                        <label className={styles.firstName} htmlFor='first'>FIRST NAME *</label>
+                        <label className={styles.firstName} htmlFor='first'>First Name<span style={{color:'red'}}>*</span></label>
       
                         <input className={styles.firstInput} defaultValue={defaultShiping.firstname} onKeyPress={validate} name='firstb' required/>
                         
                     </div>
                     <div className={styles.columnFirstName}>
-                        <label className={styles.firstName} htmlFor='b'>LAST NAME *</label>
+                        <label className={styles.firstName} htmlFor='b'>Last Name<span style={{color:'red'}}>*</span></label>
                         <input className={styles.firstInput} name='lastb' onKeyPress={validate} defaultValue={defaultShiping.lastname} required/>
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFullName}>
                         
-                        <label className={styles.firstName}  htmlFor='street'>Street name *</label>
+                        <label className={styles.firstName}  htmlFor='street'>Street Name<span style={{color:'red'}}>*</span></label>
 
                         <input className={styles.firstInput} id="street" onKeyPress={e=>validateWhitespace(e,"street")} name='streetb' defaultValue={defaultShiping.street} required/>
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFullName}>
-                        <label className={styles.firstName} htmlFor='street'>House/Apartment number *</label>
+                        <label className={styles.firstName} htmlFor='street'>House/Apartment Number<span style={{color:'red'}}>*</span></label>
 
                         <input className={styles.firstInput} id="house" onKeyPress={e=>validateWhitespace(e,"house")} name='flatnob' maxLength={10} defaultValue={defaultShiping.houseno} required/>
                         
@@ -385,26 +385,26 @@ function validatesNum(evt) {
                 </div>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFirstName}>
-                        <label className={styles.firstName} htmlFor='first'>City *</label>
+                        <label className={styles.firstName} htmlFor='first'>City<span style={{color:'red'}}>*</span></label>
 
                         <input className={styles.firstInput} id="city" onKeyPress={e=>validateWhitespace(e,"city")} name='cityb' defaultValue={defaultShiping.city} required/>
                         
                     </div>
                     <div className={styles.columnFirstName}>
-                        <label className={styles.firstName} htmlFor='last'>State / Province</label>
+                        <label className={styles.firstName} htmlFor='last'>State / Province<span style={{color:'red'}}>*</span></label>
                         <input className={styles.firstInput} id="state" onKeyPress={e=>validateWhitespace(e,"state")}  name='stateb' defaultValue={defaultShiping.state} required/>
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFirstName}>
-                        <label className={styles.firstName} htmlFor='first'>Zip-code *</label> 
+                        <label className={styles.firstName} htmlFor='first'>Zip-code<span style={{color:'red'}}>*</span></label> 
                         <input className={styles.firstInput} name='pincodeb' onKeyPress={validatesPin} maxLength={6} defaultValue={defaultShiping.zipcode} required/>
                         {isAlertVisiblepin&&<span asp-validation-for="Code" class="text-danger col-sm-4">{pinerror} </span>}
 
                     </div>
 
                     <div className={styles.columnFirstName}>
-                    <label className={styles.firstName} htmlFor='last'>Country *</label>
+                    <label className={styles.firstName} htmlFor='last'>Country<span style={{color:'red'}}>*</span></label>
                         {defaultShiping.zipcode? <select className={styles.firstInput} defaultValue={defaultShiping.country} onChange={changeHandler}>
                          {list.map(l=>{
                              return <option value={l.label}>{l.label}</option>
@@ -425,7 +425,7 @@ function validatesNum(evt) {
                 </div>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFullName}>
-                        <label className={styles.firstName} htmlFor='street'>Phone Number *</label>
+                        <label className={styles.firstName} htmlFor='street'>Phone Number<span style={{color:'red'}}>*</span></label>
                        
                         <PhoneInput
                             international
