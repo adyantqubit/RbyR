@@ -81,23 +81,25 @@ const ResetPassword = () => {
 					{error!=null ? <Alert severity="error" style={{margin:"0 60px"}}>{error.non_field_errors}</Alert> : ""}
                     {msg.msg ? <Alert severity="success"  style={{margin:"0 50px"}}>Successfully changed</Alert> : ""}
 										
-           <span class="inpu3" style={{margin:"20px 0",marginLeft:"15%",background:"#e0dede"}}>
+           <div class="inpu3" style={{marginTop:"20px",marginLeft:"15%",background:"#e0dede"}}>
 						<input class="inpu4" type={showNewPass2?"text":"password"} name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-						 required style={{width:"80%",outline:"none",border:"none"}} 
+						  style={{width:"80%",outline:"none",border:"none"}} 
 						 onChange={e=>{if(e.target.value.length>0)setVisiblePassreg2(true); else setVisiblePassreg2(false)}}/>
 			      {visiblepassReg2?showNewPass2?<AiFillEye style={{marginTop:"5px"}} onClick={e=>setNewPass2(false)}/>:<AiFillEyeInvisible style={{marginTop:"5px"}} onClick={e=>setNewPass2(true)}/>:null}
-            {error!=null&&error.password?<Typography style={{color:"red",paddingLeft:"70px",fontSize:10}}>{error.password[0]}</Typography>:" "}
-            </span>
+            
+            </div>
+            {error!=null&&error.password?<Typography style={{color:"red",paddingLeft:"70px",fontSize:12}}>{error.password[0]}</Typography>:" "}
 
 
 					{/* <input style={{marginBottom:"0"}} class="inpu" type="password" name="pswd" placeholder="Password" required=""/> */}
 
 
-            <span class="inpu3" style={{margin:"20px 0",marginLeft:"15%",background:"#e0dede"}}>
-							<input class="inpu4" type={showNewPass?"text":"password"} name="pswd2" placeholder="Confim Password"   required style={{width:"80%",outline:"none",border:"none"}} onChange={e=>{if(e.target.value.length>0)setVisiblePassreg(true); else setVisiblePassreg(false)}}/>
+            <div class="inpu3" style={{marginTop:"20px",background:"#e0dede"}}>
+							<input class="inpu4" type={showNewPass?"text":"password"} name="pswd2" placeholder="Confim Password"    style={{outline:"none",border:"none"}} onChange={e=>{if(e.target.value.length>0)setVisiblePassreg(true); else setVisiblePassreg(false)}}/>
 			        {visiblepassReg?showNewPass?<AiFillEye style={{marginTop:"5px"}} onClick={e=>setNewPass(false)}/>:<AiFillEyeInvisible style={{marginTop:"5px"}} onClick={e=>setNewPass(true)}/>:null}
-              {error!=null&&error.password2?<Typography style={{color:"red",paddingLeft:"70px",fontSize:10}}>{error.password2[0]}</Typography>:" "}
-            </span>
+              
+            </div>
+            {error!=null&&error.password2?<Typography style={{color:"red",paddingLeft:"70px",fontSize:12}}>{error.password2[0]}</Typography>:" "}
 					{/* <input style={{marginBottom:"0"}} class="inpu" type="password" name="pswd2" placeholder="Confirm Password" required=""/> */}
 
 					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button class="butto" style={{backgroundColor:"var(--btnBackgroundColorPrimary)",color:'var(--btnTextColorPrimary)',border:'1px solid var(--btnBorderColorPrimary)'}} type='submit'>Update</button>}

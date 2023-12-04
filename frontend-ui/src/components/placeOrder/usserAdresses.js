@@ -10,7 +10,7 @@ import { CartState } from '../../context';
 import { Typography } from '@mui/material';
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
-import { billingcheckApi, shpingcheckApi } from '../../api/service';
+import { ShippingGetApi, billingcheckApi, shpingcheckApi } from '../../api/service';
 import { getToken } from '../../Redux-manage/services/localStorageService';
 import { Modal, notification } from 'antd';
 import Select from 'react-select'
@@ -40,6 +40,29 @@ const UsserAdresses = () => {
 
 
     const options = countryList().getData()
+
+    /**
+     * Added by - Ashish Dewangan on 03-12-2023
+     * Reason - To set default shipping address
+     */
+    const [selectedShippingAddress,setSelectedShippingAddress]=useState({})
+
+    useEffect(()=>{
+        fillDefaultShippingAddress()
+    },[])
+
+    const fillDefaultShippingAddress = async ()=>{
+        var access=localStorage.getItem('access_token')
+        const response = await ShippingGetApi({access})
+       
+        if(response && response?.length>0){
+           setSelectedShippingAddress( response.filter(s=>s.isSelected==true)[0])
+        }
+    }
+    /**
+     * End of code addition by - Ashish Dewangan on 03-12-2023
+     * Reason - To set default shipping address
+     */
 
 
     const changeHandler = value => {
@@ -446,7 +469,7 @@ const UsserAdresses = () => {
                                     </>
                                     :
                                     <>
-                                        <input className={styles.firstInput} maxLength={19} autocomplete="nope" name='first' id="first" onKeyPress={validate} onChange={e=>setRequired({})}/>
+                                        <input className={styles.firstInput} maxLength={19} autocomplete="nope" name='first' id="first" onKeyPress={validate} onChange={e=>setRequired({})} defaultValue={selectedShippingAddress.firstname}/>
                                         {required.first ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
 
                                         {/* {error.efirst?<Typography style={{color:"red",fontSize:"13px"}}>This Field is required</Typography>:null} */}
@@ -462,7 +485,7 @@ const UsserAdresses = () => {
                                     </>
                                     :
                                     <>
-                                        <input className={styles.firstInput} name='last' autocomplete="nope" id='last' maxLength={19} onChange={e=>setRequired({})} onKeyPress={validate} />
+                                        <input className={styles.firstInput} name='last' autocomplete="nope" id='last' maxLength={19} onChange={e=>setRequired({})} onKeyPress={validate} defaultValue={selectedShippingAddress.lastname} />
                                         {required.last ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
                                     </>
                                 }
@@ -480,7 +503,7 @@ const UsserAdresses = () => {
                                     </>
                                     :
                                     <>
-                                        <input className={styles.firstInput} id="street" autocomplete="nope" maxLength={180} onKeyPress={e => validateWhitespace(e, "street")} onChange={e=>setRequired({})} name='street' />
+                                        <input className={styles.firstInput} id="street" autocomplete="nope" maxLength={180} onKeyPress={e => validateWhitespace(e, "street")} onChange={e=>setRequired({})} name='street' defaultValue={selectedShippingAddress.street}/>
                                         {required.street ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
                                     </>}
                             </div>
@@ -495,7 +518,7 @@ const UsserAdresses = () => {
                                     </>
                                     :
                                     <>
-                                        <input className={styles.firstInput} id="flatno" autocomplete="nope" onKeyPress={e => validateWhitespace(e, "flatno")} onChange={e=>setRequired({})} name='flatno' maxLength={10} />
+                                        <input className={styles.firstInput} id="flatno" autocomplete="nope" onKeyPress={e => validateWhitespace(e, "flatno")} onChange={e=>setRequired({})} name='flatno' maxLength={10} defaultValue={selectedShippingAddress.houseno}/>
                                         {required.flatno ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
                                     </>
                                 }
@@ -511,7 +534,7 @@ const UsserAdresses = () => {
                                     </>
                                     :
                                     <>
-                                        <input className={styles.firstInput} id="city" maxLength={29} autocomplete="nope" onKeyPress={e => validateWhitespace(e, "city")} onChange={e=>setRequired({})} name='city' />
+                                        <input className={styles.firstInput} id="city" maxLength={29} autocomplete="nope" onKeyPress={e => validateWhitespace(e, "city")} onChange={e=>setRequired({})} name='city' defaultValue={selectedShippingAddress.city}/>
                                         {required.city ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
                                     </>
                                 }
@@ -525,7 +548,7 @@ const UsserAdresses = () => {
                                     </>
                                     :
                                     <>
-                                        <input className={styles.firstInput} id="state" maxLength={29} autocomplete="nope" onKeyPress={e => validateWhitespace(e, "state")} onChange={e=>setRequired({})} name='state' />
+                                        <input className={styles.firstInput} id="state" maxLength={29} autocomplete="nope" onKeyPress={e => validateWhitespace(e, "state")} onChange={e=>setRequired({})} name='state' defaultValue={selectedShippingAddress.state}/>
                                         {required.state ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
 
                                     </>
@@ -542,7 +565,7 @@ const UsserAdresses = () => {
                                     </>
                                     :
                                     <>
-                                        <input className={styles.firstInput} name='pincode' id='pincode' autocomplete="nope" onKeyPress={validatesPin} onKeyUp={validatesPin} onChange={e=>setRequired({})} maxLength={6} />
+                                        <input className={styles.firstInput} name='pincode' id='pincode' autocomplete="nope" onKeyPress={validatesPin} onKeyUp={validatesPin} onChange={e=>setRequired({})} maxLength={6} defaultValue={selectedShippingAddress.zipcode}/>
                                         {required.pincode ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
                                         {isAlertVisiblepin && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{pinerror}</span>}
                                     </>
@@ -591,7 +614,7 @@ const UsserAdresses = () => {
                                     <PhoneInput
                                         international
                                         placeholder="phone number"
-                                        value={`+91`}
+                                        value={selectedShippingAddress.number}
                                         defaultCountry="IN"
                                         className={styles.firstInput}
                                         // style={{width:"70%",marginLeft:"15%"}}

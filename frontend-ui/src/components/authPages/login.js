@@ -107,15 +107,14 @@ const Login = () => {
 	const handleSubmit2 = async (e) => {
 		e.preventDefault();
 		const data = new FormData(e.currentTarget);
-
-		if (value.split(" ").join("").length < 11) {
-			setServerError({ "contact_number": ["Minimum 8 digits are required."] })
-		}
-		else {
+		// if (value==undefined || value.trim()=="" || value.split(" ").join("").length < 13) {
+		// 	setServerError({ "contact_number": ["Minimum 10 digits are required."] })
+		// }
+		// else {
 			const actualData = {
 				name: data.get('txt'),
 				email: data.get('email').toLowerCase(),
-				contact_number: value,
+				contact_number: value!=undefined?value:"",
 				password: data.get('pswd'),
 				password2: data.get('pswd2'),
 				tc: data.get('tc'),
@@ -134,7 +133,7 @@ const Login = () => {
 				navigate('/')
 
 			}
-		}
+		// }
 	}
 
 	function validates(evt) {
@@ -170,7 +169,7 @@ const Login = () => {
 							<label style={{color:'rgb(59 59 224)'}} class="labe" htmlFor="ch" aria-hidden="true">Sign up</label>
 
 							<div style={{ fontSize: "14px", marginLeft: "15%" }}>Name<span style={{color:'red'}}>*</span></div>
-							<input class="inpu2" type="text" name="txt" placeholder="User name" required />
+							<input class="inpu2" type="text" name="txt" placeholder="User name"  />
 
 							<div style={{ height: "20px" }}>
 								{server_error.name ? <Typography style={{ color: "red", fontSize: "14px", marginBottom: "10px", marginLeft: "15%" }}>{server_error.name[0]}</Typography> : " "}
@@ -178,7 +177,7 @@ const Login = () => {
 							</div>
 
 							<div style={{ fontSize: "14px", marginLeft: "15%" }}>Email<span style={{color:'red'}}>*</span></div>
-							<input class="inpu2" type="email" name="email" placeholder="Email" required />
+							<input class="inpu2" type="email" name="email" placeholder="Email"  />
 							<div style={{ height: "20px" }}>
 								{server_error.email ? <Typography style={{ color: "red", fontSize: "14px", marginBottom: "10px", marginLeft: "15%" }}>
 									{server_error.email[0]}
@@ -207,13 +206,14 @@ const Login = () => {
 							<span class="inpu3" style={{ marginBottom: "0", flexDirection: "column", height: "auto", paddingLeft: "0px", gap: "10px" }}>
 								<span class="inpu4" style={{ width: "100%" }}>
 									<input class="inpu4" type={showNewPass2 ? "text" : "password"} name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-										required style={{ width: "90%", border: "none" }}
+										 style={{ width: "90%", border: "none" }}
 										onChange={e => { if (e.target.value.length > 0) setVisiblePassreg2(true); else setVisiblePassreg2(false) }} />
 								
 									{visiblepassReg2 ? showNewPass2 ? <AiFillEye style={{ marginTop: "5px" }} onClick={e => setNewPass2(false)} /> : <AiFillEyeInvisible style={{ marginTop: "5px" }} onClick={e => setNewPass2(true)} /> : null}
 								</span>
+								
 								<span class="inpu4" style={{ width: "100%" }}>
-									<input class="inpu4" type={showNewPass ? "text" : "password"} name="pswd2" placeholder="Confirm Password" required
+									<input class="inpu4" type={showNewPass ? "text" : "password"} name="pswd2" placeholder="Confirm Password" 
 										style={{ width: "90%", border: "none" }}
 										onChange={e => { if (e.target.value.length > 0) setVisiblePassreg(true); else setVisiblePassreg(false) }} />
 									{visiblepassReg ? showNewPass ? <AiFillEye style={{ marginTop: "5px" }} onClick={e => setNewPass(false)} /> : <AiFillEyeInvisible style={{ marginTop: "5px" }} onClick={e => setNewPass(true)} /> : null}
@@ -224,14 +224,15 @@ const Login = () => {
 
 							{server_error.password ? <Typography style={{ color: "red", fontSize: "14px", marginLeft: "15%" }}>{server_error.password[0]}</Typography> : " "}
 
-							{server_error.tc ? <span style={{ color: "red", fontSize: "14px", marginLeft: "15%" }}>Please accept terms and conditions</span> : " "}
+							
 
 
 							{/* {server_error.password2?<Typography style={{color:"red",paddingLeft:10,fontSize:10,position:"absolute",top:"310px",left:"150px",right:"0",fontSize:"0.8rem"}}>{server_error.password2[0]}</Typography>:" "} */}
 
 							<FormControlLabel style={{ paddingLeft: "70px" }} control={<Checkbox style={{color:'green'}} value={true} name="tc" id="tc" />} label={<span style={{ fontSize: '0.8rem' }}>
 								<Link to="/termAndCondition#Terms_and_Conditions" target="_blank" title='Terms and Condition' style={{ fontSize: "12px", textDecoration: "underline", letterSpacing: "1.2px",color:'rgb(59 59 224)' }}> I accept terms and conditions.</Link>
-							</span>} />
+							</span>} /><br/>
+							{server_error.tc ? <Typography style={{ color: "red", fontSize: "14px", marginLeft: "15%" }}>Please accept terms and conditions</Typography> : " "}
 
 							{isLoading ? <CircularProgress style={{ margin: "20px", marginLeft: "140px" }} /> : <button style={{ paddingTop: "0", marginTop: "0" }} class="butto" type='submit'>Sign up</button>}
 
@@ -246,7 +247,7 @@ const Login = () => {
 							{/* {error.none_field_errors? <Alert severity="error"  style={{margin:"0 45px"}}>{error.none_field_errors[0]}</Alert>:" "} */}
 
 							<input class="inpu" type="email" tabIndex={-1} style={{ marginBottom: "0", background: "white" }} name="email" placeholder="E-mail*" required="" />
-							{error.email ? <Typography style={{ color: "red", paddingLeft: "50px", fontSize: "12px", }}>{error.email[0]}</Typography> : " "}
+							{error.email ? <Typography style={{ color: "red", paddingLeft: "50px", fontSize: "14px", }}>{error.email[0]}</Typography> : " "}
 							{error.none_field_errors ? <Typography style={{ color: "red", width: "80%", paddingLeft: "50px", marginTop: "5px", fontSize: "12px", lineHeight: "12px" }}>{error.none_field_errors[0]}
 								<Link to="/custom" style={{ color: "blue", fontSize: "12px", textDecoration: "underline" }}> Contact us</Link></Typography> : " "}
 
@@ -254,7 +255,7 @@ const Login = () => {
 								<input class="inpu4" tabIndex={-1} type={showNewPass3 ? "text" : "password"} style={{ width: "90%", background: "transparent", height: "40px", border: "none" }} name="pswd" placeholder="Password*" required="" onChange={e => { if (e.target.value.length > 0) setVisiblePassreg3(true); else setVisiblePassreg3(false) }} />
 								{visiblepassReg3 ? showNewPass3 ? <AiFillEye style={{ marginTop: "10px", marginRight: "5px" }} onClick={e => setNewPass3(false)} /> : <AiFillEyeInvisible style={{ marginTop: "10px", marginRight: "5px" }} onClick={e => setNewPass3(true)} /> : null}
 							</span>
-							{error.password ? <Typography style={{ color: "red", paddingLeft: "50px", fontSize: "12px" }}>{error.password[0]}</Typography> : " "}
+							{error.password ? <Typography style={{ color: "red", paddingLeft: "50px", fontSize: "14px" }}>{error.password[0]}</Typography> : " "}
 							<Link to='/sendemail' tabIndex={-1} style={{ marginLeft: "50%", fontSize: "1em", color: "rgb(59 59 224)" }} class="underlineput">Forgot Password ?</Link>
 
 							{isLoading ? <CircularProgress style={{ margin: "20px", marginLeft: "140px" }} /> : <button tabIndex={-1} class="butto" type='submit'>Login</button>}
@@ -263,6 +264,7 @@ const Login = () => {
 
 						</form>
 					</div>
+					
 				</div>
 			</div>
 		</>

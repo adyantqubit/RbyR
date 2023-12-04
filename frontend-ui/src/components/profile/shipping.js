@@ -81,7 +81,7 @@ const handleButtonClicknum = (msg) => {
          shipTick(s.id)
         // setCond(!cond)
         setDefaultShipping(s)
-        setShippingAddress(shippingAddress.sort((a,b)=>b.id-a.id))
+        // setShippingAddress(shippingAddress.sort((a,b)=>b.id-a.id))
         // console.log(shippingAddress.sort((a,b)=>a.id-b.id))
     }
 
@@ -317,17 +317,16 @@ function validatesNum(evt) {
                 {shippingAddress!=null&&shippingAddress.length>0?
 
                 shippingAddress.map((s,i)=>(
-                    <div className={styles.columnFirstName} onClick={e=>setAddress(s)}>
-                        {console.log(s,"-",i)}
-                        <div className={styles.boxAddress}>
+                    <div className={styles.columnFirstName} >
+                        <div className={styles.boxAddress} onClick={e=>setAddress(s)}>
                            
-                            <div className={styles.addressInformation}>
-                            <div ><span className={styles.userinfoText}> {s.firstname} {s.lastname}</span></div>
-                            <div ><span className={styles.userinfoText}>{s.street} </span><span className={styles.userinfoText2}>{s.houseno},</span></div>
-                            <div ><span className={styles.userinfoText}>{s.city} - </span><span className={styles.userinfoText2}>{s.zipcode},</span></div>
-                            <div ><span className={styles.userinfoText}>{s.state} </span></div>
-                            <div ><span className={styles.userinfoText}>{s.country}</span></div>
-                            <div ><span className={styles.userinfoText}>{s.number}</span></div>
+                            <div className={styles.addressInformation} >
+                            <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}> {s.firstname} {s.lastname}</div>
+                            <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}> {s.street} {s.houseno}</div>
+                            <div className={styles.userinfoText} style={{overflowWrap:"break-word"}}>{s.city} - {s.zipcode},</div>
+                            <div className={styles.userinfoText} style={{overflowWrap:"break-word"}}>{s.state} </div>
+                            <div className={styles.userinfoText} style={{overflowWrap:"break-word"}}>{s.country}</div>
+                            <div className={styles.userinfoText} style={{overflowWrap:"break-word"}}>{s.number}</div>
                             </div>
                             <div className={styles.adressTick}>
                             {/* <span className={styles.userinfoText2} style={{textDecoration:"underline"}}>Edit</span> */}

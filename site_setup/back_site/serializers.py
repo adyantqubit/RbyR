@@ -38,10 +38,12 @@ class image_serializer(serializers.ModelSerializer):
         
 class UserRegistrationSerializer(serializers.ModelSerializer):
 
-    password = serializers.CharField(write_only=True, required=True)
-    password2=serializers.CharField(style={'input_type':'password'},write_only=True)
+    password = serializers.CharField(write_only=True, required=True,error_messages={'blank': 'Please enter password.'})
+    password2=serializers.CharField(style={'input_type':'password'},write_only=True,error_messages={'blank': 'Please enter confirm password.'})
+    email=serializers.EmailField(max_length=255,error_messages={'blank': 'Please enter email id.'})
+    name=serializers.CharField(max_length=200,error_messages={'blank': 'Please enter name.'})
+    contact_number=serializers.CharField(max_length=20,error_messages={'blank': 'Please enter phone number.'})
     
-
     class Meta:
         model = User
         fields = ('email','name','password','password2','contact_number','tc')
@@ -61,11 +63,11 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         
         
 class UserLoginSerializer(serializers.ModelSerializer):
-    email=serializers.EmailField(max_length=255,error_messages={'blank': 'This field cannot be left blank.'})
+    email=serializers.EmailField(max_length=255,error_messages={'blank': 'Please enter email id.'})
     class Meta:
         model=User
         fields=['email','password']
-        extra_kwargs = {'password': {'error_messages': {'blank': 'This field cannot be left blank.'}}}
+        extra_kwargs = {'password': {'error_messages': {'blank': 'Please enter password.'}}}
     
         
         
@@ -101,7 +103,7 @@ class UserChangePasswordSerializer(serializers.ModelSerializer):
       
       
 class SendPasswordResetEmailSerializer(serializers.Serializer):
-    email=serializers.EmailField(max_length=255)
+    email=serializers.EmailField(max_length=255,error_messages={'blank': 'Please enter email id.'})
     class Meta:
         model=User
         fields=['email'] 
@@ -136,8 +138,8 @@ class SendPasswordResetEmailSerializer(serializers.Serializer):
  
         
 class UserPasswordResetSerializer(serializers.ModelSerializer):
-      password=serializers.CharField(max_length=255,style={'input_type':'password'},write_only=True)
-      password2=serializers.CharField(max_length=255,style={'input_type':'password'},write_only=True)
+      password=serializers.CharField(max_length=255,style={'input_type':'password'},write_only=True,error_messages={'blank': 'Please enter password.'})
+      password2=serializers.CharField(max_length=255,style={'input_type':'password'},write_only=True,error_messages={'blank': 'Please enter confirm password.'})
       class Meta:
           model=User
           fields=['password','password2']

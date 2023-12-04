@@ -51,7 +51,7 @@ const SentEmail = () => {
                     </Alert> : ""}
 					
 					<input style={{marginBottom:"0"}} class="inpu" type="email" name="email" placeholder=" Registered Email" required="" onChange={e=>setMsg({})}/>
-					{error?.email?<Typography style={{color:"red",paddingLeft:"70px",fontSize:"0.8rem"}}>{error?.email[0]}</Typography>:" "}
+					{error?.email?<Typography style={{color:"red",paddingLeft:"70px",fontSize:"14px"}}>{error?.email[0]}</Typography>:" "}
 
 					{isLoading?
           <span class="butto" style={{
