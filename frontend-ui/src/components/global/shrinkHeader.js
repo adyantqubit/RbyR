@@ -341,8 +341,8 @@ const ShrinkHeader = () => {
           {menu?.filter(f => f.name == "LOGOUT").length > 0 ?
             <Link to="" className={style.drawerMenu} >
               <div style={{ width: "100%" }} >
-                <div style={{ color: "var(--textColorPrimary)", letterSpacing: "1.2px", width: "100%", textAlign: "center" }}> <CgProfile style={{ margin: "0 10px 0 0" }} />{userdata.name}</div>
-                <div style={{ color: "var(--textColorSecondary)", letterSpacing: "1.2px", width: "100%", textAlign: "center" }}>
+                <div style={{ color: "var(--textColorPrimary)", letterSpacing: "1.2px", width: "100%", textAlign: "center" ,wordBreak:"break-all",whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}> <CgProfile style={{ margin: "0 10px 0 0" }} />{userdata.name}</div>
+                <div style={{ color: "var(--textColorSecondary)", letterSpacing: "1.2px", width: "100%", textAlign: "center",whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis" }}>
                 <MdOutlineEmail style={{ margin: "0 10px 0 0" }} />
                   {userdata.email}
                   

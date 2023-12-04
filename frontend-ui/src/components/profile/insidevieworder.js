@@ -357,13 +357,16 @@ console.log(allData,'checkkkkkk')
                       Reason - To show image from product orders not from items */}
                     </div>
                     <div className={style.dataContainer} >
-                      <div className={`${style.rowitem2} ${style.itemName}`} >
+                      <div className={`${style.rowitem2} ${style.itemName}`} style={{fontSize:'13px',fontWeight:'bold'}} >
                           {/* Commented and modified by - Ashish Dewangan on 29-11-2023
                           Reason - To show product name which was at the time of purchase */}
                           {/* {s.title} ({SizeGetter(s.size)}) */}
-                          <span className={style.userinfoText3} style={{whiteSpace:"nowrap",fontSize:'13px',fontWeight:'bold'}} >
+                          
+                          <div className={style.userinfoText3} style={{display:"-webkit-box",WebkitBoxOrient:"vertical",WebkitLineClamp:"2", width:"80%", overflow:"hidden",textOverflow:"ellipsis",wordBreak:"break-all",textAlign:"left"}}>
                              {s.product_name.toLowerCase()}
-                              ({SizeGetter(s.size)})</span>
+                             
+                                </div>
+                           <span style={{textAlign:"left"}}>({SizeGetter(s.size)})</span>     
                           {/* Commented and modified by - Ashish Dewangan on 29-11-2023
                           Reason - To show product name which was at the time of purchase */}
                       </div>
@@ -438,10 +441,10 @@ console.log(allData,'checkkkkkk')
                       <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.shipping.street} </span><span className={styles.userinfoText2} style={{ color: "black" }}>{allData.shipping.houseno},</span></div>
                       <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.shipping.city} - </span><span className={styles.userinfoText2} style={{ color: "black" }}>{allData.shipping.zipcode},</span></div>
                       <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.shipping.state} </span></div> */}
-                      <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.transaction.firstname} {allData.transaction.lastname}</span></div>
-                      <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.transaction.street} </span><span className={styles.userinfoText2} style={{ color: "black" }}>{allData.transaction.houseno},</span></div>
-                      <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.transaction.city} - </span><span className={styles.userinfoText2} style={{ color: "black" }}>{allData.transaction.zipcode},</span></div>
-                      <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.transaction.state} </span></div>
+                      <div ><span className={styles.userinfoText} style={{ color: "black",wordBreak:"break-all" }}>{allData.transaction.firstname} {allData.transaction.lastname}</span></div>
+                      <div ><span className={styles.userinfoText} style={{ color: "black",wordBreak:"break-all" }}>{allData.transaction.street} </span><span className={styles.userinfoText2} style={{ color: "black" }}>{allData.transaction.houseno},</span></div>
+                      <div ><span className={styles.userinfoText} style={{ color: "black",wordBreak:"break-all" }}>{allData.transaction.city} - </span><span className={styles.userinfoText2} style={{ color: "black" }}>{allData.transaction.zipcode},</span></div>
+                      <div ><span className={styles.userinfoText} style={{ color: "black",wordBreak:"break-all" }}>{allData.transaction.state} </span></div>
                     {/* End of code modification by - Ashish Dewangan on 29-11-2023
                     Reason - To show shipping details from trasaction history instead of shipping table */}
                     </>
@@ -452,10 +455,10 @@ console.log(allData,'checkkkkkk')
                     <div ><span style={{fontWeight:'bold'}} className={styles.userinfoText} >Billing Address</span></div>
 
                     {allData != null ? <>
-                      <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.billing.firstname} {allData.billing.lastname}</span></div>
-                      <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.billing.street} </span><span className={styles.userinfoText2} style={{ color: "black" }}>{allData.billing.houseno},</span></div>
-                      <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.billing.city} - </span><span className={styles.userinfoText2} style={{ color: "black" }}>{allData.billing.zipcode},</span></div>
-                      <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.billing.state} </span></div>
+                      <div ><span className={styles.userinfoText} style={{ color: "black" ,wordBreak:"break-all" }}>{allData.billing.firstname} {allData.billing.lastname}</span></div>
+                      <div ><span className={styles.userinfoText} style={{ color: "black" ,wordBreak:"break-all"}}>{allData.billing.street} </span><span className={styles.userinfoText2} style={{ color: "black" }}>{allData.billing.houseno},</span></div>
+                      <div ><span className={styles.userinfoText} style={{ color: "black" ,wordBreak:"break-all"}}>{allData.billing.city} - </span><span className={styles.userinfoText2} style={{ color: "black" }}>{allData.billing.zipcode},</span></div>
+                      <div ><span className={styles.userinfoText} style={{ color: "black" ,wordBreak:"break-all"}}>{allData.billing.state} </span></div>
                     </>
                       : null}
                   </div>

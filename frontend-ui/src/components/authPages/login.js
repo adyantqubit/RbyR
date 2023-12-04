@@ -180,7 +180,12 @@ const Login = () => {
 							<input class="inpu2" type="email" name="email" placeholder="Email" maxLength={250} />
 							<div style={{ height: "20px" }}>
 								{server_error.email ? <Typography style={{ color: "red", fontSize: "14px", marginBottom: "10px", marginLeft: "15%" }}>
-									{server_error.email[0]}
+									{server_error.email[0]?.toLowerCase().trim()=="This field may not be blank.".toLowerCase().trim()
+									?
+									<span>{"Please enter email id."}</span>
+									:
+									server_error.email[0]
+									}
 								</Typography>
 									: " "}
 

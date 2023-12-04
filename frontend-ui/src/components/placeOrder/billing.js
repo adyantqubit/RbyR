@@ -307,39 +307,29 @@ const Billing = () => {
                   <div className={styles.headerTexts}>
                     <div className={styles.columnitem1head}>BILLING TO</div>
                     <hr style={{ color: "black" }}></hr>
-                    <div>
-                      <span className={styles.userinfoText2}>
+                    <div style={{wordBreak:"break-all"}} className={styles.userinfoText2}>
+                      
                         {" "}
                         {checkoutDetails.billingData.firstname}{" "}
                         {checkoutDetails.billingData.lastname}
-                      </span>
+                   
                     </div>
-                    <div>
-                      <span className={styles.userinfoText2}>
+                    <div style={{wordBreak:"break-all"}} className={styles.userinfoText2}>
                         {" "}
                         {checkoutDetails.billingData.street},{" "}
                         {checkoutDetails.billingData.houseno}
-                      </span>
-                      <span className={styles.userinfoText2}>
                         {" "}
                         {checkoutDetails.billingData.city},{" "}
-                      </span>
                     </div>
-                    <div>
-                      <span className={styles.userinfoText2}>
+                    <div style={{wordBreak:"break-all"}} className={styles.userinfoText2}>
                         {" "}
                         {checkoutDetails.billingData.state},{" "}
-                      </span>
-                      <span className={styles.userinfoText2}>
                         {" "}
                         {checkoutDetails.billingData.country},{" "}
-                      </span>
                     </div>
-                    <div>
-                      <span className={styles.userinfoText2}>
+                    <div style={{wordBreak:"break-all"}} className={styles.userinfoText2}>
                         {" "}
                         {checkoutDetails.billingData.number}
-                      </span>
                     </div>
                   </div>
 
@@ -401,15 +391,21 @@ const Billing = () => {
                       <div className={styles.columnitem1head}>SHIPPING TO</div>
                       <hr style={{ color: "black" }}></hr>
 
-                      <div className={styles.userinfoText2}>
+                      <div className={styles.userinfoText2} style={{wordBreak:"break-all"}}>
                         {checkoutDetails.shippingData.firstname}{" "}
                         {checkoutDetails.shippingData.lastname},{" "}
+                        </div>
+                        <div className={styles.userinfoText2} style={{wordBreak:"break-all"}}>
                         {checkoutDetails.shippingData.street}{" "}
                         {checkoutDetails.shippingData.houseno},{" "}
                         {checkoutDetails.shippingData.city} -
                         {checkoutDetails.shippingData.zipcode},{" "}
+                        </div>
+                        <div className={styles.userinfoText2} style={{wordBreak:"break-all"}}>
                         {checkoutDetails.shippingData.state}{" "}
                         {checkoutDetails.shippingData.country},{" "}
+                        </div>
+                        <div className={styles.userinfoText2} style={{wordBreak:"break-all"}}>
                         {checkoutDetails.shippingData.number}
                       </div>
                     </div>

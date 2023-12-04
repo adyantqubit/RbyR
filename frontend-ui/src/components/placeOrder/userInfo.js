@@ -75,7 +75,7 @@ const UserInfo = () => {
         
         </div>
         <div className={styles.usedetailShow}>
-            <div ><span style={{fontSize:'14px'}} className={styles.userinfoText}>Username:</span><span style={{fontSize:'14px'}}  className={styles.userinfoText2}> {checkoutDetails.userInfo.firstname} {checkoutDetails.userInfo.lastname}</span></div>
+            <div ><span style={{fontSize:'14px'}} className={styles.userinfoText}>Username:</span><span style={{fontSize:'14px',wordBreak:"break-all"}}  className={styles.userinfoText2}> {checkoutDetails.userInfo.firstname} {checkoutDetails.userInfo.lastname}</span></div>
             <div ><span style={{fontSize:'14px'}} className={styles.userinfoText}>Email Address:</span><span style={{fontSize:'14px'}}  className={styles.userinfoText2}> {checkoutDetails.userInfo.email}</span></div>
         </div>
     </div>

@@ -864,12 +864,12 @@ const UsserAdresses = () => {
                         <div className={styles.columnFirstName}>
                             <div className={styles.boxAddress}>
                                 <div className={styles.addressInformation}>
-                                    <div ><span className={styles.userinfoText3}>{checkoutDetails.shippingData.firstname} {checkoutDetails.shippingData.lastname}</span></div>
-                                    <div ><span className={styles.userinfoText3}>{checkoutDetails.shippingData.street} </span><span className={styles.userinfoText2}>{checkoutDetails.shippingData.houseno},</span></div>
-                                    <div ><span className={styles.userinfoText3}>{checkoutDetails.shippingData.city} - </span><span className={styles.userinfoText2}>{checkoutDetails.shippingData.zipcode},</span></div>
-                                    <div ><span className={styles.userinfoText3}>{checkoutDetails.shippingData.state} </span></div>
-                                    <div ><span className={styles.userinfoText3}>{checkoutDetails.shippingData.country} </span></div>
-                                    <div ><span className={styles.userinfoText3}>{checkoutDetails.shippingData.number} </span></div>
+                                    <div ><span className={styles.userinfoText3} style={{wordBreak:"break-all"}}>{checkoutDetails.shippingData.firstname} {checkoutDetails.shippingData.lastname}</span></div>
+                                    <div ><span className={styles.userinfoText3} style={{wordBreak:"break-all"}}>{checkoutDetails.shippingData.street} </span><span className={styles.userinfoText2}>{checkoutDetails.shippingData.houseno},</span></div>
+                                    <div ><span className={styles.userinfoText3} style={{wordBreak:"break-all"}}>{checkoutDetails.shippingData.city} - </span><span className={styles.userinfoText2}>{checkoutDetails.shippingData.zipcode},</span></div>
+                                    <div ><span className={styles.userinfoText3} style={{wordBreak:"break-all"}}>{checkoutDetails.shippingData.state} </span></div>
+                                    <div ><span className={styles.userinfoText3} style={{wordBreak:"break-all"}}>{checkoutDetails.shippingData.country} </span></div>
+                                    <div ><span className={styles.userinfoText3} style={{wordBreak:"break-all"}}>{checkoutDetails.shippingData.number} </span></div>
                                 </div>
                                 <div className={styles.adressTick}>
                                     <IoMdCheckmark style={{ fontSize: "25", color:"#323232", fontWeight: "20", backgroundColor: "transparent", border: "none" }} />
@@ -889,12 +889,12 @@ const UsserAdresses = () => {
                         <div className={styles.columnFirstName}>
                             <div className={styles.boxAddress}>
                                 <div className={styles.addressInformation}>
-                                    <div ><span className={styles.userinfoText3}>{checkoutDetails.billingData.firstname} {checkoutDetails.billingData.lastname}</span></div>
-                                    <div ><span className={styles.userinfoText3}>{checkoutDetails.billingData.street} </span><span className={styles.userinfoText2}>{checkoutDetails.billingData.houseno},</span></div>
-                                    <div ><span className={styles.userinfoText3}>{checkoutDetails.billingData.city} - </span><span className={styles.userinfoText2}>{checkoutDetails.billingData.zipcode},</span></div>
-                                    <div ><span className={styles.userinfoText3}>{checkoutDetails.billingData.state} </span></div>
-                                    <div ><span className={styles.userinfoText3}>{checkoutDetails.billingData.country} </span></div>
-                                    <div ><span className={styles.userinfoText3}>{checkoutDetails.billingData.number} </span></div>
+                                    <div ><span className={styles.userinfoText3} style={{wordBreak:"break-all"}}>{checkoutDetails.billingData.firstname} {checkoutDetails.billingData.lastname}</span></div>
+                                    <div ><span className={styles.userinfoText3} style={{wordBreak:"break-all"}}>{checkoutDetails.billingData.street} </span><span className={styles.userinfoText2}>{checkoutDetails.billingData.houseno},</span></div>
+                                    <div ><span className={styles.userinfoText3} style={{wordBreak:"break-all"}}>{checkoutDetails.billingData.city} - </span><span className={styles.userinfoText2}>{checkoutDetails.billingData.zipcode},</span></div>
+                                    <div ><span className={styles.userinfoText3} style={{wordBreak:"break-all"}}>{checkoutDetails.billingData.state} </span></div>
+                                    <div ><span className={styles.userinfoText3} style={{wordBreak:"break-all"}}>{checkoutDetails.billingData.country} </span></div>
+                                    <div ><span className={styles.userinfoText3} style={{wordBreak:"break-all"}}>{checkoutDetails.billingData.number} </span></div>
                                 </div>
                                 <div className={styles.adressTick}>
                                     <IoMdCheckmark style={{ fontSize: "25", color:"#323232", fontWeight: "20",backgroundColor: "transparent", border: "none" }} />

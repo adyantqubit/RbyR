@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import style from './NavHeader.module.css'
-import { FaUserCircle } from 'react-icons/fa'
+import { FaUserCircle,FaUser  } from 'react-icons/fa'
 
 import { BiLogOut, BiLogIn } from 'react-icons/bi'
 import { MdPublishedWithChanges } from 'react-icons/md'
@@ -16,6 +16,7 @@ import { notification, Popconfirm } from 'antd'
 
 import { Button, message } from 'antd';
 import { BsCardText, BsEnvelope, BsMessenger, BsPerson } from 'react-icons/bs'
+import { MdOutlineEmail } from 'react-icons/md';
 
 const text = 'Are you sure you want to logout?';
 
@@ -69,12 +70,11 @@ export const Profile = () => {
           <Popconfirm placement="bottomLeft" title={text} onConfirm={e => handleLogout()} onCancel={e => seLogoutAction(false)} okText="OK" cancelText="Cancel" open={logoutaction}>
           </Popconfirm>
           {localStorage.getItem('access_token') && userdata ?
-          <div>
-            <div className={style.span} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>
-              {userdata.name}
+          <div style={{marginTop:"15px",marginBottom:"15px",fontSize:"14px",fontWeight:"500",display:'flex',flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
+            <FaUser style={{ width: "40px", hieght: "40px",color:"var(--iconsColor)",fontWeight:"bold"}}/>
+            <div className={style.span} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis",width:"100%",textAlign:"center"}}>{userdata.name}
               </div>
-              <div
-              className={style.span} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{userdata.email}
+              <div  className={style.span} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis",width:"100%",textAlign:"center"}}>{userdata.email}
             </div>
             </div>
             :

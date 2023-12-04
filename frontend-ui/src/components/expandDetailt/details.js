@@ -433,7 +433,7 @@ const Details = (props) => {
 
               <div className={styles["container03"]}>
                 <div className={styles["container04"]}>
-                  <h1 className={styles["heading"]}>{details.title.toLowerCase()}</h1>
+                  <h1 className={styles["heading"]} style={{wordBreak:"break-all"}}>{details.title.toLowerCase()}</h1>
                   {/* Commented by - Ashish Dewangan on 17-02-2023
                   Reason - To hide description and to have simple UI */}
                   {/* <h1 className={styles["subtitle"]}>{details.about}</h1> */}
@@ -861,7 +861,7 @@ const Details = (props) => {
                         onClick={(e) => likeDelete(details)}
                       >
                         <span style={{ margin: "auto", paddingLeft: "10px" }}>
-                          REMOVE TO WISHLIST
+                          REMOVE FROM WISHLIST
                         </span>
                         <div class="placement">
                           <div
