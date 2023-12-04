@@ -19,6 +19,11 @@
     justify-content: flex-start;
     text-align: start;
     transition: all .1s ease ease-in;
+    /* Added by Om Shrivastava on 04-12-23
+    Reason : Set the font family */
+    font-family: var(--fontFamily);
+    /* End of  Added by Om Shrivastava on 04-12-23
+    Reason : Set the font family */
 }
 
 .pointedCategory{

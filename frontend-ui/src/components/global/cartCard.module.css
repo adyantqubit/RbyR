@@ -101,7 +101,8 @@
 .size {
   color: var(--textColorSecondary);
   font-size: 14px;
-  font-weight: 500;
+  /* font-weight: 500; */
+
   /* Addition by Om Shrivastva on 16-11-23
   Reason : Set the font family */
   font-family: var(--fontFamily);
@@ -556,7 +557,7 @@ REason : Set the hover color in button */
   }
 
   .showSize {
-    font-weight: 600;
+    /* font-weight: 600; */
     font-size: 15px;
   }
 }

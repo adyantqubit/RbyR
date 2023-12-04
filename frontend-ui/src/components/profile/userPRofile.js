@@ -153,8 +153,8 @@ const UserProfile = () => {
 
   function Notify() {
 
-    toast.success(<div style={{ fontSize: "18px", color: "black", letterSpacing: "1.4px",fontFamily:'var(--fontFamily)' }}>Successfully updated.
-      <div style={{ fontSize: "13px", color: "black", letterSpacing: "1.4px" }}>Your User Credentials has been updated</div>
+    toast.success(<div style={{fontSize:'14px'}}>Successfully updated.
+      <div style={{fontSize:'13px'}}>Your User Credentials has been updated</div>
     </div>,
       { position: toast.POSITION.TOP_RIGHT, duration: 1000,
        // Modification and addition by Om shrivastava on 01-12-23
@@ -326,7 +326,7 @@ const UserProfile = () => {
                           <div className={styles.columnFirstName}>
                             <label className={styles.firstName} htmlFor='email'>Email Address<span style={{color:'red'}}>*</span></label>
 
-                            <input className={styles.firstInput} type="email" defaultValue={userdata.email} name="email" required maxLength={250}/>
+                            <input  className={styles.firstInput} readOnly type="email" value={userdata.email} name="email" style={{cursor:'not-allowed',border:'none',backgroundColor:'#edddde'}}  />
 
                           </div>
 

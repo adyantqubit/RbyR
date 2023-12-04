@@ -734,7 +734,7 @@ const UsserAdresses = () => {
                                         }
                                     </div>
                                     <div className={styles.columnFirstName}>
-                                        <label className={styles.firstName} htmlFor='last'>State / Province</label>
+                                        <label className={styles.firstName} htmlFor='last'>State / Province<span style={{color:'red'}}>*</span></label>
                                         {checkoutDetails.billingData ?
                                             <>
                                                 <input className={styles.firstInput} autocomplete="nope" name='stateb' maxLength={29} id="stateb" onKeyPress={e => validateWhitespace(e, "stateb")} defaultValue={checkoutDetails.billingData.state} />

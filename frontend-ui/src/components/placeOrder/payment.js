@@ -78,7 +78,7 @@ const Payment = () => {
           cartEnd = r.error_cart
           cartEnd.map(c => {
             notification.error({
-              message: <div style={{ fontSize: "18px", color: "black" }}>Out of stock</div>,
+              message: <div style={{  color: "black",fontSize:'13px',fontWeight:'600' }}>Out of stock</div>,
  // Modification and addition by Om shrivastava on 01-12-23
         // REason : Create the popup class to apply the designing
         className:'popupClass',
@@ -88,7 +88,12 @@ const Payment = () => {
         // End of modification and addition by Om shrivastava on 01-12-23
         // REason : Create the popup class to apply the designing
               description:
-                `Product ${c.name} size ${c.size} is out of stock `,
+              // Modification and addition by Om Shrivastava on 04-12-23
+              // Reason : Set this data in span tag beacuase no need to display the $ sign
+              // `Product ${c.name.toLowerCase()} size ${c.size} is out of stock `,
+              <span>
+                Product {c.name.toLowerCase()} size {c.size} is out of stock 
+              </span>,
               // style: { backgroundColor: "#D2042D", color: "white" },
               duration: 20,
             });

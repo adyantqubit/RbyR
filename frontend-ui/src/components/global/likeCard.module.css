@@ -2,8 +2,11 @@
 /* @import "@fontsource/lato"; */
 
 .mainDivDesign{
-  display: grid;
-  grid-template-columns: auto auto;
+  /* display: grid;
+  grid-template-columns: auto auto; */
+  display: flex;
+  flex-wrap: wrap;
+  /* border: 1px solid red; */
 }
 .container {
     width: 100%;
@@ -88,16 +91,21 @@
     width: auto;
     text-align: center;
   }
+  .divContainer{
+    width: 50%;
+    margin-bottom: 3%;
+  }
   .wishContainer{
-    width: 90%;
+    /* width: 90%; */
     /* height: 300px; */
     margin-top: 3%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     margin-left: 5%;
     margin-right: 5%;
-    align-items: center;
+    /* align-items: center; */
+    border: 1px solid black;
   }
   .wishImage{
     /* width: 40%; 
@@ -115,32 +123,38 @@
     width: 60%;
     display: flex;
     flex-direction: column;
+    /* border: 2px solid green; */
   }
   .wishItemTitleContainer{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    /* border: 1px solid yellow; */
+
   }
   .wishItemTitle{
     color: black;
     cursor:pointer;
     font-size: 1rem;
     padding-left: 20px;
-    width: 85%;
     word-wrap: break-word;
     text-transform: capitalize;
     font-family: var(--fontFamily);
+    font-weight: 600;
+/* border: 1px solid black; */
 
-    display: -webkit-box;
+    /* display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
-    overflow: hidden;
+    overflow: hidden; */
   }
   .wishItemCancelButton{
     /* width: 15%;
     height: 32px; */
-    width: 20%;
-    height: 40px;
+    /* width: 20%;
+    height: 40px; */
+    height: 25px;
+    width: 25px;
     padding-left: 2%;
     padding-bottom: 9%;
 
@@ -153,10 +167,11 @@
   .wishItemBodyContainer{
     display: flex;
     flex-direction: column;
-    height: 80%;
+    /* border: 1px solid red; */
+    /* height: 80%;
     justify-content: flex-start;
     padding-bottom: 12%;
-    gap: 16px;
+    gap: 16px; */
   }
   .itemText{
     color: black;
@@ -178,7 +193,7 @@
     height: 100%;
     padding: 15px;
     flex-direction: column;
-    
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -238,7 +253,12 @@
       margin-bottom: 0;
       width: 90%;
       /* border: 1px solid black; */
-      height: 15px;
+      height: 20px;
+
+        display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     }
     .itemText{
       font-size: 13px;
@@ -250,7 +270,13 @@
       flex-direction: column;
     }
     .emptyWishList{
-      margin-left: 7%;
+      margin-left: 4%;
+    height: 72vh;
+    /* border: 1px solid red; */
+
+    }
+    .divContainer{
+      width: 100%;
     }
     /* End of Addition and modification by Om Shrivastava on 01-12-23
     REason : Set the height and width of wishlist image in mobile view */

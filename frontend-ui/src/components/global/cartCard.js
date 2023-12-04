@@ -95,7 +95,7 @@ const CartCard = (props) => {
         document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display = "block";
         con = false;
         notification.error({
-          message: <div style={{ fontSize: "18px", color: "black" }}>Out Of Stock. </div>,
+          message: <div style={{ fontSize: "13px", color: "black" }}>Out Of Stock. </div>,
           description:
             `No More Stock Available`,
           // className: "custom-class",
@@ -127,7 +127,7 @@ const CartCard = (props) => {
         // document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
         con = false;
         notification.error({
-          message: <div style={{ fontSize: "18px", color: "black" }}>Out Of Stock. </div>,
+          message: <div style={{ fontSize: "13px", color: "black",fontWeight:'600' }}>Out Of Stock. </div>,
           description:
             `No More Stock Available`,
           // className: "custom-class",
@@ -286,7 +286,7 @@ const CartCard = (props) => {
             {/* Modification and addition by Om Shrivastava on 19-11-23
             Reason : Need to add the height of the image */}
             {/* <img src={config.staticBaseURL + pro.img_main} style={{width:"100%"}} onClick={e => openDetail(pro)}></img> */}
-            <img src={config.staticBaseURL + pro.img_main} style={{width:"120px",height:'150px'}} onClick={e => openDetail(pro)}></img>
+            <img src={config.staticBaseURL + pro.img_main} style={{width:"135px",height:'165px'}} onClick={e => openDetail(pro)}></img>
          {/* End of Modification and addition by Om Shrivastava on 19-11-23
             Reason : Need to add the height of the image  */}
          </div>
@@ -316,12 +316,12 @@ const CartCard = (props) => {
                 <span className={styles.showSize}> {SizeGetter(pro.size)}</span>
               </div>
               {/* <div style={{ color: "black", marginLeft: "20px", marginTop: "8px" }}> */}
-              <div style={{ color: "black", marginLeft: "20px",marginTop: "2px"  }}>
+              <div style={{ color: "black", marginLeft: "20px",letterSpacing:'1.5px' ,lineHeight:'10px',paddingBottom:'4px'}}>
 
-                <span className={styles.shipping} style={{fontSize:'14px'}}>Standard Shipping:</span>
+                <span className={styles.shipping} style={{fontSize:'12px',paddingBottom:'10px'}}>Standard Shipping:</span>
                 {pro.ready_to_ship ?
-                  <span className={styles.shipping}> {pro.ready_to_ship_days}</span> :
-                  <span className={styles.shipping}> {pro.shipping_days}</span>}
+                  <span style={{fontSize:'12px',letterSpacing:'0.5px'}} className={styles.shipping}> {pro.ready_to_ship_days}</span> :
+                  <span style={{fontSize:'12px',letterSpacing:'0.5px'}} className={styles.shipping}> {pro.shipping_days}</span>}
 
               </div>
               <div className={styles.gaping} ></div>

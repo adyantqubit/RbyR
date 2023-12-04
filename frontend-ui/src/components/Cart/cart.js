@@ -160,7 +160,7 @@ const CartSItem = (props) => {
         // document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block";
         notification.error({
           message: (
-            <div style={{ fontSize: "18px", color: "black" }}>
+            <div style={{  color: "black",fontSize:'13px',fontWeight:'600' }}>
               Out Of Stock.{" "}
             </div>
           ),
@@ -351,19 +351,19 @@ const CartSItem = (props) => {
           cartEnd.map((c) => {
             notification.error({
               message: (
-                <div style={{  color: "black" }}>
+                <div style={{  color: "black",fontSize:'13px',fontWeight:'500' }}>
                   Out of stock
                 </div>
               ),
               description: (
-                <span>
-                  Product ${c.name} size ${c.size} is out of stock <br />
+                <span style={{  color: "black",fontSize:'13px',fontWeight:'500' }}>
+                  Product {c.name.toLowerCase()} size {c.size} is out of stock <br />
                   Please move this item to Wishlist.
                 </span>
               ),
              // Modification and addition by Om shrivastava on 01-12-23
         // REason : Create the popup class to apply the designing
-        className:'popupClass',
+        // className:'popupClass',
         // style:{marginTop:"20px"},
         // style:{backgroundColor: "#f1cdd9",
         // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
@@ -526,7 +526,12 @@ const CartSItem = (props) => {
                         <img
                           src={config.staticBaseURL + pro.img_main}
                           // style={{ width: "100%" }}
-                          style={{ width: "140px",height:'170px' }}
+                          // Modification and addition by Om Shrivastava on 04-12-23
+                          // Reason : Set the width and height 
+                          // style={{ width: "140px",height:'170px' }} 
+                          style={{ width:"135px",height:'165px' }} 
+                          // End of Modification and addition by Om Shrivastava on 04-12-23
+                          // Reason : Set the width and height 
 
                           onClick={(e) => openDetail(pro)}
                         ></img>
@@ -603,10 +608,11 @@ const CartSItem = (props) => {
                           style={{
                             color: "black",
                             marginLeft: "20px",
-                            marginTop: "8px",
+                            letterSpacing:'1.5px' ,lineHeight:'10px',paddingBottom:'4px',
+                            marginTop: "4px",
                           }}
                         >
-                          <span className={style.shipping}>
+                          <span className={style.shipping} style={{fontSize:'12px',paddingBottom:'10px'}}>
                             Standard Shipping:
                           </span>
                           {/* {pro.ready_to_ship?
@@ -705,8 +711,8 @@ const CartSItem = (props) => {
                         <img
                           src={config.staticBaseURL + pro.img_main}
                           // style={{ width: "100%" }}
-                          style={{ width: "140px",height:'170px' }}
-
+                          // style={{ width: "140px",height:'170px' }}
+                          style={{ width:"135px",height:'165px' }} 
                           onClick={(e) => openDetail(pro)}
                         ></img>
                       </div>
@@ -783,19 +789,20 @@ const CartSItem = (props) => {
                           style={{
                             color: "black",
                             marginLeft: "20px",
-                            marginTop: "8px",
+                            letterSpacing:'1.5px' ,lineHeight:'10px',paddingBottom:'4px',
+                            marginTop: "4px",
                           }}
                         >
-                          <span className={style.shipping}>
+                          <span className={style.shipping} style={{fontSize:'12px',paddingBottom:'10px'}}>
                             Standard Shipping:
                           </span>
                           {pro.ready_to_ship ? (
-                            <span className={style.shipping}>
+                            <span className={style.shipping} style={{fontSize:'12px',letterSpacing:'0.5px'}}>
                               {" "}
                               {pro.ready_to_ship_days}
                             </span>
                           ) : (
-                            <span className={style.shipping}>
+                            <span className={style.shipping} style={{fontSize:'12px',letterSpacing:'0.5px'}}>
                               {" "}
                               {pro.shipping_days}
                             </span>
@@ -1065,7 +1072,7 @@ const CartSItem = (props) => {
           {ImportantRules != null ? (
             <div
               className={styles.importantRules}
-              style={{ borderTop: "1px solid rgba(140,140,140,0.7)" }}
+              // style={{ borderTop: "1px solid rgba(140,140,140,0.7)" }}
             >
               <h6
                 style={{

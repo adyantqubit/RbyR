@@ -231,14 +231,14 @@ export function DrawerFooter() {
         cartEnd = r.error_cart
         cartEnd.map(c => {
           notification.error({
-            message: <div style={{ fontSize: "18px", color: "black" }}>Out of stock</div>,
+            message: <div style={{  color: "black",fontSize:'13px',fontWeight:'500' }}>Out of stock</div>,
             description:
-              <span>Product ${c.name} size ${c.size} is out of stock <br />
+              <span style={{  color: "black",fontSize:'13px',fontWeight:'500' }}>Product {c.name.toLowerCase()} size {c.size} is out of stock <br />
                 Please move this item  to Wishlist.</span>,
             // style: { backgroundColor: "var(--bannerColor)", color: "black" },
              // Modification and addition by Om shrivastava on 01-12-23
         // REason : Create the popup class to apply the designing
-        className:'popupClass',
+        // className:'popupClass',
         // style:{marginTop:"20px"},
         // style:{backgroundColor: "#f1cdd9",
         // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},

@@ -446,14 +446,14 @@ function validatesNum(evt) {
                     </div>
                 </div>
 
-                <div style={{display:"flex",flexWrap:"wrap",gap:"10px"}}>
-                    <button className={styles.userInfoButton} type='submit'>
+                <div style={{display:"flex",flexWrap:"wrap",gap:"20px",marginLeft:'1%'}}>
+                    <button style={{width:'48%'}} className={styles.userInfoButton} type='submit'>
                     UPDATE SHiPPING
-                </button>
+                    </button>
                 {/* <button className={styles.userInfoButton} style={{marginLeft:"10px"}} onClick={e=>shippingDelete(e,defaultShiping.id)}>
                     DELETE 
                 </button> */}
-                <span className={styles.userInfoButton} onClick={e=>{
+                <span style={{width:'48%'}} className={styles.userInfoButton} onClick={e=>{
                     setshipEditCond(true)
                     window.scrollTo(0,0)
                     }}>

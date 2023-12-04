@@ -16,7 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { LikeDeleteApi } from "../../api/service";
 
 const LikeCard = (props) => {
-  const { like, setLike,currency ,setLikeDrawer} = CartState();
+  const { like, setLike, currency, setLikeDrawer } = CartState();
   let { access_token } = getToken();
   const [saveLikeApi, { isLoading }] = useLikedUpdateMutation();
 
@@ -42,11 +42,11 @@ const LikeCard = (props) => {
     // window.location.reload(false);
   }
 
-  async function likeDelete(product){
-    const data={
-      id:product.id
-    }
-    await LikeDeleteApi(data,localStorage.getItem('access_token'))
+  async function likeDelete(product) {
+    const data = {
+      id: product.id,
+    };
+    await LikeDeleteApi(data, localStorage.getItem("access_token"));
 
     if (like.filter((l) => l.id === product.id).length > 0) {
       const p = like.filter((i) => i.id !== product.id);
@@ -59,16 +59,17 @@ const LikeCard = (props) => {
   return (
     // Addition by Om Shrivastava on 02-12-23
     // Reaosn : Set the grid property
-    <div className={style.mainDivDesign} 
-    // style={{border:'1px solid black',display:'grid',gridTemplateColumns:'auto auto',}}
+    <div
+      className={style.mainDivDesign}
+      // style={{border:'1px solid black',display:'grid',gridTemplateColumns:'auto auto',}}
     >
       {like.length > 0 ? (
         like.map((l) => (
-          <div style={{marginBottom:"3%"
-          
-          // flexWrap:'wrap'
-          }}>
-            <div className={style.wishContainer}>
+          <div
+           
+            className={style.divContainer}
+          >
+            <div className={style.wishContainer} >
               <img
                 className={style.wishImage}
                 src={config.staticBaseURL + l.img_main}
@@ -80,27 +81,53 @@ const LikeCard = (props) => {
                   <h3
                     className={style.wishItemTitle}
                     onClick={(e) => openDetail(l)}
+                    style={{margin:'0'}}
                   >
                     {l.title.toLowerCase()}
                   </h3>
-                  <TiDeleteOutline
-                    className={style.wishItemCancelButton}
-                    onClick={(e) => likeDelete(l)}
-                  ></TiDeleteOutline>
+                  
                 </div>
                 <div className={style.wishItemBodyContainer}>
                   <div className={style.itemText}>{l.category}</div>
-                  <div className={style.itemText}> {currency.sign} {(l.price*currency.value).toFixed(2)}</div>
+                  <div className={style.itemText}>
+                    {" "}
+                    {currency.sign} {(l.price * currency.value).toFixed(2)}
+                  </div>
                 </div>
               </div>
+
+              <div>
+              <TiDeleteOutline
+                    className={style.wishItemCancelButton}
+                    onClick={(e) => likeDelete(l)}
+                  ></TiDeleteOutline>
+              </div>
+
             </div>
           </div>
         ))
       ) : (
         <div className={style.emptyWishList}>
-          <h4 style={{fontSize:'15px'}}>Your Wishlist is empty.</h4>
-          <br></br>
-          <span style={{fontSize:'15px',fontFamily:'var(--fontFamily)'}} className={style.para}>Don't hesitate and <Link to="/" className={style.para2} style={{color:"rgb(59, 59, 224)",fontWeight:'500',fontSize:'14px'}} onClick={e=>setLikeDrawer(false)}>browse our catalog</Link> to find something beautiful for You!</span>
+          <h4 style={{ fontSize: "15px",letterSpacing:'0.5px',color:'black',fontFamily: "var(--fontFamily)" }}>Your Wishlist is empty</h4>
+          <span
+            style={{ fontSize: "15px",letterSpacing:'0.5px',color:'black',fontFamily: "var(--fontFamily)", fontFamily: "var(--fontFamily)" }}
+            className={style.para}
+          >
+            Don't hesitate and{" "}
+            <Link
+              to="/"
+              className={style.para2}
+              style={{
+                color: "rgb(59, 59, 224)",
+                fontWeight: "500",
+                fontSize: "14px",
+              }}
+              onClick={(e) => setLikeDrawer(false)}
+            >
+              browse our catalog
+            </Link>{" "}
+            to find something beautiful for You!
+          </span>
         </div>
       )}
     </div>
