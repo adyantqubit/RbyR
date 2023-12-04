@@ -42,7 +42,7 @@
   Reason : Set the background color  */
   display: flex;
   justify-content: center;
-  font-size: 9px;
+  font-size: 8px;
   padding-top: 2px;
   white-space: nowrap;
 }
@@ -209,6 +209,9 @@ Reason : Set the width and height of logo  */
   .headerContainer {
     min-height: 54px;
   }
+  .number{
+    font-size: 8px;
+  }
 }
 /* End of Addition by Om Shrivastava on 15-11-23
 Reason : Set the width and height of logo */
@@ -219,5 +222,6 @@ Reason : Set the width and height of logo */
   }
   .number {
     margin-top: 0px;
+
   }
 }

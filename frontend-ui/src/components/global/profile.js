@@ -15,6 +15,7 @@ import { CartState } from '../../context'
 import { notification, Popconfirm } from 'antd'
 
 import { Button, message } from 'antd';
+import { BsCardText, BsEnvelope, BsMessenger, BsPerson } from 'react-icons/bs'
 
 const text = 'Are you sure you want to logout?';
 
@@ -59,41 +60,41 @@ export const Profile = () => {
       <div className={access_token && userdata.email.length!=0?style.action:style.action2} onClick={e=>{
         if(userdata.email.length==0)
         nav("/login")
-      }}>
-        <div className={style.profile}>
+      }} >
+        <div className={style.profile} >
           <FaUserCircle style={{ width: "30px", hieght: "30px",color:"var(--iconsColor)"}} />
           {/* <img className={style.img} src="./assets/avatar.jpg" /> */}
         </div>
-        <div className={style.menu2}>
+        <div className={style.menu2} style={{padding:'2px'}}>
           <Popconfirm placement="bottomLeft" title={text} onConfirm={e => handleLogout()} onCancel={e => seLogoutAction(false)} okText="OK" cancelText="Cancel" open={logoutaction}>
           </Popconfirm>
           {localStorage.getItem('access_token') && userdata ?
-            <h3 className={style.h3}>
-              {userdata.name}<br />
-              <span className={style.span}>{userdata.email}</span>
+           <h3 className={style.h3} style={{padding:'2px',fontSize:'14px'}}>
+             <BsPerson/>  {userdata.name}<br />
+             <BsEnvelope/> <span style={{fontSize:'14px'}} className={style.span}>{userdata.email}</span>
             </h3>
             :
-            <h3 className={style.h3}>You Are Not Logged In<br />
-              <span className={style.span}>Login Or Register First</span></h3>}
+            <h3 style={{fontSize:'14px'}} className={style.h3}>You Are Not Logged In<br />
+              <span style={{fontSize:'14px'}} className={style.span}>Login Or Register First</span></h3>}
           <ul className={style.ul}>
 
             {localStorage.getItem('access_token') ?
               null :
-              <li className={style.l} style={{ marginLeft: "-30px" }}>
+              <li className={style.l} style={{ marginLeft: "-30px",padding:'2px' }}>
                 <BiLogIn className={style.img} style={{ color: "red", height: "20px", width: "20px !important" }} /><Link to="/login" className={style.a}>Register/Login</Link>
               </li>}
 
-            {localStorage.getItem('access_token') ? <li className={style.l} style={{ marginLeft: "-30px" }}>
-              <Link to="/userprofile" className={style.a}>My Profile</Link>
+            {localStorage.getItem('access_token') ? <li className={style.l} style={{ marginLeft: "-30px",padding:'2px' }}>
+              <Link to="/userprofile" className={style.a} style={{fontSize:'14px',padding:'2px'}}>My Profile</Link>
             </li> : null}
 
 
-            {localStorage.getItem('access_token') ? <li className={style.l} style={{ marginLeft: "-30px" }}>
-              <Link to="/shippindprofile" className={style.a}>Shipping Details</Link>
+            {localStorage.getItem('access_token') ? <li className={style.l} style={{ marginLeft: "-30px",padding:'2px' }}>
+              <Link to="/shippindprofile" className={style.a} style={{fontSize:'14px',padding:'2px'}}>Shipping Details</Link>
             </li> : null}
 
-            {localStorage.getItem('access_token') ? <li className={style.l} style={{ marginLeft: "-30px" }}>
-              <Link to="/profile" className={style.a}>My Orders</Link>
+            {localStorage.getItem('access_token') ? <li className={style.l} style={{ marginLeft: "-30px",padding:'2px' }}>
+              <Link to="/profile" className={style.a} style={{fontSize:'14px',padding:'2px'}}>My Orders</Link>
             </li> : null}
 
             {/* {localStorage.getItem('access_token')?<li className={style.l} style={{marginLeft:"-30px"}}>
@@ -102,9 +103,9 @@ export const Profile = () => {
 
             {/* <div className={style.column1text}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#8c8c8c"}}>MY SHIPPING DETAILS</Link></div> */}
 
-            {localStorage.getItem('access_token') ? <li className={style.l} style={{ marginLeft: "-30px",cursor:"pointer" }}>
+            {localStorage.getItem('access_token') ? <li className={style.l} style={{ marginLeft: "-30px",cursor:"pointer" ,padding:'2px'}}>
 
-              <span className={style.a}  onClick={e => seLogoutAction(true)} >Logout</span>
+              <span style={{fontSize:'14px',padding:'2px'}} className={style.a}  onClick={e => seLogoutAction(true)} >Logout</span>
 
             </li> : null}
 

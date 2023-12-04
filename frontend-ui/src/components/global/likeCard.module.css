@@ -137,8 +137,10 @@
     overflow: hidden;
   }
   .wishItemCancelButton{
-    width: 15%;
-    height: 32px;
+    /* width: 15%;
+    height: 32px; */
+    width: 20%;
+    height: 40px;
     padding-left: 2%;
     padding-bottom: 9%;
 
@@ -154,7 +156,7 @@
     height: 80%;
     justify-content: flex-start;
     padding-bottom: 12%;
-    gap: 13px;
+    gap: 16px;
   }
   .itemText{
     color: black;
@@ -178,15 +180,16 @@
     flex-direction: column;
     
     display: flex;
-    justify-content: start;
-    align-items: start;
+    justify-content: center;
+    align-items: center;
     font-size: 18px;
     line-height: 24px;
     letter-spacing: 1.75px;
        font-family: var(--fontFamily);
 
     font-weight: 500;
-    margin: 0;
+    /* margin: 0; */
+    margin-left: 12%;
     
   }
 
@@ -245,6 +248,9 @@
     .mainDivDesign{
       display: flex;
       flex-direction: column;
+    }
+    .emptyWishList{
+      margin-left: 7%;
     }
     /* End of Addition and modification by Om Shrivastava on 01-12-23
     REason : Set the height and width of wishlist image in mobile view */

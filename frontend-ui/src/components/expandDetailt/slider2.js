@@ -69,7 +69,7 @@ const Slider2 = ({ scrollTop }) => {
             //   letterSpacing: "3px",
             //   marginBottom: "20px",
             // }}
-            className={styles.likedContain}
+            className={styles.likedContain} style={{textAlign:'center'}}
             // End of Modification and addition by Om Shrivastava on 16-11-23
           // Reason : Apply the css in external file
           >

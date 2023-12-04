@@ -247,7 +247,7 @@ const Navbar = () => {
            /* Modification and addition by Om Shrivastava on 19-10-23
             Reason : Set the color of the content  */
            // style={{ textDecoration: "none", textTransform: "uppercase", outline: "none", color: "black", fontSize: ".85rem", fontWeight: "700", marginTop: "8px" }}
-            style={{ textDecoration: "none", textTransform: "uppercase", outline: "none", color: "white", fontSize: ".85rem", fontWeight: "700", marginTop: "8px" }}
+            style={{ textDecoration: "none", textTransform: "uppercase", outline: "none", color: "white", fontSize: ".85rem", fontWeight: "700",marginTop:'2px', }}
             /* End of modification and addition by Om Shrivastava on 19-10-23
             Reason : Set the color of the content  */
             target="_blank"

@@ -159,10 +159,18 @@ const Payment = () => {
         // Modification and addition by Om Shrivastava on 26-11-23
         // REason : Need to remove the error
         notification.error({
-          message: <div style={{ fontSize: "18px", color: "white" }}>Sorry! Something went wrong. </div>,
+          message: <div >Sorry! Something went wrong. </div>,
           description:
             `Facing issue in generating bill! please contact to the our customer support.`,
-          style: { backgroundColor: "#D2042D", color: "white" },
+          // style: { backgroundColor: "#D2042D", color: "white" },
+        // Modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
+        className:'popupClass',
+        // style:{marginTop:"20px"},
+        // style:{backgroundColor: "#f1cdd9",
+        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+        // End of modification and addition by Om shrivastava on 01-12-23
+        // REason : Create the popup class to apply the designing
           duration: 20,
           key:1
         });
