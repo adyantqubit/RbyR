@@ -323,10 +323,10 @@ function validatesNum(evt) {
                             <div className={styles.addressInformation} >
                             <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}> {s.firstname} {s.lastname}</div>
                             <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}> {s.street} {s.houseno}</div>
-                            <div className={styles.userinfoText} style={{overflowWrap:"break-word"}}>{s.city} - {s.zipcode},</div>
-                            <div className={styles.userinfoText} style={{overflowWrap:"break-word"}}>{s.state} </div>
-                            <div className={styles.userinfoText} style={{overflowWrap:"break-word"}}>{s.country}</div>
-                            <div className={styles.userinfoText} style={{overflowWrap:"break-word"}}>{s.number}</div>
+                            <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.city} - {s.zipcode},</div>
+                            <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.state} </div>
+                            <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.country}</div>
+                            <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.number}</div>
                             </div>
                             <div className={styles.adressTick}>
                             {/* <span className={styles.userinfoText2} style={{textDecoration:"underline"}}>Edit</span> */}
@@ -358,12 +358,12 @@ function validatesNum(evt) {
                 <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='first'>First Name<span style={{color:'red'}}>*</span></label>
       
-                        <input className={styles.firstInput} defaultValue={defaultShiping.firstname} onKeyPress={validate} name='firstb' required/>
+                        <input className={styles.firstInput} defaultValue={defaultShiping.firstname} onKeyPress={validate} name='firstb' required maxLength={20}/>
                         
                     </div>
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='b'>Last Name<span style={{color:'red'}}>*</span></label>
-                        <input className={styles.firstInput} name='lastb' onKeyPress={validate} defaultValue={defaultShiping.lastname} required/>
+                        <input className={styles.firstInput} name='lastb' onKeyPress={validate} defaultValue={defaultShiping.lastname} required maxLength={20}/>
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
@@ -371,14 +371,14 @@ function validatesNum(evt) {
                         
                         <label className={styles.firstName}  htmlFor='street'>Street Name<span style={{color:'red'}}>*</span></label>
 
-                        <input className={styles.firstInput} id="street" onKeyPress={e=>validateWhitespace(e,"street")} name='streetb' defaultValue={defaultShiping.street} required/>
+                        <input className={styles.firstInput} id="street" onKeyPress={e=>validateWhitespace(e,"street")} name='streetb' defaultValue={defaultShiping.street} required maxLength={200}/>
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>
                     <div className={styles.columnFullName}>
                         <label className={styles.firstName} htmlFor='street'>House/Apartment Number<span style={{color:'red'}}>*</span></label>
 
-                        <input className={styles.firstInput} id="house" onKeyPress={e=>validateWhitespace(e,"house")} name='flatnob' maxLength={10} defaultValue={defaultShiping.houseno} required/>
+                        <input className={styles.firstInput} id="house" onKeyPress={e=>validateWhitespace(e,"house")} name='flatnob'  defaultValue={defaultShiping.houseno} required maxLength={20}/>
                         
                     </div>
                 </div>
@@ -386,12 +386,12 @@ function validatesNum(evt) {
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='first'>City<span style={{color:'red'}}>*</span></label>
 
-                        <input className={styles.firstInput} id="city" onKeyPress={e=>validateWhitespace(e,"city")} name='cityb' defaultValue={defaultShiping.city} required/>
+                        <input className={styles.firstInput} id="city" onKeyPress={e=>validateWhitespace(e,"city")} name='cityb' defaultValue={defaultShiping.city} required maxLength={30}/>
                         
                     </div>
                     <div className={styles.columnFirstName}>
                         <label className={styles.firstName} htmlFor='last'>State / Province<span style={{color:'red'}}>*</span></label>
-                        <input className={styles.firstInput} id="state" onKeyPress={e=>validateWhitespace(e,"state")}  name='stateb' defaultValue={defaultShiping.state} required/>
+                        <input className={styles.firstInput} id="state" onKeyPress={e=>validateWhitespace(e,"state")}  name='stateb' defaultValue={defaultShiping.state} required maxLength={30}/>
                     </div>
                 </div>
                 <div className={styles.columnitem1content1}>

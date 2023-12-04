@@ -299,6 +299,7 @@ function Footer() {
               className={style.emailBox}
               placeholder="Enter Your Email"
               id="emailAddress"
+              maxLength={254}
             />
             <button className={style.emailBoxButton} onClick={subscribeToEmailUpdate}>
               <IoChevronForwardOutline  

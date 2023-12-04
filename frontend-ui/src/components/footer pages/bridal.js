@@ -253,7 +253,7 @@ const Bridal = () => {
                 // ]}
                 hasFeedback
               >
-                <Input className={style.formInput} maxLength={50} />
+                <Input className={style.formInput} maxLength={250} />
               </Form.Item>
 
               <Form.Item

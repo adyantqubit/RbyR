@@ -157,7 +157,7 @@ function CustomTailoredForm() {
               // ]}
               hasFeedback
             >
-              <Input className={customTailoredStyle.formInput} maxLength={50} />
+              <Input className={customTailoredStyle.formInput} maxLength={250} />
             </Form.Item>
           </div>
 

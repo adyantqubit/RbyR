@@ -169,7 +169,7 @@ const Login = () => {
 							<label style={{color:'rgb(59 59 224)'}} class="labe" htmlFor="ch" aria-hidden="true">Sign up</label>
 
 							<div style={{ fontSize: "14px", marginLeft: "15%" }}>Name<span style={{color:'red'}}>*</span></div>
-							<input class="inpu2" type="text" name="txt" placeholder="User name"  />
+							<input class="inpu2" type="text" name="txt" placeholder="User name" maxLength={99} />
 
 							<div style={{ height: "20px" }}>
 								{server_error.name ? <Typography style={{ color: "red", fontSize: "14px", marginBottom: "10px", marginLeft: "15%" }}>{server_error.name[0]}</Typography> : " "}
@@ -177,7 +177,7 @@ const Login = () => {
 							</div>
 
 							<div style={{ fontSize: "14px", marginLeft: "15%" }}>Email<span style={{color:'red'}}>*</span></div>
-							<input class="inpu2" type="email" name="email" placeholder="Email"  />
+							<input class="inpu2" type="email" name="email" placeholder="Email" maxLength={250} />
 							<div style={{ height: "20px" }}>
 								{server_error.email ? <Typography style={{ color: "red", fontSize: "14px", marginBottom: "10px", marginLeft: "15%" }}>
 									{server_error.email[0]}
@@ -207,7 +207,7 @@ const Login = () => {
 								<span class="inpu4" style={{ width: "100%" }}>
 									<input class="inpu4" type={showNewPass2 ? "text" : "password"} name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
 										 style={{ width: "90%", border: "none" }}
-										onChange={e => { if (e.target.value.length > 0) setVisiblePassreg2(true); else setVisiblePassreg2(false) }} />
+										onChange={e => { if (e.target.value.length > 0) setVisiblePassreg2(true); else setVisiblePassreg2(false) }} maxLength={20}/>
 								
 									{visiblepassReg2 ? showNewPass2 ? <AiFillEye style={{ marginTop: "5px" }} onClick={e => setNewPass2(false)} /> : <AiFillEyeInvisible style={{ marginTop: "5px" }} onClick={e => setNewPass2(true)} /> : null}
 								</span>
@@ -215,7 +215,7 @@ const Login = () => {
 								<span class="inpu4" style={{ width: "100%" }}>
 									<input class="inpu4" type={showNewPass ? "text" : "password"} name="pswd2" placeholder="Confirm Password" 
 										style={{ width: "90%", border: "none" }}
-										onChange={e => { if (e.target.value.length > 0) setVisiblePassreg(true); else setVisiblePassreg(false) }} />
+										onChange={e => { if (e.target.value.length > 0) setVisiblePassreg(true); else setVisiblePassreg(false) }} maxLength={20}/>
 									{visiblepassReg ? showNewPass ? <AiFillEye style={{ marginTop: "5px" }} onClick={e => setNewPass(false)} /> : <AiFillEyeInvisible style={{ marginTop: "5px" }} onClick={e => setNewPass(true)} /> : null}
 
 								</span>

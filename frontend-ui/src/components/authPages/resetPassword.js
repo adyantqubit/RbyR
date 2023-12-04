@@ -84,7 +84,7 @@ const ResetPassword = () => {
            <div class="inpu3" style={{marginTop:"20px",marginLeft:"15%",background:"#e0dede"}}>
 						<input class="inpu4" type={showNewPass2?"text":"password"} name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
 						  style={{width:"80%",outline:"none",border:"none"}} 
-						 onChange={e=>{if(e.target.value.length>0)setVisiblePassreg2(true); else setVisiblePassreg2(false)}}/>
+						 onChange={e=>{if(e.target.value.length>0)setVisiblePassreg2(true); else setVisiblePassreg2(false)}} maxLength={20}/>
 			      {visiblepassReg2?showNewPass2?<AiFillEye style={{marginTop:"5px"}} onClick={e=>setNewPass2(false)}/>:<AiFillEyeInvisible style={{marginTop:"5px"}} onClick={e=>setNewPass2(true)}/>:null}
             
             </div>
@@ -95,7 +95,7 @@ const ResetPassword = () => {
 
 
             <div class="inpu3" style={{marginTop:"20px",background:"#e0dede"}}>
-							<input class="inpu4" type={showNewPass?"text":"password"} name="pswd2" placeholder="Confim Password"    style={{outline:"none",border:"none"}} onChange={e=>{if(e.target.value.length>0)setVisiblePassreg(true); else setVisiblePassreg(false)}}/>
+							<input class="inpu4" type={showNewPass?"text":"password"} name="pswd2" placeholder="Confim Password"    style={{outline:"none",border:"none"}} onChange={e=>{if(e.target.value.length>0)setVisiblePassreg(true); else setVisiblePassreg(false)}} maxLength={20}/>
 			        {visiblepassReg?showNewPass?<AiFillEye style={{marginTop:"5px"}} onClick={e=>setNewPass(false)}/>:<AiFillEyeInvisible style={{marginTop:"5px"}} onClick={e=>setNewPass(true)}/>:null}
               
             </div>

@@ -69,10 +69,14 @@ export const Profile = () => {
           <Popconfirm placement="bottomLeft" title={text} onConfirm={e => handleLogout()} onCancel={e => seLogoutAction(false)} okText="OK" cancelText="Cancel" open={logoutaction}>
           </Popconfirm>
           {localStorage.getItem('access_token') && userdata ?
-           <h3 className={style.h3} style={{padding:'2px',fontSize:'14px'}}>
-             <BsPerson/>  {userdata.name}<br />
-             <BsEnvelope/> <span style={{fontSize:'14px'}} className={style.span}>{userdata.email}</span>
-            </h3>
+          <div>
+            <div className={style.span} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>
+              {userdata.name}
+              </div>
+              <div
+              className={style.span} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{userdata.email}
+            </div>
+            </div>
             :
             <h3 style={{fontSize:'14px'}} className={style.h3}>You Are Not Logged In<br />
               <span style={{fontSize:'14px'}} className={style.span}>Login Or Register First</span></h3>}

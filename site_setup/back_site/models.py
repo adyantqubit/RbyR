@@ -513,7 +513,12 @@ class usershippingDetail(models.Model):
     city=models.CharField(max_length=30)
     state=models.CharField(max_length=30)
     zipcode=models.CharField(max_length=20)
-    country=models.CharField(max_length=30)
+    # commented and modified by - Ashish Dewangan on 04-12-2023
+    # Reason - To increase length for country
+    # country=models.CharField(max_length=30)
+    country=models.CharField(max_length=255)
+    # End of code modification by - Ashish Dewangan on 04-12-2023
+    # Reason - To increase length for country
     number=models.CharField(max_length=20)
     isSelected=models.BooleanField(default=False)
     #Added by Ashish Dewangan on 28-11-2022
@@ -534,7 +539,12 @@ class userbillingDetail(models.Model):
     city=models.CharField(max_length=30)
     state=models.CharField(max_length=30)
     zipcode=models.CharField(max_length=20)
-    country=models.CharField(max_length=30)
+    # commented and modified by - Ashish Dewangan on 04-12-2023
+    # Reason - To increase length for country
+    # country=models.CharField(max_length=30)
+    country=models.CharField(max_length=255)
+    # End of code modification by - Ashish Dewangan on 04-12-2023
+    # Reason - To increase length for country
     number=models.CharField(max_length=20) 
      
     #Added by Ashish Dewangan on 28-11-2022
@@ -627,7 +637,12 @@ class Transaction_history(models.Model):
     city=models.CharField(max_length=30,null=True,blank=True,default='')
     state=models.CharField(max_length=30,null=True,blank=True,default='')
     zipcode=models.CharField(max_length=20,null=True,blank=True,default='')
-    country=models.CharField(max_length=30,null=True,blank=True,default='')
+    # Commented and modified by - Ashish Dewangan on 04-12-2023
+    # Reason - To increase max length of country
+    # country=models.CharField(max_length=30,null=True,blank=True,default='')
+    country=models.CharField(max_length=255,null=True,blank=True,default='')
+    # End of code modification by - Ashish Dewangan on 04-12-2023
+    # Reason - To increase max length of country
     number=models.CharField(max_length=20,null=True,blank=True,default='')
     # End of code addition by - Ashish Dewangan on 29-11-2023
     # Reason - To save shipping details on transaction history

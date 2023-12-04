@@ -389,6 +389,7 @@ function Footer2() {
               className={style.emailBox}
               placeholder="Enter Your Email"
               id="emailAddress"
+              maxLength={254}
             />
             <button
               className={style.emailBoxButton}

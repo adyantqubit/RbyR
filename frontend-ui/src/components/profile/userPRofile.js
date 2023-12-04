@@ -310,15 +310,15 @@ const UserProfile = () => {
                       }}>
                         <div className={styles.columnitem1content1}>
                           <div className={styles.columnFirstName}>
-                            <label className={styles.firstName} htmlFor='first'>First Name<span style={{color:'red'}}>*</span></label>
+                            <label className={styles.firstName} htmlFor='first'>First Name<span style={{color:'red'}} >*</span></label>
 
-                            <input className={styles.firstInput} type="text" defaultValue={userdata.name.substring(0, hasWhiteSpace(userdata.name))} name="first" required />
+                            <input className={styles.firstInput} type="text" defaultValue={userdata.name.substring(0, hasWhiteSpace(userdata.name))} name="first" required maxLength={99} />
 
                           </div>
                           <div className={styles.columnFirstName}>
                             <label className={styles.firstName} htmlFor='last'>Last Name<span style={{color:'red'}}>*</span></label>
 
-                            <input className={styles.firstInput} type="text" defaultValue={userdata.name.substring(hasWhiteSpaceforLast(userdata.name), userdata.name.length).trim()} name="last"/>
+                            <input className={styles.firstInput} type="text" defaultValue={userdata.name.substring(hasWhiteSpaceforLast(userdata.name), userdata.name.length).trim()} name="last" maxLength={99}/>
 
                           </div>
                         </div>
@@ -326,7 +326,7 @@ const UserProfile = () => {
                           <div className={styles.columnFirstName}>
                             <label className={styles.firstName} htmlFor='email'>Email Address<span style={{color:'red'}}>*</span></label>
 
-                            <input className={styles.firstInput} type="email" defaultValue={userdata.email} name="email" required />
+                            <input className={styles.firstInput} type="email" defaultValue={userdata.email} name="email" required maxLength={250}/>
 
                           </div>
 
