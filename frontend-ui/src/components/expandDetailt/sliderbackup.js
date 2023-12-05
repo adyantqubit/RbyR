@@ -81,7 +81,7 @@ const Slider = ({scrollTop}) => {
                           textTransform: "capitalize",
                         }}
                       >
-                        {cart.title}
+                        {cart.title.toLowerCase()}
                       </div>
                       <div style={{ textAlign: "center", fontWeight: "600" }}>
                         {" "}

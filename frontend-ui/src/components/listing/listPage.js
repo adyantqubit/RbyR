@@ -66,6 +66,8 @@ const ListPage = () => {
 
   const { category, parent } = useParams();
 
+  var [dataCount, setDatacount] = useState([]);
+
   // extracting selected parent menu sub list
   const [list, setList] = useState(null);
   useEffect(() => {
@@ -97,6 +99,9 @@ const ListPage = () => {
     setNullPage(false);
     setReload(true);
     ApiReSet();
+
+    catApi();
+
     // console.log(parent);
     document.getElementById("scrolled").scrollTop = 0;
   }, [category, parent, htl, lth, availablitySelect, latestSelect]);
@@ -113,6 +118,7 @@ const ListPage = () => {
   var [loading, setLoading] = useState(false);
   var [oldscroll, setoldScroll] = useState(0);
   var [showOptions, setShowOptions] = useState(false);
+
   const handleScroll = (e) => {
     var listHeight = lastref.current.scrollHeight;
     // console.log(`scrollHeight-${e.target.scrollHeight}, scrollTop-${e.target.scrollTop},client height-${e.target.clientHeight},footerHeight-${footerHeight}`)
@@ -188,10 +194,14 @@ const ListPage = () => {
 
   const catApi = async () => {
     await getCategoryProduct(category).then((r) => {
-      setCategoryProduct([...r.category]);
-      settemAllpro([...r.category]);
+      setDatacount([r.count]);
+      // settemAllpro([...r.category]);
+      // setData()
       // console.log(r.category);
+
     });
+
+    console.log(dataCount,'check')
   };
 
   function openDetail(id) {

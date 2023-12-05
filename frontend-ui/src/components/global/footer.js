@@ -319,7 +319,12 @@ function Footer() {
             ? copyrights.map((copyright) => {
                 return copyright.title;
               })
-            : "© 2022 RR. ALL RIGHTS RESERVED"}
+             // Modification and addition by Om Shrivastava on 04-11-23
+              // Reason : No need to show the hardcode content
+            // : "© 2022 RR. ALL RIGHTS RESERVED"}
+            : ""}
+            {/* // End of modification and addition by Om Shrivastava on 04-11-23
+              // Reason : No need to show the hardcode content */}
         </span>
 
         <a href="https://adyant.co.in/" target="_blank">

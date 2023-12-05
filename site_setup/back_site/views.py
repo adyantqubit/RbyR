@@ -307,7 +307,7 @@ class billingOrder(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        print(request.data)
+        # print(request.data)
         billingData = request.data
         billingData['user_id'] = request.user.id
         serialize2 = billingSerializer(data=billingData)
@@ -1164,7 +1164,7 @@ class pageIndex(APIView):
             elif (request.data['availablity']):
                 products = products.filter(available=True).order_by("id")
 
-            print(products.count())
+            # print(products.count())
             colors = []
             for product in products:
                 if product.color in colors:
@@ -1218,7 +1218,7 @@ class Currency(APIView):
             currency.currency_sign = request.data['sign']
             currency.currency_value = request.data['value']
             currency.save()
-            print(currency.currency_sign)
+            # print(currency.currency_sign)
         except:
             CurrencySelected.objects.create(
                 user=user,currency=request.data['currency'],currency_sign=request.data['sign'], currency_value=request.data['value']).save()

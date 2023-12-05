@@ -364,7 +364,7 @@ const CartSItem = (props) => {
              // Modification and addition by Om shrivastava on 01-12-23
         // REason : Create the popup class to apply the designing
         // className:'popupClass',
-        // style:{marginTop:"20px"},
+        style:{backgroundColor:"#f1cdd9"},
         // style:{backgroundColor: "#f1cdd9",
         // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
         // End of modification and addition by Om shrivastava on 01-12-23
