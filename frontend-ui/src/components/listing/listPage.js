@@ -100,7 +100,7 @@ const ListPage = () => {
     setReload(true);
     ApiReSet();
 
-    catApi();
+    // catApi();
 
     // console.log(parent);
     document.getElementById("scrolled").scrollTop = 0;
@@ -194,14 +194,12 @@ const ListPage = () => {
 
   const catApi = async () => {
     await getCategoryProduct(category).then((r) => {
-      setDatacount([r.count]);
-      // settemAllpro([...r.category]);
-      // setData()
-      // console.log(r.category);
-
+      setCategoryProduct([...r.category]);
+      settemAllpro([...r.category]);
+      console.log(r.category);
     });
 
-    console.log(dataCount,'check')
+    // console.log(dataCount,'check')
   };
 
   function openDetail(id) {
@@ -225,7 +223,7 @@ const ListPage = () => {
   let countTrueValues = CategoryProduct.reduce((count, obj) => {
     return count + (obj.is_active === true ? 1 : 0);
   }, 0);
-  console.log(countTrueValues);
+  // console.log(countTrueValues);
   // End of modification and addition by Om Shirvastava on 05-12-23
   // Reason : Show the count, I need to change this logic
 
@@ -283,7 +281,7 @@ const ListPage = () => {
                         // }}
                       >
                         {" "}
-                        Products ({countTrueValues})
+                        {/* Products ({countTrueValues}) */}
                       </span>
                     ) : (
                       <span></span>
