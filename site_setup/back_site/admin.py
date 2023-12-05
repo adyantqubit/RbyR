@@ -710,7 +710,13 @@ class Transaction_historyAdmin(admin.ModelAdmin):
                 #   "coupon_discount",
                   "shipping_price","subtotal_price",
                 #   "tax",
-    "grand_total","payment_status","date")
+    "grand_total","payment_status","date",
+    # Addition by Om Shrivastava on 05-12-23
+    # Reason : Add the field
+    'payment_status'
+    # End of addition by Om Shrivastava on 05-12-23
+    # Reason : Add the field
+    )
 
     # Commented and modified by - Ashish Dewangan on 29-11-2023
     # Reason - To make shipping details read only

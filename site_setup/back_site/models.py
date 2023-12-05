@@ -812,9 +812,14 @@ class ContactUs(models.Model):
     content3=models.TextField(null=True,blank=True)
     # End of modification and addition by Om Shrivastava on 10-11-23
     # Reason : Need to change the richtextfield to charfield
+    # Modification and addition by Om shrivastava on 04-12-23
+    # Reason : According to Preeti mam Don't add the default field
+    # contactUsImage=models.ImageField(upload_to='Images/', height_field=None,\
+    #        width_field=None, max_length=100,default='None/a1.jpg',verbose_name="Contact Us Image")
     contactUsImage=models.ImageField(upload_to='Images/', height_field=None,\
-           width_field=None, max_length=100,default='None/a1.jpg',verbose_name="Contact Us Image")
-
+           width_field=None, max_length=100,verbose_name="Contact Us Image", null=True,blank=True)
+    # End of modification and addition by Om shrivastava on 04-12-23
+    # Reason : According to Preeti mam Don't add the default field
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self):

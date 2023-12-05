@@ -62,13 +62,16 @@ Reason : Set the padding and margin of antd notification */
     --fontFamily : "Montserrat"; */
     /* Modification and addition by Om Shrivastava on 24-11-23
     Reason : Set the font family */
-    /* --fontFamily : "Oswald";
-    --fontFamily : "Baskerville"; */
+    --fontFamily : "Noto Serif";
     /* --fontFamily : "cursive"; */
     /* --fontFamily : "Lato"; */
     /* Modification and addition by Om Shrivastava on 25-11-23
     Reason : Add the font family */
-    --fontFamily : "Noto Serif";
+    /* --fontFamily : "Montserrat"; */
+    /* --fontFamily : "Merriweather"; */
+    /* --fontFamily : "Oswald"; */
+    /* --fontFamily : "Open Sans"; */
+
      /* --fontFamily : "Lato"; */
     /* End of modification and addition by Om Shrivastava on 25-11-23
     Reason : Add the font family  */

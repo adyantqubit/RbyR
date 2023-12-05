@@ -12,7 +12,7 @@ export const SlideShowApi = async () => {
   const response = await API.get("login_react/", {
         headers: { "Content-Type": "application/json" },
       }).catch((err) => console.log("0"));
-  console.log(response.data);
+  // console.log(response.data);
   return response ? response.data : {};
 };
 
@@ -21,7 +21,7 @@ export const check2 = async () => {
   const response = await API.get("check/", {
         headers: { "Content-Type": "application/json" },
       }).catch((err) => console.log("0"));
-  console.log(response.data);
+  // console.log(response.data);
   return response ? response.data : {};
 };
 
@@ -31,7 +31,7 @@ export const getCart = async (access_token) => {
   const response = await API.get("cartUpdate/", {
         headers: { "Content-Type": "application/json",'authorization':`Bearer ${access_token}` },
       }).catch((err) => console.log("0"));
-  console.log(response.data);
+  // console.log(response.data);
   return response ? response.data : {};
 };
 
@@ -137,7 +137,7 @@ export const InvoiveGetApi = async ({access}) => {
 
 
 export const InvoiveSingleGetApi = async ({access,data}) => {
-  console.log(access)
+  // console.log(access)
   const response = await API.put(`invoiesingle/`,data, {
         headers: { "Content-Type": "application/json",'authorization':`Bearer ${access}`},
       }).catch((err) => console.log("0"));

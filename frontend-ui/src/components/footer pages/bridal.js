@@ -20,7 +20,7 @@ const Bridal = () => {
   // Reason : Need to clear the date value when form is submit
   function clearDateValue() {
     var a = (document.getElementById("date").value = "");
-    console.log(a, "funcitonannnnn");
+    // console.log(a, "funcitonannnnn");
   }
   // End of Addition by Om shirvastava on 03-12-23
   // Reason : Need to clear the date value when form is submit
@@ -240,7 +240,7 @@ const Bridal = () => {
                 name="email"
                 label={
                   <label style={{ color: "black", fontWeight: "500" }}>
-                    E-mail address <span style={{ color: "red" }}> *</span>
+                    E-mail address 
                   </label>
                 }
                 // rules={[

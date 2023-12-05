@@ -56,7 +56,7 @@ notification.destroy()
                                  {/* Modification and addition by Om Shrivastava on 08-11-23
                       Reason : When the data is not there then no need to show this div  */}
                       {termAndCondition && termAndCondition.subtitle2 ? 
-                    parse(termAndCondition.subtitle2)
+                    parse(termAndCondition.subtitle2) 
                     :null}
                      {/* End of modification and addition by Om Shrivastava on 08-11-23
                       Reason : When the data is not there then no need to show this div  */}

@@ -102,13 +102,17 @@ const Contact = () => {
                       {/* Modification and addition by Om Shrivastava on 20-10-23
                     Reason : Need to add right path for the image */}
                       {/* <img  src={config.staticBaseURL+contact.contactUsImage}></img> */}
+                    {contact&&contact.contactUsImage ?
+
                       <img
                         src={
                           config.staticBaseURL +
                           "media/" +
-                          contact.contactUsImage
+                          contact?.contactUsImage
                         }
                       ></img>
+                    :null}
+
                       {/* Modification and addition by Om Shrivastava on 20-10-23
                     Reason : Need to add right path for the image */}
                     </div>

@@ -47,9 +47,9 @@ export const Profile = () => {
   useEffect(() => {
     if (data && isSuccess)
       setUserData({
-        email: data.email,
-        name: data.name,
-        contact: data.contact_number
+        email: data?.email,
+        name: data?.name,
+        contact: data?.contact_number
       })
   }, [data, isSuccess])
 

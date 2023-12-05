@@ -37,10 +37,10 @@ const BestSeller = () => {
         setImageSwap(!imageSwap)
 
     }
-    console.log(bestProducts,'datass')
+    // console.log(bestProducts,'datass')
 
     const newArray = bestProducts.map(({L,M,S,XL,XS,XXL,XXXL,is_active,available,bestSeller,careTip,category,color,date,description,fabric,like,menu,price,ready_to_ship,ready_to_ship_days,search_key,shipping_charges,shipping_days,style_code,subMenu,title,upper_menu,made_in, ...rest }) => rest);
-    console.log(newArray);
+    // console.log(newArray);
 
     return (
         <>

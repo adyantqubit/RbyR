@@ -89,7 +89,7 @@ const Search = () => {
       localSaveproduct(searchedData.result, searchedData.categories);
     } else {
       setMsg("Result not found!");
-      console.log('iiiiiiii')
+      // console.log('iiiiiiii')
       setFilteredPersons([]);
     }
   };

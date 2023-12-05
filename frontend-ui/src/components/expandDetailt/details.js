@@ -145,7 +145,7 @@ const Details = (props) => {
     });
   }
 
-  console.log(details, "check all data");
+  // console.log(details, "check all data");
   // Added by Ashish Dewangan on 24-11-2022
   // Reason - To display whatsapp contact number
   const getWhatsappContactNumber = async () => {

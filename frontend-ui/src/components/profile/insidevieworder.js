@@ -32,7 +32,7 @@ const InsideOrder = () => {
     getStoreLocator();
   }, []);
 
-  console.log(states,'checkkkk')
+  // console.log(states,'checkkkk')
   const getStoreLocator = async () => {
     const storeLocatorData = await getStoreLocatorDetail();
     if (storeLocatorData) {
@@ -57,7 +57,7 @@ const InsideOrder = () => {
     qrDetails()
   }, [])
 
-console.log(allData,'checkkkkkk')
+// console.log(allData,'checkkkkkk')
 
   function getPrice(orde) {
     var t = 0;

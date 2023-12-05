@@ -420,7 +420,7 @@ const CartSItem = (props) => {
     await shippingTickGet().then((r) =>
       r.map((s) => {
         if (s.isSelected) {
-          console.log("------------------------------", checkoutDetails);
+          // console.log("------------------------------", checkoutDetails);
 
           const shippingData = {
             firstname: s.firstname,

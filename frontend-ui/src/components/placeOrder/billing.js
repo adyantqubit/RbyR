@@ -116,7 +116,7 @@ const Billing = () => {
     });
   }
 
-  console.log(onlineDetail);
+  // console.log(onlineDetail);
 
   // Added by Ashish Dewangan on 11-12-2022
   // Reason - To navigate to homepage when we click on continue shopping

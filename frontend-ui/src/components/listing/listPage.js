@@ -79,10 +79,10 @@ const ListPage = () => {
     };
   }, []);
 
-  console.log(CategoryProduct, "category productt");
+  // console.log(CategoryProduct, "category productt");
   useEffect(() => {
-    console.log(category, parent);
-    console.log("on reload change call___", reload, CategoryProduct);
+    // console.log(category, parent);
+    // console.log("on reload change call___", reload, CategoryProduct);
     if (reload == false) {
       PageLoad();
       Apicall();
@@ -97,12 +97,12 @@ const ListPage = () => {
     setNullPage(false);
     setReload(true);
     ApiReSet();
-    console.log(parent);
+    // console.log(parent);
     document.getElementById("scrolled").scrollTop = 0;
   }, [category, parent, htl, lth, availablitySelect, latestSelect]);
 
   async function ApiReSet() {
-    console.log("On category change call-----------", CategoryProduct, reload);
+    // console.log("On category change call-----------", CategoryProduct, reload);
     setPageIndex(0);
     CategoryProduct = [];
     setCategoryProduct(CategoryProduct);
@@ -123,10 +123,10 @@ const ListPage = () => {
     if (bottom && reload) {
       setReload(false);
       setLoading(true);
-      console.log("inside scroll call");
+      // console.log("inside scroll call");
     }
 
-    console.log("----------", e.target.scrollTop, oldscroll);
+    // console.log("----------", e.target.scrollTop, oldscroll);
 
     if (oldscroll > e.target.scrollTop) {
       setShowOptions(true);
@@ -153,10 +153,10 @@ const ListPage = () => {
       availablity: availablitySelect,
     };
 
-    console.log("next page call", pageIndex);
+    // console.log("next page call", pageIndex);
 
     await nextIndexPage(data).then((r) => {
-      console.log("response from backend_______", r);
+      // console.log("response from backend_______", r);
       setTimeout(() => {
         if (r.error) {
           setReload(false);
@@ -164,7 +164,7 @@ const ListPage = () => {
 
           if (CategoryProduct.length == 0) setNullPage(true);
         } else {
-          console.log(CategoryProduct);
+          // console.log(CategoryProduct);
           setAllCategoryAvai([...r.categories]);
           var temp = r.products.filter(
             (c) => CategoryProduct.filter((g) => g.id == c.id).length == 0
@@ -182,7 +182,7 @@ const ListPage = () => {
   }
 
   function scrollTop() {
-    console.log("top");
+    // console.log("top");
     document.getElementById("scrolled").scrollTop = 0;
   }
 
@@ -190,7 +190,7 @@ const ListPage = () => {
     await getCategoryProduct(category).then((r) => {
       setCategoryProduct([...r.category]);
       settemAllpro([...r.category]);
-      console.log(r.category);
+      // console.log(r.category);
     });
   };
 
@@ -204,11 +204,21 @@ const ListPage = () => {
     }
   }
 
-  let counter = 0;
-  for (const obj of CategoryProduct) {
-    counter++;
-  }
-  console.log(counter);
+  // Modification and addition by Om Shirvastava on 05-12-23
+  // Reason : Show the count, I need to change this logic
+  // console.log(CategoryProduct)
+  // let counter = 0;
+  // for (const obj of CategoryProduct) {
+  //   counter++;
+  // }
+
+  let countTrueValues = CategoryProduct.reduce((count, obj) => {
+    return count + (obj.is_active === true ? 1 : 0);
+  }, 0);
+  console.log(countTrueValues);
+  // End of modification and addition by Om Shirvastava on 05-12-23
+  // Reason : Show the count, I need to change this logic
+
   return (
     <>
       {/* {showOptions?<NavHeader/>:null} */}
@@ -263,7 +273,7 @@ const ListPage = () => {
                         // }}
                       >
                         {" "}
-                        Products ({counter})
+                        Products ({countTrueValues})
                       </span>
                     ) : (
                       <span></span>

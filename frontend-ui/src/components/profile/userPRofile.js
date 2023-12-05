@@ -100,7 +100,7 @@ const UserProfile = () => {
       password2: data.get('pswd2'),
     }
     const res = await changeUserPassword({ actualData, access_token });
-    console.log("-----------passwordUpdate------------------")
+    // console.log("-----------passwordUpdate------------------")
 
     if (res.error) {
       setError(res.error.data.errors)
@@ -202,7 +202,7 @@ const UserProfile = () => {
 
     if (!data.get('oldpswd'))
       await userUpdate(userData).then(r => {
-        console.log("-----------userupdaterun------------------")
+        // console.log("-----------userupdaterun------------------")
         userData = r;
         setUserData(userData);
         // Create an instance of Notyf
@@ -316,7 +316,7 @@ const UserProfile = () => {
 
                           </div>
                           <div className={styles.columnFirstName}>
-                            <label className={styles.firstName} htmlFor='last'>Last Name<span style={{color:'red'}}>*</span></label>
+                            <label className={styles.firstName} htmlFor='last'>Last Name</label>
 
                             <input className={styles.firstInput} type="text" defaultValue={userdata.name.substring(hasWhiteSpaceforLast(userdata.name), userdata.name.length).trim()} name="last" maxLength={99}/>
 

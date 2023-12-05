@@ -75,7 +75,7 @@ const Video = (props) => {
     </div>
   }
 
-console.log(props.url,'checkkkkk')
+// console.log(props.url,'checkkkkk')
   return (
     <>
     {/* Modification and addition by Om Shrivastava on 20-10-23
