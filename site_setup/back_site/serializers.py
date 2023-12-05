@@ -160,7 +160,7 @@ class UserPasswordResetSerializer(serializers.ModelSerializer):
           id=smart_str(urlsafe_base64_decode(uid))
           user=User.objects.get(id=id)
           if not PasswordResetTokenGenerator().check_token(user,token):
-             raise serializers.ValidationError('Token is not valid or expired')
+             raise serializers.ValidationError('Change Password Link is Expired')
           user.set_password(password)
           user.save()
           return attrs
@@ -282,15 +282,17 @@ class billingSerializer(serializers.ModelSerializer):
         model=userbillingDetail
         fields="__all__"
         
-    def validate(self,attrs):
-     if userbillingDetail.objects.filter(lastname=attrs.get('lastname'),firstname=attrs.get('firstname'),
-                                         street=attrs.get('street'),city=attrs.get('city'),
-                                         houseno=attrs.get('houseno'),state=attrs.get("state"),
-                                         zipcode=attrs.get('zipcode'),country=attrs.get("country"),
-                                         number=attrs.get('number'),user_id=attrs.get('user_id')).exists():
-        raise serializers.ValidationError("this is already exist")
+    # # def validate(self,attrs):
+    # #  if userbillingDetail.objects.filter(lastname=attrs.get('lastname'),firstname=attrs.get('firstname'),
+    # #                                      street=attrs.get('street'),city=attrs.get('city'),
+    # #                                      houseno=attrs.get('houseno'),state=attrs.get("state"),
+    # #                                      zipcode=attrs.get('zipcode'),country=attrs.get("country"),
+    # #                                      number=attrs.get('number'),user_id=attrs.get('user_id')).exists():
+    # #     raise serializers.ValidationError("this is already exist")
             
-     return attrs     
+    #  return attrs    
+    # 
+    #  
     
 class invoiceSerializer(serializers.ModelSerializer):
     # Added by - Ashish Dewangan on 27-11-2023

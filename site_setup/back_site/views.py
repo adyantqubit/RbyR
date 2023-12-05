@@ -311,18 +311,35 @@ class billingOrder(APIView):
         billingData = request.data
         billingData['user_id'] = request.user.id
         serialize2 = billingSerializer(data=billingData)
+
+        # try:
+        #     if serialize2.is_valid(raise_exception=True):
+        #         bill = serialize2.save()
+        #         return Response({"billing_id": bill.id})
+        # except:
+        #     bill = userbillingDetail.objects.get(lastname=request.data['lastname'],firstname=request.data['firstname'],
+        #                                  street=request.data['street'],city=request.data['city'],
+        #                                  houseno=request.data['houseno'],state=request.data["state"],
+        #                                  zipcode=request.data['zipcode'],country=request.data["country"],
+        #                                  number=request.data['number'],user_id=request.data['user_id'])
+        #     return Response({"billing_id": bill.id})
+        # return Response(request.data)
+
         try:
+            bill = userbillingDetail.objects.get(lastname=request.data['lastname'],firstname=request.data['firstname'],
+                                            street=request.data['street'],city=request.data['city'],
+                                            houseno=request.data['houseno'],state=request.data["state"],
+                                            zipcode=request.data['zipcode'],country=request.data["country"],
+                                            number=request.data['number'],user_id=request.data['user_id'])
+            
+            return Response({"billing_id": bill.id})
+        except Exception as e:
+            serialize2 = billingSerializer(data=billingData)
+            
             if serialize2.is_valid(raise_exception=True):
                 bill = serialize2.save()
                 return Response({"billing_id": bill.id})
-        except:
-            bill = userbillingDetail.objects.get(lastname=request.data['lastname'],firstname=request.data['firstname'],
-                                         street=request.data['street'],city=request.data['city'],
-                                         houseno=request.data['houseno'],state=request.data["state"],
-                                         zipcode=request.data['zipcode'],country=request.data["country"],
-                                         number=request.data['number'],user_id=request.data['user_id'])
-            return Response({"billing_id": bill.id})
-        return Response(request.data)
+            return Response(request.data)
 
 
 class Invoice(APIView):
