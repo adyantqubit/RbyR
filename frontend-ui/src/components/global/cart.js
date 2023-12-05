@@ -215,7 +215,7 @@ export function DrawerFooter() {
     if(userdata.email.length==0){
       nav("/login")
       setCartDrawer(false)
-
+      // console.log('if parttt')
     }
     else{
 
@@ -248,6 +248,8 @@ export function DrawerFooter() {
 
           });
         })
+      // console.log('if parttt')
+
       }
       else if(r.error_user){
         notification.error({
@@ -261,6 +263,8 @@ export function DrawerFooter() {
         });
         //  firstTimeLoadFunctions()
         // nav("/login")
+      // console.log('else if parttt')
+
       }
       else {
 
@@ -268,6 +272,7 @@ export function DrawerFooter() {
         checkoutDetails['CouponDiscount'] = afterColumnTotalOfferAdd(offer, cart, taxRate).coupon
         DefaultShipping()
         nav("/placeorder")
+        // console.log('else if else parttt')
 
       }
     })
@@ -281,7 +286,7 @@ export function DrawerFooter() {
     await shippingTickGet().then(r => r.map(s => {
       if (s.isSelected) {
 
-        console.log("------------------------------",s)
+        // console.log("------------------------------",s)
         const shippingData = {
           firstname: s.firstname,
           lastname: s.lastname,
@@ -361,7 +366,7 @@ export function DrawerFooter() {
 
           <div className={style.buttons} >
             <button className={style.shopbtn1} onClick={e => setCartDrawer(false)}>CONTINUE SHOPPING</button>
-            <buton className={style.shopbtn1} onClick={e => { cartChecking() }}>GO TO CHECKOUT</buton>
+            <buton className={style.shopbtn1} onClick={e => { cartChecking() }}>GO TO CHECKOUT </buton>
           </div>
         </div>
       </div> : null}

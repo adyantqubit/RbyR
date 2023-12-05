@@ -1046,7 +1046,7 @@ const CartSItem = (props) => {
                     style={{ width: "100%", margin: "5px" }}
                     onClick={(e) => cartChecking()}
                   >
-                    GO TO CHECKOUT
+                    GO TO CHECKOUT 
                   </buton>
                   <button
                     className={style.shopbtn1}

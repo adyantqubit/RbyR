@@ -39,6 +39,11 @@ const LikeCard = (props) => {
   const nav = useNavigate();
   function openDetail(id) {
     nav(`/listing/${id.menu}/${id.category}/detail/${id.id}`);
+    // Addition by Om Shrivastava on 05-12-23
+    // Reason : Need to close the drawer 
+    setLikeDrawer(false)
+    // End of addition by Om Shrivastava on 05-12-23
+    // Reason : Need to close the drawer
     // window.location.reload(false);
   }
 
@@ -62,7 +67,7 @@ const LikeCard = (props) => {
     <div
       className={style.mainDivDesign}
       // style={{border:'1px solid black',display:'grid',gridTemplateColumns:'auto auto',}}
-    >
+    > 
       {like.length > 0 ? (
         like.map((l) => (
           <div

@@ -10,7 +10,7 @@ import { notification } from 'antd';
 
 const LikeDrawer = () => {
   notification.destroy()
-  const { openLikedrawer, setLikeDrawer } = CartState();
+  const { openLikedrawer, setLikeDrawer } = CartState(); 
 
   const showDrawer = () => {
     setLikeDrawer(true);

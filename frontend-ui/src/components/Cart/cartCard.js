@@ -254,7 +254,7 @@ const increament=(CartProduct)=>{
 
          <div className={style.buttons} >
             <button className={style.shopbtn1} >Continue Shopping</button>
-            <buton className={style.shopbtn2} onClick={e=>{nav('/checkOut')}}>Go To Checkout</buton>
+            <buton className={style.shopbtn2} onClick={e=>{nav('/checkOut')}}>Go To Checkout </buton>
          </div>
       </div>
     </div>:null}

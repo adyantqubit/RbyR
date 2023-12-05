@@ -267,11 +267,23 @@ class product_ordersAdmin(admin.ModelAdmin):
     # list_display=("id","order_no","user_no","product_id","billing_id","shipping_id","quantity"
     # ,"price","size","payment_mode","date")
     list_display=("id","order_no","user_no","product_name","billing_id","shipping_id","quantity"
-    ,"price","size","payment_mode","date")
+    ,"price","size","payment_mode","date",
+    # Addition by Om Shrivastava on 05-12-23
+    # Reason : Need to show this field
+    'order_status'
+    # End of addition by Om Shrivastava on 05-12-23
+    # Reason : Need to show this field
+    )
     # End of code modification by - Ashish Dewangan on 29-11-2023
     # Reason - To show product name instead of product id
 
-    list_filter=("date","payment_mode","price","user_no")
+    list_filter=(
+         # Addition by Om Shrivastava on 05-12-23
+    # Reason : Need to show this field
+    'order_status',
+    # End of addition by Om Shrivastava on 05-12-23
+    # Reason : Need to show this field
+        "date","payment_mode","price","user_no")
     search_fields=("product_id__title","user_no__name")
 
     # Commented and modified by - Ashish Dewangan on 29-11-2023
