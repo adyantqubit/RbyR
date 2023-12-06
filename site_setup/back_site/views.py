@@ -1147,7 +1147,9 @@ class pageIndex(APIView):
                 # Modification and addition by Om Shrivastava on 03-11-23
                 # Reason : When the product is_active then it show on frontendside
                 # products=product_detail.objects.filter(upper_menu=menu).order_by("id")
-                products=product_detail.objects.filter(upper_menu=menu,is_active = True).order_by("id")
+                products=product_detail.objects.filter(upper_menu=menu,is_active=True).order_by("id")
+
+                # print(products.count(),'product count if parttttttttttt')
                 # End of Modification and addition by Om Shrivastava on 03-11-23
                 # Reason : When the product is_active then it show on frontendside
             # End of code
@@ -1155,15 +1157,15 @@ class pageIndex(APIView):
             # Added by Rohan -5/1/22
             # Reason- Adding ready to wear functionality where all ready to ship product shown on this link
             elif (request.data['parent']=="ready to ship" and request.data['category']=="0"):
-                products=product_detail.objects.filter(ready_to_ship=True).order_by("id")
+                products=product_detail.objects.filter(ready_to_ship=True,is_active=True).order_by("id")
                 
             elif(request.data['parent']=="best seller" and request.data['category']=="0"):
-                products=product_detail.objects.filter(bestSeller=True).order_by("id")
+                products=product_detail.objects.filter(bestSeller=True,is_active=True).order_by("id")
   
             # End of code
             else:
                 products = product_detail.objects.filter(
-                    category=request.data['category'])
+                    category=request.data['category'],is_active=True)
                 
 
             if (request.data['lth'] and request.data['availablity']):
@@ -1181,7 +1183,13 @@ class pageIndex(APIView):
             elif (request.data['availablity']):
                 products = products.filter(available=True).order_by("id")
 
-            # print(products.count())
+            # print(products.count(),'producttttttttttt count')
+            # productCount = products.count()
+            # productsCount = products.filter(is_active=True)
+            productCount = products.count()
+            # print(productCount,'product counttttttttttttttt')
+            
+            
             colors = []
             for product in products:
                 if product.color in colors:
@@ -1203,7 +1211,12 @@ class pageIndex(APIView):
             serialize = product_serializer(
                 p.page(pageno).object_list, many=True)
             
-            return Response({"products": serialize.data, "colors": colors,"categories":categories})
+            return Response({"products": serialize.data, "colors": colors,"categories":categories,
+                            #  'productCount':productCount,
+                             'productsCount':productCount,
+                            #  'productCount':productCount,
+
+                             })
         except:
             return Response({"error": True}) 
     # end of code Addition

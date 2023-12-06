@@ -86,7 +86,7 @@ const Slider = ({ scrollTop }) => {
             // Reason : Comment this code
           }}
         >
-          <div className={styles.header} style={{textAlign:'center'}}>RECENTLY VIEWED PRODUCTS</div>
+          <div className={styles.header} style={{textAlign:'center',fontWeight:'600'}}>RECENTLY VIEWED PRODUCTS</div>
 
           <Carousel cols={4} rows={1} gap={10} style={{ width: "100%" }}>
             {/* {JSON.parse(localStorage.getItem("recentview")) &&

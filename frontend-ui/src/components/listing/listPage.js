@@ -57,6 +57,7 @@ const ListPage = () => {
     setSortUi,
     filterui,
     setfilterUi,
+    productCount,setProductCount,
   } = CartState();
   const [saveLikeApi, { isLoading }] = useLikedUpdateMutation();
   const [cartsaveApi, { isLoad }] = useCartUpdateMutation();
@@ -182,11 +183,13 @@ const ListPage = () => {
           settemAllpro([...tempallpro, ...temp2]);
           setAllColorAvai(r.colors);
           setReload(true);
+
+          setProductCount(r.productsCount)
         }
       }, 200);
     });
   }
-
+// console.log(productCount,'productcounnn')
   function scrollTop() {
     // console.log("top");
     document.getElementById("scrolled").scrollTop = 0;
@@ -281,7 +284,7 @@ const ListPage = () => {
                         // }}
                       >
                         {" "}
-                        {/* Products ({countTrueValues}) */}
+                        Products ({productCount})
                       </span>
                     ) : (
                       <span></span>

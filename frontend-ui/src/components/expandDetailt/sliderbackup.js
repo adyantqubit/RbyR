@@ -56,6 +56,7 @@ const Slider = ({scrollTop}) => {
             letterSpacing: "3px",
             marginBottom: "20px",
             paddingLeft: "4%",
+            fontWeight:'600'
           }}
         >
           RECENTLY VIEWED PRODUCTS
