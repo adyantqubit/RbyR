@@ -70,6 +70,7 @@ const CartSItem = (props) => {
     setTaxRate,
     cartEnd,
     setCartEnd,
+    redirectionPath,setRedirectionPath,
   } = CartState();
 
   const [cartsaveApi, { isLoad }] = useCartUpdateMutation();
@@ -87,6 +88,7 @@ const CartSItem = (props) => {
     notification.destroy();
     window.scrollTo(0, 0);
     // document.getElementById("scrolled").scrollTop=0
+    
   }, []);
 
   async function ruleText() {
@@ -338,6 +340,15 @@ const CartSItem = (props) => {
 
   async function cartChecking() {
     if (userdata.email.length == 0) {
+      /**
+       * Added by - Ashish Dewangan on 07-12-2023
+       * Reason - To set redirection path to which user will navigate to after login
+       */
+      setRedirectionPath("/placeorder")
+      /**
+       * End of code addition by - Ashish Dewangan on 07-12-2023
+       * Reason - To set redirection path to which user will navigate to after login
+       */
       nav("/login");
     } else {
       const data = {

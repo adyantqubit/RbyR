@@ -85,6 +85,17 @@ const Context = ({ children }) => {
   const [logo, setLogo] = useState(null);
 
   const [whatsappContactNumber, setWhatsappContactNumber] = useState(false);
+
+  /**
+   * Added by - Ashish Dewangan on 07-12-2023
+   * Reason - To set redirection path where user will navigate when he logs in
+   */
+  const [redirectionPath,setRedirectionPath] = useState("/");
+  /**
+   * End of code addition by - Ashish Dewangan on 07-12-2023
+   * Reason - To set redirection path where user will navigate when he logs in
+   */
+
   const getWhatsappContactNumber = async () => {
     const whatsappContactNumberData = await getWhatsappContactDetail();
     if (whatsappContactNumberData) {
@@ -414,7 +425,16 @@ const Context = ({ children }) => {
       whatsappContactNumber, setWhatsappContactNumber, logo, setLogo
       , video, setVideo, allResult, setAllResult, allCategory, setAllCategory, nullpage, setNullPage, menus, setMenu, searchmsg, setSearchMsg, filteredPersons, setFilteredPersons, selectedCategory, setCategorySelected, reload, setReload, firstTimeLoadFunctions, showEditable, setShowEditable, shipEditcond, setshipEditCond, cartEnd, setCartEnd, taxRate, setTaxRate, offer, setOffer, availablitySelect, setAvailablity, latestSelect, setLatestSelect, defaultShiping, setDefaultShipping, orders, setOrder, paymentflow, setPaymentflow, shippingflow, setShipingflow, checkoutDetails, setCheckoutDetails, userdata, setUserData, to, setTo, currency, setCurrency, sizeSelected, setSizeSelected, con, setcon, htl, sethtl, lth, setLth, tempsprice, setTempsprice, filterui, setfilterUi, maxValue, setmaxValue, minValue, setminValue, allCategoryAvai, setAllCategoryAvai, allColorAvai, setAllColorAvai,
       productCount,setProductCount, 
-      selectedColor, setSelectedColor, tempallpro, settemAllpro, sortui, setSortUi, product, cart, setCart, setProduct, setcheck, checked1, checked2, image, setImage, like, setLike, setCondition, condition, openLikedrawer, setLikeDrawer, openCartdrawer, setCartDrawer, CategoryProduct, setCategoryProduct
+      selectedColor, setSelectedColor, tempallpro, settemAllpro, sortui, setSortUi, product, cart, setCart, setProduct, setcheck, checked1, checked2, image, setImage, like, setLike, setCondition, condition, openLikedrawer, setLikeDrawer, openCartdrawer, setCartDrawer, CategoryProduct, setCategoryProduct,
+      /**
+       * Added by - Ashish Dewangan on 07-12-2023
+       * Reason - To set redirection path where user will navigate when he logs in
+       */
+      redirectionPath,setRedirectionPath
+      /**
+       * End of code addition by - Ashish Dewangan on 07-12-2023
+       * Reason - To set redirection path where user will navigate when he logs in
+       */
     }}>
       {children}
     </Cart.Provider>

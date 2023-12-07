@@ -21,7 +21,7 @@ import '../../context.css'
 const Cart = () => {
 
 
-  const { openCartdrawer, setCartDrawer, cart,userdata } = CartState();
+  const { openCartdrawer, setCartDrawer, cart,userdata,redirectionPath,setRedirectionPath } = CartState();
 
 
   const showDrawer = () => {
@@ -39,7 +39,6 @@ const Cart = () => {
 
   const [windowSize, setWindowSize] = useState(getWindowSize());
   const [drawerwidth, setDrawerwidth] = useState(600)
-
 
   useEffect(() => {
     function handleWindowResize() {
@@ -109,7 +108,7 @@ export default Cart;
 
 
 export function DrawerFooter() {
-  var { cart, setCartDrawer, currency,userdata, offer, setOffer, taxRate, setTaxRate, cartEnd, setCartEnd, checkoutDetails } = CartState()
+  var { cart, setCartDrawer, currency,userdata, offer, setOffer, taxRate, setTaxRate, cartEnd, setCartEnd, checkoutDetails,setRedirectionPath } = CartState()
   const [UploadCartApi, { isLoading }] = useCartBuyAllMutation()
   const [cond, setCond] = useState([])
   const [error, setError] = useState(null)
@@ -213,6 +212,15 @@ export function DrawerFooter() {
   
 
     if(userdata.email.length==0){
+      /**
+       * Added by - Ashish Dewangan on 07-12-2023
+       * Reason - To set redirection path to which user will navigate to after login
+       */
+      setRedirectionPath("/placeorder")
+      /**
+       * End of code addition by - Ashish Dewangan on 07-12-2023
+       * Reason - To set redirection path to which user will navigate to after login
+       */
       nav("/login")
       setCartDrawer(false)
       // console.log('if parttt')

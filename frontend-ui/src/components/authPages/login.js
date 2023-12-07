@@ -19,7 +19,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
-	const { setCart, setLike, firstTimeLoadFunctions, cart } = CartState()
+	const { setCart, setLike, firstTimeLoadFunctions, cart,redirectionPath,setRedirectionPath, } = CartState()
 	const [error, setError] = useState({})
 	let { access_token } = getToken()
 	const dispatch = useDispatch()
@@ -91,7 +91,24 @@ const Login = () => {
 					},
 			)
 			firstTimeLoadFunctions()
-			navigate(-1)
+			/**
+			 * Commented and modified by - Ashish Dewangan on 07-12-2023
+			 * Reason - To navigate to place order page if login was done from after clicking on checkout button.
+			 * 			To navigate to last visited page if login was done from any other page
+			 */
+			// navigate(-1)
+			if(redirectionPath=="/"){
+				navigate(-1)
+			}else{
+				navigate(redirectionPath)
+				setRedirectionPath("/")
+			}
+			/**
+			 * End of code modification by - Ashish Dewangan on 07-12-2023
+			 * Reason - To navigate to place order page if login was done from after clicking on checkout button.
+			 * 			To navigate to last visited page if login was done from any other page
+			 */
+			
 		}
 	}
 

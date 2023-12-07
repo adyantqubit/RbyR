@@ -27,8 +27,16 @@ const ProductListing = () => {
   const nav = useNavigate();
 
   useEffect(() => {
-    if (typeof checkoutDetails.CouponDiscount != "undefined") {
-    } else nav("/cart");
+    /**
+     * Commented by - Ashish Dewangan on 07-12-2023
+     * Reason - This code is not required because coupon discount functionality is not used
+     */
+    // if (typeof checkoutDetails.CouponDiscount != "undefined") {
+    // } else nav("/cart");
+    /**
+     * End of code modification by - Ashish Dewangan on 07-12-2023
+     * Reason - This code is not required because coupon discount functionality is not used
+     */
   }, []);
 
   return (

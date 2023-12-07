@@ -87,11 +87,19 @@ const ShrinkHeader = () => {
     dispatch(unSetUserToken({ access_token: null }))
     removeToken()
     localStorage.clear()
-
+    /**
+     * Added by - Ashish Dewangan on 07-12-2023
+     * Reason - To navigate to home page after logout
+     */
+    nav('/')
+    /**
+     * End of code addition by - Ashish Dewangan on 07-12-2023
+     * Reason - To navigate to home page after logout
+     */
     firstTimeLoadFunctions()
     localStorage.setItem('logout', true);
     window.location.reload(false)
-
+    
   }
 
   const [logoutaction, seLogoutAction] = useState(false)
