@@ -91,8 +91,11 @@
 @media screen and (max-width:768px) {
     .tacContainer{
         /* top:5vh; */
-        top:-7vh;
-
+        /* Commented by Om Shrivastava on 08-12-23
+        Reason : Need to remove the top property, because the heading is hidden */
+        /* top:-7vh; */
+        /* End of Commented by Om Shrivastava on 08-12-23
+        Reason : Need to remove the top property, because the heading is hidden */
     }
     .subTitle,.content,.title{
         padding:0 5%;

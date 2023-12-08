@@ -13,6 +13,14 @@ import Video from "../home/video";
 import Below from "./below";
 import Footer2 from "./footer2";
 import style from "./slideshow.module.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+// Import Swiper styles
+// import './styles.css';
+// import required modules
+import { Navigation } from "swiper/modules";
 
 function Slideshow() {
   const [index, setIndex] = useState(0);
@@ -78,11 +86,46 @@ function Slideshow() {
   // Commented by Om Shrivastava on 22-10-23
   // Reason : When the user delete the banner then bestseller data is show
   // if (visible != null && visible.length > 0) {
-    return (
-      <div className={style.car}>
-        <Carousel activeIndex={index} onSelect={handleSelect} slide={false}>
+  return (
+    <div className={style.car}>
+      {/* Addition by Om Shrivastava on 08-12-23
+        Reason : Set the condition when data is not present */}
+      {visible.length > 0 ? (
+        // Modification and addition by Om Shirvastava on 08-12-23
+        // Reason : Need to remove the arrow when the content is one
+        // <Carousel activeIndex={index} onSelect={handleSelect} slide={false}
+
+        // >
+        //   {visible.map((item) => (
+        //     <Carousel.Item>
+        //       <Link to={`/listing/${item.category}/0`}>
+        //         <img
+        //           className={style.dblock}
+        //           // src={pay[0].src}
+
+        //           src={config.staticBaseURL + item.src}
+        //           alt="First slide"
+        //         />
+        //       </Link>
+        //     </Carousel.Item>
+        //   ))}
+        // </Carousel>
+        <Swiper 
+        style={{
+          "--swiper-pagination-color": 'white',
+          "--swiper-pagination-bullet-inactive-color": 'black',
+          "--swiper-pagination-bullet-inactive-opacity": "0.6 ",
+          "--swiper-pagination-bullet-size": "8px",
+          "--swiper-pagination-bullet-horizontal-gap": "5px",
+          "--swiper-button-prev-color": "aqua !important"
+        }}
+        navigation={true}
+        pagination={{
+          clickable: true,
+        }}
+         modules={[Navigation]} className="mySwiper">
           {visible.map((item) => (
-            <Carousel.Item>
+            <SwiperSlide>
               <Link to={`/listing/${item.category}/0`}>
                 <img
                   className={style.dblock}
@@ -92,20 +135,25 @@ function Slideshow() {
                   alt="First slide"
                 />
               </Link>
-            </Carousel.Item>
+            </SwiperSlide>
           ))}
-        </Carousel>
-        {/* <Card imgArray={gif}/>
+        </Swiper>
+      ) : null}
+       {/* //End of modification and addition by Om Shirvastava on 08-12-23
+        // Reason : Need to remove the arrow when the content is one */}
+      {/* End of addition by Om Shrivastava on 08-12-23
+        Reason : Set the condition when data is not present */}
+      {/* <Card imgArray={gif}/>
       <CArd2 imgArray={normal}/> 
        <Video url={video}/> */}
-        <BestSeller/>
+      <BestSeller />
 
-        {/* Commented by - Ashish Dewangan on 15-02-2023
+      {/* Commented by - Ashish Dewangan on 15-02-2023
       Reason - To hide text that appear after footer */}
-        {/* <Below /> */}
-        {/* End of comment */}
-      </div>
-    );
+      {/* <Below /> */}
+      {/* End of comment */}
+    </div>
+  );
   // }
 }
 

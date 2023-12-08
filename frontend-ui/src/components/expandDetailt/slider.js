@@ -129,7 +129,12 @@ const Slider = ({ scrollTop }) => {
                       scrollTop();
                     }}
                   >
-                    {cart.title}
+                    {/* Modification and addition by Om Shrivastava on 08-12-23
+                    Reason : Show the product name with lowercase  */}
+                    {/* {cart.title} */}
+                    {cart.title.toLowerCase()}
+                    {/*End of modification and addition by Om Shrivastava on 08-12-23
+                    Reason : Show the product name with lowercase  */}
                   </div>
                   <div
                     style={{

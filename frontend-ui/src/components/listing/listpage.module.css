@@ -723,9 +723,12 @@ Reason : Set the content in left side */
   .category{
     display: flex;
      width: auto;
-  justify-content: center;
+  /* Commented by Om Shrivastava on 08-12-23
+  Reason : No need to show the content in center */
+  /* justify-content: center; */
    flex-wrap: wrap;
-   
+   /*End of  Commented by Om Shrivastava on 08-12-23
+  Reason : No need to show the content in center */
   }
 
   .bottom{
