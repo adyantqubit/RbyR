@@ -1,0 +1,13 @@
+
+/* Created by - Ashish Dewangan on 08-12-2023
+Reason - To set position of arrow button on slider */
+
+.bhRnqO,.kVtMtA{
+    top:150px !important;
+}
+
+@media (max-width: 520px) {
+    .bhRnqO,.kVtMtA{
+        top:140px !important;
+    }   
+}

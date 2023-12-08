@@ -1077,7 +1077,7 @@ const CartSItem = (props) => {
 
       </div>
 
-      <div className={style.footerCon} style={{ width: "100%" }}>
+      <div className={style.footerCon} style={{ width: "100%",marginBottom:"20px" }}>
         {/* <span>Total:</span><span>{getTotalPrice()}</span><span>Qty:</span><span>{getTotalQuantity()}</span><button onClick={BuyAll}>Buy ALl</button> */}
         <div className={style.inner}>
           {ImportantRules != null ? (
@@ -1103,9 +1103,14 @@ const CartSItem = (props) => {
                   marginRight: "15px",
                 }}
               >
+                {/* Commented and modified by - Ashish Dewangan on 08-12-2023
+                Reason - Show important points only when product is in cart */}
                 {/* Addition by Om Shrivastava on 09-11-23
                 Reason : Apply the condition when data is not show there */}
-                {ImportantRules.point1 ? (
+                {/* { ImportantRules.point1 ? ( */}
+                {cart.length > 0 && ImportantRules.point1 ? (
+                  /* End of code addition by - Ashish Dewangan on 08-12-2023
+                Reason - Show important points only when product is in cart */
                   <div style={{ display: "flex" }}>
                     <BsDot
                       fontSize={20}
@@ -1125,9 +1130,15 @@ const CartSItem = (props) => {
                 ) : null}
                 {/* End of addition by Om Shrivastava on 09-11-23
                 Reason : Apply the condition when data is not show there */}
+
+                {/* Commented and modified by - Ashish Dewangan on 08-12-2023
+                Reason - Show important points only when product is in cart */}
                  {/* Addition by Om Shrivastava on 09-11-23
                 Reason : Apply the condition when data is not show there */}
-                {ImportantRules.point2 ? (
+                {/* { ImportantRules.point2 ? ( */}
+                {cart.length > 0 && ImportantRules.point2 ? (
+                  /* Commented and modified by - Ashish Dewangan on 08-12-2023
+                Reason - Show important points only when product is in cart */
                   <div style={{ display: "flex" }}>
                     <BsDot
                       fontSize={20}
@@ -1147,9 +1158,15 @@ const CartSItem = (props) => {
                 ) : null}
                  {/* End of addition by Om Shrivastava on 09-11-23
                 Reason : Apply the condition when data is not show there */}
+
+                {/* Commented and modified by - Ashish Dewangan on 08-12-2023
+                Reason - Show important points only when product is in cart */}
                  {/* Addition by Om Shrivastava on 09-11-23
                 Reason : Apply the condition when data is not show there */}
-                {ImportantRules.point3 ? (
+                {/* { ImportantRules.point3 ? ( */}
+                {cart.length > 0 && ImportantRules.point3 ? (
+                  /* Commented and modified by - Ashish Dewangan on 08-12-2023
+                Reason - Show important points only when product is in cart */
                   <div style={{ display: "flex" }}>
                     <BsDot
                       fontSize={20}

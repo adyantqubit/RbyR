@@ -9,6 +9,8 @@ import style from "../listing/listpage.module.css";
 import styles from "./slider.module.css";
 import logo from "../../assets/photos/rts-icon.svg";
 
+import "./recentViewSlider.css"
+
 const Slider = ({ scrollTop }) => {
   const { CategoryProduct, con, setcon, currency } = CartState();
   const recentlyViews = [];

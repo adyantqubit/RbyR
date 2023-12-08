@@ -17,7 +17,16 @@ const BestSeller = () => {
         // Modification and addition by Om Shrivastava on 22-10-23
         // Reason : Need to set the is_active feature of this page
         // setbest(product.filter(p => p.bestSeller == true ))
-        setbest(product.filter(p => p.bestSeller == true && p.is_active==true))
+        /**
+         * Commented and modified by - Ashish Dewangan on 08-12-2023
+         * Reason - To arrange bestseller order according to their id
+         */
+        // setbest(product.filter(p => p.bestSeller == true && p.is_active==true))
+        setbest([].concat(product.filter(p => p.bestSeller == true && p.is_active==true).sort((a,b)=>a.id>b.id?1:-1)))
+        /**
+         * End of code modification by - Ashish Dewangan on 08-12-2023
+         * Reason - To arrange bestseller order according to their id
+         */
         // End of Modification and addition by Om Shrivastava on 22-10-23
         // Reason : Need to set the is_active feature of this page
 

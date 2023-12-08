@@ -251,7 +251,18 @@ const Login = () => {
 
 							{/* {server_error.password2?<Typography style={{color:"red",paddingLeft:10,fontSize:10,position:"absolute",top:"310px",left:"150px",right:"0",fontSize:"0.8rem"}}>{server_error.password2[0]}</Typography>:" "} */}
 
-							<FormControlLabel style={{ paddingLeft: "70px" }} control={<Checkbox style={{color:'green'}} value={true} name="tc" id="tc" />} label={<span style={{ fontSize: '0.8rem' }}>
+							<FormControlLabel style={{ paddingLeft: "70px" }} control={
+							/**
+							 * Commented and modified by - Ashish Dewangan on 08-12-2023
+							 * Reason - To change color of checkbox
+							 */
+							// <Checkbox style={{color:'green'}} value={true} name="tc" id="tc" />
+							<Checkbox  value={true} name="tc" id="tc" />
+							/**
+							 * End of code modification by - Ashish Dewangan on 08-12-2023
+							 * Reason - To change color of checkbox
+							 */
+							} label={<span style={{ fontSize: '0.8rem' }}>
 								<Link to="/termAndCondition#Terms_and_Conditions" target="_blank" title='Terms and Condition' style={{ fontSize: "12px", textDecoration: "underline", letterSpacing: "1.2px",color:'rgb(59 59 224)' }}> I accept terms and conditions.</Link>
 							</span>} /><br/>
 							{server_error.tc ? <Typography style={{ color: "red", fontSize: "14px", marginLeft: "15%" }}>Please accept terms and conditions</Typography> : " "}
