@@ -83,7 +83,7 @@ const Orderpage = (props) => {
               <UsserAdresses />
               :
               <>
-                <hr style={{ color:"#57b957" }}></hr>
+                <hr style={{ color:"black" }}></hr>
                 <div className={styles.upnextForm} >
                   2. SHIPPING INFO
                 </div>

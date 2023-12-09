@@ -152,7 +152,15 @@
 }
 
 .butto{
-	width: 70%;
+	/* Modification and addition by Om Shrivastava on 09-12-23
+	Reason : Set the width */
+	/* width: 70%; */
+	width: 26%;
+	/* height: 40px; */
+	height: 30px;
+	padding-bottom: 1px;
+/* End of modification  and addition by Om Shrivastava on 09-12-23
+	Reason : Set the width */
 	height: 40px;
 	margin: 10px auto;
 	justify-content: center;

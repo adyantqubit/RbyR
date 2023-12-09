@@ -55,7 +55,7 @@ const SentEmail = () => {
 
 					{isLoading?
           <span class="butto" style={{
-            backgroundColor:"var(--btnBackgroundColorPrimary)",
+            backgroundColor:"#f4dde5",
           textAlign:"center",padding:"8px 0",
           cursor:"not-allowed"}} >
             {/* Modification and addition by Om Shrivastava on 27-11-23

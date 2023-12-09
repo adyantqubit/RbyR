@@ -327,7 +327,9 @@ const UserProfile = () => {
                             <label className={styles.firstName} htmlFor='email'>Email Address<span style={{color:'red'}}>*</span></label>
 
                             <input  className={styles.firstInput} readOnly type="email" value={userdata.email} name="email" style={{cursor:'not-allowed',border:'none',backgroundColor:'#edddde'}}  />
-
+                            {/* <span>
+                            {userdata.email}
+                            </span> */}
                           </div>
 
                           {/* Commented by rohan- date 14/12/22 */}
@@ -354,8 +356,9 @@ const UserProfile = () => {
 
                         </div>
                         <div className={styles.columnitem1content1}>
-
-                          <Checkbox
+                        {/* Commented by Om Shrivastava on 09-12-23
+                        Reason : Need to commente this field */}
+                          {/* <Checkbox
                             icon={<i class="fa-sharp fa-solid fa-square-check" style={{ width: "20px" }}></i>}
                             name="my-input"
 
@@ -368,7 +371,9 @@ const UserProfile = () => {
                             style={{ cursor: "pointer", width: "17px", marginLeft: "10px" }}
                             labelStyle={{ marginLeft: 5, userSelect: "none" }}
                             label={<label className={styles.firstName} htmlFor='street' style={{ fontSize: "14px", fontStyle: "bold", letterSpacing: "1.5px", paddingBottom: "2px",fontWeight:'600' }}>Change My Password</label>}
-                          />
+                          /> */}
+                           {/*End of commented by Om Shrivastava on 09-12-23
+                        Reason : Need to commente this field */}
                         </div>
 
                         {changepass ? <>

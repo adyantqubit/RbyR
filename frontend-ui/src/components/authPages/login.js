@@ -186,7 +186,7 @@ const Login = () => {
 							<label style={{color:'rgb(59 59 224)'}} class="labe" htmlFor="ch" aria-hidden="true">Sign up</label>
 
 							<div style={{ fontSize: "14px", marginLeft: "15%" }}>Name<span style={{color:'red'}}>*</span></div>
-							<input class="inpu2" type="text" name="txt" placeholder="User name" maxLength={99} />
+							<input class="inpu2" type="text" name="txt" placeholder="" maxLength={99} />
 
 							<div style={{ height: "20px" }}>
 								{server_error.name ? <Typography style={{ color: "red", fontSize: "14px", marginBottom: "10px", marginLeft: "15%" }}>{server_error.name[0]}</Typography> : " "}
@@ -194,7 +194,7 @@ const Login = () => {
 							</div>
 
 							<div style={{ fontSize: "14px", marginLeft: "15%" }}>Email<span style={{color:'red'}}>*</span></div>
-							<input class="inpu2" type="email" name="email" placeholder="Email" maxLength={250} />
+							<input class="inpu2" type="email" name="email" placeholder="" maxLength={250} />
 							<div style={{ height: "20px" }}>
 								{server_error.email ? <Typography style={{ color: "red", fontSize: "14px", marginBottom: "10px", marginLeft: "15%" }}>
 									{server_error.email[0]?.toLowerCase().trim()=="This field may not be blank.".toLowerCase().trim()
@@ -227,7 +227,7 @@ const Login = () => {
 							<div style={{ fontSize: "14px", marginLeft: "15%" }}>Password<span style={{color:'red'}}>*</span></div>
 							<span class="inpu3" style={{ marginBottom: "0", flexDirection: "column", height: "auto", paddingLeft: "0px", gap: "10px" }}>
 								<span class="inpu4" style={{ width: "100%" }}>
-									<input class="inpu4" type={showNewPass2 ? "text" : "password"} name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+									<input class="inpu4" type={showNewPass2 ? "text" : "password"} name="pswd" placeholder="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
 										 style={{ width: "90%", border: "none" }}
 										onChange={e => { if (e.target.value.length > 0) setVisiblePassreg2(true); else setVisiblePassreg2(false) }} maxLength={20}/>
 								
@@ -289,11 +289,14 @@ const Login = () => {
 								{visiblepassReg3 ? showNewPass3 ? <AiFillEye style={{ marginTop: "10px", marginRight: "5px" }} onClick={e => setNewPass3(false)} /> : <AiFillEyeInvisible style={{ marginTop: "10px", marginRight: "5px" }} onClick={e => setNewPass3(true)} /> : null}
 							</span>
 							{error.password ? <Typography style={{ color: "red", paddingLeft: "50px", fontSize: "14px" }}>{error.password[0]}</Typography> : " "}
-							<Link to='/sendemail' tabIndex={-1} style={{ marginLeft: "50%", fontSize: "1em", color: "rgb(59 59 224)" }} class="underlineput">Forgot Password ?</Link>
+							<Link to='/sendemail' tabIndex={-1} style={{ marginLeft: "50%", fontSize: "13px", color: "rgb(59 59 224)" }} class="underlineput">Forgot Password </Link>
+							<span  
+							style={{  fontSize: "13px", color: "rgb(59 59 224)" }}
+							>?</span>
 
-							{isLoading ? <CircularProgress style={{ margin: "20px", marginLeft: "140px" }} /> : <button tabIndex={-1} class="butto" type='submit'>Login</button>}
+							{isLoading ? <CircularProgress style={{ margin: "20px", marginLeft: "140px" ,fontSize: "13px",}} /> : <button tabIndex={-1} class="butto" type='submit'>Login</button>}
 							<label tabIndex={-1} style={{ width: "100%", textAlign: "center" }}>or</label>
-							<label style={{color:'rgb(59 59 224)'}} tabIndex={-1} class="labe underlineput"  htmlFor="ch" aria-hidden="true" onClick={e => window.scrollTo(0, 0)}>Signup</label>
+							<label style={{color:'rgb(59 59 224)',fontSize:'30px'}} tabIndex={-1} class="labe underlineput"  htmlFor="ch" aria-hidden="true" onClick={e => window.scrollTo(0, 0)}>Signup</label>
 
 						</form>
 					</div>

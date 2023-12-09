@@ -398,7 +398,7 @@ const CartSItem = (props) => {
             ),
             description: (
               <span>
-                Your account is disabled! please contact to the our customer
+                Your account is disabled! please contact to our customer
                 support.
               </span>
             ),

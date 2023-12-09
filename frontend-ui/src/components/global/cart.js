@@ -263,7 +263,7 @@ export function DrawerFooter() {
         notification.error({
           message: <div style={{ fontSize: "18px", color: "white" }}><br/></div>,
           description:
-            <span>Your account is disabled! please contact to the our customer support.</span>,
+            <span>Your account is disabled! please contact to our customer support.</span>,
           style: { backgroundColor: "var(--bannerColor)", color: "#212121" },
           duration: 20,
           key:1

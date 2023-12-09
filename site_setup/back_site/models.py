@@ -179,7 +179,12 @@ GEEKS_CHOICES =(
 
 
 class Menus(models.Model):
-    menu=models.CharField(max_length=13)
+    # Modification and addition by Om Shrivastava on 09-12-23
+    # Reason : Need to add unique property
+    # menu=models.CharField(max_length=13)
+    menu=models.CharField(max_length=13,unique=True)
+    # End of Modification and addition by Om Shrivastava on 09-12-23
+    # Reason : Need to add unique property
     # Added by Rohan- on -17/2/23
     # Reason- giving image showing functionality for each category and filteration option
     Show_subMenu_with_image=models.BooleanField(default=False)
@@ -271,7 +276,12 @@ class product_detail(models.Model):
     title=models.CharField(max_length=100)
     # about=models.CharField(max_length=300)
     upper_menu=models.ForeignKey(Menus,on_delete=models.CASCADE,null=True,blank=True)
-    subMenu=models.ForeignKey(subMenu,on_delete=models.CASCADE,null=True,blank=True)
+    # Modification and addition by Om Shrivastava on 08-10-23
+    # Reason : Need to set the unique property
+    # subMenu=models.ForeignKey(subMenu,on_delete=models.CASCADE,null=True,blank=True)
+    subMenu=models.ForeignKey(subMenu,on_delete=models.CASCADE)
+    # End of Modification and addition by Om Shrivastava on 08-10-23
+    # Reason : Need to set the unique property
     
     menu=models.CharField(max_length=50,null=True,blank=True)
     category=models.CharField(max_length=50,null=True,blank=True)
@@ -1098,10 +1108,13 @@ class Copyright(models.Model):
 class EmailSubscription(models.Model):
     email=models.CharField(max_length=255)
     subscribe=models.BooleanField(default=True)
-    #Added by Ashish Dewangan on 28-11-2022
-    #Reason - To change table's displayed name
+    # Added by Ashish Dewangan on 28-11-2022
+    # Reason - To change table's displayed name
+    # Commented by Om Shrivastava on 09-12-23
+    # Reason : No need to show this field yet
     date=models.DateField(('Date'), null=False, blank=False, auto_now=True)
-
+    # End of commented by Om Shrivastava on 09-12-23
+    # Reason : No need to show this field yet
     def __str__(self) -> str:
          return "Email subscription by user for updates"
     class Meta:
