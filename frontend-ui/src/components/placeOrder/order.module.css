@@ -434,6 +434,9 @@
     background-color: var(--backgroundColorSecondary);
     padding: 2px 5px;
 }
+.addressContainer{
+    width:80%;
+}
 
 .boxAddress {
     width: 100%;
@@ -443,7 +446,7 @@
 }
 
 .addressInformation {
-    width: 80%;
+    width: 90%;
     height: 100%;
     padding: 10px;
 
@@ -580,6 +583,11 @@ Reaosn : Add the css  */
 }
 
 @media (max-width: 768px) {
+
+    .addressContainer{
+        width:90%;
+    }
+
     .userInfoButton {
         min-width: 100%;
     }

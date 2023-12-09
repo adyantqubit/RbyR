@@ -96,6 +96,32 @@ const Context = ({ children }) => {
    * Reason - To set redirection path where user will navigate when he logs in
    */
 
+  /**
+   * Added by - Ashish Dewangan on 07-12-2023
+   * Reason - To store recently viewed products in context
+   */
+  const [recentlyViewedItems,setRecentlyViewedItems]=useState([])
+  /**
+   * End of code addition by - Ashish Dewangan on 07-12-2023
+   * Reason - To store recently viewed products in context
+   */
+
+   /**
+   * Added by - Ashish Dewangan on 07-12-2023
+   * Reason - To fill recently viewed products from localstorage to context variable when page is reloaded
+   */
+  useEffect(()=>{
+    var items = JSON.parse(localStorage.getItem("recentview"))
+    if(items!=null && items!=undefined){
+      setRecentlyViewedItems(items)
+    }
+  },[])
+  /**
+   * End of code addition by - Ashish Dewangan on 07-12-2023
+   * Reason - To fill recently viewed products from localstorage to context variable when page is reloaded
+   */
+
+
   const getWhatsappContactNumber = async () => {
     const whatsappContactNumberData = await getWhatsappContactDetail();
     if (whatsappContactNumberData) {
@@ -428,12 +454,22 @@ const Context = ({ children }) => {
       selectedColor, setSelectedColor, tempallpro, settemAllpro, sortui, setSortUi, product, cart, setCart, setProduct, setcheck, checked1, checked2, image, setImage, like, setLike, setCondition, condition, openLikedrawer, setLikeDrawer, openCartdrawer, setCartDrawer, CategoryProduct, setCategoryProduct,
       /**
        * Added by - Ashish Dewangan on 07-12-2023
-       * Reason - To set redirection path where user will navigate when he logs in
+       * Reason - Making redirectionPath and setRedirectionPath available to other pages
        */
-      redirectionPath,setRedirectionPath
+      redirectionPath,setRedirectionPath,
       /**
        * End of code addition by - Ashish Dewangan on 07-12-2023
-       * Reason - To set redirection path where user will navigate when he logs in
+       * Reason - Making redirectionPath and setRedirectionPath available to other pages
+       */
+
+      /**
+       * Added by - Ashish Dewangan on 07-12-2023
+       * Reason - Making recentlyViewedItems and setRecentlyViewedItems available to other pages
+       */
+      recentlyViewedItems,setRecentlyViewedItems,
+      /**
+       * End of code addition by - Ashish Dewangan on 07-12-2023
+       * Reason - Making recentlyViewedItems and setRecentlyViewedItems available to other pages
        */
     }}>
       {children}

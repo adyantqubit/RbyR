@@ -227,5 +227,10 @@ urlpatterns = [
     # #End of code addition
 # End of comment
 
+    # #Added by Ashish on 07-12-2022
+    # #Reason - To send details of recently viewed products
+    path('recentlyViewedProducts/',RecentlyViewedProductsView.as_view()),
+    # End of code addition by Ashish on 07-12-2022
+    # #Reason - To send details of recently viewed products
 
 ]

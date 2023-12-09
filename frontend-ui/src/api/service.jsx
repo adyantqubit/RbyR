@@ -398,3 +398,20 @@ export const LikeDeleteApi = async (data,access) => {
       }).catch((err) => console.log("0"));
   return response ? response.data : {};
 };
+
+/**
+ * Added by - Ashish Dewangan on 07-12-2023
+ * Reason - Method that will call api to get latest details of recently viewed products
+ */
+export const getRecentlyViewedProductsApi = async (ids) => {
+  const response = await API.post(`recentlyViewedProducts/`,ids, {
+        headers: { "Content-Type": "application/json"},
+      }).catch((err) => console.log("0"));
+  return response ? response.data : [];
+};
+/**
+ * End of code addition by - Ashish Dewangan on 07-12-2023
+ * Reason - Method that will call api to get latest details of recently viewed products
+ */
+
+

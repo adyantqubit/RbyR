@@ -4,6 +4,7 @@ import config from "../../api/config";
 import {
   DetailApi,
   getCategoryProduct,
+  getRecentlyViewedProductsApi,
   LikeDeleteApi,
 } from "../../api/service";
 import Footer from "../global/footer";
@@ -70,6 +71,7 @@ const Details = (props) => {
     currency,
     setCategoryProduct,
     settemAllpro,
+    recentlyViewedItems,setRecentlyViewedItems,
   } = CartState();
   const [cartsaveApi, { isLoad }] = useCartUpdateMutation();
   const [saveLikeApi, { isLoading }] = useLikedUpdateMutation();
@@ -93,11 +95,73 @@ const Details = (props) => {
   // End of code addition
 
   useEffect(() => {
-    gettingDetail();
+    /**
+     * Commented by - Ashish Dewangan on 09-12-2023
+     * Reason - No need to call api because it is already being called in another useEffect
+     */
+    // gettingDetail();
+    /**
+     * End of comment by - Ashish Dewangan on 09-12-2023
+     * Reason - No need to call api because it is already being called in another useEffect
+     */
     getWomenSizeChart();
     getWhatsappContactNumber();
     catApi();
   }, []);
+
+
+  /**
+   * Added by - Ashish Dewangan on 09-12-2023
+   * Reason - To deleted recently viewed items which are older than one week
+   */
+  const deleteOldItemsFromRecentlyViewedProducts=()=>{
+    var items = JSON.parse(localStorage.getItem("recentview"))
+    if(items!=null && items!=undefined){
+        var copyOfItems = items.filter(item=>{
+          return (Math.round((Date.now() - item.timeOfView  ) / ( 24 * 60 * 60 * 1000)))<7   
+         })
+         localStorage.setItem("recentview",JSON.stringify(copyOfItems))
+         setRecentlyViewedItems(copyOfItems)
+    }
+  }
+  /**
+   * End of code addition by - Ashish Dewangan on 09-12-2023
+   * Reason - To deleted recently viewed items which are older than one week
+   */
+
+  /**
+   * Added by - Ashish Dewangan on 07-12-2023
+   * Reason - To get latest details of recently viewed products
+   */
+  const getRecentlyViewedProducts =async ()=>{
+    var ids=[]
+    var items = JSON.parse(localStorage.getItem("recentview"))
+    if(items!=null && items!=undefined){
+      for(var i=0;i<items.length;i++){
+        ids.push(items[i].id)
+      }  
+    }
+    
+    const response = await getRecentlyViewedProductsApi(ids)
+
+    var copyOfItems=response.products
+    if(copyOfItems){
+      for(var i=0;i<items?.length;i++){
+        for(var j=0;j<copyOfItems?.length;j++){
+          if (items[i].id==copyOfItems[j].id){
+            copyOfItems[j].timeOfView=items[i].timeOfView
+          }
+        }
+      }
+      localStorage.setItem("recentview",JSON.stringify(copyOfItems))
+      setRecentlyViewedItems(copyOfItems)
+    }
+
+  }
+  /**
+   * End of code addition by - Ashish Dewangan on 07-12-2023
+   * Reason - To get latest details of recently viewed products
+   */
 
   const { category } = useParams();
 
@@ -116,27 +180,79 @@ const Details = (props) => {
   };
 
   useEffect(() => {
+  /**
+   * Added by - Ashish Dewangan on 09-12-2023
+   * Reason - To deleted recently viewed items which are older than one week
+   */
+    deleteOldItemsFromRecentlyViewedProducts()
+  /**
+   * End of code addition by - Ashish Dewangan on 09-12-2023
+   * Reason - To deleted recently viewed items which are older than one week
+   */
+
+    /**
+   * Added by - Ashish Dewangan on 07-12-2023
+   * Reason - To get latest details of recently viewed products
+   */
+    getRecentlyViewedProducts();
+    /**
+   * End of code addition by - Ashish Dewangan on 07-12-2023
+   * Reason - To get latest details of recently viewed products
+   */
     gettingDetail();
+   
   }, [id]);
 
   useEffect(() => {
     if (details) {
-      var recents = JSON.parse(localStorage.getItem("recentview"));
-      if (recents == null) {
-        localStorage.setItem("recentview", JSON.stringify([details]));
+      
+      /**
+       * Commented and modified by - Ashish Dewangan on 07-12-2023
+       * Reason - To set recently viewed products
+       */
+      
+      // if (
+      //   recents != null &&
+      //   recents.filter((r) => r.id === details.id).length == 0
+      // ) {
+      //   recents.splice(0, 0, details);
+      //   // recents.push(details);
+      //   localStorage.setItem("recentview", JSON.stringify(recents));
+      //   setRecentlyViewedItems(recents)
+      // }
+
+      var items = JSON.parse(localStorage.getItem("recentview"))
+      if(items!=null && items!=undefined){
+        if(items.filter(e=>e.id==details.id).length<1){
+          var copyOfItem=details
+          copyOfItem["timeOfView"]=Date.now()
+ 
+          items.push(copyOfItem)
+          localStorage.setItem("recentview",JSON.stringify(items))
+          setRecentlyViewedItems(items)  
+        }
+        else{
+          var copyOfItems=items
+          for (var i=0;i<copyOfItems.length;i++){
+            if(copyOfItems[i].id==details.id){
+              copyOfItems[i].timeOfView=Date.now()
+            }
+          }
+         
+          localStorage.setItem("recentview",JSON.stringify(copyOfItems))
+          setRecentlyViewedItems(copyOfItems)
+        }  
       }
 
-      if (
-        recents != null &&
-        recents.filter((r) => r.id === details.id).length == 0
-      ) {
-        recents.splice(0, 0, details);
-        // recents.push(details);
-        localStorage.setItem("recentview", JSON.stringify(recents));
-      }
+      /**
+       * End of code modification by - Ashish Dewangan on 07-12-2023
+       * Reason - To set recently viewed products
+       */
 
       window.scrollTo(0, 0);
     }
+
+    
   }, [details]);
 
   async function gettingDetail() {

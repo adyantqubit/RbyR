@@ -30,7 +30,15 @@ var [pinerror,setpinerror]=useState("")
 const [value, setValue] = useState("India")
 const [value2, setValue2] = useState("India")
 
-
+/**
+ * Added by - Ashish Dewangan on 09-12-2023
+ * Reason - To add serial number to address list
+ */
+var sno=0;
+/**
+ * End of code addition by - Ashish Dewangan on 09-12-2023
+ * Reason - To add serial number to address list
+ */
 
 useEffect(()=>{
     window.scrollTo(0,0)
@@ -218,8 +226,6 @@ const handleButtonClicknum = (msg) => {
           }
          // End of addition by Om Shrivastava on 19-11-23
         // Reason : Need to add the function, when user change the contact number then now page is blank so I fixed issue
-        
-          
 
   function validateWhitespace(evt,id)
   {var theEvent = evt || window.event;
@@ -232,7 +238,6 @@ const handleButtonClicknum = (msg) => {
         key = theEvent.keyCode || theEvent.which;
         key = String.fromCharCode(key);
     }
-
     
     var regex = /\s/	
     if( document.getElementById(`${id}`).value.trim().length>0 || !regex.test(key) ) {
@@ -312,37 +317,97 @@ function validatesNum(evt) {
             
 
             {shipEditcond?<div className={styles.columnitem1_1} style={{marginTop:"20px"}}>
-            <div className={styles.columnitem1content1}>
+
+            {/* <div className={styles.columnitem1content1}>
+
+            {shippingAddress!=null&&shippingAddress.length>0?
+
+            shippingAddress.map((s,i)=>(
+                <div className={styles.columnFirstName} >
+                    <div className={styles.boxAddress} onClick={e=>setAddress(s)}>
+                    
+                        <div className={styles.addressInformation} >
+                        <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}> {s.firstname} {s.lastname}</div>
+                        <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}> {s.street} {s.houseno}</div>
+                        <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.city} - {s.zipcode},</div>
+                        <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.state} </div>
+                        <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.country}</div>
+                        <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.number}</div>
+                        </div>
+                        <div className={styles.adressTick}>
+                        {s.isSelected? <TiTick style={{fontSize:"25",color:"black",fontWeight:"20"}}/> :null}   
+                        </div> 
+                    </div>
+            </div>
+            ))
+            :
+            <div style={{width:"100%",height:"40%",display:"flex",justifyContent:"center",textAlign:"center"}}>
+            No Shipping History Found.
+            </div>
+            }      
+            </div>
+            </div> */}
+
+            <div className={styles.columnitem1content1} >
 
                 {shippingAddress!=null&&shippingAddress.length>0?
+                <div className={styles.addressContainer} >
 
-                shippingAddress.map((s,i)=>(
-                    <div className={styles.columnFirstName} >
-                        <div className={styles.boxAddress} onClick={e=>setAddress(s)}>
-                           
-                            <div className={styles.addressInformation} >
-                            <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}> {s.firstname} {s.lastname}</div>
-                            <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}> {s.street} {s.houseno}</div>
-                            <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.city} - {s.zipcode},</div>
-                            <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.state} </div>
-                            <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.country}</div>
-                            <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.number}</div>
+                   <b> Primary Address </b>
+                    {shippingAddress.map((s,i)=>(
+                        s.isSelected?
+                            <div className={styles.columnFirstName} style={{marginBottom:"20px",width:"100%"}} >
+                            <div className={styles.boxAddress} onClick={e=>setAddress(s)} style={{maxWidth:"100%"}}>
+                                <div className={styles.addressInformation}  >
+                                    <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}> {s.firstname} {s.lastname}</div>
+                                    <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}> {s.street} {s.houseno}</div>
+                                    <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.city} - {s.zipcode},</div>
+                                    <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.state} </div>
+                                    <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.country}</div>
+                                    <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.number}</div>
+                                </div>
+                                <div className={styles.adressTick}>
+                                {/* <span className={styles.userinfoText2} style={{textDecoration:"underline"}}>Edit</span> */}
+                                {s.isSelected? <TiTick style={{fontSize:"25",color:"black",fontWeight:"20"}}/> :null}   
+                                </div> 
                             </div>
-                            <div className={styles.adressTick}>
-                            {/* <span className={styles.userinfoText2} style={{textDecoration:"underline"}}>Edit</span> */}
-                            {s.isSelected? <TiTick style={{fontSize:"25",color:"black",fontWeight:"20"}}/> :null}   
-                            </div> 
-                        </div>
-                 </div>
-                ))
+                    </div>
+                            :
+                            null
+                    ))}
+                    
+                
+                    {shippingAddress.map((s,i)=>(
+                        
+                        s.isSelected==false?
+                            <div className={styles.columnFirstName} style={{marginBottom:"20px",width:"100%"}} >
+                              <b>  Address {++sno} </b>
+                            <div className={styles.boxAddress} onClick={e=>setAddress(s)} style={{maxWidth:"100%"}}>
+                                <div className={styles.addressInformation}  >
+                                    <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}> {s.firstname} {s.lastname}</div>
+                                    <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}> {s.street} {s.houseno}</div>
+                                    <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.city} - {s.zipcode},</div>
+                                    <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.state} </div>
+                                    <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.country}</div>
+                                    <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}>{s.number}</div>
+                                </div>
+                                <div className={styles.adressTick}>
+                                </div> 
+                            </div>
+                    </div>
+                            :
+                            null
+                    ))}
+
+                </div>
+                
                 :
                 <div style={{width:"100%",height:"40%",display:"flex",justifyContent:"center",textAlign:"center"}}>
-                No Shipping History Found.
-              </div>
-                 }      
+                    No Shipping History Found.
                 </div>
+                 }      
+            </div>
           </div>  
-          
           
           :
 

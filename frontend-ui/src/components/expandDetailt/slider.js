@@ -12,24 +12,42 @@ import logo from "../../assets/photos/rts-icon.svg";
 import "./recentViewSlider.css"
 
 const Slider = ({ scrollTop }) => {
-  const { CategoryProduct, con, setcon, currency } = CartState();
+  const { CategoryProduct, con, setcon, currency,  recentlyViewedItems,setRecentlyViewedItems } = CartState();
   const recentlyViews = [];
-  const [recentlyViewedProducts, setRecentlyViewedProducts] = useState([]);
+
+  /**
+   * Commented by - Ashish Dewangan on 07-12-2023
+   * Reason - Getting recently viewed data differently
+   */
+  // const [recentlyViewedProducts, setRecentlyViewedProducts] = useState([]);
+  /**
+   * End of code addition by - Ashish Dewangan on 07-12-2023
+   * Reason - Getting recently viewed data differently
+   */
 
   const { id } = useParams();
 
-  useEffect(() => {
-    func();
-  }, []);
-  function func() {
-    var storage = JSON.parse(localStorage.getItem("recentview"));
-    if (storage && storage.length > 1) {
-      for (var i = 0; i < storage.length; i++) {
-        if (i > 0) recentlyViews.push(storage[i]);
-      }
-      setRecentlyViewedProducts(recentlyViews);
-    }
-  }
+/**
+ * Commented by - Ashish Dewangan on 07-12-2023
+ * Reason - Getting recently viewed data differently
+ */
+  // useEffect(() => {
+  //   func();
+  // }, []);
+  // function func() {
+  //   var storage = JSON.parse(localStorage.getItem("recentview"));
+  //   if (storage && storage.length > 1) {
+  //     for (var i = 0; i < storage.length; i++) {
+  //       if (i > 0) recentlyViews.push(storage[i]);
+  //     }
+  //     setRecentlyViewedProducts(recentlyViews);
+      
+  //   }
+  // }
+  /**
+ * End of code addition by - Ashish Dewangan on 07-12-2023
+ * Reason - Getting recently viewed data differently
+ */
 
   const responsive = {
     superLargeDesktop: {
@@ -68,7 +86,12 @@ const Slider = ({ scrollTop }) => {
 
   return (
     <>
-      {recentlyViewedProducts.length > 0 ? (
+    {/* Commented and modified by - Ashish Dewangan on 07-12-2023
+    Reason - mapping data from new array */}
+    {/* {recentlyViewedProducts.length > 0 ? ( */}
+      {recentlyViewedItems.length > 0 ? (
+        // Commented and modified by - Ashish Dewangan on 07-12-2023
+        // Reason - mapping data from new array
         <div
           className={styles.sliderContainer}
           style={{
@@ -94,7 +117,14 @@ const Slider = ({ scrollTop }) => {
             {/* {JSON.parse(localStorage.getItem("recentview")) &&
           JSON.parse(localStorage.getItem("recentview")).length > 0 */}
 
-            {recentlyViewedProducts.map((cart) => {
+          {/* Commented and modified by - Ashish Dewangan on 09-12-2023
+          Reason - To sort recently viewed items according to their visited time */}
+            {/* recentlyViewedProducts
+                .map((cart) => { */}
+            {[].concat(recentlyViewedItems)
+                .sort((a, b) => a.timeOfView > b.timeOfView ? -1 : 1).map((cart) => {
+          {/* End of code addition by - Ashish Dewangan on 09-12-2023
+          Reason - To sort recently viewed items according to their visited time */}        
               return (
                 <Carousel.Item
                   style={{ cursor: "pointer", padding: "5px auto" }}

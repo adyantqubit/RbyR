@@ -356,7 +356,8 @@ class product_detail(models.Model):
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self):
-         return self.title
+        #  return self.title
+         return str(self.id)
     class Meta:
             verbose_name_plural = "Products"
     #End of code addition

@@ -78,7 +78,7 @@ const Payment = () => {
           cartEnd = r.error_cart
           cartEnd.map(c => {
             notification.error({
-              message: <div style={{  color: "black",fontSize:'13px',fontWeight:'600' }}>Out of stock</div>,
+              message: <div className='popupClass'>Out of stock</div>,
  // Modification and addition by Om shrivastava on 01-12-23
         // REason : Create the popup class to apply the designing
         className:'popupClass',
@@ -100,7 +100,7 @@ const Payment = () => {
           })
         }else if(r.error_user){
           notification.error({
-            message: <div style={{ fontSize: "18px", color: "white" }}><br/></div>,
+            message: <div className='popupClass'>Disabled</div>,
             description:
               <span>Your account is disabled! please contact to our customer support.</span>,
             style: { backgroundColor: "var(--bannerColor)", color: "#212121" },
@@ -111,9 +111,35 @@ const Payment = () => {
           //  firstTimeLoadFunctions()
           // nav("/login")
         }
+        /**
+         * Commented and modified by - Ashish Dewangan on 09-12-2023
+         * Reason - To check if product is inactive
+         */
+        // else {
+        //   submitAll()
+        // }
+        else if(r.error_inactive){
+          cartEnd = r.error_inactive
+          cartEnd.map(c => {
+            notification.error({
+              message: <div className='popupClass'>Not available</div>,
+              className:'popupClass',
+              style:{backgroundColor:"#f1cdd9"},
+              description:
+              <span>
+                Product {c.name.toLowerCase()} is not available 
+              </span>,
+              duration: 20,
+            });
+          })
+        }
         else {
           submitAll()
         }
+        /**
+         * End of code modification by - Ashish Dewangan on 09-12-2023
+         * Reason - To check if product is inactive
+         */
       })
     }
   }

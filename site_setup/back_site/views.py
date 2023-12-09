@@ -704,50 +704,100 @@ class CartRecheck(APIView):
         user=User.objects.get(email=request.data['email'])
         if user.is_active==False:
            return Response({"error_user": True})
+        
+        # Commented and modified by - Ashish Dewangan on 09-12-2023
+        # Reason - To check if product is inactive or out of stock and also if user is active or not. 
+        
+        # car = []
+        # for cart in request.data['cart']:
+        #     if (cart['size'] == "Short"):
+        #         pro = product_detail.objects.get(id=cart['id'])
+        #         if cart['quantity'] > pro.S:
+        #             car.append(
+        #                 {"id": pro.id, "size": "Short", "name": pro.title})
+        #     elif (cart['size'] == "Medium"):
+        #         pro = product_detail.objects.get(id=cart['id'])
+        #         if cart['quantity'] > pro.M:
+        #             car.append(
+        #                 {"id": pro.id, "size": "Medium", "name": pro.title})
+        #     elif (cart['size'] == "Extra Short"):
+        #         pro = product_detail.objects.get(id=cart['id'])
+        #         if cart['quantity'] > pro.XS:
+        #             car.append(
+        #                 {"id": pro.id, "size": "Extra Short", "name": pro.title})        
+        #     elif (cart['size'] == "Large"):
+        #         pro = product_detail.objects.get(id=cart['id'])
+        #         if cart['quantity'] > pro.L:
+        #             car.append(
+        #                 {"id": pro.id, "size": "Large", "name": pro.title})
+        #     elif (cart['size'] == "Extra Large"):
+        #         pro = product_detail.objects.get(id=cart['id'])
+        #         if cart['quantity'] > pro.XL:
+        #             car.append(
+        #                 {"id": pro.id, "size": "Extra Large", "name": pro.title})
+        #     elif (cart['size'] == "Extra Extra Large"):
+        #         pro = product_detail.objects.get(id=cart['id'])
+        #         if cart['quantity'] > pro.XXL:
+        #             car.append(
+        #                 {"id": pro.id, "size": "Extra Extra Large", "name": pro.title})
+            
+        #     elif (cart['size'] == "Extra Extra Extra Large"):
+        #         pro = product_detail.objects.get(id=cart['id'])
+        #         if cart['quantity'] > pro.XXXL:
+        #             car.append(
+        #                 {"id": pro.id, "size": "Extra Extra Extra Large", "name": pro.title})        
+
+        # if len(car) > 0:
+        #     return Response({"error_cart": car})
+        # else:
+        #     return Response({"Success": "go ahead"})
+
+        inactive_products = []
         car = []
         for cart in request.data['cart']:
+            pro = product_detail.objects.get(id=cart['id'])
+            if pro.is_active == False:
+                inactive_products.append({"id": pro.id, "name" : pro.title})
             if (cart['size'] == "Short"):
-                pro = product_detail.objects.get(id=cart['id'])
                 if cart['quantity'] > pro.S:
                     car.append(
                         {"id": pro.id, "size": "Short", "name": pro.title})
             elif (cart['size'] == "Medium"):
-                pro = product_detail.objects.get(id=cart['id'])
                 if cart['quantity'] > pro.M:
                     car.append(
                         {"id": pro.id, "size": "Medium", "name": pro.title})
             elif (cart['size'] == "Extra Short"):
-                pro = product_detail.objects.get(id=cart['id'])
                 if cart['quantity'] > pro.XS:
                     car.append(
                         {"id": pro.id, "size": "Extra Short", "name": pro.title})        
             elif (cart['size'] == "Large"):
-                pro = product_detail.objects.get(id=cart['id'])
                 if cart['quantity'] > pro.L:
                     car.append(
                         {"id": pro.id, "size": "Large", "name": pro.title})
             elif (cart['size'] == "Extra Large"):
-                pro = product_detail.objects.get(id=cart['id'])
                 if cart['quantity'] > pro.XL:
                     car.append(
                         {"id": pro.id, "size": "Extra Large", "name": pro.title})
             elif (cart['size'] == "Extra Extra Large"):
-                pro = product_detail.objects.get(id=cart['id'])
                 if cart['quantity'] > pro.XXL:
                     car.append(
                         {"id": pro.id, "size": "Extra Extra Large", "name": pro.title})
             
             elif (cart['size'] == "Extra Extra Extra Large"):
-                pro = product_detail.objects.get(id=cart['id'])
                 if cart['quantity'] > pro.XXXL:
                     car.append(
                         {"id": pro.id, "size": "Extra Extra Extra Large", "name": pro.title})        
 
-        if len(car) > 0:
-            return Response({"error_cart": car})
+        if len(inactive_products)>0:
+            return Response({"error_inactive": inactive_products})
         else:
-            return Response({"Success": "go ahead"})
-
+            if len(car) > 0:
+                return Response({"error_cart": car})
+            else:
+                return Response({"Success": "go ahead"})
+            
+        # End of code modification by - Ashish Dewangan on 09-12-2023
+        # Reason - To check if product is inactive or out of stock and also if user is active or not.
 
 class ShippingTick(APIView):
     renderer_classes = [UserRenderer]
@@ -1463,3 +1513,19 @@ class WorldofRRApi(APIView):
 # #     from django.shortcuts import render
 # #     return render(request,"some.html")
 # End of comment
+
+
+# #Added by Ashish on 07-12-2022
+# #Reason - To send details of recently viewed products
+class RecentlyViewedProductsView(APIView):
+    def post(self,request):
+        ids=request.data
+        if len(ids)>0:
+            
+            products = product_detail.objects.filter(id__in=ids)
+            serializer = product_serializer(products,many=True)
+            return Response({"products":serializer.data})
+        else:
+            return Response({"products":[]})
+# #End of code addition by Ashish on 07-12-2022
+# #Reason - To send details of recently viewed products

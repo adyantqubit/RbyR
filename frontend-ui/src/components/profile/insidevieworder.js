@@ -2,7 +2,7 @@ import { dividerClasses, getTableSortLabelUtilityClass } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import config from '../../api/config'
-import { cartDeleteApi, getQrDetailApi, getStoreLocatorDetail, InvoiveSingleGetApi } from '../../api/service'
+import { cartDeleteApi, DetailApi, getQrDetailApi, getStoreLocatorDetail, InvoiveSingleGetApi } from '../../api/service'
 import { CartState } from '../../context'
 import Footer from '../global/footer'
 import Navbar from '../global/NavHeader'
@@ -240,7 +240,32 @@ const InsideOrder = () => {
     sessionStorage.setItem('checkoutDetails', JSON.stringify(checkoutDetails))
   }, [allData])
 
-      
+  /**
+   * Added by - Ashish Dewangan on 09-12-2023
+   * Reason - If product is inactive then show error else navigate to product details
+   */
+  const checkIfInactive=async (product)=>{
+    const response = await DetailApi(product.id)
+    if(response.is_active==true){
+      nav(`/listing/${product.menu}/${product.category}/detail/${product.id}`)
+    }else{
+      notification.error({
+        message: (
+          <div style={{  color: "black",fontSize:'13px',fontWeight:'600' }}>
+            Inactive.{" "}
+          </div>
+        ),
+        description: `Product is inactive`,
+      className:'popupClass',
+        duration: 2,
+        key: 1,
+      });
+    }
+  }
+  /**
+   * End of code addition by - Ashish Dewangan on 09-12-2023
+   * Reason - If product is inactive then show error else navigate to product details
+   */
 
   return (
     <div className={style.scrolling} >
@@ -352,7 +377,12 @@ const InsideOrder = () => {
                       {/* Commented and modified by - Ashish Dewangan on 29-11-2023
                       Reason - To show image from product orders not from items */}
                       {/* <img src={(typeof p.img_main)==='undefined'?null: config.staticBaseURL + p.img_main} className={style.imgresponsive} onClick={e=>nav(`/listing/${p.menu}/${p.category}/detail/${p.id}`)} /> */}
-                      <img src={(typeof s.product_image)==='undefined'?null: config.staticBaseURL + s.product_image} className={style.imgresponsive} onClick={e=>nav(`/listing/${p.menu}/${p.category}/detail/${p.id}`)} />
+                      {/* Commented and modified by - Ashish Dewangan on 09-12-2023
+                      Reason - To check product is active or not */}
+                      {/* <img src={(typeof s.product_image)==='undefined'?null: config.staticBaseURL + s.product_image} className={style.imgresponsive} onClick={e=>nav(`/listing/${p.menu}/${p.category}/detail/${p.id}`)} /> */}
+                      <img src={(typeof s.product_image)==='undefined'?null: config.staticBaseURL + s.product_image} className={style.imgresponsive} onClick={e=>{checkIfInactive(p)}} />
+                      {/* End of code addition by - Ashish Dewangan on 09-12-2023
+                      Reason - To check product is active or not */}
                       {/* End of code modification by - Ashish Dewangan on 29-11-2023
                       Reason - To show image from product orders not from items */}
                     </div>
