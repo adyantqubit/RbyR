@@ -279,7 +279,7 @@ class product_detail(models.Model):
     # Modification and addition by Om Shrivastava on 08-10-23
     # Reason : Need to set the unique property
     # subMenu=models.ForeignKey(subMenu,on_delete=models.CASCADE,null=True,blank=True)
-    subMenu=models.ForeignKey(subMenu,on_delete=models.CASCADE)
+    subMenu=models.ForeignKey(subMenu,on_delete=models.CASCADE,null=True,)
     # End of Modification and addition by Om Shrivastava on 08-10-23
     # Reason : Need to set the unique property
     
