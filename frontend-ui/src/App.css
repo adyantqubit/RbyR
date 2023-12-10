@@ -18,7 +18,13 @@ body::-webkit-scrollbar {
   height: 40vmin;
   pointer-events: none;
 }
-
+/* Addition by Om Shrivastava on 09-12-23
+Reason : When the image is not present there, then imaeg icon is not display  */
+img[src=""] {
+  display: none;
+}
+/* End of addition by Om Shrivastava on 09-12-23
+Reason : When the image is not present there, then imaeg icon is not display  */
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

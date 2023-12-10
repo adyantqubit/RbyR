@@ -294,7 +294,10 @@ function validatesNum(evt) {
               <div className={style.column1header} >MY ACCOUNT</div>
               <hr style={{color:"black"}}></hr>
               <div className={style.column1text} onClick={e=>setShowEditable(!true)}><Link to="/userprofile" style={{textDecoration:"none",color:"#212121"}}>MY PROFILE</Link></div>
-              <div className={style.column1text} onClick={e=>setshipEditCond(true)}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#212121"}} >MY SHIPPING DETAILS</Link></div>
+              <div className={style.column1text} onClick={e=>setshipEditCond(true)}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#212121"}}
+              className={window.location.pathname=='/shippindprofile' ? style.highlightField : style.a}
+              
+              >MY SHIPPING DETAILS</Link></div>
               <div className={style.column1text}><Link to="/profile" style={{textDecoration:"none",color:"#212121"}}>MY ORDERS</Link></div>
 
             </div>

@@ -55,6 +55,9 @@ export const Profile = () => {
 
   const access_token=localStorage.getItem('access_token')
 
+  const currentUrl = window.location.pathname;
+console.log(currentUrl,'current url');
+
   return (
     <>
     {/* {console.log(userdata.email.length)} */}
@@ -89,16 +92,38 @@ export const Profile = () => {
               </li>}
 
             {localStorage.getItem('access_token') ? <li className={style.l} style={{ marginLeft: "-30px",padding:'2px' }}>
-              <Link to="/userprofile" className={style.a} style={{fontSize:'14px',padding:'2px'}}>My Profile</Link>
+              <Link to="/userprofile" 
+              className={window.location.pathname=='/userprofile' ? style.highlightField : style.a}
+              // className={style.a} 
+              style={{fontSize:'14px',padding:'2px',}}>
+                
+                MY PROFILE
+                
+                </Link>
             </li> : null}
 
 
             {localStorage.getItem('access_token') ? <li className={style.l} style={{ marginLeft: "-30px",padding:'2px' }}>
-              <Link to="/shippindprofile" className={style.a} style={{fontSize:'14px',padding:'2px'}}>Shipping Details</Link>
+              <Link to="/shippindprofile" 
+              // Modification and addition by Om shrivastava on 09-12-23
+              // Reason : Need to bold, when path is selected
+              // className={style.a} 
+              className={window.location.pathname=='/shippindprofile' ? style.highlightField : style.a}
+              // End of modification and addition by Om shrivastava on 09-12-23
+              // Reason : Need to bold, when path is selected
+              style={{fontSize:'14px',padding:'2px'}}>SHIPPING DETAILS</Link>
             </li> : null}
 
             {localStorage.getItem('access_token') ? <li className={style.l} style={{ marginLeft: "-30px",padding:'2px' }}>
-              <Link to="/profile" className={style.a} style={{fontSize:'14px',padding:'2px'}}>My Orders</Link>
+              <Link to="/profile" 
+              // Modification and addition by Om shrivastava on 09-12-23
+              // Reason : Need to bold, when path is selected
+              // className={style.a} 
+              className={window.location.pathname=='/profile' ? style.highlightField : style.a}
+              // End of modification and addition by Om shrivastava on 09-12-23
+              // Reason : Need to bold, when path is selected
+
+               style={{fontSize:'14px',padding:'2px'}}>MY ORDERS</Link>
             </li> : null}
 
             {/* {localStorage.getItem('access_token')?<li className={style.l} style={{marginLeft:"-30px"}}>

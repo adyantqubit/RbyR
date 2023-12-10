@@ -227,7 +227,7 @@ const Login = () => {
 							<div style={{ fontSize: "14px", marginLeft: "15%" }}>Password<span style={{color:'red'}}>*</span></div>
 							<span class="inpu3" style={{ marginBottom: "0", flexDirection: "column", height: "auto", paddingLeft: "0px", gap: "10px" }}>
 								<span class="inpu4" style={{ width: "100%" }}>
-									<input class="inpu4" type={showNewPass2 ? "text" : "password"} name="pswd" placeholder="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+									<input class="inpu4" type={showNewPass2 ? "text" : "password"} name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
 										 style={{ width: "90%", border: "none" }}
 										onChange={e => { if (e.target.value.length > 0) setVisiblePassreg2(true); else setVisiblePassreg2(false) }} maxLength={20}/>
 								

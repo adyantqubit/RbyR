@@ -190,7 +190,9 @@
 } */
 .logi{
 	width: 80%;
-	height: 105%;
+	/* height: 105%; */
+	height: 108%;
+
 	margin:0 auto;
 	background: #eee;
 	border-radius: 60% / 10%;

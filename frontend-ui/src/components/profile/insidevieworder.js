@@ -280,7 +280,11 @@ const InsideOrder = () => {
               <div className={style.column1header}>MY ACCOUNT</div>
               <hr style={{ color: "black" }}></hr>
               <div className={style.column1text} onClick={e => setShowEditable(!true)}><Link to="/userprofile" style={{ textDecoration: "none", color: "#212121" }}>MY PROFILE</Link></div>
-              <div className={style.column1text} onClick={e => setshipEditCond(true)}><Link to="/shippindprofile" style={{ textDecoration: "none", color: "#212121" }} >MY SHIPPING DETAILS</Link></div>
+              <div className={style.column1text} onClick={e => setshipEditCond(true)}><Link to="/shippindprofile" 
+              style={{ textDecoration: "none", color: "#212121" }}
+              className={window.location.pathname=='/shippindprofile' ? style.highlightField : style.a}
+              
+              >MY SHIPPING DETAILS</Link></div>
               <div className={style.column1text}><Link to="/profile" style={{ textDecoration: "none", color: "#212121" }}>MY ORDERS</Link></div>
 
             </div>
@@ -462,7 +466,7 @@ const InsideOrder = () => {
 
                 <div style={{ width: "100%", display: "flex", flexDirection: "row", justifyContent: "space-between", flexWrap: "wrap", marginTop: '60px', gap: "20px" }}>
 
-                  <div className={styles.addressInformation} style={{ minWidth: "150px", maxWidth: "150px" }}>
+                  <div className={styles.addressInformation} >
                     <div ><span style={{fontWeight:'bold'}} className={styles.userinfoText} >Shipping Address</span></div>
                     {allData != null ? <>
                     {/* Commented and modified by - Ashish Dewangan on 29-11-2023
@@ -481,7 +485,7 @@ const InsideOrder = () => {
                       : null}
                   </div>
 
-                  <div className={styles.addressInformation} style={{ minWidth: "150px", maxWidth: "150px" }}>
+                  <div className={styles.addressInformation} >
                     <div ><span style={{fontWeight:'bold'}} className={styles.userinfoText} >Billing Address</span></div>
 
                     {allData != null ? <>
@@ -493,12 +497,12 @@ const InsideOrder = () => {
                       : null}
                   </div>
 
-                  <div className={styles.addressInformation} style={{ minWidth: "150px", maxWidth: "150px" }}>
+                  <div className={styles.addressInformation} >
                     <div ><span style={{fontWeight:'bold'}} className={styles.userinfoText} >Shipping Method</span></div>
                     <div style={{ maxWidth: "150px" }}><span className={styles.userinfoText2} style={{ color: "black" }}>Standard shipping </span></div>
                   </div>
 
-                  <div className={styles.addressInformation} style={{ minWidth: "150px", maxWidth: "150px" }}>
+                  <div className={styles.addressInformation} >
                     {allData != null ? <>
                       <div ><span className={styles.userinfoText} style={{fontWeight:'bold'}} >Payment Status</span></div>
                       <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.history[0].payment_mode}-{allData.transaction.payment_status}</span></div>

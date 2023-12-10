@@ -213,8 +213,12 @@ EMAIL_HOST= 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 
-EMAIL_HOST_USER = 'tq.buildcon@gmail.com'
-EMAIL_HOST_PASSWORD = 'xoodgdrderlwlsgz'
+# EMAIL_HOST_USER = 'tq.buildcon@gmail.com'
+# EMAIL_HOST_PASSWORD = 'xoodgdrderlwlsgz'
+EMAIL_HOST_USER = 'rbyr2023@gmail.com'
+EMAIL_HOST_PASSWORD = 'phcc pqul yufd soce'
+
+
 
 # End of modification and addition by Om Shrivastava on 22-11-23
 # Reason : Need to Add new Email and password 

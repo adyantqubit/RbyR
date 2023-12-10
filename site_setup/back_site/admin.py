@@ -52,7 +52,7 @@ class product_detailAdmin(admin.ModelAdmin):
     # Modification and addition by Om Shrivastava on 11-11-23
     # Reason : Need to display the is active field 
     # list_display=(short_title,"menu","category","S","M","L","XL","price","color")
-    list_display=(short_title,"menu","category","S","M","L","XL","price","color",'is_active')
+    list_display=(short_title,"menu","category","S","M","L","XL","price","color",'is_active','subMenu')
     # End of Modification and addition by Om Shrivastava on 11-11-23
     # Reason : Need to display the is active field
     ordering =("title",)
@@ -60,7 +60,7 @@ class product_detailAdmin(admin.ModelAdmin):
     
     readonly_fields=('search_key','category','menu')
     search_fields=("title","category","color")
-    # list_filter=("category","color")
+    list_filter=("category","color")
     list_per_page=10
     #Added by Ashish dewangan on 23-11-2022
     #Reason - to have shipping days and ready to wear functionality for product
@@ -223,7 +223,7 @@ class HomeVideoAdmin(admin.ModelAdmin):
 class userbillingDetailAdmin(admin.ModelAdmin):
     list_display=("user_id","firstname","lastname","street","houseno","city","state","zipcode","country","number")
     ordering=("user_id",)
-    # list_filter=("city","state","country")
+    list_filter=("city","state","country")
     search_fields=("firstname","lastname","city","state","country")
     list_per_page=10
     def has_add_permission(self, request):
@@ -243,7 +243,7 @@ class usershippingDetailAdmin(admin.ModelAdmin):
     list_display=("user_id","firstname","lastname","street","houseno","city"
     ,"state","zipcode","country","number","isSelected")
     ordering=("user_id",)
-    # list_filter=("city","state","country")
+    list_filter=("city","state","country")
     search_fields=("firstname","lastname","city","state","country")
     list_per_page=10
     def has_add_permission(self, request):
@@ -277,13 +277,13 @@ class product_ordersAdmin(admin.ModelAdmin):
     # End of code modification by - Ashish Dewangan on 29-11-2023
     # Reason - To show product name instead of product id
 
-    # list_filter=(
-    #      # Addition by Om Shrivastava on 05-12-23
-    # # Reason : Need to show this field
-    # 'order_status',
-    # # End of addition by Om Shrivastava on 05-12-23
-    # # Reason : Need to show this field
-    #     "date","payment_mode","price","user_no")
+    list_filter=(
+         # Addition by Om Shrivastava on 05-12-23
+    # Reason : Need to show this field
+    'order_status',
+    # End of addition by Om Shrivastava on 05-12-23
+    # Reason : Need to show this field
+        "date","payment_mode","price","user_no")
     search_fields=("product_id__title","user_no__name")
 
     # Commented and modified by - Ashish Dewangan on 29-11-2023
@@ -618,7 +618,7 @@ class BridalFormAdmin(admin.ModelAdmin):
     list_display=("firstName","lastName","email","contactNumber","zipCode","dateOfWedding","message","termsAndCondition")
     ordering =("firstName",)
     search_fields=("firstName","contactNumber","lastName","email")
-    # list_filter=("dateOfWedding",)
+    list_filter=("dateOfWedding",)
     list_per_page=10
     def has_add_permission(self, request):
         return False
@@ -655,8 +655,8 @@ class CopyrightAdmin(admin.ModelAdmin):
 @admin.register(EmailSubscription)
 class EmailSubscriptionAdmin(admin.ModelAdmin):
     list_display=("email","subscribe")
-    # list_filter=("subscribe",)
-    search_fields=["email"]
+    list_filter=("subscribe",)
+    search_fields=["email",]
     # readonly_fields=("date",)
     ordering=("-id",)
     list_per_page=10
@@ -746,7 +746,7 @@ class Transaction_historyAdmin(admin.ModelAdmin):
     # Reason - To make shipping details read only
     
     ordering=("-order_no","date")
-    # list_filter=("payment_status","date")
+    list_filter=("payment_status","date")
     search_fields=("user_no__name",)
     list_per_page=10
     def has_add_permission(self, request):
@@ -878,7 +878,7 @@ def name_of_user(obj):
 @admin.register(CustomTailoredForm)    
 class CustomTailoredFormAdmin(admin.ModelAdmin):
     list_display=(name_of_user,"email","contactNumber")
-    # list_filter=("email",)
+    list_filter=("email",)
     sortable_by=("email","contactNumber")
     search_fields=("firstName","lastName","email",'contactNumber')
     ordering=("firstName",)

@@ -469,7 +469,7 @@ const UsserAdresses = () => {
                                     </>
                                     :
                                     <>
-                                        <input className={styles.firstInput} maxLength={20} autocomplete="nope" name='first' id="first" onKeyPress={validate} onChange={e=>setRequired({})} defaultValue={selectedShippingAddress.firstname}/>
+                                        <input className={styles.firstInput} maxLength={20} autocomplete="nope" name='first' id="first" onKeyPress={validate} onChange={e=>setRequired({})} defaultValue={selectedShippingAddress?.firstname}/>
                                         {required.first ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
 
                                         {/* {error.efirst?<Typography style={{color:"red",fontSize:"13px"}}>This Field is required</Typography>:null} */}
@@ -480,7 +480,7 @@ const UsserAdresses = () => {
                                 <label className={styles.firstName} htmlFor='b'>Last Name<span style={{color:'red'}}>*</span></label>
                                 {checkoutDetails.shippingData ?
                                     <>
-                                        <input className={styles.firstInput} name='last' autocomplete="nope" id='last' maxLength={20} onKeyPress={validate} onChange={e=>setRequired({})} defaultValue={checkoutDetails.shippingData.lastname} />
+                                        <input className={styles.firstInput} name='last' autocomplete="nope" id='last' maxLength={20} onKeyPress={validate} onChange={e=>setRequired({})} defaultValue={checkoutDetails.shippingData?.lastname} />
                                         {required.last ? <Typography style={{ color: "red", fontSize: "13px" }}>This field is required</Typography> : null}
                                     </>
                                     :

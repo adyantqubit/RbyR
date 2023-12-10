@@ -90,8 +90,15 @@ const MyOrders = () => {
               <div className={style.column1header}>MY ACCOUNT</div>  
               <hr style={{color:"black"}}></hr>
               <div className={style.column1text} onClick={e=>setShowEditable(!true)}><Link to="/userprofile" style={{textDecoration:"none",color:"#212121"}}>MY PROFILE</Link></div>
-              <div className={style.column1text} onClick={e=>setshipEditCond(true)}><Link to="/shippindprofile" style={{textDecoration:"none",color:"#212121"}} >MY SHIPPING DETAILS</Link></div>
-              <div className={style.column1text}><Link to="/profile" style={{textDecoration:"none",color:"#212121"}}>MY ORDERS</Link></div>
+              <div className={style.column1text} onClick={e=>setshipEditCond(true)}><Link to="/shippindprofile" 
+              style={{textDecoration:"none",color:"#212121"}}
+              className={window.location.pathname=='/shippindprofile' ? style.highlightField : style.a}
+              
+              >MY SHIPPING DETAILS</Link></div>
+              <div className={style.column1text}><Link to="/profile" 
+              className={window.location.pathname=='/profile' ? style.highlightField : ''}
+              
+              style={{textDecoration:"none",color:"#212121"}}>MY ORDERS</Link></div>
 
             </div>
             <div className={style.column2}>
@@ -99,7 +106,7 @@ const MyOrders = () => {
             <hr style={{color:"black"}}></hr>
 
             {orders.length>0&&tran.length>0? <div className={style.table} >
-                <div className={style.tablerowheadtable}>
+                <div className={style.tablerowheadtable} style={{backgroundColor:'var(--backgroundColorPrimary'}}>
                   <div style={{color:'black',fontWeight:"600"}} className={style.rowheadText}>Order ID</div>
                   <br style={{color:"blue"}}></br>
                   <div style={{color:'black',fontWeight:"600"}} className={`${style.rowheadText} `}>Date</div>
@@ -110,19 +117,21 @@ const MyOrders = () => {
                   <div style={{color:'black',fontWeight:"600"}} className={`${style.rowheadText} ${style.rowtexthide}`}>Status</div>
                   <div  className={`${style.rowheadText} ${style.rowtexthide}`}></div>
                 </div>
-                <hr style={{color:"black"}}></hr>
+                {/* <hr style={{color:"black"}}></hr> */}
 
                 
                { orders.map((o,i)=>
-                  <div className={style.tablerowheadtable} >
+                  <div className={style.tablerowheadtable} 
+                  style={{ background: i % 2 == 0 ? "white" : "#ebebe6" }}
+                  >
                     <div className={style.rowText}>{o[0].order_no}</div>
                     <div className={`${style.rowText}`}>{o[0].date.split("-").reverse().join("-")}</div>
                     
-                    <div className={`${style.rowText} ${style.rowtexthide}`} style={{wordBreak:"break-all"}}>{tran.filter(t=>t.order_no==o[0].order_no)[0].firstname} {tran.filter(t=>t.order_no==o[0].order_no)[0].lastname}</div>
-                    <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].selected_currency_sign}{(tran.filter(t=>t.order_no==o[0].order_no)[0].grand_total*o[0].selected_currency_value).toFixed(2)}</div>
+                    <div className={`${style.rowText} ${style.rowtexthide}`} style={{wordBreak:"break-all"}}>{tran.filter(t=>t.order_no==o[0].order_no)[0]?.firstname} {tran.filter(t=>t.order_no==o[0].order_no)[0]?.lastname}</div>
+                    <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].selected_currency_sign}{(tran.filter(t=>t.order_no==o[0].order_no)[0]?.grand_total*o[0].selected_currency_value).toFixed(2)}</div>
                     {/* <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].selected_currency_sign}{(getPrice(o)*o[0].selected_currency_value).toFixed(2)}</div> */}
                     <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].payment_mode.split("p").join(" p")}</div>
-                    <div className={`${style.rowText} ${style.rowtexthide}`}>{tran.filter(t=>t.order_no==o[0].order_no)[0].payment_status}</div>
+                    <div className={`${style.rowText} ${style.rowtexthide}`}>{tran.filter(t=>t.order_no==o[0].order_no)[0]?.payment_status}</div>
                     <div className={style.rowText} style={{textDecoration:"underline",color:"blue",fontSize:"14px",cursor:"pointer",whiteSpace:"nowrap",overflow:"hidden",width:"80px",marginRight:"10px"}} onClick={e=>nav(`/insideorder/${o[0].order_no}`)}>View Order
                     </div>
                     

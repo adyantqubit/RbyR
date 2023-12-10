@@ -135,12 +135,12 @@
   font-family: var(--fontFamily);
 
   text-align: center;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
 }
 
 .header {
   width: 100%;
-  margin-top: 15px;
+  /* margin-top: 15px; */
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -161,7 +161,7 @@
   color: var(--textColorPrimary);
   font-size: 16px;
   line-height: 24px;
-  letter-spacing: 1.4px;
+  letter-spacing: 0.7px;
 
   margin-bottom: 10px;
   font-weight: 600;
@@ -307,7 +307,10 @@
   padding: 0 20px;
   margin: 0px 1%;
 }
-
+.addressInformation{
+  min-width:150px;
+  max-width: 150px;
+}
 @media (min-width: 700px) {
   .show {
     display: flex;
@@ -318,6 +321,7 @@
   .show2 {
     display: none;
   }
+  
 }
 @media (max-width: 1100px) {
   .invoice {
@@ -423,6 +427,14 @@
     color: var(--btnTextColorPrimary);
     border: 1px solid var(--btnBorderColorPrimary);
   }
+  .addressInformation{
+    /* min-width:150px;
+    max-width: 150px; */
+    min-width: 100%;
+    max-width: 100%;
+  }
 }
+
+
 
 /* printing whole page like window web page in mobile also. */

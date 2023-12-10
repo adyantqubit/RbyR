@@ -30,6 +30,17 @@
     color: black;
 }
 
+/* Addition by Om Shrivastava on 09-12-23
+   Reason : Add css when same page is selected */
+   .highlightField {
+    text-decoration: none;
+    font-family: var(--fontFamily);
+    cursor: pointer;
+    font-weight: bolder;
+    /* text-transform: capitalize; */
+   }
+   /* End of addition by Om Shrivastava on 09-12-23
+   Reason : Add css when same page is selected */
 .shopbtn1:hover {
     background-color: #323232;
     color: white;
@@ -154,7 +165,7 @@
 .table {
     width: 100%;
     background-color: var(--backgroundColorSecondary);
-    border: #323232 solid 1px;
+    /* border: #323232 solid 1px; */
 }
 
 .tablerowhead {
@@ -167,6 +178,8 @@
     display: flex;
     justify-content: space-between;
     background-color: var(--backgroundColorSecondary);
+
+    border: 1px solid black;
 }
 
 .tablerowhead2 {

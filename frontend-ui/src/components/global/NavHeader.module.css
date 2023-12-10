@@ -27,6 +27,17 @@
     Reason : Set the font family of the anchor tag */
     cursor: pointer;
    }
+   /* Addition by Om Shrivastava on 09-12-23
+   Reason : Add css when same page is selected */
+   .highlightField {
+    text-decoration: none;
+    font-family: var(--fontFamily);
+    cursor: pointer;
+    font-weight: bolder;
+    /* text-transform: capitalize; */
+   }
+   /* End of addition by Om Shrivastava on 09-12-23
+   Reason : Add css when same page is selected */
 
    .al{
     

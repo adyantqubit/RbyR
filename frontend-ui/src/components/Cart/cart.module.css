@@ -24,6 +24,7 @@
 
     width: auto;
     padding-top: 20px;
+
     margin: 0 25%;
     background-color: var(--backgroundColorSecondary);
 }
@@ -277,6 +278,8 @@ body {background: #333}
 .importantRules{
    margin-left: 2%;
    width:100%;
+   padding-top: 60px;
+
   }
 
     .heading{

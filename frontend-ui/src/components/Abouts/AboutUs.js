@@ -21,6 +21,7 @@ import ResponsiveSlider from "./responsiveSlider";
 import ReactPlayer from "react-player";
 import { WorldOfRR } from "../../api/orderApis";
 import stylee from "../footer pages/globalFooterFile.module.css";
+import "../../context.css";
 
 const AboutUs = () => {
   const [response, setResponse] = useState(null);
@@ -45,11 +46,18 @@ const AboutUs = () => {
           className={style.container}
           //  style={{border:'2px solid black'}}
         >
+          <div className="headingFooter" style={{ paddingTop: "2%" }}>
+            {" "}
+            World of RbyR
+          </div>
           <div className={style.contain}>
             {/* Paragraph 1*/}
-            <div className={`${style.TextContainer} ${style.Top2Images}`} >
-              <div className={style.InnerImgContainer} style={{display:'flex',width:'100%'}}>
-                <div className={style.AboutContent} >
+            <div className={`${style.TextContainer} ${style.Top2Images}`}>
+              <div
+                className={style.InnerImgContainer}
+                style={{ display: "flex", width: "100%" }}
+              >
+                <div className={style.AboutContent}>
                   <div className={style.headerText}>{response.title1}</div>
                   <br />
                   <div className={style.para}>{response.description1}</div>

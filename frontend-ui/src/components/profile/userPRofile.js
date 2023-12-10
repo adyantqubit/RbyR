@@ -111,7 +111,7 @@ const UserProfile = () => {
       setError(msg)
     }
     if (res.data) {
-      setError(res.data)
+      // setError(res.data)
       //  document.getElementById("password-change-form").reset();
       await userUpdate(userData).then(r => {
 
@@ -122,6 +122,9 @@ const UserProfile = () => {
 
         setShowEditable(false)
       })
+    }
+    else{
+      alert('jjjjjjjjj')
     }
 
   };
@@ -272,9 +275,21 @@ const UserProfile = () => {
             <div className={style.column1}>
               <div className={style.column1header}>MY ACCOUNT</div>
               <hr style={{ color: "black" }}></hr>
-              <div className={style.column1text} onClick={e => setShowEditable(!true)}><Link to="/userprofile" style={{ textDecoration: "none", color: "#212121" }}>MY PROFILE</Link></div>
-              <div className={style.column1text} onClick={e => setshipEditCond(true)}><Link to="/shippindprofile" style={{ textDecoration: "none", color: "#212121" }}>MY SHIPPING DETAILS</Link></div>
-              <div className={style.column1text}><Link to="/profile" style={{ textDecoration: "none", color: "#212121" }}>MY ORDERS</Link></div>
+              <div className={style.column1text} onClick={e => setShowEditable(!true)}><Link to="/userprofile" 
+             
+             className={window.location.pathname=='/userprofile' ? style.highlightField : style.a}
+              style={{ textDecoration: "none", color: "#212121" }}>MY PROFILE</Link></div>
+              
+              <div className={style.column1text} onClick={e => setshipEditCond(true)}><Link to="/shippindprofile" 
+              className={window.location.pathname=='/shippindprofile' ? style.highlightField : style.a}
+              style={{ textDecoration: "none", color: "#212121" }}
+              >MY SHIPPING DETAILS</Link></div>
+              
+              <div className={style.column1text}><Link to="/profile" 
+              style={{ textDecoration: "none", color: "#212121" }}
+              className={window.location.pathname=='/profile' ? style.highlightField : ''}
+              
+              >MY ORDERS</Link></div>
 
             </div>
 

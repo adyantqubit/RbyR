@@ -102,7 +102,7 @@ function Converter() {
 	return (
 
 		<div className="right" >
-			<Dropdown options={options}
+			<Dropdown options={options} 
 				onChange={(e) => {
 					curencyvalue(e.value); setTo(e.value);
 					if (localStorage.getItem('access_token')) {

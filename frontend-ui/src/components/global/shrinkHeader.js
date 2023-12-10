@@ -150,7 +150,11 @@ const ShrinkHeader = () => {
             {/* Commented and modified by - Ashish Dewangan on 03-12-2023
               Reason - To hide currency selector from header */}
             {/* <Converter /> */}
-            <div></div>
+            <div 
+            style={{display:'flex',paddingTop:'3px',justifyContent:'center',alignItems:'center',fontWeight:'600',fontFamily:'var(--fontFamily)'}}
+            >
+              INR
+            </div>
             {/* End of code modification by - Ashish Dewangan on 03-12-2023
               Reason - To hide currency selector from header */}
             <Link to="/">

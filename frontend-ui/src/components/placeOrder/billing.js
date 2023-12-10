@@ -300,7 +300,7 @@ const Billing = () => {
                 // ref={componentRef}
               >
                 <div className={styles.head}>
-                  <div className={styles.headIn}>INVOICE</div>
+                  <div style={{fontSize:'26px'}} className={styles.headIn}>INVOICE</div>
                 </div>
 
                 <div className={styles.header} id="header">
