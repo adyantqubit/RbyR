@@ -708,15 +708,28 @@ class Transaction_history(models.Model):
 
 
 class Online_Qr(models.Model):
+    # Modification and addition by Om Shrivastava on 11-12-23
+    # Reason : Need to remove mandatory field
+    # qr_img=models.ImageField(upload_to='Images/', height_field=None,\
+    #     width_field=None, max_length=100)
+    # name=models.CharField(max_length=50)
+    # bank_name=models.CharField(max_length=30)
+    # account_number=models.CharField(max_length=18)
+    # upi_id=models.CharField(max_length=50)
     qr_img=models.ImageField(upload_to='Images/', height_field=None,\
-        width_field=None, max_length=100)
-    name=models.CharField(max_length=50)
-    bank_name=models.CharField(max_length=30)
-    account_number=models.CharField(max_length=18)
-    upi_id=models.CharField(max_length=50)
-    # Addition by Om Shrivastava on 08-11-23
+        width_field=None, max_length=100,null=True,blank=True)
+    name=models.CharField(max_length=50,null=True,blank=True)
+    bank_name=models.CharField(max_length=30,null=True,blank=True)
+    account_number=models.CharField(max_length=18,null=True,blank=True)
+    upi_id=models.CharField(max_length=50,null=True,blank=True)
+    # End of addition by Om Shrivastava on 08-11-23
     # Reason : Set the contact number 
-    contact_number=models.CharField(max_length=20,validators=[validate_phone_number],null=True)
+    # Modification and addition by Om Shrivastava on 11-12-23
+    # Reason : Need to remove mandatory field
+    # contact_number=models.CharField(max_length=20,validators=[validate_phone_number],null=True)
+    contact_number=models.CharField(max_length=20,validators=[validate_phone_number],null=True,blank=True)
+    # End of addition by Om Shrivastava on 08-11-23
+    # Reason : Set the contact number 
     # Addition by Om Shrivastava on 08-11-23
     # Reason : Set the contact number 
     #Added by Ashish Dewangan on 28-11-2022

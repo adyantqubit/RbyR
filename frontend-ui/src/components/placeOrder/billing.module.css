@@ -51,7 +51,14 @@
   /* height: auto; */
   /* height:100%; */
 }
-
+.adjustImg{
+  padding: 8px;
+  max-width: 50%;
+  height: 150px;
+  width: 150px;
+  margin: 3px 0px 0px 3px;
+  margin-left: 35%;
+}
 .payTitle {
   /* padding: 8px; */
   padding: 2px 5px 5px 5px;
@@ -432,6 +439,14 @@
     max-width: 150px; */
     min-width: 100%;
     max-width: 100%;
+  }
+  .adjustImg{
+    padding: 8px;
+    max-width: 50%;
+    height: 150px;
+    width: 150px;
+    margin: 3px 0px 0px 3px;
+    margin-left: 28%;
   }
 }
 

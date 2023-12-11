@@ -115,7 +115,7 @@ const Billing = () => {
       }
     });
   }
-
+console.log(onlineDetail,'check console data')
   // console.log(onlineDetail);
 
   // Added by Ashish Dewangan on 11-12-2022
@@ -130,7 +130,9 @@ const Billing = () => {
       <div className={styles.container} id="scrolled">
         <div className={styles.main}>
           {checkoutDetails.payment == "onlinepay" ? (
-            onlineDetail != null ? (
+            onlineDetail != null && onlineDetail.name!="" && onlineDetail.account_number!=""&& onlineDetail.bank_name!=""&& onlineDetail.contact_number!=""&& onlineDetail.qr_img
+            !=""&& onlineDetail.upi_id
+            !=""     ? (
               <div
                 className={styles.payBox}
                 style={{
@@ -138,14 +140,21 @@ const Billing = () => {
                   height: "160px",
                   marginTop: "2px",
                   border: "1px solid black",
+                  
                 }}
               >
-                <img
-                  src={config.staticBaseURL + onlineDetail.qr_img}
-                  className={styles.img}
-                  style={{ border: "1px solid black" }}
-                />
-
+                {onlineDetail.qr_img != null ? (
+                  <img
+                    src={config.staticBaseURL + onlineDetail.qr_img}
+                    className={onlineDetail.name==null && onlineDetail.account_number==null&& 
+                      onlineDetail.bank_name==null&& onlineDetail.contact_number==null&& onlineDetail.upi_id
+                    ==null ? styles.adjustImg :styles.img}
+                    style={{ border: "1px solid black" }}
+                    // style={ onlineDetail.name==null && onlineDetail.account_number==null&& 
+                    //   onlineDetail.bank_name==null&& onlineDetail.contact_number==null&& onlineDetail.upi_id
+                    // ==null   ? { marginLeft:'35%',border: "1px solid black"} : "" }  
+                  />
+                ) : null}
                 <div className={styles.payTitle}>
                   <div>
                     {/* <div ><span className={styles.userinfoText}>Name:</span><span className={styles.userinfoText2} >{onlineDetail.name}</span ></div>
@@ -153,88 +162,100 @@ const Billing = () => {
                     <div ><span className={styles.userinfoText}>Account Number:</span><span className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
                     <div ><span className={styles.userinfoText}>UPI ID:</span><span className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div> */}
                     {/* <div style={{fontSize:'14px',color:'blue',marginLeft:'-5px'}} className={styles.payTitle}>Account Details : </div> */}
-                    <div style={{ paddingTop: "3px" }}>
-                      <span
-                        style={{ fontSize: "12px", fontWeight: "bold" }}
-                        className={styles.userinfoText2}
-                      >
-                        {onlineDetail.bank_name}
-                      </span>
-                    </div>
+                    {onlineDetail.bank_name != null ? (
+                      <div style={{ paddingTop: "3px" }}>
+                        <span
+                          style={{ fontSize: "12px", fontWeight: "bold" }}
+                          className={styles.userinfoText2}
+                        >
+                          {onlineDetail.bank_name}
+                        </span>
+                      </div>
+                    ) : null}
                     <div>
-                      <span
-                        style={{
-                          fontSize: "12px",
-                          fontWeight: "bold",
-                          letterSpacing: "0.5px",
-                        }}
-                        className={styles.userinfoText}
-                      >
-                        Name &nbsp;&nbsp;:{" "}
-                      </span>
-                      <span
-                        style={{ fontSize: "12px" }}
-                        className={styles.userinfoText2}
-                      >
-                        {onlineDetail.name}
-                      </span>
+                      {onlineDetail.name != null ? (
+                        <>
+                          <span
+                            style={{
+                              fontSize: "12px",
+                              fontWeight: "bold",
+                              letterSpacing: "0.5px",
+                            }}
+                            className={styles.userinfoText}
+                          >
+                            Name &nbsp;&nbsp;:{" "}
+                          </span>
+                          <span
+                            style={{ fontSize: "12px" }}
+                            className={styles.userinfoText2}
+                          >
+                            {onlineDetail.name}
+                          </span>
+                        </>
+                      ) : null}
                     </div>
-                    <div>
-                      <span
-                        style={{
-                          fontSize: "12px",
-                          fontWeight: "bold",
-                          letterSpacing: "0.5px",
-                        }}
-                        className={styles.userinfoText}
-                      >
-                        A/C No &nbsp;:{" "}
-                      </span>
-                      <span
-                        style={{ fontSize: "12px" }}
-                        className={styles.userinfoText2}
-                      >
-                        {onlineDetail.account_number}
-                      </span>
-                    </div>
-                    <div>
-                      <span
-                        style={{
-                          fontSize: "12px",
-                          fontWeight: "bold",
-                          letterSpacing: "0.5px",
-                        }}
-                        className={styles.userinfoText}
-                      >
-                        UPI ID&nbsp;:{" "}
-                      </span>
-                      <span
-                        style={{ fontSize: "12px" }}
-                        className={styles.userinfoText2}
-                      >
-                        {onlineDetail.upi_id}
-                      </span>
-                    </div>
+                    {onlineDetail.account_number != null ? (
+                      <div>
+                        <span
+                          style={{
+                            fontSize: "12px",
+                            fontWeight: "bold",
+                            letterSpacing: "0.5px",
+                          }}
+                          className={styles.userinfoText}
+                        >
+                          A/C No &nbsp;:{" "}
+                        </span>
+                        <span
+                          style={{ fontSize: "12px" }}
+                          className={styles.userinfoText2}
+                        >
+                          {onlineDetail.account_number}
+                        </span>
+                      </div>
+                    ) : null}
+                    {onlineDetail.upi_id != null ? (
+                      <div>
+                        <span
+                          style={{
+                            fontSize: "12px",
+                            fontWeight: "bold",
+                            letterSpacing: "0.5px",
+                          }}
+                          className={styles.userinfoText}
+                        >
+                          UPI ID&nbsp;:{" "}
+                        </span>
+                        <span
+                          style={{ fontSize: "12px" }}
+                          className={styles.userinfoText2}
+                        >
+                          {onlineDetail.upi_id}
+                        </span>
+                      </div>
+                    ) : null}
                     {/* Addition by Om Shrivastava on 02-12-23
                   Reason : Set the design of the phone label */}
-                    <div>
-                      <span
-                        style={{
-                          fontSize: "12px",
-                          fontWeight: "bold",
-                          letterSpacing: "0.5px",
-                        }}
-                        className={styles.userinfoText}
-                      >
-                        Phone&nbsp;:{" "}
-                      </span>
-                      <span
-                        style={{ fontSize: "12px" }}
-                        className={styles.userinfoText2}
-                      >
-                        {onlineDetail.contact_number}
-                      </span>
-                    </div>
+                    {onlineDetail.contact_number != null ? (
+                      <div>
+                        <span
+                          style={{
+                            fontSize: "12px",
+                            fontWeight: "bold",
+                            letterSpacing: "0.5px",
+                          }}
+                          className={styles.userinfoText}
+                        >
+                          Phone&nbsp;:{" "}
+                        </span>
+                        <span
+                          style={{ fontSize: "12px" }}
+                          className={styles.userinfoText2}
+                        >
+                          {onlineDetail.contact_number}
+                        </span>
+                      </div>
+                    ) : null}
                     {/* End of addition by Om Shrivastava on 02-12-23
                   Reason : Set the design of the phone label */}
                   </div>
@@ -242,6 +263,8 @@ const Billing = () => {
                   Reason : Set the contact number of payment time */}
                   {/* <div style={{ height: "60px", width: "100%" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To Admin After Paying At {storeLocatorDetails != null ? parse("PHONE:" + storeLocatorDetails[0]?.phoneNumber) : null}</span></div> */}
                   {/* <div style={{ height: "60px", width: "100%",paddingTop:'2px' }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all',fontSize:'11px' }}> Please Confirm To Admin After Paying At <b>phone:</b>{onlineDetail.contact_number}</span></div> */}
+                  {onlineDetail.contact_number != null ? (
+                  
                   <div
                     style={{
                       height: "60px",
@@ -261,13 +284,14 @@ const Billing = () => {
                       Please Confirm To Admin After Paying{" "}
                     </span>
                   </div>
+                    ) : null}
 
                   {/* End of Modification and addition by Om Shrivastava on 08-11-23
                   Reason : Set the contact number of payment time  */}
                 </div>
               </div>
             ) : (
-              <div>The qr Code getting error</div>
+              <div></div>
             )
           ) : null}
         </div>
@@ -300,36 +324,46 @@ const Billing = () => {
                 // ref={componentRef}
               >
                 <div className={styles.head}>
-                  <div style={{fontSize:'26px'}} className={styles.headIn}>INVOICE</div>
+                  <div style={{ fontSize: "26px" }} className={styles.headIn}>
+                    INVOICE
+                  </div>
                 </div>
 
                 <div className={styles.header} id="header">
                   <div className={styles.headerTexts}>
                     <div className={styles.columnitem1head}>BILLING TO</div>
                     <hr style={{ color: "black" }}></hr>
-                    <div style={{wordBreak:"break-all"}} className={styles.userinfoText2}>
-                      
-                        {" "}
-                        {checkoutDetails.billingData.firstname}{" "}
-                        {checkoutDetails.billingData.lastname}
-                   
+                    <div
+                      style={{ wordBreak: "break-all" }}
+                      className={styles.userinfoText2}
+                    >
+                      {" "}
+                      {checkoutDetails.billingData.firstname}{" "}
+                      {checkoutDetails.billingData.lastname}
                     </div>
-                    <div style={{wordBreak:"break-all"}} className={styles.userinfoText2}>
-                        {" "}
-                        {checkoutDetails.billingData.street},{" "}
-                        {checkoutDetails.billingData.houseno}
-                        {" "}
-                        {checkoutDetails.billingData.city},{" "}
+                    <div
+                      style={{ wordBreak: "break-all" }}
+                      className={styles.userinfoText2}
+                    >
+                      {" "}
+                      {checkoutDetails.billingData.street},{" "}
+                      {checkoutDetails.billingData.houseno}{" "}
+                      {checkoutDetails.billingData.city},{" "}
                     </div>
-                    <div style={{wordBreak:"break-all"}} className={styles.userinfoText2}>
-                        {" "}
-                        {checkoutDetails.billingData.state},{" "}
-                        {" "}
-                        {checkoutDetails.billingData.country},{" "}
+                    <div
+                      style={{ wordBreak: "break-all" }}
+                      className={styles.userinfoText2}
+                    >
+                      {" "}
+                      {checkoutDetails.billingData.state},{" "}
+                      {checkoutDetails.billingData.country},{" "}
                     </div>
-                    <div style={{wordBreak:"break-all"}} className={styles.userinfoText2}>
-                        {" "}
-                        {checkoutDetails.billingData.number}
+                    <div
+                      style={{ wordBreak: "break-all" }}
+                      className={styles.userinfoText2}
+                    >
+                      {" "}
+                      {checkoutDetails.billingData.number}
                     </div>
                   </div>
 
@@ -391,21 +425,33 @@ const Billing = () => {
                       <div className={styles.columnitem1head}>SHIPPING TO</div>
                       <hr style={{ color: "black" }}></hr>
 
-                      <div className={styles.userinfoText2} style={{wordBreak:"break-all"}}>
+                      <div
+                        className={styles.userinfoText2}
+                        style={{ wordBreak: "break-all" }}
+                      >
                         {checkoutDetails.shippingData.firstname}{" "}
                         {checkoutDetails.shippingData.lastname},{" "}
-                        </div>
-                        <div className={styles.userinfoText2} style={{wordBreak:"break-all"}}>
+                      </div>
+                      <div
+                        className={styles.userinfoText2}
+                        style={{ wordBreak: "break-all" }}
+                      >
                         {checkoutDetails.shippingData.street}{" "}
                         {checkoutDetails.shippingData.houseno},{" "}
                         {checkoutDetails.shippingData.city} -
                         {checkoutDetails.shippingData.zipcode},{" "}
-                        </div>
-                        <div className={styles.userinfoText2} style={{wordBreak:"break-all"}}>
+                      </div>
+                      <div
+                        className={styles.userinfoText2}
+                        style={{ wordBreak: "break-all" }}
+                      >
                         {checkoutDetails.shippingData.state}{" "}
                         {checkoutDetails.shippingData.country},{" "}
-                        </div>
-                        <div className={styles.userinfoText2} style={{wordBreak:"break-all"}}>
+                      </div>
+                      <div
+                        className={styles.userinfoText2}
+                        style={{ wordBreak: "break-all" }}
+                      >
                         {checkoutDetails.shippingData.number}
                       </div>
                     </div>
@@ -557,38 +603,38 @@ const Billing = () => {
                   Reason - To show details from purchased items tables rather than items table */}
                   </div>
 
-                  {(afterColumnTotalOfferAdd(offer, cart, taxRate).shipping)!=0 ? 
-
-                  <div className={styles.billingtexts}>
-                    <span className={`${styles.columnitem1head}`}>
-                      Shipping charges : &nbsp;{" "}
-                    </span>
-                    {/* Commented and modified by - Ashish Dewangan on 27-11-2023
+                  {afterColumnTotalOfferAdd(offer, cart, taxRate).shipping !=
+                  0 ? (
+                    <div className={styles.billingtexts}>
+                      <span className={`${styles.columnitem1head}`}>
+                        Shipping charges : &nbsp;{" "}
+                      </span>
+                      {/* Commented and modified by - Ashish Dewangan on 27-11-2023
                   Reason - To show details from purchased items tables rather than items table */}
-                    {/* <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto", border: "none", outline: "none" }} > {checkoutDetails.currency_sign}{(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).shipping * checkoutDetails.currency_value).toFixed(2)}</span> */}
-                    <span
-                      className={`${styles.columnitem1head} ${styles.header2}`}
-                      style={{
-                        color: "black",
-                        width: "auto",
-                        border: "none",
-                        outline: "none",
-                      }}
-                    >
-                      {" "}
-                      {checkoutDetails.currency_sign}
-                      {(
-                        afterColumnTotalOfferAdd(
-                          offer,
-                          checkoutDetails.purchased_products_list,
-                          taxRate
-                        ).shipping * checkoutDetails.currency_value
-                      ).toFixed(2)}
-                    </span>
-                    {/* End of code modification by - Ashish Dewangan on 27-11-2023
+                      {/* <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", width: "auto", border: "none", outline: "none" }} > {checkoutDetails.currency_sign}{(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).shipping * checkoutDetails.currency_value).toFixed(2)}</span> */}
+                      <span
+                        className={`${styles.columnitem1head} ${styles.header2}`}
+                        style={{
+                          color: "black",
+                          width: "auto",
+                          border: "none",
+                          outline: "none",
+                        }}
+                      >
+                        {" "}
+                        {checkoutDetails.currency_sign}
+                        {(
+                          afterColumnTotalOfferAdd(
+                            offer,
+                            checkoutDetails.purchased_products_list,
+                            taxRate
+                          ).shipping * checkoutDetails.currency_value
+                        ).toFixed(2)}
+                      </span>
+                      {/* End of code modification by - Ashish Dewangan on 27-11-2023
                   Reason - To show details from purchased items tables rather than items table */}
-                  </div>
-                  :null}
+                    </div>
+                  ) : null}
 
                   {/* <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`}  >GST Charges : </span>

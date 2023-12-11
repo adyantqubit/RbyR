@@ -349,7 +349,7 @@ const InsideOrder = () => {
                           </div>
 
                         </div>
-                        : <div>The qr Code getting error</div>
+                        : <div>The qr Code getting error</div> 
                       }
                     </div>
                   </Modal>
