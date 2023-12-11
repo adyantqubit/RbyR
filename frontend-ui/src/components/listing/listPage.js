@@ -249,7 +249,7 @@ const ListPage = () => {
                 <span
                   className={style.TopContent}
                   style={{
-                    paddingLeft: "5%",
+                    // paddingLeft: "5%",
                     fontWeight: "550",
                     whiteSpace: "nowrap",
                   }}

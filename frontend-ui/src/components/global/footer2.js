@@ -431,8 +431,8 @@ function Footer2() {
             <span
               style={{
                 fontFamily: "var(--fontFamily)",
-                fontSize: "16px",
-                fontWeight: "20",
+                fontSize: "14px",
+                // fontWeight: "20",
                 color: "black",
                 textDecoration: "none",
               }}

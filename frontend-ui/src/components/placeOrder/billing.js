@@ -603,11 +603,13 @@ console.log(onlineDetail,'check console data')
                   Reason - To show details from purchased items tables rather than items table */}
                   </div>
 
-                  {afterColumnTotalOfferAdd(offer, cart, taxRate).shipping !=
+                  {afterColumnTotalOfferAdd( offer,
+                            checkoutDetails.purchased_products_list,
+                            taxRate).shipping !=
                   0 ? (
                     <div className={styles.billingtexts}>
                       <span className={`${styles.columnitem1head}`}>
-                        Shipping charges : &nbsp;{" "}
+                        Shipping charges : &nbsp;{" "} 
                       </span>
                       {/* Commented and modified by - Ashish Dewangan on 27-11-2023
                   Reason - To show details from purchased items tables rather than items table */}

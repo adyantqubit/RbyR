@@ -18,6 +18,7 @@ import { GuestCartRequest } from '../../api/orderApis';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 const Login = () => {
 	const { setCart, setLike, firstTimeLoadFunctions, cart,redirectionPath,setRedirectionPath, } = CartState()
 	const [error, setError] = useState({})
@@ -170,7 +171,44 @@ const Login = () => {
 			if (theEvent.preventDefault) theEvent.preventDefault();
 		}
 	}
+	// if (error?.none_field_errors?.length > 0){
+	// 	// console.log('increasesee')
+	// 	setTimeout(error.none_field_errors=="", 2 * 60 * 1000); // 2 minutes in milliseconds
+	// }
 
+	if (error.none_field_errors){
+		notification.open({
+			message: "Email or Password is not valid",
+			// Modification and addition by Om shrivastava on 01-12-23
+			// REason : Create the popup class to apply the designing
+			className:'popupClass',
+			// style:{marginTop:"20px"},
+			// style:{backgroundColor: "#f1cdd9",
+			// padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+			// End of modification and addition by Om shrivastava on 01-12-23
+			// REason : Create the popup class to apply the designing
+			description:
+			  '',
+			onClick: () => {
+			},
+			key:5,
+			duration:20
+	
+		  });
+	}
+
+	function Notify() {
+		toast.error(<div style={{fontSize:'14px'}}>Email or Password is not valid
+		  <div style={{fontSize:'13px'}}>
+		  <Link to="/custom" style={{ color: "blue", fontSize: "12px", 
+							textDecoration: "underline" }}> Contact us</Link>
+		  </div>
+		</div>,
+		  { position: toast.POSITION.TOP_RIGHT, 
+			className:'popupClass',
+			 },
+		)
+	  }
 
 	return (
 		<>
@@ -189,17 +227,17 @@ const Login = () => {
 							<input class="inpu2" type="text" name="txt" placeholder="" maxLength={99} />
 
 							<div style={{ height: "20px" }}>
-								{server_error.name ? <Typography style={{ color: "red", fontSize: "14px", marginBottom: "10px", marginLeft: "15%" }}>{server_error.name[0]}</Typography> : " "}
+								{server_error.name ? <Typography style={{ color: "red", fontSize: "12px", marginBottom: "10px", marginLeft: "15%" }}>{server_error.name[0]}</Typography> : " "}
 
 							</div>
 
 							<div style={{ fontSize: "14px", marginLeft: "15%" }}>Email<span style={{color:'red'}}>*</span></div>
 							<input class="inpu2" type="email" name="email" placeholder="" maxLength={250} />
 							<div style={{ height: "20px" }}>
-								{server_error.email ? <Typography style={{ color: "red", fontSize: "14px", marginBottom: "10px", marginLeft: "15%" }}>
+								{server_error.email ? <Typography style={{ color: "red", fontSize: "12px", marginBottom: "10px", marginLeft: "15%" }}>
 									{server_error.email[0]?.toLowerCase().trim()=="This field may not be blank.".toLowerCase().trim()
 									?
-									<span>{"Please enter email id."}</span>
+									<span >{"Please enter email id."}</span>
 									:
 									server_error.email[0]
 									}
@@ -217,10 +255,11 @@ const Login = () => {
 								style={{ width: "70%", marginLeft: "15%" }}
 								onChange={e => { setValue(e) }}
 								limitMaxLength={10}
+								
 
 							/>
 							<div style={{ minHeight: "20px" }}>
-								{server_error.contact_number ? <Typography style={{ color: "red", fontSize: "14px", marginLeft: "15%", width: "70%" }}>{server_error.contact_number[0]}</Typography> : " "}
+								{server_error.contact_number ? <Typography style={{ color: "red", fontSize: "12px", marginLeft: "15%", width: "70%" }}>{server_error.contact_number[0]}</Typography> : " "}
 							</div>
 
 						
@@ -244,7 +283,7 @@ const Login = () => {
 
 							</span>
 
-							{server_error.password ? <Typography style={{ color: "red", fontSize: "14px", marginLeft: "15%" }}>{server_error.password[0]}</Typography> : " "}
+							{server_error.password ? <Typography style={{ color: "red", fontSize: "12px", marginLeft: "15%" }}>{server_error.password[0]}</Typography> : " "}
 
 							
 
@@ -265,7 +304,7 @@ const Login = () => {
 							} label={<span style={{ fontSize: '0.8rem' }}>
 								<Link to="/termAndCondition#Terms_and_Conditions" target="_blank" title='Terms and Condition' style={{ fontSize: "12px", textDecoration: "underline", letterSpacing: "1.2px",color:'rgb(59 59 224)' }}> I accept terms and conditions.</Link>
 							</span>} /><br/>
-							{server_error.tc ? <Typography style={{ color: "red", fontSize: "14px", marginLeft: "15%" }}>Please accept terms and conditions</Typography> : " "}
+							{server_error.tc ? <Typography style={{ color: "red", fontSize: "12px", marginLeft: "15%" }}>Please accept terms and conditions</Typography> : " "}
 
 							{isLoading ? <CircularProgress style={{ margin: "20px", marginLeft: "140px" }} /> : <button style={{ paddingTop: "0", marginTop: "0" }} class="butto" type='submit'>Sign up</button>}
 
@@ -280,15 +319,24 @@ const Login = () => {
 							{/* {error.none_field_errors? <Alert severity="error"  style={{margin:"0 45px"}}>{error.none_field_errors[0]}</Alert>:" "} */}
 
 							<input class="inpu" type="email" tabIndex={-1} style={{ marginBottom: "0", background: "white" }} name="email" placeholder="E-mail*" required="" />
-							{error.email ? <Typography style={{ color: "red", paddingLeft: "50px", fontSize: "14px", }}>{error.email[0]}</Typography> : " "}
-							{error.none_field_errors ? <Typography style={{ color: "red", width: "80%", paddingLeft: "50px", marginTop: "5px", fontSize: "12px", lineHeight: "12px" }}>{error.none_field_errors[0]}
-								<Link to="/custom" style={{ color: "blue", fontSize: "12px", textDecoration: "underline" }}> Contact us</Link></Typography> : " "}
-
+							{error.email ? <Typography style={{ color: "red", paddingLeft: "50px", fontSize: "12px", }}>{error.email[0]}</Typography> : " "}
+							{/* Commented by Om Shrivastava on 11-12-23 */}
+							{/* Reason : Need to remove this validation message  */}
+							{/* {error.none_field_errors ? 
+							<Typography style={{ color: "red", width: "80%", paddingLeft: "50px", 
+							marginTop: "5px", fontSize: "12px", lineHeight: "12px" }}>
+								{error.none_field_errors[0]}
+							<Link to="/custom" style={{ color: "blue", fontSize: "12px", 
+							textDecoration: "underline" }}> Contact us</Link>
+							</Typography> 
+							: " "} */}
+							{/* Commented by Om Shrivastava on 11-12-23 */}
+							{/* Reason : Need to remove this validation message  */}
 							<span class="inpu3" tabIndex={-1} style={{ marginTop: "20px", height: "40px", marginLeft: "15%", background: "white", border: "1px solid black" }}>
 								<input class="inpu4" tabIndex={-1} type={showNewPass3 ? "text" : "password"} style={{ width: "90%", background: "transparent", height: "40px", border: "none" }} name="pswd" placeholder="Password*" required="" onChange={e => { if (e.target.value.length > 0) setVisiblePassreg3(true); else setVisiblePassreg3(false) }} />
 								{visiblepassReg3 ? showNewPass3 ? <AiFillEye style={{ marginTop: "10px", marginRight: "5px" }} onClick={e => setNewPass3(false)} /> : <AiFillEyeInvisible style={{ marginTop: "10px", marginRight: "5px" }} onClick={e => setNewPass3(true)} /> : null}
 							</span>
-							{error.password ? <Typography style={{ color: "red", paddingLeft: "50px", fontSize: "14px" }}>{error.password[0]}</Typography> : " "}
+							{error.password ? <Typography style={{ color: "red", paddingLeft: "50px", fontSize: "12px" }}>{error.password[0]}</Typography> : " "}
 							<Link to='/sendemail' tabIndex={-1} style={{ marginLeft: "50%", fontSize: "13px", color: "rgb(59 59 224)" }} class="underlineput">Forgot Password </Link>
 							<span  
 							style={{  fontSize: "13px", color: "rgb(59 59 224)" }}

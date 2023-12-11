@@ -572,20 +572,37 @@ class userbillingDetail(models.Model):
     #End of code addition
     
 order_status=(
-    ("processing","Proccessing"),
-    ("accepted","Accepted"),
-    ("out_for_shipping","Out for Shipping"),
-    ("shipped","shipped"),
-    ("arrived","Arrived"),
-    ("out_for_delivery","Out For Delivery"),
-    ("delivered","Delivered"),
+    # Modification and addition by Om Shrivastava on 11-12-23
+    # Reason : Need to remove underscore
+    # ("processing","Proccessing"),
+    # ("accepted","Accepted"),
+    # ("out_for_shipping","Out for Shipping"),
+    # ("shipped","shipped"),
+    # ("arrived","Arrived"),
+    # ("out_for_delivery","Out For Delivery"),
+    # ("delivered","Delivered"),
+      ("Proccessing","Proccessing"),
+    ("Accepted","Accepted"),
+    ("Out for Shipping","Out for Shipping"),
+    ("Shipped","Shipped"),
+    ("Arrived","Arrived"),
+    ("Out For Delivery","Out For Delivery"),
+    ("Delivered","Delivered"),
+    # End of modification and addition by Om Shrivastava on 11-12-23
+    # Reason : Need to remove underscore
 )
          
 class product_orders(models.Model):
     order_no=models.BigIntegerField()
     user_no=models.ForeignKey(User,on_delete=models.CASCADE,blank=True)
-    billing_id=models.ForeignKey(userbillingDetail,on_delete=models.CASCADE)  
-    shipping_id=models.ForeignKey(usershippingDetail,on_delete=models.CASCADE)
+    # Modification and addition by Om Shrivastava on 11-12-23
+    # Reason : Need to rename the field
+    # billing_id=models.ForeignKey(userbillingDetail,on_delete=models.CASCADE)  
+    # shipping_id=models.ForeignKey(usershippingDetail,on_delete=models.CASCADE)
+    billing_id=models.ForeignKey(userbillingDetail,on_delete=models.CASCADE,verbose_name='Billing Address')  
+    shipping_id=models.ForeignKey(usershippingDetail,on_delete=models.CASCADE,verbose_name='Shipping Address')
+    # End of Modification and addition by Om Shrivastava on 11-12-23
+    # Reason : Need to rename the field
     # Added by - Ashish Dewangan on 29-11-2023
     # Reason - Added column for product name
     product_name=models.CharField(max_length=100,null=True,blank=True,default='')
@@ -596,10 +613,20 @@ class product_orders(models.Model):
     total_price=models.BigIntegerField()
     size=models.CharField(max_length=40)   
     payment_mode=models.CharField(max_length=20,default="cod")
-    date=models.DateField(('purchase date'), null=False, blank=False, auto_now=True)
+    # Modification and addition by Om Shrivastava on 11-12-23
+    # Reason : Set the created date
+    # date=models.DateField(('purchase date'), null=False, blank=False, auto_now=True)
+    date=models.DateField(('purchase date'), null=False, blank=False, auto_now_add=True)
+    # End of modification and addition by Om Shrivastava on 11-12-23
+    # Reason : Set the created date
     selected_currency_sign=models.CharField(max_length=255)
     selected_currency_value=models.FloatField()
-    order_status=models.CharField(max_length=50,choices=order_status,default="processing",blank=True,null=True)
+    # Modification and addition by Om Shrivastava on 11-12-23
+    # Reason : Need to show the capital alphabet
+    # order_status=models.CharField(max_length=50,choices=order_status,default="processing",blank=True,null=True)
+    order_status=models.CharField(max_length=50,choices=order_status,default="Processing",blank=True,null=True)
+    # End of modification and addition by Om Shrivastava on 11-12-23
+    # Reason : Need to show the capital alphabet
     # Added by - Ashish Dewangan on 27-11-2023
     # Reason - Added column for shipping charges
     # Modification and addition by Om Shrivastava on 10-12-23

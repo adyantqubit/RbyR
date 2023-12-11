@@ -1,12 +1,9 @@
-html,body{
-
+html,
+body {
 }
 
-
-
-
 body::-webkit-scrollbar {
-/* display:none; */
+  /* display:none; */
 }
 
 .App {
@@ -45,19 +42,18 @@ Reason : When the image is not present there, then imaeg icon is not display  */
   color: rgb(112, 76, 182);
 }
 
-Iframe body{
+Iframe body {
   background-color: transparent !important;
 }
 
 .video-container {
   aspect-ratio: 16/9;
 }
-   
+
 .video-container iframe {
- width: 100%;
- height: 100%;
+  width: 100%;
+  height: 100%;
 }
- 
 
 @keyframes App-logo-float {
   0% {
@@ -71,27 +67,27 @@ Iframe body{
   }
 }
 
-
-.centered{
-width:30%;
-height:26vh;
+.centered {
+  width: 30%;
+  height: 26vh;
   position: relative;
-  top:13vh;
-margin-left:50%;
-transform:translate(-50%,-50%);
-background:transparent;
-filter: blur(5px) contrast(20);
+  top: 13vh;
+  margin-left: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  filter: blur(5px) contrast(20);
 }
-.blob-1{
-  width:50px;
-height:50px;
-position:absolute;
-background:#7c7c7c;
-border-radius:50%;
-top:50%;left:50%;
-transform:translate(-50%,-50%);
+.blob-1 {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background: #7c7c7c;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.PhoneInputInput{
+.PhoneInputInput {
   background-color: var(--bgColor) !important;
 }
 
@@ -99,34 +95,46 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px white inset !important;
 }
 
-
-.blob-2{
-width:50px;
-height:50px;
-position:absolute;
-background:#323232;
-border-radius:50%;
-top:50%;left:50%;
-transform:translate(-50%,-50%);
+.blob-2 {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background: #323232;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.blob-1{
-left:20%;
-animation:osc-l 2.5s ease infinite;
+.blob-1 {
+  left: 20%;
+  animation: osc-l 2.5s ease infinite;
 }
-.blob-2{
-left:80%;
-animation:osc-r 2.5s ease infinite;
-background:#323232;
+.blob-2 {
+  left: 80%;
+  animation: osc-r 2.5s ease infinite;
+  background: #323232;
 }
-@keyframes osc-l{
-0%{left:20%;}
-50%{left:50%;}
-100%{left:20%;}
+@keyframes osc-l {
+  0% {
+    left: 20%;
+  }
+  50% {
+    left: 50%;
+  }
+  100% {
+    left: 20%;
+  }
 }
-@keyframes osc-r{
-0%{left:80%;}
-50%{left:50%;}
-100%{left:80%;}
+@keyframes osc-r {
+  0% {
+    left: 80%;
+  }
+  50% {
+    left: 50%;
+  }
+  100% {
+    left: 80%;
+  }
 }
 
 .bqyzQp {
@@ -135,30 +143,42 @@ background:#323232;
   width: 94%;
   /* Addition by Om Shirvastava on 10-12-23
   Reason : Need to handle the arrow button */
-margin-left: 2%;
-/* End of Addition by Om Shirvastava on 10-12-23
+  margin-left: 2%;
+  /* End of Addition by Om Shirvastava on 10-12-23
   Reason : Need to handle the arrow button  */
-
 }
 
 .bVoXXg {
   margin: 5px auto;
   height: max-content;
 }
-
+.swiper-button-prev {
+  background-color: white;
+  border-radius: 100%;
+  width: 3% !important;
+}
+.swiper-button-next {
+  background-color: white;
+  border-radius: 100%;
+  width: 3% !important;
+}
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 14px !important;
+  font-weight: bolder;
+  color: black;
+}
 @media (max-width: 1100px) {
-
-  .centered{
+  .centered {
     height: 200px;
-    top:100px;
+    top: 100px;
   }
 }
 
 @media (max-width: 768px) {
-
-  .centered{
-    width:100%;
+  .centered {
+    width: 100%;
     height: 20vh;
-    top:10vh;
+    top: 10vh;
   }
 }

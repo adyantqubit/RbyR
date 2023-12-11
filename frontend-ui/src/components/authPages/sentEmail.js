@@ -51,13 +51,14 @@ const SentEmail = () => {
                     </Alert> : ""}
 					
 					<input style={{marginBottom:"0"}} class="inpu" type="email" name="email" placeholder=" Registered Email" required="" onChange={e=>setMsg({})}/>
-					{error?.email?<Typography style={{color:"red",paddingLeft:"70px",fontSize:"14px"}}>{error?.email[0]}</Typography>:" "}
+					{error?.email?<Typography style={{color:"red",paddingLeft:"70px",fontSize:"12px"}}>{error?.email[0]}</Typography>:" "}
 
 					{isLoading?
           <span class="butto" style={{
-            backgroundColor:"#f4dde5",
+            backgroundColor:"#d6d6d6",
           textAlign:"center",padding:"8px 0",
-          cursor:"not-allowed"}} >
+          cursor:"not-allowed",
+          fontWeight:'lighter',fontWeight:'400',fontSize:'16px',color:'#727272'}} >
             {/* Modification and addition by Om Shrivastava on 27-11-23
             Reason : Change the message */}
             {/* Send Email</span> */}

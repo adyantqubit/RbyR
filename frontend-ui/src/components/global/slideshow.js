@@ -20,7 +20,7 @@ import "swiper/css/navigation";
 // Import Swiper styles
 // import './styles.css';
 // import required modules
-import { Navigation } from "swiper/modules";
+import { Pagination, Navigation } from "swiper/modules";
 
 function Slideshow() {
   const [index, setIndex] = useState(0);
@@ -110,20 +110,25 @@ function Slideshow() {
         //     </Carousel.Item>
         //   ))}
         // </Carousel>
-        <Swiper 
-        style={{
-          "--swiper-pagination-color": 'white',
-          "--swiper-pagination-bullet-inactive-color": 'black',
-          "--swiper-pagination-bullet-inactive-opacity": "0.6 ",
-          "--swiper-pagination-bullet-size": "8px",
-          "--swiper-pagination-bullet-horizontal-gap": "5px",
-          "--swiper-button-prev-color": "aqua !important"
-        }}
-        navigation={true}
-        pagination={{
-          clickable: true,
-        }}
-         modules={[Navigation]} className="mySwiper">
+        <Swiper
+          style={{
+            "--swiper-pagination-color": "white",
+            "--swiper-pagination-bullet-inactive-color": "black",
+            "--swiper-pagination-bullet-inactive-opacity": "0.6 ",
+            "--swiper-pagination-bullet-size": "12px",
+            "--swiper-pagination-bullet-horizontal-gap": "5px",
+            "--swiper-button-prev-color": "black !important",
+            "--swiper-button-prev-background": "red !important",
+          }}
+          navigation={true}
+          loop={true}
+          pagination={{
+            clickable: true,
+          }}
+          autoplay={true}
+          modules={[Pagination, Navigation]}
+          className="mySwiper"
+        >
           {visible.map((item) => (
             <SwiperSlide>
               <Link to={`/listing/${item.category}/0`}>
@@ -139,7 +144,7 @@ function Slideshow() {
           ))}
         </Swiper>
       ) : null}
-       {/* //End of modification and addition by Om Shirvastava on 08-12-23
+      {/* //End of modification and addition by Om Shirvastava on 08-12-23
         // Reason : Need to remove the arrow when the content is one */}
       {/* End of addition by Om Shrivastava on 08-12-23
         Reason : Set the condition when data is not present */}

@@ -74,7 +74,7 @@ const BestSeller = () => {
                     {/* <Carousel cols={2} rows={1} gap={10}> */}
 
                     {/* {bestProducts.map(m=>console.log(m))} */}
-                    {imageSwap ? bestProducts.map((m, i) => {
+                    {imageSwap ? bestProducts.toReversed().map((m, i) => {
                         if (i < 12)
                             return <div className={style.card}
                                 onMouseEnter={e => swapImage(i)}
@@ -96,7 +96,7 @@ const BestSeller = () => {
                         // >
 
                         // </Carousel.Item>
-                    }) : bestProducts.map((m, i) => {
+                    }) : bestProducts.toReversed().map((m, i) => {
                         if (i < 12)
                             return <div className={style.card}
                                 onMouseEnter={e => swapImage(i)}

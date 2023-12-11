@@ -616,7 +616,11 @@ class BridalAdmin(admin.ModelAdmin):
 @admin.register(BridalForm)
 class BridalFormAdmin(admin.ModelAdmin):
     list_display=("firstName","lastName","email","contactNumber","zipCode","dateOfWedding","message","createdDate","termsAndCondition")
-    ordering =("firstName",)
+    # Modification and addition by Om Shrivastava on 11-12-23
+    # Reason : Need to show first data 
+    # ordering =("firstName",)
+    # End of modification and addition by Om Shrivastava on 11-12-23
+    # Reason : Need to show first data  
     search_fields=("firstName","contactNumber","lastName","email","createdDate","dateOfWedding")
     list_filter=("dateOfWedding",)
     list_per_page=10
@@ -966,7 +970,7 @@ class UserModelAdmin(BaseUserAdmin):
         form.base_fields['email'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['contact_number'].widget.attrs['style'] = 'width: 100%;'
         return form
-
+    
 # Now register the new UserAdmin...
 admin.site.register(User, UserModelAdmin)
 

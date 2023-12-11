@@ -88,7 +88,7 @@ const ResetPassword = () => {
 			      {visiblepassReg2?showNewPass2?<AiFillEye style={{marginTop:"5px",width:'10%'}} onClick={e=>setNewPass2(false)}/>:<AiFillEyeInvisible style={{marginTop:"5px",width:'10%'}} onClick={e=>setNewPass2(true)}/>:null}
             
             </div>
-            {error!=null&&error.password?<Typography style={{color:"red",paddingLeft:"70px",fontSize:12}}>{error.password[0]}</Typography>:" "}
+            {error!=null&&error.password?<Typography style={{color:"red",paddingLeft:"70px",fontSize:"12px"}}>{error.password[0]}</Typography>:" "}
 
 
 					{/* <input style={{marginBottom:"0"}} class="inpu" type="password" name="pswd" placeholder="Password" required=""/> */}
@@ -99,7 +99,7 @@ const ResetPassword = () => {
 			        {visiblepassReg?showNewPass?<AiFillEye style={{marginTop:"5px",width:'10%'}} onClick={e=>setNewPass(false)}/>:<AiFillEyeInvisible style={{marginTop:"5px",width:'10%'}} onClick={e=>setNewPass(true)}/>:null}
               
             </div>
-            {error!=null&&error.password2?<Typography style={{color:"red",paddingLeft:"70px",fontSize:12}}>{error.password2[0]}</Typography>:" "}
+            {error!=null&&error.password2?<Typography style={{color:"red",paddingLeft:"70px",fontSize:"12px"}}>{error.password2[0]}</Typography>:" "}
 					{/* <input style={{marginBottom:"0"}} class="inpu" type="password" name="pswd2" placeholder="Confirm Password" required=""/> */}
 
 					{isLoading?<CircularProgress style={{margin:"20px",marginLeft:"140px"}}/>:<button class="butto" style={{backgroundColor:"var(--btnBackgroundColorPrimary)",color:'var(--btnTextColorPrimary)',border:'1px solid var(--btnBorderColorPrimary)'}} type='submit'>Update</button>}
