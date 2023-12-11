@@ -160,10 +160,12 @@
     /* .headerMenu{
         padding-top: 1px;
     } */
+    
 }
 @media (max-width: 380px) {
   .responsiveHeader {
     display: block;
+    
   }
 
   .img {

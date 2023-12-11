@@ -557,6 +557,8 @@ const Billing = () => {
                   Reason - To show details from purchased items tables rather than items table */}
                   </div>
 
+                  {(afterColumnTotalOfferAdd(offer, cart, taxRate).shipping)!=0 ? 
+
                   <div className={styles.billingtexts}>
                     <span className={`${styles.columnitem1head}`}>
                       Shipping charges : &nbsp;{" "}
@@ -586,6 +588,8 @@ const Billing = () => {
                     {/* End of code modification by - Ashish Dewangan on 27-11-2023
                   Reason - To show details from purchased items tables rather than items table */}
                   </div>
+                  :null}
+
                   {/* <div className={styles.billingtexts}>
                   <span className={`${styles.columnitem1head}`}  >GST Charges : </span>
                   <span className={`${styles.columnitem1head} ${styles.header2}`} style={{ color: "black", whiteSpace: "nowrap", width: "auto", border: "none", outline: "none" }} > {checkoutDetails.currency_sign} {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).tax * checkoutDetails.currency_value).toFixed(2)}</span>

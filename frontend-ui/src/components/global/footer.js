@@ -334,12 +334,13 @@ function Footer() {
         >
           Powered by{" "}
           <span
+            className={style.span2}
             style={{
-              fontFamily: "var(--fontFamily)",
-              fontSize: "16px",
-              fontWeight: "20",
-              color:"black",
-              textDecoration: "none",
+              // fontFamily: "var(--fontFamily)",
+              fontSize: "14px",
+              // fontWeight: "20",
+              // color:"black",
+              // textDecoration: "none",
             }}
           >
             ADYANT

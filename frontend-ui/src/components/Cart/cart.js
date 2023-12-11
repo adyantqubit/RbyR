@@ -48,7 +48,7 @@ import { blue } from "@mui/material/colors";
 import { SizeGetter } from "../global/getSize";
 import Chat from "../expandDetailt/chat";
 import { TokenManage } from "../../hooks/globalFunctionUser";
-import '../../context.css'
+import "../../context.css";
 
 const text =
   "Are you sure you would like to remove this item from the Shopping Cart?";
@@ -70,7 +70,8 @@ const CartSItem = (props) => {
     setTaxRate,
     cartEnd,
     setCartEnd,
-    redirectionPath,setRedirectionPath,
+    redirectionPath,
+    setRedirectionPath,
   } = CartState();
 
   const [cartsaveApi, { isLoad }] = useCartUpdateMutation();
@@ -88,7 +89,6 @@ const CartSItem = (props) => {
     notification.destroy();
     window.scrollTo(0, 0);
     // document.getElementById("scrolled").scrollTop=0
-    
   }, []);
 
   async function ruleText() {
@@ -152,6 +152,22 @@ const CartSItem = (props) => {
       increamentApi(CartProduct);
       setCart([...AllCartProduct]);
     }
+    // Addition by Om shrivastava on 10-12-23
+    // Reason : When quanitity is decrease then alert message is show
+    // if (CartProduct.quantity == 1) 
+    //   return(
+    //   <Popconfirm
+    //     placement="bottomLeft"
+    //     title={text}
+    //     onConfirm={(e) => confirm(CartProduct)}
+    //     okText="OK"
+    //     cancelText="Cancel"
+    //   >
+    //     <MdClose fontSize={24} className={style.delete} />
+    //   </Popconfirm>
+    //   )
+    // End of addition by Om shrivastava on 10-12-23
+    // Reason : When quanitity is decrease then alert message is show
   };
 
   async function increamentApiMethodCall({ CartProduct, data }) {
@@ -162,19 +178,21 @@ const CartSItem = (props) => {
         // document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block";
         notification.error({
           message: (
-            <div style={{  color: "black",fontSize:'13px',fontWeight:'600' }}>
+            <div
+              style={{ color: "black", fontSize: "13px", fontWeight: "600" }}
+            >
               Out Of Stock.{" "}
             </div>
           ),
           description: `No More Stock Available`,
-         // Modification and addition by Om shrivastava on 01-12-23
-        // REason : Create the popup class to apply the designing
-        className:'popupClass',
-        // style:{marginTop:"20px"},
-        // style:{backgroundColor: "#f1cdd9",
-        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
-        // End of modification and addition by Om shrivastava on 01-12-23
-        // REason : Create the popup class to apply the designing
+          // Modification and addition by Om shrivastava on 01-12-23
+          // REason : Create the popup class to apply the designing
+          className: "popupClass",
+          // style:{marginTop:"20px"},
+          // style:{backgroundColor: "#f1cdd9",
+          // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+          // End of modification and addition by Om shrivastava on 01-12-23
+          // REason : Create the popup class to apply the designing
           duration: 2,
           key: 1,
         });
@@ -182,7 +200,7 @@ const CartSItem = (props) => {
       }
     });
   }
-
+  // console.log(cart, "dataaaaa");
   const increament = async (CartProduct) => {
     con = true;
 
@@ -344,7 +362,7 @@ const CartSItem = (props) => {
        * Added by - Ashish Dewangan on 07-12-2023
        * Reason - To set redirection path to which user will navigate to after login
        */
-      setRedirectionPath("/placeorder")
+      setRedirectionPath("/placeorder");
       /**
        * End of code addition by - Ashish Dewangan on 07-12-2023
        * Reason - To set redirection path to which user will navigate to after login
@@ -362,24 +380,37 @@ const CartSItem = (props) => {
           cartEnd.map((c) => {
             notification.error({
               message: (
-                <div style={{  color: "black",fontSize:'13px',fontWeight:'500' }}>
+                <div
+                  style={{
+                    color: "black",
+                    fontSize: "13px",
+                    fontWeight: "500",
+                  }}
+                >
                   Out of stock
                 </div>
               ),
               description: (
-                <span style={{  color: "black",fontSize:'13px',fontWeight:'500' }}>
-                  Product {c.name.toLowerCase()} size {c.size} is out of stock <br />
+                <span
+                  style={{
+                    color: "black",
+                    fontSize: "13px",
+                    fontWeight: "500",
+                  }}
+                >
+                  Product {c.name.toLowerCase()} size {c.size} is out of stock{" "}
+                  <br />
                   Please move this item to Wishlist.
                 </span>
               ),
-             // Modification and addition by Om shrivastava on 01-12-23
-        // REason : Create the popup class to apply the designing
-        // className:'popupClass',
-        style:{backgroundColor:"#f1cdd9"},
-        // style:{backgroundColor: "#f1cdd9",
-        // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
-        // End of modification and addition by Om shrivastava on 01-12-23
-        // REason : Create the popup class to apply the designing
+              // Modification and addition by Om shrivastava on 01-12-23
+              // REason : Create the popup class to apply the designing
+              // className:'popupClass',
+              style: { backgroundColor: "#f1cdd9" },
+              // style:{backgroundColor: "#f1cdd9",
+              // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+              // End of modification and addition by Om shrivastava on 01-12-23
+              // REason : Create the popup class to apply the designing
               duration: 20,
             });
           });
@@ -538,11 +569,11 @@ const CartSItem = (props) => {
                           src={config.staticBaseURL + pro.img_main}
                           // style={{ width: "100%" }}
                           // Modification and addition by Om Shrivastava on 04-12-23
-                          // Reason : Set the width and height 
-                          // style={{ width: "140px",height:'170px' }} 
-                          style={{ width:"135px",height:'165px' }} 
+                          // Reason : Set the width and height
+                          // style={{ width: "140px",height:'170px' }}
+                          style={{ width: "135px", height: "165px" }}
                           // End of Modification and addition by Om Shrivastava on 04-12-23
-                          // Reason : Set the width and height 
+                          // Reason : Set the width and height
 
                           onClick={(e) => openDetail(pro)}
                         ></img>
@@ -619,11 +650,16 @@ const CartSItem = (props) => {
                           style={{
                             color: "black",
                             marginLeft: "20px",
-                            letterSpacing:'1.5px' ,lineHeight:'10px',paddingBottom:'4px',
+                            letterSpacing: "1.5px",
+                            lineHeight: "10px",
+                            paddingBottom: "4px",
                             marginTop: "4px",
                           }}
                         >
-                          <span className={style.shipping} style={{fontSize:'12px',paddingBottom:'10px'}}>
+                          <span
+                            className={style.shipping}
+                            style={{ fontSize: "12px", paddingBottom: "10px" }}
+                          >
                             Standard Shipping:
                           </span>
                           {/* {pro.ready_to_ship?
@@ -655,6 +691,7 @@ const CartSItem = (props) => {
                             }}
                           >
                             <div style={{ width: "20px", marginRight: "10px" }}>
+                              {alert(pro, "checkkkkkk")}
                               <div
                                 className={styles.increament}
                                 onClick={(e) => decreament(pro)}
@@ -723,7 +760,7 @@ const CartSItem = (props) => {
                           src={config.staticBaseURL + pro.img_main}
                           // style={{ width: "100%" }}
                           // style={{ width: "140px",height:'170px' }}
-                          style={{ width:"135px",height:'165px' }} 
+                          style={{ width: "135px", height: "165px" }}
                           onClick={(e) => openDetail(pro)}
                         ></img>
                       </div>
@@ -759,7 +796,7 @@ const CartSItem = (props) => {
                 Reason : Add the lowercase property */}
                             {/* {pro.title} */}
                             {pro.title.toLowerCase()}
-    {/*End of Modification and addition by Om Shirvastava on 02-12-23
+                            {/*End of Modification and addition by Om Shirvastava on 02-12-23
                 Reason : Add the lowercase property */}
                           </h3>
                           {/* <span className={style.delete} style={{fontSize:"32px",alignSelf:"start"}} onClick={e=>cartSave(pro)}>x</span> */}
@@ -800,20 +837,37 @@ const CartSItem = (props) => {
                           style={{
                             color: "black",
                             marginLeft: "20px",
-                            letterSpacing:'1.5px' ,lineHeight:'10px',paddingBottom:'4px',
+                            letterSpacing: "1.5px",
+                            lineHeight: "10px",
+                            paddingBottom: "4px",
                             marginTop: "4px",
                           }}
                         >
-                          <span className={style.shipping} style={{fontSize:'12px',paddingBottom:'10px'}}>
+                          <span
+                            className={style.shipping}
+                            style={{ fontSize: "12px", paddingBottom: "10px" }}
+                          >
                             Standard Shipping:
                           </span>
                           {pro.ready_to_ship ? (
-                            <span className={style.shipping} style={{fontSize:'12px',letterSpacing:'0.5px'}}>
+                            <span
+                              className={style.shipping}
+                              style={{
+                                fontSize: "12px",
+                                letterSpacing: "0.5px",
+                              }}
+                            >
                               {" "}
                               {pro.ready_to_ship_days}
                             </span>
                           ) : (
-                            <span className={style.shipping} style={{fontSize:'12px',letterSpacing:'0.5px'}}>
+                            <span
+                              className={style.shipping}
+                              style={{
+                                fontSize: "12px",
+                                letterSpacing: "0.5px",
+                              }}
+                            >
                               {" "}
                               {pro.shipping_days}
                             </span>
@@ -877,15 +931,15 @@ const CartSItem = (props) => {
               );
             })
           ) : (
-            <div >
+            <div>
               {/* <div style={{ fontSize: "20px", color: "#7c7c7c", height: "100%", display: "flex", justifyContent: "center" }}>
               <span>Your Bag Is Empty</span>
                <div className={style.buttons} style={{ flexDirection: "column", background: "white" }}>
                 <buton className={style.shopbtn2} style={{ width: "100%", margin: "5px" }} onClick={e => cartChecking()} >Go To Checkout</buton>
               </div> 
             </div> */}
-<div className={style.cartEmptyImage}>
-                <BsCartX  style={{width:'80px',height:'100px'}}/>
+              <div className={style.cartEmptyImage}>
+                <BsCartX style={{ width: "80px", height: "100px" }} />
               </div>
               <div
                 style={{
@@ -895,7 +949,7 @@ const CartSItem = (props) => {
                   display: "flex",
                   flexDirection: "column",
                   alignContent: "center",
-                  marginTop:'4% auto'
+                  marginTop: "4% auto",
                 }}
               >
                 <span
@@ -925,14 +979,13 @@ const CartSItem = (props) => {
                     fontWeight: "normal",
                     textTransform: "uppercase",
                     padding: "10px 18px",
-                    fontFamily : 'var(--fontFamily)'
+                    fontFamily: "var(--fontFamily)",
                   }}
                   onClick={(e) => nav("/")}
                 >
                   BROWSE OUR CATALOG
                 </buton>
               </div>
-              
             </div>
           )}
 
@@ -962,6 +1015,8 @@ const CartSItem = (props) => {
                     ).toFixed(2)}
                   </span>
                 </div>
+          {(afterColumnTotalOfferAdd(offer, cart, taxRate).shipping)!=0 ? 
+
                 <div className={style.subTotal}>
                   <span style={{ marginLeft: "15px", fontWeight: "600" }}>
                     SHIPPING CHARGES
@@ -974,6 +1029,7 @@ const CartSItem = (props) => {
                     ).toFixed(2)}
                   </span>
                 </div>
+          :null}
 
                 {/* <div className={style.subTotal}>
                   <span style={{ marginLeft: "15px", fontWeight: "600" }}>GST CHARGES</span>
@@ -1053,11 +1109,11 @@ const CartSItem = (props) => {
                   style={{ flexDirection: "column" }}
                 >
                   <buton
-                    className={style.shopbtn1} 
+                    className={style.shopbtn1}
                     style={{ width: "100%", margin: "5px" }}
                     onClick={(e) => cartChecking()}
                   >
-                    GO TO CHECKOUT 
+                    GO TO CHECKOUT
                   </buton>
                   <button
                     className={style.shopbtn1}
@@ -1073,11 +1129,12 @@ const CartSItem = (props) => {
             </div>
           ) : null}
         </div>
-
-
       </div>
 
-      <div className={style.footerCon} style={{ width: "100%",marginBottom:"20px" }}>
+      <div
+        className={style.footerCon}
+        style={{ width: "100%", marginBottom: "20px" }}
+      >
         {/* <span>Total:</span><span>{getTotalPrice()}</span><span>Qty:</span><span>{getTotalQuantity()}</span><button onClick={BuyAll}>Buy ALl</button> */}
         <div className={style.inner}>
           {ImportantRules != null ? (
@@ -1133,7 +1190,7 @@ const CartSItem = (props) => {
 
                 {/* Commented and modified by - Ashish Dewangan on 08-12-2023
                 Reason - Show important points only when product is in cart */}
-                 {/* Addition by Om Shrivastava on 09-11-23
+                {/* Addition by Om Shrivastava on 09-11-23
                 Reason : Apply the condition when data is not show there */}
                 {/* { ImportantRules.point2 ? ( */}
                 {cart.length > 0 && ImportantRules.point2 ? (
@@ -1156,12 +1213,12 @@ const CartSItem = (props) => {
                     </li>
                   </div>
                 ) : null}
-                 {/* End of addition by Om Shrivastava on 09-11-23
+                {/* End of addition by Om Shrivastava on 09-11-23
                 Reason : Apply the condition when data is not show there */}
 
                 {/* Commented and modified by - Ashish Dewangan on 08-12-2023
                 Reason - Show important points only when product is in cart */}
-                 {/* Addition by Om Shrivastava on 09-11-23
+                {/* Addition by Om Shrivastava on 09-11-23
                 Reason : Apply the condition when data is not show there */}
                 {/* { ImportantRules.point3 ? ( */}
                 {cart.length > 0 && ImportantRules.point3 ? (

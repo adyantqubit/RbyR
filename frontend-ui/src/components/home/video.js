@@ -68,7 +68,17 @@ const Video = (props) => {
       </div>
 
       <div className={style.videoContains}>
-        <iframe src={`${props.url}?autoplay=1`} style={{ width: "80%", height: "70%", margin: "auto" }} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src={`${props.url}?autoplay=1`} 
+        // Modification and addition by Om Shrivastava on 10-12-23
+        // Reason : Set the height, width of the iframe section 
+        className={style.iframeClass}
+        // style={{ width: "80%", height: "70%", margin: "auto" }} 
+        // End of modification and addition by Om Shrivastava on 10-12-23
+        // Reason : Set the height, width of the iframe section 
+      
+      title="YouTube video player" frameborder="0"
+      
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
       </div>
 

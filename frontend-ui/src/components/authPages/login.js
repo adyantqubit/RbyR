@@ -257,7 +257,7 @@ const Login = () => {
 							 * Reason - To change color of checkbox
 							 */
 							// <Checkbox style={{color:'green'}} value={true} name="tc" id="tc" />
-							<Checkbox  value={true} name="tc" id="tc" />
+							<Checkbox size='small' value={true} name="tc" id="tc" />
 							/**
 							 * End of code modification by - Ashish Dewangan on 08-12-2023
 							 * Reason - To change color of checkbox

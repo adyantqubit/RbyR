@@ -615,9 +615,9 @@ class BridalAdmin(admin.ModelAdmin):
     #End of code addition
 @admin.register(BridalForm)
 class BridalFormAdmin(admin.ModelAdmin):
-    list_display=("firstName","lastName","email","contactNumber","zipCode","dateOfWedding","message","termsAndCondition")
+    list_display=("firstName","lastName","email","contactNumber","zipCode","dateOfWedding","message","createdDate","termsAndCondition")
     ordering =("firstName",)
-    search_fields=("firstName","contactNumber","lastName","email")
+    search_fields=("firstName","contactNumber","lastName","email","createdDate","dateOfWedding")
     list_filter=("dateOfWedding",)
     list_per_page=10
     def has_add_permission(self, request):
@@ -858,11 +858,15 @@ class ImportantNoticeToBuyAdmin(admin.ModelAdmin):
     #Jira issue no - RBYR-193
     #admin.site.register(WomenClothSizeChart) 
     #End of code addition
-@admin.register(WomenClothSizeChart)    
-class WomenClothSizeChartAdmin(admin.ModelAdmin):
-    list_display=("id","image",)
-    def has_add_permission(self, request):
-        return not WomenClothSizeChart.objects.exists() 
+    # Modification and addition by Om Shrivastava on 10-12-23
+    # Reason : No need to show this model
+# @admin.register(WomenClothSizeChart)    
+# class WomenClothSizeChartAdmin(admin.ModelAdmin):
+#     list_display=("id","image",)
+#     def has_add_permission(self, request):
+#         return not WomenClothSizeChart.objects.exists() 
+# End of Modification and addition by Om Shrivastava on 10-12-23
+    # Reason : No need to show this model
 # End of code modification
 
 
@@ -934,7 +938,12 @@ class UserModelAdmin(BaseUserAdmin):
     list_display = ('name','email', 'tc','contact_number', 'is_admin','is_active')
     list_filter = ('is_admin','is_active')
     ordering=("-id",)
-    search_fields=("name","email")
+    search_fields=("name","email",
+                #    Addition by Om Shrivastava on 08-12-23
+                #    Reason : Add the contact number for searching
+                   'contact_number')
+                #    End of addition by Om Shrivastava on 08-12-23
+                #    Reason : Add the contact number for searching
     list_per_page=10
     fieldsets = (
         ('user Credentials', {'fields': ('email', 'password')}),

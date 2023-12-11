@@ -91,11 +91,11 @@ const Cart = () => {
         width={drawerwidth}
         placement="right"
         onClose={onClose}
-        closeIcon={<MdOutlineArrowBack className="likeSVG" />}
+        closeIcon={<MdOutlineArrowBack className="likeSVG" />} 
         open={openCartdrawer}
         headerStyle={{ height: "200px" ,backgroundColor:"var(--backgroundColorSecondary)"}}
         style={{ display: "flex", justifyContent: "center" }}
-       bodyStyle={{backgroundColor:"var(--backgroundColorSecondary)"}}
+       bodyStyle={{backgroundColor:"var(--backgroundColorSecondary)"}}  
         >
         <CartCard />
 
@@ -328,10 +328,13 @@ export function DrawerFooter() {
             <span style={{ marginRight: "15px",fontWeight: "600" }}>{currency.sign} {(getTotalPrice() * currency.value).toFixed(2)}</span>
 
           </div>
+          {(afterColumnTotalOfferAdd(offer, cart, taxRate).shipping)!=0 ? 
           <div className={style.subTotal}>
             <span style={{ marginLeft: "15px",fontWeight:'400'   }}>Shipping Charges</span>
-            <span style={{ marginRight: "15px", fontWeight: "600" }}>{currency.sign} {(afterColumnTotalOfferAdd(offer, cart, taxRate).shipping * currency.value).toFixed(2)}</span>
+            <span style={{ marginRight: "15px", fontWeight: "600" }}>{currency.sign}
+             {(afterColumnTotalOfferAdd(offer, cart, taxRate).shipping * currency.value).toFixed(2)}</span>
           </div>
+          :null}
 {/* 
           <div className={style.subTotal}>
             <span style={{ marginLeft: "15px", textTransform: "uppercase", fontWeight: "600" }}>GST Charges</span>

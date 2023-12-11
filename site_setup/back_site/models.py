@@ -309,7 +309,12 @@ class product_detail(models.Model):
     XXXL=models.BigIntegerField(default=30)
     date = models.DateTimeField(default=now, blank=True)
     available=models.BooleanField(default=True)
-    shipping_charges=models.BigIntegerField(default=100)
+    # Modification and addition by Om Shrivastava on 10-12-23
+    # Reason : Need to remove the mandatory field
+    # shipping_charges=models.BigIntegerField(default=100)
+    shipping_charges=models.BigIntegerField(default=100,null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 10-12-23
+    # Reason : Need to remove the mandatory field   
     # Modification and addition by Om Shrivastava on 22-10-23
     # Reason : Add the is active feature of the product table
     is_active = models.BooleanField(default=True)
@@ -597,7 +602,12 @@ class product_orders(models.Model):
     order_status=models.CharField(max_length=50,choices=order_status,default="processing",blank=True,null=True)
     # Added by - Ashish Dewangan on 27-11-2023
     # Reason - Added column for shipping charges
-    shipping_charges=models.BigIntegerField(default=100)
+    # Modification and addition by Om Shrivastava on 10-12-23
+    # Reason : Need to remove the mandatory field
+    # shipping_charges=models.BigIntegerField(default=100)
+    shipping_charges=models.BigIntegerField(default=100,null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 10-12-23
+    # Reason : Need to remove the mandatory field
     # End of code addition by - Ashish Dewangan on 27-11-2023
     # Reason - Added column for shipping charges
 
@@ -1074,6 +1084,11 @@ class BridalForm(models.Model):
     zipCode=models.BigIntegerField()
     message=models.TextField()
     dateOfWedding=models.DateField(blank=True,null=True,verbose_name="Date Of Wedding")
+    # Addition by Om Shrivastava on 10-12-23
+    # Reason : Add the created date field
+    createdDate = models.DateField(auto_now_add=True,null=True,blank=True,verbose_name="Created Date")
+    # End of Addition by Om Shrivastava on 10-12-23
+    # Reason : Add the created date field
     termsAndCondition=models.BooleanField(verbose_name="Terms And Conditions")
     
     # Added by Rohan -22/12/22-2022

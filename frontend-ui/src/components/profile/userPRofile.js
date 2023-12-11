@@ -120,11 +120,11 @@ const UserProfile = () => {
       
         Notify()
 
-        setShowEditable(false)
+        // setShowEditable(false)
       })
     }
     else{
-      alert('jjjjjjjjj')
+      // alert('jjjjjjjjj')
     }
 
   };
@@ -297,23 +297,30 @@ const UserProfile = () => {
               <div className={style.column2header}>
                 <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                   <span style={{fontWeight:'600'}}>USER DETAILS</span>
-                  <span className={`${styles.userinfoText} ${style.hovers}`} style={{ cursor: "pointer",color:'blue',paddingTop:'3px' }} onClick={e => setShowEditable(true)}>{!showEditable ? "EDIT YOUR PROFILE" : null}
-                  </span>
+                    {/* Commented by Om Shrivastava on 10-12-23
+                    Reason : No need to show the profile details, show directly form  */}
+                  {/* <span className={`${styles.userinfoText} ${style.hovers}`} style={{ cursor: "pointer",color:'blue',paddingTop:'3px' }} onClick={e => setShowEditable(true)}>{!showEditable ? "EDIT YOUR PROFILE" : null}
+                  </span> */}
+                    {/* Commented by Om Shrivastava on 10-12-23
+                    Reason : No need to show the profile details, show directly form  */}
                 </div>
               </div>
               {/* <hr style={{ color: "black" }}></hr> */}
               <div >
                 <div className={styles.columnitem1}>
-
-                  {!showEditable ?
-                    <div className={styles.usedetailShow} >
+                  {/* Commented by Om Shrivastava on 10-12-23
+                    Reason : No need to show the profile details, show directly form  */}
+                  {/* {!showEditable ? */}
+                    {/* <div className={styles.usedetailShow} >
                       <div className={style.box} style={{  height: "auto", padding: "5px" }}>
                         <div ><span className={style.userinfoText}  style={{ wordBreak: "break-all" }}>Name : </span><span className={style.userinfoLable} style={{ wordBreak: "break-all" }}>{userdata.name}</span></div>
                         <div ><span className={style.userinfoText}  style={{ wordBreak: "break-all" }}>Email : </span><span className={style.userinfoLable} style={{ wordBreak: "break-all" }}> {userdata.email}</span></div>
                         <div ><span className={style.userinfoText}  style={{ wordBreak: "break-all" }}>Contact : </span><span className={style.userinfoLable} style={{ wordBreak: "break-all" }}> {userdata.contact}</span></div>
                       </div>
                     </div>
-                    :
+                    : */}
+                      {/*End of commented by Om Shrivastava on 10-12-23
+                    Reason : No need to show the profile details, show directly form  */}
                     <div className={styles.editFormDiv} >
                       {/* <div className={styles.columnitem1head}>1. USER DETAILS</div> */}
                       <form onSubmit={e => updateProfie(e)} onLoad={e=>
@@ -389,6 +396,7 @@ const UserProfile = () => {
                           /> */}
                            {/*End of commented by Om Shrivastava on 09-12-23
                         Reason : Need to commente this field */}
+
                         </div>
 
                         {changepass ? <>
@@ -462,8 +470,12 @@ const UserProfile = () => {
                         </div>
 
                       </form>
-                    </div>}
-
+                    </div>
+                    {/* Commented by Om Shrivastava on 10-12-23
+                    Reason : No need to show the profile details, show directly form  */}
+                    {/* } */}
+                   {/* Commented by Om Shrivastava on 10-12-23
+                    Reason : No need to show the profile details, show directly form  */}
 
                 </div>
               </div>

@@ -75,7 +75,7 @@ const Slider2 = ({ scrollTop }) => {
           >
             YOU MAY ALSO LIKE
           </div>
-          <Carousel cols={4} rows={1} gap={10} style={{ width: "100%" }}>
+          <Carousel cols={4} rows={1} gap={10} style={{ width: "100%",border:'1px solid blue' }}>
             
             {CategoryProduct.map((cart, i) => {
               // commented by Rohan - 21/12/22

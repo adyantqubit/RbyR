@@ -440,10 +440,14 @@ const InsideOrder = () => {
                           Reason : Add the currency sign */}
                           {(allData.transaction.subtotal_price * states[0].selected_currency_value).toFixed(2)}
                           </span></div>
+          {allData?.transaction.shipping_price!=0 ? 
+
                       <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "start" }}>
                         Shipping Charges</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}>
                           {states[0].selected_currency_sign}
-                          {(allData.transaction.shipping_price * states[0].selected_currency_value).toFixed(2)}</span></div>
+                          {(allData.transaction.shipping_price * states[0].selected_currency_value).toFixed(2)}</span>
+                          </div>
+                          :null}
                       {/* <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "start" }}>Tax</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}>{states[0].selected_currency_sign}{(allData.transaction.tax * states[0].selected_currency_value).toFixed(2)}</span></div> */}
                       {/* Commented by - Ashish Dewangan on 15-02-2023
                       End of comment */}

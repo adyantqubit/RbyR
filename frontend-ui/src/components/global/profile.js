@@ -56,7 +56,7 @@ export const Profile = () => {
   const access_token=localStorage.getItem('access_token')
 
   const currentUrl = window.location.pathname;
-console.log(currentUrl,'current url');
+// console.log(currentUrl,'current url');
 
   return (
     <>

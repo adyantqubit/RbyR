@@ -130,11 +130,14 @@ background:#323232;
 }
 
 .bqyzQp {
-  position: relative;
+  /* position: relative; */
   /* width: 90%; */
   width: 94%;
-
-  /* border: 1px solid red; */
+  /* Addition by Om Shirvastava on 10-12-23
+  Reason : Need to handle the arrow button */
+margin-left: 2%;
+/* End of Addition by Om Shirvastava on 10-12-23
+  Reason : Need to handle the arrow button  */
 
 }
 

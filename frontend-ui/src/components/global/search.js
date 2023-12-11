@@ -189,7 +189,7 @@ const Search = () => {
         // Modification and addition by Om Shrivastava on 23-11-23
         // Reason : Set the drawer search width
         // width={window.innerWidth > 768 ? 650 : "100%"}
-        width={drawerwidth}
+        width={drawerwidth}   
         // End of Modification and addition by Om Shrivastava on 23-11-23
         // Reason : Set the drawer search width
         // Modification and addition by Om Shrivastava on 23-11-23

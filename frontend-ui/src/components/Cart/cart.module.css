@@ -276,10 +276,14 @@ body {background: #333}
 
     
 .importantRules{
-   margin-left: 2%;
+  /* Modification and addition by Om Shrivastava on 10-12-23
+  Reason : Remove margin left property */
+   /* margin-left: 2%; */
+   margin-left: 0%;
+   /* End of Modification and addition by Om Shrivastava on 10-12-23
+  Reason : Remove margin left property */
    width:100%;
    padding-top: 60px;
-
   }
 
     .heading{

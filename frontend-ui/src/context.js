@@ -49,7 +49,13 @@ const Context = ({ children }) => {
   const [shippingflow, setShipingflow] = useState(false)
   const [paymentflow, setPaymentflow] = useState(false)
   const [defaultShiping, setDefaultShipping] = useState([])
-  const [showEditable, setShowEditable] = useState(false)
+{/* Commented by Om Shrivastava on 10-12-23
+  Reason : No need to show the profile details, show directly form  */}
+  // const [showEditable, setShowEditable] = useState(false)
+  const [showEditable, setShowEditable] = useState(true)
+  {/* End of commented by Om Shrivastava on 10-12-23
+  Reason : No need to show the profile details, show directly form  */}
+
   const [video, setVideo] = useState(null)
 
   const[productCount,setProductCount] = useState("")

@@ -54,6 +54,8 @@ const ProductListing = () => {
             ).toFixed(2)}
           </div>
         </div>
+        {(afterColumnTotalOfferAdd(offer, cart, taxRate).shipping)!=0 ? 
+
         <div
           style={{
             display: "flex",
@@ -61,6 +63,7 @@ const ProductListing = () => {
             marginTop: "8px",
           }}
         >
+
           <div className={styles.sub}>Shipping Charges</div>
           <div className={styles.sub}>
             {currency.sign}
@@ -70,6 +73,7 @@ const ProductListing = () => {
             ).toFixed(2)}
           </div>
         </div>
+        :null}
         {/* <div style={{ display: "flex", justifyContent: "space-between", marginTop: "8px" }}>
           <div className={styles.sub}>GST Charges</div>
           <div className={styles.sub}>{currency.sign}{(afterColumnTotalOfferAdd(offer, cart, taxRate).tax * currency.value).toFixed(2)}</div>
@@ -89,7 +93,7 @@ const ProductListing = () => {
             justifyContent: "space-between",
           }}
         >
-          <div className={styles.columnitem1head} style={{ marginTop: "-5px" }}>
+          <div className={styles.columnitem1head} style={{ marginTop: "-5px",fontWeight:'600' }}>
             Total
           </div>
           <div className={styles.columnitem1head} style={{ marginTop: "-5px" }}>

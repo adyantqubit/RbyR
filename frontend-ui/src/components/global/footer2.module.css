@@ -113,6 +113,7 @@ Reason : Set the padding and margin of antd notification  */
     Reason : Remove the letter spacin  */
     margin: 0;
     white-space: wrap;
+    border-bottom: 1px solid var(--textColorPrimary) ;
 }
 
 .span,.span2{

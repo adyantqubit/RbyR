@@ -130,6 +130,12 @@ border-bottom: 1px solid black;
     min-width: 25vw;
     min-height: 30vh;
 }
+.iframeClass{
+    width: 90%;
+    height: 87%;
+    margin: 0;
+    padding: 0;
+}
 
 @media (max-width:1000px) {
     .video{
@@ -154,6 +160,17 @@ border-bottom: 1px solid black;
     /* .card{
         min-height: 10vh !important;
     } */
+    /* Addition by Om Shrivastava on 10-12-23
+    Reason : Add the classname for the iframe tag */
+    .iframeClass{
+        height: 40%;
+        width: 97%;
+    }
+    /* .ytp-cued-thumbnail-overlay{
+        border: 1px solid white;
+    } */
+    /* End of addition by Om Shrivastava on 10-12-23
+Reason : Add the classname for the iframe tag */
 }
 
 /* category side */

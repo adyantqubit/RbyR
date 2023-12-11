@@ -1207,10 +1207,10 @@ class pageIndex(APIView):
             # Added by Rohan -5/1/22
             # Reason- Adding ready to wear functionality where all ready to ship product shown on this link
             elif (request.data['parent']=="ready to ship" and request.data['category']=="0"):
-                products=product_detail.objects.filter(ready_to_ship=True,is_active=True).order_by("id")
+                products=product_detail.objects.filter(ready_to_ship=True,is_active=True).order_by("-id")
                 
             elif(request.data['parent']=="best seller" and request.data['category']=="0"):
-                products=product_detail.objects.filter(bestSeller=True,is_active=True).order_by("id")
+                products=product_detail.objects.filter(bestSeller=True,is_active=True).order_by("-id")
   
             # End of code
             else:

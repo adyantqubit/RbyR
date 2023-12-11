@@ -3,11 +3,13 @@
 Reason - To set position of arrow button on slider */
 
 .bhRnqO,.kVtMtA{
-    top:150px !important;
+    /* top:150px !important; */
+    top:37% !important;
+
 }
 
 @media (max-width: 520px) {
     .bhRnqO,.kVtMtA{
         top:140px !important;
     }   
-}
+}   

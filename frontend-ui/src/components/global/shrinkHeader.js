@@ -5,6 +5,8 @@
 
 import { React, useEffect, useState } from 'react'
 import Drawer from 'react-modern-drawer'
+// import { Drawer } from 'antd';
+
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { CgBox, CgProfile ,CgVoicemailO, CgVoicemailR} from "react-icons/cg";
 //import styles 👇
@@ -32,6 +34,8 @@ import { useGetLoggedUserQuery } from '../../Redux-manage/services/userAuthapi';
 import { getLogoAndCover } from "../../api/service";
 import config from '../../api/config';
 import { MdOutlineEmail } from 'react-icons/md';
+import 'react-modern-drawer/dist/index.css'
+
 const text = 'Are you sure you want to logout?';
 
 
@@ -200,11 +204,28 @@ const ShrinkHeader = () => {
       </div>
 
       <Drawer
+      
         size="90%"
         open={isOpen}
-     style={{width:'70vw'}}
+        lock
+        style={{width:'70vw'}}
         onClose={e => { toggleDrawer() }}
         direction='left'
+        lockBackgroundScroll={true}
+        className='bla bla bla'
+        // open={isOpen}
+        // style={{width:'70vw'}}
+        // onClose={e => { toggleDrawer() }}
+        // placement='left'
+
+      //   width={drawerwidth}
+      //   placement="right"
+      //   onClose={toggleDrawer}
+      //   closeIcon={<MdOutlineArrowBack className="likeSVG" />} 
+      //   open={openCartdrawer}
+      //   headerStyle={{ height: "200px" ,backgroundColor:"var(--backgroundColorSecondary)"}}
+      //   style={{ display: "flex", justifyContent: "center" }}
+      //  bodyStyle={{backgroundColor:"var(--backgroundColorSecondary)"}}  
       >
         <div className={style.main} >
 
@@ -303,7 +324,7 @@ const ShrinkHeader = () => {
       <Drawer
         size="90%"
         open={isOpen2}
-        onClose={e => { toggleDrawer2(); toggleDrawer() }}
+        onClose={e => { toggleDrawer2(); toggleDrawer() }} 
         direction='left'
        
         style={{width:'70vw'}}
