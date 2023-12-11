@@ -96,7 +96,7 @@ const ProductListing = () => {
           <div className={styles.columnitem1head} style={{ marginTop: "-5px",fontWeight:'600' }}>
             Total
           </div>
-          <div className={styles.columnitem1head} style={{ marginTop: "-5px" }}>
+          <div className={styles.columnitem1head} style={{ marginTop: "-5px",fontWeight:'600' }}>
             {currency.sign}
             {(
               afterColumnTotalOfferAdd(offer, cart, taxRate).Grand *
