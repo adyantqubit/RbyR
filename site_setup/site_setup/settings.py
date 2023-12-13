@@ -260,5 +260,11 @@ PASSWORD_RESET_TIMEOUT = 1800 # 30 mint, in seconds
 
 CORS_ALLOWED_ORIGINS=[
     "http://localhost:3000",
-    "http://192.168.1.5:3000",
+    "http://192.168.1.3:3000",
 ]
+
+# Added by - Ashish Dewangan on 13-12-2023
+# Reason - To specify http mehtod used
+HTTP_METHOD="http://"
+# End of code addition by - Ashish Dewangan on 13-12-2023
+# Reason - To specify http mehtod used

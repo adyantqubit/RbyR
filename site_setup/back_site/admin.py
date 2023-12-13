@@ -24,7 +24,15 @@ def short_title(obj):
 # admin.site.register(Head_img)
 @admin.register(Head_img)
 class Head_imgAdmin(admin.ModelAdmin):
-    list_display=("id","src","category","display_on")
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=("id","src","category","display_on")
+    list_display=("action","id","src","category","display_on")
+    list_display_links=("action",)
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     # ordering=("display_on")
     readonly_fields=("category",)
     list_per_page=10
@@ -37,6 +45,25 @@ class Head_imgAdmin(admin.ModelAdmin):
         # form.base_fields['display_on'].widget.attrs['style'] = 'width: 50%'
 
         return form
+    
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/head_img/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
 # End of code modification
 
 
@@ -52,9 +79,18 @@ class product_detailAdmin(admin.ModelAdmin):
     # Modification and addition by Om Shrivastava on 11-11-23
     # Reason : Need to display the is active field 
     # list_display=(short_title,"menu","category","S","M","L","XL","price","color")
-    list_display=(short_title,"menu","category","S","M","L","XL","price","color",'is_active','subMenu')
+    # list_display=(short_title,"menu","category","S","M","L","XL","price","color",'is_active','subMenu')
+
+    # Modified by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to see details of a row
+    list_display=("action",short_title,"menu","category","S","M","L","XL","price","color",'is_active','subMenu')
+    list_display_links=("action",)
+    # End of code modification by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to see details of a row
+
     # End of Modification and addition by Om Shrivastava on 11-11-23
     # Reason : Need to display the is active field
+    
     ordering =("title",)
     exclude=("XS","XXXL","XXL")
     
@@ -104,7 +140,24 @@ class product_detailAdmin(admin.ModelAdmin):
 
 
         return form    
-       
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color: #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/product_detail/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row 
    
 # End of code modification
 
@@ -122,7 +175,15 @@ def title_of_liked_product(obj):
     return Truncator(obj.item.title).chars(30) 
 @admin.register(Liked)
 class LikedAdmin(admin.ModelAdmin):
-    list_display=(title_of_liked_product,"user_no")
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=(title_of_liked_product,"user_no")
+    list_display=("action",title_of_liked_product,"user_no")
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     readonly_fields=("item","user_no")
     ordering=("item__title",)
     search_fields=("item__title","user_no__name","user_no__email")
@@ -133,6 +194,25 @@ class LikedAdmin(admin.ModelAdmin):
         return False    
     def has_delete_permission(self, request, obj=None) :
         return False   
+    
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/liked/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row 
+
 # End of code modification
 
 
@@ -141,7 +221,15 @@ class LikedAdmin(admin.ModelAdmin):
 # admin.site.register(Cart)
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
-    list_display=("product_no","user_no","quantity","size")
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=("product_no","user_no","quantity","size")
+    list_display=("action","product_no","user_no","quantity","size")
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     list_per_page=10
     # list_filter=("user_no",)
     sortable_by=("user_no","product_no")
@@ -152,7 +240,26 @@ class CartAdmin(admin.ModelAdmin):
     def has_change_permission(self, request, obj=None) :
         return False    
     def has_delete_permission(self, request, obj=None) :
-        return False       
+        return False   
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/cart/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row 
+        
 # End of code modification
 
 
@@ -212,7 +319,33 @@ class CartAdmin(admin.ModelAdmin):
     
 @admin.register(Home_video)
 class HomeVideoAdmin(admin.ModelAdmin):
-    list_display=("Video_url",)   
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=("Video_url",)   
+    list_display=("action","Video_url",)   
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/home_video/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
 #End of code
 
 
@@ -221,7 +354,15 @@ class HomeVideoAdmin(admin.ModelAdmin):
 # admin.site.register(userbillingDetail)
 @admin.register(userbillingDetail)
 class userbillingDetailAdmin(admin.ModelAdmin):
-    list_display=("user_id","firstname","lastname","street","houseno","city","state","zipcode","country","number")
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=("user_id","firstname","lastname","street","houseno","city","state","zipcode","country","number")
+    list_display=("action","user_id","firstname","lastname","street","houseno","city","state","zipcode","country","number")
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     ordering=("user_id",)
     list_filter=("city","state","country")
     search_fields=("firstname","lastname","city","state","country")
@@ -232,6 +373,25 @@ class userbillingDetailAdmin(admin.ModelAdmin):
         return False    
     def has_delete_permission(self, request, obj=None) :
         return False   
+    
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/userbillingdetail/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row 
+
 # End of code modification
 
 
@@ -240,8 +400,17 @@ class userbillingDetailAdmin(admin.ModelAdmin):
 # admin.site.register(usershippingDetail)
 @admin.register(usershippingDetail)
 class usershippingDetailAdmin(admin.ModelAdmin):
-    list_display=("user_id","firstname","lastname","street","houseno","city"
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=("user_id","firstname","lastname","street","houseno","city"
+    # ,"state","zipcode","country","number","isSelected")
+    list_display=("action","user_id","firstname","lastname","street","houseno","city"
     ,"state","zipcode","country","number","isSelected")
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     ordering=("user_id",)
     list_filter=("city","state","country")
     search_fields=("firstname","lastname","city","state","country")
@@ -251,7 +420,26 @@ class usershippingDetailAdmin(admin.ModelAdmin):
     def has_change_permission(self, request, obj=None) :
         return False    
     def has_delete_permission(self, request, obj=None) :
-        return False   
+        return False
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/usershippingdetail/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row 
+       
 # End of code modification
 
 
@@ -262,20 +450,27 @@ class usershippingDetailAdmin(admin.ModelAdmin):
 # admin.site.register(product_orders,InvoiceAdmin)
 @admin.register(product_orders)
 class product_ordersAdmin(admin.ModelAdmin):
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
     # Commented and modified by - Ashish Dewangan on 29-11-2023
     # Reason - To show product name instead of product id
     # list_display=("id","order_no","user_no","product_id","billing_id","shipping_id","quantity"
     # ,"price","size","payment_mode","date")
-    list_display=("id","order_no","user_no","product_name","billing_id","shipping_id","quantity"
-    ,"price","size","payment_mode","date",
-    # Addition by Om Shrivastava on 05-12-23
-    # Reason : Need to show this field
-    'order_status'
-    # End of addition by Om Shrivastava on 05-12-23
-    # Reason : Need to show this field
-    )
+    # list_display=("id","order_no","user_no","product_name","billing_id","shipping_id","quantity"
+    # ,"price","size","payment_mode","date",
+    # # Addition by Om Shrivastava on 05-12-23
+    # # Reason : Need to show this field
+    # 'order_status'
+    # # End of addition by Om Shrivastava on 05-12-23
+    # # Reason : Need to show this field
+    # )
     # End of code modification by - Ashish Dewangan on 29-11-2023
     # Reason - To show product name instead of product id
+    list_display=("action","id","order_no","user_no","product_name","billing_id","shipping_id","quantity"
+    ,"price","size","payment_mode","date",'order_status')
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
 
     list_filter=(
          # Addition by Om Shrivastava on 05-12-23
@@ -305,6 +500,25 @@ class product_ordersAdmin(admin.ModelAdmin):
     #     return False
     def has_delete_permission(self, request, obj=None):
         return False   
+    
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/product_orders/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
 # End of code modification
 
 # Commented and modified by Ashish Dewangan on 27-11-2022
@@ -315,7 +529,15 @@ class product_ordersAdmin(admin.ModelAdmin):
     #End of code addition
 @admin.register(FAQ)
 class FAQAdmin(admin.ModelAdmin):
-    list_display=("qno","question","answer")
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=("qno","question","answer")
+    list_display=("action","qno","question","answer")
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     search_fields=("question",)
     ordering=("qno",)
     list_per_page= 10
@@ -324,6 +546,24 @@ class FAQAdmin(admin.ModelAdmin):
         form.base_fields['question'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['answer'].widget.attrs['style'] = 'width: 100%;'
         return form   
+    
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/faq/"+str(obj.qno)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
 # End of code modification
 
 
@@ -347,7 +587,15 @@ def content_three(obj):
     return Truncator(obj.content3).chars(30)              
 @admin.register(ContactUs)
 class ContactUsAdmin(admin.ModelAdmin):
-    list_display=(subtitle_one,content_one,subtitle_two,content_two,subtitle_three,content_three,"contactUsImage")
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=(subtitle_one,content_one,subtitle_two,content_two,subtitle_three,content_three,"contactUsImage")
+    list_display=("action",subtitle_one,content_one,subtitle_two,content_two,subtitle_three,content_three,"contactUsImage")
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     def has_add_permission(self, request):
         return not ContactUs.objects.exists()
     def get_form(self, request, obj=None, **kwargs):
@@ -359,6 +607,25 @@ class ContactUsAdmin(admin.ModelAdmin):
         form.base_fields['content2'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['content3'].widget.attrs['style'] = 'width: 100%;'
         return form 
+    
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/contactus/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
 # End of code modification
 
 
@@ -390,8 +657,17 @@ def content_five(obj):
     return Truncator(obj.content5).chars(30)               
 @admin.register(TermAndCondition)
 class TermAndConditionAdmin(admin.ModelAdmin):
-    list_display=(title_one,content_one,subtitle_one,content_two,subtitle_two,content_three,subtitle_three,content_four
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=(title_one,content_one,subtitle_one,content_two,subtitle_two,content_three,subtitle_three,content_four
+    # ,subtitle_four,content_five)
+    list_display=("action",title_one,content_one,subtitle_one,content_two,subtitle_two,content_three,subtitle_three,content_four
     ,subtitle_four,content_five)
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     def has_add_permission(self, request):
         return not TermAndCondition.objects.exists()
     def get_form(self, request, obj=None, **kwargs):
@@ -406,7 +682,26 @@ class TermAndConditionAdmin(admin.ModelAdmin):
         form.base_fields['content3'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['content4'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['content5'].widget.attrs['style'] = 'width: 100%;'
-        return form     
+        return form   
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/termandcondition/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+      
 # End of code modification
 
 
@@ -432,7 +727,15 @@ def subtitle_three(obj):
     return Truncator(obj.subtitle3).chars(30)
 @admin.register(PrivacyPolicy)
 class PrivacyPolicyAdmin(admin.ModelAdmin):
-    list_display=(title_one,content_one,subtitle_one,content_two,subtitle_two,content_three)
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=(title_one,content_one,subtitle_one,content_two,subtitle_two,content_three)
+    list_display=("action",title_one,content_one,subtitle_one,content_two,subtitle_two,content_three)
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     def has_add_permission(self, request):
         return not PrivacyPolicy.objects.exists()
     def get_form(self, request, obj=None, **kwargs):
@@ -443,7 +746,26 @@ class PrivacyPolicyAdmin(admin.ModelAdmin):
         form.base_fields['content2'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['subtitle2'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['content3'].widget.attrs['style'] = 'width: 100%;'
-        return form      
+        return form  
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/privacypolicy/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+        
 # End of code modification
 
 
@@ -463,7 +785,15 @@ def content_two(obj):
     return Truncator(obj.content2).chars(30)
 @admin.register(DeliveryAndShippingPolicy)
 class DeliveryAndShippingPolicyAdmin(admin.ModelAdmin):
-    list_display=(title_one,content_one,title_two,content_two)
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=(title_one,content_one,title_two,content_two)
+    list_display=("action",title_one,content_one,title_two,content_two)
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     def has_add_permission(self, request):
          return not DeliveryAndShippingPolicy.objects.exists()
     def get_form(self, request, obj=None, **kwargs):
@@ -472,7 +802,26 @@ class DeliveryAndShippingPolicyAdmin(admin.ModelAdmin):
         form.base_fields['content1'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['title2'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['content2'].widget.attrs['style'] = 'width: 100%;'
-        return form     
+        return form    
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/deliveryandshippingpolicy/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+     
 # End of code modification
 
 
@@ -492,7 +841,15 @@ def content_two(obj):
     return Truncator(obj.content2).chars(30)
 @admin.register(RefundPolicy)
 class RefundPolicyAdmin(admin.ModelAdmin):
-    list_display=(title_one,content_one,subtitle_one,content_two)
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=(title_one,content_one,subtitle_one,content_two)
+    list_display=("action",title_one,content_one,subtitle_one,content_two)
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     def has_add_permission(self, request):
         return not RefundPolicy.objects.exists()
     def get_form(self, request, obj=None, **kwargs):
@@ -501,7 +858,26 @@ class RefundPolicyAdmin(admin.ModelAdmin):
         form.base_fields['content1'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['subtitle1'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['content2'].widget.attrs['style'] = 'width: 100%;'
-        return form     
+        return form   
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/refundpolicy/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+      
 # End of code modification
 
 
@@ -521,7 +897,15 @@ def content_two(obj):
     return Truncator(obj.content2).chars(30)
 @admin.register(CancellationPolicy)
 class CancellationPolicyAdmin(admin.ModelAdmin):
-    list_display=(title_one,content_one,subtitle_one,content_two)
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=(title_one,content_one,subtitle_one,content_two)
+    list_display=("action",title_one,content_one,subtitle_one,content_two)
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     def has_add_permission(self, request):
         return not CancellationPolicy.objects.exists()
     def get_form(self, request, obj=None, **kwargs):
@@ -530,7 +914,26 @@ class CancellationPolicyAdmin(admin.ModelAdmin):
         form.base_fields['subtitle1'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['content1'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['content2'].widget.attrs['style'] = 'width: 100%;'
-        return form     
+        return form 
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/cancellationpolicy/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row 
+        
 # End of code modification
 
 # Commented and modified by Ashish Dewangan on 27-11-2022
@@ -547,7 +950,15 @@ def email_id(obj):
     return Truncator(obj.email).chars(30)
 @admin.register(StoreLocator)
 class StoreLocatorAdmin(admin.ModelAdmin):
-    list_display=("city",address_of_store,phone_number,email_id,"timing","storeImage")
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=("city",address_of_store,phone_number,email_id,"timing","storeImage")
+    list_display=("action","city",address_of_store,phone_number,email_id,"timing","storeImage")
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     def has_add_permission(self, request):
         return True if StoreLocator.objects.count() < 2  else False
     def get_form(self, request, obj=None, **kwargs):
@@ -558,7 +969,26 @@ class StoreLocatorAdmin(admin.ModelAdmin):
         form.base_fields['phoneNumber'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['email'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['timing'].widget.attrs['style'] = 'width: 100%;'
-        return form          
+        return form   
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/storelocator/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+           
 # End of code modification
 
 
@@ -570,14 +1000,41 @@ class StoreLocatorAdmin(admin.ModelAdmin):
     #End of code addition
 @admin.register(SocialLink)
 class SocialLinkAdmin(admin.ModelAdmin):
-    list_display=("linkName","link")
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=("linkName","link")
+    list_display=("action","linkName","link")
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     def has_add_permission(self, request):
         return True if SocialLink.objects.count() < 3  else False
     def get_form(self, request, obj=None, **kwargs):
         form = super(SocialLinkAdmin, self).get_form(request, obj, **kwargs)
         form.base_fields['linkName'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['link'].widget.attrs['style'] = 'width: 100%;'
-        return form     
+        return form   
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/sociallink/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+      
 #End of code addition
 
 
@@ -595,7 +1052,15 @@ def subtitle_two(obj):
     return Truncator(obj.subtitle2).chars(30)
 @admin.register(Bridal)
 class BridalAdmin(admin.ModelAdmin):
-    list_display=(title_of_bridal,subtitle_one,subtitle_two,"bridalImage")
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=(title_of_bridal,subtitle_one,subtitle_two,"bridalImage")
+    list_display=("action",title_of_bridal,subtitle_one,subtitle_two,"bridalImage")
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     def has_add_permission(self, request):
         return not Bridal.objects.exists()
     def get_form(self, request, obj=None, **kwargs):
@@ -603,7 +1068,26 @@ class BridalAdmin(admin.ModelAdmin):
         form.base_fields['title'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['subtitle1'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['subtitle2'].widget.attrs['style'] = 'width: 100%;'
-        return form     
+        return form
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/bridal/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row 
+          
 #End of code addition
 
 
@@ -615,7 +1099,15 @@ class BridalAdmin(admin.ModelAdmin):
     #End of code addition
 @admin.register(BridalForm)
 class BridalFormAdmin(admin.ModelAdmin):
-    list_display=("firstName","lastName","email","contactNumber","zipCode","dateOfWedding","message","createdDate","termsAndCondition")
+
+    # Modified by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=("firstName","lastName","email","contactNumber","zipCode","dateOfWedding","message","createdDate","termsAndCondition")
+    list_display=("action","firstName","lastName","email","contactNumber","zipCode","dateOfWedding","message","createdDate","termsAndCondition")
+    list_display_links=("action",)
+    # End of code modification by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     # Modification and addition by Om Shrivastava on 11-12-23
     # Reason : Need to show first data 
     # ordering =("firstName",)
@@ -630,6 +1122,25 @@ class BridalFormAdmin(admin.ModelAdmin):
         return False
     def has_delete_permission(self, request, obj=None):
         return False
+    
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/bridalform/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row 
+
 # End of code modification
     
 # Commented and modified by Ashish on 27-11-2022
@@ -640,13 +1151,40 @@ class BridalFormAdmin(admin.ModelAdmin):
     #End of code addition
 @admin.register(Copyright)
 class CopyrightAdmin(admin.ModelAdmin):
-    list_display=("title",)
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=("title",)
+    list_display=("action","title",)
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     def has_add_permission(self, request):
         return not Copyright.objects.exists()
     def get_form(self, request, obj=None, **kwargs):
         form = super(CopyrightAdmin, self).get_form(request, obj, **kwargs)
         form.base_fields['title'].widget.attrs['style'] = 'width: 100%;'
-        return form      
+        return form
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/copyright/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+          
 # End of code modification
 
 
@@ -658,7 +1196,15 @@ class CopyrightAdmin(admin.ModelAdmin):
     #End of code addition
 @admin.register(EmailSubscription)
 class EmailSubscriptionAdmin(admin.ModelAdmin):
-    list_display=("email","subscribe")
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=("email","subscribe")
+    list_display=("action","email","subscribe")
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     list_filter=("subscribe",)
     search_fields=["email",]
     # readonly_fields=("date",)
@@ -667,7 +1213,26 @@ class EmailSubscriptionAdmin(admin.ModelAdmin):
     def get_form(self, request, obj=None, **kwargs):
         form = super(EmailSubscriptionAdmin, self).get_form(request, obj, **kwargs)
         form.base_fields['email'].widget.attrs['style'] = 'width: 100%;'
-        return form   
+        return form 
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/emailsubscription/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+      
 # End of code modification
 
 
@@ -679,11 +1244,23 @@ class EmailSubscriptionAdmin(admin.ModelAdmin):
     #End of code addition
 @admin.register(InstagramCollection)
 class InstagramCollectionAdmin(admin.ModelAdmin):
-    list_display=("instagram_home_link","instagram_post1","instagram_post1_link"
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=("instagram_home_link","instagram_post1","instagram_post1_link"
+    # ,"instagram_post2","instagram_post2_link"
+    # ,"instagram_post3","instagram_post3_link"
+    # ,"instagram_post4","instagram_post4_link"
+    # ,"instagram_post5","instagram_post5_link")
+    list_display=("action","instagram_home_link","instagram_post1","instagram_post1_link"
     ,"instagram_post2","instagram_post2_link"
     ,"instagram_post3","instagram_post3_link"
     ,"instagram_post4","instagram_post4_link"
     ,"instagram_post5","instagram_post5_link")
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     def has_add_permission(self, request):
         return not InstagramCollection.objects.exists()
     def get_form(self, request, obj=None, **kwargs):
@@ -699,7 +1276,26 @@ class InstagramCollectionAdmin(admin.ModelAdmin):
         form.base_fields['instagram_post4_link'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['instagram_post5'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['instagram_post5_link'].widget.attrs['style'] = 'width: 100%;'
-        return form     
+        return form
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/instagramcollection/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+         
 # End of code modification
 
 
@@ -722,17 +1318,26 @@ class InstagramCollectionAdmin(admin.ModelAdmin):
 #admin.site.register(Transaction_history)
 @admin.register(Transaction_history)
 class Transaction_historyAdmin(admin.ModelAdmin):
-    list_display=("order_no","user_no",
-                #   "coupon_discount",
-                  "shipping_price","subtotal_price",
-                #   "tax",
-    "grand_total","payment_status","date",
-    # Addition by Om Shrivastava on 05-12-23
-    # Reason : Add the field
-    'payment_status'
-    # End of addition by Om Shrivastava on 05-12-23
-    # Reason : Add the field
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=("order_no","user_no",
+    #             #   "coupon_discount",
+    #               "shipping_price","subtotal_price",
+    #             #   "tax",
+    # "grand_total","payment_status","date",
+    # # Addition by Om Shrivastava on 05-12-23
+    # # Reason : Add the field
+    # 'payment_status'
+    # # End of addition by Om Shrivastava on 05-12-23
+    # # Reason : Add the field
+    # )
+    list_display=("action","order_no","user_no","shipping_price","subtotal_price","grand_total","payment_status","date"
+                  ,'payment_status'
     )
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
 
     # Commented and modified by - Ashish Dewangan on 29-11-2023
     # Reason - To make shipping details read only
@@ -757,6 +1362,25 @@ class Transaction_historyAdmin(admin.ModelAdmin):
         return False
     def has_delete_permission(self, request, obj=None):
         return False   
+    
+     # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/transaction_history/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
 # End of code modification
 
 
@@ -765,7 +1389,15 @@ class Transaction_historyAdmin(admin.ModelAdmin):
     #admin.site.register(Online_Qr)
 @admin.register(Online_Qr)
 class Online_QrAdmin(admin.ModelAdmin):
-    list_display=("name","bank_name","account_number","upi_id","qr_img",)
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=("name","bank_name","account_number","upi_id","qr_img",)
+    list_display=("action","name","bank_name","account_number","upi_id","qr_img",)
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     def has_add_permission(self, request):
         return not Online_Qr.objects.exists()
     def get_form(self, request, obj=None, **kwargs):
@@ -774,7 +1406,26 @@ class Online_QrAdmin(admin.ModelAdmin):
         form.base_fields['bank_name'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['account_number'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['upi_id'].widget.attrs['style'] = 'width: 100%;'
-        return form      
+        return form    
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/online_qr/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+      
 # End of code modification
 
 
@@ -818,7 +1469,15 @@ class Online_QrAdmin(admin.ModelAdmin):
     #admin.site.register(ImportantNoticeToBuy)
 @admin.register(ImportantNoticeToBuy)    
 class ImportantNoticeToBuyAdmin(admin.ModelAdmin):
-    list_display=("point1","point2","point3")
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=("point1","point2","point3")
+    list_display=("action","point1","point2","point3")
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     def has_add_permission(self, request):
         return not ImportantNoticeToBuy.objects.exists()
     def get_form(self, request, obj=None, **kwargs):
@@ -826,7 +1485,26 @@ class ImportantNoticeToBuyAdmin(admin.ModelAdmin):
         form.base_fields['point1'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['point2'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['point3'].widget.attrs['style'] = 'width: 100%;'
-        return form     
+        return form 
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/importantnoticetobuy/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+        
 # End of code modification
 
 
@@ -885,7 +1563,15 @@ def name_of_user(obj):
     return Truncator(obj.firstName+"  "+obj.lastName).chars(50)    
 @admin.register(CustomTailoredForm)    
 class CustomTailoredFormAdmin(admin.ModelAdmin):
-    list_display=(name_of_user,"email","contactNumber")
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=(name_of_user,"email","contactNumber")
+    list_display=("action",name_of_user,"email","contactNumber")
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     list_filter=("email",)
     sortable_by=("email","contactNumber")
     search_fields=("firstName","lastName","email",'contactNumber')
@@ -910,6 +1596,25 @@ class CustomTailoredFormAdmin(admin.ModelAdmin):
         form.base_fields['length'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['otherInstructions'].widget.attrs['style'] = 'width: 100%;'
         return form
+    
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/customtailoredform/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
 # End of code modification
 
 
@@ -921,13 +1626,40 @@ class CustomTailoredFormAdmin(admin.ModelAdmin):
     #End of code addition 
 @admin.register(LogoAndNumber)    
 class LogoAndNumberAdmin(admin.ModelAdmin):
-    list_display=("whatsappNmber",)
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=("whatsappNmber",)
+    list_display=("action","whatsappNmber",)
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     def has_add_permission(self, request):
         return not LogoAndNumber.objects.exists() 
     def get_form(self, request, obj=None, **kwargs):
         form = super(LogoAndNumberAdmin, self).get_form(request, obj, **kwargs)
         form.base_fields['whatsappNmber'].widget.attrs['style'] = 'width: 100%;'
         return form    
+    
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/logoandnumber/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
  # End of code modification
 
 
@@ -939,7 +1671,15 @@ class UserModelAdmin(BaseUserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('name','email', 'tc','contact_number', 'is_admin','is_active')
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display = ('name','email', 'tc','contact_number', 'is_admin','is_active')
+    list_display = ("action",'name','email', 'tc','contact_number', 'is_admin','is_active')
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     list_filter = ('is_admin','is_active')
     ordering=("-id",)
     search_fields=("name","email",
@@ -971,6 +1711,24 @@ class UserModelAdmin(BaseUserAdmin):
         form.base_fields['contact_number'].widget.attrs['style'] = 'width: 100%;'
         return form
     
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/user/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row 
+
 # Now register the new UserAdmin...
 admin.site.register(User, UserModelAdmin)
 
@@ -984,7 +1742,15 @@ admin.site.register(User, UserModelAdmin)
 # Reason - To add menu of header 
 @admin.register(Menus)
 class Menu_Detail(admin.ModelAdmin):
-    list_display=("menu",)
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=("menu",)
+    list_display=("action","menu",)
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     exclude=("show_instant_filter_for_subMenu","Show_subMenu_with_image",)
     # ordering =("menu",)
     # readonly_fields=('menu',)
@@ -1000,14 +1766,38 @@ class Menu_Detail(admin.ModelAdmin):
     def has_add_permission(self, request):
         return not Menus.objects.count()>=4
       
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
 
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/menus/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
 
 
 @admin.register(subMenu)
 class subMenu_Detail(admin.ModelAdmin):
     #added by rohan-on-17/2/23
     #reason -to show menu name not an object of foreign key
-    list_display=("sub","get_menu")
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    # list_display=("sub","get_menu")
+    list_display=("action","sub","get_menu")
+    list_display_links=("action",)
+    # End of code additon by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+
     def get_menu(self, obj):
         return obj.Menu.menu
     def get_form(self, request, obj, **kwargs):
@@ -1018,7 +1808,26 @@ class subMenu_Detail(admin.ModelAdmin):
         # form.fields['subMenu'].choices = [(None, 'Subscriber\'s Location')] + list(subMenu.objects.all().values_list('menu').order_by('menu'))
 
 
-        return form    
+        return form   
+
+    # Added by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/submenu/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+    # End of code addition by - Ashish Dewangan on 13-12-2023
+    # Reason - Added a button to view details of a row
+     
 # end of code
 
 
@@ -1051,9 +1860,56 @@ class subMenu_Detail(admin.ModelAdmin):
 #         form.base_fields['subMenu'].label_from_instance = lambda inst:"{}:{}".format(inst.Menu.menu,inst.sub)
 #         return form  
     
+
+# Modified by - Ashish Dewangan on 13-12-2023
+# Reason - To show more details of world of rbyr content
+# admin.site.register(worldOfRByRRow)    
+@admin.register(WorldOfRByRContent)
+class WorldOfRByRContentAdmin(admin.ModelAdmin):
+
+    list_display=("action","video_url","top_image","title1","description1")
+    list_display_links=("action",)
+
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
     
-admin.site.register(WorldOfRByRContent)
-admin.site.register(worldOfRByRRow)
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/worldofrbyrcontent/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+# End of code modification by - Ashish Dewangan on 13-12-2023
+# Reason - To show more details of world of rbyr content
+
+# Modified by - Ashish Dewangan on 13-12-2023
+# Reason - To show more details of world of rbyr content
+# admin.site.register(worldOfRByRRow)
+@admin.register(worldOfRByRRow)
+class worldOfRByRRowAdmin(admin.ModelAdmin):
+
+    list_display=("action","title","img1","img2","img3","description1","description2")
+    list_display_links=("action",)
+
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/worldofrbyrrow/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True 
+# End of code modification by - Ashish Dewangan on 13-12-2023
+# Reason - To show more details of world of rbyr content
 
   
 # admin.site.register(Feature)  

@@ -1,0 +1,74 @@
+<!-- Created by - Ashish Dewangan on 14-12-2023
+Reason - To show completed orders -->
+{% extends "admin/base_site.html" %}
+{% load admintemplates %}
+{% block content %}
+
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card border-0 shadow">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h2 class="fs-5 fw-bold mb-0"> Completed Orders </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <tbody>
+                        <tr  style="background-color:rgba(220, 231, 231, 0.912) ;">
+                            <th class="text-gray-900" style="font-weight:800" scope="row">
+                                Order Number
+                            </th>
+                            <th class="text-gray-900" style="font-weight:800" scope="row">
+                                Payment Status
+                            </th>
+                            <th class="text-gray-900" style="font-weight:800" scope="row">
+                                User
+                            </th>
+                            <th class="text-gray-900" style="font-weight:800" scope="row">
+                                Amount
+                            </th>
+                            <th class="text-gray-900" style="font-weight:800" scope="row">
+                                Date
+                            </th>
+                        </tr>
+                        {% getCompletedOrders as completedOrders %}
+                        {% if completedOrders %}
+                        {% for completedOrder in completedOrders %}
+                        
+                        <tr>
+                            <td class="fw-bolder text-gray-500">
+                                <a style="border-radius: 4px;color:white;background-color: #10b981;padding:3px;text-decoration: underline;" href="/admin/back_site/product_orders/?order_no={{completedOrder.orderData.order_no}}">{{ completedOrder.orderData.order_no }}</a>
+                            </td>
+                            <td class="fw-bolder text-gray-500">
+                                {{completedOrder.orderData.payment_status }}
+                            </td>
+                            <td class="fw-bolder text-gray-500">
+                                {{completedOrder.orderData.user_no }}
+                            </td>
+                            <td class="fw-bolder text-gray-500">
+                                Rs. {{ completedOrder.orderData.grand_total }}
+                            </td>
+                            <td class="fw-bolder text-gray-500">
+                                {{ completedOrder.orderData.date }}
+                            </td>
+                        </tr>
+                        
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                        <td>Not available yet</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

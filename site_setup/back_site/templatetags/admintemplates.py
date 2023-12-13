@@ -116,6 +116,24 @@ def getPendingOrders():
         AllPendingOrdersDetails.append(singlePendingOrderDetails)
     return AllPendingOrdersDetails 
 
+# Added by - Ashish Dewangan on 14-12-2023
+# Reason - To send completed orders to admin panel
+@register.simple_tag
+def getCompletedOrders():
+    orders=Transaction_history.objects.filter(payment_status="paid").order_by("-date")
+    AllCompletedOrdersDetails=[]
+    
+    for order in orders:
+        singleCompletedOrderDetails=dict()
+        singleCompletedOrderDetails["orderData"]=order
+        singleCompletedOrderDetails["orderId"]=order.id
+        user = User.objects.filter(email=order.user_no).first()
+        singleCompletedOrderDetails["userId"]=user.id
+        AllCompletedOrdersDetails.append(singleCompletedOrderDetails)
+    return AllCompletedOrdersDetails 
+# End of code addition by - Ashish Dewangan on 14-12-2023
+# Reason - To send completed orders to admin panel
+
 
 @register.simple_tag
 def getPieChartData():

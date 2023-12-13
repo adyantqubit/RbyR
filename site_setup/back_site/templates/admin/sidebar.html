@@ -71,8 +71,14 @@
                             </span>
 
                             {% if app.models %}
-                              <div class="multi-level collapse {% if 'tables-bootstrap-' in segment or app_label == app.label or app.url in request.path|urlencode %} show {% endif %}" role="list" id="submenu-{{ app.app_label }}"  
+                            <!-- Modified by - Ashish Dewangan on 14-12-2023
+                            Reason - To expand app in sidebar if pending or completed order link is clicked -->
+                            <!-- <div class="multi-level collapse {% if 'tables-bootstrap-' in segment or app_label == app.label or app.url in request.path|urlencode %} show {% endif %}" role="list" id="submenu-{{ app.app_label }}"  
+                                                                                                                                      aria-expanded="{% if app_label == app.label or app.url in request.path|urlencode %}true{% else %}false{% endif %}"> -->
+                              <div class="multi-level collapse {% if 'tables-bootstrap-' in segment or app_label == app.label or app.url in request.path|urlencode or 'pending_orders' in request.path|urlencode or 'completed_orders' in request.path|urlencode %} show {% endif %}" role="list" id="submenu-{{ app.app_label }}"  
                                                                                                                                       aria-expanded="{% if app_label == app.label or app.url in request.path|urlencode %}true{% else %}false{% endif %}">
+                            <!-- End of code modification by - Ashish Dewangan on 14-12-2023
+                            Reason - To expand app in sidebar if pending or completed order link is clicked -->                                                                                                                                      
                                     <ul class="flex-column nav">
                                         {% for model in app.models %}
                                             {% if model.url %}
@@ -85,6 +91,21 @@
                                                 <li>{{ model.label }}</li>
                                             {% endif %}
                                         {% endfor %}
+
+                                        <!-- Added by - Ashish Dewangan on 14-12-2023
+                                        Reason - Added links for pending and completed orders -->
+                                        <li class="nav-item{% if 'bootstrap-tables' in segment or 'pending_orders' in request.path|urlencode %} active {% endif %}">
+                                            <a class="nav-link" href= "{% url 'pending_orders' %}" >
+                                              <span class="sidebar-text">Pending Orders</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item{% if 'bootstrap-tables' in segment or 'completed_orders' in request.path|urlencode %} active {% endif %}">
+                                            <a class="nav-link" href="{% url 'completed_orders' %}">
+                                              <span class="sidebar-text">Completed Orders</span>
+                                            </a>
+                                        </li>
+                                        <!-- End of code addition by - Ashish Dewangan on 14-12-2023
+                                        Reason - Added links for pending and completed orders -->
                                     </ul>
                                 </div>
                                 
