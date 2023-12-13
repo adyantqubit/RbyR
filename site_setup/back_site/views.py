@@ -487,7 +487,22 @@ class Invoice(APIView):
             # return Response({"order_no": tran.order_no, 'cart': cartdata})
             purchased_products=product_orders.objects.filter(order_no=tran.order_no)
             purchased_products_serializer=invoiceSerializer(purchased_products,many=True)
-            return Response({"order_no": tran.order_no, 'cart': cartdata,'purchased_products':purchased_products_serializer.data})
+
+            # Modified by - Ashish Dewangan on 11-12-2023
+            # Reason - To send payment details to front end
+            # return Response({"order_no": tran.order_no, 'cart': cartdata,'purchased_products':purchased_products_serializer.data})
+            try:
+                payment_details=Payment_Details.objects.get(order_no=tran.order_no)
+                payment_details_serializer=PaymentDetailsSerializer(payment_details)
+                payment_details_object=payment_details_serializer.data
+            except Exception as e:
+                payment_details_object=None
+
+            return Response({"order_no": tran.order_no, 'cart': cartdata,'purchased_products':purchased_products_serializer.data
+                             ,"payment_details":payment_details_object})
+            # Modified by - Ashish Dewangan on 11-12-2023
+            # Reason - To send payment details to front end
+
             # End of code modification by - Ashish Dewangan on 27-11-2023
             # Reason - To send purchased items to frontend
         except:
@@ -542,7 +557,22 @@ class InvoiceSingleget(APIView):
             userbillingDetail.objects.get(id=billing))
         transactionSeri = transactionHistorySerialize(
             Transaction_history.objects.get(order_no=orderno)) 
-        return Response({"history": serialize.data, "shipping": shippingSeri.data, "billing": billingSeri.data, "transaction": transactionSeri.data})
+        
+        # Modified by - Ashish Dewangan on 11-12-2023
+        # Reason - To send payment details to frontend
+        # return Response({"history": serialize.data, "shipping": shippingSeri.data, "billing": billingSeri.data, "transaction": transactionSeri.data})
+        try:
+            payment_details=Payment_Details.objects.get(order_no=orderno)
+            payment_details_serializer=PaymentDetailsSerializer(payment_details)
+            payment_details_object=payment_details_serializer.data
+        except Exception as e:
+            payment_details_object=None   
+
+        return Response({"history": serialize.data, "shipping": shippingSeri.data, "billing": billingSeri.data
+                         , "transaction": transactionSeri.data
+                         , "payment_details":payment_details_object})
+        # End of code modification by - Ashish Dewangan on 11-12-2023
+        # Reason - To send payment details to frontend
 
 
 class transactionget(APIView):

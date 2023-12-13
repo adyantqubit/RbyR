@@ -163,6 +163,17 @@ const Payment = () => {
       if(r.order_no)
       {
         checkoutDetails['orderno'] = r.order_no
+
+         /**
+         * Added by - Ashish Dewangan on 27-11-2023
+         * Reason - To add payment details to checkout details
+         */
+        checkoutDetails['payment_details']=r.payment_details
+        /**
+         * End of code addition by - Ashish Dewangan on 27-11-2023
+         * Reason - To add payment details to checkout details
+         */
+
         /**
          * Added by - Ashish Dewangan on 27-11-2023
          * Reason - To add purchased items to checkout details

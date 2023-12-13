@@ -363,7 +363,6 @@ const UserProfile = () => {
                             placeholder="phone number"
                             value={`${userdata.contact}`}
                             defaultCountry="IN"
-                            
                             className={styles.firstInput}
                             // style={{width:"70%",marginLeft:"15%"}}
                             onChange={e=>{

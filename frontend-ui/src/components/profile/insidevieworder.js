@@ -207,6 +207,17 @@ const InsideOrder = () => {
         "email": "dummy"
       }
 
+      /**
+       * Added by - Ashish Dewangan on 11-12-2023
+       * Reason - To send payment details to invoice page
+       */
+      checkoutDetails['payment_details'] = allData.payment_details
+      checkoutDetails['payment_status'] = allData.transaction.payment_status
+      /**
+       * End of code addition by - Ashish Dewangan on 11-12-2023
+       * Reason - To send payment details to invoice page
+       */
+
       var car = []
       for (const produc of allData.history) {
         var p = product.filter(p => p.id == produc.product_id)[0]
@@ -304,9 +315,21 @@ const InsideOrder = () => {
                   <span className={style.userinfoText}>Order No:<span className={style.userinfoText2}> {orderid}</span></span>   
                 </span>
                 <span style={{alignSelf:"end"}}>
-                  <Button className={style.userInfoButton} onClick={showModal}>
+                  {/* Modified by - Ashish Dewangan on 11-12-2023
+                  Reason - Show UPI Scanner button only when payment status is pending */}
+                {/* <Button className={style.userInfoButton} onClick={showModal}>
                     UPI Scanner
-                  </Button>
+                </Button> */}
+                  {allData?.transaction?.payment_status=="pending"?
+                    <Button className={style.userInfoButton} onClick={showModal}>
+                    UPI Scanner
+                    </Button>
+                  :
+                    <div></div>
+                  }
+                  {/* End of code modification by - Ashish Dewangan on 11-12-2023
+                  Reason - Show UPI Scanner button only when payment status is pending */}
+                  
                   <Modal title="Scan To Pay" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                     {/* Addition by Om Shirvastava on 27-11-23
                     Reason : Set the color */}

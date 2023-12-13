@@ -11,6 +11,7 @@ from django.core.validators import MinLengthValidator,MaxValueValidator
 from django.core.exceptions import ValidationError
 from django.utils.timezone import now
 from ckeditor.fields import RichTextField
+from django.core.files.base import ContentFile
 
 
 
@@ -721,7 +722,37 @@ class Transaction_history(models.Model):
                  pro.save() 
              if product.size=="Extra Extra Extra Large":
                  pro.XXXL+=product.quantity 
-                 pro.save()         
+                 pro.save()
+
+        # Added by - Ashish Dewangan on 11-12-2023
+        # Reason - To save payment details to Payment_Details table when payment_status is paid  
+        if self.payment_status == "paid":
+             try:
+                payment_details=Payment_Details.objects.filter(order_no=self.order_no).first()
+                if payment_details is None:
+                     online_qr_details = Online_Qr.objects.first()
+                     if online_qr_details:
+
+                          from django.db import transaction
+                          try:
+                            with transaction.atomic():
+                                payment_details_object=Payment_Details()
+                                payment_details_object.order_no=self.order_no
+                                payment_details_object.name=online_qr_details.name
+                                payment_details_object.bank_name=online_qr_details.bank_name
+                                payment_details_object.account_number=online_qr_details.account_number
+                                payment_details_object.upi_id=online_qr_details.upi_id
+                                payment_details_object.contact_number=online_qr_details.contact_number
+                                payment_details_object.save()
+
+                          except Exception as transaction_error:
+                                print("Exception occured whitle Transaction",transaction_error)
+                          
+             except Exception as e:
+                print("Exception occured while saving transacetion",e)
+        # End of code addition by - Ashish Dewangan on 11-12-2023
+        # Reason - To save payment details to Payment_Details table when payment_status is paid
+                 
         super().save(*args,**kwargs)
 
     #Added by Ashish Dewangan on 28-11-2022
@@ -732,7 +763,18 @@ class Transaction_history(models.Model):
             verbose_name_plural = "Transaction Histories"
     #End of code addition              
     
-
+# Added by - Ashish Dewangan on 11-12-2023
+# Reason - To save payment details        
+class Payment_Details(models.Model):
+    order_no=models.BigIntegerField(null=True,blank=True)
+    name=models.CharField(max_length=50,null=True,blank=True)
+    bank_name=models.CharField(max_length=30,null=True,blank=True)
+    account_number=models.CharField(max_length=18,null=True,blank=True)
+    upi_id=models.CharField(max_length=50,null=True,blank=True)
+    contact_number=models.CharField(max_length=20,validators=[validate_phone_number],null=True,blank=True)
+# End of code addition by - Ashish Dewangan on 11-12-2023
+# Reason - To save payment details    
+    
 
 class Online_Qr(models.Model):
     # Modification and addition by Om Shrivastava on 11-12-23

@@ -73,8 +73,13 @@ class UserLoginSerializer(serializers.ModelSerializer):
         
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
-        model=User   
-        fields=['id','email','name','contact_number']             
+        model=User  
+        # Modified by - Ashish Dewangan on 11-12-2023
+        # Reason - To send is_active to frontend
+        # fields=['id','email','name','contact_number']  
+        fields=['id','email','name','contact_number',"is_active"]             
+        # End of code modification by - Ashish Dewangan on 11-12-2023
+        # Reason - To send is_active to frontend
         
         
 class UserChangePasswordSerializer(serializers.ModelSerializer):
@@ -309,6 +314,15 @@ class transactionHistorySerialize(serializers.ModelSerializer):
        class Meta:
         model=Transaction_history
         fields="__all__"     
+
+# Added by - Ashish Dewangan on 11-12-2023
+# Reason - To serialize payment details
+class PaymentDetailsSerializer(serializers.ModelSerializer):
+         class Meta:
+           model=Payment_Details
+           fields="__all__"        
+# End of code addition by - Ashish Dewangan on 11-12-2023
+# Reason - To serialize payment details           
           
 class QrDetailSerializer(serializers.ModelSerializer):
          class Meta:

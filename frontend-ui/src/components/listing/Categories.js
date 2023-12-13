@@ -18,12 +18,40 @@ const Categories = () => {
     const [list, setList] = useState(null)
     const nav = useNavigate()
 
+    /**
+     * Added by - Ashish Dewangan on 11-12-2023
+     * Reason - To render category after deciding wherter to show menu as images or as instant filter
+     */
+    const [renderCategory,setRenderCategory] = useState(false)
+    /**
+     * End of code addition by - Ashish Dewangan on 11-12-2023
+     * Reason - To render category after deciding wherter to show menu as images or as instant filter
+     */
+
     // extracting all child menu of parent menu from menu list 
     useEffect(() => {
         setList(menus?.filter(m => Object.keys(m)[0] === parent)[0])
         window.scrollTo(0,0)
     }, [parent, menus])
 
+
+    /**
+     * Added by - Ashish Dewangan on 11-12-2023
+     * Reason - Method to decide wherter to show menu as images or as instant filter 
+     */
+    useEffect(()=>{
+        if(list!=null){
+          if(list.shownInstFilter==true){
+            nav(`/Listing/${parent}/${0}`)
+          }else{
+            setRenderCategory(true)
+          }
+        }
+      },[list])
+    /**
+     * End of code addition by - Ashish Dewangan on 11-12-2023
+     * Reason - Method to decide wherter to show menu as images or as instant filter 
+     */
 
     // jump into product listing page according to menu instant filter showing condition
     function jumpIntoProductPage(s){
@@ -58,7 +86,16 @@ const Categories = () => {
                     <div className={style.cardContainer}>
 
                         {/* listing all category of parent menu */}
-                        {list != null ? list[`${parent}`]?.map(s =>
+                        {/*
+                        * Added by - Ashish Dewangan on 11-12-2023
+                        * Reason - To render category after deciding wherter to show menu as images or as instant filter
+                        */}
+                        {/* {list != null ? list[`${parent}`]?.map(s => */}
+                        {renderCategory==true &&  list != null ? list[`${parent}`]?.map(s =>
+                        /*
+                        * End of code addition by - Ashish Dewangan on 11-12-2023
+                        * Reason - To render category after deciding wherter to show menu as images or as instant filter
+                        */
                             <div className={style.card}>
                                 <img className={style.img} src={ config.staticBaseURL+ s.img} />
                                 <div className={style.absoluteBox}>

@@ -75,6 +75,24 @@ const ListPage = () => {
     setList(menus?.filter((m) => Object.keys(m)[0] === parent)[0]);
   }, [parent, menus]);
 
+  /**
+   * Added by - Ashish Dewangan on 11-12-2023
+   * Reason - Method to decide wherter to show menu as images or as instant filter 
+   */
+  useEffect(()=>{
+    if(list!=null){
+        if(list.shownInstFilter==false){
+          if(!category || category=="0"){
+          nav(`/categories/${parent}`)
+        }
+      }
+    }
+  },[list])
+  /**
+   * End of code addition by - Ashish Dewangan on 11-12-2023
+   * Reason - Method to decide wherter to show menu as images or as instant filter 
+   */
+
   useEffect(() => {
     window.scrollTo(0, 0);
     window.onpopstate = () => {
