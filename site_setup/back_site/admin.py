@@ -184,6 +184,12 @@ class LikedAdmin(admin.ModelAdmin):
     # End of code additon by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
 
+    # Added by - Ashish Dewangan on 14-12-2023
+    # Reason - To add filter according to menu and sub menu
+    list_filter=("item__upper_menu","item__subMenu")
+    # End of code addition by - Ashish Dewangan on 14-12-2023
+    # Reason - To add filter according to menu and sub menu
+
     readonly_fields=("item","user_no")
     ordering=("item__title",)
     search_fields=("item__title","user_no__name","user_no__email")
@@ -365,7 +371,14 @@ class userbillingDetailAdmin(admin.ModelAdmin):
 
     ordering=("user_id",)
     list_filter=("city","state","country")
-    search_fields=("firstname","lastname","city","state","country")
+
+    # Modified by - Ashish Dewangan on 14-12-2023
+    # Reason - Makde phone number and email searchable
+    # search_fields=("firstname","lastname","city","state","country")
+    search_fields=("firstname","lastname","city","state","country","number","user_id__email")
+    # End of code modification by - Ashish Dewangan on 14-12-2023
+    # Reason - Makde phone number and email searchable
+
     list_per_page=10
     def has_add_permission(self, request):
         return False
@@ -395,6 +408,13 @@ class userbillingDetailAdmin(admin.ModelAdmin):
 # End of code modification
 
 
+# Added by - Ashish Dewangan on 14-12-2023
+# Reason - To show only 30 characters for long street name
+def show_short_street_name(obj):
+    return Truncator(obj.street).chars(30)
+# End of code addition by - Ashish Dewangan on 14-12-2023
+# Reason - To show only 30 characters for long street name
+
 # Commented and modified by Ashish Dewangan on 27-11-2022
 # Reason - To customize admin panel
 # admin.site.register(usershippingDetail)
@@ -405,15 +425,37 @@ class usershippingDetailAdmin(admin.ModelAdmin):
     # Reason - Added a button to view details of a row
     # list_display=("user_id","firstname","lastname","street","houseno","city"
     # ,"state","zipcode","country","number","isSelected")
-    list_display=("action","user_id","firstname","lastname","street","houseno","city"
+
+    # Modified by - Ashish Dewangan on 14-12-2023
+    # Reason - To show only 30 characters for long street name
+    # list_display=("action","user_id","firstname","lastname",street,"houseno","city"
+    # ,"state","zipcode","country","number","isSelected")
+    list_display=("action","user_id","firstname","lastname",show_short_street_name,"houseno","city"
     ,"state","zipcode","country","number","isSelected")
+    # End of code modification by - Ashish Dewangan on 14-12-2023
+    # Reason - To show only 30 characters for long street name
+    
     list_display_links=("action",)
     # End of code additon by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
 
-    ordering=("user_id",)
+    # Modified by - Ashish Dewangan on 14-12-2023
+    # Reason - To show latest address on top
+    # ordering=("user_id",)
+    ordering=("-id",)
+    # End of code modification by - Ashish Dewangan on 14-12-2023
+    # Reason - To show latest address on top
+
+
     list_filter=("city","state","country")
-    search_fields=("firstname","lastname","city","state","country")
+
+    # Modified by - Ashish Dewangan on 14-12-2023
+    # Reason - To make email also searchable
+    # search_fields=("firstname","lastname","city","state","country")
+    search_fields=("firstname","lastname","city","state","country","user_id__email")
+    # End of code modification by - Ashish Dewangan on 14-12-2023
+    # Reason - To make email also searchable
+
     list_per_page=10
     def has_add_permission(self, request):
         return False
@@ -421,7 +463,8 @@ class usershippingDetailAdmin(admin.ModelAdmin):
         return False    
     def has_delete_permission(self, request, obj=None) :
         return False
-
+ 
+    
     # Added by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
     def __init__(self, model, admin_site): 
@@ -1108,12 +1151,18 @@ class BridalFormAdmin(admin.ModelAdmin):
     # End of code modification by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
 
+    # Added by - Ashish Dewangan on 14-12-2023
+    # Reason - To make all fields read only
+    readonly_fields = ("firstName","lastName","email","contactNumber","zipCode","dateOfWedding","message","createdDate","termsAndCondition")
+    # End of code addition by - Ashish Dewangan on 14-12-2023
+    # Reason - To make all fields read only
+
     # Modification and addition by Om Shrivastava on 11-12-23
     # Reason : Need to show first data 
     # ordering =("firstName",)
     # End of modification and addition by Om Shrivastava on 11-12-23
     # Reason : Need to show first data  
-    search_fields=("firstName","contactNumber","lastName","email","createdDate","dateOfWedding")
+    search_fields=("firstName","contactNumber","lastName","email","createdDate","dateOfWedding","createdDate")
     list_filter=("dateOfWedding",)
     list_per_page=10
     def has_add_permission(self, request):
@@ -1312,7 +1361,16 @@ class InstagramCollectionAdmin(admin.ModelAdmin):
 #         return not LogoAndCover.objects.exists()
 # End of code modification
 
-
+# Added by - Ashish Dewangan on 14-12-2023
+# Reason - To add rupees sign
+def shipping_charges(obj):
+    return "? %s " % obj.shipping_price if obj.shipping_price else ""
+def subtotal(obj):
+    return "? %s " % obj.subtotal_price if obj.subtotal_price else ""
+def grand_total(obj):
+    return "? %s " % obj.grand_total if obj.grand_total else ""
+# End of code modification by - Ashish Dewangan on 14-12-2023
+# Reason - To add rupees sign
 # Commented and modified by Ashish on 28-11-2022
 # To customize admin panel
 #admin.site.register(Transaction_history)
@@ -1332,9 +1390,18 @@ class Transaction_historyAdmin(admin.ModelAdmin):
     # # End of addition by Om Shrivastava on 05-12-23
     # # Reason : Add the field
     # )
-    list_display=("action","order_no","user_no","shipping_price","subtotal_price","grand_total","payment_status","date"
+
+    # Modified by - Ashish Dewangan on 14-12-2023
+    # Reason - To add rupees sign in front of price
+    # list_display=("action","order_no","user_no","shipping_price","subtotal_price","grand_total","payment_status","date"
+    #               ,'payment_status'
+    # )
+    list_display=("action","order_no","user_no",shipping_charges,subtotal,grand_total,"payment_status","date"
                   ,'payment_status'
     )
+    # End of code modification by - Ashish Dewangan on 14-12-2023
+    # Reason - To add rupees sign in front of price
+
     list_display_links=("action",)
     # End of code additon by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
@@ -1356,7 +1423,14 @@ class Transaction_historyAdmin(admin.ModelAdmin):
     
     ordering=("-order_no","date")
     list_filter=("payment_status","date")
-    search_fields=("user_no__name",)
+
+    # Modified by - Ashish Dewangan on 14-12-2023
+    # Reason - To have search functionality enabled for email and order no
+    # search_fields=("user_no__name",)
+    search_fields=("user_no__name","user_no__email","order_no")
+    # End of code modification by - Ashish Dewangan on 14-12-2023
+    # Reason - To have search functionality enabled for email and order no
+
     list_per_page=10
     def has_add_permission(self, request):
         return False
@@ -1381,6 +1455,9 @@ class Transaction_historyAdmin(admin.ModelAdmin):
     # End of code addition by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
 
+    
+    
+    
 # End of code modification
 
 
@@ -1578,7 +1655,7 @@ class CustomTailoredFormAdmin(admin.ModelAdmin):
     # Modification and addition by Om shrivastava on 13-12-23
     # Reason : Need to set the readonly field of the product id
     # ordering=("firstName",)
-    readonly_fields = ('product_id','product_name')
+    # readonly_fields = ('product_id','product_name')
     # End of modification and addition by Om shrivastava on 13-12-23
     # Reason : Need to set the readonly field of the product id
     list_per_page = 10
@@ -1803,13 +1880,29 @@ class subMenu_Detail(admin.ModelAdmin):
     # Added by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
     # list_display=("sub","get_menu")
-    list_display=("action","sub","get_menu")
+    
+    # Modified by - Ashish Dewangan on 14-12-2023
+    # Reason - To display sub as sub menu and get menu as menu
+    # list_display=("action","sub","get_menu")
+    list_display=("action","sub_menu","menu")
+    # End of code modification by - Ashish Dewangan on 14-12-2023
+    # Reason - To display sub as sub menu and get menu as menu
+
     list_display_links=("action",)
     # End of code additon by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
 
-    def get_menu(self, obj):
+    # Modified by - Ashish Dewangan on 14-12-2023
+    # Reason - To display sub as sub menu and get menu as menu
+    # def get_menu(self, obj):
+    #     return obj.Menu.menu
+    def sub_menu(self,obj):
+        return obj.sub
+    def menu(self, obj):
         return obj.Menu.menu
+    # End of code modification by - Ashish Dewangan on 14-12-2023
+    # Reason - To display sub as sub menu and get menu as menu
+    
     def get_form(self, request, obj, **kwargs):
         form = super(subMenu_Detail, self).get_form(request, obj, **kwargs)
         form.base_fields['Menu'].label_from_instance = lambda inst: "{}".format(inst.menu)

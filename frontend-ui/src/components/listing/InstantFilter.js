@@ -4,6 +4,7 @@
 import React from 'react'
 import { CartState } from '../../context'
 import style from './instantFilter.module.css'
+import {MdOutlineCheckBoxOutlineBlank } from "react-icons/md"
 import {TiTick} from "react-icons/ti"
 
 const InstantFilter = () => {    
@@ -26,10 +27,11 @@ const InstantFilter = () => {
 
     return (
         <>
-            <div className={style.container}>
+        {/* Modified by - Ashish Dewangan on 14-12-2023
+        Reason - To hand long text size */}
+            {/* <div className={style.container}>
                 <div className={style.heading}>FILTER</div>
 
-                {/* mapping all available category */}
                 {allCategoryAvai ?
                     allCategoryAvai.map(c => {
                         return selectedCategory.indexOf(c.toLowerCase()) == -1 ?
@@ -38,7 +40,21 @@ const InstantFilter = () => {
                     }
                     ) : null}
 
+            </div> */}
+            <div className={style.container} style={{ overflowWrap:"break-word",wordWrap:"break-word",wordBreak:"break-word"}}>
+                <div className={style.heading}>FILTER</div>
+
+                {allCategoryAvai ?
+                    allCategoryAvai.map(c => {
+                        return selectedCategory.indexOf(c.toLowerCase()) == -1 ?
+                            <div className={style.category} onClick={e => toggleSelect(e)}><div className={style.BlnkCircle}><MdOutlineCheckBoxOutlineBlank style={{color:"transparent",fontSize:"20px",width:"10px",height:"10px"}}/></div>{c}</div> :
+                            <div className={style.pointedCategory} onClick={e => toggleSelect(e)}><div className={style.BlnkCircle}><TiTick style={{fontSize:"20px",width:"10px",height:"10px"}}/></div>{c}</div>
+                    }
+                    ) : null}
+
             </div>
+            {/* End of code modification by - Ashish Dewangan on 14-12-2023
+            Reason - To hand long text size */}
         </>
     )
 }

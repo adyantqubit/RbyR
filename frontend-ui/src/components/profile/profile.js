@@ -16,7 +16,6 @@ const MyOrders = () => {
      var [tran,settran]=useState([])
      var [name,setName]=useState([])
      const nav=useNavigate()
-
      useEffect(() => {
       orderget()
       tranget()
@@ -118,8 +117,6 @@ const MyOrders = () => {
                   <div  className={`${style.rowheadText} ${style.rowtexthide}`}></div>
                 </div>
                 {/* <hr style={{color:"black"}}></hr> */}
-
-                
                { orders.map((o,i)=>
                   <div className={style.tablerowheadtable} 
                   style={{ background: i % 2 == 0 ? "white" : "#ebebe6" }}
@@ -131,7 +128,7 @@ const MyOrders = () => {
                     <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].selected_currency_sign}{(tran.filter(t=>t.order_no==o[0].order_no)[0]?.grand_total*o[0].selected_currency_value).toFixed(2)}</div>
                     {/* <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].selected_currency_sign}{(getPrice(o)*o[0].selected_currency_value).toFixed(2)}</div> */}
                     <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].payment_mode.split("p").join(" p")}</div>
-                    <div className={`${style.rowText} ${style.rowtexthide}`}>{tran.filter(t=>t.order_no==o[0].order_no)[0]?.payment_status}</div>
+                    <div className={`${style.rowText} ${style.rowtexthide}`} style={{textTransform:"capitalize"}}>{tran.filter(t=>t.order_no==o[0].order_no)[0]?.payment_status}</div>
                     <div className={style.rowText} style={{textDecoration:"underline",color:"blue",fontSize:"14px",cursor:"pointer",whiteSpace:"nowrap",overflow:"hidden",width:"80px",marginRight:"10px"}} onClick={e=>nav(`/insideorder/${o[0].order_no}`)}>View Order
                     </div>
                     

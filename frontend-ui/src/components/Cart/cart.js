@@ -1142,7 +1142,28 @@ const CartSItem = (props) => {
               className={styles.importantRules}
               // style={{ borderTop: "1px solid rgba(140,140,140,0.7)" }}
             >
-              <h6
+
+              {/* Modified by - Ashish Dewangan on 14-12-2023
+              Reason - Hide important when cart is empty or important points are not added */}
+              {/* <h6
+                style={{
+                  fontSize: "14px",
+                  lineHeight: "22px",
+                  letterSpacing: "1.2px",
+                  marginLeft: "40px",
+                  color: "var(--textColorSecondary)",
+                }}
+              >
+                IMPORTANTS
+              </h6> */}
+
+              {
+                cart.length > 0 && (
+                  ( ImportantRules.point1 != null ) || 
+                  ( ImportantRules.point2 != null ) || 
+                  ( ImportantRules.point3 != null ) )
+               ?
+                <h6
                 style={{
                   fontSize: "14px",
                   lineHeight: "22px",
@@ -1153,6 +1174,11 @@ const CartSItem = (props) => {
               >
                 IMPORTANTS
               </h6>
+              :
+              null
+              }
+              {/* End of code modification by - Ashish Dewangan on 14-12-2023
+              Reason - Hide important when cart is empty or important points are not added */}
               <ul
                 style={{
                   listStyleType: "disc",
@@ -1241,9 +1267,11 @@ const CartSItem = (props) => {
                     </li>
                   </div>
                 ) : null}
+                {/* Commented by - Ashish Dewangan on 14-12-2023
+                Reason - Contact us and delivery policy is not required here */}
                 {/* End of addition by Om Shrivastava on 09-11-23
                 Reason : Apply the condition when data is not show there */}
-                <div style={{ display: "flex" }}>
+                {/* <div style={{ display: "flex" }}>
                   <BsDot
                     fontSize={20}
                     style={{ minWidth: "20px", minHeight: "20px" }}
@@ -1282,7 +1310,9 @@ const CartSItem = (props) => {
                       Shipping Policy
                     </Link>
                   </li>
-                </div>
+                </div> */}
+                {/* End of comment by - Ashish Dewangan on 14-12-2023
+                Reason - Contact us and delivery policy is not required here */}
               </ul>
             </div>
           ) : null}

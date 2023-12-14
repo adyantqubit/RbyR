@@ -143,9 +143,34 @@ const handleButtonClicknum = (msg) => {
        await ShippingUpdateApi({access,billingData}).then(r=>{
         //if any response come this update shipping detail and re call shipping api to update new list
             if(r)
-             {   window.scrollTo(0,0)
-                setshipEditCond(!shipEditcond)
-                shippingDetails()
+             {  
+                
+                /**
+                 * Modified by - Ashish Dewangan on 14-12-2023
+                 * Reason - If same address already exists then show notification
+                 */
+                // window.scrollTo(0,0)
+                // setshipEditCond(!shipEditcond)
+                // shippingDetails()
+                if(r.error){
+                    notification.error({
+                        message: <div > </div>,
+                        description:
+                          `Same address already exists.`,
+                        className:'popupClass',
+                        duration: 20,
+                        key:1
+                      });
+                }else{
+                    window.scrollTo(0,0)
+                    setshipEditCond(!shipEditcond)
+                    shippingDetails()    
+                } 
+                /**
+                 * End of code modification by - Ashish Dewangan on 14-12-2023
+                 * Reason - If same address already exists then show notification
+                 */
+                
              }
        })
     }

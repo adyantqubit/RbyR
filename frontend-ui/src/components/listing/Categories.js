@@ -106,7 +106,12 @@ const Categories = () => {
                             <div className={style.card}>
                                 <img className={style.img} src={ config.staticBaseURL+ s.img} />
                                 <div className={style.absoluteBox}>
-                                    <div className={style.menu}>{s.category}</div>
+                                    {/* Modifed by - Ashish Dewangan on 14-12-2023
+                                    Reason - To handle long text */}
+                                    {/* <div className={style.menu} >{s.category}</div> */}
+                                    <div className={style.menu} style={{width:"70%", overflowWrap:"break-word",wordWrap:"break-word",wordBreak:"break-all"}}>{s.category}</div>
+                                    {/* End of code modification by - Ashish Dewangan on 14-12-2023
+                                    Reason - To handle long text */}
                                     <button className={style.button} onClick={e => jumpIntoProductPage(s)}>View Products</button>
                                 </div>
                             </div>

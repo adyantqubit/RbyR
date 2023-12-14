@@ -619,6 +619,19 @@ class ShippingUpdateApi(APIView):
     def put(self, request):
         serialize = 6
         ship = request.data
+
+        # Added by - Ashish Dewangan on 14-12-2023
+        # Reason - If address being saved is same as user's other address then return error response
+        existing_shipping_address = usershippingDetail.objects.filter(lastname=ship['lastname'],firstname=ship['firstname'],
+                                         street=ship['street'],city=ship['city'],
+                                         houseno=ship['houseno'],state=ship["state"],
+                                         zipcode=ship['zipcode'],country=ship["country"],
+                                         number=ship['number'])
+        if(existing_shipping_address.count()>0):
+            return Response({"error": "Shipping address already exists."})
+        # End of code addition by - Ashish Dewangan on 14-12-2023
+        # Reason - If address being saved is same as user's other address then return error response
+    
         ship_instance = usershippingDetail.objects.get(id=ship['id'])
         ship_instance.firstname = ship['firstname']
         ship_instance.lastname = ship['lastname']

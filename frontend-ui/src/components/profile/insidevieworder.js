@@ -532,7 +532,7 @@ const InsideOrder = () => {
                   <div className={styles.addressInformation} >
                     {allData != null ? <>
                       <div ><span className={styles.userinfoText} style={{fontWeight:'bold'}} >Payment Status</span></div>
-                      <div ><span className={styles.userinfoText} style={{ color: "black" }}>{allData.history[0].payment_mode}-{allData.transaction.payment_status}</span></div>
+                      <div ><span className={styles.userinfoText} style={{ color: "black",textTransform:"capitalize" }} >{allData.history[0].payment_mode}-{allData.transaction.payment_status}</span></div>
                     </> : null}
                   </div>
 

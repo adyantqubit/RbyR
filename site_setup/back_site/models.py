@@ -251,7 +251,14 @@ class subMenu(models.Model):
     image=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
     # End of code
-    sub=models.CharField(max_length=15)
+    
+    # Modified by - Ashish Dewangan on 14-12-2023
+    # Reason - To make it unique and increased max length
+    # sub=models.CharField(max_length=15)
+    sub=models.CharField(max_length=30,unique=True,verbose_name="Sub menu")
+    # End of code modification by - Ashish Dewangan on 14-12-2023
+    # Reason - To make it unique and increased max length
+
     Menu=models.ForeignKey(Menus,on_delete=models.CASCADE)
     
      # Added by Rohan - on - 18/2/23
@@ -274,7 +281,14 @@ class subMenu(models.Model):
 
 class product_detail(models.Model):
     id=models.AutoField(primary_key=True)
-    title=models.CharField(max_length=100)
+
+    # Modified by - Ashish Dewangan on 14-12-2023
+    # Reason - To make this field unique
+    # title=models.CharField(max_length=100)
+    title=models.CharField(max_length=100,unique=True)
+    # End of code modification by - Ashish Dewangan on 14-12-2023
+    # Reason - To make this field unique
+
     # about=models.CharField(max_length=300)
     upper_menu=models.ForeignKey(Menus,on_delete=models.CASCADE,null=True,blank=True)
     # Modification and addition by Om Shrivastava on 08-10-23
@@ -375,7 +389,14 @@ class image(models.Model):
     
 class Liked(models.Model):
     item=models.ForeignKey(product_detail,on_delete=models.CASCADE)
-    user_no=models.ForeignKey(User,on_delete=models.CASCADE)
+
+    # Modified by - Ashish Dewangan on 14-12-2023
+    # Reason - Added verbose name
+    # user_no=models.ForeignKey(User,on_delete=models.CASCADE)
+    user_no=models.ForeignKey(User,on_delete=models.CASCADE,verbose_name="User email")
+    # End of code modification by - Ashish Dewangan on 14-12-2023
+    # Reason - Added verbose name
+
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self):
@@ -655,21 +676,39 @@ class product_orders(models.Model):
         verbose_name_plural = "Product Orders"
     #End of code addition
 
+# Modified by - Ashish Dewangan on 14-12-2023
+# Reason - To capitalize paid, pending and cancel
+# status = (
+#     ('paid','paid'),
+#     ('pending','pending'),
+#     ('cancel','cancel'),
+
+# ) 
 status = (
-    ('paid','paid'),
-    ('pending','pending'),
-    ('cancel','cancel'),
+    ('paid','Paid'),
+    ('pending','Pending'),
+    ('cancel','Cancel'),
 
 )    
+# End of code modification by - Ashish Dewangan on 14-12-2023
+# Reason - To capitalize paid, pending and cancel
 
 
 class Transaction_history(models.Model):
     order_no=models.BigIntegerField()
     payment_status=models.CharField(max_length=50,choices=status,default="pending")
-    user_no=models.ForeignKey(User,on_delete=models.CASCADE)    
+    user_no=models.ForeignKey(User,on_delete=models.CASCADE,verbose_name="User email")    
     # coupon_discount=models.BigIntegerField()
-    shipping_price=models.BigIntegerField()
-    subtotal_price=models.BigIntegerField()
+
+    # Modified by - Ashish Dewangan on 14-12-2023
+    # Reason - To add verbose name
+    # shipping_price=models.BigIntegerField()
+    # subtotal_price=models.BigIntegerField()
+    shipping_price=models.BigIntegerField(verbose_name="Shipping charges")
+    subtotal_price=models.BigIntegerField(verbose_name="Subtotal")
+    # End of code modification by - Ashish Dewangan on 14-12-2023
+    # Reason - To add verbose name
+
     # tax=models.BigIntegerField()
     grand_total=models.BigIntegerField()
 
@@ -696,6 +735,7 @@ class Transaction_history(models.Model):
     # End of code addition by - Ashish Dewangan on 29-11-2023
     # Reason - To save shipping details on transaction history
 
+         
     def save(self,*args,**kwargs):
         if (self.payment_status=="cancle"):
           pros= product_orders.objects.filter(order_no=self.order_no)
@@ -939,12 +979,26 @@ class TermAndCondition(models.Model):
     # Modification and addition by Om Shrivastava on 10-11-23
     # Reason : Need to change the richtextfield to charfield
     # content1=RichTextField(null=True,blank=True)
-    content1=models.TextField(null=True,blank=True)
+
+    # Modified by - Ashish Dewangan on 14-12-2023
+    # Reason - To make content1 mandatory field
+    # content1=models.TextField(null=True,blank=True)
+    content1=models.TextField(null=True)
+    # End of code modification by - Ashish Dewangan on 14-12-2023
+    # Reason - To make content1 mandatory field
+
     # End of modification and addition by Om Shrivastava on 10-11-23
     # Reason : Need to change the richtextfield to charfield
     # End of modification and addition by Om Shrivastava on 10-11-23
     # Reason : Need to change the richtextfield to charfield
-    subtitle1=models.CharField(max_length=255)
+
+    # Modified by - Ashish Dewangan on 14-12-2023
+    # Reason - To remove mandatory from subtitle
+    # subtitle1=models.CharField(max_length=255)
+    subtitle1=models.CharField(max_length=255,blank=True)
+    # End of code modification by - Ashish Dewangan on 14-12-2023
+    # Reason - To remove mandatory from subtitle
+
     # Modification and addition by Om Shrivastava on 10-11-23
     # Reason : Need to change the richtextfield to charfield
     # content2=RichTextField(null=True,blank=True)
@@ -1059,7 +1113,14 @@ class RefundPolicy(models.Model):
     # End of modification and addition by Om Shrivastava on 10-11-23
     # Reason : Need to change the richtextfield to charfield
 
-    subtitle1=models.CharField(max_length=255)
+    # Modified by - Ashish Dewangan on 14-12-2023
+    # Reason - Removed mandatory from this field
+    # subtitle1=models.CharField(max_length=255)
+    subtitle1=models.CharField(max_length=255,blank=True)
+    # End of code modification by - Ashish Dewangan on 14-12-2023
+    # Reason - Removed mandatory from this field
+
+
     # Modification and addition by Om Shrivastava on 10-11-23
     # Reason : Need to change the richtextfield to charfield
     # content2=RichTextField(null=True,blank=True)
