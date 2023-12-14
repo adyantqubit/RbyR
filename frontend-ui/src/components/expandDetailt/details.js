@@ -529,7 +529,6 @@ const Details = (props) => {
       setLike([...like, product]);
     }
   }
-
   return (
     <div style={{ maxHeight: "100vh" }} id="scrolling">
       <Navbar />
@@ -907,7 +906,7 @@ const Details = (props) => {
                       onOk={handleCustomTailoredOk}
                       onCancel={handleCustomTailoredCancel}
                     >
-                      <CustomTailoredForm />
+                      <CustomTailoredForm  details = {details}/>
                     </Modal>
 
                     <Modal

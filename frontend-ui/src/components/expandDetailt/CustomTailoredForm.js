@@ -6,7 +6,11 @@ import TextArea from "antd/lib/input/TextArea";
 import { postCustomTailoredDetails } from "../../api/service";
 import customTailoredStyle from "./CustomTailoredForm.module.css";
 
-function CustomTailoredForm() {
+// Addition by Om shrivastava on 13-12-23
+  // Reason : Need to pass the product details data
+function CustomTailoredForm(details) {
+  // End of addition by Om shrivastava on 13-12-23
+  // Reason : Need to pass the product details data
   const { TextArea } = Input;
   const [customTailoredRequestForm] = Form.useForm();
 
@@ -28,6 +32,13 @@ function CustomTailoredForm() {
       hips: formData.hips,
       length: formData.length,
       otherInstructions: formData.otherInstructions,
+    // Addition by Om shrivastava on 13-12-23
+    // Reason : Set the product id and product name
+      product_id:details.details.id,
+      product_name:details.details.title,
+       // End of addition by Om shrivastava on 13-12-23
+      // Reason : Set the product id and product name
+
     };
     const customTailoredPostResponse = await postCustomTailoredDetails(
       customTailoredDetail

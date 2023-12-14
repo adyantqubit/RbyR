@@ -83,7 +83,7 @@ const AboutUs = () => {
                       allowfullscreen="1"
                       width="100%"
                       height="100%"
-                      src={`${response.video_url}?autoplay=1&amp;controls=0&amp;showinfo=0&amp;modestbranding=1&amp;&rel=1&amp;`}
+                      src={response.video_url ?  `${response.video_url}autoplay=1&amp;controls=0&amp;showinfo=0&amp;modestbranding=1&amp;&rel=1&amp;`:null}
                       id="widget2"
                     ></iframe>
                   ) : (

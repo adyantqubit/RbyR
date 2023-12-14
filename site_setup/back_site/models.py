@@ -1329,6 +1329,13 @@ class CustomTailoredForm(models.Model):
     hips=models.CharField(max_length=255,blank=True)
     length=models.CharField(max_length=255,blank=True)
     otherInstructions=models.TextField(default="",blank=True)
+    
+    # Addition by Om Shrivastava on 13-12-23
+    # Reason : Need to add the product id and product name
+    product_id=models.ForeignKey(product_detail,on_delete=models.CASCADE,null=True,blank=True)
+    product_name = models.CharField(max_length=250,null=True,blank=True)
+    # End of Addition by Om Shrivastava on 13-12-23
+    # Reason : Need to add the product id and product name
 
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name

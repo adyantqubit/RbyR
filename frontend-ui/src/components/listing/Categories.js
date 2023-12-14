@@ -78,7 +78,14 @@ const Categories = () => {
                 paddingTop:'2.5%'
             }}
                  className={style.heading}>
-                    <div className={style.headingSection} > ALL COLLECTIONS</div>
+                    <div className={style.headingSection} > 
+                    {/* Modification and addition by Om shrivastava on 13-12-23
+                    Reason : Need to show the parent name */}
+                    {/* ALL COLLECTIONS */}
+                  {parent}
+                   {/* End of modification and addition by Om shrivastava on 13-12-23
+                    Reason : Need to show the parent name */}
+                    </div>
                     <div></div>
                 </div>
 

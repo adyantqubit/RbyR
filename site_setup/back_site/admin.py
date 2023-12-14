@@ -1575,7 +1575,12 @@ class CustomTailoredFormAdmin(admin.ModelAdmin):
     list_filter=("email",)
     sortable_by=("email","contactNumber")
     search_fields=("firstName","lastName","email",'contactNumber')
-    ordering=("firstName",)
+    # Modification and addition by Om shrivastava on 13-12-23
+    # Reason : Need to set the readonly field of the product id
+    # ordering=("firstName",)
+    readonly_fields = ('product_id','product_name')
+    # End of modification and addition by Om shrivastava on 13-12-23
+    # Reason : Need to set the readonly field of the product id
     list_per_page = 10
     def get_form(self, request, obj=None, **kwargs):
         form = super(CustomTailoredFormAdmin, self).get_form(request, obj, **kwargs)
@@ -1595,6 +1600,11 @@ class CustomTailoredFormAdmin(admin.ModelAdmin):
         form.base_fields['hips'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['length'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['otherInstructions'].widget.attrs['style'] = 'width: 100%;'
+        # # Addition by Om Shrivastava on 13-12-23
+        # # Reason : Set the product name full width
+        # form.base_fields['product_name'].widget.attrs['style'] = 'width: 100%;'
+        # # End of addition by Om Shrivastava on 13-12-23
+        # # Reason : Set the product name full width
         return form
     
     # Added by - Ashish Dewangan on 13-12-2023
