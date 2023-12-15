@@ -85,7 +85,10 @@
 .col2{
     width: 40%;
 }
-
+.columnMain{
+    width: 100%;
+    padding: 0 2.5%;
+}
 .head{
     /* padding:0 20%; */
     font-size: 24px;

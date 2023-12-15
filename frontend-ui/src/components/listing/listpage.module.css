@@ -150,7 +150,7 @@ justify-content: space-between;
   padding: 1%  2.5%;
   margin-left: 5%;
   overflow: auto;
-  height: min-content;
+  /* height: min-content; */
   position: sticky;
   top: 0;
   align-items: center;

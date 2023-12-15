@@ -134,7 +134,7 @@ const Payment = () => {
           })
         }
         else {
-          submitAll()
+          submitAll() 
         }
         /**
          * End of code modification by - Ashish Dewangan on 09-12-2023

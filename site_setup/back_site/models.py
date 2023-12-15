@@ -74,7 +74,18 @@ def validate_title(value):
     else:
         raise ValidationError("Title is required.") 
 #End of code addition
-      
+
+
+# Addition by Om Shrivastava on 14-12-23
+# Reason : Add the validation in price field
+def validate_product_price(value):
+    if value<=1500000:
+        return value
+    else:
+        raise ValidationError("Price can't be exceed from 1500000.") 
+# End of Addition by Om Shrivastava on 14-12-23
+# Reason : Add the validation in price field
+
 # Create your models here.
 
 class MyUserManager(BaseUserManager):
@@ -290,11 +301,16 @@ class product_detail(models.Model):
     # Reason - To make this field unique
 
     # about=models.CharField(max_length=300)
-    upper_menu=models.ForeignKey(Menus,on_delete=models.CASCADE,null=True,blank=True)
+    # Modification and addition by Om Shrivastava on 14-12-23
+    # Reason : Need to mandatory this menu field
+    # upper_menu=models.ForeignKey(Menus,on_delete=models.CASCADE,null=True,blank=True)
+    upper_menu=models.ForeignKey(Menus,on_delete=models.CASCADE,null=True)
+    # End of Modification and addition by Om Shrivastava on 14-12-23
+    # Reason : Need to mandatory this menu field
     # Modification and addition by Om Shrivastava on 08-10-23
     # Reason : Need to set the unique property
-    # subMenu=models.ForeignKey(subMenu,on_delete=models.CASCADE,null=True,blank=True)
-    subMenu=models.ForeignKey(subMenu,on_delete=models.CASCADE,null=True,)
+    subMenu=models.ForeignKey(subMenu,on_delete=models.CASCADE,null=True,blank=True)
+    # subMenu=models.ForeignKey(subMenu,on_delete=models.CASCADE,null=True,)
     # End of Modification and addition by Om Shrivastava on 08-10-23
     # Reason : Need to set the unique property
     
@@ -309,25 +325,57 @@ class product_detail(models.Model):
     img_sub3=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100,default="null") 
     like=models.BigIntegerField(default=0, validators=[MaxValueValidator(999999999)])
-    price=models.DecimalField(decimal_places=2,max_digits=10)
-    color=models.CharField(max_length=25,default="blue")
-    description=models.CharField(max_length=300,default="Draped Halter Top With Cutout And Handkerchief Drape")
-    fabric=models.CharField(max_length=50,default="Chiffon")
-    made_in=models.CharField(max_length=30,default="India")
-    style_code=models.CharField(max_length=30,default="AAIR-129-KTH")
-    XS=models.BigIntegerField(default=30,null=True,blank=True)
-    S=models.BigIntegerField(default=30)
-    M=models.BigIntegerField(default=30)
-    L=models.BigIntegerField(default=30)
-    XL=models.BigIntegerField(default=30)
-    XXL=models.BigIntegerField(default=30)
-    XXXL=models.BigIntegerField(default=30)
+    # Modification and addition by Om Shrivastava on 14-12-23
+    # Reason : Set the validation for max 15 lakh price 
+    # price=models.DecimalField(decimal_places=2,max_digits=10)
+    price=models.DecimalField(decimal_places=2,
+                              max_digits=10,
+                                  validators=[MaxValueValidator(1500000)])
+    # End of Modification and addition by Om Shrivastava on 14-12-23
+    # Reason : Set the validation for max 15 lakh price 
+    # Modification and addition by Om Shrivastava on 14-12-23
+    # Reason : Need to remove mandatory and set the default value
+    # color=models.CharField(max_length=25,default="blue")
+    # description=models.CharField(max_length=300,default="Draped Halter Top With Cutout And Handkerchief Drape")
+    # fabric=models.CharField(max_length=50,default="Chiffon")
+    # made_in=models.CharField(max_length=30,default="India")
+    # style_code=models.CharField(max_length=30,default="AAIR-129-KTH")
+    # XS=models.BigIntegerField(default=30,null=True,blank=True)
+    # S=models.BigIntegerField(default=30)
+    # M=models.BigIntegerField(default=30)
+    # L=models.BigIntegerField(default=30)
+    # XL=models.BigIntegerField(default=30)
+    # XXL=models.BigIntegerField(default=30)
+    # XXXL=models.BigIntegerField(default=30)
+    # date = models.DateTimeField(default=now, blank=True)
+    # available=models.BooleanField(default=True)
+
+    color=models.CharField(max_length=25,null=True,blank=True)
+    description=models.CharField(max_length=300,null=True,blank=True)
+    fabric=models.CharField(max_length=50,null=True,blank=True)
+    made_in=models.CharField(max_length=30,null=True,blank=True)
+    style_code=models.CharField(max_length=30,null=True,blank=True)
+    XS=models.BigIntegerField(null=True,blank=True)
+    S=models.BigIntegerField(null=True,blank=True)
+    M=models.BigIntegerField(null=True,blank=True)
+    L=models.BigIntegerField(null=True,blank=True)
+    XL=models.BigIntegerField(null=True,blank=True)
+    XXL=models.BigIntegerField(null=True,blank=True)
+    XXXL=models.BigIntegerField(null=True,blank=True)
     date = models.DateTimeField(default=now, blank=True)
     available=models.BooleanField(default=True)
+    # End of modification and addition by Om Shrivastava on 14-12-23
+    # Reason : Need to remove mandatory and set the default value
     # Modification and addition by Om Shrivastava on 10-12-23
     # Reason : Need to remove the mandatory field
     # shipping_charges=models.BigIntegerField(default=100)
-    shipping_charges=models.BigIntegerField(default=100,null=True,blank=True)
+    shipping_charges=models.BigIntegerField(default=100,null=True,blank=True,
+                                            # Addition by Om Shrivastava on 14-12-23
+                                            # Reason : Set the max value 10000
+                                            validators=[MaxValueValidator(10000)]
+                                            # End of Addition by Om Shrivastava on 14-12-23
+                                            # Reason : Set the max value 10000
+                                            )
     # End of modification and addition by Om Shrivastava on 10-12-23
     # Reason : Need to remove the mandatory field   
     # Modification and addition by Om Shrivastava on 22-10-23
@@ -1204,8 +1252,14 @@ class SocialLink(models.Model):
 #Reason - To create bridal table
 class Bridal(models.Model):
     title=models.CharField(max_length=255,validators=[validate_title])
-    subtitle1=models.TextField(default="",blank=True)
-    subtitle2=models.TextField(default="",blank=True)
+    # Addition by Om Shrivastava on 15-12-23
+    # Reason : Set the max field
+    # subtitle1=models.TextField(default="",blank=True,)
+    # subtitle2=models.TextField(default="",blank=True)
+    subtitle1=models.TextField(default="",blank=True,max_length=20)
+    subtitle2=models.TextField(default="",blank=True,max_length=20)
+    # End of Addition by Om Shrivastava on 15-12-23
+    # Reason : Set the max field
     bridalImage=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)
     #Added by Ashish Dewangan on 28-11-2022
@@ -1416,7 +1470,12 @@ class LogoAndNumber(models.Model):
     # Modification and addition by Om Shrivastava on 28-10-23
     # Reason : Need to change the spelling of the whatsapp number
     # whatsappNmber=models.BigIntegerField(validators=[validate_phone_number])
-    whatsappNmber=models.BigIntegerField(validators=[validate_phone_number],verbose_name="Whatsapp Number")
+    # Modification and addition by Om Shrivastava on 14-12-23
+    # Reason : Set the contact number validation 
+    # whatsappNmber=models.BigIntegerField(validators=[validate_phone_number],verbose_name="Whatsapp Number")
+    whatsappNmber=models.BigIntegerField(validators=[MaxValueValidator(12)],verbose_name="Whatsapp Number")
+    # End of Modification and addition by Om Shrivastava on 14-12-23
+    # Reason : Set the contact number validation 
     # End of Modification and addition by Om Shrivastava on 28-10-23
     # Reason : Need to change the spelling of the whatsapp number
     #Added by Ashish Dewangan on 28-11-2022

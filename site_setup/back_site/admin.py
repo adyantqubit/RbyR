@@ -368,8 +368,11 @@ class userbillingDetailAdmin(admin.ModelAdmin):
     list_display_links=("action",)
     # End of code additon by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
-
-    ordering=("user_id",)
+    # Commeted by Om Shrivastava on 14-12-3
+    # Reason : Need to remove ordering
+    # ordering=("user_id",)
+    # End of commeted by Om Shrivastava on 14-12-3
+    # Reason : Need to remove ordering
     list_filter=("city","state","country")
 
     # Modified by - Ashish Dewangan on 14-12-2023
@@ -522,7 +525,14 @@ class product_ordersAdmin(admin.ModelAdmin):
     # End of addition by Om Shrivastava on 05-12-23
     # Reason : Need to show this field
         "date","payment_mode","price","user_no")
-    search_fields=("product_id__title","user_no__name")
+    search_fields=("product_id__title","user_no__name",
+                #    Addition by Om Shrivastava on 14-12-23
+                #    Reason : Set by Order id
+                "user_no__email",
+                "order_no"
+                # End of addition by Om Shrivastava on 14-12-23
+                #    Reason : Set by Order id
+                   )
 
     # Commented and modified by - Ashish Dewangan on 29-11-2023
     # Reason - To make shipping_charges, product_name and product_image read only

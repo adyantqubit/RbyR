@@ -26,7 +26,7 @@ Reason : Create the globally popup file */
   font-weight: bold;
   font-size: 22px;
   font-family: var(--fontFamily);
-  padding-bottom: 15px;
+  /* padding-bottom: 15px; */
   text-transform: uppercase;
 }
 

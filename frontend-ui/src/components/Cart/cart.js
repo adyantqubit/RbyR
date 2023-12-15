@@ -442,7 +442,27 @@ const CartSItem = (props) => {
           });
           //  firstTimeLoadFunctions()
           // nav("/login")
-        } else {
+        }
+        // Addition by Om Shrivastava on 14-12-23
+        // Reason : Add condition when product is not active
+        else if(r.error_inactive){
+          cartEnd = r.error_inactive
+          cartEnd.map(c => {
+            notification.error({
+              message: <div className='popupClass'>Not available</div>,
+              className:'popupClass',
+              style:{backgroundColor:"#f1cdd9"},
+              description:
+              <span>
+                Product {c.name.toLowerCase()} is not available 
+              </span>,
+              duration: 20,
+            });
+          })
+        }
+        // End of Addition by Om Shrivastava on 14-12-23
+        // Reason : Add condition when product is not active
+        else {
           checkoutDetails["CouponDiscount"] = afterColumnTotalOfferAdd(
             offer,
             cart,

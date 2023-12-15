@@ -275,7 +275,7 @@ const Billing = () => {
                 style={{
                   height: "60px",
                   width: "100%",
-                  paddingBottom: "2px",
+                  // paddingBottom: "2px",
                 }}
               >
                 
@@ -519,6 +519,11 @@ const Billing = () => {
                       className={styles.userinfoText2}
                     >
                       {" "}
+                      {/* Addition by Om Shrivastava on 14-12-23
+                      Reason : Show the zip code */}
+                      {checkoutDetails.billingData.zipcode},{" "}
+                      {/* End of addition by Om Shrivastava on 14-12-23
+                      Reason : Show the zip code */} 
                       {checkoutDetails.billingData.state},{" "}
                       {checkoutDetails.billingData.country},{" "}
                     </div>

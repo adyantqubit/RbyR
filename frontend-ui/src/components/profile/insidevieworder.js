@@ -360,7 +360,9 @@ const InsideOrder = () => {
                            {/* End of Modification and addition by Om Shrivastava on 27-11-23
                               Reason : Change the designing pattern */}
                             </div>
-                            <div style={{ height: "60px", width: "100%",paddingTop:'2px' }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all',fontSize:'11px' }}> Please Confirm To admin After paying 
+                            <div style={{ height: "60px", width: "100%",
+                            // paddingTop:'2px'
+                             }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all',fontSize:'11px' }}> Please Confirm To admin After paying 
                             {/* Modification and addition by Om shhrivastava on 27-11-23
                             Reason : Set the Contact number */}
                             {/* {storeLocatorDetails != null ? parse("PHONE:"+storeLocatorDetails[0]?.phoneNumber) : null} */}
@@ -532,7 +534,7 @@ const InsideOrder = () => {
                   <div className={styles.addressInformation} >
                     {allData != null ? <>
                       <div ><span className={styles.userinfoText} style={{fontWeight:'bold'}} >Payment Status</span></div>
-                      <div ><span className={styles.userinfoText} style={{ color: "black",textTransform:"capitalize" }} >{allData.history[0].payment_mode}-{allData.transaction.payment_status}</span></div>
+                      <div ><span className={styles.userinfoText} style={{ color: "black",textTransform:'capitalize' }}>{allData.history[0].payment_mode}-{allData.transaction.payment_status}</span></div>
                     </> : null}
                   </div>
 

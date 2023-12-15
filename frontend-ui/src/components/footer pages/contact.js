@@ -53,7 +53,7 @@ const Contact = () => {
                   {/* End of Commented by Om Shrivastava on 27-11-23
                       Reason : Set this content in heading    */}
                   <div className={style.contain}>
-                    <div className={`${style.column} ${style.col1}`}>
+                    <div className={contact&&contact.contactUsImage ?  `${style.column} ${style.col1}`:`${style.columnMain}`}>
                       <span className={style.head}>
                         {/* Commented by Om Shrivastava on 27-11-23
                       Reason : Set this content in heading  */}
@@ -98,11 +98,12 @@ const Contact = () => {
                         {/* {parse(contact.content3)} */}
                       </span>
                     </div>
+                    {contact&&contact.contactUsImage ?
+
                     <div className={`${style.column} ${style.col2}`}>
                       {/* Modification and addition by Om Shrivastava on 20-10-23
                     Reason : Need to add right path for the image */}
                       {/* <img  src={config.staticBaseURL+contact.contactUsImage}></img> */}
-                    {contact&&contact.contactUsImage ?
 
                       <img
                         src={
@@ -111,11 +112,12 @@ const Contact = () => {
                           contact?.contactUsImage
                         }
                       ></img>
-                    :null}
 
                       {/* Modification and addition by Om Shrivastava on 20-10-23
                     Reason : Need to add right path for the image */}
                     </div>
+                    :null}
+
                   </div>
                 </>
               );

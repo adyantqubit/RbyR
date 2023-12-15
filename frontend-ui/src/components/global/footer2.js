@@ -291,6 +291,8 @@ function Footer2() {
           </Link>
         </div>
 
+        {socialLinks.length > 0 ? (
+
         <div className={style.column4}>
           <h1 className={style.heading}>FOLLOW US</h1>
           <div className={style.socialLinksTab}>
@@ -379,6 +381,8 @@ function Footer2() {
       <div className={style.icon}><TiSocialInstagram style={{color:"grey",fontSize:"25px",marginLeft:"5px"}}/><span style={{marginTop:"0"}}className={style.span}> Instagram</span></div>
       <div className={style.icon}><FaTwitter style={{color:"grey",fontSize:"25px",marginLeft:"5px"}}/><span style={{marginTop:"0"}}className={style.span}> Twitter</span></div> */}
         </div>
+          ) : null}
+
         <div className={style.column5}>
           <h1 className={style.heading}>SIGN UP FOR UPDATES</h1>
           <div
