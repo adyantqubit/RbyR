@@ -31,6 +31,7 @@ const AboutUs = () => {
     GetWorldOfRRContent();
   }, []);
 
+
   async function GetWorldOfRRContent() {
     await WorldOfRR().then((r) => {
       setResponse(r.about.content);
@@ -52,10 +53,11 @@ const AboutUs = () => {
           </div>
           <div className={style.contain}>
             {/* Paragraph 1*/}
+            {response.top_image &&
             <div className={`${style.TextContainer} ${style.Top2Images}`}>
               <div
                 className={style.InnerImgContainer}
-                style={{ display: "flex", width: "100%" }}
+                style={{ display: "flex", width: "100%",marginBottom:"15px" }}
               >
                 <div className={style.AboutContent}>
                   <div className={style.headerText}>{response.title1}</div>
@@ -64,8 +66,10 @@ const AboutUs = () => {
                 </div>
               </div>
             </div>
+          }
 
             {/* Top content video and images */}
+            {response.top_image &&
             <div className={style.TextContainer}>
               <div
                 // className={style.InnerImgContainer}
@@ -90,7 +94,7 @@ const AboutUs = () => {
                     // Addition and modification by Om shrivastava on 27-11-23
                     // Reason : Set the height and width
                     <div
-                      className={stylee.footerPrivacyNullContent}
+                      // className={stylee.footerPrivacyNullContent}
                       // style={{height:'35vh'}}
                     >
                       <div
@@ -106,7 +110,12 @@ const AboutUs = () => {
                 {/* <ReactPlayer className={style.img1} url='https://youtu.be/bbkBuqC1rU4' /> */}
                 {/* // Modification and addition by Om Shrivastava on 20-10-23
                                 // Reason : When image is not show then certain div is not shown  */}
+
+                {/* Added by - Ashish Dewangan on 15-12-2023
+                Reason - To show image if image url is not null */}
                 {response.top_image ? (
+                /* End of code addition by - Ashish Dewangan on 15-12-2023
+                Reason - To show image if image url is not null */
                   <img
                     className={style.img2}
                     // Modification and addition by Om Shrivastava on 20-10-23
@@ -127,6 +136,7 @@ const AboutUs = () => {
                                 // Reason : When image is not show then certain div is not shown  */}
               </div>
             </div>
+}
 
             {/* commented by Rohan
                             on- 16/2/23 
@@ -177,13 +187,23 @@ const AboutUs = () => {
               <>
                 <div
                   className={style.TextContainer}
-                  style={{ margin: "4% 0%" }}
+                  style={{ margin: "2% 0%" }}
                 >
                   <div className={style.InnerImgContainer}>
                     <div className={style.AboutContent}>
-                      <div className={style.headerText}>{r.title}</div>
+                  {/* Modified by - Ashish Dewangan on 15-12-2023
+                  Reason - Handle empty space on UI if data is not added in backend */}
+                  {/* <div className={style.headerText}>{r.title}</div>
                       <br />
                       <div className={style.para}>{r.description1}</div>
+                      <div className={style.para} style={{ marginTop: "20px" }}>
+                        {r.description2}
+                      </div> */}
+                     {r.title.trim().length>0 && <div className={style.headerText}>{r.title}</div>}
+                     {r.title.trim().length>0 &&
+                      <br />
+                     }
+                      {r.description1.trim().length>0 && <div className={style.para}>{r.description1}</div>}
                       {/* commented by Rohan
                                         on - 16/2/23
                                         reason- hidding 1 paragaraph and showing only 2 */}
@@ -191,20 +211,36 @@ const AboutUs = () => {
                                         {response.description8}
                                         </div> */}
                       {/* end of code */}
-                      <div className={style.para} style={{ marginTop: "20px" }}>
+                      {r.description2.trim().length>0 && <div className={style.para} style={{ marginTop: "20px" }}>
                         {r.description2}
                       </div>
+                      /* End of modification by - Ashish Dewangan on 15-12-2023
+                        Reason - Handle empty space on UI if data is not added in backend */
+                      }
                     </div>
                   </div>
                 </div>
                 {/* commented by rohan - on 18/2/23
                             reason - response frontend is for hardcode images but for backend immage we dont need frontend string */}
+
+                  {/* Modified by - Ashish Dewangan on 15-12-2023
+                  Reason - To show slider if any of the three image is not null */}
+                {/* <ResponsiveSlider
+                  // response="frontend"
+                  img1={r.img1}
+                  img2={r.img2}
+                  img3={r.img3}
+                />             */}
+                {(r.img1 !=null || r.img2 != null || r.img3 != null) &&             
                 <ResponsiveSlider
                   // response="frontend"
                   img1={r.img1}
                   img2={r.img2}
                   img3={r.img3}
                 />
+                }
+                {/* End of code modification by - Ashish Dewangan on 15-12-2023
+                Reason - To show slider if any of the three image is not null */}
                 {/* end of code */}
               </>
             ))}

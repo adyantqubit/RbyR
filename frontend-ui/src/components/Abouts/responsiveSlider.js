@@ -54,9 +54,16 @@ const ResponsiveSlider = (props) => {
         </ImageSlider>
         </>
         :<>
-        <img className={style.sliderImg} src={props.response=="frontend"?props.img1:config.staticBaseURL+props.img1}></img>
+        {/* Modified by - Ashish Dewangan on 16-12-2023
+        Reason - If image was not provided then blank default pic was showing */}
+        {/* <img className={style.sliderImg} src={props.response=="frontend"?props.img1:config.staticBaseURL+props.img1}></img>
         <img className={style.sliderImg} src={props.response=="frontend"?props.img2:config.staticBaseURL+props.img2}></img>
-        <img className={style.sliderImg} src={props.response=="frontend"?props.img3:config.staticBaseURL+props.img3}></img>
+        <img className={style.sliderImg} src={props.response=="frontend"?props.img3:config.staticBaseURL+props.img3}></img> */}
+        {props.img1 && <img className={style.sliderImg} src={props.response=="frontend"?props.img1:config.staticBaseURL+props.img1}></img>}
+        {props.img2 && <img className={style.sliderImg} src={props.response=="frontend"?props.img2:config.staticBaseURL+props.img2}></img>}
+        {props.img3 && <img className={style.sliderImg} src={props.response=="frontend"?props.img3:config.staticBaseURL+props.img3}></img>}
+        {/* End of modification by - Ashish Dewangan on 16-12-2023
+        Reason - If image was not provided then blank default pic was showing */}
         </>
         }
     </div>
