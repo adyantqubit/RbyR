@@ -47,11 +47,19 @@ const ProductListing = () => {
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div className={styles.sub}>Subtotal</div>
           <div className={styles.sub}>
+            
             {currency.sign}
-            {(
+            {/* Modification and addition by Om Shrivastava on 15-12-23
+            Reason : When subtotal is not present then show only 0  */}
+            { afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
+              currency.value ? (
               afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
               currency.value
-            ).toFixed(2)}
+            ).toFixed(2)
+          : "0"
+          }
+            {/*End of modification and addition by Om Shrivastava on 15-12-23
+            Reason : When subtotal is not present then show only 0  */}
           </div>
         </div>
         {(afterColumnTotalOfferAdd(offer, cart, taxRate).shipping)!=0 ? 
@@ -67,10 +75,16 @@ const ProductListing = () => {
           <div className={styles.sub}>Shipping Charges</div>
           <div className={styles.sub}>
             {currency.sign}
-            {(
+             {/* Modification and addition by Om Shrivastava on 15-12-23
+            Reason : When subtotal is not present then show only 0  */}
+            {afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
+              currency.value?
+            (
               afterColumnTotalOfferAdd(offer, cart, taxRate).shipping *
               currency.value
-            ).toFixed(2)}
+            ).toFixed(2):'0'}
+             {/* End of modification and addition by Om Shrivastava on 15-12-23
+            Reason : When subtotal is not present then show only 0  */}
           </div>
         </div>
         :null}
@@ -98,10 +112,16 @@ const ProductListing = () => {
           </div>
           <div className={styles.columnitem1head} style={{ marginTop: "-5px",fontWeight:'600' }}>
             {currency.sign}
-            {(
+            {/* Modification and addition by Om Shrivastava on 15-12-23
+            Reason : When subtotal is not present then show only 0  */}
+            {afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
+              currency.value?
+            (
               afterColumnTotalOfferAdd(offer, cart, taxRate).Grand *
               currency.value
-            ).toFixed(2)}
+            ).toFixed(2):'0'}
+            {/* End of modification and addition by Om Shrivastava on 15-12-23
+            Reason : When subtotal is not present then show only 0  */}
           </div>
         </div>
         <hr style={{ color: "black" }}></hr>

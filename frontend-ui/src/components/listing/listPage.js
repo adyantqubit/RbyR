@@ -362,7 +362,7 @@ Reason : Need to comment the filter functionality */}
           {list != null ? (
             list.shownInstFilter && allCategoryAvai.length > 1 ? (
               <div className={style.instFilter}>
-                <InstantFilter />
+                <InstantFilter /> 
               </div>
             ) : null
           ) : null}

@@ -252,8 +252,8 @@ export function DrawerFooter() {
         // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
         // End of modification and addition by Om shrivastava on 01-12-23
         // REason : Create the popup class to apply the designing
-            duration: 20,
-
+            duration: 10,
+            key:1
           });
         })
       // console.log('if parttt')
@@ -265,7 +265,7 @@ export function DrawerFooter() {
           description:
             <span>Your account is disabled! please contact to our customer support.</span>,
           style: { backgroundColor: "var(--bannerColor)", color: "#212121" },
-          duration: 20,
+          duration: 10,
           key:1
 
         });
@@ -287,7 +287,8 @@ export function DrawerFooter() {
               <span>
                 Product {c.name.toLowerCase()} is not available 
               </span>,
-              duration: 20,
+              duration: 10,
+              key:1
             });
           })
         }

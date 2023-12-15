@@ -20,7 +20,7 @@ import "swiper/css/navigation";
 // Import Swiper styles
 // import './styles.css';
 // import required modules
-import { Pagination, Navigation } from "swiper/modules";
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 function Slideshow() {
   const [index, setIndex] = useState(0);
@@ -125,8 +125,11 @@ function Slideshow() {
           pagination={{
             clickable: true,
           }}
-          autoplay={true}
-          modules={[Pagination, Navigation]}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay, Pagination, Navigation]}
           className="mySwiper"
         >
           {visible.map((item) => (

@@ -610,7 +610,13 @@ class usershippingDetail(models.Model):
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self) -> str:
-         return "User - "+self.firstname+" "+self.lastname+"."
+        #  Modification and addition by Om Shrivastava on 15-12-23
+        #  Reason : Need to remove the dot
+        #  return "User - "+self.firstname+" "+self.lastname+"."
+         return "User - "+self.firstname+" "+self.lastname
+        #  End of modification and addition by Om Shrivastava on 15-12-23
+        #  Reason : Need to remove the dot
+    
     class Meta:
             verbose_name_plural = "User's Shipping Details"
     #End of code addition
@@ -636,7 +642,13 @@ class userbillingDetail(models.Model):
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self) -> str:
-         return "User - "+self.firstname+" "+self.lastname+"."
+        #  Modification and addition by Om Shrivastava on 15-12-23
+        #  Reason : Need to remove the dot
+        #  return "User - "+self.firstname+" "+self.lastname+"."
+         return "User - "+self.firstname+" "+self.lastname
+        # End of modification and addition by Om Shrivastava on 15-12-23
+        #  Reason : Need to remove the dot
+    
     class Meta:
             verbose_name_plural = "User's Billing Details"
     #End of code addition

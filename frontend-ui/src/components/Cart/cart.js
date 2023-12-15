@@ -411,7 +411,8 @@ const CartSItem = (props) => {
               // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
               // End of modification and addition by Om shrivastava on 01-12-23
               // REason : Create the popup class to apply the designing
-              duration: 20,
+              duration: 10,
+              key:1
             });
           });
         } else if (r.error_user) {
@@ -437,7 +438,7 @@ const CartSItem = (props) => {
               backgroundColor: "var(--backgroundColorPrimary)",
               color: "#212121",
             },
-            duration: 20,
+            duration: 10,
             key: 1,
           });
           //  firstTimeLoadFunctions()
@@ -456,7 +457,8 @@ const CartSItem = (props) => {
               <span>
                 Product {c.name.toLowerCase()} is not available 
               </span>,
-              duration: 20,
+              duration: 10,
+              key:1
             });
           })
         }
@@ -621,6 +623,7 @@ const CartSItem = (props) => {
                           <Popconfirm
                             placement="bottomLeft"
                             title={text}
+                            style={{fontFamily:'var(--fontFamily)'}}
                             onConfirm={(e) => confirm(pro)}
                             okText="OK"
                             cancelText="Cancel"
@@ -824,6 +827,8 @@ const CartSItem = (props) => {
                             placement="bottomLeft"
                             title={text}
                             onConfirm={(e) => confirm(pro)}
+                            style={{fontFamily:'var(--fontFamily)'}}
+
                             okText="OK"
                             cancelText="Cancel"
                           >

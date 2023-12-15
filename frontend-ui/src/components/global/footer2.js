@@ -247,7 +247,7 @@ function Footer2() {
           </Link>
         </div>
         <div className={style.column2}>
-          <h1 className={style.heading}>POLICIES</h1>
+          <span className={style.heading}>POLICIES</span>
           <Link
             to="/privacy-policy"
             style={{ textDecoration: "none", color: "white" }}
@@ -384,7 +384,7 @@ function Footer2() {
           ) : null}
 
         <div className={style.column5}>
-          <h1 className={style.heading}>SIGN UP FOR UPDATES</h1>
+          <span className={style.heading}>SIGN UP FOR UPDATES</span>
           <div
             style={{ display: "flex", flexDirection: "row", marginTop: "10px" }}
           >

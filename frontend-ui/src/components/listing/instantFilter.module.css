@@ -82,3 +82,22 @@
     /* End of  Addition by Om shrivastava on 30-11-23
     Reason : Set the font family */
 }
+
+/* Addition by Om Shrivastava on 15-12-23
+Reason : Need to design of the remove filter button */
+.removeFilterBtn{
+    width: 48%;
+    height: 30px; 
+    text-align: center;
+    text-transform: capitalize;
+    color: #212121;
+    font-weight: 600;
+    font-size: 12px;
+    height: 28px;
+    letter-spacing: 1.3px;
+    line-height: 25px;
+    border: 1px solid rgba(140, 140, 140, 0.4);
+    margin-top: 7%;
+}
+/* End of addition by Om Shrivastava on 15-12-23
+Reason : Need to design of the remove filter button */

@@ -95,7 +95,8 @@ const Payment = () => {
                 Product {c.name.toLowerCase()} size {c.size} is out of stock 
               </span>,
               // style: { backgroundColor: "#D2042D", color: "white" },
-              duration: 20,
+              duration: 10,
+              key:1
             });
           })
         }else if(r.error_user){
@@ -104,7 +105,7 @@ const Payment = () => {
             description:
               <span>Your account is disabled! please contact to our customer support.</span>,
             style: { backgroundColor: "var(--bannerColor)", color: "#212121" },
-            duration: 20,
+            duration: 10,
             key:1
   
           });
@@ -129,7 +130,8 @@ const Payment = () => {
               <span>
                 Product {c.name.toLowerCase()} is not available 
               </span>,
-              duration: 20,
+              duration: 10,
+              key:1
             });
           })
         }

@@ -67,6 +67,7 @@
     padding:0 2.5%;
     font-size: 19px;
     font-family: var(--fontFamily);
+    line-height: 22px;
     /* padding-bottom: 15px; */
 }
 .column{

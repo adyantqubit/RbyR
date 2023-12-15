@@ -1665,7 +1665,7 @@ class CustomTailoredFormAdmin(admin.ModelAdmin):
     # Modification and addition by Om shrivastava on 13-12-23
     # Reason : Need to set the readonly field of the product id
     # ordering=("firstName",)
-    # readonly_fields = ('product_id','product_name')
+    readonly_fields = ('product_id','product_name')
     # End of modification and addition by Om shrivastava on 13-12-23
     # Reason : Need to set the readonly field of the product id
     list_per_page = 10
