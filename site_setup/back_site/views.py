@@ -498,8 +498,15 @@ class Invoice(APIView):
             except Exception as e:
                 payment_details_object=None
 
+            # Modified by - Ashish Dewangan on 15-12-2023
+            # Reason - To send payment status to frontend
+            # return Response({"order_no": tran.order_no, 'cart': cartdata,'purchased_products':purchased_products_serializer.data
+            #                  ,"payment_details":payment_details_object})
             return Response({"order_no": tran.order_no, 'cart': cartdata,'purchased_products':purchased_products_serializer.data
-                             ,"payment_details":payment_details_object})
+                             ,"payment_details":payment_details_object,"payment_status":tran.payment_status})
+            # End of modfication by - Ashish Dewangan on 15-12-2023
+            # Reason - To send payment status to frontend
+
             # Modified by - Ashish Dewangan on 11-12-2023
             # Reason - To send payment details to front end
 
@@ -1391,7 +1398,13 @@ class WorldofRRApi(APIView):
      try:
         serialize=worldOfrbyRContentSerializer(WorldOfRByRContent.objects.last())
         about['content']=serialize.data
-        serializer2=worldOfrbyRRowSerializer(worldOfRByRRow.objects.all(),many=True)
+
+        # Commented and modified by - Ashish Dewangan on 15-12-2023
+        # Reason - To show latest data after old data
+        # serializer2=worldOfrbyRRowSerializer(worldOfRByRRow.objects.all(),many=True)
+        serializer2=worldOfrbyRRowSerializer(worldOfRByRRow.objects.all().order_by("id"),many=True)
+        # End of code modification by - Ashish Dewangan on 15-12-2023
+        # Reason - To show latest data after old data
         about['row']=serializer2.data
 
      except:    

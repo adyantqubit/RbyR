@@ -112,6 +112,16 @@ const Context = ({ children }) => {
    * Reason - To store recently viewed products in context
    */
 
+  /**
+   * Added by - Ashish Dewangan on 15-12-2023
+   * Reason - To store details of currently selected item
+   */
+  const [currentSelectedItem,setCurrentSelectedItem] = useState(null)
+  /**
+   * End of code addition by - Ashish Dewangan on 15-12-2023
+   * Reason - To store details of currently selected item
+   */
+
    /**
    * Added by - Ashish Dewangan on 07-12-2023
    * Reason - To fill recently viewed products from localstorage to context variable when page is reloaded
@@ -476,6 +486,16 @@ const Context = ({ children }) => {
       /**
        * End of code addition by - Ashish Dewangan on 07-12-2023
        * Reason - Making recentlyViewedItems and setRecentlyViewedItems available to other pages
+       */
+
+      /**
+       * Added by - Ashish Dewangan on 15-12-2023
+       * Reason - Making currentSelectedItem and setCurrentSelectedItem available to other pages
+       */
+      currentSelectedItem,setCurrentSelectedItem,
+      /**
+       * End of code additon by - Ashish Dewangan on 15-12-2023
+       * Reason - Making currentSelectedItem and setCurrentSelectedItem available to other pages
        */
     }}>
       {children}

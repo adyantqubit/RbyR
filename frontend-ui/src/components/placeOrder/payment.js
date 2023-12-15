@@ -185,6 +185,17 @@ const Payment = () => {
          * End of code addition by - Ashish Dewangan on 27-11-2023
          * Reason - To add purchased items to checkout details
          */
+
+        /**
+         * Added by - Ashish Dewangan on 27-11-2023
+         * Reason - To add payment_status to checkout details
+         */
+        checkoutDetails["payment_status"]=r.payment_status
+        /**
+         * End of code addition by - Ashish Dewangan on 27-11-2023
+         * Reason - To add payment_status to checkout details
+         */
+
         sessionStorage.setItem('checkoutDetails', JSON.stringify(checkoutDetails))
         /**
          * Added by - Ashish Dewangan on 02-12-2023

@@ -89,6 +89,7 @@ const handleButtonClicknum = (msg) => {
          shipTick(s.id)
         // setCond(!cond)
         setDefaultShipping(s)
+        window.scrollTo(0,0)
         // setShippingAddress(shippingAddress.sort((a,b)=>b.id-a.id))
         // console.log(shippingAddress.sort((a,b)=>a.id-b.id))
     }
@@ -385,7 +386,7 @@ function validatesNum(evt) {
                     {shippingAddress.map((s,i)=>(
                         s.isSelected?
                             <div className={styles.columnFirstName} style={{marginBottom:"20px",width:"100%"}} >
-                            <div className={styles.boxAddress} onClick={e=>setAddress(s)} style={{maxWidth:"100%"}}>
+                            <div className={styles.boxAddress}  onClick={e=>setAddress(s)} style={{maxWidth:"100%",backgroundColor:"#f1c5d4"}}>
                                 <div className={styles.addressInformation}  >
                                     <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}> {s.firstname} {s.lastname}</div>
                                     <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}> {s.street} {s.houseno}</div>
@@ -410,7 +411,12 @@ function validatesNum(evt) {
                         s.isSelected==false?
                             <div className={styles.columnFirstName} style={{marginBottom:"20px",width:"100%"}} >
                               <b>  Address {++sno} </b>
-                            <div className={styles.boxAddress} onClick={e=>setAddress(s)} style={{maxWidth:"100%"}}>
+                            {/* modified by - Ashish Dewangan on 15-12-2023
+                            Reason - To add hoverable effect  */}
+                            {/* <div className={styles.boxAddress} onClick={e=>setAddress(s)} style={{maxWidth:"100%"}}> */}
+                            <div className={`${styles.boxAddress} ${styles.hoverableBox}`} onClick={e=>setAddress(s)} style={{maxWidth:"100%"}}>
+                            {/* End of modification by - Ashish Dewangan on 15-12-2023
+                            Reason - To add hoverable effect  */}    
                                 <div className={styles.addressInformation}  >
                                     <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}> {s.firstname} {s.lastname}</div>
                                     <div className={styles.userinfoText} style={{whiteSpace:"nowrap", overflow:"hidden",textOverflow:"ellipsis"}}> {s.street} {s.houseno}</div>

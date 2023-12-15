@@ -1374,11 +1374,11 @@ class InstagramCollectionAdmin(admin.ModelAdmin):
 # Added by - Ashish Dewangan on 14-12-2023
 # Reason - To add rupees sign
 def shipping_charges(obj):
-    return "? %s " % obj.shipping_price if obj.shipping_price else ""
+    return "₹ %s " % obj.shipping_price if obj.shipping_price else ""
 def subtotal(obj):
-    return "? %s " % obj.subtotal_price if obj.subtotal_price else ""
+    return "₹ %s " % obj.subtotal_price if obj.subtotal_price else ""
 def grand_total(obj):
-    return "? %s " % obj.grand_total if obj.grand_total else ""
+    return "₹ %s " % obj.grand_total if obj.grand_total else ""
 # End of code modification by - Ashish Dewangan on 14-12-2023
 # Reason - To add rupees sign
 # Commented and modified by Ashish on 28-11-2022
@@ -1787,7 +1787,12 @@ class UserModelAdmin(BaseUserAdmin):
                 #    Reason : Add the contact number for searching
     list_per_page=10
     fieldsets = (
-        ('user Credentials', {'fields': ('email', 'password')}),
+        # Modified by - Ashish Dewangan on 15-12-2023
+        # Reason - To capitalizer user credentials
+        # ('user Credentials', {'fields': ('email', 'password')}),
+        ('User Credentials', {'fields': ('email', 'password')}),
+        # End of code modification by - Ashish Dewangan on 15-12-2023
+        # Reason - To capitalizer user credentials
         ('Personal info', {'fields': ('name','tc','contact_number')}),
         ('Permissions', {'fields': ('is_admin','is_active')}),
     )

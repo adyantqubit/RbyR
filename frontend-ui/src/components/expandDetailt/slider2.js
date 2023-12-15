@@ -42,7 +42,7 @@ const Slider2 = ({ scrollTop }) => {
 
     //  <Navigate to={`/listing/${id.category}/detail/${id.id}`}/>
   }
-console.log(CategoryProduct)
+
   return (
     <>
       {CategoryProduct && CategoryProduct.length > 1 ? (

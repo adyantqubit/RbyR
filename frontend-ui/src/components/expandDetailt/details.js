@@ -59,7 +59,7 @@ const Details = (props) => {
   const nav = useNavigate();
   const [details, setDetails] = useState(null);
   const [size, setSize] = useState("");
-  const { con, setcon, setCartDrawer, openCartdrawer } = CartState();
+  const { con, setcon, setCartDrawer, openCartdrawer ,currentSelectedItem,setCurrentSelectedItem} = CartState();
   const [sizeCond, setSizecond] = useState(false);
   const [pushData, setPushData] = useState(false);
   const {
@@ -205,6 +205,16 @@ const Details = (props) => {
 
   useEffect(() => {
     if (details) {
+
+      /**
+       * Added by - Ashish Dewangan on 15-12-2023
+       * Reason - To set currently selected item
+       */
+      setCurrentSelectedItem(details)
+      /**
+       * End of code addition by - Ashish Dewangan on 15-12-2023
+       * Reason - To set currently selected item
+       */
       
       /**
        * Commented and modified by - Ashish Dewangan on 07-12-2023

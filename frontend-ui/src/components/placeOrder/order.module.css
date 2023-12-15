@@ -15,6 +15,15 @@
                               'embedded-opentype', and 'svg' */
 }
 
+/* modified by - Ashish Dewangan on 15-12-2023
+Reason - To add hoverable effect  */
+.hoverableBox:hover{
+    background-color: #eaeae4;
+    cursor: pointer;
+}
+/* end of modification by - Ashish Dewangan on 15-12-2023
+Reason - To add hoverable effect  */
+
 .head {
     color: var(--textColorSecondary);
     height: auto;

@@ -263,10 +263,10 @@ const InsideOrder = () => {
       notification.error({
         message: (
           <div style={{  color: "black",fontSize:'13px',fontWeight:'600' }}>
-            Inactive.{" "}
+            Not available{" "}
           </div>
         ),
-        description: `Product is inactive`,
+        description: `Product not available`,
       className:'popupClass',
         duration: 2,
         key: 1,

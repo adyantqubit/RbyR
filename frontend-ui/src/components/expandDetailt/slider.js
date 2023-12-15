@@ -9,10 +9,19 @@ import style from "../listing/listpage.module.css";
 import styles from "./slider.module.css";
 import logo from "../../assets/photos/rts-icon.svg";
 
-import "./recentViewSlider.css"
+import "./recentViewSlider.css";
 
 const Slider = ({ scrollTop }) => {
-  const { CategoryProduct, con, setcon, currency,  recentlyViewedItems,setRecentlyViewedItems } = CartState();
+  const {
+    CategoryProduct,
+    con,
+    setcon,
+    currency,
+    recentlyViewedItems,
+    setRecentlyViewedItems,
+    currentSelectedItem,
+    setCurrentSelectedItem,
+  } = CartState();
   const recentlyViews = [];
 
   /**
@@ -27,10 +36,10 @@ const Slider = ({ scrollTop }) => {
 
   const { id } = useParams();
 
-/**
- * Commented by - Ashish Dewangan on 07-12-2023
- * Reason - Getting recently viewed data differently
- */
+  /**
+   * Commented by - Ashish Dewangan on 07-12-2023
+   * Reason - Getting recently viewed data differently
+   */
   // useEffect(() => {
   //   func();
   // }, []);
@@ -41,13 +50,13 @@ const Slider = ({ scrollTop }) => {
   //       if (i > 0) recentlyViews.push(storage[i]);
   //     }
   //     setRecentlyViewedProducts(recentlyViews);
-      
+
   //   }
   // }
   /**
- * End of code addition by - Ashish Dewangan on 07-12-2023
- * Reason - Getting recently viewed data differently
- */
+   * End of code addition by - Ashish Dewangan on 07-12-2023
+   * Reason - Getting recently viewed data differently
+   */
 
   const responsive = {
     superLargeDesktop: {
@@ -86,10 +95,15 @@ const Slider = ({ scrollTop }) => {
 
   return (
     <>
-    {/* Commented and modified by - Ashish Dewangan on 07-12-2023
+      {/* Commented and modified by - Ashish Dewangan on 07-12-2023
     Reason - mapping data from new array */}
-    {/* {recentlyViewedProducts.length > 0 ? ( */}
-      {recentlyViewedItems.length > 0 ? (
+      {/* {recentlyViewedProducts.length > 0 ? ( */}
+      {/* Modified by - Ashish Dewangan on 15-12-2023
+      Reason - To show recently viewed only if more than one item is displayed */}
+      {/* {recentlyViewedItems.length > 0 ? ( */}
+      {recentlyViewedItems.length > 1 ? (
+        /* End of code modification by - Ashish Dewangan on 15-12-2023
+      Reason - To show recently viewed only if more than one item is displayed */
         // Commented and modified by - Ashish Dewangan on 07-12-2023
         // Reason - mapping data from new array
         <div
@@ -111,98 +125,119 @@ const Slider = ({ scrollTop }) => {
             // Reason : Comment this code
           }}
         >
-          <div className={styles.header} style={{textAlign:'center',fontWeight:'600'}}>RECENTLY VIEWED PRODUCTS</div>
+          <div
+            className={styles.header}
+            style={{ textAlign: "center", fontWeight: "600" }}
+          >
+            RECENTLY VIEWED PRODUCTS
+          </div>
 
           <Carousel cols={4} rows={1} gap={10} style={{ width: "100%" }}>
             {/* {JSON.parse(localStorage.getItem("recentview")) &&
           JSON.parse(localStorage.getItem("recentview")).length > 0 */}
 
-          {/* Commented and modified by - Ashish Dewangan on 09-12-2023
+            {/* Commented and modified by - Ashish Dewangan on 09-12-2023
           Reason - To sort recently viewed items according to their visited time */}
             {/* recentlyViewedProducts
                 .map((cart) => { */}
-            {[].concat(recentlyViewedItems)
-                .sort((a, b) => a.timeOfView > b.timeOfView ? -1 : 1).map((cart) => {
-          {/* End of code addition by - Ashish Dewangan on 09-12-2023
-          Reason - To sort recently viewed items according to their visited time */}        
-              return (
-                <Carousel.Item
-                  style={{ cursor: "pointer", padding: "5px auto" }}
-                >
-                  <img
-                    className={style.img12}
-                    src={config.staticBaseURL + cart.img_main}
-                    // Modification and addition by Om Shrivastava on 16-11-23
-                    // Reason : Fix the image height and width
-                    // style={{width:'350px'}}
-                    // style={{ width: "320px",height:'320px' }}
-                    // End of modification and addition by Om Shrivastava on 16-11-23
-                    // Reason : Fix the image height and width
-                    onClick={(e) => {
-                      openDetail(cart);
-                      scrollTop();
-                    }}
-                  />
-                  <div
-                    style={{
-                      textAlign: "center",
-                      textTransform: "capitalize",
-                      fontWeight: "600",
-                      fontSize: ".8rem",
-                      color: "var(--textColorPrimary)",
-                      // Addition by Om Shrivastava on 29-11-23
-                      // Reason : Add the letterspacing 
-                      letterSpacing:'1px'
-                      // End of Addition by Om Shrivastava on 29-11-23
-                      // Reason : Add the letterspacing
-                    }}
-                    onClick={(e) => {
-                      openDetail(cart);
-                      scrollTop();
-                    }}
-                  >
-                    {/* Modification and addition by Om Shrivastava on 08-12-23
-                    Reason : Show the product name with lowercase  */}
-                    {/* {cart.title} */}
-                    {cart.title.toLowerCase()}
-                    {/*End of modification and addition by Om Shrivastava on 08-12-23
-                    Reason : Show the product name with lowercase  */}
-                  </div>
-                  <div
-                    style={{
-                      textAlign: "center",
-                      fontSize: ".9rem",
-                      fontWeight: "500",
-                      color: "var(--textColorPrimary)",
-                    }}
-                  >
-                    {" "}
-                    {currency.sign} {(cart.price * currency.value).toFixed(2)}
-                  </div>
+            {[]
+              .concat(recentlyViewedItems)
+              .sort((a, b) => (a.timeOfView > b.timeOfView ? -1 : 1))
+              .map((cart) => {
+                {
+                  /* End of code addition by - Ashish Dewangan on 09-12-2023
+                  Reason - To sort recently viewed items according to their visited time */
+                }
 
-                  {/* Commented by Rohan - 16/12/22
+                return (
+                  /**
+                   * Added by - Ashish Dewangan on 15-12-2023
+                   * Reason - To hide currently selected item from recently view
+                   */
+                  cart.id != currentSelectedItem?.id && (
+                    /**
+                     * End of code addition by - Ashish Dewangan on 15-12-2023
+                     * Reason - To hide currently selected item from recently view
+                     */
+                    <Carousel.Item
+                      style={{ cursor: "pointer", padding: "5px auto" }}
+                    >
+                      <img
+                        className={style.img12}
+                        src={config.staticBaseURL + cart.img_main}
+                        // Modification and addition by Om Shrivastava on 16-11-23
+                        // Reason : Fix the image height and width
+                        // style={{width:'350px'}}
+                        // style={{ width: "320px",height:'320px' }}
+                        // End of modification and addition by Om Shrivastava on 16-11-23
+                        // Reason : Fix the image height and width
+                        onClick={(e) => {
+                          openDetail(cart);
+                          scrollTop();
+                        }}
+                      />
+                      <div
+                        style={{
+                          textAlign: "center",
+                          textTransform: "capitalize",
+                          fontWeight: "600",
+                          fontSize: ".8rem",
+                          color: "var(--textColorPrimary)",
+                          // Addition by Om Shrivastava on 29-11-23
+                          // Reason : Add the letterspacing
+                          letterSpacing: "1px",
+                          // End of Addition by Om Shrivastava on 29-11-23
+                          // Reason : Add the letterspacing
+                        }}
+                        onClick={(e) => {
+                          openDetail(cart);
+                          scrollTop();
+                        }}
+                      >
+                        {/* Modification and addition by Om Shrivastava on 08-12-23
+                    Reason : Show the product name with lowercase  */}
+                        {/* {cart.title} */}
+                        {cart.title.toLowerCase()}
+                        {/*End of modification and addition by Om Shrivastava on 08-12-23
+                    Reason : Show the product name with lowercase  */}
+                      </div>
+                      <div
+                        style={{
+                          textAlign: "center",
+                          fontSize: ".9rem",
+                          fontWeight: "500",
+                          color: "var(--textColorPrimary)",
+                        }}
+                      >
+                        {" "}
+                        {currency.sign}{" "}
+                        {(cart.price * currency.value).toFixed(2)}
+                      </div>
+
+                      {/* Commented by Rohan - 16/12/22
                       Reason - Adding representation of Reading to ship items  */}
 
-                  {cart.ready_to_ship ? (
-                    <div
-                      className={styles.readyContainer}
-                      onClick={(e) => {
-                        openDetail(cart);
-                        scrollTop();
-                      }}
-                      style={{ cursor: "pointer" }}
-                    >
-                      <div className={styles.readyBox}>
-                        <img src={logo} className={styles.readyIcon} />
-                        Ready To Ship
-                      </div>
-                    </div>
-                  ) : null}
+                      {cart.ready_to_ship ? (
+                        <div
+                          className={styles.readyContainer}
+                          onClick={(e) => {
+                            openDetail(cart);
+                            scrollTop();
+                          }}
+                          style={{ cursor: "pointer" }}
+                        >
+                          <div className={styles.readyBox}>
+                            <img src={logo} className={styles.readyIcon} />
+                            Ready To Ship
+                          </div>
+                        </div>
+                      ) : null}
 
-                  {/* End of code */}
-                </Carousel.Item>
-              );
-            })}
+                      {/* End of code */}
+                    </Carousel.Item>
+                  )
+                );
+              })}
 
             {/* <div>.</div> */}
           </Carousel>

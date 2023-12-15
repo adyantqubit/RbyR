@@ -1604,6 +1604,13 @@ class WorldOfRByRContent(models.Model):
     # End of code addition by - Ashish Dewangan on 02-12-2023
     # Reason - To display title when displaying row
 
+    # Added by - Ashish Dewangan on 15-12-2023
+    # Reason - To changed display name 
+    class Meta:
+            verbose_name_plural = "World of RbyR Section 1"      
+    # Added by - Ashish Dewangan on 02-12-2023
+    # Reason - To changed display name
+
     # --------------------------
     # commented by Rohan-on 16/2/23
     # reason-removing this rows to this table and making new table to making dynamic row to show
@@ -1645,15 +1652,28 @@ class WorldOfRByRContent(models.Model):
     
     
 class worldOfRByRRow(models.Model):
+    # Modified by - Ashish Dewangan on 15-12-2023
+    # Reason - Made these fields optional
+    # img1=models.ImageField(upload_to='Images/', height_field=None,\
+    #        width_field=None, max_length=100)
+    # img2=models.ImageField(upload_to='Images/', height_field=None,\
+    #        width_field=None, max_length=100)
+    # img3=models.ImageField(upload_to='Images/', height_field=None,\
+    #        width_field=None, max_length=100)
+    # title=models.CharField(max_length=50)
+    # description1=models.TextField()
+    # description2=models.TextField()
     img1=models.ImageField(upload_to='Images/', height_field=None,\
-           width_field=None, max_length=100)
+           width_field=None, max_length=100, blank=True)
     img2=models.ImageField(upload_to='Images/', height_field=None,\
-           width_field=None, max_length=100)
+           width_field=None, max_length=100, blank=True)
     img3=models.ImageField(upload_to='Images/', height_field=None,\
-           width_field=None, max_length=100)
-    title=models.CharField(max_length=50)
-    description1=models.TextField()
-    description2=models.TextField()
+           width_field=None, max_length=100, blank=True)
+    title=models.CharField(max_length=50, blank=True)
+    description1=models.TextField(blank=True)
+    description2=models.TextField(blank=True)
+    # End of code modification by - Ashish Dewangan on 15-12-2023
+    # Reason - Made these fields optional
 
     
     # Added by - Ashish Dewangan on 02-12-2023
@@ -1662,6 +1682,13 @@ class worldOfRByRRow(models.Model):
          return self.title
     # End of code addition by - Ashish Dewangan on 02-12-2023
     # Reason - To display title when displaying row
+
+    # Added by - Ashish Dewangan on 15-12-2023
+    # Reason - To changed display name 
+    class Meta:
+            verbose_name_plural = "World of RbyR Section 2"      
+    # Added by - Ashish Dewangan on 02-12-2023
+    # Reason - To changed display name 
     
 class Feature(models.Model):
     magzine_img=models.ImageField(upload_to='Images/', height_field=None,\

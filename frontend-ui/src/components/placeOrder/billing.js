@@ -146,7 +146,7 @@ const Billing = () => {
               height: "160px",
               marginTop: "2px",
               border: "1px solid black",
-              
+              width:"auto"
             }}
           >
             { onlineDetail.qr_img != null ? (
@@ -320,7 +320,7 @@ const Billing = () => {
         height: "160px",
         marginTop: "2px",
         border: "1px solid black",
-        
+        width:"auto"
       }}
     >
       
@@ -502,7 +502,6 @@ const Billing = () => {
                       className={styles.userinfoText2}
                     >
                       {" "}
-                      {console.log(checkoutDetails.billingData)}
                       {checkoutDetails.billingData.firstname}{" "}
                       {checkoutDetails.billingData.lastname}
                     </div>
