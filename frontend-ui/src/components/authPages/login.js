@@ -176,26 +176,26 @@ const Login = () => {
 	// 	setTimeout(error.none_field_errors=="", 2 * 60 * 1000); // 2 minutes in milliseconds
 	// }
 
-	if (error.none_field_errors){
-		notification.open({
-			message: "Email or Password is not valid",
-			// Modification and addition by Om shrivastava on 01-12-23
-			// REason : Create the popup class to apply the designing
-			className:'popupClass',
-			// style:{marginTop:"20px"},
-			// style:{backgroundColor: "#f1cdd9",
-			// padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
-			// End of modification and addition by Om shrivastava on 01-12-23
-			// REason : Create the popup class to apply the designing
-			description:
-			  '',
-			onClick: () => {
-			},
-			key:5,
-			duration:20
+	// if (error.none_field_errors){
+	// 	notification.open({
+	// 		message: "Email or Password is not valid",
+	// 		// Modification and addition by Om shrivastava on 01-12-23
+	// 		// REason : Create the popup class to apply the designing
+	// 		className:'popupClass',
+	// 		// style:{marginTop:"20px"},
+	// 		// style:{backgroundColor: "#f1cdd9",
+	// 		// padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
+	// 		// End of modification and addition by Om shrivastava on 01-12-23
+	// 		// REason : Create the popup class to apply the designing
+	// 		description:
+	// 		  '',
+	// 		onClick: () => {
+	// 		},
+	// 		key:5,
+	// 		duration:20
 	
-		  });
-	}
+	// 	  });
+	// }
 
 	function Notify() {
 		toast.error(<div style={{fontSize:'14px'}}>Email or Password is not valid
@@ -322,14 +322,14 @@ const Login = () => {
 							{error.email ? <Typography style={{ color: "red", paddingLeft: "50px", fontSize: "12px", }}>{error.email[0]}</Typography> : " "}
 							{/* Commented by Om Shrivastava on 11-12-23 */}
 							{/* Reason : Need to remove this validation message  */}
-							{/* {error.none_field_errors ? 
+							{error.none_field_errors ? 
 							<Typography style={{ color: "red", width: "80%", paddingLeft: "50px", 
 							marginTop: "5px", fontSize: "12px", lineHeight: "12px" }}>
 								{error.none_field_errors[0]}
 							<Link to="/custom" style={{ color: "blue", fontSize: "12px", 
 							textDecoration: "underline" }}> Contact us</Link>
 							</Typography> 
-							: " "} */}
+							: " "}
 							{/* Commented by Om Shrivastava on 11-12-23 */}
 							{/* Reason : Need to remove this validation message  */}
 							<span class="inpu3" tabIndex={-1} style={{ marginTop: "20px", height: "40px", marginLeft: "15%", background: "white", border: "1px solid black" }}>

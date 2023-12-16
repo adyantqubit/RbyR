@@ -181,4 +181,14 @@ input:-webkit-autofill {
     height: 20vh;
     top: 10vh;
   }
+  .swiper-button-prev {
+    background-color: white;
+    border-radius: 100%;
+    width: 12% !important;
+  }
+  .swiper-button-next {
+    background-color: white;
+    border-radius: 100%;
+    width: 12% !important;
+  }
 }

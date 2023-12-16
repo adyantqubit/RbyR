@@ -157,9 +157,9 @@
   color: var(--textColorSecondary);
 }
 @media (max-width : 520px){
-    /* .headerMenu{
-        padding-top: 1px;
-    } */
+    .headerMenu{
+        padding-top:6px;
+    }
     
 }
 @media (max-width: 380px) {
