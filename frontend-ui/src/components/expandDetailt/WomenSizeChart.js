@@ -6,7 +6,16 @@ function WomenSizeChart(props) {
       style={{ width: "100%", height: "100%" }}
       src={
         props.womenSizeChart.length > 0
-          ? config.staticBaseURL + props.womenSizeChart
+        /**
+         * Modified by - Ashish Dewangan on 17-12-2023
+         * Reason - To give correct path for image
+         */
+        // ? config.staticBaseURL + props.womenSizeChart
+          ? config.staticBaseURL +"media/"+ props.womenSizeChart
+        /**
+         * End of modification by - Ashish Dewangan on 17-12-2023
+         * Reason - To give correct path for image
+         */
           : "/women_size_chart.jpg"
       }
     />

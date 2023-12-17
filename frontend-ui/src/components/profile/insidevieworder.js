@@ -429,7 +429,12 @@ const InsideOrder = () => {
                           {/* Commented and modified by - Ashish Dewangan on 29-11-2023
                           Reason - To show product name which was at the time of purchase */}
                       </div>
-                      <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto",fontSize:'13px',fontWeight:'bold'}}  >Order Status:&nbsp; </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap",fontSize:'13px'}} >{s.order_status}</span></div>
+                      {/* Modified by - Ashish Dewangan on 16-12-2023
+                      Reason - Corrected the spelling of processing */}
+                      {/* <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto",fontSize:'13px',fontWeight:'bold'}}  >Order Status:&nbsp; </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap",fontSize:'13px'}} >{s.order_status}</span></div> */}
+                      <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto",fontSize:'13px',fontWeight:'bold'}}  >Order Status:&nbsp; </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap",fontSize:'13px'}} >{s.order_status?.toUpperCase()=="PROCCESSING"?"Processing": s.order_status}</span></div>
+                      {/* End of code modification by - Ashish Dewangan on 16-12-2023
+                      Reason - Corrected the spelling of processing */}
                       <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto",fontSize:'13px',fontWeight:'bold'}} >
                         Price :&nbsp; </span>
                       <span className={style.userinfoText3} style={{whiteSpace:"nowrap",fontSize:'13px',}} >

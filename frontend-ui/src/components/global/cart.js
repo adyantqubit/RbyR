@@ -397,7 +397,12 @@ export function DrawerFooter() {
           </div>
 
           <div className={style.buttons} >
-            <button className={style.shopbtn1} onClick={e => setCartDrawer(false)}>CONTINUE SHOPPING</button>
+            {/* Modified by - Ashish Dewangan on 16-12-2023
+            Reason - To navingate to home page if continue shopping button is clicked */}
+          {/* <button className={style.shopbtn1} onClick={e => setCartDrawer(false)}>CONTINUE SHOPPING</button> */}
+            <button className={style.shopbtn1} onClick={e =>{ setCartDrawer(false);  nav("/");}}>CONTINUE SHOPPING</button>
+            {/* End of code modification by - Ashish Dewangan on 16-12-2023
+            Reason - To navingate to home page if continue shopping button is clicked */}
             <buton className={style.shopbtn1} onClick={e => { cartChecking() }}>GO TO CHECKOUT </buton>
           </div>
         </div>

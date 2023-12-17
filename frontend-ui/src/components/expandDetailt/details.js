@@ -918,12 +918,26 @@ const Details = (props) => {
                     >
                       <CustomTailoredForm  details = {details}/>
                     </Modal>
-
+                 
+                    {/* Added by - Ashish Dewangan on 17-12-2023
+                    Reason - To show size chart */}
+                    {womenSizeChart.length>0 &&
+                    <span
+                        className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
+                        style={{color:"#4c60e5", cursor: "pointer" }}
+                        onClick={showSizeChart}
+                      >
+                        SIZE CHART
+                      </span>
+                      }
+                      {/* End of code addition by - Ashish Dewangan on 17-12-2023
+                      Reason - To show size chart */}
                     <Modal
-                      style={{ top: 0 }}
-                      className={styles["modalStyle"]}
+                      style={{ top: "25%"}}
+                      
+                      className={styles["modalStyle"] }
                       footer={null}
-                      title="SIZE GUIDE"
+                      title="SIZE CHART"
                       visible={isWomenSizeChartVisible}
                       onOk={handleOk}
                       onCancel={handleCancel}

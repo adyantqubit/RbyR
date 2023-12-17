@@ -8,7 +8,20 @@
     padding-top: 25vh;
     min-height: 100vh;
     /* overflow-y: scroll; */
+   
 }
+/**
+Added by - Ashish Dewangan on 17-12-2023
+Reason - To give margin before footer and store locator page
+*/
+.footerContainer{
+    padding-top: 100px;
+    /* backhround:"#323232" */
+ }
+ /**
+End of code modification by - Ashish Dewangan on 17-12-2023
+Reason - To give margin before footer and store locator page
+*/
 
 
 .storeContainer::-webkit-scrollbar-track
@@ -34,11 +47,14 @@
 .row{
     display: flex;
     justify-content: space-around;
+    padding-left: 8%;
+    padding-right: 8%;
+   
 }
 
 .column{
     height:auto;
-    width:35%;
+    width:45%;
     background:var(--backgroundColorSecondary);
     display: flex;
     flex-direction: column;
@@ -153,6 +169,17 @@ a:hover{
         padding-top:75px;
         
     }
+    /**
+    Added by - Ashish Dewangan on 17-12-2023
+    Reason - To give margin before footer and store locator page
+    */
+    .footerContainer{
+        padding-top: 0px;
+     }
+     /**
+    End of code addition by - Ashish Dewangan on 17-12-2023
+    Reason - To give margin before footer and store locator page
+    */
     .row{
         flex-direction: column;
     }

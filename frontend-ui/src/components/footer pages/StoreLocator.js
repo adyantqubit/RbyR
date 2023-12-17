@@ -128,7 +128,7 @@ const StoreLocator = () => {
           </div> */}
         </div>
 
-        <div style={{ paddingTop: "100px",backhround:"#323232" }}>
+        <div className={style.footerContainer}>
           <Footer />
         </div>
       </div>
