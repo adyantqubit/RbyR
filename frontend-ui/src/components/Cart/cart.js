@@ -139,7 +139,9 @@ const CartSItem = (props) => {
           `style${CartProduct.id}${CartProduct.size}`
         ).style.display = "none";
       }
-    } else if (CartProduct.size == "Short") {
+    // } else if (CartProduct.size == "Short") { 
+    } else if (CartProduct.size == "Small") { 
+
       if (CartProduct.quantity <= CartProduct.S + 1) {
         document.getElementById(
           `style${CartProduct.id}${CartProduct.size}`
@@ -248,7 +250,9 @@ const CartSItem = (props) => {
         size: "M",
       };
       await increamentApiMethodCall({ CartProduct, data });
-    } else if (CartProduct.size == "Short") {
+    // } else if (CartProduct.size == "Short") {
+    } else if (CartProduct.size == "Small") {
+
       var data = {
         id: CartProduct.id,
         quantity: CartProduct.quantity,

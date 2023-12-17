@@ -455,7 +455,12 @@ class Liked(models.Model):
     
 SIZE_CHOICES = (
     ('Extra Short','XS'),
-    ('Short','S'),
+    # Modification and addition by Om Shrivastava on 16-12-23
+    # Reason : Need to change the short to small
+    # ('Short','S'),
+    ('Small','S'),
+    # End of modification and addition by Om Shrivastava on 16-12-23
+    # Reason : Need to change the short to small
     ('Medium', 'M'),
     ('Large','L'),
     ('Extra Large','XL'),
@@ -466,8 +471,13 @@ SIZE_CHOICES = (
 class Cart(models.Model):
     product_no=models.ForeignKey(product_detail,on_delete=models.CASCADE)
     user_no=models.ForeignKey(User,on_delete=models.CASCADE)
-    quantity=models.BigIntegerField(default=1)       
-    size=models.CharField(max_length=40, choices=SIZE_CHOICES, default='Short')
+    quantity=models.BigIntegerField(default=1)    
+    # Modification and addition by Om Shrivastava on 16-12-23
+    # Reason : Need to change the short to small   
+    # size=models.CharField(max_length=40, choices=SIZE_CHOICES, default='Short')
+    size=models.CharField(max_length=40, choices=SIZE_CHOICES, default='Small')
+    # End of Modification and addition by Om Shrivastava on 16-12-23
+    # Reason : Need to change the short to small   
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self):
@@ -805,7 +815,12 @@ class Transaction_history(models.Model):
              if product.size=="Extra Short":
                pro.XS+=product.quantity
                pro.save()
-             if product.size=="Short":
+            # Modification and addition by Om Shrivastava on 16-12-23
+            # Reason : Need to change the short to small 
+            #  if product.size=="Short":
+             if product.size=="Small":
+            # End of modification and addition by Om Shrivastava on 16-12-23
+            # Reason : Need to change the short to small  
                pro.S+=product.quantity
                pro.save()               
              if product.size=="Medium":

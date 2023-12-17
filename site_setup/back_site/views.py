@@ -412,7 +412,9 @@ class Invoice(APIView):
                 # Reason - To copy image of product to product orders table        
                     
 
-                if (cart['size'] == "Short"):
+                # if (cart['size'] == "Short"):
+                if (cart['size'] == "Small"):
+                
                     pro = product_detail.objects.get(id=cart['id'])
                     pro.S = pro.S-cart['quantity']
                     pro.save()
@@ -808,10 +810,14 @@ class CartRecheck(APIView):
             pro = product_detail.objects.get(id=cart['id'])
             if pro.is_active == False:
                 inactive_products.append({"id": pro.id, "name" : pro.title})
-            if (cart['size'] == "Short"):
+            # if (cart['size'] == "Short"):
+            if (cart['size'] == "Small"):
+            
                 if cart['quantity'] > pro.S:
                     car.append(
-                        {"id": pro.id, "size": "Short", "name": pro.title})
+                        # {"id": pro.id, "size": "Short", "name": pro.title})
+                        {"id": pro.id, "size": "Small", "name": pro.title})
+                    
             elif (cart['size'] == "Medium"):
                 if cart['quantity'] > pro.M:
                     car.append(
@@ -1192,7 +1198,9 @@ class GeustCart(APIView):
     def post(self, request):
         for data in request.data:
             availability=Cart.objects.filter(product_no=product_detail.objects.get(id=data['id']), size=data['size']).count()==0
-            if (data['size'] == "Short" and availability):
+            # if (data['size'] == "Short" and availability):
+            if (data['size'] == "Small" and availability):
+
                 pro = product_detail.objects.get(id=data['id'])
                 Cart.objects.create(
                     product_no=pro, size=data['size'], quantity=data['quantity'], user_no=request.user).save()

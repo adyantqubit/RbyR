@@ -5,7 +5,9 @@
 export function SizeGetter(size){
     if(size=="Extra Short")
     return "XS";
-    if(size=="Short")
+    // if(size=="Short")
+    if(size=="Small")
+
     return "S";
     else if(size=="Medium")
     return "M";

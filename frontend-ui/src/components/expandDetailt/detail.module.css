@@ -968,9 +968,12 @@ Reason : Set the capitalize property  */
       width: 67%;
       font-size:12px;
       color: black;
-      font-weight: 500;
+      font-weight: 400;
       font-family: var(--fontFamily);
       letter-spacing: var(--letterSpacing);
+    }
+    .text04{
+      font-weight: 400;
     }
 }
 

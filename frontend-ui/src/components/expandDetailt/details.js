@@ -392,7 +392,9 @@ const Details = (props) => {
         } else if (size == "Medium") {
           if (details.M < 1) setNotAvai(true);
           else saveCart(details);
-        } else if (size == "Short") {
+        // } else if (size == "Short") {
+        } else if (size == "Small") {
+
           if (details.S < 1) setNotAvai(true);
           else saveCart(details);
         } else if (size == "Extra Short") {
@@ -626,7 +628,9 @@ const Details = (props) => {
                                     name={details.id}
                                     class="super-happy"
                                     id={details.id}
-                                    value="Short"
+                                    // value="Short"
+                                    value="Small"
+
                                     onChange={(e) => onChange(e.target.value)}
                                   />
                                   <span class="span">S</span>
@@ -763,7 +767,9 @@ const Details = (props) => {
                                   name={details.id}
                                   class="super-happy"
                                   id={details.id}
-                                  value="Short"
+                                  // value="Short"
+                                  value="Small"
+
                                   onChange={(e) => onChange(e.target.value)}
                                 />
                                 <span class="span">S</span>

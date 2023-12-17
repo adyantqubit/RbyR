@@ -65,7 +65,9 @@ else if(CartProduct.size=="Medium"){
     document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="none"; 
   }
 }
-else if(CartProduct.size=="Short"){
+// else if(CartProduct.size=="Short"){
+else if(CartProduct.size=="Small"){
+
   if(CartProduct.quantity<=CartProduct.S+1){
     document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="none"; 
   }
@@ -107,7 +109,9 @@ const increament=(CartProduct)=>{
       setcon(false)
     }
   }
-  else if(CartProduct.size=="Short"){
+  // else if(CartProduct.size=="Short"){
+  else if(CartProduct.size=="Small"){
+
     if(CartProduct.quantity>=CartProduct.S){
       document.getElementById(`style${CartProduct.id}${CartProduct.size}`).style.display="block"; 
       setcon(false)
