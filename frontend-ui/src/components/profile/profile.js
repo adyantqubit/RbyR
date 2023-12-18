@@ -110,10 +110,10 @@ const MyOrders = () => {
                   <br style={{color:"blue"}}></br>
                   <div style={{color:'black',fontWeight:"600"}} className={`${style.rowheadText} `}>Date</div>
 
-                  <div style={{color:'black',fontWeight:"600"}} className={`${style.rowheadText} ${style.rowtexthide}`}>Name</div>
-                  <div style={{color:'black',fontWeight:"600"}} className={`${style.rowheadText} ${style.rowtexthide}`}>Price</div>
-                  <div style={{color:'black',fontWeight:"600"}} className={`${style.rowheadText} ${style.rowtexthide}`}>Payment Type</div>
-                  <div style={{color:'black',fontWeight:"600"}} className={`${style.rowheadText} ${style.rowtexthide}`}>Status</div>
+                  <div style={{color:'black',fontWeight:"600",paddingLeft:'2%'}} className={`${style.rowheadText} ${style.rowtexthide}`}>Name</div>
+                  <div style={{color:'black',fontWeight:"600",paddingLeft:'3%'}} className={`${style.rowheadText} ${style.rowtexthide}`}>Price</div>
+                  <div style={{color:'black',fontWeight:"600",paddingLeft:'3.5%'}} className={`${style.rowheadText} ${style.rowtexthide}`}>Payment </div>
+                  <div style={{color:'black',fontWeight:"600",paddingLeft:'5%'}} className={`${style.rowheadText} ${style.rowtexthide}`}>Status</div>
                   <div  className={`${style.rowheadText} ${style.rowtexthide}`}></div>
                 </div>
                 {/* <hr style={{color:"black"}}></hr> */}

@@ -234,7 +234,7 @@ const Login = () => {
 							<div style={{ fontSize: "14px", marginLeft: "15%" }}>Email<span style={{color:'red'}}>*</span></div>
 							<input class="inpu2" type="email" name="email" placeholder="" maxLength={250} />
 							<div style={{ height: "20px" }}>
-								{server_error.email ? <Typography style={{ color: "red", fontSize: "12px", marginBottom: "10px", marginLeft: "15%" }}>
+								{server_error.email ? <Typography class='errorText' style={{ color: "red", fontSize: "12px", marginBottom: "10px", marginLeft: "15%" }}>
 									{server_error.email[0]?.toLowerCase().trim()=="This field may not be blank.".toLowerCase().trim()
 									?
 									<span >{"Please enter email id."}</span>

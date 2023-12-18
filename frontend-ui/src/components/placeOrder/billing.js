@@ -482,9 +482,12 @@ const Billing = () => {
         </div>
         <div className={styles.main} id="main">
           {checkoutDetails.userInfo ? (
-            <div className={styles.invoice} id="invoice">
+            <div   id="section-to-print" className={styles.invoice} 
+            // id="invoice"
+            >
+              <h6 style={{textAlign:'right',paddingRight:'2%',fontSize:'12px'}}>RbyR</h6>
               <div
-                id="section-to-print"
+                // id="section-to-print"
                 // ref={componentRef}
               >
                 <div className={styles.head}>

@@ -298,7 +298,7 @@ const Payment = () => {
 
       <div className={styles.columnitem1content1} style={{ margin: "20px 0", justifyContent: "flex-start" }}>
         <Checkbox
-          icon={<Icon.FiCheck color="white" size={16} style={{ background: "black" }} />}
+          icon={<Icon.FiCheck color="white" size={16} style={{ background: "#57b957" }} />}
           name="my-input"
           checked={billingInfo}
           onChange={(value, event) => {

@@ -193,7 +193,9 @@ const UserProfile = () => {
     //Reason- Adding Phone number change functionality
     var userData = {
       firstname: data.get('first'),
-      lastname: data.get('last').trim(),
+      // lastname: data.get('last').trim(),
+      lastname: data.get('last'),
+
       email: data.get('email'),
       contact: data.get('number')
     }
@@ -213,6 +215,7 @@ const UserProfile = () => {
         setShowEditable(false)
 
       })
+    window.location.reload();
   }
 
   var [isAlertVisiblenum, setIsAlertVisiblenum] = React.useState(false);
@@ -334,7 +337,10 @@ const UserProfile = () => {
                           <div className={styles.columnFirstName}>
                             <label className={styles.firstName} htmlFor='first'>First Name<span style={{color:'red'}} >*</span></label>
 
-                            <input className={styles.firstInput} type="text" defaultValue={userdata.name.substring(0, hasWhiteSpace(userdata.name))} name="first" required maxLength={99} />
+                            <input className={styles.firstInput} type="text" 
+                            defaultValue={userdata.name.substring(0, hasWhiteSpace(userdata.name))}
+                            // value={userdata.name}
+                             name="first" required maxLength={99} />
 
                           </div>
                           <div className={styles.columnFirstName}>
@@ -460,13 +466,13 @@ const UserProfile = () => {
                           <button className={styles.userInfoButton} style={{ width: "48%" }} type="submit">
                             UPDATE PROFILE
                           </button>
-                          <div className={styles.userInfoButton} 
+                          {/* <div className={styles.userInfoButton} 
                             onClick={e =>
                             { setShowEditable(false)
                               window.scrollTo(0,0)
                             }}>
                             CANCEL
-                          </div>
+                          </div> */}
 
                         </div>
 

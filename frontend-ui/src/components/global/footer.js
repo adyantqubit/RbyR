@@ -215,7 +215,7 @@ function Footer() {
 
         {socialLinks.length > 0 ? (
         <div className={style.column4}>
-          <h1 className={style.heading} >Follow Us</h1>
+          <h1 className={style.heading} >FOLLOW US</h1>
           <div className={style.socialLinksTab}>
             <div
               style={{

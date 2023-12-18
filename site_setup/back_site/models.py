@@ -201,7 +201,10 @@ class Menus(models.Model):
     # Reason- giving image showing functionality for each category and filteration option
     Show_subMenu_with_image=models.BooleanField(default=False)
     show_instant_filter_for_subMenu=models.BooleanField(default=False)
-    Choose_menu_type = models.CharField(max_length=40,choices=GEEKS_CHOICES,default="1")
+
+    # Choose_menu_type = models.CharField(max_length=40,choices=GEEKS_CHOICES,default="1")
+    Choose_menu_type = models.CharField(max_length=40,choices=GEEKS_CHOICES,default="1",verbose_name='Choose menu display type')
+
 
     # end of code - 17/2/23
     
@@ -309,7 +312,7 @@ class product_detail(models.Model):
     # Reason : Need to mandatory this menu field
     # Modification and addition by Om Shrivastava on 08-10-23
     # Reason : Need to set the unique property
-    subMenu=models.ForeignKey(subMenu,on_delete=models.CASCADE,null=True,blank=True)
+    subMenu=models.ForeignKey(subMenu,on_delete=models.CASCADE,null=True)
     # subMenu=models.ForeignKey(subMenu,on_delete=models.CASCADE,null=True,)
     # End of Modification and addition by Om Shrivastava on 08-10-23
     # Reason : Need to set the unique property
@@ -515,7 +518,12 @@ class Head_img(models.Model):
 
     # label=models.CharField(max_length=100,default="slider")
     # about=models.CharField(max_length=200,default="here you have to write something")
-    Menu=models.ForeignKey(Menus,on_delete=models.CASCADE,blank=True,null=True)
+    # Modification and addition by Om Shrivastava on 17-12-23
+    # Reason : Need to add mandatory property for the menu
+    # Menu=models.ForeignKey(Menus,on_delete=models.CASCADE,blank=True,null=True)
+    Menu=models.ForeignKey(Menus,on_delete=models.CASCADE,null=True)
+    # End of modification and addition by Om Shrivastava on 17-12-23
+    # Reason : Need to add mandatory property for the menu
     category=models.CharField(max_length=50)
     display_on=models.CharField(max_length=20,choices=window_CHOICES,default="window")
     
@@ -1288,8 +1296,8 @@ class Bridal(models.Model):
     # Reason : Set the max field
     # subtitle1=models.TextField(default="",blank=True,)
     # subtitle2=models.TextField(default="",blank=True)
-    subtitle1=models.TextField(default="",blank=True,max_length=20)
-    subtitle2=models.TextField(default="",blank=True,max_length=20)
+    subtitle1=models.TextField(default="",blank=True,max_length=250)
+    subtitle2=models.TextField(default="",blank=True,max_length=250)
     # End of Addition by Om Shrivastava on 15-12-23
     # Reason : Set the max field
     bridalImage=models.ImageField(upload_to='Images/', height_field=None,\

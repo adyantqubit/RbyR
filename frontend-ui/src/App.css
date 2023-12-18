@@ -143,7 +143,7 @@ input:-webkit-autofill {
   width: 94%;
   /* Addition by Om Shirvastava on 10-12-23
   Reason : Need to handle the arrow button */
-  margin-left: 2%;
+  margin-left: 3%;
   /* End of Addition by Om Shirvastava on 10-12-23
   Reason : Need to handle the arrow button  */
 }

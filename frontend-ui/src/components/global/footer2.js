@@ -154,8 +154,8 @@ function Footer2() {
             href={instagramCollections?.instagram_home_link}
           >
             <div className={style.instagramTextContainer} >
-              <h5 style={{padding:'0',margin:'0'}} className={style.instaBox}>Follow Us</h5>
-              <h5 style={{padding:'0',margin:'0'}} className={style.instaText}>On Instagram</h5>
+              <h5 style={{padding:'0',margin:'0',textDecoration:'underline',textDecorationColor:'blue',color:'blue'}} className={style.instaBox}>Follow Us</h5>
+              <h5 style={{padding:'0',margin:'0',textDecoration:'underline',textDecorationColor:'blue',color:'blue'}} className={style.instaText}>On Instagram</h5>
             </div>
           </a>
           <a
@@ -294,7 +294,7 @@ function Footer2() {
         {socialLinks.length > 0 ? (
 
         <div className={style.column4}>
-          <h1 className={style.heading}>FOLLOW US</h1>
+          <h1 className={style.heading} >FOLLOW US</h1>
           <div className={style.socialLinksTab}>
             <div
               style={{

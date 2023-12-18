@@ -36,8 +36,9 @@
 #ch{
 	display: none;
 }
-
-
+.errorText:first-letter {
+	text-transform: capitalize
+  }
 
 .labe{
 	color: black;

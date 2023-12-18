@@ -179,7 +179,7 @@
     justify-content: space-between;
     background-color: var(--backgroundColorSecondary);
 
-    border: 1px solid black;
+    border: 1px solid #6e6d6d;
 }
 
 .tablerowhead2 {
