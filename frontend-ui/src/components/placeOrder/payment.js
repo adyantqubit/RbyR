@@ -14,7 +14,9 @@ import Checkbox from "react-custom-checkbox";
 import '../../context.css'
 
 const Payment = () => {
-  var { userdata, checkoutDetails, setCheckoutDetails, cartEnd, currency, cart, setCart, offer, setOffer, taxRate, setTaxRate ,setPaymentflow} = CartState()
+  var { userdata, checkoutDetails, setCheckoutDetails, cartEnd, currency, cart, setCart, offer, setOffer, taxRate, setTaxRate ,setPaymentflow,
+    cond,setCond
+  } = CartState()
   const nav = useNavigate()
   var [tick, setTick] = useState(false)
   var [tickop, setTickop] = useState(false)
@@ -145,6 +147,7 @@ const Payment = () => {
       })
     }
   }
+  console.log(cond,'paymenttt')
 
   async function submitAll() {
     // if (checkoutDetails['payment'] && checkoutDetails['payment'].length > 0) {
@@ -329,14 +332,20 @@ const Payment = () => {
           {" "} Terms and Conditions</Link>
         {required ? <Typography style={{ color: "red", fontSize: "13px", marginLeft: "30px" }}>Please accept terms and conditions.</Typography> : null}
       </div>
-
-
+{/* Modification and addition by Om Shrivastava on 18-12-23
+Reason : When edit button is open then user can't hit the place order button */}
+{cond==false ?
       <button 
       // className={buttonchng ? styles.userInfoButton3 : styles.userInfoButton} 
       className={styles.shopbtn2}
-      style={{ margin: "15px 5px", width: "300px", minHeight: "50px" }} onClick={e => cartChecking()}>
+      style={{ margin: "15px 5px", width: "300px", minHeight: "50px" }} onClick={e => cartChecking()}
+      >
+
         PLACE YOUR ORDER
       </button>
+      :null}
+      {/* End of modification and addition by Om Shrivastava on 18-12-23
+Reason : When edit button is open then user can't hit the place order button */}
     </div>)
 }
 

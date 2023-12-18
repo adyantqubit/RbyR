@@ -175,6 +175,8 @@ input:-webkit-autofill {
   }
 }
 
+
+
 @media (max-width: 768px) {
   .centered {
     width: 100%;
@@ -190,5 +192,32 @@ input:-webkit-autofill {
     background-color: white;
     border-radius: 100%;
     width: 12% !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .swiper-button-prev {
+    background-color: white !important;
+    border-radius: 100%;
+    width: 7.5% !important;
+    height: 8% !important;
+  }
+  .swiper-button-next {
+    background-color: white;
+    border-radius: 100%;
+    width: 7.5% !important;
+    height: 8% !important;
+  }
+}
+@media (max-width: 360px) {
+  .swiper-button-prev {
+    background-color: white;
+    border-radius: 100%;
+    width: 8% !important;
+  }
+  .swiper-button-next {
+    background-color: white;
+    border-radius: 100%;
+    width: 8% !important;
   }
 }

@@ -53,7 +53,11 @@ const Contact = () => {
                   {/* End of Commented by Om Shrivastava on 27-11-23
                       Reason : Set this content in heading    */}
                   <div className={style.contain}>
-                    <div className={contact&&contact.contactUsImage ?  `${style.column} ${style.col1}`:`${style.columnMain}`}>
+                    <div 
+                    className={contact&&contact.contactUsImage ?  `${style.column} ${style.col1}`:`${style.columnMain}`}>
+                    {/* className={`${style.column} ${style.col1}`} */}
+                     {/* style={{width:'50%',border:'1px solid blue'}} */}
+                     
                       <span className={style.head}>
                         {/* Commented by Om Shrivastava on 27-11-23
                       Reason : Set this content in heading  */}

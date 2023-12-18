@@ -51,6 +51,7 @@ function CustomTailoredForm(details) {
           description: "Custom tailored request posted successfully",
           onClick: () => { },
           style: { backgroundColor: "var(--bannerColor)" },
+          key:1
         });
         customTailoredRequestForm.resetFields();
       } else {
@@ -59,6 +60,8 @@ function CustomTailoredForm(details) {
           description: "Some problem occured while posting the data",
           onClick: () => { },
           style: { backgroundColor: "var(--bannerColor)" },
+          key:1
+
         });
       }
     }

@@ -1512,8 +1512,8 @@ class LogoAndNumber(models.Model):
     # whatsappNmber=models.BigIntegerField(validators=[validate_phone_number])
     # Modification and addition by Om Shrivastava on 14-12-23
     # Reason : Set the contact number validation 
-    # whatsappNmber=models.BigIntegerField(validators=[validate_phone_number],verbose_name="Whatsapp Number")
-    whatsappNmber=models.BigIntegerField(validators=[MaxValueValidator(12)],verbose_name="Whatsapp Number")
+    whatsappNmber=models.BigIntegerField(validators=[validate_phone_number],verbose_name="Whatsapp Number")
+    # whatsappNmber=models.BigIntegerField(validators=[MaxValueValidator(12)],verbose_name="Whatsapp Number")
     # End of Modification and addition by Om Shrivastava on 14-12-23
     # Reason : Set the contact number validation 
     # End of Modification and addition by Om Shrivastava on 28-10-23

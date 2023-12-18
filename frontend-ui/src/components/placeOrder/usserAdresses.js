@@ -22,8 +22,8 @@ import { shippingTickGet } from '../../api/orderApis';
 
 const UsserAdresses = () => {
 
-    const { userdata, checkoutDetails, setCheckoutDetails, paymentflow, setPaymentflow } = CartState()
-    const [cond, setCond] = useState(true)
+    const { userdata, checkoutDetails, setCheckoutDetails, paymentflow, setPaymentflow,cond,setCond } = CartState()
+    // const [cond, setCond] = useState(true)
     const [billingInfo, setBillingInfo] = useState(false)
     const { access_token } = getToken()
     const [error, setError] = useState({})
@@ -518,12 +518,12 @@ const UsserAdresses = () => {
                                 {checkoutDetails.shippingData ?
                                     <>
                                         <input className={styles.firstInput} id="flatno" autocomplete="nope" name='flatno' onKeyPress={e => validateWhitespace(e, "flatno")} onChange={e=>setRequired({})} maxLength={10} defaultValue={checkoutDetails.shippingData.houseno} />
-                                        {required.flatno ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter house/appartment number</Typography> : null}
+                                        {required.flatno ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter house/apartment number</Typography> : null}
                                     </>
                                     :
                                     <>
                                         <input className={styles.firstInput} id="flatno" autocomplete="nope" onKeyPress={e => validateWhitespace(e, "flatno")} onChange={e=>setRequired({})} name='flatno' maxLength={10} defaultValue={selectedShippingAddress.houseno}/>
-                                        {required.flatno ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter house/appartment number</Typography> : null}
+                                        {required.flatno ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter house/apartment number</Typography> : null}
                                     </>
                                 }
                             </div>
@@ -710,12 +710,12 @@ const UsserAdresses = () => {
                                         {checkoutDetails.billingData ?
                                             <>
                                                 <input className={styles.firstInput} autocomplete='nope' name='flatnob' maxLength={20} id="flatb" onKeyPress={e => validateWhitespace(e, "flatb")} defaultValue={checkoutDetails.billingData.houseno} />
-                                                {required.flatnob ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter house/appartment number</Typography> : null}
+                                                {required.flatnob ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter house/apartment number</Typography> : null}
                                             </>
                                             :
                                             <>
                                                 <input className={styles.firstInput} autocomplete="nope" name='flatnob' maxLength={20} id="flatb" onKeyPress={e => validateWhitespace(e, "flatb")} />
-                                                {required.flatnob ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter house/appartment number</Typography> : null}
+                                                {required.flatnob ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter house/apartment number</Typography> : null}
                                             </>
                                         }
                                     </div>
@@ -856,6 +856,7 @@ const UsserAdresses = () => {
                         </span>
                         <span className={styles.change}
                             onClick={e => setCond(true)}>Edit</span>
+                            {console.log(cond,'checkkk')}
                     </div>
 
                     <div className={styles.columnitem1head} style={{marginTop:"0px",marginBottom:"0px"}}>

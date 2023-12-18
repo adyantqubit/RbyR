@@ -92,6 +92,9 @@ const Context = ({ children }) => {
 
   const [whatsappContactNumber, setWhatsappContactNumber] = useState(false);
 
+    const [cond, setCond] = useState(true)
+
+
   /**
    * Added by - Ashish Dewangan on 07-12-2023
    * Reason - To set redirection path where user will navigate when he logs in
@@ -487,7 +490,11 @@ const Context = ({ children }) => {
        * End of code addition by - Ashish Dewangan on 07-12-2023
        * Reason - Making recentlyViewedItems and setRecentlyViewedItems available to other pages
        */
-
+      // Addition by Om Shrivastava on 18-12-23
+      // Reason : Need to create globally 
+      cond, setCond,
+      // End of addition by Om Shrivastava on 18-12-23
+      // Reason : Need to create globally
       /**
        * Added by - Ashish Dewangan on 15-12-2023
        * Reason - Making currentSelectedItem and setCurrentSelectedItem available to other pages

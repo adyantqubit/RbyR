@@ -89,11 +89,14 @@
 .columnMain{
     width: 100%;
     padding: 0 2.5%;
+    display: flex;
+    flex-direction: column;
 }
 .head{
     /* padding:0 20%; */
     font-size: 24px;
     line-height: 32px;
+
     /* letter-spacing: 3px;
     font-family: 'MyFont'; */
     /* Modification and addition by Om Shrivastava on 20-11-23
@@ -128,6 +131,8 @@
     /*End of Modification and addition by Om Shrivastava on 29-11-23
     Reason : Set the font size */
     line-height: 32px;
+    line-height: 22px;
+
     /* End of Modification and addition by Om Shrivastava on 20-11-23
     Reason : Set the font size  */
     /* letter-spacing: 3px;
@@ -188,18 +193,20 @@
         /* End of Modification and addition by Om Shrivastava on 24-11-23
         Reason : Need to remove the padding top */
         font-size: 14px;
-        padding: 0 3%;
+        /* padding: 0 3%; */
     }
     .head2{
         margin-top:3vh;
         font-size: 14px;
         padding: 0 3%;
-        width: 65%;
+        /* width: 65%; */
+        width: 99%;
+
     }
     .body{
         font-size: 13px;
-        padding: 0 3%;
-        line-height: 20px;
+        /* padding: 0 3%; */
+        /* line-height: 20px; */
 
         /* width: 65%; */
     }

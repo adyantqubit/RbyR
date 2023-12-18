@@ -1363,7 +1363,9 @@ const CartSItem = (props) => {
                 // height: "90vh",
                 // End of commented code Commented by Om shrivastava on 25-11-23
                 // Reason : Need to remove the height of the div
-                marginBottom: "50px",
+                // marginBottom: "50px",
+                marginBottom: "65px",
+
                 zIndex: "0",
               }}
             >

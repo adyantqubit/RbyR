@@ -21,7 +21,7 @@
 .importantRules{
    /* height: 300px; */
    height: 200px;
-
+overflow: scroll;
     width: auto;
     padding-top: 20px;
 
