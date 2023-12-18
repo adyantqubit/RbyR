@@ -930,7 +930,7 @@ const Details = (props) => {
                     {womenSizeChart.length>0 &&
                     <span
                         className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
-                        style={{color:"#4c60e5", cursor: "pointer" }}
+                        style={{color:"#4c60e5", cursor: "pointer",fontSize:"14px" }}
                         onClick={showSizeChart}
                       >
                         SIZE CHART

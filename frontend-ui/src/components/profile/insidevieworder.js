@@ -458,7 +458,7 @@ const InsideOrder = () => {
                 <div className={style.totalBox} >
                   {allData != null ?
                     
-                    <div className={style.box} style={{ borderTop: "1px solid black" }}>
+                    <div className={style.box} style={{ borderTop: "1px solid #c5c5c5",marginTop:"15px" }}>
                       <div className={style.textlight1}><span className={style.userinfoText} style={{ width: "50%", textAlign: "start" }}>
                         Sub Total</span><span className={style.userinfoText2} style={{ width: "50%", textAlign: "end" }}>
                           {/* {states[0].selected_currency_sign} */}

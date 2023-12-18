@@ -149,13 +149,13 @@ Reason - To show dashboard with revenue, todays orders and pending list -->
                         {% for todaysOrder in todaysOrders %}
                         <tr>
                             <td class="fw-bolder text-gray-500">
-                                <a href="back_site/transaction_history/{{todaysOrder.orderId}}/change/">{{ todaysOrder.orderData.order_no }}</a>
+                                <a href="back_site/transaction_history/{{todaysOrder.orderId}}/change/" style="background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;">{{ todaysOrder.orderData.order_no }}</a>
                             </td>
                             <td class="fw-bolder text-gray-500">
                                 {{todaysOrder.orderData.payment_status }}
                             </td>
                             <td class="fw-bolder text-gray-500">
-                                <a href="back_site/user/{{todaysOrder.userId}}/change/"> {{todaysOrder.orderData.user_no }}</a>
+                                {{todaysOrder.orderData.user_no }}
                             </td>
                             <td class="fw-bolder text-gray-500">
                                 Rs. {{ todaysOrder.orderData.grand_total }}
@@ -213,13 +213,13 @@ Reason - To show dashboard with revenue, todays orders and pending list -->
                         
                         <tr>
                             <td class="fw-bolder text-gray-500">
-                                <a href="back_site/transaction_history/{{pendingOrder.orderId}}/change/">{{ pendingOrder.orderData.order_no }}</a>
+                                <a href="back_site/transaction_history/{{pendingOrder.orderId}}/change/" style="background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;">{{ pendingOrder.orderData.order_no }}</a>
                             </td>
                             <td class="fw-bolder text-gray-500">
                                 {{pendingOrder.orderData.payment_status }}
                             </td>
                             <td class="fw-bolder text-gray-500">
-                                <a href="back_site/user/{{pendingOrder.userId}}/change/"> {{pendingOrder.orderData.user_no }}</a>
+                                {{pendingOrder.orderData.user_no }}
                             </td>
                             <td class="fw-bolder text-gray-500">
                                 Rs. {{ pendingOrder.orderData.grand_total }}
