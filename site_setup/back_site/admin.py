@@ -354,6 +354,12 @@ class HomeVideoAdmin(admin.ModelAdmin):
 
 #End of code
 
+# Added by - Ashish Dewangan on 14-12-2023
+# Reason - To show only 30 characters for long street name
+def show_short_street_name(obj):
+    return Truncator(obj.street).chars(30)
+# End of code addition by - Ashish Dewangan on 14-12-2023
+# Reason - To show only 30 characters for long street name
 
 # Commented and modified by Ashish Dewangan on 27-11-2022
 # Reason - To customize admin panel
@@ -364,7 +370,7 @@ class userbillingDetailAdmin(admin.ModelAdmin):
     # Added by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
     # list_display=("user_id","firstname","lastname","street","houseno","city","state","zipcode","country","number")
-    list_display=("action","user_id","firstname","lastname","street","houseno","city","state","zipcode","country","number")
+    list_display=("action","user_id","firstname","lastname",show_short_street_name,"houseno","city","state","zipcode","country","number")
     list_display_links=("action",)
     # End of code additon by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
@@ -411,12 +417,7 @@ class userbillingDetailAdmin(admin.ModelAdmin):
 # End of code modification
 
 
-# Added by - Ashish Dewangan on 14-12-2023
-# Reason - To show only 30 characters for long street name
-def show_short_street_name(obj):
-    return Truncator(obj.street).chars(30)
-# End of code addition by - Ashish Dewangan on 14-12-2023
-# Reason - To show only 30 characters for long street name
+
 
 # Commented and modified by Ashish Dewangan on 27-11-2022
 # Reason - To customize admin panel
