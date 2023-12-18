@@ -463,7 +463,7 @@ const UserProfile = () => {
 
 
                         <div className={styles.cancelButtonWithSubmit}>
-                          <button className={styles.userInfoButton} style={{ width: "48%" }} type="submit">
+                          <button className={styles.userInfoButton} style={{  }} type="submit">
                             UPDATE PROFILE
                           </button>
                           {/* <div className={styles.userInfoButton} 

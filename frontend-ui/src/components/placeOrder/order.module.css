@@ -266,7 +266,7 @@ Reason - To add hoverable effect  */
     margin-top: 15px;
     min-width: 250px;
     font-size: 14px;
-    width: 50%;
+    width: 30%;
     cursor: pointer;
     letter-spacing: 1.3px;
     background-color: var(--btnBackgroundColorPrimary);
