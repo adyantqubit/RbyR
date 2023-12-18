@@ -271,16 +271,20 @@ class shippingSerializer(serializers.ModelSerializer):
     class Meta:
         model=usershippingDetail
         fields="__all__"     
-        
-    def validate(self,attrs):
-            if usershippingDetail.objects.filter(lastname=attrs.get('lastname'),firstname=attrs.get('firstname'),
-                                         street=attrs.get('street'),city=attrs.get('city'),
-                                         houseno=attrs.get('houseno'),state=attrs.get("state"),
-                                         zipcode=attrs.get('zipcode'),country=attrs.get("country"),
-                                         number=attrs.get('number'),user_id=attrs.get('user_id')).exists():
-                raise serializers.ValidationError("this is already exist")
+
+    # Commented by - Ashish Dewangan on 17-12-2023
+    # Reason - This validation was not working properly. Also validation is being handles on view    
+    # def validate(self,attrs):
+    #         if usershippingDetail.objects.filter(lastname=attrs.get('lastname'),firstname=attrs.get('firstname'),
+    #                                      street=attrs.get('street'),city=attrs.get('city'),
+    #                                      houseno=attrs.get('houseno'),state=attrs.get("state"),
+    #                                      zipcode=attrs.get('zipcode'),country=attrs.get("country"),
+    #                                      number=attrs.get('number'),user_id=attrs.get('user_id')).exists():
+    #             raise serializers.ValidationError("this is already exist")
             
-            return attrs        
+    #         return attrs
+    # End of comment by - Ashish Dewangan on 17-12-2023
+    # Reason - This validation was not working properly. Also validation is being handles on view        
         
 class billingSerializer(serializers.ModelSerializer):
     class Meta:

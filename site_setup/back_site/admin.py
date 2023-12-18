@@ -1629,14 +1629,32 @@ class ImportantNoticeToBuyAdmin(admin.ModelAdmin):
     #End of code addition
     # Modification and addition by Om Shrivastava on 10-12-23
     # Reason : No need to show this model
-# @admin.register(WomenClothSizeChart)    
-# class WomenClothSizeChartAdmin(admin.ModelAdmin):
-#     list_display=("id","image",)
-#     def has_add_permission(self, request):
-#         return not WomenClothSizeChart.objects.exists() 
-# End of Modification and addition by Om Shrivastava on 10-12-23
-    # Reason : No need to show this model
-# End of code modification
+
+# Added by - Ashish Dewangan on 16-12-2023
+# Reason - To show woman size chart on Admin panel
+@admin.register(WomenClothSizeChart)    
+class WomenClothSizeChartAdmin(admin.ModelAdmin):
+    list_display=("action","id","image",)
+    def has_add_permission(self, request):
+        return not WomenClothSizeChart.objects.exists() 
+
+    def __init__(self, model, admin_site): 
+        self.request = None
+        super().__init__(model, admin_site)
+
+    list_display_links=("action",)
+
+    def get_queryset(self, request):
+        self.request = request      
+        return super().get_queryset(request)
+    
+    def action(self,obj):
+        from django.utils.html import format_html
+        from django.conf import settings
+        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.HTTP_METHOD+self.request.get_host()+"/admin/back_site/womenclothsizechart/"+str(obj.id)+"/change/'>View Details</a>")
+    action.allow_tags = True  
+# End of code addition by - Ashish Dewangan on 16-12-2023
+# Reason - To show woman size chart on Admin panel
 
 
 # Commented and modified by Ashish on 28-11-2022

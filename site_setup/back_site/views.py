@@ -277,28 +277,55 @@ class shippingOrder(APIView):
         shippingData = request.data
         shippingData['user_id'] = request.user.id
 
-        # Commented and modified by - Ashish Dewangan on 02-12-2023
-        # Reason - If no shipping address is found then create it and make it default shipping address
-        # serialize2 = shippingSerializer(data=shippingData)
         user=User.objects.get(id=shippingData['user_id'])
-        if userbillingDetail.objects.filter(user_id=user).count()>0:
-            serialize2 = shippingSerializer(data=shippingData)
-        else:
+
+        # Modified by - Ashish Dewangan on 17-12-2023
+        # Reason - To handle shipping details properly
+        # if userbillingDetail.objects.filter(user_id=user).count()>0:
+        #     serialize2 = shippingSerializer(data=shippingData)
+        # else:
+        #     shippingData['isSelected']=True    
+        #     serialize2 = shippingSerializer(data=shippingData)
+        # # Commented and modified by - Ashish Dewangan on 02-12-2023
+        # # Reason - If no shipping address is found then create it and make it default shipping address    
+        # try:
+        #     if serialize2.is_valid(raise_exception=True):
+        #         ship = serialize2.save()
+        #         return Response({"shipping_id": ship.id})
+        # except:
+        #     ship = usershippingDetail.objects.get(lastname=request.data['lastname'],firstname=request.data['firstname'],
+        #                                  street=request.data['street'],city=request.data['city'],
+        #                                  houseno=request.data['houseno'],state=request.data["state"],
+        #                                  zipcode=request.data['zipcode'],country=request.data["country"],
+        #                                  number=request.data['number'],user_id=request.data['user_id'])
+        #     return Response({"shipping_id": ship.id})
+
+        if usershippingDetail.objects.filter(user_id=user).count()==0:
             shippingData['isSelected']=True    
-            serialize2 = shippingSerializer(data=shippingData)
-        # Commented and modified by - Ashish Dewangan on 02-12-2023
-        # Reason - If no shipping address is found then create it and make it default shipping address    
+
         try:
-            if serialize2.is_valid(raise_exception=True):
-                ship = serialize2.save()
+            existing_address = usershippingDetail.objects.get(lastname=request.data['lastname'],firstname=request.data['firstname'],
+                                            street=request.data['street'],city=request.data['city'],
+                                            houseno=request.data['houseno'],state=request.data["state"],
+                                            zipcode=request.data['zipcode'],country=request.data["country"],
+                                            number=request.data['number'],user_id=request.data['user_id'])    
+            return Response({"shipping_id": existing_address.id})
+        except Exception as ex:
+            serialize2 = shippingSerializer(data=shippingData)
+            try:
+                if serialize2.is_valid(raise_exception=True):
+                    ship = serialize2.save()
+                    return Response({"shipping_id": ship.id})
+            except Exception as e:
+                print("An exception occured while saving the shipping address",e)
+                ship = usershippingDetail.objects.get(lastname=request.data['lastname'],firstname=request.data['firstname'],
+                                            street=request.data['street'],city=request.data['city'],
+                                            houseno=request.data['houseno'],state=request.data["state"],
+                                            zipcode=request.data['zipcode'],country=request.data["country"],
+                                            number=request.data['number'],user_id=request.data['user_id'])
                 return Response({"shipping_id": ship.id})
-        except:
-            ship = usershippingDetail.objects.get(lastname=request.data['lastname'],firstname=request.data['firstname'],
-                                         street=request.data['street'],city=request.data['city'],
-                                         houseno=request.data['houseno'],state=request.data["state"],
-                                         zipcode=request.data['zipcode'],country=request.data["country"],
-                                         number=request.data['number'],user_id=request.data['user_id'])
-            return Response({"shipping_id": ship.id})
+        # Modified by - Ashish Dewangan on 17-12-2023
+        # Reason - To handle shipping details properly    
         return Response(request.data)
 
 
@@ -449,9 +476,13 @@ class Invoice(APIView):
             
             # commented by Rohan - 21/12/22
             # Reason- storing coupon 
-            if(request.data['CouponDiscount']>0):
-               used= couponUsed.objects.create(user=request.user,used=request.data['promocode'])
-               used.save()
+            # Commented by - Ashish Dewangan on 17-12-2023
+            # Reason - Commented discount because it was not being used
+            # if(request.data['CouponDiscount']>0):
+            #    used= couponUsed.objects.create(user=request.user,used=request.data['promocode'])
+            #    used.save()
+            # End of comment - Ashish Dewangan on 17-12-2023
+            # Reason - Commented discount because it was not being used 
             # end of the code
 
             # Commented and modified by - Ashish Dewangan on 29-11-2023
@@ -514,7 +545,8 @@ class Invoice(APIView):
 
             # End of code modification by - Ashish Dewangan on 27-11-2023
             # Reason - To send purchased items to frontend
-        except:
+        except Exception as ee:
+            print("Error reason = ",ee)
             return Response({"error": "Facing issue on generating bill please contact to Admin"})
 
 

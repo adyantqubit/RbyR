@@ -673,7 +673,12 @@ order_status=(
     # ("arrived","Arrived"),
     # ("out_for_delivery","Out For Delivery"),
     # ("delivered","Delivered"),
-      ("Proccessing","Proccessing"),
+    # Modified by - Ashish Dewangan on 16-12-2023
+    # Reason - Spelling of precessing was wrong
+    # ("Proccessing","Proccessing"),
+    ("Proccessing","Processing"),
+    # End of modification by - Ashish Dewangan on 16-12-2023
+    # Reason - Spelling of precessing was wrong
     ("Accepted","Accepted"),
     ("Out for Shipping","Out for Shipping"),
     ("Shipped","Shipped"),
