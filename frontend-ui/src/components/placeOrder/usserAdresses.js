@@ -280,13 +280,30 @@ const UsserAdresses = () => {
             else {
                 isAlertVisiblepin = false
             }
-            if (data.get('numberb').split(" ").join("").length < 11) {
-                var dta = " Minimum 8 digit required"
-                handleButtonClicknum(dta)
+            /**
+             * Commented and modified by - Ashish Dewangan on 18-12-2023
+             * Reason - To check null condition
+             */
+            // if (data.get('numberb').split(" ").join("").length < 11) {
+            //     var dta = " Minimum 8 digit required"
+            //     handleButtonClicknum(dta)
+            // }
+            if (data.get('numberb') !=null){
+                if (data.get('numberb').split(" ").join("").length < 11) {
+                    var dta = " Minimum 8 digit required"
+                    handleButtonClicknum(dta)
+                }
+                else {
+                    isAlertVisiblenum = false
+                }
             }
+            /**
+             * End of modification by - Ashish Dewangan on 18-12-2023
+             * Reason - To check null condition
+             */
             else {
                 isAlertVisiblenum = false
-            }
+            } 
         }
 
 
@@ -317,7 +334,16 @@ const UsserAdresses = () => {
                 state: data.get('stateb'),
                 zipcode: data.get('pincodeb'),
                 country: value2,
-                number: data.get('numberb')
+                /**
+                 * Modified by - Ashish Dewangan on 18-12-2023
+                 * Reason - If phone number is null then send data from checkoutDetails
+                 */
+                // number: data.get('numberb')
+                number: data.get('numberb')!=null ? data.get('numberb') : checkoutDetails.billingData.number
+                /**
+                 * End of modification by - Ashish Dewangan on 18-12-2023
+                 * Reason - If phone number is null then send data from checkoutDetails
+                 */
             }
         }
 
@@ -367,7 +393,6 @@ const UsserAdresses = () => {
 
         // Handle paste
         if (theEvent.type === 'paste') {
-            alert("slkls")
             key = evt.clipboardData.getData('text/plain');
         } else {
             // Handle key press
@@ -800,7 +825,16 @@ const UsserAdresses = () => {
                                         defaultCountry="IN"
                                         className={styles.firstInput}
                                         // style={{width:"70%",marginLeft:"15%"}}
-                                        onChange={e=>{validatesNum(e)}} 
+                                        /**
+                                         * Modified by - Ashish Dewangan on 18-12-2023
+                                         * Reason - To set value to checkout details
+                                         */
+                                        // onChange={e=>{validatesNum(e)}}
+                                        onChange={e=>{validatesNum(e);checkoutDetails.billingData.number=e;}} 
+                                        /**
+                                         * End of modification by - Ashish Dewangan on 18-12-2023
+                                         * Reason - To set value to checkout details
+                                         */
                                         limitMaxLength={15}
                                         
                                         />
@@ -819,6 +853,7 @@ const UsserAdresses = () => {
                                         // style={{width:"70%",marginLeft:"15%"}}
                                         onChange={e=>{validatesNum(e)}} 
                                         limitMaxLength={15}
+                                        
                                         
                                         />
                                                 {/* <input className={styles.firstInput} name='numberb' id="numberb" onKeyPress={validatesNum} maxlength={10} /> */}
@@ -854,8 +889,14 @@ const UsserAdresses = () => {
                                 , marginLeft: "15px", position: "relative", bottom: "5px"
                             }} />
                         </span>
+                        {/* Modified by - Ashish Dewangan on 18-12-2023
+                        Reason - To reset flow if edit button is clicked */}
+                        {/* onClick={e => setCond(true)}>Edit</span> */}
                         <span className={styles.change}
-                            onClick={e => setCond(true)}>Edit</span>
+                        
+                            onClick={e =>{ setCond(true);setPaymentflow(true)}}>Edit</span>
+                        {/* End of modification by - Ashish Dewangan on 18-12-2023
+                        Reason - To reset flow if edit button is clicked */}
                             {console.log(cond,'checkkk')}
                     </div>
 
