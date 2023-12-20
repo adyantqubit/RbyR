@@ -9,6 +9,26 @@ const UserInfo = () => {
     const{userdata,checkoutDetails,setCheckoutDetails,shippingflow,setShipingflow}=CartState()
     const [cond,setCond]=useState(false)
 
+    /**
+     * Added by - Ashish Dewangan on 18-12-2023
+     * Reason - To Set user info automatically for order
+     */
+    useEffect(()=>{
+        const userData={
+            "firstname":userdata.name.substring(0,hasWhiteSpace(userdata.name)),
+            "lastname":userdata.name.substring(hasWhiteSpaceforLast(userdata.name),userdata.name.length).trim(),
+            "email":userdata.email,
+        }
+        checkoutDetails['userInfo']=userData; 
+        setCheckoutDetails(checkoutDetails)   
+        setCond(true)
+        setShipingflow(true) 
+    },[])
+    /**
+     * End of code addition by - Ashish Dewangan on 18-12-2023
+     * Reason - To Set user info automatically for order
+     */
+
     // checkoutDetails['userInfo']={"firstname":userdata.name.substring(0,hasWhiteSpace(userdata.name)),"lastname":userdata.name.substring(hasWhiteSpaceforLast(userdata.name),userdata.name.length),"email":userdata.email}
     function hasWhiteSpace(s) {
         var i=s.indexOf(' ');
@@ -66,12 +86,18 @@ const UserInfo = () => {
         >
             
             <span>1. USER DETAILS
-            <IoIosCheckmarkCircle style={{fontSize:"37px",color:"#57b957",backgroundColor: "transparent",marginLeft:"15px",position:"relative",bottom:"5px"}}/>    
+            {/* Commented by - Ashish Dewangan on 18-12-2023
+            Reason - To hide check icon  */}
+            {/* <IoIosCheckmarkCircle style={{fontSize:"37px",color:"#57b957",backgroundColor: "transparent",marginLeft:"15px",position:"relative",bottom:"5px"}}/>     */}
+            {/* End of comment by - Ashish Dewangan on 18-12-2023
+            Reason - To hide check icon  */}
             </span>
 
-            {/* comment on 17/11/22-Rohan Kansari 
-                purpose - hide changable functionality */}
-            <span className={styles.change} style={{color:'blue'}}onClick={e=>setCond(false)}>Edit</span>
+            {/* Commented by - Ashish Dewangan on 18-12-2023
+            Reason - To hide edit label  */}
+            {/* <span className={styles.change} style={{color:'blue'}}onClick={e=>setCond(false)}>Edit</span> */}
+            {/* End of comment by - Ashish Dewangan on 18-12-2023
+            Reason - To hide edit label  */}
         
         </div>
         <div className={styles.usedetailShow} style={{marginLeft:'2%'}}>
