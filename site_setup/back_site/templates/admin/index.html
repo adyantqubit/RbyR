@@ -131,7 +131,7 @@ Reason - To show dashboard with revenue, todays orders and pending list -->
                             <th class="text-gray-900" style="font-weight:800" scope="row">
                                 Order Number
                             </th>
-                            <th class="text-gray-900" style="font-weight:800" scope="row">
+                            <th class="text-gray-900" style="font-weight:800;" scope="row">
                                 Payment Status
                             </th>
                             <th class="text-gray-900" style="font-weight:800" scope="row">
@@ -151,8 +151,14 @@ Reason - To show dashboard with revenue, todays orders and pending list -->
                             <td class="fw-bolder text-gray-500">
                                 <a href="back_site/transaction_history/{{todaysOrder.orderId}}/change/" style="background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;">{{ todaysOrder.orderData.order_no }}</a>
                             </td>
-                            <td class="fw-bolder text-gray-500">
-                                {{todaysOrder.orderData.payment_status }}
+                            <td class="fw-bolder text-gray-500;">
+                                <!-- Modified by - Ashish Dewangan - 20-12-2023
+                                Reason - To capitalize payment status -->
+                                <!-- {{todaysOrder.orderData.payment_status }} -->
+                              <span style="text-transform: capitalize;">  {{todaysOrder.orderData.payment_status }}</span>
+                              <!-- End of code modification by - Ashish Dewangan - 20-12-2023
+                                Reason - To capitalize payment status -->
+                              
                             </td>
                             <td class="fw-bolder text-gray-500">
                                 {{todaysOrder.orderData.user_no }}
@@ -216,7 +222,12 @@ Reason - To show dashboard with revenue, todays orders and pending list -->
                                 <a href="back_site/transaction_history/{{pendingOrder.orderId}}/change/" style="background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;">{{ pendingOrder.orderData.order_no }}</a>
                             </td>
                             <td class="fw-bolder text-gray-500">
-                                {{pendingOrder.orderData.payment_status }}
+                                <!-- Modified by - Ashish Dewangan - 20-12-2023
+                                Reason - To capitalize payment status -->
+                                <!-- {{pendingOrder.orderData.payment_status }} -->
+                                <span style="text-transform: capitalize;">   {{pendingOrder.orderData.payment_status }} </span>
+                                <!-- End of modification by - Ashish Dewangan - 20-12-2023
+                                Reason - To capitalize payment status -->
                             </td>
                             <td class="fw-bolder text-gray-500">
                                 {{pendingOrder.orderData.user_no }}

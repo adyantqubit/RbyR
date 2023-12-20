@@ -577,16 +577,34 @@ const Billing = () => {
                         className={styles.userinfoText2}
                         style={{ whiteSpace: "nowrap" }}
                       >
-                        Payment Mode:
+                        Payment Mode:{" "}
                       </span>
                       <span
                         className={styles.userinfoText2}
-                        style={{ whiteSpace: "nowrap" }}
+                        /**
+                         * Modified by - Ashish Dewangan on 20-12-2023
+                         * Reason - To capitalize the text
+                         */
+                        // style={{ whiteSpace: "nowrap" }}
+                        style={{ whiteSpace: "nowrap",textTransform:"capitalize" }}
+                        /**
+                         * End of modification by - Ashish Dewangan on 20-12-2023
+                         * Reason - To capitalize the text
+                         */
                       >
                         {checkoutDetails.payment
                           .split("p")
                           .join(" p")
-                          .toUpperCase()}
+                          /**
+                           * Commented by - Ashish Dewangan on 20-12-2023
+                           * Reason - To remove upper case becasue each character is converted to capital letter
+                           */
+                          // .toUpperCase()}
+                          /**
+                           * End of comment by - Ashish Dewangan on 20-12-2023
+                           * Reason - To remove upper case becasue each character is converted to capital letter
+                           */
+                        }
                       </span>
                     </div>
                   </div>
