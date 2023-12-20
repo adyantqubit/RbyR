@@ -80,19 +80,8 @@
                             <!-- End of code modification by - Ashish Dewangan on 14-12-2023
                             Reason - To expand app in sidebar if pending or completed order link is clicked -->                                                                                                                                      
                                     <ul class="flex-column nav">
-                                        {% for model in app.models %}
-                                            {% if model.url %}
-                                              <li class="nav-item{% if 'bootstrap-tables' in segment or model.url in request.path|urlencode %} active {% endif %}">
-                                                    <a class="nav-link" href="{{ model.url }}">
-                                                      <span class="sidebar-text">{{ model.label }}</span>
-                                                    </a>
-                                                </li>
-                                            {% else %}
-                                                <li>{{ model.label }}</li>
-                                            {% endif %}
-                                        {% endfor %}
 
-                                        <!-- Added by - Ashish Dewangan on 14-12-2023
+                                         <!-- Added by - Ashish Dewangan on 14-12-2023
                                         Reason - Added links for pending and completed orders -->
                                         <li class="nav-item{% if 'bootstrap-tables' in segment or 'pending_orders' in request.path|urlencode %} active {% endif %}">
                                             <a class="nav-link" href= "{% url 'pending_orders' %}" >
@@ -106,6 +95,20 @@
                                         </li>
                                         <!-- End of code addition by - Ashish Dewangan on 14-12-2023
                                         Reason - Added links for pending and completed orders -->
+                                        
+                                        {% for model in app.models %}
+                                            {% if model.url %}
+                                              <li class="nav-item{% if 'bootstrap-tables' in segment or model.url in request.path|urlencode %} active {% endif %}">
+                                                    <a class="nav-link" href="{{ model.url }}">
+                                                      <span class="sidebar-text">{{ model.label }}</span>
+                                                    </a>
+                                                </li>
+                                            {% else %}
+                                                <li>{{ model.label }}</li>
+                                            {% endif %}
+                                        {% endfor %}
+
+                                       
                                     </ul>
                                 </div>
                                 
