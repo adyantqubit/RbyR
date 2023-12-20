@@ -50,7 +50,9 @@ const Payment = () => {
     //reason- To set by default cash option selected 
     setTickop(tickop)
     if (tickop == true) {
-      checkoutDetails['payment'] = "onlinepay"
+      // checkoutDetails['payment'] = "onlinepay"
+      checkoutDetails['payment'] = "Onlinepay"
+
       document.getElementById('cash').style.border = "1px solid black"
       document.getElementById('online').style.border = "1px solid black"
       setButtonchange(true)
@@ -62,6 +64,10 @@ const Payment = () => {
       checkoutDetails['payment'] = ""
 
   }
+
+//   useEffect(()=>{
+//     setCond(false)
+// },[])
 
   async function cartChecking() {
 
@@ -151,7 +157,10 @@ const Payment = () => {
 
   async function submitAll() {
     // if (checkoutDetails['payment'] && checkoutDetails['payment'].length > 0) {
-    checkoutDetails['payment'] = "onlinepay"
+
+    // checkoutDetails['payment'] = "onlinepay"
+    checkoutDetails['payment'] = "Onlinepay"
+
     checkoutDetails['cart'] = cart
     //  checkoutDetails['CouponDiscount']=afterColumnTotalOfferAdd(offer,cart,taxRate).coupon
     checkoutDetails['ShippingCharges'] = afterColumnTotalOfferAdd(offer, cart, taxRate).shipping

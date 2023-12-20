@@ -60,6 +60,7 @@
     cursor: pointer;
     white-space: nowrap;
     font-family: Noto Serif;
+    text-transform: capitalize;
    }
 
    .al2{

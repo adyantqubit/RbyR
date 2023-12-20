@@ -40,7 +40,7 @@ const InstantFilter = () => {
     }
   }
 function removeFilter(){
-    console.log('checkkkkkkkkk')
+    // console.log('checkkkkkkkkk')
     setCategorySelected('')
 }
 // console.log(selectedCategory,'checkkkkkk')
@@ -61,6 +61,13 @@ function removeFilter(){
                     ) : null}
 
             </div> */}
+            <div style={{display:'flex',width:"100%",marginTop:'4%'}}>
+        <div style={{fontSize:'18px'}} className={style.heading}>FILTER</div>
+        <div style={{color:'blue'}} className={style.removeFilterBtn} >
+          <span style={{cursor:'pointer'}} onClick={removeFilter}> Clear filter
+          </span> 
+          </div >
+        </div>
       <div
         className={style.container}
         style={{
@@ -69,7 +76,7 @@ function removeFilter(){
           wordBreak: "break-word",
         }}
       >
-        <div className={style.heading}>FILTER</div>
+        {/* <div className={style.heading}>FILTER</div> */}
 
         {allCategoryAvai
           ? allCategoryAvai.map((c) => {
@@ -111,9 +118,13 @@ function removeFilter(){
           : null}
           {/* Addition by Om Shrivastava on 15-12-23
           Reason : Add the remove filter option */}
-             <button className={style.removeFilterBtn} onClick={removeFilter}>
+          {/* Commented by Om Shrivastava on 20-12-23
+          Reason : Redesign the clear button */}
+             {/* <button className={style.removeFilterBtn} onClick={removeFilter}>
             Clear
-          </button>
+          </button> */}
+           {/* Commented by Om Shrivastava on 20-12-23
+          Reason : Redesign the clear button */}
           {/* End of addition by Om Shrivastava on 15-12-23
           Reason : Add the remove filter option  */}
       </div>

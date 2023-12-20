@@ -924,7 +924,12 @@ class Online_Qr(models.Model):
     # Modification and addition by Om Shrivastava on 11-12-23
     # Reason : Need to remove mandatory field
     # contact_number=models.CharField(max_length=20,validators=[validate_phone_number],null=True)
-    contact_number=models.CharField(max_length=20,validators=[validate_phone_number],null=True,blank=True)
+    # Modification and addition by Om Shrivastava on 18-12-23
+    # Reason : Need to set the mandatory field
+    # contact_number=models.CharField(max_length=20,validators=[validate_phone_number],null=True,blank=True)
+    contact_number=models.CharField(max_length=20,validators=[validate_phone_number],null=True)
+    # Modification and addition by Om Shrivastava on 18-12-23
+    # Reason : Need to set the mandatory field
     # End of addition by Om Shrivastava on 08-11-23
     # Reason : Set the contact number 
     # Addition by Om Shrivastava on 08-11-23

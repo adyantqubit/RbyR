@@ -49,6 +49,7 @@ const UsserAdresses = () => {
 
     useEffect(()=>{
         fillDefaultShippingAddress()
+        setCond(true)
     },[])
 
     const fillDefaultShippingAddress = async ()=>{

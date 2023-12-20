@@ -126,338 +126,339 @@ const Billing = () => {
     <>
       <Navbar />
       <div className={styles.container} id="scrolled">
+        {checkoutDetails.payment_status == "pending" ? (
+          <div className={styles.main}>
+            {/* { checkoutDetails.payment == "onlinepay" ? ( */}
+            {checkoutDetails.payment == "Onlinepay" ? (
+              onlineDetail != null &&
+              onlineDetail.name != "" &&
+              onlineDetail.account_number != "" &&
+              onlineDetail.bank_name != "" &&
+              onlineDetail.contact_number != "" &&
+              onlineDetail.qr_img != "" &&
+              onlineDetail.upi_id != "" ? (
+                <div
+                  className={styles.payBox}
+                  style={{
+                    backgroundColor: "rgb(243 243 243)",
+                    // height: "160px",
+                    height: "auto",
 
-
-
-      {checkoutDetails.payment_status=="pending"?
-      <div className={styles.main}>
-      { checkoutDetails.payment == "onlinepay" ? (
-        onlineDetail != null
-         && onlineDetail.name!=""
-         && onlineDetail.account_number!=""
-         && onlineDetail.bank_name!=""
-         && onlineDetail.contact_number!=""
-         && onlineDetail.qr_img!=""
-         && onlineDetail.upi_id!=""     ? (
-          <div
-            className={styles.payBox}
-            style={{
-              backgroundColor: "rgb(243 243 243)",
-              height: "160px",
-              marginTop: "2px",
-              border: "1px solid black",
-              width:"auto"
-            }}
-          >
-            { onlineDetail.qr_img != null ? (
-              <img
-                src={config.staticBaseURL + onlineDetail.qr_img}
-                className={onlineDetail.name==null && onlineDetail.account_number==null&& 
-                  onlineDetail.bank_name==null&& onlineDetail.contact_number==null&& onlineDetail.upi_id
-                ==null ? styles.adjustImg :styles.img}
-                style={{ border: "1px solid black" }}
-                // style={ onlineDetail.name==null && onlineDetail.account_number==null&& 
-                //   onlineDetail.bank_name==null&& onlineDetail.contact_number==null&& onlineDetail.upi_id
-                // ==null   ? { marginLeft:'35%',border: "1px solid black"} : "" }  
-              />
-            ) : null}
-            <div className={styles.payTitle}>
-              <div>
-                {/* <div ><span className={styles.userinfoText}>Name:</span><span className={styles.userinfoText2} >{onlineDetail.name}</span ></div>
+                    marginTop: "2px",
+                    border: "1px solid black",
+                    width: "auto",
+                  }}
+                >
+                  {onlineDetail.qr_img != null ? (
+                    <img
+                      src={config.staticBaseURL + onlineDetail.qr_img}
+                      className={
+                        onlineDetail.name == null &&
+                        onlineDetail.account_number == null &&
+                        onlineDetail.bank_name == null &&
+                        onlineDetail.contact_number == null &&
+                        onlineDetail.upi_id == null
+                          ? styles.adjustImg
+                          : styles.img
+                      }
+                      style={{ border: "1px solid black" }}
+                      // style={ onlineDetail.name==null && onlineDetail.account_number==null&&
+                      //   onlineDetail.bank_name==null&& onlineDetail.contact_number==null&& onlineDetail.upi_id
+                      // ==null   ? { marginLeft:'35%',border: "1px solid black"} : "" }
+                    />
+                  ) : null}
+                  <div className={styles.payTitle}>
+                    <div>
+                      {/* <div ><span className={styles.userinfoText}>Name:</span><span className={styles.userinfoText2} >{onlineDetail.name}</span ></div>
                 <div ><span className={styles.userinfoText}>Bank Name:</span><span className={styles.userinfoText2}>{onlineDetail.bank_name}</span></div>
                 <div ><span className={styles.userinfoText}>Account Number:</span><span className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
                 <div ><span className={styles.userinfoText}>UPI ID:</span><span className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div> */}
-                {/* <div style={{fontSize:'14px',color:'blue',marginLeft:'-5px'}} className={styles.payTitle}>Account Details : </div> */}
-                {onlineDetail.bank_name != null ? (
-                  <div style={{ paddingTop: "3px" }}>
-                    <span
-                      style={{ fontSize: "12px", fontWeight: "bold" }}
-                      className={styles.userinfoText2}
-                    >
-                      {onlineDetail.bank_name}
-                    </span>
-                  </div>
-                ) : null}
-                <div>
-                  {onlineDetail.name != null ? (
-                    <>
-                      <span
-                        style={{
-                          fontSize: "12px",
-                          fontWeight: "bold",
-                          letterSpacing: "0.5px",
-                        }}
-                        className={styles.userinfoText}
-                      >
-                        Name &nbsp;&nbsp;:{" "}
-                      </span>
-                      <span
-                        style={{ fontSize: "12px" }}
-                        className={styles.userinfoText2}
-                      >
-                        {onlineDetail.name}
-                      </span>
-                    </>
-                  ) : null}
-                </div>
-                {onlineDetail.account_number != null ? (
-                  <div>
-                    <span
-                      style={{
-                        fontSize: "12px",
-                        fontWeight: "bold",
-                        letterSpacing: "0.5px",
-                      }}
-                      className={styles.userinfoText}
-                    >
-                      A/C No &nbsp;:{" "}
-                    </span>
-                    <span
-                      style={{ fontSize: "12px" }}
-                      className={styles.userinfoText2}
-                    >
-                      {onlineDetail.account_number}
-                    </span>
-                  </div>
-                ) : null}
-                {onlineDetail.upi_id != null ? (
-                  <div>
-                    <span
-                      style={{
-                        fontSize: "12px",
-                        fontWeight: "bold",
-                        letterSpacing: "0.5px",
-                      }}
-                      className={styles.userinfoText}
-                    >
-                      UPI ID&nbsp;:{" "}
-                    </span>
-                    <span
-                      style={{ fontSize: "12px" }}
-                      className={styles.userinfoText2}
-                    >
-                      {onlineDetail.upi_id}
-                    </span>
-                  </div>
-                ) : null}
-                {/* Addition by Om Shrivastava on 02-12-23
+                      {/* <div style={{fontSize:'14px',color:'blue',marginLeft:'-5px'}} className={styles.payTitle}>Account Details : </div> */}
+                      {onlineDetail.bank_name != null ? (
+                        <div style={{ paddingTop: "3px" }}>
+                          <span
+                            style={{ fontSize: "12px", fontWeight: "bold" }}
+                            className={styles.userinfoText2}
+                          >
+                            {onlineDetail.bank_name}
+                          </span>
+                        </div>
+                      ) : null}
+                      <div>
+                        {onlineDetail.name != null ? (
+                          <>
+                            <span
+                              style={{
+                                fontSize: "12px",
+                                fontWeight: "bold",
+                                letterSpacing: "0.5px",
+                              }}
+                              className={styles.userinfoText}
+                            >
+                              Name &nbsp;&nbsp;:{" "}
+                            </span>
+                            <span
+                              style={{ fontSize: "12px" }}
+                              className={styles.userinfoText2}
+                            >
+                              {onlineDetail.name}
+                            </span>
+                          </>
+                        ) : null}
+                      </div>
+                      {onlineDetail.account_number != null ? (
+                        <div>
+                          <span
+                            style={{
+                              fontSize: "12px",
+                              fontWeight: "bold",
+                              letterSpacing: "0.5px",
+                            }}
+                            className={styles.userinfoText}
+                          >
+                            A/C No &nbsp;:{" "}
+                          </span>
+                          <span
+                            style={{ fontSize: "12px" }}
+                            className={styles.userinfoText2}
+                          >
+                            {onlineDetail.account_number}
+                          </span>
+                        </div>
+                      ) : null}
+                      {onlineDetail.upi_id != null ? (
+                        <div>
+                          <span
+                            style={{
+                              fontSize: "12px",
+                              fontWeight: "bold",
+                              letterSpacing: "0.5px",
+                            }}
+                            className={styles.userinfoText}
+                          >
+                            UPI ID&nbsp;:{" "}
+                          </span>
+                          <span
+                            style={{ fontSize: "12px" }}
+                            className={styles.userinfoText2}
+                          >
+                            {onlineDetail.upi_id}
+                          </span>
+                        </div>
+                      ) : null}
+                      {/* Addition by Om Shrivastava on 02-12-23
               Reason : Set the design of the phone label */}
-                {onlineDetail.contact_number != null ? (
-                  <div>
-                    <span
-                      style={{
-                        fontSize: "12px",
-                        fontWeight: "bold",
-                        letterSpacing: "0.5px",
-                      }}
-                      className={styles.userinfoText}
-                    >
-                      Phone&nbsp;:{" "}
-                    </span>
-                    <span
-                      style={{ fontSize: "12px" }}
-                      className={styles.userinfoText2}
-                    >
-                      {onlineDetail.contact_number}
-                    </span>
-                  </div>
-                ) : null}
-                {/* End of addition by Om Shrivastava on 02-12-23
+                      {onlineDetail.contact_number != null ? (
+                        <div>
+                          <span
+                            style={{
+                              fontSize: "12px",
+                              fontWeight: "bold",
+                              letterSpacing: "0.5px",
+                            }}
+                            className={styles.userinfoText}
+                          >
+                            Phone&nbsp;:{" "}
+                          </span>
+                          <span
+                            style={{ fontSize: "12px" }}
+                            className={styles.userinfoText2}
+                          >
+                            {onlineDetail.contact_number}
+                          </span>
+                        </div>
+                      ) : null}
+                      {/* End of addition by Om Shrivastava on 02-12-23
               Reason : Set the design of the phone label */}
-              </div>
-              {/* Modification and addition by Om Shrivastava on 08-11-23
+                    </div>
+                    {/* Modification and addition by Om Shrivastava on 08-11-23
               Reason : Set the contact number of payment time */}
-              {/* <div style={{ height: "60px", width: "100%" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To Admin After Paying At {storeLocatorDetails != null ? parse("PHONE:" + storeLocatorDetails[0]?.phoneNumber) : null}</span></div> */}
-              {/* <div style={{ height: "60px", width: "100%",paddingTop:'2px' }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all',fontSize:'11px' }}> Please Confirm To Admin After Paying At <b>phone:</b>{onlineDetail.contact_number}</span></div> */}
-              {onlineDetail.contact_number != null ? (
-              
-              <div
-                style={{
-                  height: "60px",
-                  width: "100%",
-                  // paddingBottom: "2px",
-                }}
-              >
-                
-                <span
-                  className={styles.userinfoText2}
-                  style={{
-                    lineBreak: "normal",
-                    wordBreak: "keep-all",
-                    fontSize: "11px",
-                  }}
-                >
-                  {" "}
-                  Please Confirm To Admin After Paying{" "}
-                </span>
-              </div>
-                ) : null}
+                    {/* <div style={{ height: "60px", width: "100%" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To Admin After Paying At {storeLocatorDetails != null ? parse("PHONE:" + storeLocatorDetails[0]?.phoneNumber) : null}</span></div> */}
+                    {/* <div style={{ height: "60px", width: "100%",paddingTop:'2px' }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all',fontSize:'11px' }}> Please Confirm To Admin After Paying At <b>phone:</b>{onlineDetail.contact_number}</span></div> */}
+                    {onlineDetail.contact_number != null ? (
+                      <div
+                        style={{
+                          height: "60px",
+                          width: "100%",
+                          // paddingBottom: "2px",
+                        }}
+                      >
+                        <span
+                          className={styles.userinfoText2}
+                          style={{
+                            lineBreak: "normal",
+                            wordBreak: "keep-all",
+                            fontSize: "11px",
+                          }}
+                        >
+                          {" "}
+                          Please Confirm To Admin After Paying{" "}
+                        </span>
+                      </div>
+                    ) : null}
 
-              {/* End of Modification and addition by Om Shrivastava on 08-11-23
+                    {/* End of Modification and addition by Om Shrivastava on 08-11-23
               Reason : Set the contact number of payment time  */}
-            </div>
+                  </div>
+                </div>
+              ) : (
+                <div></div>
+              )
+            ) : null}
           </div>
         ) : (
-          <div></div>
-        )
-      ) : null}
-    </div>
-:
+          <div className={styles.main}>
+            {/* { checkoutDetails.payment == "onlinepay" ? ( */}
+            {checkoutDetails.payment == "Onlinepay" ? (
+              checkoutDetails.payment_details != null &&
+              checkoutDetails.payment_details.name != "" &&
+              checkoutDetails.payment_details.account_number != "" &&
+              checkoutDetails.payment_details.bank_name != "" &&
+              checkoutDetails.payment_details.contact_number != "" &&
+              checkoutDetails.payment_details.qr_img != "" &&
+              checkoutDetails.payment_details.upi_id != "" ? (
+                <div
+                  className={styles.payBox}
+                  style={{
+                    backgroundColor: "rgb(243 243 243)",
+                    // height: "160px",
+                    height: "auto",
 
-<div className={styles.main}>
-{ checkoutDetails.payment == "onlinepay" ? (
-  checkoutDetails.payment_details != null
-   && checkoutDetails.payment_details.name!=""
-   && checkoutDetails.payment_details.account_number!=""
-   && checkoutDetails.payment_details.bank_name!=""
-   && checkoutDetails.payment_details.contact_number!=""
-   && checkoutDetails.payment_details.qr_img!=""
-   && checkoutDetails.payment_details.upi_id!=""     ? (
-    <div
-      className={styles.payBox}
-      style={{
-        backgroundColor: "rgb(243 243 243)",
-        height: "160px",
-        marginTop: "2px",
-        border: "1px solid black",
-        width:"auto"
-      }}
-    >
-      
-      <div className={styles.payTitle}>
-        <div>
-          {/* <div ><span className={styles.userinfoText}>Name:</span><span className={styles.userinfoText2} >{onlineDetail.name}</span ></div>
+                    marginTop: "2px",
+                    border: "1px solid black",
+                    width: "auto",
+                  }}
+                >
+                  <div className={styles.payTitle}>
+                    <div>
+                      {/* <div ><span className={styles.userinfoText}>Name:</span><span className={styles.userinfoText2} >{onlineDetail.name}</span ></div>
           <div ><span className={styles.userinfoText}>Bank Name:</span><span className={styles.userinfoText2}>{onlineDetail.bank_name}</span></div>
           <div ><span className={styles.userinfoText}>Account Number:</span><span className={styles.userinfoText2}>{onlineDetail.account_number}</span></div>
           <div ><span className={styles.userinfoText}>UPI ID:</span><span className={styles.userinfoText2}>{onlineDetail.upi_id}</span></div> */}
-          {/* <div style={{fontSize:'14px',color:'blue',marginLeft:'-5px'}} className={styles.payTitle}>Account Details : </div> */}
-          {checkoutDetails.payment_details.bank_name != null ? (
-            <div style={{ paddingTop: "3px" }}>
-              <span
-                style={{ fontSize: "12px", fontWeight: "bold" }}
-                className={styles.userinfoText2}
-              >
-                {checkoutDetails.payment_details.bank_name}
-              </span>
-            </div>
-          ) : null}
-          <div>
-            {checkoutDetails.payment_details.name != null ? (
-              <>
-                <span
-                  style={{
-                    fontSize: "12px",
-                    fontWeight: "bold",
-                    letterSpacing: "0.5px",
-                  }}
-                  className={styles.userinfoText}
-                >
-                  Name &nbsp;&nbsp;:{" "}
-                </span>
-                <span
-                  style={{ fontSize: "12px" }}
-                  className={styles.userinfoText2}
-                >
-                  {checkoutDetails.payment_details.name}
-                </span>
-              </>
+                      {/* <div style={{fontSize:'14px',color:'blue',marginLeft:'-5px'}} className={styles.payTitle}>Account Details : </div> */}
+                      {checkoutDetails.payment_details.bank_name != null ? (
+                        <div style={{ paddingTop: "3px" }}>
+                          <span
+                            style={{ fontSize: "12px", fontWeight: "bold" }}
+                            className={styles.userinfoText2}
+                          >
+                            {checkoutDetails.payment_details.bank_name}
+                          </span>
+                        </div>
+                      ) : null}
+                      <div>
+                        {checkoutDetails.payment_details.name != null ? (
+                          <>
+                            <span
+                              style={{
+                                fontSize: "12px",
+                                fontWeight: "bold",
+                                letterSpacing: "0.5px",
+                              }}
+                              className={styles.userinfoText}
+                            >
+                              Name &nbsp;&nbsp;:{" "}
+                            </span>
+                            <span
+                              style={{ fontSize: "12px" }}
+                              className={styles.userinfoText2}
+                            >
+                              {checkoutDetails.payment_details.name}
+                            </span>
+                          </>
+                        ) : null}
+                      </div>
+                      {checkoutDetails.payment_details.account_number !=
+                      null ? (
+                        <div>
+                          <span
+                            style={{
+                              fontSize: "12px",
+                              fontWeight: "bold",
+                              letterSpacing: "0.5px",
+                            }}
+                            className={styles.userinfoText}
+                          >
+                            A/C No &nbsp;:{" "}
+                          </span>
+                          <span
+                            style={{ fontSize: "12px" }}
+                            className={styles.userinfoText2}
+                          >
+                            {checkoutDetails.payment_details.account_number}
+                          </span>
+                        </div>
+                      ) : null}
+                      {checkoutDetails.payment_details.upi_id != null ? (
+                        <div>
+                          <span
+                            style={{
+                              fontSize: "12px",
+                              fontWeight: "bold",
+                              letterSpacing: "0.5px",
+                            }}
+                            className={styles.userinfoText}
+                          >
+                            UPI ID&nbsp;:{" "}
+                          </span>
+                          <span
+                            style={{ fontSize: "12px" }}
+                            className={styles.userinfoText2}
+                          >
+                            {checkoutDetails.payment_details.upi_id}
+                          </span>
+                        </div>
+                      ) : null}
+                      {/* Addition by Om Shrivastava on 02-12-23
+        Reason : Set the design of the phone label */}
+                      {checkoutDetails.payment_details.contact_number !=
+                      null ? (
+                        <div>
+                          <span
+                            style={{
+                              fontSize: "12px",
+                              fontWeight: "bold",
+                              letterSpacing: "0.5px",
+                            }}
+                            className={styles.userinfoText}
+                          >
+                            Phone&nbsp;:{" "}
+                          </span>
+                          <span
+                            style={{ fontSize: "12px" }}
+                            className={styles.userinfoText2}
+                          >
+                            {checkoutDetails.payment_details.contact_number}
+                          </span>
+                        </div>
+                      ) : null}
+                      {/* End of addition by Om Shrivastava on 02-12-23
+        Reason : Set the design of the phone label */}
+                    </div>
+                    {/* Modification and addition by Om Shrivastava on 08-11-23
+        Reason : Set the contact number of payment time */}
+                    {/* <div style={{ height: "60px", width: "100%" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To Admin After Paying At {storeLocatorDetails != null ? parse("PHONE:" + storeLocatorDetails[0]?.phoneNumber) : null}</span></div> */}
+                    {/* <div style={{ height: "60px", width: "100%",paddingTop:'2px' }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all',fontSize:'11px' }}> Please Confirm To Admin After Paying At <b>phone:</b>{onlineDetail.contact_number}</span></div> */}
+                    {checkoutDetails.payment_details.contact_number != null ? (
+                      <div
+                        style={{
+                          height: "60px",
+                          width: "100%",
+                          paddingBottom: "2px",
+                        }}
+                      ></div>
+                    ) : null}
+
+                    {/* End of Modification and addition by Om Shrivastava on 08-11-23
+        Reason : Set the contact number of payment time  */}
+                  </div>
+                </div>
+              ) : (
+                <div></div>
+              )
             ) : null}
           </div>
-          {checkoutDetails.payment_details.account_number != null ? (
-            <div>
-              <span
-                style={{
-                  fontSize: "12px",
-                  fontWeight: "bold",
-                  letterSpacing: "0.5px",
-                }}
-                className={styles.userinfoText}
-              >
-                A/C No &nbsp;:{" "}
-              </span>
-              <span
-                style={{ fontSize: "12px" }}
-                className={styles.userinfoText2}
-              >
-                {checkoutDetails.payment_details.account_number}
-              </span>
-            </div>
-          ) : null}
-          {checkoutDetails.payment_details.upi_id != null ? (
-            <div>
-              <span
-                style={{
-                  fontSize: "12px",
-                  fontWeight: "bold",
-                  letterSpacing: "0.5px",
-                }}
-                className={styles.userinfoText}
-              >
-                UPI ID&nbsp;:{" "}
-              </span>
-              <span
-                style={{ fontSize: "12px" }}
-                className={styles.userinfoText2}
-              >
-                {checkoutDetails.payment_details.upi_id}
-              </span>
-            </div>
-          ) : null}
-          {/* Addition by Om Shrivastava on 02-12-23
-        Reason : Set the design of the phone label */}
-          {checkoutDetails.payment_details.contact_number != null ? (
-            <div>
-              <span
-                style={{
-                  fontSize: "12px",
-                  fontWeight: "bold",
-                  letterSpacing: "0.5px",
-                }}
-                className={styles.userinfoText}
-              >
-                Phone&nbsp;:{" "}
-              </span>
-              <span
-                style={{ fontSize: "12px" }}
-                className={styles.userinfoText2}
-              >
-                {checkoutDetails.payment_details.contact_number}
-              </span>
-            </div>
-          ) : null}
-          {/* End of addition by Om Shrivastava on 02-12-23
-        Reason : Set the design of the phone label */}
-        </div>
-        {/* Modification and addition by Om Shrivastava on 08-11-23
-        Reason : Set the contact number of payment time */}
-        {/* <div style={{ height: "60px", width: "100%" }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all' }}> Please Confirm To Admin After Paying At {storeLocatorDetails != null ? parse("PHONE:" + storeLocatorDetails[0]?.phoneNumber) : null}</span></div> */}
-        {/* <div style={{ height: "60px", width: "100%",paddingTop:'2px' }}><span className={styles.userinfoText2} style={{ lineBreak: "normal", wordBreak: 'keep-all',fontSize:'11px' }}> Please Confirm To Admin After Paying At <b>phone:</b>{onlineDetail.contact_number}</span></div> */}
-        {checkoutDetails.payment_details.contact_number != null ? (
-        
-        <div
-          style={{
-            height: "60px",
-            width: "100%",
-            paddingBottom: "2px",
-          }}
-        >
-          
-          
-        </div>
-          ) : null}
-
-        {/* End of Modification and addition by Om Shrivastava on 08-11-23
-        Reason : Set the contact number of payment time  */}
-      </div>
-    </div>
-  ) : (
-    <div></div>
-  )
-) : null}
-</div>
-
-}
-
+        )}
 
         {/* <ReactToPrint
         trigger={() =><div style={{width:"100%",display:"flex",justifyContent:"center",background:"#f2f2f2"}}> <button className={style.shopbtn1} style={{width:"50%"}} onClick={e=>nav('/')}>Print this out</button> </div>}     
@@ -482,13 +483,23 @@ const Billing = () => {
         </div>
         <div className={styles.main} id="main">
           {checkoutDetails.userInfo ? (
-            <div   id="section-to-print" className={styles.invoice} 
-            // id="invoice"
+            <div
+              id="section-to-print"
+              className={styles.invoice}
+              // id="invoice"
             >
-              <h6 style={{textAlign:'right',paddingRight:'2%',fontSize:'12px'}}>RbyR</h6>
+              <h6
+                style={{
+                  textAlign: "right",
+                  paddingRight: "2%",
+                  fontSize: "12px",
+                }}
+              >
+                RbyR
+              </h6>
               <div
-                // id="section-to-print"
-                // ref={componentRef}
+              // id="section-to-print"
+              // ref={componentRef}
               >
                 <div className={styles.head}>
                   <div style={{ fontSize: "26px" }} className={styles.headIn}>
@@ -498,7 +509,9 @@ const Billing = () => {
 
                 <div className={styles.header} id="header">
                   <div className={styles.headerTexts}>
-                    <div className={styles.columnitem1head}>BILLING ADDRESS</div>
+                    <div className={styles.columnitem1head}>
+                      BILLING ADDRESS
+                    </div>
                     <hr style={{ color: "black" }}></hr>
                     <div
                       style={{ wordBreak: "break-all" }}
@@ -526,7 +539,7 @@ const Billing = () => {
                       Reason : Show the zip code */}
                       {checkoutDetails.billingData.zipcode},{" "}
                       {/* End of addition by Om Shrivastava on 14-12-23
-                      Reason : Show the zip code */} 
+                      Reason : Show the zip code */}
                       {checkoutDetails.billingData.state},{" "}
                       {checkoutDetails.billingData.country},{" "}
                     </div>
@@ -594,7 +607,9 @@ const Billing = () => {
 
                   {storeLocatorDetails != null ? (
                     <div className={styles.headerTexts}>
-                      <div className={styles.columnitem1head}>SHIPPING ADDRESS</div>
+                      <div className={styles.columnitem1head}>
+                        SHIPPING ADDRESS
+                      </div>
                       <hr style={{ color: "black" }}></hr>
 
                       <div
@@ -610,7 +625,8 @@ const Billing = () => {
                       >
                         {checkoutDetails.shippingData.street},{" "}
                         {checkoutDetails.shippingData.houseno},{" "}
-                        {checkoutDetails.shippingData.city}, {checkoutDetails.shippingData.zipcode},{" "}
+                        {checkoutDetails.shippingData.city},{" "}
+                        {checkoutDetails.shippingData.zipcode},{" "}
                       </div>
                       <div
                         className={styles.userinfoText2}
@@ -650,7 +666,7 @@ const Billing = () => {
                       className={`${styles.columnitem1head} ${styles.header1}`}
                     >
                       {" "}
-                     Product Name
+                      Product Name
                     </span>
                     <span
                       className={`${styles.columnitem1head} ${styles.header2} ${styles.show}`}
@@ -774,10 +790,11 @@ const Billing = () => {
                   Reason - To show details from purchased items tables rather than items table */}
                   </div>
 
-                  {afterColumnTotalOfferAdd(offer,
-                            checkoutDetails.purchased_products_list
-                            , taxRate).shipping !=
-                  0 ? (
+                  {afterColumnTotalOfferAdd(
+                    offer,
+                    checkoutDetails.purchased_products_list,
+                    taxRate
+                  ).shipping != 0 ? (
                     <div className={styles.billingtexts}>
                       <span className={`${styles.columnitem1head}`}>
                         Shipping charges : &nbsp;{" "}
