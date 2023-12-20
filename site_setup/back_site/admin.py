@@ -1407,8 +1407,8 @@ class Transaction_historyAdmin(admin.ModelAdmin):
     # list_display=("action","order_no","user_no","shipping_price","subtotal_price","grand_total","payment_status","date"
     #               ,'payment_status'
     # )
-    list_display=("action","order_no","user_no",shipping_charges,subtotal,grand_total,"payment_status","date"
-                  ,'payment_status'
+    list_display=("action","order_no","date","user_no",shipping_charges,subtotal,grand_total,"payment_status"
+                  
     )
     # End of code modification by - Ashish Dewangan on 14-12-2023
     # Reason - To add rupees sign in front of price
