@@ -170,7 +170,12 @@ class LikedUpdateView(APIView):
 class likeDelete(APIView):
       def post(self, request):
           pro=product_detail.objects.get(id=request.data['id'])
-          like=Liked.objects.filter(item=pro)
+        # Modified by - Ashish Dewangan on 20-12-2023
+        # Reason - To remove item from wishlist of logged in user only  
+        # like=Liked.objects.filter(item=pro)
+          like=Liked.objects.filter(item=pro,user_no=request.user)
+        # End of modification by - Ashish Dewangan on 20-12-2023
+        # Reason - To remove item from wishlist of logged in user only
           for singleInstance in like:
               singleInstance.delete()
           return Response({"like"}) 

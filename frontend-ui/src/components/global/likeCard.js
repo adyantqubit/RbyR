@@ -56,9 +56,18 @@ const LikeCard = (props) => {
     if (like.filter((l) => l.id === product.id).length > 0) {
       const p = like.filter((i) => i.id !== product.id);
       setLike(p);
-    } else {
-      setLike([...like, product]);
     }
+    /**
+     * Commented by - Ashish Dewangan on - 20-12-2023
+     * Reason - Don't need to add product again to cart because this function is for removing product
+     */
+    //  else {
+    //   setLike([...like, product]);
+    // }
+    /**
+     * End of comment by - Ashish Dewangan on - 20-12-2023
+     * Reason - Don't need to add product again to cart because this function is for removing product
+     */
   }
 
   return (
