@@ -49,11 +49,6 @@ Reason - To give margin before footer and store locator page
     justify-content: space-around;
     padding-left: 8%;
     padding-right: 8%;
-    /* Added by - Ashish Dewangan on 20-12-2023
-        Reason - To manage padding */
-    padding-top: 20px;
-    /* End of code addition by - Ashish Dewangan on 20-12-2023
-        Reason - To manage padding */
    
 }
 
@@ -186,11 +181,6 @@ a:hover{
     Reason - To give margin before footer and store locator page
     */
     .row{
-        /* Added by - Ashish Dewangan on 20-12-2023
-        Reason - To manage padding */
-        padding-top: 0;
-        /* End of code addition by - Ashish Dewangan on 20-12-2023
-        Reason - To manage padding */
         flex-direction: column;
     }
     .column{

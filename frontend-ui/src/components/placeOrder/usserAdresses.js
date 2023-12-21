@@ -590,13 +590,13 @@ const UsserAdresses = () => {
                                 <label className={styles.firstName} htmlFor='first'>Zip-Code<span style={{color:'red'}}>*</span></label>
                                 {checkoutDetails.shippingData ?
                                     <> <input className={styles.firstInput} name='pincode' id='pincode' autocomplete="nope" onKeyPress={validatesPin} onKeyUp={validatesPin} onChange={e=>setRequired({})} maxLength={6} defaultValue={checkoutDetails.shippingData.zipcode} />
-                                        {required.pincode ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter zip code</Typography> : null}
+                                        {required.pincode ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter zip code1</Typography> : null}
                                         {isAlertVisiblepin && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{pinerror} </span>}
                                     </>
                                     :
                                     <>
                                         <input className={styles.firstInput} name='pincode' id='pincode' autocomplete="nope" onKeyPress={validatesPin} onKeyUp={validatesPin} onChange={e=>setRequired({})} maxLength={6} defaultValue={selectedShippingAddress.zipcode}/>
-                                        {required.pincode ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter zip code</Typography> : null}
+                                        {required.pincode ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter zip code1else</Typography> : null}
                                         {isAlertVisiblepin && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{pinerror}</span>}
                                     </>
                                 }
@@ -637,7 +637,7 @@ const UsserAdresses = () => {
                                         />
                                         {/* <input className={styles.firstInput} name='number' id='number' onKeyPress={validatesNum} maxlength={10} defaultValue={checkoutDetails.shippingData.number} /> */}
                                         {isAlertVisiblenum && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{numerror}</span>}
-                                        {required.number ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter phone number</Typography> : null}
+                                        {required.number ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter phone number1</Typography> : null}
                                     </>
                                     :
                                     <>
@@ -654,7 +654,7 @@ const UsserAdresses = () => {
                                         />
                                         {/* <input className={styles.firstInput} name='number' id='number' onKeyPress={validatesNum} maxLength={10} /> */}
                                         {isAlertVisiblenum && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{numerror}</span>}
-                                        {required.number ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter phone number</Typography> : null}
+                                        {required.number ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter phone number1 elsse</Typography> : null}
                                     </>
                                 }
                             </div>
@@ -786,14 +786,14 @@ const UsserAdresses = () => {
                                             <>
                                                 <input className={styles.firstInput} autocomplete="nope" name='pincodeb' id="pincodeb" onKeyPress={validatesPin} maxLength={6} defaultValue={checkoutDetails.billingData.zipcode} />
                                                 {isAlertVisiblepin && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{pinerror} </span>}
-                                                {required.pincodeb ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter zip code</Typography> : null}
+                                                {required.pincodeb ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter zip code2</Typography> : null}
 
                                             </>
                                             :
                                             <>
                                                 <input className={styles.firstInput} autocomplete="nope" name='pincodeb' id="pincodeb" onKeyPress={validatesPin} maxLength={6} />
                                                 {isAlertVisiblepin && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{pinerror} </span>}
-                                                {required.pincodeb ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter zip code</Typography> : null}
+                                                {required.pincodeb ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter zip code2 else..</Typography> : null}
 
                                             </>}
                                     </div>
@@ -841,7 +841,7 @@ const UsserAdresses = () => {
                                         />
                                                 {/* <input className={styles.firstInput} name='numberb' id="numberb" onKeyPress={validatesNum} maxlength={10} defaultValue={checkoutDetails.billingData.number} /> */}
                                                 {isAlertVisiblenum && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{numerror}</span>}
-                                                {required.numberb ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter phone number</Typography> : null}
+                                                {required.numberb ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter phone number2</Typography> : null}
                                             </>
                                             :
                                             <>
@@ -859,7 +859,7 @@ const UsserAdresses = () => {
                                         />
                                                 {/* <input className={styles.firstInput} name='numberb' id="numberb" onKeyPress={validatesNum} maxlength={10} /> */}
                                                 {isAlertVisiblenum && <span asp-validation-for="Code" class="text-danger col-sm-4" style={{fontSize:"14px"}}>{numerror}</span>}
-                                                {required.numberb ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter phone number</Typography> : null}
+                                                {required.numberb ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter phone number2 else</Typography> : null}
                                             </>
                                         }
                                     </div>

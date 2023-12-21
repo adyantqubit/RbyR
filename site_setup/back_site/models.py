@@ -321,13 +321,23 @@ class product_detail(models.Model):
     category=models.CharField(max_length=50,null=True,blank=True)
     img_main=models.ImageField(upload_to='Images/', height_field=None,\
            width_field=None, max_length=100)  
+    # Modification and addition by Om Shrivastava on 21-12-23
+    # Reason : Need to set null and blank property in image field
+    # img_sub1=models.ImageField(upload_to='Images/', height_field=None,\
+    #        width_field=None, max_length=100,default="null") 
+    # img_sub2=models.ImageField(upload_to='Images/', height_field=None,\
+    #        width_field=None, max_length=100,default="null") 
+    # img_sub3=models.ImageField(upload_to='Images/', height_field=None,\
+    #        width_field=None, max_length=100,default="null") 
     img_sub1=models.ImageField(upload_to='Images/', height_field=None,\
-           width_field=None, max_length=100,default="null") 
+           width_field=None, max_length=100,null=True,blank=True) 
     img_sub2=models.ImageField(upload_to='Images/', height_field=None,\
-           width_field=None, max_length=100,default="null") 
+           width_field=None, max_length=100,null=True,blank=True) 
     img_sub3=models.ImageField(upload_to='Images/', height_field=None,\
-           width_field=None, max_length=100,default="null") 
+           width_field=None, max_length=100,null=True,blank=True) 
     like=models.BigIntegerField(default=0, validators=[MaxValueValidator(999999999)])
+    # End of modification and addition by Om Shrivastava on 21-12-23
+    # Reason : Need to set null and blank property in image field
     # Modification and addition by Om Shrivastava on 14-12-23
     # Reason : Set the validation for max 15 lakh price 
     # price=models.DecimalField(decimal_places=2,max_digits=10)

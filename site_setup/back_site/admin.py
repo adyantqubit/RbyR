@@ -137,7 +137,13 @@ class product_detailAdmin(admin.ModelAdmin):
         form.base_fields['upper_menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
         # form.base_fields['subMenu'].queryset = subMenu.objects.filter(='company')
         # form.fields['subMenu'].choices = [(None, 'Subscriber\'s Location')] + list(subMenu.objects.all().values_list('menu').order_by('menu'))
-
+        
+        # Addition by Om Shrivastava on 21-12-23
+        # Reason : Need to remove this field from the list 
+        field = form.base_fields['available']
+        field.widget = field.hidden_widget()
+        # End of addition by Om Shrivastava on 21-12-23
+        # Reason : Need to remove this field from the list 
 
         return form    
 
@@ -540,7 +546,7 @@ class product_ordersAdmin(admin.ModelAdmin):
     # readonly_fields=("id","order_no","user_no","product_id","billing_id","shipping_id","quantity"
     # ,"price","total_price","size","payment_mode","date","selected_currency_sign","selected_currency_value")
     readonly_fields=("id","order_no","user_no","product_id","billing_id","shipping_id","quantity"
-    ,"price","total_price","size","payment_mode","date","selected_currency_sign","selected_currency_value"
+    ,"price","total_price","size","payment_mode","date","selected_currency_sign"
     ,"shipping_charges","product_name","product_image")
     # End of code modification by - Ashish Dewangan on 29-11-2023
     # Reason - To make shipping_charges, product_name and product_image read only
@@ -553,8 +559,10 @@ class product_ordersAdmin(admin.ModelAdmin):
     # def has_change_permission(self, request, obj=None):
     #     return False
     def has_delete_permission(self, request, obj=None):
-        return False   
-    
+        return False  
+     
+   
+
     # Added by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
     def __init__(self, model, admin_site): 
@@ -572,6 +580,17 @@ class product_ordersAdmin(admin.ModelAdmin):
     action.allow_tags = True  
     # End of code addition by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
+
+    # Addition by Om Shrivastava on 21-12-23
+    # Reason : Need to remove the selected_currency_value
+    def get_form(self, request, obj=None, **kwargs):
+        form = super(product_ordersAdmin, self).get_form(request, obj, **kwargs)
+        field = form.base_fields['selected_currency_value']
+        field.widget = field.hidden_widget()
+        
+        return form 
+    # End of addition by Om Shrivastava on 21-12-23
+    # Reason : Need to remove the selected_currency_value
 
 # End of code modification
 

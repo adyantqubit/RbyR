@@ -1011,15 +1011,7 @@ const Details = (props) => {
                         <div class="placement">
                           <div
                             class="heart is-active"
-                            /**
-                             * Commented by - Ashish Dewangan on 20-12-2023
-                             * Reason - To reduce api calling because parent button already has onclick listener for api calling
-                             */
-                            // onClick={(e) => LikedSave(details)}
-                            /**
-                             * End of comment by - Ashish Dewangan on 20-12-2023
-                             * Reason - To reduce api calling because parent button already has onclick listener for api calling
-                             */
+                            onClick={(e) => LikedSave(details)}
                           ></div>
                         </div>
                       </button>
@@ -1039,15 +1031,7 @@ const Details = (props) => {
                         <div class="placement">
                           <div
                             class="heart"
-                            /**
-                             * Commented by - Ashish Dewangan on 20-12-2023
-                             * Reason - To reduce api calling because parent button already has onclick listener for api calling
-                             */
-                            // onClick={(e) => LikedSave(details)}
-                            /**
-                             * End of comment by - Ashish Dewangan on 20-12-2023
-                             * Reason - To reduce api calling because parent button already has onclick listener for api calling
-                             */
+                            onClick={(e) => LikedSave(details)}
                           ></div>
                         </div>
                       </button>

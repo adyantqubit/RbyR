@@ -1347,12 +1347,7 @@ const CartSItem = (props) => {
           ) : null}
         </div>
       </div>
-      {/* Modified by - Ashish Dewangan on 20-12-2023
-      Reason - To reduce margin because footer was overlapping with content */}
-      {/* <div className={styles.sliderShow} style={{ marginTop: "-80px" }}> */}
-      <div className={styles.sliderShow} style={{ marginTop: "-40px" }}>
-      {/* End of modification by - Ashish Dewangan on 20-12-2023
-      Reason - To reduce margin because footer was overlapping with content */}
+      <div className={styles.sliderShow} style={{ marginTop: "-80px" }}>
         <div
           className={styles.columnContainer}
           style={{ width: "100%", display: "flex", justifyContent: "center" }}

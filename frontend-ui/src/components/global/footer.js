@@ -156,7 +156,7 @@ function Footer() {
           </Link>
           <Link to="/terms" style={{ textDecoration: "none", color: "white" }}>
             {" "}
-            <span className={style.span}>Terms and Conditions</span>
+            <span className={style.span}>Namrataaaaaa</span>
           </Link>
           <Link to="/FAQ" style={{ textDecoration: "none", color: "white" }}>
             {" "}

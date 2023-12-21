@@ -268,7 +268,9 @@ const InsideOrder = () => {
     } else {
       notification.error({
         message: (
-          <div style={{ color: "black", fontSize: "13px", fontWeight: "600" }}>
+          <div 
+          // style={{ color: "black", fontSize: "13px", fontWeight: "600" }}
+          >
             Not available{" "}
           </div>
         ),

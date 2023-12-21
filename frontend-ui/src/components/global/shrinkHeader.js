@@ -253,7 +253,9 @@ const ShrinkHeader = () => {
                   m.shownInstFilter ? `/listing/${parent[0]}/0` :
                   `/listing/${parent[0]}/0`
               } className={style.drawerMenu}>
-                <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => {toggleDrawer(); setCategorySelected([])}}><span>{parent[0]}</span></div>
+                <div style={{ justifyContent: "space-between", width: "100%", display: "flex",textTransform:'capitalize' }} onClick={e => {toggleDrawer(); setCategorySelected([])}}><span>
+                  {parent[0].toLowerCase()}
+                  </span></div>
               </Link>
 
               // commented by Rohan-on- 17/2/23

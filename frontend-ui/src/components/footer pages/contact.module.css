@@ -198,7 +198,9 @@
     .head2{
         margin-top:3vh;
         font-size: 14px;
-        padding: 0 3%;
+        /* padding: 0 3%; */
+        padding: 0 1%;
+
         /* width: 65%; */
         width: 99%;
 
@@ -218,6 +220,7 @@
     }
     .column{
         width: 100%;
+        padding: 1.3%;
     }
     .col1{
         order: 2;
