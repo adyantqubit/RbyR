@@ -20,8 +20,18 @@
 
 .importantRules{
    /* height: 300px; */
-   height: 200px;
-overflow: scroll;
+   /**
+   Modified by - Ashish Dewangan on 20-12-2023
+   Reason - To set height to auto
+   */
+   /* height: 200px; */
+   /* overflow: scroll; */
+   height: auto;
+   /**
+   End of comment by - Ashish Dewangan on 20-12-2023
+   Reason - To set height to auto
+   */
+
     width: auto;
     padding-top: 20px;
 
@@ -283,7 +293,12 @@ body {background: #333}
    /* End of Modification and addition by Om Shrivastava on 10-12-23
   Reason : Remove margin left property */
    width:100%;
-   padding-top: 60px;
+   /* Commented by - Ashish Dewangan on 20-12-2023
+   Reason - To reduce padding */
+   /* padding-top: 60px; */
+   padding-top: 40px;
+   /* End of comment by - Ashish Dewangan on 20-12-2023
+   Reason - To reduce padding */
   }
 
     .heading{
