@@ -1,13 +1,22 @@
 {% load i18n admin_urls %}
 
 <div class="card submit_btn">
-    <div class="card-body">
+    <!-- Modification and addition by Om Shrivastava on 21-12-23
+    Reason : Need to arrange the button  -->
+    <!-- <div class="card-body"> -->
+    <div class="card-body" style="margin-left:-23px">
+    <!-- End of modification and addition by Om Shrivastava on 21-12-23 -->
         {% block submit-row %}
             {% if show_save %}
-                <button type="submit" name="_save" class="btn btn-sm btn-primary">{% trans 'Save' %}</button>
-            {% endif %}
-
-            {% if show_save_as_new %}
+                <!-- Modification and addition by Om Shrivastava on 21-12-23
+                Reason : Need to arrange the button  -->
+                <!-- <button type="submit" name="_save" class="btn btn-sm btn-primary">{% trans 'Save' %}</button> -->
+                <button type="submit" name="_save" class="btn btn-sm btn-primary" style="width: 150px;">{% trans 'Save' %}</button>
+                <!-- End of modification and addition by Om Shrivastava on 21-12-23 -->
+                {% endif %}
+            <!-- Commented by Om Shrivastava on 21-12-23
+            Reason : Not show the save & continue buttons -->
+            <!-- {% if show_save_as_new %}
                 <button type="submit" name="_saveasnew" class="btn btn-sm btn-success">{% trans 'Save as new' %}</button>
             {% endif %}
 
@@ -20,13 +29,17 @@
             {% endif %}
 
             {% if show_close %}
-                <a href="{% url opts|admin_urlname:'changelist' %}" class="btn btn-sm btn-warning">{% trans 'Back' %}</a>
-            {% endif %}
-
+                <a href="{% url opts|admin_urlname:'changelist' %}" class="btn btn-sm btn-default">{% trans 'Close' %}</a>
+            {% endif %} -->
+            <!-- End of commented code by Om Shrivastava on 21-12-23 -->
             {% if show_delete_link and original %}
                 {% url opts|admin_urlname:'delete' original.pk|admin_urlquote as delete_url %}
-                <a href="{% add_preserved_filters delete_url %}" class="btn btn-sm btn-danger">{% trans "Delete" %}</a>
-            {% endif %}
+                <!-- Modification and addition by Om Shrivastava on 21-12-23
+                Reason : Need to arrange the button  -->
+                <!-- <a href="{% add_preserved_filters delete_url %}" class="btn btn-sm btn-danger">{% trans "Delete" %}</a> -->
+                <a href="{% add_preserved_filters delete_url %}" class="btn btn-sm btn-danger" style="width: 150px;">{% trans "Delete" %}</a>
+                <!-- End of commented code by Om Shrivastava on 21-12-23 -->
+                {% endif %}
         {% endblock %}
     </div>
-</div>
+</div>  

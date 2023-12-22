@@ -104,7 +104,13 @@ def getTodaysOrders():
 
 @register.simple_tag
 def getPendingOrders():
-    orders=Transaction_history.objects.filter(payment_status="pending").order_by("-date")
+    # Modification and addition by Om Shrivastava on 21-12-23
+    # Reason : Need to arrange the data by order number
+    # orders=Transaction_history.objects.filter(payment_status="pending").order_by("-date")
+    orders=Transaction_history.objects.filter(payment_status="pending").order_by("-order_no")
+    # End of modification and addition by Om Shrivastava on 21-12-23
+    # Reason : Need to arrange the data by order number
+
     AllPendingOrdersDetails=[]
     
     for order in orders:
@@ -120,7 +126,14 @@ def getPendingOrders():
 # Reason - To send completed orders to admin panel
 @register.simple_tag
 def getCompletedOrders():
-    orders=Transaction_history.objects.filter(payment_status="paid").order_by("-date")
+    # Modification and addition by Om Shrivastava on 21-12-23
+    # Reason : Need to arrange the data by order number
+    # orders=Transaction_history.objects.filter(payment_status="paid").order_by("-date")
+    # orders=Transaction_history.objects.filter(payment_status="paid").order_by("-date")
+    orders=Transaction_history.objects.filter(payment_status="paid").order_by("-order_no")
+    # End of modification and addition by Om Shrivastava on 21-12-23
+    # Reason : Need to arrange the data by order number
+
     AllCompletedOrdersDetails=[]
     
     for order in orders:
