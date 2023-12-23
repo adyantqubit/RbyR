@@ -114,55 +114,172 @@ const UsserAdresses = () => {
         //     country:value,
         //     number:data.get('number')
 
-        if (data.get('first').length == 0) {
+        /**
+         * Modified by - Ashish Dewangan on 22-12-2023
+         * Reason - To validate one field after previoues field is validated
+         */
+        // if (data.get('first').length == 0 ) {
+        //     setRequired({ "first": "This field is required." })
+        //     document.getElementById('first').focus()
+        //     // document.getElementById('first').scrollTop(-100)
+        //     action = false
+        // }
+        // else if (data.get('last').length == 0 ) {
+        //     setRequired({ "last": "This field is required." })
+        //     document.getElementById('last').focus()
+        //     // document.getElementById('first').scrollTop(0)
+        //     action = false
+
+        // }
+        // else if (data.get('street').length == 0 ) {
+        //     setRequired({ 'street': "This field is required." })
+        //     document.getElementById('street').focus()
+        //     // document.getElementById('first').scrollTop(0)
+        //     action = false
+
+        // }
+        // else if (data.get('flatno').length == 0 ) {
+        //     setRequired({ 'flatno': "This field is required." })
+        //     document.getElementById('flatno').focus()
+        //     // document.getElementById('first').scrollTop(0)
+        //     action = false
+
+        // }
+        // else if (data.get('city').length == 0 ) {
+        //     setRequired({ 'city': "This field is required." })
+        //     document.getElementById('city').focus()
+        //     // document.getElementById('first').scrollTop(0)
+        //     action = false
+
+        // }
+        // else if (data.get('state').length == 0 ) {
+        //     setRequired({ 'state': "this field is required." })
+        //     document.getElementById('state').focus()
+        //     // document.getElementById('first').scrollTop(0)
+        //     action = false
+
+        // }
+        // else if (data.get('pincode').length == 0 ) {
+        //     setRequired({ 'pincode': "This field is required." })
+        //     document.getElementById('pincode').focus()
+        //     // document.getElementById('pincode').scrollTop(0)
+        //     action = false
+
+        // }
+        // else if (data.get('number').length == 0 ) {
+        //     setRequired({ "number": "This field is required." })
+        //     document.getElementById('number').focus()
+        //     // document.getElementById('number').scrollTop(0)
+        //     action = false
+        // }
+
+        // if (billingInfo) {
+        //     if (data.get('firstb').length == 0 ) {
+        //         setRequired({ "firstb": "This field is required." })
+        //         document.getElementById('firstb').focus()
+        //         // document.getElementById('first').scrollTop(-100)
+        //         action = false
+        //     }
+        //     else if (data.get('lastb').length == 0 ) {
+        //         setRequired({ "lastb": "This field is required." })
+        //         document.getElementById('lastb').focus()
+        //         // document.getElementById('first').scrollTop(0)
+        //         action = false
+
+        //     }
+        //     else if (data.get('streetb').length == 0 ) {
+        //         setRequired({ 'streetb': "This field is required." })
+        //         document.getElementById('streetb').focus()
+        //         // document.getElementById('first').scrollTop(0)
+        //         action = false
+
+        //     }
+        //     else if (data.get('flatnob').length == 0 ) {
+        //         setRequired({ 'flatnob': "This field is required." })
+        //         document.getElementById('flatnob').focus()
+        //         // document.getElementById('first').scrollTop(0)
+        //         action = false
+
+        //     }
+        //     else if (data.get('cityb').length == 0 ) {
+        //         setRequired({ 'cityb': "This field is required." })
+        //         document.getElementById('cityb').focus()
+        //         // document.getElementById('first').scrollTop(0)
+        //         action = false
+
+        //     }
+        //     else if (data.get('stateb').length == 0 ) {
+        //         setRequired({ 'stateb': "this field is required." })
+        //         document.getElementById('stateb').focus()
+        //         // document.getElementById('first').scrollTop(0)
+        //         action = false
+
+        //     }
+        //     else if (data.get('pincodeb').length == 0 ) {
+        //         setRequired({ 'pincodeb': "This field is required." })
+        //         document.getElementById('pincodeb').focus()
+        //         // document.getElementById('pincode').scrollTop(0)
+        //         action = false
+
+        //     }
+        //     else if (data.get('numberb')?.length == 0) {
+        //         setRequired({ "numberb": "This field is required." })
+        //         document.getElementById('numberb').focus()
+        //         // document.getElementById('number').scrollTop(0)
+        //         action = false
+        //     }
+           
+        // }
+
+        if (data.get('first').length == 0 && action == true) {
             setRequired({ "first": "This field is required." })
             document.getElementById('first').focus()
             // document.getElementById('first').scrollTop(-100)
             action = false
         }
-        else if (data.get('last').length == 0) {
+        else if (data.get('last').length == 0 && action == true) {
             setRequired({ "last": "This field is required." })
             document.getElementById('last').focus()
             // document.getElementById('first').scrollTop(0)
             action = false
 
         }
-        else if (data.get('street').length == 0) {
+        else if (data.get('street').length == 0 && action == true) {
             setRequired({ 'street': "This field is required." })
             document.getElementById('street').focus()
             // document.getElementById('first').scrollTop(0)
             action = false
 
         }
-        else if (data.get('flatno').length == 0) {
+        else if (data.get('flatno').length == 0 && action == true) {
             setRequired({ 'flatno': "This field is required." })
             document.getElementById('flatno').focus()
             // document.getElementById('first').scrollTop(0)
             action = false
 
         }
-        else if (data.get('city').length == 0) {
+        else if (data.get('city').length == 0 && action == true) {
             setRequired({ 'city': "This field is required." })
             document.getElementById('city').focus()
             // document.getElementById('first').scrollTop(0)
             action = false
 
         }
-        else if (data.get('state').length == 0) {
+        else if (data.get('state').length == 0 && action == true) {
             setRequired({ 'state': "this field is required." })
             document.getElementById('state').focus()
             // document.getElementById('first').scrollTop(0)
             action = false
 
         }
-        else if (data.get('pincode').length == 0) {
+        else if (data.get('pincode').length == 0 && action == true) {
             setRequired({ 'pincode': "This field is required." })
             document.getElementById('pincode').focus()
             // document.getElementById('pincode').scrollTop(0)
             action = false
 
         }
-        else if (data.get('number').length == 0) {
+        else if (data.get('number').length == 0 && action == true) {
             setRequired({ "number": "This field is required." })
             document.getElementById('number').focus()
             // document.getElementById('number').scrollTop(0)
@@ -170,62 +287,67 @@ const UsserAdresses = () => {
         }
 
         if (billingInfo) {
-            if (data.get('firstb').length == 0) {
+            if (data.get('firstb').length == 0 && action == true) {
                 setRequired({ "firstb": "This field is required." })
                 document.getElementById('firstb').focus()
                 // document.getElementById('first').scrollTop(-100)
                 action = false
             }
-            else if (data.get('lastb').length == 0) {
+            else if (data.get('lastb').length == 0 && action == true) {
                 setRequired({ "lastb": "This field is required." })
                 document.getElementById('lastb').focus()
                 // document.getElementById('first').scrollTop(0)
                 action = false
 
             }
-            else if (data.get('streetb').length == 0) {
+            else if (data.get('streetb').length == 0 && action == true) {
                 setRequired({ 'streetb': "This field is required." })
                 document.getElementById('streetb').focus()
                 // document.getElementById('first').scrollTop(0)
                 action = false
 
             }
-            else if (data.get('flatnob').length == 0) {
+            else if (data.get('flatnob').length == 0 && action == true) {
                 setRequired({ 'flatnob': "This field is required." })
                 document.getElementById('flatnob').focus()
                 // document.getElementById('first').scrollTop(0)
                 action = false
 
             }
-            else if (data.get('cityb').length == 0) {
+            else if (data.get('cityb').length == 0 && action == true) {
                 setRequired({ 'cityb': "This field is required." })
                 document.getElementById('cityb').focus()
                 // document.getElementById('first').scrollTop(0)
                 action = false
 
             }
-            else if (data.get('stateb').length == 0) {
+            else if (data.get('stateb').length == 0 && action == true) {
                 setRequired({ 'stateb': "this field is required." })
                 document.getElementById('stateb').focus()
                 // document.getElementById('first').scrollTop(0)
                 action = false
 
             }
-            else if (data.get('pincodeb').length == 0) {
+            else if (data.get('pincodeb').length == 0 && action == true) {
                 setRequired({ 'pincodeb': "This field is required." })
                 document.getElementById('pincodeb').focus()
                 // document.getElementById('pincode').scrollTop(0)
                 action = false
 
             }
-            else if (data.get('numberb')?.length == 0) {
-                setRequired({ "numberb": "This field is required." })
-                document.getElementById('numberb').focus()
-                // document.getElementById('number').scrollTop(0)
-                action = false
-            }
+            // else if (data.get('numberb')?.length == 0 && action == true) {
+            //     setRequired({ "numberb": "This field is required." })
+            //     document.getElementById('numberb').focus()
+            //     // document.getElementById('number').scrollTop(0)
+            //     action = false
+            // }
+           
         }
 
+        /**
+         * End of modification by - Ashish Dewangan on 22-12-2023
+         * Reason - To validate one field after previoues field is validated
+         */
 
         if (action == true) {
             handleSubmit(e)
@@ -290,13 +412,22 @@ const UsserAdresses = () => {
             //     handleButtonClicknum(dta)
             // }
             if (data.get('numberb') !=null){
-                if (data.get('numberb').split(" ").join("").length < 11) {
-                    var dta = " Minimum 8 digit required"
-                    handleButtonClicknum(dta)
-                }
-                else {
-                    isAlertVisiblenum = false
-                }
+                /**
+                 * Commened by - Ashish Dewangan on 23-12-2023
+                 * Reason - To remove mendatory from billing phone number
+                 */
+                // if (data.get('numberb').split(" ").join("").length < 11) {
+                //     var dta = " Minimum 8 digit required"
+                //     handleButtonClicknum(dta)
+                // }
+                // else {
+                //     isAlertVisiblenum = false
+                // }
+                /**
+                 * End of comment by - Ashish Dewangan on 23-12-2023
+                 * Reason - To remove mendatory from billing phone number
+                 */
+                isAlertVisiblenum = false
             }
             /**
              * End of modification by - Ashish Dewangan on 18-12-2023
@@ -340,7 +471,7 @@ const UsserAdresses = () => {
                  * Reason - If phone number is null then send data from checkoutDetails
                  */
                 // number: data.get('numberb')
-                number: data.get('numberb')!=null ? data.get('numberb') : checkoutDetails.billingData.number
+                number: (data.get('numberb')!=null && data.get('numberb').length>3 )? data.get('numberb') : checkoutDetails?.billingData?.number ?  checkoutDetails?.billingData?.number : shippingData.number
                 /**
                  * End of modification by - Ashish Dewangan on 18-12-2023
                  * Reason - If phone number is null then send data from checkoutDetails
@@ -816,7 +947,7 @@ const UsserAdresses = () => {
                                 </div>
                                 <div className={styles.columnitem1content1}>
                                     <div className={styles.columnFullName}>
-                                        <label className={styles.firstName} htmlFor='street'>Phone Number<span style={{color:'red'}}>*</span></label>
+                                        <label className={styles.firstName} htmlFor='street'>Phone Number</label>
                                         {checkoutDetails.billingData ?
                                             <>
                                             <PhoneInput
@@ -848,7 +979,16 @@ const UsserAdresses = () => {
                                                <PhoneInput
                                         international
                                         placeholder="phone number"
-                                        value={`+91`}
+                                        /**
+                                         * Modified by - Ashish Dewangan on 22-12-2023
+                                         * Reason - To set value of this field from billing details of previous submit click
+                                         */
+                                        // value={`+91`}
+                                        value={checkoutDetails?.billingData?.number?checkoutDetails?.billingData?.number:`+91`}
+                                        /**
+                                         * End of modification by - Ashish Dewangan on 22-12-2023
+                                         * Reason - To set value of this field from billing details of previous submit click
+                                         */
                                         defaultCountry="IN"
                                         className={styles.firstInput}
                                         // style={{width:"70%",marginLeft:"15%"}}
