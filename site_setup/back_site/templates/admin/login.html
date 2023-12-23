@@ -124,7 +124,30 @@
                  * Reason - To show different error message
                  */  
                 // notification.warning("{{ error|clean_text }}", 'top', 'right');
-                notification.warning("Email or password is invalid", 'top', 'right');
+                // notification.warning("Email or password is invalid", 'top', 'right');
+                /**
+                 * Modified by - Ashish on 23-12-2023
+                 * Reason - To increase timing of message
+                 */
+                var notyf = new Notyf({
+                    position: {
+                        x: 'right',
+                        y: 'top',
+                    },
+                    types: [
+                        {
+                        type: 'error',
+                        background: '#fca054',
+                        duration: 5000,
+                        },
+                    ]
+                });
+
+                notyf.error({message:'Email or password is invalid',icon:false});
+                /**
+                 * End of modification by - Ashish on 23-12-2023
+                 * Reason - To increase timing of message
+                 */
                 /**
                  * End of modification by - Ashish Dewangan on 15-12-2023
                  * Reason - To show different error message

@@ -246,6 +246,12 @@ class Menus(models.Model):
         #End of code
     
     def clean(self):
+        # Added by - Ashish Dewangan on 23-12-2023
+        # Reason - To capitalize menu before saving it
+        self.menu = self.menu.capitalize()
+        # End of code addition by - Ashish Dewangan on 23-12-2023
+        # Reason - To capitalize menu before saving it
+
         if (Menus.objects.count() >= 4 and self.pk is None):
             raise ValidationError("Can only create five Menu instances. Try editing/removing one of the existing instances.") 
 
@@ -258,6 +264,7 @@ class Menus(models.Model):
             verbose_name_plural = "Menus"      
     # Added by - Ashish Dewangan on 02-12-2023
     # Reason - To changed display name from menuss to menus on sidebar    
+            
  
 class subMenu(models.Model):
     # Added by Rohan- on -17/2/23

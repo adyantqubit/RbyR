@@ -125,6 +125,49 @@ const Context = ({ children }) => {
    * Reason - To store details of currently selected item
    */
 
+  /**
+   * Added by - Ashish Dewangan on 23-12-2023
+   * Reason - To set user details in checkout details when user details is changed
+   */
+  
+  useEffect(()=>{
+    if(userdata!=null){
+    const userData={
+      "firstname":userdata.name.substring(0,hasWhiteSpace(userdata.name)),
+      "lastname":userdata.name.substring(hasWhiteSpaceforLast(userdata.name),userdata.name.length).trim(),
+      "email":userdata.email,
+    }
+    setCheckoutDetails((previousValue)=>{
+      previousValue['userInfo']=userData
+      return {...previousValue}
+    }) }
+  },[userdata])
+
+  function hasWhiteSpace(s) {
+    var i=s.indexOf(' ');
+    if(i==-1){
+        return s.length
+    }
+    else{
+        return i
+    }
+  }
+
+  function hasWhiteSpaceforLast(s) {
+    var i=s.indexOf(' ');
+    if(i==-1){
+        return s.length;
+    }
+    else{
+        return i;
+    }
+  }
+
+  /**
+   * End of code addition by - Ashish Dewangan on 23-12-2023
+   * Reason - To set user details in checkout details when user details is changed
+   */
+
    /**
    * Added by - Ashish Dewangan on 07-12-2023
    * Reason - To fill recently viewed products from localstorage to context variable when page is reloaded

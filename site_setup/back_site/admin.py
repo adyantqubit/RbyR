@@ -2051,6 +2051,12 @@ class worldOfRByRRowAdmin(admin.ModelAdmin):
     list_display=("action","title","img1","img2","img3","description1","description2")
     list_display_links=("action",)
 
+    # Added by - Ashish Dewangan on 23-12-2023
+    # Reason - To sort rows by id in ascending order
+    ordering=("id",)
+    # End of code addition by - Ashish Dewangan on 23-12-2023
+    # Reason - To sort rows by id in ascending order
+
     def __init__(self, model, admin_site): 
         self.request = None
         super().__init__(model, admin_site)
