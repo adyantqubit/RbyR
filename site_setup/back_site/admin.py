@@ -1032,6 +1032,12 @@ class StoreLocatorAdmin(admin.ModelAdmin):
     # End of code additon by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
 
+    # Added by - Ashish Dewangan on 23-12-2023
+    # Reason - To sort list by id
+    ordering=("id",)
+    # End of code addition by - Ashish Dewangan on 23-12-2023
+    # Reason - To sort list by id
+
     def has_add_permission(self, request):
         return True if StoreLocator.objects.count() < 2  else False
     def get_form(self, request, obj=None, **kwargs):

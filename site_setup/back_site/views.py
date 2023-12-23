@@ -1023,7 +1023,12 @@ class CancellationPolicyView(APIView):
 
 class StoreLocatorView(APIView):
     def get(self, request):
-        StoreLocatorDetail = StoreLocator.objects.all().values()
+        # Modified by - Ashish Dewangan on 23-12-2023
+        # Reason - To sort list by id
+        # StoreLocatorDetail = StoreLocator.objects.all().values()
+        StoreLocatorDetail = StoreLocator.objects.all().order_by("id").values()
+        # End of modification by - Ashish Dewangan on 23-12-2023
+        # Reason - To sort list by id
         StoreLocatorResponse = {}
         StoreLocatorResponse['StoreLocatorDetail'] = StoreLocatorDetail
         return Response(StoreLocatorDetail)
