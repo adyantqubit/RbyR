@@ -796,7 +796,12 @@ const CartSItem = (props) => {
                           style={{
                             display: "flex",
                             flexDirection: "row",
-                            justifyContent: "space-between",
+                            // Modification and addition by Om Shrivastava on 22-12-23
+                            // Reason : Need to give space 
+                            justifyContent: "space-around",
+                            // End of modification and addition by Om Shrivastava on 22-12-23
+                            // Reason : Need to give space 
+
                           }}
                         >
                           <h3

@@ -152,3 +152,12 @@ height: 440px;
         height: 220px;
     }
 }
+/* Addition by Om Shrivastava on 22-12-23
+Reason : Need to set the padding left  */
+@media (max-width:520px) {
+    .headingSection{
+        padding-left: 10%;
+    }
+}
+/* End of Addition by Om Shrivastava on 22-12-23
+Reason : Need to set the padding left */

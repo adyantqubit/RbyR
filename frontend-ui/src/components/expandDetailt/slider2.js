@@ -80,12 +80,18 @@ const Slider2 = ({ scrollTop }) => {
             {CategoryProduct.map((cart, i) => {
               // commented by Rohan - 21/12/22
               //Reason i have to not show same
-              if (cart.id != id)
+              if (cart.id != id 
+                // Addition by Om Shrivastava on 22-12-23
+                // Reason : When product is active then this div is show
+                && cart.is_active == true
+                // End of Addition by Om Shrivastava on 22-12-23
+                // Reason : When product is active then this div is show
+                )
                 return (
+              
                   <Carousel.Item
                     style={{ cursor: "pointer", padding: "5px auto" }}
                   >
-                    {cart.is_active == true ? (
                       <>
                         <img
                           // className={style.img}
@@ -161,7 +167,7 @@ const Slider2 = ({ scrollTop }) => {
                           </div>
                         ) : null}
                       </>
-                    ) : null}
+                    {/* ) : null} */}
                     {/* End of code */}
                   </Carousel.Item>
                 );

@@ -137,12 +137,23 @@ const ShrinkHeader = () => {
 
   return (
     <div className={style.responsiveHeader}>
+      {/* Modification and addition by Om Shrivastava on 22-12-23
+      Reason : Set the div when data is not added */}
+      {whatsappContactNumber && whatsappContactNumber.length > 0 ?
+      <>
       <div className={style.topText}>FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT +91
         {/* Commented and modified by - Ashish Dewanan on 15-02-2023
       Reason - To open link in new tab */}
         {/* <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} className={style.number} >{whatsappContactNumber ? whatsappContactNumber : "Not Added"}</a></div> */}
         <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`} className={style.number}
-          target="_blank" >{whatsappContactNumber ? whatsappContactNumber : "Not Added"}</a></div>
+          target="_blank" >{whatsappContactNumber ? whatsappContactNumber : "Not Added"}</a>
+          </div>
+          </>
+        :<div style={{fontSize:'10px',fontFamily:'var(--fontFamily)'}} className={style.topText}>
+          Welcome to RbyR
+          </div>}
+           {/* End of modification and addition by Om Shrivastava on 22-12-23
+      Reason : Set the div when data is not added */}
       {/* End of code modification */}
       <div className={style.headerContainer}>
 
@@ -161,7 +172,11 @@ const ShrinkHeader = () => {
             </div>
             {/* End of code modification by - Ashish Dewangan on 03-12-2023
               Reason - To hide currency selector from header */}
-            <Link to="/">
+              {/* Addition by Om Shrivastava on 22-12-23
+              Reason : Need to add condition  */}
+              {logo && logo.length > 0 ?
+              <>           
+               <Link to="/">
               {/* <img alt="header" src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" className={style.img}></img> */}
                {/* Modification and addition by Om Shrivastava on 19-10-23
             Reason : Need to set the path of the store locator image */}
@@ -170,6 +185,13 @@ const ShrinkHeader = () => {
           {/* End of modification and addition by Om Shrivastava on 19-10-23
           Reason : Need to set the path of the store locator image */}
             </Link>
+            </>
+            :<div className={style.img}>
+
+            </div>
+              // End of addition by Om Shrivastava on 22-12-23
+              // Reason : Need to add condition  
+          }
           </div>
 
           <div className={style.headerMenu}>

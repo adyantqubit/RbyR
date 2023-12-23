@@ -92,6 +92,13 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     row-gap: 15px;
+
+    /* Addition by Om Shrivastava on 22-12-23
+    Reason : Align the images in left */
+    justify-content: left;
+    column-gap: 80px;
+    /* End of Addition by Om Shrivastava on 22-12-23
+    Reason : Align the images in left */
 }
 
 .absolute {
@@ -326,6 +333,14 @@ Reason : Add the media queries for the image and div */
 .absolute{
     bottom: 2px;
 }
+ /* Addition by Om Shrivastava on 22-12-23
+    Reason : Align the images in left */
+    .sliderContainer{
+    justify-content: space-evenly;
+    column-gap: 0px;
+    }
+    /* End of Addition by Om Shrivastava on 22-12-23
+    Reason : Align the images in left */
  .img{
    /* Modification and addition by Om Shrivastava on 15-11-23
     Reason : Set the bottom space */
