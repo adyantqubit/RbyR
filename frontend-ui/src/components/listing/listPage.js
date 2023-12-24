@@ -247,6 +247,12 @@ const ListPage = () => {
   // console.log(countTrueValues);
   // End of modification and addition by Om Shirvastava on 05-12-23
   // Reason : Show the count, I need to change this logic
+  
+// Addition by Om Shrivastava on 24-12-23
+// Reason : Need to arrange the product name to increasing order 
+const categoryProAscending = [...CategoryProduct].sort((a, b) => a.id - b.id);
+// End of addition by Om Shrivastava on 24-12-23
+// Reason : Need to arrange the product name to increasing order
 
   return (
     <>
@@ -374,7 +380,13 @@ Reason : Need to comment the filter functionality */}
             ref={lastref}
           >
             {CategoryProduct.length > 0 ? (
-              CategoryProduct.map((p, i) => {
+              // Modification and addition by Om Shrivastava on 24-12-23
+              // Reason : Arrange the product name according to their id
+              // CategoryProduct.map((p, i) => {
+              categoryProAscending.map((p, i) => {
+              // End of modification and addition by Om Shrivastava on 24-12-23
+              // Reason : Arrange the product name according to their id
+
                 var temp = false;
                 if (parent != "ready to ship" && parent != "best seller")
                   if (category != 0) {

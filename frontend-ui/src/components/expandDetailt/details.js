@@ -1114,6 +1114,9 @@ const Details = (props) => {
                       {details.fabric}
                     </span>
                   </div> */}
+                  {/* Addition by Om Shrivastava on 24-12-23
+                  Reason : When data is present then div is show */}
+                  {details.fabric ? 
                   <div className={styles["detailsContainer"]} >
                     <span className={styles["textHeading"]} >Fabric</span>
                     <span className={styles["colon"]} >:</span>
@@ -1121,7 +1124,13 @@ const Details = (props) => {
                       {details.fabric}
                     </span>
                   </div>
+                  :null}
+                  {/* End of addition by Om Shrivastava on 24-12-23
+                  Reason : When data is present then div is show */}
 
+                  {/* Addition by Om Shrivastava on 24-12-23
+                  Reason : When data is present then div is show */}
+                  {details.color ? 
                   <div className={styles["detailsContainer"]}>
                     <span className={styles["textHeading"]}>Color </span>
                     <span className={styles["colon"]}> : </span>
@@ -1129,6 +1138,10 @@ const Details = (props) => {
                       {details.color}
                     </span>
                   </div>
+                  :null}
+                   {/* End of addition by Om Shrivastava on 24-12-23
+                  Reason : When data is present then div is show */}
+
                   {/* Commented by - Ashish Dewangan on 17-02-2023
                   Reason - To hide country of origin and have simple UI */}
                   {/* <div className={styles["container08"]}>
@@ -1147,6 +1160,9 @@ const Details = (props) => {
                     PRODUCT DETAILS
                   </h1> */}
 
+                    {/* Addition by Om Shrivastava on 24-12-23
+                  Reason : When data is present then div is show */}
+                  {details.style_code?
                   <div className={styles["detailsContainer"]}>
                     <span className={styles["textHeading"]}>Style Code </span>
                     <span className={styles["colon"]}>:</span>
@@ -1154,6 +1170,9 @@ const Details = (props) => {
                       {details.style_code}
                     </span>
                   </div>
+                  :null}
+                   {/* End of addition by Om Shrivastava on 24-12-23
+                  Reason : When data is present then div is show */}
 
                   {/* Addition by Om Shrivastava on 04-11-23
                   Reason : Set the Care tip functionality */}
@@ -1207,6 +1226,8 @@ const Details = (props) => {
                       </span>
                     </div>
                   ) : (
+                    <>
+                    {details.shipping_days ?
                     <div className={styles["detailsContainer"]}>
                       <span
                         className={styles["textHeading"]}
@@ -1226,6 +1247,8 @@ const Details = (props) => {
                         {" " + details.shipping_days}
                       </span>
                     </div>
+                    :null}
+                    </>
                   )}
                   {/* End of code modification */}
                   {/* Commented by - Ashish Dewangan on 17-02-2023
