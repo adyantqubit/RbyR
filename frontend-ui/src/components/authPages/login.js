@@ -317,11 +317,8 @@ const Login = () => {
 
 							<label style={{color:'rgb(59 59 224)'}} class="labe" htmlFor="ch" aria-hidden="true" tabIndex={-1} onClick={e => window.scrollTo(0, 0)}>Login</label>
 							{/* {error.none_field_errors? <Alert severity="error"  style={{margin:"0 45px"}}>{error.none_field_errors[0]}</Alert>:" "} */}
-
-							<input class="inpu" type="email" tabIndex={-1} style={{ marginBottom: "0", background: "white" }} name="email" placeholder="E-mail*" required="" />
-							{error.email ? <Typography style={{ color: "red", paddingLeft: "50px", fontSize: "12px", }}>{error.email[0]}</Typography> : " "}
-							{/* Commented by Om Shrivastava on 11-12-23 */}
-							{/* Reason : Need to remove this validation message  */}
+							{/* Addition by Om Shrivastava on 23-12-23
+							Reason : Need to rearrange the padding  */}
 							{error.none_field_errors ? 
 							<Typography style={{ color: "red", width: "80%", paddingLeft: "50px", 
 							marginTop: "5px", fontSize: "12px", lineHeight: "12px" }}>
@@ -330,6 +327,24 @@ const Login = () => {
 							textDecoration: "underline" }}> Contact us</Link>
 							</Typography> 
 							: " "}
+							{/* Addition by Om Shrivastava on 23-12-23
+							Reason : Need to rearrange the padding  */}
+							<input class="inpu" type="email" tabIndex={-1} style={{ marginBottom: "0", background: "white" }} name="email" placeholder="E-mail*" required="" />
+							{error.email ? <Typography style={{ color: "red", paddingLeft: "50px", fontSize: "12px", }}>{error.email[0]}</Typography> : " "}
+							{/* Commented by Om Shrivastava on 11-12-23 */}
+							{/* Reason : Need to remove this validation message  */}
+							{/* commnted by Om Shrivastava on 23-12-23
+							Reason : Need to remove this place desgin  */}
+							{/* {error.none_field_errors ? 
+							<Typography style={{ color: "red", width: "80%", paddingLeft: "50px", 
+							marginTop: "5px", fontSize: "12px", lineHeight: "12px" }}>
+								{error.none_field_errors[0]}
+							<Link to="/custom" style={{ color: "blue", fontSize: "12px", 
+							textDecoration: "underline" }}> Contact us</Link>
+							</Typography> 
+							: " "} */}
+							{/* commnted by Om Shrivastava on 23-12-23
+							Reason : Need to remove this place desgin  */}
 							{/* Commented by Om Shrivastava on 11-12-23 */}
 							{/* Reason : Need to remove this validation message  */}
 							<span class="inpu3" tabIndex={-1} style={{ marginTop: "20px", height: "40px", marginLeft: "15%", background: "white", border: "1px solid black" }}>

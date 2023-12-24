@@ -501,6 +501,14 @@ class usershippingDetailAdmin(admin.ModelAdmin):
 # class InvoiceAdmin(admin.ModelAdmin):
 # readonly_fields = ('date',)
 # admin.site.register(product_orders,InvoiceAdmin)
+
+# Added by - Om Shrivastava on 24-12-23
+# Reason - To show only 30 characters for long street name
+def product_name(obj):
+    return Truncator(obj.product_name).chars(40)
+# End of code addition by - Om Shrivastava on 24-12-23
+# Reason - To show only 30 characters for long street name
+
 @admin.register(product_orders)
 class product_ordersAdmin(admin.ModelAdmin):
     # Added by - Ashish Dewangan on 13-12-2023
@@ -519,7 +527,14 @@ class product_ordersAdmin(admin.ModelAdmin):
     # )
     # End of code modification by - Ashish Dewangan on 29-11-2023
     # Reason - To show product name instead of product id
-    list_display=("action","id","order_no","user_no","product_name","billing_id","shipping_id","quantity"
+    list_display=("action","id","order_no","user_no",
+                #   Modification and addition by Om Shrivastava on 23-12-23
+                #   Reason : Need to set product name 
+                #   "product_name",
+                  product_name,
+                #   End of Modification and addition by Om Shrivastava on 23-12-23
+                #   Reason : Need to set product name 
+                  "billing_id","shipping_id","quantity"
     ,"price","size","payment_mode","date",'order_status')
     list_display_links=("action",)
     # End of code additon by - Ashish Dewangan on 13-12-2023

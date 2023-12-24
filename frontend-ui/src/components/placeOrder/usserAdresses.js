@@ -518,7 +518,43 @@ const UsserAdresses = () => {
             theEvent.returnValue = false;
             if (theEvent.preventDefault) theEvent.preventDefault();
         }
+        
     }
+    // Addition by Om Shrivastava on 23-12-23
+    // Reason : Need to remove first whitespace
+    var firstInput = document.getElementById('first');
+
+    firstInput?.addEventListener('keydown', function (event) {
+        if (firstInput.value.length === 0 && event.which === 32) {
+            event.preventDefault();
+        }
+    });
+
+    var secondInput = document.getElementById('last');
+
+    secondInput?.addEventListener('keydown', function (event) {
+        if (secondInput.value.length === 0 && event.which === 32) {
+            event.preventDefault();
+        }
+    });
+
+    var firstBillingInput = document.getElementById('firstb');
+
+    firstBillingInput?.addEventListener('keydown', function (event) {
+        if (firstBillingInput.value.length === 0 && event.which === 32) {
+            event.preventDefault();
+        }
+    });
+
+    var secondBillingInput = document.getElementById('lastb');
+
+    secondBillingInput?.addEventListener('keydown', function (event) {
+        if (secondBillingInput.value.length === 0 && event.which === 32) {
+            event.preventDefault();
+        }
+    });
+    // End of addition by Om Shrivastava on 23-12-23
+    // Reason : Need to remove first whitespace
 
     function validatesPin(evt) {
         var theEvent = evt || window.event;
@@ -641,12 +677,24 @@ const UsserAdresses = () => {
                                 <label className={styles.firstName} htmlFor='b'>Last Name<span style={{color:'red'}}>*</span></label>
                                 {checkoutDetails.shippingData ?
                                     <>
-                                        <input className={styles.firstInput} name='last' autocomplete="nope" id='last' maxLength={20} onKeyPress={validate} onChange={e=>setRequired({})} defaultValue={checkoutDetails.shippingData?.lastname} />
+                                        <input className={styles.firstInput} name='last' autocomplete="nope" id='last' maxLength={20} 
+                                        // Commented by Om Shrivastava on 23-12-23
+                                        // Reason : Need to comment this code not use yet
+                                        // onKeyPress={validate}
+                                        // End of Commented by Om Shrivastava on 23-12-23
+                                        // Reason : Need to comment this code not use yet
+                                         onChange={e=>setRequired({})} defaultValue={checkoutDetails.shippingData?.lastname} />
                                         {required.last ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter last name</Typography> : null}
                                     </>
                                     :
                                     <>
-                                        <input className={styles.firstInput} name='last' autocomplete="nope" id='last' maxLength={20} onChange={e=>setRequired({})} onKeyPress={validate} defaultValue={selectedShippingAddress.lastname} />
+                                        <input className={styles.firstInput} name='last' autocomplete="nope" id='last' maxLength={20} onChange={e=>setRequired({})} 
+                                         // Commented by Om Shrivastava on 23-12-23
+                                        // Reason : Need to comment this code not use yet
+                                        // onKeyPress={validate}
+                                        // End of Commented by Om Shrivastava on 23-12-23
+                                        // Reason : Need to comment this code not use yet
+                                         defaultValue={selectedShippingAddress.lastname} />
                                         {required.last ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter last name</Typography> : null}
                                     </>
                                 }
@@ -820,12 +868,24 @@ const UsserAdresses = () => {
                                         <label className={styles.firstName} htmlFor='first'>First Name<span style={{color:'red'}}>*</span></label>
                                         {checkoutDetails.billingData ?
                                             <>
-                                                <input className={styles.firstInput} autocomplete="nope" name='firstb' id="firstb" maxLength={20} onKeyPress={validate} defaultValue={checkoutDetails.billingData.firstname} />
+                                                <input className={styles.firstInput}  name='firstb' autocomplete="nope" id="firstb" maxLength={20} 
+                                               // Commented by Om Shrivastava on 23-12-23
+                                                // Reason : Need to comment this code not use yet
+                                                // onKeyPress={validate}
+                                                // End of Commented by Om Shrivastava on 23-12-23
+                                                // Reason : Need to comment this code not use yet
+                                                 defaultValue={checkoutDetails.billingData.firstname} />
                                                 {required.firstb ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter first name</Typography> : null}
                                             </>
                                             :
                                             <>
-                                                <input className={styles.firstInput} autocomplete="nope" name='firstb' id="firstb" maxLength={20} onKeyPress={validate} />
+                                                <input className={styles.firstInput} autocomplete="nope" name='firstb' id="firstb" maxLength={20}
+                                                // Commented by Om Shrivastava on 23-12-23
+                                                // Reason : Need to comment this code not use yet
+                                                // onKeyPress={validate}
+                                                // End of Commented by Om Shrivastava on 23-12-23
+                                                // Reason : Need to comment this code not use yet
+                                                 />
                                                 {required.firstb ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter first name</Typography> : null}
                                             </>
                                         }
@@ -834,13 +894,25 @@ const UsserAdresses = () => {
                                         <label className={styles.firstName} htmlFor='b'>Last Name<span style={{color:'red'}}>*</span></label>
                                         {checkoutDetails.billingData ?
                                             <>
-                                                <input className={styles.firstInput} autocomplete="nope" name='lastb' id="firstb" maxLength={20} onKeyPress={validate} defaultValue={checkoutDetails.billingData.lastname} />
+                                                <input className={styles.firstInput} autocomplete="nope" name='lastb' id="firstb" maxLength={20} 
+                                                // Commented by Om Shrivastava on 23-12-23
+                                                // Reason : Need to comment this code not use yet
+                                                // onKeyPress={validate}
+                                                // End of Commented by Om Shrivastava on 23-12-23
+                                                // Reason : Need to comment this code not use yet
+                                                 defaultValue={checkoutDetails.billingData.lastname} />
                                                 {required.lastb ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter last name</Typography> : null}
   
                                             </>
                                             :
                                             <>
-                                                <input className={styles.firstInput} autoComplete='off' name='lastb' id="firstb" maxLength={20} onKeyPress={validate} />
+                                                <input className={styles.firstInput} autoComplete='off' name='lastb' id="firstb" maxLength={20} 
+                                                // Commented by Om Shrivastava on 23-12-23
+                                                // Reason : Need to comment this code not use yet
+                                                // onKeyPress={validate}
+                                                // End of Commented by Om Shrivastava on 23-12-23
+                                                // Reason : Need to comment this code not use yet
+                                                />
                                                 {required.lastb ? <Typography style={{ color: "red", fontSize: "13px" }}>Please enter last name</Typography> : null}
                                             </>}
                                     </div>

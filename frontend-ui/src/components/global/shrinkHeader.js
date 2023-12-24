@@ -139,7 +139,7 @@ const ShrinkHeader = () => {
     <div className={style.responsiveHeader}>
       {/* Modification and addition by Om Shrivastava on 22-12-23
       Reason : Set the div when data is not added */}
-      {whatsappContactNumber && whatsappContactNumber.length > 0 ?
+      {whatsappContactNumber  ?
       <>
       <div className={style.topText}>FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT +91
         {/* Commented and modified by - Ashish Dewanan on 15-02-2023
