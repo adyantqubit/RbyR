@@ -36,15 +36,16 @@ const BestSeller = () => {
     function swapImage(i) {
         let temp = bestProducts[i].img_main;
         bestProducts[i].img_main = bestProducts[i].img_sub1
-
-       let imgg2 = bestProducts[i].img_sub2
-        bestProducts[i].img_sub1 = imgg2
-        bestProducts[i].img_sub2= temp
-
-        // bestProducts[i].img_sub1 = temp
-        setbest(bestProducts)
-        setImageSwap(!imageSwap)
-
+        // Modification and addition by Om Shrivastava on 27-12-23
+        // Reason : No need to use this code yet, becuase it effect the hover functionality
+        //    let imgg2 = bestProducts[i].img_sub2
+        //     bestProducts[i].img_sub1 = imgg2
+        //     bestProducts[i].img_sub2= temp
+        bestProducts[i].img_sub1 = temp
+        // setbest(bestProducts)
+        // setImageSwap(!imageSwap)
+         // End of modification and addition by Om Shrivastava on 27-12-23
+        // Reason : No need to use this code yet, becuase it effect the hover functionality
     }
     // console.log(bestProducts,'datass')
 

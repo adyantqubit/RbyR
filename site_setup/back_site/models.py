@@ -389,7 +389,13 @@ class product_detail(models.Model):
     # Modification and addition by Om Shrivastava on 10-12-23
     # Reason : Need to remove the mandatory field
     # shipping_charges=models.BigIntegerField(default=100)
-    shipping_charges=models.BigIntegerField(default=100,null=True,blank=True,
+    # Modification and addition by Om Shrivastava on 24-12-23
+    # Reason : Need to remove default value
+    # shipping_charges=models.BigIntegerField(default=100,null=True,blank=True,
+    shipping_charges=models.BigIntegerField(null=True,blank=True,
+    # End of Modification and addition by Om Shrivastava on 24-12-23
+    # Reason : Need to remove default value
+                                            
                                             # Addition by Om Shrivastava on 14-12-23
                                             # Reason : Set the max value 10000
                                             validators=[MaxValueValidator(10000)]
@@ -407,9 +413,21 @@ class product_detail(models.Model):
     #Added by Ashish dewangan on 23-11-2022
     #Reason - to have shipping days and ready to wear functionality for product
     #Jira issue no - RBYR -194
-    shipping_days=models.CharField(max_length=50,default="3-4 weaks")
+    # Modification and addition by Om Shrivastava on 24-12-23
+    # Reason : Need to remove default value
+    # shipping_days=models.CharField(max_length=50,default="3-4 weaks")
+    shipping_days=models.CharField(max_length=50,null=True,blank=True)
+    # End of Modification and addition by Om Shrivastava on 24-12-23
+    # Reason : Need to remove default value
+
     ready_to_ship=models.BooleanField(default=False)
-    ready_to_ship_days=models.CharField(max_length=50,default="under 7 working days")
+    # Modification and addition by Om Shrivastava on 24-12-23
+    # Reason : Need to remove default value
+    # ready_to_ship_days=models.CharField(max_length=50,default="under 7 working days")
+    ready_to_ship_days=models.CharField(max_length=50,null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 24-12-23
+    # Reason : Need to remove default value
+
     #End of code addition
 
     #Added by Ashish dewangan on 18-11-2022

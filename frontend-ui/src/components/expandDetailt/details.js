@@ -59,7 +59,14 @@ const Details = (props) => {
   const nav = useNavigate();
   const [details, setDetails] = useState(null);
   const [size, setSize] = useState("");
-  const { con, setcon, setCartDrawer, openCartdrawer ,currentSelectedItem,setCurrentSelectedItem} = CartState();
+  const {
+    con,
+    setcon,
+    setCartDrawer,
+    openCartdrawer,
+    currentSelectedItem,
+    setCurrentSelectedItem,
+  } = CartState();
   const [sizeCond, setSizecond] = useState(false);
   const [pushData, setPushData] = useState(false);
   const {
@@ -71,7 +78,8 @@ const Details = (props) => {
     currency,
     setCategoryProduct,
     settemAllpro,
-    recentlyViewedItems,setRecentlyViewedItems,
+    recentlyViewedItems,
+    setRecentlyViewedItems,
   } = CartState();
   const [cartsaveApi, { isLoad }] = useCartUpdateMutation();
   const [saveLikeApi, { isLoading }] = useLikedUpdateMutation();
@@ -109,21 +117,22 @@ const Details = (props) => {
     catApi();
   }, []);
 
-
   /**
    * Added by - Ashish Dewangan on 09-12-2023
    * Reason - To deleted recently viewed items which are older than one week
    */
-  const deleteOldItemsFromRecentlyViewedProducts=()=>{
-    var items = JSON.parse(localStorage.getItem("recentview"))
-    if(items!=null && items!=undefined){
-        var copyOfItems = items.filter(item=>{
-          return (Math.round((Date.now() - item.timeOfView  ) / ( 24 * 60 * 60 * 1000)))<7   
-         })
-         localStorage.setItem("recentview",JSON.stringify(copyOfItems))
-         setRecentlyViewedItems(copyOfItems)
+  const deleteOldItemsFromRecentlyViewedProducts = () => {
+    var items = JSON.parse(localStorage.getItem("recentview"));
+    if (items != null && items != undefined) {
+      var copyOfItems = items.filter((item) => {
+        return (
+          Math.round((Date.now() - item.timeOfView) / (24 * 60 * 60 * 1000)) < 7
+        );
+      });
+      localStorage.setItem("recentview", JSON.stringify(copyOfItems));
+      setRecentlyViewedItems(copyOfItems);
     }
-  }
+  };
   /**
    * End of code addition by - Ashish Dewangan on 09-12-2023
    * Reason - To deleted recently viewed items which are older than one week
@@ -133,31 +142,30 @@ const Details = (props) => {
    * Added by - Ashish Dewangan on 07-12-2023
    * Reason - To get latest details of recently viewed products
    */
-  const getRecentlyViewedProducts =async ()=>{
-    var ids=[]
-    var items = JSON.parse(localStorage.getItem("recentview"))
-    if(items!=null && items!=undefined){
-      for(var i=0;i<items.length;i++){
-        ids.push(items[i].id)
-      }  
+  const getRecentlyViewedProducts = async () => {
+    var ids = [];
+    var items = JSON.parse(localStorage.getItem("recentview"));
+    if (items != null && items != undefined) {
+      for (var i = 0; i < items.length; i++) {
+        ids.push(items[i].id);
+      }
     }
-    
-    const response = await getRecentlyViewedProductsApi(ids)
 
-    var copyOfItems=response.products
-    if(copyOfItems){
-      for(var i=0;i<items?.length;i++){
-        for(var j=0;j<copyOfItems?.length;j++){
-          if (items[i].id==copyOfItems[j].id){
-            copyOfItems[j].timeOfView=items[i].timeOfView
+    const response = await getRecentlyViewedProductsApi(ids);
+
+    var copyOfItems = response.products;
+    if (copyOfItems) {
+      for (var i = 0; i < items?.length; i++) {
+        for (var j = 0; j < copyOfItems?.length; j++) {
+          if (items[i].id == copyOfItems[j].id) {
+            copyOfItems[j].timeOfView = items[i].timeOfView;
           }
         }
       }
-      localStorage.setItem("recentview",JSON.stringify(copyOfItems))
-      setRecentlyViewedItems(copyOfItems)
+      localStorage.setItem("recentview", JSON.stringify(copyOfItems));
+      setRecentlyViewedItems(copyOfItems);
     }
-
-  }
+  };
   /**
    * End of code addition by - Ashish Dewangan on 07-12-2023
    * Reason - To get latest details of recently viewed products
@@ -180,47 +188,45 @@ const Details = (props) => {
   };
 
   useEffect(() => {
-  /**
-   * Added by - Ashish Dewangan on 09-12-2023
-   * Reason - To deleted recently viewed items which are older than one week
-   */
-    deleteOldItemsFromRecentlyViewedProducts()
-  /**
-   * End of code addition by - Ashish Dewangan on 09-12-2023
-   * Reason - To deleted recently viewed items which are older than one week
-   */
+    /**
+     * Added by - Ashish Dewangan on 09-12-2023
+     * Reason - To deleted recently viewed items which are older than one week
+     */
+    deleteOldItemsFromRecentlyViewedProducts();
+    /**
+     * End of code addition by - Ashish Dewangan on 09-12-2023
+     * Reason - To deleted recently viewed items which are older than one week
+     */
 
     /**
-   * Added by - Ashish Dewangan on 07-12-2023
-   * Reason - To get latest details of recently viewed products
-   */
+     * Added by - Ashish Dewangan on 07-12-2023
+     * Reason - To get latest details of recently viewed products
+     */
     getRecentlyViewedProducts();
     /**
-   * End of code addition by - Ashish Dewangan on 07-12-2023
-   * Reason - To get latest details of recently viewed products
-   */
+     * End of code addition by - Ashish Dewangan on 07-12-2023
+     * Reason - To get latest details of recently viewed products
+     */
     gettingDetail();
-   
   }, [id]);
 
   useEffect(() => {
     if (details) {
-
       /**
        * Added by - Ashish Dewangan on 15-12-2023
        * Reason - To set currently selected item
        */
-      setCurrentSelectedItem(details)
+      setCurrentSelectedItem(details);
       /**
        * End of code addition by - Ashish Dewangan on 15-12-2023
        * Reason - To set currently selected item
        */
-      
+
       /**
        * Commented and modified by - Ashish Dewangan on 07-12-2023
        * Reason - To set recently viewed products
        */
-      
+
       // if (
       //   recents != null &&
       //   recents.filter((r) => r.id === details.id).length == 0
@@ -231,27 +237,26 @@ const Details = (props) => {
       //   setRecentlyViewedItems(recents)
       // }
 
-      var items = JSON.parse(localStorage.getItem("recentview"))
-      if(items!=null && items!=undefined){
-        if(items.filter(e=>e.id==details.id).length<1){
-          var copyOfItem=details
-          copyOfItem["timeOfView"]=Date.now()
- 
-          items.push(copyOfItem)
-          localStorage.setItem("recentview",JSON.stringify(items))
-          setRecentlyViewedItems(items)  
-        }
-        else{
-          var copyOfItems=items
-          for (var i=0;i<copyOfItems.length;i++){
-            if(copyOfItems[i].id==details.id){
-              copyOfItems[i].timeOfView=Date.now()
+      var items = JSON.parse(localStorage.getItem("recentview"));
+      if (items != null && items != undefined) {
+        if (items.filter((e) => e.id == details.id).length < 1) {
+          var copyOfItem = details;
+          copyOfItem["timeOfView"] = Date.now();
+
+          items.push(copyOfItem);
+          localStorage.setItem("recentview", JSON.stringify(items));
+          setRecentlyViewedItems(items);
+        } else {
+          var copyOfItems = items;
+          for (var i = 0; i < copyOfItems.length; i++) {
+            if (copyOfItems[i].id == details.id) {
+              copyOfItems[i].timeOfView = Date.now();
             }
           }
-         
-          localStorage.setItem("recentview",JSON.stringify(copyOfItems))
-          setRecentlyViewedItems(copyOfItems)
-        }  
+
+          localStorage.setItem("recentview", JSON.stringify(copyOfItems));
+          setRecentlyViewedItems(copyOfItems);
+        }
       }
 
       /**
@@ -261,8 +266,6 @@ const Details = (props) => {
 
       window.scrollTo(0, 0);
     }
-
-    
   }, [details]);
 
   async function gettingDetail() {
@@ -357,14 +360,14 @@ const Details = (props) => {
         description: `No More Stock Available`,
         className: "custom-class",
         style: {
-          // Modification and addition by Om Shrivastava on 30-11-23 
+          // Modification and addition by Om Shrivastava on 30-11-23
           // Reason : Set the font color, and font family
           // backgroundColor: "#8c8c8c",
           backgroundColor: "var(--bannerColor)",
           color: "black",
           marginTop: "10vh",
-          fontFamily:'var(--fontFamily)'
-          // End of Modification and addition by Om Shrivastava on 30-11-23 
+          fontFamily: "var(--fontFamily)",
+          // End of Modification and addition by Om Shrivastava on 30-11-23
           // Reason : Set the font color, and font family
         },
         duration: 2,
@@ -392,9 +395,8 @@ const Details = (props) => {
         } else if (size == "Medium") {
           if (details.M < 1) setNotAvai(true);
           else saveCart(details);
-        // } else if (size == "Short") {
+          // } else if (size == "Short") {
         } else if (size == "Small") {
-
           if (details.S < 1) setNotAvai(true);
           else saveCart(details);
         } else if (size == "Extra Short") {
@@ -550,7 +552,6 @@ const Details = (props) => {
           <div className={styles["container01"]}>
             <div className={styles["container02"]}>
               <div className={styles["image"]}>
-                
                 <InnerImageZoom
                   src={config.staticBaseURL + details.img_main}
                   zoomSrc={config.staticBaseURL + details.img_main}
@@ -560,12 +561,20 @@ const Details = (props) => {
 
               <div className={styles["container03"]}>
                 <div className={styles["container04"]}>
-                  <h1 className={styles["heading"]} style={{wordBreak:"break-all"}}>{details.title.toLowerCase()}</h1>
+                  <h1
+                    className={styles["heading"]}
+                    style={{ wordBreak: "break-all" }}
+                  >
+                    {details.title.toLowerCase()}
+                  </h1>
                   {/* Commented by - Ashish Dewangan on 17-02-2023
                   Reason - To hide description and to have simple UI */}
                   {/* <h1 className={styles["subtitle"]}>{details.about}</h1> */}
                   {/* End of comment */}
-                  <span style={{marginTop:'2px'}} className={styles["subtitle"]}>
+                  <span
+                    style={{ marginTop: "2px" }}
+                    className={styles["subtitle"]}
+                  >
                     {" "}
                     {currency.sign}{" "}
                     {(details.price * currency.value).toFixed(2)}
@@ -630,7 +639,6 @@ const Details = (props) => {
                                     id={details.id}
                                     // value="Short"
                                     value="Small"
-
                                     onChange={(e) => onChange(e.target.value)}
                                   />
                                   <span class="span">S</span>
@@ -769,7 +777,6 @@ const Details = (props) => {
                                   id={details.id}
                                   // value="Short"
                                   value="Small"
-
                                   onChange={(e) => onChange(e.target.value)}
                                 />
                                 <span class="span">S</span>
@@ -902,16 +909,16 @@ const Details = (props) => {
                     {/* </div> */}
 
                     <Modal
-                    /**
-                     * Commented and modified by - Ashish Dewangan on 03-12-2023
-                     * Reason - To give some space at top
-                     */
+                      /**
+                       * Commented and modified by - Ashish Dewangan on 03-12-2023
+                       * Reason - To give some space at top
+                       */
                       // style={{ top: 0 }}
                       style={{ top: "5vh" }}
                       /**
-                     * End of code modification by - Ashish Dewangan on 03-12-2023
-                     * Reason - To give some space at top
-                     */
+                       * End of code modification by - Ashish Dewangan on 03-12-2023
+                       * Reason - To give some space at top
+                       */
                       className={styles["modalStyleCustomTailored"]}
                       bodyStyle={{
                         backgroundColor: "var(--modalBodyBackgroundColor)",
@@ -922,26 +929,29 @@ const Details = (props) => {
                       onOk={handleCustomTailoredOk}
                       onCancel={handleCustomTailoredCancel}
                     >
-                      <CustomTailoredForm  details = {details}/>
+                      <CustomTailoredForm details={details} />
                     </Modal>
-                 
+
                     {/* Added by - Ashish Dewangan on 17-12-2023
                     Reason - To show size chart */}
-                    {womenSizeChart.length>0 &&
-                    <span
+                    {womenSizeChart.length > 0 && (
+                      <span
                         className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
-                        style={{color:"#4c60e5", cursor: "pointer",fontSize:"14px" }}
+                        style={{
+                          color: "#4c60e5",
+                          cursor: "pointer",
+                          fontSize: "14px",
+                        }}
                         onClick={showSizeChart}
                       >
                         SIZE CHART
                       </span>
-                      }
-                      {/* End of code addition by - Ashish Dewangan on 17-12-2023
+                    )}
+                    {/* End of code addition by - Ashish Dewangan on 17-12-2023
                       Reason - To show size chart */}
                     <Modal
-                      style={{ top: "25%"}}
-                      
-                      className={styles["modalStyle"] }
+                      style={{ top: "25%" }}
+                      className={styles["modalStyle"]}
                       footer={null}
                       title="SIZE CHART"
                       visible={isWomenSizeChartVisible}
@@ -1116,30 +1126,30 @@ const Details = (props) => {
                   </div> */}
                   {/* Addition by Om Shrivastava on 24-12-23
                   Reason : When data is present then div is show */}
-                  {details.fabric ? 
-                  <div className={styles["detailsContainer"]} >
-                    <span className={styles["textHeading"]} >Fabric</span>
-                    <span className={styles["colon"]} >:</span>
-                    <span className={styles["textContent"]} >
-                      {details.fabric}
-                    </span>
-                  </div>
-                  :null}
+                  {details.fabric ? (
+                    <div className={styles["detailsContainer"]}>
+                      <span className={styles["textHeading"]}>Fabric</span>
+                      <span className={styles["colon"]}>:</span>
+                      <span className={styles["textContent"]}>
+                        {details.fabric}
+                      </span>
+                    </div>
+                  ) : null}
                   {/* End of addition by Om Shrivastava on 24-12-23
                   Reason : When data is present then div is show */}
 
                   {/* Addition by Om Shrivastava on 24-12-23
                   Reason : When data is present then div is show */}
-                  {details.color ? 
-                  <div className={styles["detailsContainer"]}>
-                    <span className={styles["textHeading"]}>Color </span>
-                    <span className={styles["colon"]}> : </span>
-                    <span className={styles["textContent"]}>
-                      {details.color}
-                    </span>
-                  </div>
-                  :null}
-                   {/* End of addition by Om Shrivastava on 24-12-23
+                  {details.color ? (
+                    <div className={styles["detailsContainer"]}>
+                      <span className={styles["textHeading"]}>Color </span>
+                      <span className={styles["colon"]}> : </span>
+                      <span className={styles["textContent"]}>
+                        {details.color}
+                      </span>
+                    </div>
+                  ) : null}
+                  {/* End of addition by Om Shrivastava on 24-12-23
                   Reason : When data is present then div is show */}
 
                   {/* Commented by - Ashish Dewangan on 17-02-2023
@@ -1160,18 +1170,18 @@ const Details = (props) => {
                     PRODUCT DETAILS
                   </h1> */}
 
-                    {/* Addition by Om Shrivastava on 24-12-23
+                  {/* Addition by Om Shrivastava on 24-12-23
                   Reason : When data is present then div is show */}
-                  {details.style_code?
-                  <div className={styles["detailsContainer"]}>
-                    <span className={styles["textHeading"]}>Style Code </span>
-                    <span className={styles["colon"]}>:</span>
-                    <span className={styles["textContent"]}>
-                      {details.style_code}
-                    </span>
-                  </div>
-                  :null}
-                   {/* End of addition by Om Shrivastava on 24-12-23
+                  {details.style_code ? (
+                    <div className={styles["detailsContainer"]}>
+                      <span className={styles["textHeading"]}>Style Code </span>
+                      <span className={styles["colon"]}>:</span>
+                      <span className={styles["textContent"]}>
+                        {details.style_code}
+                      </span>
+                    </div>
+                  ) : null}
+                  {/* End of addition by Om Shrivastava on 24-12-23
                   Reason : When data is present then div is show */}
 
                   {/* Addition by Om Shrivastava on 04-11-23
@@ -1227,27 +1237,29 @@ const Details = (props) => {
                     </div>
                   ) : (
                     <>
-                    {details.shipping_days ?
-                    <div className={styles["detailsContainer"]}>
-                      <span
-                        className={styles["textHeading"]}
-                        // style={{ display: "inline-block", marginRight: "3px" }}
-                      >
-                        {/* Standard Shipping{" "} */}
-                        Delivery Time{" "}
-                      </span> <span
-                        className={styles["colon"]}
-                        // style={{ display: "inline-block", marginRight: "3px" }}
-                      >
-                       : </span>
-                      <span
-                        className={styles["textContent"]}
-                        // style={{ display: "inline-block", marginRight: "3px" }}
-                      >
-                        {" " + details.shipping_days}
-                      </span>
-                    </div>
-                    :null}
+                      {details.shipping_days ? (
+                        <div className={styles["detailsContainer"]}>
+                          <span
+                            className={styles["textHeading"]}
+                            // style={{ display: "inline-block", marginRight: "3px" }}
+                          >
+                            {/* Standard Shipping{" "} */}
+                            Delivery Time{" "}
+                          </span>{" "}
+                          <span
+                            className={styles["colon"]}
+                            // style={{ display: "inline-block", marginRight: "3px" }}
+                          >
+                            :{" "}
+                          </span>
+                          <span
+                            className={styles["textContent"]}
+                            // style={{ display: "inline-block", marginRight: "3px" }}
+                          >
+                            {" " + details.shipping_days}
+                          </span>
+                        </div>
+                      ) : null}
                     </>
                   )}
                   {/* End of code modification */}
@@ -1266,7 +1278,7 @@ const Details = (props) => {
                       className={styles["textLink"]}
                       // Added by Om Shrivastava on 19-11-23
                       // Reason : Add the color
-                      style={{color:'rgb(59, 59, 224)'}}
+                      style={{ color: "rgb(59, 59, 224)" }}
                       // End of addition by Om Shrivastava on 19-11-23
                       // Reason : Add the color
                     >
@@ -1304,14 +1316,13 @@ const Details = (props) => {
                         // fontSize: "1em",
                         // borderBottom:"1px solid grey",
                         // Added by Om Shrivastava on 19-11-23
-                      // Reason : Add the color
-                    color:'rgb(59, 59, 224)'
-                      // End of addition by Om Shrivastava on 19-11-23
-                      // Reason : Add the color
+                        // Reason : Add the color
+                        color: "rgb(59, 59, 224)",
+                        // End of addition by Om Shrivastava on 19-11-23
+                        // Reason : Add the color
                       }}
                       href={`https://wa.me/+91${whatsappContactNumber}?text=Product : ${details.title}  |  Category : ${details.category}`}
                       target="_blank"
-                       
                     >
                       {/* End of code modification */}
                       Whatsapp
@@ -1336,23 +1347,24 @@ const Details = (props) => {
                         textDecoration: "none",
                         letterSpacing: "1px",
                         fontSize: "14px",
-                        color:'rgb(59, 59, 224)',
-                        borderBottom:'1px solid rgb(59, 59, 224)',
+                        color: "rgb(59, 59, 224)",
+                        borderBottom: "1px solid rgb(59, 59, 224)",
                         // fontWeight:'500'
-
                       }}
                     >
                       {" "}
                       Return Policy{" "}
-                    </Link> <span> |</span> <Link
+                    </Link>{" "}
+                    <span> |</span>{" "}
+                    <Link
                       to="/delivery-policy"
                       className={styles[("subtitle", "hoverableSubtitle")]}
                       style={{
                         textDecoration: "none",
                         letterSpacing: "1px",
                         fontSize: "14px",
-                        color:'rgb(59, 59, 224)',
-                        borderBottom:'1px solid rgb(59, 59, 224)',
+                        color: "rgb(59, 59, 224)",
+                        borderBottom: "1px solid rgb(59, 59, 224)",
                         // fontWeight:'500'
                       }}
                     >
@@ -1386,17 +1398,37 @@ const Details = (props) => {
       </div> */}
           <div className={styles.gal}>
             <div className={styles.image_gallery}>
-              <div className={styles.column}>
-                <div className={styles.image_item}>
-                  {details.img_sub1 != "/media/null" ? (
-                    <InnerImageZoom
-                      className={styles.img}
-                      src={config.staticBaseURL + details.img_sub1}
-                      zoomSrc={config.staticBaseURL + details.img_sub1}
-                    />
-                  ) : null}
+              {/* Addition by Om Shrivastava on 24-12-23
+              Reason : When no image is present then no need to show this block */}
+              {details.img_sub1  ? (
+                // End of addition by Om Shrivastava on 24-12-23
+                // Reason : When no image is present then no need to show this block
+                <div
+                  className={styles.column}
+                  
+                >
+                  <div className={styles.image_item}>
+                    {details.img_sub1 != "/media/null" ? (
+                      <InnerImageZoom
+                        className={styles.img}
+                        src={config.staticBaseURL + details.img_sub1}
+                        zoomSrc={config.staticBaseURL + details.img_sub1}
+                      />
+                    ) : null}
+                  </div>
                 </div>
-              </div>
+                
+              //  Addition by Om Shrivastava on 24-12-23
+              // Reason : When no image is present then no need to show this block 
+              ) : null}
+              {/* // End of addition by Om Shrivastava on 24-12-23
+              // Reason : When no image is present then no need to show this block */}
+              
+               {/* Addition by Om Shrivastava on 24-12-23
+              Reason : When no image is present then no need to show this block */}
+              {details.img_sub2  ? (
+                // End of addition by Om Shrivastava on 24-12-23
+                // Reason : When no image is present then no need to show this block
               <div className={styles.column}>
                 <div className={styles.image_item}>
                   {details.img_sub2 != "/media/null" ? (
@@ -1408,6 +1440,17 @@ const Details = (props) => {
                   ) : null}
                 </div>
               </div>
+               //  Addition by Om Shrivastava on 24-12-23
+              // Reason : When no image is present then no need to show this block 
+              ) : null}
+              {/* // End of addition by Om Shrivastava on 24-12-23
+              // Reason : When no image is present then no need to show this block */}
+
+               {/* Addition by Om Shrivastava on 24-12-23
+              Reason : When no image is present then no need to show this block */}
+              {details.img_sub3  ? (
+                // End of addition by Om Shrivastava on 24-12-23
+                // Reason : When no image is present then no need to show this block
               <div className={styles.column}>
                 <div className={styles.image_item}>
                   {details.img_sub3 != "/media/null" ? (
@@ -1419,6 +1462,11 @@ const Details = (props) => {
                   ) : null}
                 </div>
               </div>
+              //  Addition by Om Shrivastava on 24-12-23
+              // Reason : When no image is present then no need to show this block 
+              ) : null}
+              {/* // End of addition by Om Shrivastava on 24-12-23
+              // Reason : When no image is present then no need to show this block */}
             </div>
           </div>
           {/* 
@@ -1473,7 +1521,7 @@ const Details = (props) => {
             <Slider2 scrollTop={scrolling} />
             <Slider scrollTop={scrolling} />
           </div>
-          <div style={{marginBottom:'12px',marginTop:'12px'}}>
+          <div style={{ marginBottom: "12px", marginTop: "12px" }}>
             <a
               href="/"
               class="btn-flip"

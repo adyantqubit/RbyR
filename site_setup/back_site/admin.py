@@ -534,8 +534,13 @@ class product_ordersAdmin(admin.ModelAdmin):
                   product_name,
                 #   End of Modification and addition by Om Shrivastava on 23-12-23
                 #   Reason : Need to set product name 
-                  "billing_id","shipping_id","quantity"
-    ,"price","size","payment_mode","date",'order_status')
+                # Modification and addition by Om Shrivastava on 24-12-23
+                # Reason : Need to arrange the list display
+                #               "billing_id","shipping_id","quantity"
+                # ,"price","size","payment_mode","date",'order_status')
+                "quantity","price","size",'order_status',"payment_mode","billing_id","shipping_id","date")
+                # End of Modification and addition by Om Shrivastava on 24-12-23
+                # Reason : Need to arrange the list display
     list_display_links=("action",)
     # End of code additon by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
