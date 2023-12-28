@@ -394,8 +394,26 @@ const InsideOrder = () => {
                   Reason - Show UPI Scanner button only when payment status is pending */}
 
                   <Modal
-                    title="Scan To Pay"
+                  /**
+                   * Modified by - Ashish Dewangan on 28-12-2023
+                   * Reason - To change title
+                   */
+                    // title="Scan To Pay"
+                    title="Payment"
+                    /**
+                   * End of modification by - Ashish Dewangan on 28-12-2023
+                   * Reason - To change title
+                   */
                     open={isModalOpen}
+                    /**
+                     * Added by - Ashish Dewangan on 28-12-2023
+                     * Reason - To hide ok and cancel button
+                     */
+                    footer={null}
+                    /**
+                     * End of code addition by - Ashish Dewangan on 28-12-2023
+                     * Reason - To hide ok and cancel button
+                     */
                     onOk={handleOk}
                     onCancel={handleCancel}
                   >

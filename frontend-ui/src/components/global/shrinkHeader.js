@@ -297,7 +297,7 @@ const ShrinkHeader = () => {
 
           <Link to={`/listing/ready to ship/0`} className={style.drawerMenu}>
             <div style={{ justifyContent: "space-between", width: "100%", display: "flex" }} onClick={e => { toggleDrawer() }}>
-              <span>Ready to ship</span> 
+              <span>Ready to Ship</span> 
 {/* Commented */}
               {/* <AiOutlineRight /> */}
 {/* End */}

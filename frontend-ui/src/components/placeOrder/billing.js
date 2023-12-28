@@ -143,7 +143,15 @@ const Billing = () => {
                     backgroundColor: "rgb(243 243 243)",
                     // height: "160px",
                     height: "auto",
-
+                    /*
+                    Added by - Ashish Dewangan on 28-12-2023
+                    Reason - To align contents to center
+                    */
+                    alignItems: "center", 
+                    /*
+                    End of code addition by - Ashish Dewangan on 28-12-2023
+                    Reason - To align contents to center
+                    */
                     marginTop: "2px",
                     border: "1px solid black",
                     width: "auto",
@@ -278,7 +286,15 @@ const Billing = () => {
                     {onlineDetail.contact_number != null ? (
                       <div
                         style={{
-                          height: "60px",
+                          /**
+                           * Commented by - Ashish Dewangan on 28-12-2023
+                           * Reason - To adjust hight
+                           */
+                          // height: "60px",
+                          /**
+                           * End of comment by - Ashish Dewangan on 28-12-2023
+                           * Reason - To adjust hight
+                           */
                           width: "100%",
                           // paddingBottom: "2px",
                         }}
@@ -323,7 +339,15 @@ const Billing = () => {
                     backgroundColor: "rgb(243 243 243)",
                     // height: "160px",
                     height: "auto",
-
+                                      /*
+                    Added by - Ashish Dewangan on 28-12-2023
+                    Reason - To align contents to center
+                    */
+                    alignItems: "center", 
+                    /*
+                    End of code addition by - Ashish Dewangan on 28-12-2023
+                    Reason - To align contents to center
+                    */
                     marginTop: "2px",
                     border: "1px solid black",
                     width: "auto",
@@ -442,7 +466,15 @@ const Billing = () => {
                     {checkoutDetails.payment_details.contact_number != null ? (
                       <div
                         style={{
-                          height: "60px",
+                          /**
+                           * Commented by - Ashish Dewangan on 28-12-2023
+                           * Reason - To adjust height
+                           */
+                          // height: "60px",
+                          /**
+                           * End of comment by - Ashish Dewangan on 28-12-2023
+                           * Reason - To adjust height
+                           */
                           width: "100%",
                           paddingBottom: "2px",
                         }}
@@ -451,6 +483,31 @@ const Billing = () => {
 
                     {/* End of Modification and addition by Om Shrivastava on 08-11-23
         Reason : Set the contact number of payment time  */}
+
+                    {/* Added by - Ashish Dewangan on 28-12-2023
+                    Reason - To add text indicating that payment was done */}
+                    {onlineDetail.contact_number != null ? (
+                      <div
+                        style={{
+                          width: "100%",
+                        }}
+                      >
+                        <span
+                          className={styles.userinfoText2}
+                          style={{
+                            lineBreak: "normal",
+                            wordBreak: "keep-all",
+                            fontSize: "11px",
+                          }}
+                        >
+                          {" "}
+                          Your payment was successful to above details{" "}
+                        </span>
+                      </div>
+                    ):null}
+                    {/* End of code addition by - Ashish Dewangan on 28-12-2023
+                    Reason - To add text indicating that payment was done */}
+
                   </div>
                 </div>
               ) : (
