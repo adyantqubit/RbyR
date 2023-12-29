@@ -17,6 +17,7 @@ const Categories = () => {
     const { parent } = useParams()
     const [list, setList] = useState(null)
     const nav = useNavigate()
+    const [nullPage,setNullPage] = useState(false)
 
     /**
      * Added by - Ashish Dewangan on 11-12-2023
@@ -47,6 +48,25 @@ const Categories = () => {
             setRenderCategory(true)
           }
         }
+
+        /**
+         * Added by - Ashish Dewangan on 29-12-2023
+         * Reason - if items inside submenu is zero or submenu inside menu is zero then show no product found text
+         */
+        if(list==null || list==undefined){
+            setNullPage(true)
+        }else{
+            if(list!=null && list!=undefined && list[`${parent}`]?.length==0){
+                setNullPage(true)
+            }else{
+                setNullPage(false)
+            }
+        }
+        /**
+         * End of comment by - Ashish Dewangan on 29-12-2023
+         * Reason - if items inside submenu is zero or submenu inside menu is zero then show no product found text
+         */
+        
       },[list])
     /**
      * End of code addition by - Ashish Dewangan on 11-12-2023
@@ -115,12 +135,51 @@ const Categories = () => {
                                     <button className={style.button} onClick={e => jumpIntoProductPage(s)}>View Products</button>
                                 </div>
                             </div>
-                        ) : <div style={{ width: "100%" }}>
+                        /**
+                         * Modified by - Ashish Dewangan on 29-12-2023
+                         * Reason - To hide loader if products not found and show no product found text
+                         */
+                        // ) : <div style={{ width: "100%" }}>
+                        // <div class="centered">
+                        //     <div class="blob-1"></div>
+                        //     <div class="blob-2"></div>
+                        // </div>
+                        // </div>}    
+                        ) : nullPage?null: <div style={{ width: "100%" }}>
                             <div class="centered">
                                 <div class="blob-1"></div>
                                 <div class="blob-2"></div>
                             </div>
                         </div>}
+                        {/* Modified by - Ashish Dewangan on 29-12-2023
+                        Reason - To hide loader if products not found and show no product found text */}
+                         
+                        {/* Added by - Ashish Dewangan on 29-12-2023
+                        Reason - To show no product found text */}
+                        {nullPage ? (
+                        <div style={{ width: "100%", textAlign: "center" }}>
+                            <div
+                            className={style.noresult}
+                            style={{ width: "100%", textAlign: "center" }}
+                            >
+                            No products found !
+                            </div>
+                            <span
+                            style={{
+                                fontSize: "14px",
+                                fontFamily: "sans-serif",
+                                letterSpacing: "1px",
+                            }}
+                            >
+                            Please change Your search criteria and try again. If still not
+                            finding anything relevant, please visit the Home page and try
+                            out some of our bestsellers!
+                            </span>
+                        </div>
+                        ) : null}
+                        {/* End of code addition by - Ashish Dewangan on 29-12-2023
+                        Reason - To show no product found text */}
+
                     </div>
                 </div>
 

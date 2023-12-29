@@ -597,36 +597,23 @@ const Details = (props) => {
                     <div
                       class={sizeCond ? sty : "rating-container face"}
                       className={styles.sizeSlection}
+                      style={{ display: "flex" }}
                     >
                       <span
                         className={`${styles["textLabel"]} ${styles.sizeMargin}`}
+                        style={{ alignItems: "flex-start" }}
                       >
                         Size :{" "}
                       </span>
-                      {pushData ? (
+
+                      {/* Commented by - Ashish Dewangan on 29-12-2023
+                      Reason - Redesigned size selection box */}
+                      {/* {pushData ? (
                         <Shake>
                           <div>
                             {" "}
                             <div class="rating">
                               <form class="rating-form">
-                                {/* Commented by - Ashish Dewangan on 17-02-2023
-                              Reason - To hide sizes that are not required */}
-                                {/* <label
-                                for={details.id * 2}
-                                className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{ textDecoration: "none" }}
-                              >
-                                <input
-                                  type="radio"
-                                  name={details.id}
-                                  class="super-duper-happy"
-                                  id={details.id * 2}
-                                  value="Extra Short"
-                                  onChange={(e) => onChange(e.target.value)}
-                                />
-                                <span class="span">XS</span>
-                              </label> */}
-                                {/* End of comment */}
                                 <label
                                   for={details.id}
                                   className={`${styles.subtitle} ${styles.customSubtitle}`}
@@ -637,7 +624,6 @@ const Details = (props) => {
                                     name={details.id}
                                     class="super-happy"
                                     id={details.id}
-                                    // value="Short"
                                     value="Small"
                                     onChange={(e) => onChange(e.target.value)}
                                   />
@@ -692,41 +678,6 @@ const Details = (props) => {
                                   />
                                   <span class="span">XL</span>
                                 </label>
-                                {/* Commented by - Ashish Dewangan on 17-02-2023
-                              Reason - To hide sizes that are not required */}
-                                {/* <label
-                                for={details.id * 126}
-                                className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{ textDecoration: "none" }}
-
-                              >
-                                <input
-                                  type="radio"
-                                  name={details.id}
-                                  class="super-sad"
-                                  id={details.id * 126}
-                                  value="Extra Extra Large"
-                                  onChange={(e) => onChange(e.target.value)}
-                                />
-                                <span class="span">XXL</span>
-                              </label>
-                              <label
-                                for={details.id * 146}
-                                className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{ textDecoration: "none" }}
-
-                              >
-                                <input
-                                  type="radio"
-                                  name={details.id}
-                                  class="super-duper-sad"
-                                  id={details.id * 146}
-                                  value="Extra Extra Extra Large"
-                                  onChange={(e) => onChange(e.target.value)}
-                                />
-                                <span class="span">XXXL</span>
-                              </label> */}
-                                {/* End of comment */}
                               </form>
                             </div>
                             <div
@@ -741,15 +692,21 @@ const Details = (props) => {
                             </div>
                           </div>
                         </Shake>
-                      ) : (
-                        <div
-                          style={{ display: "flex", flexDirection: "column" }}
-                        >
-                          <div class="rating">
-                            <form class="rating-form">
-                              {/* Commented by - Ashish Dewangan on 17-02-2023
+                      ) : ( */}
+                      {/* End of comment by - Ashish Dewangan on 29-12-2023
+                      Reason - Redesigned size selection box */}
+
+                      <div
+                        style={{
+                          display: "inline-flex",
+                          flexDirection: "column",
+                        }}
+                      >
+                        <div class="rating">
+                          <form class="rating-form">
+                            {/* Commented by - Ashish Dewangan on 17-02-2023
                               Reason - To hide sizes that are not required */}
-                              {/* <label
+                            {/* <label
                                 for={details.id * 2}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
                                 style={{ textDecoration: "none" }}
@@ -764,74 +721,90 @@ const Details = (props) => {
                                 />
                                 <span class="span">XS</span>
                               </label> */}
-                              {/* End of comment */}
-                              <label
-                                for={details.id}
-                                className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{ textDecoration: "none" }}
-                              >
-                                <input
-                                  type="radio"
-                                  name={details.id}
-                                  class="super-happy"
-                                  id={details.id}
-                                  // value="Short"
-                                  value="Small"
-                                  onChange={(e) => onChange(e.target.value)}
-                                />
-                                <span class="span">S</span>
-                              </label>
+                            {/* End of comment */}
+                            <label
+                              for={details.id}
+                              className={`${styles.subtitle} ${styles.customSubtitle} ${styles.sizeText}`}
+                              style={{
+                                textDecoration: "none",
+                              }}
+                            >
+                              <input
+                                type="radio"
+                                name={details.id}
+                                class="super-happy"
+                                id={details.id}
+                                // value="Short"
+                                value="Small"
+                                onChange={(e) => onChange(e.target.value)}
+                              />
+                              <span class="span" style={{ margin: 0 }}>
+                                S
+                              </span>
+                            </label>
 
-                              <label
-                                for={details.id * 44}
-                                className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{ textDecoration: "none" }}
-                              >
-                                <input
-                                  type="radio"
-                                  name={details.id}
-                                  class="happy"
-                                  id={details.id * 44}
-                                  value="Medium"
-                                  onChange={(e) => onChange(e.target.value)}
-                                />
-                                <span class="span">M</span>
-                              </label>
+                            <label
+                              for={details.id * 44}
+                              className={`${styles.subtitle} ${styles.customSubtitle} ${styles.sizeText}`}
+                              style={{
+                                textDecoration: "none",
+                              }}
+                            >
+                              <input
+                                type="radio"
+                                name={details.id}
+                                class="happy"
+                                id={details.id * 44}
+                                value="Medium"
+                                onChange={(e) => onChange(e.target.value)}
+                              />
+                              <span class="span" style={{ margin: 0 }}>
+                                M
+                              </span>
+                            </label>
 
-                              <label
-                                for={details.id * 88}
-                                className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{ textDecoration: "none" }}
-                              >
-                                <input
-                                  type="radio"
-                                  name={details.id}
-                                  class="sad"
-                                  id={details.id * 88}
-                                  value="Large"
-                                  onChange={(e) => onChange(e.target.value)}
-                                />
-                                <span class="span">L</span>
-                              </label>
+                            <label
+                              for={details.id * 88}
+                              className={`${styles.subtitle} ${styles.customSubtitle} ${styles.sizeText}`}
+                              style={{
+                                textDecoration: "none",
+                              }}
+                            >
+                              <input
+                                type="radio"
+                                name={details.id}
+                                class="sad"
+                                id={details.id * 88}
+                                value="Large"
+                                onChange={(e) => onChange(e.target.value)}
+                              />
+                              <span class="span" style={{ margin: 0 }}>
+                                L
+                              </span>
+                            </label>
 
-                              <label
-                                for={details.id * 108}
-                                className={`${styles.subtitle} ${styles.customSubtitle}`}
-                                style={{ textDecoration: "none" }}
-                              >
-                                <input
-                                  type="radio"
-                                  name={details.id}
-                                  class="super-sad"
-                                  id={details.id * 108}
-                                  value="Extra Large"
-                                  onChange={(e) => onChange(e.target.value)}
-                                />
-                                <span class="span">XL</span>
-                              </label>
-                              {/* Commented by - Ashish Dewangan on 17-02-2023
+                            <label
+                              for={details.id * 108}
+                              className={`${styles.subtitle} ${styles.customSubtitle} ${styles.sizeText}`}
+                              style={{
+                                textDecoration: "none",
+                              }}
+                            >
+                              <input
+                                type="radio"
+                                name={details.id}
+                                class="super-sad"
+                                id={details.id * 108}
+                                value="Extra Large"
+                                onChange={(e) => onChange(e.target.value)}
+                              />
+                              <span class="span" style={{ margin: 0 }}>
+                                XL
+                              </span>
+                            </label>
+                            {/* Commented by - Ashish Dewangan on 17-02-2023
                               Reason - To hide sizes that are not required */}
-                              {/* <label
+                            {/* <label
                                 for={details.id * 126}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
                                 style={{ textDecoration: "none" }}
@@ -861,24 +834,50 @@ const Details = (props) => {
                                 />
                                 <span class="span">XXXL</span>
                               </label> */}
-                              {/* End of comment */}
-                            </form>
-                          </div>
-                          {notAvai ? (
-                            <div
-                              id="rating"
-                              style={{
-                                color: "red",
-                                fontSize: "0.8rem",
-                                marginLeft: "10px",
-                                display: "block",
-                              }}
-                            >
-                              This size is not available.
-                            </div>
-                          ) : null}
+                            {/* End of comment */}
+                          </form>
                         </div>
-                      )}
+                        {/* Modified by - Ashish Dewangan on 29-12-2023
+                        Reason - Redesigned Size selection box */}
+                        {/* {notAvai ? (
+                          <div
+                            // id="rating"
+                            style={{
+                              color: "red",
+                              fontSize: "0.8rem",
+                              marginLeft: "10px",
+                            }}
+                          >
+                            This size is not available.
+                          </div>
+                        ) : null} */}
+
+                        {notAvai ? (
+                          <div
+                            // id="rating"
+                            style={{
+                              color: "red",
+                              fontSize: "0.8rem",
+                              marginLeft: "10px",
+                            }}
+                          >
+                            This size is not available.
+                          </div>
+                        ) : pushData ? (
+                          <div
+                            // class="rating"
+                            style={{
+                              color: "red",
+                              fontSize: "0.8rem",
+                              marginLeft: "10px",
+                            }}
+                          >
+                            Please select your size
+                          </div>
+                        ) : null}
+                        {/* End of code modification by - Ashish Dewangan on 29-12-2023
+                        Reason - Redesigned Size selection box */}
+                      </div>
                     </div>
 
                     {/* <div className={styles.charts}> */}
@@ -941,6 +940,7 @@ const Details = (props) => {
                           color: "#4c60e5",
                           cursor: "pointer",
                           fontSize: "14px",
+                          alignSelf: "flex-start",
                         }}
                         onClick={showSizeChart}
                       >
@@ -1225,7 +1225,7 @@ const Details = (props) => {
                   {details.ready_to_ship == true ? (
                     <div className={styles["detailsContainer"]}>
                       <span className={styles["textHeading"]}>
-                        Ready to ship{" "}
+                        Ready to Ship{" "}
                       </span>
                       <span className={styles["colon"]}> : </span>
                       <span
@@ -1400,13 +1400,10 @@ const Details = (props) => {
             <div className={styles.image_gallery}>
               {/* Addition by Om Shrivastava on 24-12-23
               Reason : When no image is present then no need to show this block */}
-              {details.img_sub1  ? (
+              {details.img_sub1 ? (
                 // End of addition by Om Shrivastava on 24-12-23
                 // Reason : When no image is present then no need to show this block
-                <div
-                  className={styles.column}
-                  
-                >
+                <div className={styles.column}>
                   <div className={styles.image_item}>
                     {details.img_sub1 != "/media/null" ? (
                       <InnerImageZoom
@@ -1417,54 +1414,53 @@ const Details = (props) => {
                     ) : null}
                   </div>
                 </div>
-                
-              //  Addition by Om Shrivastava on 24-12-23
-              // Reason : When no image is present then no need to show this block 
-              ) : null}
-              {/* // End of addition by Om Shrivastava on 24-12-23
-              // Reason : When no image is present then no need to show this block */}
-              
-               {/* Addition by Om Shrivastava on 24-12-23
-              Reason : When no image is present then no need to show this block */}
-              {details.img_sub2  ? (
-                // End of addition by Om Shrivastava on 24-12-23
-                // Reason : When no image is present then no need to show this block
-              <div className={styles.column}>
-                <div className={styles.image_item}>
-                  {details.img_sub2 != "/media/null" ? (
-                    <InnerImageZoom
-                      className={styles.img}
-                      src={config.staticBaseURL + details.img_sub2}
-                      zoomSrc={config.staticBaseURL + details.img_sub2}
-                    />
-                  ) : null}
-                </div>
-              </div>
-               //  Addition by Om Shrivastava on 24-12-23
-              // Reason : When no image is present then no need to show this block 
-              ) : null}
+              ) : //  Addition by Om Shrivastava on 24-12-23
+              // Reason : When no image is present then no need to show this block
+              null}
               {/* // End of addition by Om Shrivastava on 24-12-23
               // Reason : When no image is present then no need to show this block */}
 
-               {/* Addition by Om Shrivastava on 24-12-23
+              {/* Addition by Om Shrivastava on 24-12-23
               Reason : When no image is present then no need to show this block */}
-              {details.img_sub3  ? (
+              {details.img_sub2 ? (
                 // End of addition by Om Shrivastava on 24-12-23
                 // Reason : When no image is present then no need to show this block
-              <div className={styles.column}>
-                <div className={styles.image_item}>
-                  {details.img_sub3 != "/media/null" ? (
-                    <InnerImageZoom
-                      className={styles.img}
-                      src={config.staticBaseURL + details.img_sub3}
-                      zoomSrc={config.staticBaseURL + details.img_sub3}
-                    />
-                  ) : null}
+                <div className={styles.column}>
+                  <div className={styles.image_item}>
+                    {details.img_sub2 != "/media/null" ? (
+                      <InnerImageZoom
+                        className={styles.img}
+                        src={config.staticBaseURL + details.img_sub2}
+                        zoomSrc={config.staticBaseURL + details.img_sub2}
+                      />
+                    ) : null}
+                  </div>
                 </div>
-              </div>
-              //  Addition by Om Shrivastava on 24-12-23
-              // Reason : When no image is present then no need to show this block 
-              ) : null}
+              ) : //  Addition by Om Shrivastava on 24-12-23
+              // Reason : When no image is present then no need to show this block
+              null}
+              {/* // End of addition by Om Shrivastava on 24-12-23
+              // Reason : When no image is present then no need to show this block */}
+
+              {/* Addition by Om Shrivastava on 24-12-23
+              Reason : When no image is present then no need to show this block */}
+              {details.img_sub3 ? (
+                // End of addition by Om Shrivastava on 24-12-23
+                // Reason : When no image is present then no need to show this block
+                <div className={styles.column}>
+                  <div className={styles.image_item}>
+                    {details.img_sub3 != "/media/null" ? (
+                      <InnerImageZoom
+                        className={styles.img}
+                        src={config.staticBaseURL + details.img_sub3}
+                        zoomSrc={config.staticBaseURL + details.img_sub3}
+                      />
+                    ) : null}
+                  </div>
+                </div>
+              ) : //  Addition by Om Shrivastava on 24-12-23
+              // Reason : When no image is present then no need to show this block
+              null}
               {/* // End of addition by Om Shrivastava on 24-12-23
               // Reason : When no image is present then no need to show this block */}
             </div>

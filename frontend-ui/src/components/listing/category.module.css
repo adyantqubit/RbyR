@@ -112,6 +112,25 @@ height: 440px;
         color: var(--btnTextColorPrimary);
 }
 
+/*
+Added by - Ashish Dewangan on 29-12-2023
+Reason - To style no result found text
+*/
+.noresult{
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 2.5px;
+    font-family: var(--fontFamily);
+    font-weight: 600;
+    margin: 0 ;
+    font-family: var(--fontFamily);
+    letter-spacing: var(--letterSpacing);
+}
+/*
+End of code addition by - Ashish Dewangan on 29-12-2023
+Reason - To style no result found text
+*/
+
 @media (max-width:767px) {
 
     .heading{

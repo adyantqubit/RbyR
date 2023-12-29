@@ -565,7 +565,7 @@ const InsideOrder = () => {
                                   }}
                                 >
                                   {" "}
-                                  Please Confirm To admin After paying
+                                  Please confirm to admin after paying
                                   {/* Modification and addition by Om shhrivastava on 27-11-23
                             Reason : Set the Contact number */}
                                   {/* {storeLocatorDetails != null ? parse("PHONE:"+storeLocatorDetails[0]?.phoneNumber) : null} */}

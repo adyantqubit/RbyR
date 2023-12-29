@@ -13,6 +13,17 @@
     
   }
 
+  /*
+  Added by - Ashish Dewangan on 29-12-2023
+  Reason - To adjust margin of size selection codes
+  */
+  .sizeText{
+    margin:0.5rem;
+  }
+  /*
+  End of code addition by - Ashish Dewangan on 29-12-2023
+  Reason - To adjust margin of size selection codes
+  */
 
 .container {
     width: 100%;
@@ -771,6 +782,8 @@ Reason : Set the capitalize property  */
     margin-top:8px
   }
 
+
+
 @keyframes shake {
   10%, 90% {
     transform: translate3d(-1px, 0, 0);
@@ -793,6 +806,7 @@ Reason : Set the capitalize property  */
     .image_gallery {
         flex-direction: row;
       }
+    
   
       
   }
@@ -815,6 +829,17 @@ Reason : Set the capitalize property  */
         height: auto;
         
       }
+      /*
+      Added by - Ashish Dewangan on 29-12-2023
+      Reason - To adjust margin of size selection codes
+      */
+      .sizeText{
+        margin: 0.5rem;
+      }
+      /*
+      End of code addition by - Ashish Dewangan on 29-12-2023
+      Reason - To adjust margin of size selection codes
+      */
 
   }
  
@@ -823,6 +848,17 @@ Reason : Set the capitalize property  */
      .container{
       padding-top: 70px;
      }
+     /*
+      Added by - Ashish Dewangan on 29-12-2023
+      Reason - To adjust margin of size selection codes
+      */
+     .sizeText{
+      margin:0.5rem;
+    }
+    /*
+      End of code addition by - Ashish Dewangan on 29-12-2023
+      Reason - To adjust margin of size selection codes
+      */
   }
 
 @media only screen and (max-width: 768px) {
@@ -832,7 +868,7 @@ Reason : Set the capitalize property  */
   }
 
   .sizeMargin{
-    margin-top:3px
+    margin-top:0px
   }
 
   .modalStyle{
@@ -975,5 +1011,16 @@ Reason : Set the capitalize property  */
     .text04{
       font-weight: 400;
     }
+    /*
+    Added by - Ashish Dewangan on 29-12-2023
+    Reason - To adjust margin of size selection codes
+    */
+    .sizeText{
+      margin: 0 0.5rem;
+    }
+    /*
+    End of code addition by - Ashish Dewangan on 29-12-2023
+    Reason - To adjust margin of size selection codes
+    */
 }
 

@@ -69,7 +69,7 @@ function removeFilter(){
         <div style={{color:'blue'}} className={style.removeFilterBtn} >     */}
         <div style={{display:'flex',width:"100%",marginTop:'4%',flexDirection:"column"}}>
           <div style={{fontSize:'18px',alignSelf:"center",marginBottom:"10px"}} className={style.heading}>FILTER</div>
-          <div style={{color:'blue',alignSelf:"center",backgroundColor:"black",color:"white"}} className={style.removeFilterBtn} >
+          <div style={{color:'blue',alignSelf:"center",backgroundColor:"#4e4e4e",color:"white",borderRadius:"5px",padding:"1px"}} className={style.removeFilterBtn} >
         {/* End of code modification by - Ashish Dewangan on 28-12-2023
         Reason - To make clear filter look as button */}    
             <span style={{cursor:'pointer'}} onClick={removeFilter}> Clear filter
