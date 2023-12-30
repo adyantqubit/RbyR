@@ -455,7 +455,7 @@ class usershippingDetailAdmin(admin.ModelAdmin):
     # Reason - To show only 30 characters for long street name
     # list_display=("action","user_id","firstname","lastname",street,"houseno","city"
     # ,"state","zipcode","country","number","isSelected")
-    list_display=("action","user_id","firstname","lastname",show_short_street_name,
+    list_display=("action","user_id","firstname","lastname",street_name,
                   
                  #  Modification and addition by Om Shrivastava on 29-12-23
                 #  Reason : Need to rename the house no field 
