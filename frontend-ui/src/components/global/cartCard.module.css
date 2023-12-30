@@ -28,6 +28,12 @@
   text-transform: capitalize;
   /* End of Addition by Om shrivastava on 29-11-23
   Reason : Add the text transform */
+  
+  /* Addition by Om Shrivastava on 29-12-23
+  Reason : Need to add break word property */
+  word-wrap: break-word;
+  /* End of addition by Om Shrivastava on 29-12-23
+  Reason : Need to add break word property  */
 }
 
 .apply {

@@ -237,7 +237,7 @@ const Login = () => {
 								{server_error.email ? <Typography class='errorText' style={{ color: "red", fontSize: "12px", marginBottom: "10px", marginLeft: "15%" }}>
 									{server_error.email[0]?.toLowerCase().trim()=="This field may not be blank.".toLowerCase().trim()
 									?
-									<span >{"Please enter email id."}</span>
+									<span style={{color:'#ff1f1f'}}>{"Please enter email id."}</span>
 									:
 									server_error.email[0]
 									}

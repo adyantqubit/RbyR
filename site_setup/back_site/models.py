@@ -648,7 +648,12 @@ class usershippingDetail(models.Model):
     firstname=models.CharField(max_length=20)
     lastname=models.CharField(max_length=20)
     street=models.CharField(max_length=200)
-    houseno=models.CharField(max_length=20)
+    # Modification and addition by Om Shrivastava on 29-12-23
+    # Reason : Need to change the name
+    # houseno=models.CharField(max_length=20)
+    houseno=models.CharField(max_length=20,verbose_name = 'House No')
+    # End of modification and addition by Om Shrivastava on 29-12-23
+    # Reason : Need to change the name
     city=models.CharField(max_length=30)
     state=models.CharField(max_length=30)
     zipcode=models.CharField(max_length=20)
@@ -680,7 +685,12 @@ class userbillingDetail(models.Model):
     firstname=models.CharField(max_length=20)
     lastname=models.CharField(max_length=20)
     street=models.CharField(max_length=200)
-    houseno=models.CharField(max_length=20)
+    # Modification and addition by Om Shrivastava on 29-12-23
+    # Reason : Need to change the name
+    # houseno=models.CharField(max_length=20)
+    houseno=models.CharField(max_length=20,verbose_name='House No')
+    # End of modification and addition by Om Shrivastava on 29-12-23
+    # Reason : Need to change the name
     city=models.CharField(max_length=30)
     state=models.CharField(max_length=30)
     zipcode=models.CharField(max_length=20)

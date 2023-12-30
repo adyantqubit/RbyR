@@ -803,14 +803,14 @@ const InsideOrder = () => {
                   {allData != null ? (
                     <div
                       className={style.box}
-                      style={{ borderTop: "1px solid black" }}
+                      style={{ borderTop: "1px solid #bdb5b5" }}
                     >
                       <div className={style.textlight1}>
                         <span
                           className={style.userinfoText}
                           style={{ width: "50%", textAlign: "start" }}
                         >
-                          Sub Total
+                          Sub Total :
                         </span>
                         <span
                           className={style.userinfoText2}
@@ -835,7 +835,7 @@ const InsideOrder = () => {
                             className={style.userinfoText}
                             style={{ width: "50%", textAlign: "start" }}
                           >
-                            Shipping Charges
+                            Shipping Charges :
                           </span>
                           <span
                             className={style.userinfoText2}

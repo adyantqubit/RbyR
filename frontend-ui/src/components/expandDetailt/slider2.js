@@ -43,9 +43,22 @@ const Slider2 = ({ scrollTop }) => {
     //  <Navigate to={`/listing/${id.category}/detail/${id.id}`}/>
   }
 
+ {/* Addtion by Om Shrivastava on 29-12-23
+    Reason : Need to check product is active or not */}
+    let keyToCheck = 'is_active';
+    
+    let filteredCatergoryArray = CategoryProduct.filter(obj => obj[keyToCheck] === true);
+ {/* End of addtion by Om Shrivastava on 29-12-23
+    Reason : Need to check product is active or not */}
+
   return (
     <>
-      {CategoryProduct && CategoryProduct.length > 1 ? (
+    {/* Modification and addition by Om Shrivastava on 29-12-23
+    Reason : Need to check product is active or not */}
+      {/* {CategoryProduct && CategoryProduct.length > 1 ? ( */}
+      {filteredCatergoryArray && filteredCatergoryArray.length > 1 ? (
+    // End of Modification and addition by Om Shrivastava on 29-12-23
+    // Reason : Need to check product is active or not
         <div
           className={styles.sliderContainer}
           style={{

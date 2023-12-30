@@ -370,13 +370,28 @@ def street_name(obj):
 # Commented and modified by Ashish Dewangan on 27-11-2022
 # Reason - To customize admin panel
 # admin.site.register(userbillingDetail)
+
+# Added by - Om Shrivastava on 24-12-23
+# Reason - To show only 30 characters for long street name
+def house_no(obj):
+    return Truncator(obj.houseno).chars(40)
+# End of code addition by - Om Shrivastava on 24-12-23
+# Reason - To show only 30 characters for long street name
+
 @admin.register(userbillingDetail)
 class userbillingDetailAdmin(admin.ModelAdmin):
 
     # Added by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
     # list_display=("user_id","firstname","lastname","street","houseno","city","state","zipcode","country","number")
-    list_display=("action","user_id","firstname","lastname",street_name,"houseno","city","state","zipcode","country","number")
+    list_display=("action","user_id","firstname","lastname",show_short_street_name,
+                #  Modification and addition by Om Shrivastava on 29-12-23
+                #  Reason : Need to rename the house no field 
+                #   "houseno",
+                house_no,
+                # End of modification and addition by Om Shrivastava on 29-12-23
+                #  Reason : Need to rename the house no field 
+                  "city","state","zipcode","country","number")
     list_display_links=("action",)
     # End of code additon by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
@@ -440,7 +455,16 @@ class usershippingDetailAdmin(admin.ModelAdmin):
     # Reason - To show only 30 characters for long street name
     # list_display=("action","user_id","firstname","lastname",street,"houseno","city"
     # ,"state","zipcode","country","number","isSelected")
-    list_display=("action","user_id","firstname","lastname",street_name,"houseno","city"
+    list_display=("action","user_id","firstname","lastname",show_short_street_name,
+                  
+                 #  Modification and addition by Om Shrivastava on 29-12-23
+                #  Reason : Need to rename the house no field 
+                #   "houseno",
+                house_no,
+                # End of modification and addition by Om Shrivastava on 29-12-23
+                #  Reason : Need to rename the house no field 
+
+                  "city"
     ,"state","zipcode","country","number","isSelected")
     # End of code modification by - Ashish Dewangan on 14-12-2023
     # Reason - To show only 30 characters for long street name
@@ -508,6 +532,7 @@ def product_name(obj):
     return Truncator(obj.product_name).chars(40)
 # End of code addition by - Om Shrivastava on 24-12-23
 # Reason - To show only 30 characters for long street name
+
 
 @admin.register(product_orders)
 class product_ordersAdmin(admin.ModelAdmin):
