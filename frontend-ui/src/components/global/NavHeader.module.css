@@ -413,6 +413,14 @@ input[type=checkbox]:checked ~ .menu{
 	opacity: 0;
   }
 
+  /* .action:hover .menu2{
+    display: block;
+    top:150px;
+    right:10px;
+    opacity: 1;
+
+  } */
+
   .action:hover .menu2{
     display: block;
     top:150px;
@@ -420,6 +428,7 @@ input[type=checkbox]:checked ~ .menu{
     opacity: 1;
 
   }
+
 
   
   .action .menu2 .h3 {

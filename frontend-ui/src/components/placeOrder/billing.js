@@ -308,7 +308,7 @@ const Billing = () => {
                           }}
                         >
                           {" "}
-                          Please Confirm To Admin After Paying{" "}
+                          Please confirm to admin after paying{" "}
                         </span>
                       </div>
                     ) : null}

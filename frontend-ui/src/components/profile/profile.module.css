@@ -566,6 +566,9 @@ REason : Set the alignment */
         width:100% !important;
         overflow:hidden;
     }
+    .box {
+        margin-top: 6%;
+    }
 }
 /* End of Addition by Om Shrivastava on 29-11-23
 REason : Set the alignment  */

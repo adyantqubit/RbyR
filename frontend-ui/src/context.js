@@ -214,7 +214,7 @@ const Context = ({ children }) => {
         message: <div 
         // Addition by Om Shrivastava on 16-11-23
         // Reasonf : Add the fontFamily
-        style={{ fontSize: "18px", color: "black",fontFamily:"var(--fontFamily)" }}
+        // style={{ fontSize: "18px", color: "black",fontFamily:"var(--fontFamily)" }}
         // End of addition by Om Shrivastava on 16-11-23
         // Reasonf : Add the fontFamily
         >Successfully Logged Out </div>,

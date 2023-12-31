@@ -38,7 +38,7 @@ const AboutUs = () => {
       setResponse2(r.about.row);
     });
   }
-
+console.log(response2)
   if (response != null)
     return (
       <>
@@ -235,8 +235,9 @@ const AboutUs = () => {
                 <ResponsiveSlider
                   // response="frontend"
                   img1={r.img1}
-                  img2={r.img2}
-                  img3={r.img3}
+                  
+                  img2={r.img2!=null ? r.img2 : null}
+                  img3={r.img3!=null ? r.img3 : null}
                 />
                 }
                 {/* End of code modification by - Ashish Dewangan on 15-12-2023

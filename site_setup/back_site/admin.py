@@ -384,7 +384,7 @@ class userbillingDetailAdmin(admin.ModelAdmin):
     # Added by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
     # list_display=("user_id","firstname","lastname","street","houseno","city","state","zipcode","country","number")
-    list_display=("action","user_id","firstname","lastname",show_short_street_name,
+    list_display=("action","user_id","firstname","lastname",street_name,
                 #  Modification and addition by Om Shrivastava on 29-12-23
                 #  Reason : Need to rename the house no field 
                 #   "houseno",
