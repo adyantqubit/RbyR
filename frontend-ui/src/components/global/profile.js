@@ -70,7 +70,13 @@ export const Profile = () => {
           {/* <img className={style.img} src="./assets/avatar.jpg" /> */}
         </div>
         <div className={style.menu2} style={{padding:'2px'}}>
-          <Popconfirm placement="bottomLeft" title={text} onConfirm={e => handleLogout()} onCancel={e => seLogoutAction(false)} okText="OK" cancelText="Cancel" open={logoutaction}>
+          <Popconfirm placement="bottomLeft" 
+          // Addition by Om Shrivastava on 31-12-23
+          // Reason : Need to remove the zindex property
+          zIndex={999}
+          // End of addition by Om Shrivastava on 31-12-23
+          // Reason : Need to remove the zindex property
+           title={text} onConfirm={e => handleLogout()} onCancel={e => seLogoutAction(false)} okText="OK" cancelText="Cancel" open={logoutaction}>
           </Popconfirm>
           {localStorage.getItem('access_token') && userdata ?
           <div style={{marginTop:"15px",marginBottom:"15px",fontSize:"14px",fontWeight:"500",display:'flex',flexDirection:"column",justifyContent:"center",alignItems:"center"}}>

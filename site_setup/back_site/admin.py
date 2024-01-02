@@ -957,7 +957,7 @@ def subtitle_one(obj):
     return Truncator(obj.subtitle1).chars(30)
 def content_two(obj):
     return Truncator(obj.content2).chars(30)
-@admin.register(RefundPolicy)
+@admin.register(ReturnPolicy)
 class RefundPolicyAdmin(admin.ModelAdmin):
 
     # Added by - Ashish Dewangan on 13-12-2023
@@ -969,7 +969,7 @@ class RefundPolicyAdmin(admin.ModelAdmin):
     # Reason - Added a button to view details of a row
 
     def has_add_permission(self, request):
-        return not RefundPolicy.objects.exists()
+        return not ReturnPolicy.objects.exists()
     def get_form(self, request, obj=None, **kwargs):
         form = super(RefundPolicyAdmin, self).get_form(request, obj, **kwargs)
         form.base_fields['title1'].widget.attrs['style'] = 'width: 100%;'

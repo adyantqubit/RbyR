@@ -87,7 +87,13 @@ const FAQ = () => {
             <div 
             // style={{border:'1px solid black'}}
             >
-            Questions And Answers Are Not Available
+
+              {/* Addition and modification by Om Shrivasatva on 31-12-23
+              Reason : Need to change the message */}
+              {/* Questions And Answers Are Not Available */}
+              FAQ Are Not Available
+              {/* End of addition and modification by Om Shrivasatva on 31-12-23
+              Reason : Need to change the message */}
             </div>
             </div>
             // End of addition and modification by Om shrivastava on 27-11-23

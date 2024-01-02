@@ -1242,7 +1242,7 @@ class DeliveryAndShippingPolicy(models.Model):
 
 #Added by Ashish on 14-11-2022
 #Reason - To create Refund policy table
-class RefundPolicy(models.Model):
+class ReturnPolicy(models.Model):
     title1=models.CharField(max_length=255)
     # Modification and addition by Om Shrivastava on 10-11-23
     # Reason : Need to change the richtextfield to charfield

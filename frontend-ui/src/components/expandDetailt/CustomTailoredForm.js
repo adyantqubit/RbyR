@@ -75,6 +75,11 @@ function CustomTailoredForm(details) {
         form={customTailoredRequestForm}
         name="customTailoredForm"
         onFinish={saveCustomTailoredDetails}
+        // Addition by Om Shrivasatva on 31-12-23
+        // Reason : NEed to add this attribute beacuse when the error through then its automatic scroll
+        scrollToFirstError
+        // End of addition by Om Shrivasatva on 31-12-23
+        // Reason : NEed to add this attribute beacuse when the error through then its automatic scroll
       >
         <div className={customTailoredStyle.row}>
           <div className={customTailoredStyle.column}>

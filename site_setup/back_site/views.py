@@ -999,7 +999,7 @@ class DeliveryAndShippingPolicyView(APIView):
 
 class RefundPolicyView(APIView):
     def get(self, request):
-        RefundPolicyDetail = RefundPolicy.objects.all().values()
+        RefundPolicyDetail = ReturnPolicy.objects.all().values()
         RefundPolicyResponse = {}
         RefundPolicyResponse['RefundPolicyDetail'] = RefundPolicyDetail
         return Response(RefundPolicyDetail)

@@ -393,7 +393,7 @@ class DeliveryAndShippingPolicySerializer(serializers.ModelSerializer):
 #Reason - To sendrefund policy details to front end
 class RefundPolicySerializer(serializers.ModelSerializer):
     class Meta:
-        model=RefundPolicy
+        model=ReturnPolicy
         fields="__all__"
 #End of code addition 
 
