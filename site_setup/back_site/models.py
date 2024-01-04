@@ -463,7 +463,13 @@ class product_detail(models.Model):
     #Reason - To change table's displayed name
     def __str__(self):
         #  return self.title
-         return str(self.id)
+        #  Modification and addition byu Om Shrivastava on 03-01-24
+        #  Reason : Need to remove id when user save the details
+        #  return str(self.id)
+         return str(self.title)
+        #  End of modification and addition byu Om Shrivastava on 03-01-24
+        #  Reason : Need to remove id when user save the details
+    
     class Meta:
             verbose_name_plural = "Products"
     #End of code addition

@@ -177,15 +177,27 @@ class product_detailAdmin(admin.ModelAdmin):
 # Commented and modified by Ashish Dewangan on 27-11-2022
 # Reason - To customize admin panel
 # admin.site.register(Liked)
-def title_of_liked_product(obj):
+# Modification and addition by Om Shrivastava on 03-01-24
+# Reason : Need to change the product name 
+# def title_of_liked_product(obj):
+def product_name(obj):
+# End of modification and addition by Om Shrivastava on 03-01-24
+# Reason : Need to change the product name 
     return Truncator(obj.item.title).chars(30) 
+
 @admin.register(Liked)
 class LikedAdmin(admin.ModelAdmin):
 
     # Added by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
     # list_display=(title_of_liked_product,"user_no")
-    list_display=("action",title_of_liked_product,"user_no")
+    # Modification and addition by Om Shrivastava on 03-01-24
+    # Reason : Need to change the product name 
+    # list_display=("action",title_of_liked_product,"user_no")
+    list_display=("action",product_name,"user_no")
+    # End of modification and addition by Om Shrivastava on 03-01-24
+    # Reason : Need to change the product name 
+
     list_display_links=("action",)
     # End of code additon by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
@@ -197,6 +209,7 @@ class LikedAdmin(admin.ModelAdmin):
     # Reason - To add filter according to menu and sub menu
 
     readonly_fields=("item","user_no")
+
     ordering=("item__title",)
     search_fields=("item__title","user_no__name","user_no__email")
     list_per_page=10

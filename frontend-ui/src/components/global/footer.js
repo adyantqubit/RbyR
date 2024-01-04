@@ -133,7 +133,7 @@ function Footer() {
         // End of modification and addition by Om shrivastava on 01-12-23
         // REason : Create the popup class to apply the designing
         description:
-          'Please provide a valid email format',
+          'Please provide a valid email format', 
         onClick: () => {
         },
         key:1
