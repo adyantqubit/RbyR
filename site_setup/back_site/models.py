@@ -513,8 +513,18 @@ SIZE_CHOICES = (
 
 )    
 class Cart(models.Model):
-    product_no=models.ForeignKey(product_detail,on_delete=models.CASCADE)
-    user_no=models.ForeignKey(User,on_delete=models.CASCADE)
+    product_no=models.ForeignKey(product_detail,on_delete=models.CASCADE,
+                                # Modification and addition by Om Shrivastava on 04-01-24
+                                # Reason : Need to change the name 
+                                verbose_name='Product name' )
+                                # End of Modification and addition by Om Shrivastava on 04-01-24
+                                # Reason : Need to change the name 
+    user_no=models.ForeignKey(User,on_delete=models.CASCADE,
+                              # Modification and addition by Om Shrivastava on 04-01-24
+                                # Reason : Need to change the name 
+                                verbose_name='Email' )
+                                # End of Modification and addition by Om Shrivastava on 04-01-24
+                                # Reason : Need to change the name 
     quantity=models.BigIntegerField(default=1)    
     # Modification and addition by Om Shrivastava on 16-12-23
     # Reason : Need to change the short to small   
@@ -528,6 +538,8 @@ class Cart(models.Model):
         return "Item in user's cart"
     class Meta:
         verbose_name_plural = "Cart Of User"
+        
+
    #End of code addition     
 
 
