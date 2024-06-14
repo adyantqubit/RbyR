@@ -34,7 +34,7 @@
    Reason : Add css when same page is selected */
    .highlightField {
     text-decoration: none;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     cursor: pointer;
     font-weight: bolder;
     /* text-transform: capitalize; */
@@ -220,7 +220,7 @@
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
-        font-family: var(--fontFamily);
+        font-family: var(--pagesFontFamily);
 
     white-space: nowrap;
 }
@@ -230,7 +230,7 @@
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
-        font-family: var(--fontFamily);
+        font-family: var(--pagesFontFamily);
     text-transform: capitalize;
 }
 
@@ -240,7 +240,7 @@
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
-        font-family: var(--fontFamily);
+        font-family: var(--pagesFontFamily);
 
 }
 
@@ -249,7 +249,7 @@
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
-        font-family: var(--fontFamily);
+        font-family: var(--pagesFontFamily);
 
 }
 
@@ -335,7 +335,7 @@
     /* font-weight: 600; */
     font-weight: 400;
 
-        font-family: var(--fontFamily);
+        font-family: var(--pagesFontFamily);
 
 }
 
@@ -345,7 +345,7 @@
     line-height: 22px;
     letter-spacing: 1.2px;
     font-weight: 800;
-        font-family: var(--fontFamily);
+        font-family: var(--pagesFontFamily);
 
 }
 
@@ -385,7 +385,7 @@
     
     text-align: center;
     opacity: 1;
-        font-family: var(--fontFamily);
+        font-family: var(--pagesFontFamily);
 
     position: relative;
     font-weight: normal;

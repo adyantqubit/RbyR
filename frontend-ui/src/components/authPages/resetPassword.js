@@ -77,7 +77,7 @@ const ResetPassword = () => {
       // style={{marginTop:"5vh"}}
       >
 				<form  id="password-change-form" onSubmit={handleSubmit}>
-					<label class="labe" aria-hidden="true" style={{fontSize:"1.6rem",fontFamily:'var(--fontFamily)'}}>Change Password</label>
+					<label class="labe" aria-hidden="true" style={{fontSize:"1.6rem",fontFamily:'var(--pagesFontFamily)'}}>Change Password</label>
 					{error!=null ? <Alert severity="error" style={{margin:"0 60px"}}>{error.non_field_errors}</Alert> : ""}
                     {msg.msg ? <Alert severity="success"  style={{margin:"0 50px"}}>Successfully changed</Alert> : ""}
 

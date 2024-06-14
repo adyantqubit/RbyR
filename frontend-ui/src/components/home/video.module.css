@@ -66,7 +66,7 @@ border-bottom: 1px solid black;
     font-size: 20px;
     color: var(--inputTextColor);
     letter-spacing: var(--letterSpacingText);
-       font-family: var(--fontFamily);
+       font-family: var(--pagesFontFamily);
 
 }
 
@@ -76,7 +76,7 @@ border-bottom: 1px solid black;
     border: none;
     transition: all .5s ease;
     background: transparent;
-       font-family: var(--fontFamily);
+       font-family: var(--pagesFontFamily);
 
 }
 
@@ -89,7 +89,7 @@ border-bottom: 1px solid black;
     color: var(--textColorPrimary);
     font-size: 24px;
     font-weight: 500;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 
     letter-spacing: var(--letterSpacingHeading);
     margin-left: 3%;

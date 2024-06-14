@@ -10,7 +10,7 @@
 }
 
 @font-face {
-     font-family: var(--fontFamily);
+     font-family: var(--pagesFontFamily);
 
   src: local('MyFont'), url(../../assets/font/RawsonAltRegular.woff) format('woff');
   /* other formats include: 'woff2', 'truetype, 'opentype',
@@ -36,14 +36,14 @@
   line-height: 22px;
   /* letter-spacing: 1.2px; */
   font-weight: 600;
-  /*    font-family: var(--fontFamily);
+  /*    font-family: var(--pagesFontFamily);
  */
   /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : need to add the font family  */
   /* letter-spacing: 2px; */
-  /*    font-family: var(--fontFamily);
+  /*    font-family: var(--pagesFontFamily);
  */
-  font-family: var(--fontFamily);;
+  font-family: var(--pagesFontFamily);;
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
   Reason : need to add the font family  */
@@ -84,9 +84,9 @@
   /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : need to add the font family  */
   /* letter-spacing: 2px; */
-  /*    font-family: var(--fontFamily);
+  /*    font-family: var(--pagesFontFamily);
  */
-  font-family: var(--fontFamily);;
+  font-family: var(--pagesFontFamily);;
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
   Reason : need to add the font family  */
@@ -111,7 +111,7 @@ Reason : Add the class name for the total product label */
     line-height: 22px;
     letter-spacing: 1.2px;
     text-transform: uppercase;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 
   font-weight: 550;
   color:#212121
@@ -198,7 +198,7 @@ Reason : Set the content in left side */
   /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : Change the font family */
   /* font-family: 'MyFont'; */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   /* End of Modification and addition by Om Shrivastava on 27-10-23 
   Reason : Change the font family */
   font-weight: 400;
@@ -224,7 +224,7 @@ Reason : Set the content in left side */
   Reason : need to add the font family  */
   /* letter-spacing: 2px; */
   /* font-family: 'MyFont'; */
-  font-family: var(--fontFamily);;
+  font-family: var(--pagesFontFamily);;
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
   Reason : need to add the font family  */
@@ -369,7 +369,7 @@ Reason : Set the content in left side */
     font-size: 18px;
     line-height: 26px;
     letter-spacing: 2.5px;
-       font-family: var(--fontFamily);
+       font-family: var(--pagesFontFamily);
 
     font-weight: 500;
     color: #000;
@@ -383,7 +383,7 @@ Reason : Set the content in left side */
     letter-spacing: 1.2px;
     /* color: black; */
     text-transform: uppercase;
-       font-family: var(--fontFamily);
+       font-family: var(--pagesFontFamily);
 
     font-weight: 500;
 
@@ -395,7 +395,7 @@ Reason : Set the content in left side */
   letter-spacing: 1.2px;
   color: #000;
   text-transform: uppercase;
-     font-family: var(--fontFamily);
+     font-family: var(--pagesFontFamily);
 
   font-weight: 500;
 
@@ -504,7 +504,7 @@ Reason : Set the content in left side */
   font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
-       font-family: var(--fontFamily);
+       font-family: var(--pagesFontFamily);
 
     font-weight: 500;
     margin: 0;
@@ -517,7 +517,7 @@ Reason : Set the content in left side */
   letter-spacing: 1px;
   color: var(--textColorPrimary);
   text-transform: uppercase;
-     font-family: var(--fontFamily);
+     font-family: var(--pagesFontFamily);
 
   font-weight: 500;
   margin: 0;
@@ -568,7 +568,7 @@ Reason : Set the content in left side */
   letter-spacing: 1px;
   color: black;
   text-transform: uppercase;
-     font-family: var(--fontFamily);
+     font-family: var(--pagesFontFamily);
 
   font-weight: 500;
   margin: 0;
@@ -620,13 +620,13 @@ Reason : Set the content in left side */
   font-size: 20px;
     line-height: 28px;
     letter-spacing: 2.5px;
-       font-family: var(--fontFamily);
+       font-family: var(--pagesFontFamily);
 
     font-weight: 600;
     margin: 0 ;
      /* Modification and addition by Om Shrivastava on 28-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 28-10-23
   Reason : Remove the letter spacing  */
@@ -643,7 +643,7 @@ Reason : Set the content in left side */
   height: 30px;
   text-align: center;
   padding:4px 0;
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
 
   letter-spacing: 1.2px;
   background-color: #000;

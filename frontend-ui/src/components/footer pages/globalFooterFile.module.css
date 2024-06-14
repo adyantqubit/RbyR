@@ -5,7 +5,7 @@
     height: 19.7vh;
     font-size: 15px;
     /* border: 1px solid red; */
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 }
 .footerTermsNullContent{
     display: flex;
@@ -13,7 +13,7 @@
     align-items: center;
     height: 36.7vh;
     font-size: 15px;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 }
 .footerPrivacyNullContent{
     display: flex;
@@ -21,7 +21,7 @@
     align-items: center;
     height: 22.5vh;
     font-size: 15px;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 }
 .footerRefundNullContent{
     display: flex;
@@ -29,7 +29,7 @@
     align-items: center;
     height: 31vh;
     font-size: 15px;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 }
 .footerOrderCancellationNullContent{
     display: flex;
@@ -37,7 +37,7 @@
     align-items: center;
     height: 24.6vh;
     font-size: 15px;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 }
 
 @media (max-width: 480px) {

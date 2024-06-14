@@ -627,7 +627,7 @@ const CartSItem = (props) => {
                           <Popconfirm
                             placement="bottomLeft"
                             title={text}
-                            style={{fontFamily:'var(--fontFamily)'}}
+                            style={{fontFamily:'var(--pagesFontFamily)'}}
                             onConfirm={(e) => confirm(pro)}
                             okText="OK"
                             cancelText="Cancel"
@@ -836,7 +836,7 @@ const CartSItem = (props) => {
                             placement="bottomLeft"
                             title={text}
                             onConfirm={(e) => confirm(pro)}
-                            style={{fontFamily:'var(--fontFamily)'}}
+                            style={{fontFamily:'var(--pagesFontFamily)'}}
 
                             okText="OK"
                             cancelText="Cancel"
@@ -1013,7 +1013,7 @@ const CartSItem = (props) => {
                     fontWeight: "normal",
                     textTransform: "uppercase",
                     padding: "10px 18px",
-                    fontFamily: "var(--fontFamily)",
+                    fontFamily: "var(--pagesFontFamily)",
                   }}
                   onClick={(e) => nav("/")}
                 >

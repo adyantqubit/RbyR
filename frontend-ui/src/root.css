@@ -62,7 +62,8 @@ Reason : Set the padding and margin of antd notification */
     --fontFamily : "Montserrat"; */
     /* Modification and addition by Om Shrivastava on 24-11-23
     Reason : Set the font family */
-    --fontFamily : "Noto Serif";
+    /* --fontFamily : "Noto Serif"; */
+    
     /* --fontFamily : "cursive"; */
     /* --fontFamily : "Lato"; */
     /* Modification and addition by Om Shrivastava on 25-11-23
@@ -168,5 +169,18 @@ Reason : Set the padding and margin of antd notification */
     --letterSpacingText:1.7px;
     --letterSpacingTitle:2.4px;
     --letterSpacingHeading:3.3px;
+
+    /* Addition by Om Shrivastava on 13-06-2024
+    Reason : Set the font size globally  */
+    --parentHeading: 16px;
+    --subHeading : 14px;
+    --pagesFontFamily : "Jost-Regular";
+    --headerFontFamily : Segoe UI
+    Segoe UI Bold
+    Segoe UI Light
+    Segoe UI Symbol
+    Segoe UI Italic;
+     /* End of addition by Om Shrivastava on 13-06-2024
+    Reason : Set the font size globally  */
 
   }

@@ -107,7 +107,7 @@ Reason : Set the padding and margin of antd notification  */
     /* font-family: 'MyFont'; */
     /* Modification and addition by Om Shrivastava on 27-10-23
     Reason : Remove the letter spacing */
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     letter-spacing: var(--letterSpacing);
     /* End of Modification and addition by Om Shrivastava on 27-10-23
     Reason : Remove the letter spacin  */
@@ -125,7 +125,7 @@ Reason : Set the padding and margin of antd notification  */
     /* font-family: 'MyFont'; */
      /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacin  */
@@ -198,7 +198,7 @@ Reason : Set the margin top  */
     line-height: 32px;
     /* letter-spacing: 3px; */
     letter-spacing: 1.5px;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     padding: 0;
     margin: 0;
 

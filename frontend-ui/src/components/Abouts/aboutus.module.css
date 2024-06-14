@@ -86,7 +86,7 @@
     color: #212121;
  /* Modification and addition by Om Shrivastava on 28-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 28-10-23
   Reason : Remove the letter spacing  */
@@ -101,7 +101,7 @@
     letter-spacing: 0.8px;
     color: #212121;
     font-weight: 500;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     /* Added by Om Shrivastava on 24-11-23
     Reason : Set the text justify property  */
     text-align: justify;

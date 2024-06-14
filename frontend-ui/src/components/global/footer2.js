@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { notification } from "antd";
 import { IoChevronForwardOutline } from "react-icons/io5";
 import config from "../../api/config";
-import '../../context.css'
+import "../../context.css";
 
 function Footer2() {
   const [socialLinks, setSocialLinks] = useState([]);
@@ -46,9 +46,9 @@ function Footer2() {
     if (email.value.length == 0) {
       notification.open({
         message: "",
-         // Modification and addition by Om shrivastava on 01-12-23
+        // Modification and addition by Om shrivastava on 01-12-23
         // REason : Create the popup class to apply the designing
-        className:'popupClass',
+        className: "popupClass",
         // style:{marginTop:"20px"},
         // style:{backgroundColor: "#f1cdd9",
         // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
@@ -102,7 +102,7 @@ function Footer2() {
         message: "",
         // Modification and addition by Om shrivastava on 01-12-23
         // REason : Create the popup class to apply the designing
-        className:'popupClass',
+        className: "popupClass",
         // style:{marginTop:"20px"},
         // style:{backgroundColor: "#f1cdd9",
         // padding:'0px 5px 5px 5px',borderRadius:'10px',width:'200px'},
@@ -133,29 +133,51 @@ function Footer2() {
     });
   }
   // Adition by Om Shrivastava on 20-10-23
-  // Reason : Add the condition when the data is not show  
+  // Reason : Add the condition when the data is not show
   const isObjectEmpty = (objectName) => {
-    if(objectName!=null || objectName!=undefined){
-    return Object.keys(objectName)?.length === 0
+    if (objectName != null || objectName != undefined) {
+      return Object.keys(objectName)?.length === 0;
     }
-  }
+  };
   // End of adition by Om Shrivastava on 20-10-23
-  // Reason : Add the condition when the data is not show  
+  // Reason : Add the condition when the data is not show
   // console.log(isObjectEmpty(instagramCollections));
   return (
     <div className={style.App}>
-       {/* // Adition by Om Shrivastava on 20-10-23
+      {/* // Adition by Om Shrivastava on 20-10-23
   // Reason : Add the condition when the data is not show  */}
-   {/* {instagramCollections .length>0 ? ( */}
-      {isObjectEmpty(instagramCollections) != true ? 
+      {/* {instagramCollections .length>0 ? ( */}
+      {isObjectEmpty(instagramCollections) != true ? (
         <div className={style.instagramContainer}>
           <a
             className={style.instagramLink}
             href={instagramCollections?.instagram_home_link}
           >
-            <div className={style.instagramTextContainer} >
-              <h5 style={{padding:'0',margin:'0',textDecoration:'underline',textDecorationColor:'blue',color:'blue'}} className={style.instaBox}>Follow Us</h5>
-              <h5 style={{padding:'0',margin:'0',textDecoration:'underline',textDecorationColor:'blue',color:'blue'}} className={style.instaText}>On Instagram</h5>
+            <div className={style.instagramTextContainer}>
+              <h5
+                style={{
+                  padding: "0",
+                  margin: "0",
+                  textDecoration: "underline",
+                  textDecorationColor: "blue",
+                  color: "blue",
+                }}
+                className={style.instaBox}
+              >
+                Follow Us
+              </h5>
+              <h5
+                style={{
+                  padding: "0",
+                  margin: "0",
+                  textDecoration: "underline",
+                  textDecorationColor: "blue",
+                  color: "blue",
+                }}
+                className={style.instaText}
+              >
+                On Instagram
+              </h5>
             </div>
           </a>
           <a
@@ -220,10 +242,7 @@ function Footer2() {
             {/* End of the code */}
           </a>
         </div>
-
-      :
-        null
-          }
+      ) : null}
       {/* // End of adition by Om Shrivastava on 20-10-23
         // Reason : Add the condition when the data is not show  */}
       <div style={{ height: "40px", borderBottom: "1px solid #7c7c7c" }}></div>
@@ -280,7 +299,14 @@ function Footer2() {
             to="/aboutRR"
             style={{ textDecoration: "none", color: "white" }}
           >
-            <span className={style.span}>World of RbyR</span>
+            <span className={style.span}>
+              {/* Modification and addition by Om Shrivastava on 13-06-2024
+                    Reason : Change the name  */}
+              {/* World of RbyR */}
+              About us
+              {/* End of modification and addition by Om Shrivastava on 13-06-2024
+                    Reason : Change the name  */}
+            </span>
           </Link>
 
           <Link
@@ -292,64 +318,65 @@ function Footer2() {
         </div>
 
         {socialLinks.length > 0 ? (
-
-        <div className={style.column4}>
-          <h1 className={style.heading} >FOLLOW US</h1>
-          <div className={style.socialLinksTab}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "15px",
-                marginTop: "7px",
-              }}
-            >
-              {socialLinks.length > 0 ? (
-                <>
-                  {socialLinks.map((socialLink) => {
-                    return (
-                      <img
-                        // Modification and addition by Om Shrivastava on 04-11-23
-                        // Reason : Need to set the url of the image
-                        // src={config.staticBaseURL + socialLink.logo}
-                        src={config.staticBaseURL +'media/'+ socialLink.logo}
-                        // End of Modification and addition by Om Shrivastava on 04-11-23
-                        // Reason : Need to set the url of the image
-                        style={{
-                          color: "var(--iconsColor)",
-                          width: "25px",
-                          height: "25px",
-                        }}
-                        alt=""
-                      />
-                    );
-                  })}
-                </>
-              ) : null}
-              {/* <FaFacebookF style={{ color: "var(--iconsColor)", fontSize: "25px" }} />
+          <div className={style.column4}>
+            <h1 className={style.heading}>FOLLOW US</h1>
+            <div className={style.socialLinksTab}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "15px",
+                  marginTop: "7px",
+                }}
+              >
+                {socialLinks.length > 0 ? (
+                  <>
+                    {socialLinks.map((socialLink) => {
+                      return (
+                        <img
+                          // Modification and addition by Om Shrivastava on 04-11-23
+                          // Reason : Need to set the url of the image
+                          // src={config.staticBaseURL + socialLink.logo}
+                          src={
+                            config.staticBaseURL + "media/" + socialLink.logo
+                          }
+                          // End of Modification and addition by Om Shrivastava on 04-11-23
+                          // Reason : Need to set the url of the image
+                          style={{
+                            color: "var(--iconsColor)",
+                            width: "25px",
+                            height: "25px",
+                          }}
+                          alt=""
+                        />
+                      );
+                    })}
+                  </>
+                ) : null}
+                {/* <FaFacebookF style={{ color: "var(--iconsColor)", fontSize: "25px" }} />
               <TiSocialInstagram style={{ color: "var(--iconsColor)", fontSize: "25px" }} /> */}
-              {/* Commented by - Ashish Dewangan on 15-02-2023
+                {/* Commented by - Ashish Dewangan on 15-02-2023
               Reason - To hide Twitter link */}
-              {/* <FaTwitter style={{ color: "grey", fontSize: "25px" }} /> */}
-              {/* End of comment */}
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "20px",
-                marginTop: "7px",
-              }}
-            >
-              {socialLinks.length > 0 ? (
-                <>
-                  {socialLinks.map((socialLink) => {
-                    return (
-                      <span
-                        style={{ marginTop: "0" }}
-                        className={`${style.span} ${style.span1}`}
-                      >
-                        {/* <a
+                {/* <FaTwitter style={{ color: "grey", fontSize: "25px" }} /> */}
+                {/* End of comment */}
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "20px",
+                  marginTop: "7px",
+                }}
+              >
+                {socialLinks.length > 0 ? (
+                  <>
+                    {socialLinks.map((socialLink) => {
+                      return (
+                        <span
+                          style={{ marginTop: "0" }}
+                          className={`${style.span} ${style.span1}`}
+                        >
+                          {/* <a
                           href={socialLink.link}
                           className={style.span}
                           style={{
@@ -358,30 +385,30 @@ function Footer2() {
                             marginLeft: "10px",
                           }}
                         > */}
-                        <a
-                          href={socialLink.link}
-                          className={style.span}
-                          style={{
-                            textDecoration: "none",
-                            marginLeft: "10px",
-                          }}
-                          target="_blank"
-                        >
-                          {" "}
-                          {socialLink.linkName}
-                        </a>
-                      </span>
-                    );
-                  })}
-                </>
-              ) : null}
+                          <a
+                            href={socialLink.link}
+                            className={style.span}
+                            style={{
+                              textDecoration: "none",
+                              marginLeft: "10px",
+                            }}
+                            target="_blank"
+                          >
+                            {" "}
+                            {socialLink.linkName}
+                          </a>
+                        </span>
+                      );
+                    })}
+                  </>
+                ) : null}
+              </div>
             </div>
-          </div>
-          {/* <div className={style.icon}><FaFacebookF style={{color:"grey",fontSize:"25px",marginLeft:"5px"}}/><span style={{marginTop:"0"}}className={style.span} > Facebook</span></div>
+            {/* <div className={style.icon}><FaFacebookF style={{color:"grey",fontSize:"25px",marginLeft:"5px"}}/><span style={{marginTop:"0"}}className={style.span} > Facebook</span></div>
       <div className={style.icon}><TiSocialInstagram style={{color:"grey",fontSize:"25px",marginLeft:"5px"}}/><span style={{marginTop:"0"}}className={style.span}> Instagram</span></div>
       <div className={style.icon}><FaTwitter style={{color:"grey",fontSize:"25px",marginLeft:"5px"}}/><span style={{marginTop:"0"}}className={style.span}> Twitter</span></div> */}
-        </div>
-          ) : null}
+          </div>
+        ) : null}
 
         <div className={style.column5}>
           <span className={style.heading}>SIGN UP FOR UPDATES</span>
@@ -417,13 +444,12 @@ function Footer2() {
             ? copyrights.map((copyright) => {
                 return copyright.title;
               })
-              // Modification and addition by Om Shrivastava on 04-11-23
+            : // Modification and addition by Om Shrivastava on 04-11-23
               // Reason : No need to show the hardcode content
-            // : "© 2022 RR. ALL RIGHTS RESERVED"}
-            : ""}
-            {/* // End of modification and addition by Om Shrivastava on 04-11-23
+              // : "© 2022 RR. ALL RIGHTS RESERVED"}
+              ""}
+          {/* // End of modification and addition by Om Shrivastava on 04-11-23
               // Reason : No need to show the hardcode content */}
-
         </span>
         <a href="https://adyant.co.in/" target="_blank">
           <span
@@ -434,7 +460,7 @@ function Footer2() {
             Powered by{" "}
             <span
               style={{
-                fontFamily: "var(--fontFamily)",
+                fontFamily: "var(--pagesFontFamily)",
                 fontSize: "14px",
                 // fontWeight: "20",
                 color: "black",

@@ -143,7 +143,7 @@
     padding-left: 20px;
     word-wrap: break-word;
     text-transform: capitalize;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 600;
 /* border: 1px solid black; */
 
@@ -184,7 +184,7 @@
     text-transform: capitalize;
     font-weight: 500;   
     word-wrap: break-word; 
-    font-family: var(--fontFamily);            
+    font-family: var(--pagesFontFamily);            
   }
 
   .emptyWishList{
@@ -204,7 +204,7 @@
     font-size: 18px;
     line-height: 24px;
     letter-spacing: 1.75px;
-       font-family: var(--fontFamily);
+       font-family: var(--pagesFontFamily);
 
     font-weight: 500;
     /* margin: 0; */
@@ -214,7 +214,7 @@
 
   .para{
     font-size: 16px;
-       font-family: var(--fontFamily);
+       font-family: var(--pagesFontFamily);
 
     font-weight: 400;
     line-height: 24px;
@@ -223,7 +223,7 @@
 
 .para2{
   font-size: 16px;
-     font-family: var(--fontFamily);
+     font-family: var(--pagesFontFamily);
 
   text-decoration: underline;
   font-weight: 400;

@@ -11,9 +11,13 @@ Reason : Create the globally popup file */
   font-weight: 500;
   background-color: var(--btnBackgroundColorPrimary) !important;
 
-  font-family: var(--fontFamily);
+  font-family: var();
 }
 
+.styles-module_whatsappButton__tVits{
+/* border: 5px solid black; */
+display: none;
+}
 .ant-notification-notice-close {
   top: 10px !important;
   right: 12px;
@@ -25,7 +29,7 @@ Reason : Create the globally popup file */
   text-align: center;
   font-weight: bold;
   font-size: 22px;
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   /* padding-bottom: 15px; */
   text-transform: uppercase;
 }
@@ -37,7 +41,7 @@ Reason : Create the globally popup file */
   color: black;
   font-weight: 500;
   background-color: var(--btnBackgroundColorPrimary) !important;
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
 }
 
 @media (max-width: 768px) {
@@ -46,7 +50,7 @@ Reason : Create the globally popup file */
     right: 2.4px;
     font-size: 12;
     background-color: var(--btnBackgroundColorPrimary) !important;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 500;
     /* padding: 5px 5px 13px 5px !important;
         border-radius: 10px !important;
@@ -61,7 +65,7 @@ Reason : Create the globally popup file */
     right: 2.4px;
     font-size: 12;
     background-color: var(--btnBackgroundColorPrimary) !important;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 500;
   }
   .ant-notification-notice-close {

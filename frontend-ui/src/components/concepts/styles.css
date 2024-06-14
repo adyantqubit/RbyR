@@ -24,7 +24,7 @@ font-weight: 600;
   font-size: 14px;
    /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacin  */

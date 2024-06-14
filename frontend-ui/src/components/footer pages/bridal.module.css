@@ -78,7 +78,7 @@
     margin-top: 5px;
      /* Modification and addition by Om Shrivastava on 28-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 28-10-23
   Reason : Remove the letter spacing  */
@@ -92,7 +92,7 @@
     font-family: 'MyFont'; */
      /* Modification and addition by Om Shrivastava on 28-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 28-10-23
   Reason : Remove the letter spacing  */
@@ -134,7 +134,7 @@
     /* Modification and addition by Om Shrivastava on 27-11-23
     Reason : Set the font family */
     /* font-family: 'Rawson-Regular'; */
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     /*End of Modification and addition by Om Shrivastava on 27-11-23
     Reason : Set the font family */
     color: var(--btnTextColorPrimary);

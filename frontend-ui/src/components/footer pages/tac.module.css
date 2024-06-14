@@ -49,7 +49,7 @@
     /* margin-bottom: 3vh; */
      /* Modification and addition by Om Shrivastava on 28-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 28-10-23
   Reason : Remove the letter spacin  */ 
@@ -70,7 +70,7 @@
     font-family: 'MyFont'; */
      /* Modification and addition by Om Shrivastava on 28-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 28-10-23
   Reason : Remove the letter spacing  */
@@ -87,7 +87,7 @@
     color: var(--textColorPrimary);
     /* Modification and addition by Om Shrivastava on 28-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 28-10-23
   Reason : Remove the letter spacing  */

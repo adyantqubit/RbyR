@@ -38,7 +38,7 @@
   line-height: 26px;
   letter-spacing: 2.5px;
   margin-left: 15px;
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
 
 }
 
@@ -75,7 +75,7 @@
     background:black;
     color:white;
     font-size: 16px;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 
     border: none;
     letter-spacing: 2px;
@@ -116,7 +116,7 @@ Reason : Set the hover property */
     color:white;
     min-height: 35px;
     font-size: 16px;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 
     letter-spacing: 2px;
     border: 0px solid white;

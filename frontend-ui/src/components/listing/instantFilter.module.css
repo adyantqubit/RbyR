@@ -21,7 +21,7 @@
     transition: all .1s ease ease-in;
     /* Added by Om Shrivastava on 04-12-23
     Reason : Set the font family */
-    font-family: var(--fontFamily);
+    font-family: var();
     /* End of  Added by Om Shrivastava on 04-12-23
     Reason : Set the font family */
 }
@@ -64,7 +64,7 @@
     font-size: 22px;
     letter-spacing: 1.7px;
     font-weight: 600;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 
 }
 
@@ -78,7 +78,7 @@
     margin-right: 5px;
     /* Addition by Om shrivastava on 30-11-23
     Reason : Set the font family */
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     /* End of  Addition by Om shrivastava on 30-11-23
     Reason : Set the font family */
 }

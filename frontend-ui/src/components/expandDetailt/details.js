@@ -366,7 +366,7 @@ const Details = (props) => {
           backgroundColor: "var(--bannerColor)",
           color: "black",
           marginTop: "10vh",
-          fontFamily: "var(--fontFamily)",
+          fontFamily: "var(--pagesFontFamily)",
           // End of Modification and addition by Om Shrivastava on 30-11-23
           // Reason : Set the font color, and font family
         },

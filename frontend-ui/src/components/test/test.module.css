@@ -58,7 +58,7 @@ body {
     font-size: 17px;
     color: var(--textColorSecondary);
     letter-spacing: var(--letterSpacingText);
-        font-family: var(--fontFamily);
+        font-family: var(--pagesFontFamily);
 
 }
 
@@ -68,7 +68,7 @@ body {
     border: none;
     transition: all .5s ease;
     background: transparent;
-        font-family: var(--fontFamily);
+        font-family: var(--pagesFontFamily);
 
 }
 
@@ -81,7 +81,7 @@ body {
     color: var(--textColorPrimary);
     font-size: 24px;
     font-weight: 500;
-        font-family: var(--fontFamily);
+        font-family: var(--pagesFontFamily);
 
     letter-spacing: var(--letterSpacingHeading);
     margin-left: 3%;
@@ -134,7 +134,7 @@ body {
     width: 150px;
     font-size: 24px;
     font-weight: 500;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 
     letter-spacing: var(--letterSpacingHeading);
 }

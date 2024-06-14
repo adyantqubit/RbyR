@@ -45,7 +45,7 @@
 
   .filterTitle{
     font-size: 16px;
-       font-family: var(--fontFamily);
+       font-family: var(--pagesFontFamily);
 
     font-weight: 100;
     color:#212121
@@ -96,7 +96,7 @@
     font-size: 13px;
     line-height: 20px;
     letter-spacing: 1px;
-       font-family: var(--fontFamily);
+       font-family: var(--pagesFontFamily);
 
     font-weight: 500;
     /* min-width: 40px; */
@@ -140,7 +140,7 @@
     color: black;
     /* Addition by Om Shrivastava on 16-11-23
     Reason : Add the font family of the search section */
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     /* End of addition by Om Shrivastava on 16-11-23
     Reason : Add the font family of the search section */
    }
@@ -172,7 +172,7 @@
     /* Addition by Om Shrivastava on 16-11-23
     Reason : Add the font family of the search section */
     .productName{
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 
     display: -webkit-box;
     -webkit-line-clamp: 1;

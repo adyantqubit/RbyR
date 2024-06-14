@@ -16,7 +16,7 @@ import { afterColumnTotalOfferAdd } from '../../Redux-manage/services/billing';
 import { Typography } from '@mui/material';
 import { MdOutlineArrowBack } from 'react-icons/md';
 import '../../context.css'
-
+import cartImage from '../../images/cartIcon.png'
 
 const Cart = () => {
 
@@ -78,9 +78,12 @@ const Cart = () => {
         {cart && cart.length > 0 ? <span class='badge badge-warning' id='lblCartCount'>{cart.length}</span> : null}
         {/* <i class="fa" >&#xf07a;</i> */}
         {cart && cart.length > 0 ?
-          <i class="fa-solid fa-bag-shopping" style={{ fontSize: "20px", position: "relative", color: "yellow" }} ></i>
+          // <i class="fa-solid fa-bag-shopping" style={{ fontSize: "20px", position: "relative", color: "yellow" }} ></i>
+          <img style={{width:'2vw',marginTop:'-20%',objectFit:'contain'}} src={cartImage}/>
           :
-          <i class="fa-solid fa-bag-shopping" style={{ fontSize: "20px", position: "relative", color: "yellow" }}></i>
+          // <i class="fa-solid fa-bag-shopping" style={{ fontSize: "20px", position: "relative", color: "yellow" }}></i>
+          <img style={{width:'2vw',marginTop:'-20%'}} src={cartImage}/>
+        
         }
       </span>
       {/* <Button type="primary" onClick={showDrawer}>

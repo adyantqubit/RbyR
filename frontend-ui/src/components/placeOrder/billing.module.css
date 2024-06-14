@@ -101,7 +101,7 @@
   color: var(--btnTextColorPrimary);
   text-align: center;
   opacity: 1;
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
 
   position: relative;
   font-weight: 600;
@@ -130,7 +130,7 @@
   font-size: 14px;
   line-height: 22px;
   letter-spacing: 1.2px;
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
 }
 
 .userinfoText2 {
@@ -139,7 +139,7 @@
   word-break: normal;
   line-height: 22px;
   letter-spacing: 1.2px;
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
 }
 
 .invoice {
@@ -159,7 +159,7 @@
   font-size: 30px;
   height: 100%;
   color: var(--textColorSecondary);
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
 
   text-align: center;
   letter-spacing: 1.5px;
@@ -182,7 +182,7 @@
 
 .columnitem1head {
   margin-top: 5px;
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
 
   font-weight: 400;
   color: var(--textColorPrimary);
@@ -246,7 +246,7 @@
   border-right: 1px solid var(--textColorPrimary);
   /* Addition by Om Shrivastava on 24-11-23
     Reason : Set the font family */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   /* End of addition by Om Shrivastava on 24-11-23 
     Reason : Set the font family   */
   /* Addition by Om shrivastava on 29-11-23
@@ -265,7 +265,7 @@
   white-space: nowrap;
   /* Addition by Om Shrivastava on 24-11-23
     Reason : Set the font family */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   /* End of addition by Om Shrivastava on 24-11-23
     Reason : Set the font family   */
 }

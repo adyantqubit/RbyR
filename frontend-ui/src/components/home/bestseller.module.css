@@ -133,7 +133,7 @@
     font-family: "MyFont"; */
      /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacin  */
@@ -158,7 +158,7 @@ Reason : Set the width  */
     border: none;
     transition: all .5s ease;
     background: transparent;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 
 }
 
@@ -175,7 +175,7 @@ Reason : Set the width  */
     letter-spacing: var(--letterSpacingHeading); */
      /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacin  */
@@ -194,7 +194,7 @@ Reason : Set the width  */
     /* font-family: "MyFont"; */
     /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacin  */
@@ -227,7 +227,7 @@ Reason : Set the letter spacing */
 Reason : Set the letter spacing  */
 /* Addition by Om Shrivastava on 27-11-23
 Reason : Set the Font family */
-font-family: var(--fontFamily);
+font-family: var(--pagesFontFamily);
 /* End of Addition by Om Shrivastava on 27-11-23
 Reason : Set the Font family */
     box-shadow: 0 0px 0px hsla(190deg, 15%, 5%, .2);

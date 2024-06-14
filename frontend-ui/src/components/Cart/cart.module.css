@@ -68,7 +68,7 @@
   }
 
   .font{
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 
     color:var(--textColorPrimary);
   }
@@ -90,7 +90,7 @@
     border-bottom:.001em solid rgba(140, 140, 140, 0.5);
     /* Addition by Om Shrivastava on 16-11-23
   Reason : Add the font family  */
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     /* End of addition by Om Shrivastava on 16-11-23
   Reason : Add the font family  */
   }

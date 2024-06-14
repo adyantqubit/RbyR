@@ -19,7 +19,7 @@
   letter-spacing: 1px;
   margin-left: 15px;
   width: 85%;
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   /* Commented by Om Shrivastava on 19-11-23  */
   font-weight: bold;
   /* End of Commented by Om Shrivastava on 19-11-23  */
@@ -57,7 +57,7 @@
   font-size: 15px;
   /* End of modification and addition by Om Shrivastava on 19-11-23
   Reason : Change the font size */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
 }
 
 .qtyContainer {
@@ -112,7 +112,7 @@
 
   /* Addition by Om Shrivastva on 16-11-23
   Reason : Set the font family */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   /* End of addition by Om Shrivastva on 16-11-23
   Reason : Set the font family  */
 }
@@ -145,7 +145,7 @@
 
   /* Addition by Om Shrivastva on 16-11-23
   Reason : Set the font family */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   /* End of addition by Om Shrivastva on 16-11-23
 Reason : Set the font family  */
 }
@@ -165,7 +165,7 @@ Reason : Set the font family  */
   /* End of Commented by Om Shrivastava on 19-11-23  */
   /* Addition by Om Shrivastva on 16-11-23
   Reason : Set the font family */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   /* End of addition by Om Shrivastva on 16-11-23
 Reason : Set the font family  */
 }
@@ -195,7 +195,7 @@ Reason : Set the font family  */
 }
 
 .summ {
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
 
   font-weight: 600;
   margin: 15px;
@@ -221,7 +221,7 @@ Reason : Set the font family  */
   line-height: 24px;
   letter-spacing: 1.4px;
   color: var(--textColorSecondary);
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
 }
 
 .shopbtn1 {
@@ -248,7 +248,7 @@ Reason : Set the font family  */
   border-style: solid;
   /* font-weight: 500; */
   font-weight: bold;
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
 
   border: 1px solid var(--btnBorderColorPrimary);
   -webkit-border-image: initial;
@@ -257,7 +257,7 @@ Reason : Set the font family  */
   text-decoration: none;
   /* Addition by Om Shrivastva on 16-11-23
   Reason : Set the font family */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   /* End of addition by Om Shrivastva on 16-11-23
 Reason : Set the font family  */
 }
@@ -271,7 +271,7 @@ Reason : Set the font family  */
   color: var(--btnTextColorSecondary) !important;
   text-align: center;
   opacity: 1;
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
 
   position: relative;
   font-weight: normal;
@@ -511,7 +511,7 @@ Reason : Set the font family  */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
   }
 
   .buttons {

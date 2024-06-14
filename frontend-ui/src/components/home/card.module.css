@@ -54,7 +54,7 @@
     line-height: 38px;
     letter-spacing: 3.5px;
     color:var(--textColorPrimary);
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 
     text-align:center;
     display: flex;

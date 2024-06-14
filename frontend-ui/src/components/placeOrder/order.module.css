@@ -33,7 +33,7 @@ Reason - To add hoverable effect  */
     letter-spacing: 1.4px;
     font-weight: 550;
     display: flex;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 
     flex-direction: column;
     justify-content: center;
@@ -42,7 +42,7 @@ Reason - To add hoverable effect  */
 }
 
 .headText {
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 
     border-bottom: 1px solid black;
     padding-bottom: 15px;
@@ -140,7 +140,7 @@ Reason - To add hoverable effect  */
 }
 .columnitem1head {
     margin-top: 15px;
-      font-family: var(--fontFamily);
+      font-family: var(--pagesFontFamily);
 
     font-weight: 400;
     color: black;
@@ -182,7 +182,7 @@ Reason - To add hoverable effect  */
     line-height: 20px;
     letter-spacing: 1px;
     color: black;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     /* Commented by Om Shrivastava on 22--11-23
     Reason : No need to add the uppercase data */
     /* text-transform: uppercase; */
@@ -273,7 +273,7 @@ Reason - To add hoverable effect  */
     color:var(--btnTextColorPrimary);
     text-align: center;
     opacity: 1;
-      font-family: var(--fontFamily);
+      font-family: var(--pagesFontFamily);
 
     position: relative;
     font-weight: normal;
@@ -311,7 +311,7 @@ Reason - To add hoverable effect  */
     color: white;
     text-align: center;
     opacity: 1;
-      font-family: var(--fontFamily);
+      font-family: var(--pagesFontFamily);
 
     position: relative;
     font-weight: normal;
@@ -350,7 +350,7 @@ Reason - To add hoverable effect  */
     color: white !important;
     text-align: center;
     opacity: 1;
-      font-family: var(--fontFamily);
+      font-family: var(--pagesFontFamily);
 
     position: relative;
     font-weight: normal;
@@ -382,7 +382,7 @@ Reason - To add hoverable effect  */
     line-height: 18px;
     letter-spacing: 0.5px;
     font-weight: 400;
-      font-family: var(--fontFamily);
+      font-family: var(--pagesFontFamily);
 /* border: 1px solid red; */
 }
 
@@ -392,7 +392,7 @@ Reason - To add hoverable effect  */
     line-height: 18px;
     letter-spacing: 0.5px;
     /* font-weight: 600; */
-      font-family: var(--fontFamily);
+      font-family: var(--pagesFontFamily);
       /* border: 1px solid blue; */
 
 }
@@ -403,7 +403,7 @@ Reason - To add hoverable effect  */
     line-height: 22px;
     letter-spacing: 1.2px;
     font-weight: 500;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 
 }
 
@@ -418,7 +418,7 @@ Reason - To add hoverable effect  */
     line-height: 20px;
     letter-spacing: 1px;
     /* padding: 2px 5px; */
-        font-family: var(--fontFamily);
+        font-family: var(--pagesFontFamily);
 
     /* border: .1rem solid black; */
     font-weight: 600;
@@ -508,7 +508,7 @@ Reason - To add hoverable effect  */
     line-height: 22px;
     letter-spacing: 1.2px;
     color: black;
-        font-family: var(--fontFamily);
+        font-family: var(--pagesFontFamily);
 
     font-weight: 500;
 }
@@ -548,7 +548,7 @@ Reason - To add hoverable effect  */
     font-size: 12px;
     line-height: 22px;
     letter-spacing: 0.5px;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 
     color: black;
     font-weight: 600;

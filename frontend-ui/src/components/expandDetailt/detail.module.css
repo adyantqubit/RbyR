@@ -120,7 +120,7 @@
     flex-direction: column;
     /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacin  */
@@ -131,11 +131,11 @@
     width: 70%;
     /* letter-spacing: 1.2px; */
     margin-top: 4%; 
-    /* font-family: var(--fontFamily) !important; */
+    /* font-family: var(--pagesFontFamily) !important; */
     font-weight: 500;
     /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacin  */
@@ -150,7 +150,7 @@ Reason : Set the capitalize property  */
     font-size: 16px;
     line-height: 24px;
     width: 60%;
-    font-family: var(--fontFamily) !important;
+    font-family: var(--pagesFontFamily) !important;
     font-weight: 600;
   }
   .text01 {
@@ -158,7 +158,7 @@ Reason : Set the capitalize property  */
     font-size: 18px;
     line-height: 26px;
     letter-spacing: 2.5px;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 600;
   }
   .container05 {
@@ -211,7 +211,7 @@ Reason : Set the capitalize property  */
     margin-left: 20%;
     font-weight: 600;
     letter-spacing: 1px;
-    font-family:  var(--fontFamily);
+    font-family:  var(--pagesFontFamily);
   }
 
   .text03 {
@@ -221,7 +221,7 @@ Reason : Set the capitalize property  */
     letter-spacing: 1.4px;
     margin-bottom: 5px;
     color: #323232;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 600;
     margin-top: 3%;
   }
@@ -239,12 +239,12 @@ Reason : Set the capitalize property  */
     Reason : Set the color  */
     /* color: aqua; */
 
-    /* font-family: var(--fontFamily); */
+    /* font-family: var(--pagesFontFamily); */
     font-weight: 500;
     margin: 0;
     /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacin  */
@@ -260,12 +260,12 @@ Reason : Set the capitalize property  */
    
     font-size: 0.9em;
     font-style: normal;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 600;
     margin-right: 5px;
     /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacin  */
@@ -281,11 +281,11 @@ Reason : Set the capitalize property  */
     color: black;
     /* End of Modification and addition by Om Shrivastava on 05-11-23
     Reason : Set the color  */
-    /* font-family: var(--fontFamily); */
+    /* font-family: var(--pagesFontFamily); */
     font-weight: 500;
     /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacin  */
@@ -309,7 +309,7 @@ Reason : Set the capitalize property  */
     width: 12%;
     font-size:13px;
     font-style: normal;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 600;
     margin-right: 5px;
   }
@@ -317,7 +317,7 @@ Reason : Set the capitalize property  */
     width: 1%;
     font-size: 14px;
     font-style: normal;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 600;
     margin-right: 5px;
     padding-bottom: 1px;
@@ -327,7 +327,7 @@ Reason : Set the capitalize property  */
     font-size:12px;
     color: black;
     font-weight: 500;
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   padding-top: 1px;
   }
@@ -336,7 +336,7 @@ Reason : Set the capitalize property  */
     font-size: 0.9em;
     font-style: normal;
     margin-top: 1%;
-    font-family:var(--fontFamily);
+    font-family:var(--pagesFontFamily);
     font-weight: 600;
     margin-right: 5px;
   }
@@ -344,7 +344,7 @@ Reason : Set the capitalize property  */
     font-size: 0.9em;
     font-style: normal;
     margin-top: 1%;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 600;
     margin-right: 5px;
   }
@@ -367,7 +367,7 @@ Reason : Set the capitalize property  */
     font-size: 0.9em;
     font-style: normal;
     margin-top: 1%;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 100;
     margin-right: 5px;
   }
@@ -383,7 +383,7 @@ Reason : Set the capitalize property  */
     font-size: 0.9em;
     font-style: normal;
     margin-top: 1%;
-    font-family:var(--fontFamily);
+    font-family:var(--pagesFontFamily);
     font-weight: 600;
     margin-right: 5px;
   }
@@ -391,7 +391,7 @@ Reason : Set the capitalize property  */
     font-size: 0.9em;
     font-style: normal;
     margin-top: 1%;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 100;
     margin-right: 5px;
   }
@@ -399,7 +399,7 @@ Reason : Set the capitalize property  */
     font-size: 0.9em;
     font-style: normal;
     margin-top: 1%;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 100;
     margin-right: 5px;
     
@@ -408,14 +408,14 @@ Reason : Set the capitalize property  */
     font-size: 1.4em;
     font-style: normal;
     margin-top: 3%;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 400;
   }
   .text15 {
     font-size: 1.2em;
     font-style: normal;
     margin-top: 0.5%;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 150;
   }
   .container09 {
@@ -429,21 +429,21 @@ Reason : Set the capitalize property  */
     font-size: 0.8em;
     font-style: normal;
     margin-top: 1%;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 100;
   }
   .text17 {
     font-size: 0.8em;
     font-style: normal;
     margin-top: 1%;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 100;
   }
   .text18 {
     font-size: 0.8em;
     font-style: normal;
     margin-top: 1%;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 100;
   }
   .container10 {
@@ -464,14 +464,14 @@ Reason : Set the capitalize property  */
     font-size: 0.8em;
     font-style: normal;
     margin-top: 1%;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 100;
   }
   .text21 {
     font-size: 0.8em;
     font-style: normal;
     margin-top: 1%;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 100;
   }
   .container11 {
@@ -479,27 +479,27 @@ Reason : Set the capitalize property  */
     width: 100%;
     height: auto;
     display: flex;
-    align-items: var(--fontFamily);
+    align-items: var(--pagesFontFamily);
   }
   .text22 {
     font-size: 0.8em;
     font-style: normal;
     margin-top: 1%;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 100;
   }
   .text23 {
     font-size: 0.8em;
     font-style: normal;
     margin-top: 1%;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 100;
   }
   .text24 {
     font-size: 0.8em;
     font-style: normal;
     margin-top: 1%;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 100;
   }
   .subtitle {
@@ -510,11 +510,11 @@ Reason : Set the capitalize property  */
     font-size: 16px;
     line-height: 24px;
     /* letter-spacing: 1.4px;
-    font-family: var(--fontFamily); */
+    font-family: var(--pagesFontFamily); */
     font-weight: 600;
     /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacin  */
@@ -534,7 +534,7 @@ Reason : Set the capitalize property  */
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1px;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 500;
     margin: 0;
   }
@@ -542,7 +542,7 @@ Reason : Set the capitalize property  */
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1px;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 500;
     margin: 0;
  
@@ -563,11 +563,11 @@ Reason : Set the capitalize property  */
     color: black;
     /* End of Modification and addition by Om Shrivastava on 05-11-23
     Reason : Set the color  */
-    /* font-family: var(--fontFamily); */
+    /* font-family: var(--pagesFontFamily); */
     font-weight: 500;
     /* Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacing */
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
   letter-spacing: var(--letterSpacing);
   /* End of Modification and addition by Om Shrivastava on 27-10-23
   Reason : Remove the letter spacin  */
@@ -580,7 +580,7 @@ Reason : Set the capitalize property  */
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 1.2px;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-weight: 500;
     margin-right: 5px;
 
@@ -909,7 +909,7 @@ Reason : Set the capitalize property  */
       font-size: 16px;
       line-height: 24px;
       width: 70vh;
-      font-family: var(--fontFamily) !important;
+      font-family: var(--pagesFontFamily) !important;
       font-weight: 500;
     }
     .container03{
@@ -988,7 +988,7 @@ Reason : Set the capitalize property  */
       width: 30%;
       font-size:13px;
       font-style: normal;
-      font-family: var(--fontFamily);
+      font-family: var(--pagesFontFamily);
       font-weight: 600;
       margin-right: 5px;
     }
@@ -996,7 +996,7 @@ Reason : Set the capitalize property  */
       width: 3%;
       font-size: 14px;
       font-style: normal;
-      font-family: var(--fontFamily);
+      font-family: var(--pagesFontFamily);
       font-weight: 600;
       margin-right: 5px;
     }
@@ -1005,7 +1005,7 @@ Reason : Set the capitalize property  */
       font-size:12px;
       color: black;
       font-weight: 400;
-      font-family: var(--fontFamily);
+      font-family: var(--pagesFontFamily);
       letter-spacing: var(--letterSpacing);
     }
     .text04{

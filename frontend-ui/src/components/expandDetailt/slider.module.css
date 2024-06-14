@@ -63,7 +63,7 @@
         color:var(--textColorPrimary);
         /* Added by Om Shrivastava on 16-11-23
         Reason : Set the font family */
-        font-family: var(--fontFamily);
+        font-family: var(--pagesFontFamily);
         /* End of addition by Om Shrivastava on 16-11-23
         Reason : Set the font family */
 }
@@ -80,7 +80,7 @@ Reason : Add the class  */
     /* // End of Modification by Om Shrivastava on 25-11-23
     // Reason : Set the letter spacing*/
     margin-bottom: 20px;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 }
 .productName{
     text-align: center;
@@ -88,7 +88,7 @@ Reason : Add the class  */
     font-weight: 600;
     font-size: .8rem;
     color: var(--textColorPrimary);
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
 }
 /* End of Addition by Om Shrivastava 16-11-23
 Reason : Add the class  */

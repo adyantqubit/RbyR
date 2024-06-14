@@ -22,7 +22,7 @@
     /* Modification and addition by Om Shrivastava on 27-10-23
     Reason : Set the font family of the anchor tag */
     /* font-family: "Rawson-Regular"; */
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     /*End of modification and addition by Om Shrivastava on 27-10-23
     Reason : Set the font family of the anchor tag */
     cursor: pointer;
@@ -31,7 +31,7 @@
    Reason : Add css when same page is selected */
    .highlightField {
     text-decoration: none;
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     cursor: pointer;
     font-weight: bolder;
     /* text-transform: capitalize; */
@@ -51,7 +51,7 @@
     /* text-transform: uppercase; */
     font-size: 16px;
     line-height: 24px;
-    font-weight: 800;
+    font-weight: 500;
     padding: 5px 0px 5px 0px;
     min-width:15%;
     max-width:15%;
@@ -59,7 +59,9 @@
     height: 80px;
     cursor: pointer;
     white-space: nowrap;
-    font-family: Noto Serif;
+    /* font-family: Noto Serif; */
+    font-family: var(--headerFontFamily);
+
     text-transform: capitalize;
    }
 
@@ -272,7 +274,7 @@ input[type=checkbox]{
   }
 
   .alertMsg{
-    font-family: var(--fontFamily);
+    font-family: var(--pagesFontFamily);
     font-size: 18px;
     color: var(--textColorPrimary);
     letter-spacing: 1.4px;
@@ -459,7 +461,7 @@ input[type=checkbox]:checked ~ .menu{
   .action .menu2 .ul .l {
 	list-style: none;
 	padding: 8px 0;
-  font-family: var(--fontFamily);
+  font-family: var(--pagesFontFamily);
 
   letter-spacing: 1.2px;
 	border-top: 1px solid rgba(0, 0, 0, 0.05);
