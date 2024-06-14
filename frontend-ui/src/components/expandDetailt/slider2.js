@@ -43,153 +43,164 @@ const Slider2 = ({ scrollTop }) => {
     //  <Navigate to={`/listing/${id.category}/detail/${id.id}`}/>
   }
 
- {/* Addtion by Om Shrivastava on 29-12-23
-    Reason : Need to check product is active or not */}
-    let keyToCheck = 'is_active';
-    
-    let filteredCatergoryArray = CategoryProduct.filter(obj => obj[keyToCheck] === true);
- {/* End of addtion by Om Shrivastava on 29-12-23
-    Reason : Need to check product is active or not */}
+  {
+    /* Addtion by Om Shrivastava on 29-12-23
+    Reason : Need to check product is active or not */
+  }
+  let keyToCheck = "is_active";
+
+  let filteredCatergoryArray = CategoryProduct.filter(
+    (obj) => obj[keyToCheck] === true
+  );
+  {
+    /* End of addtion by Om Shrivastava on 29-12-23
+    Reason : Need to check product is active or not */
+  }
 
   return (
     <>
-    {/* Modification and addition by Om Shrivastava on 29-12-23
+      {/* Modification and addition by Om Shrivastava on 29-12-23
     Reason : Need to check product is active or not */}
       {/* {CategoryProduct && CategoryProduct.length > 1 ? ( */}
-      {filteredCatergoryArray && filteredCatergoryArray.length > 1 ? (
-    // End of Modification and addition by Om Shrivastava on 29-12-23
-    // Reason : Need to check product is active or not
-        <div
-          className={styles.sliderContainer}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            padding: "0 8%",
-            // Modification and addition by Om Shrivastava on 25-11-23
-            // Reason : Set the margin 
-            // margin: "50px 0",
-            margin: "5px 0",
-            // End of addition and modification by Om Shrivastava on 25-11-23
-            // Reason : Set the margin
-          }}
-        >
-          <div
-          // Modification and addition by Om Shrivastava on 16-11-23
-          // Reason : Apply the css in external file
-            // style={{
-            //   fontSize: "20px",
-            //   lineHeight: "32px",
-            //   letterSpacing: "3px",
-            //   marginBottom: "20px",
-            // }}
-            className={styles.likedContain} style={{textAlign:'center',fontWeight:'600'}}
-            // End of Modification and addition by Om Shrivastava on 16-11-23
-          // Reason : Apply the css in external file
-          >
-            YOU MAY ALSO LIKE
-          </div>
-          <Carousel cols={4} rows={1} gap={10} style={{ width: "100%",border:'1px solid blue' }}>
-            
-            {CategoryProduct.map((cart, i) => {
-              // commented by Rohan - 21/12/22
-              //Reason i have to not show same
-              if (cart.id != id 
-                // Addition by Om Shrivastava on 22-12-23
-                // Reason : When product is active then this div is show
-                && cart.is_active == true
-                // End of Addition by Om Shrivastava on 22-12-23
-                // Reason : When product is active then this div is show
-                )
-                return (
-              
-                  <Carousel.Item
-                    style={{ cursor: "pointer", padding: "5px auto" }}
-                  >
-                      <>
-                        <img
-                          // className={style.img}
-                          className={style.img12}
+      {filteredCatergoryArray && filteredCatergoryArray.length > 1
+        ? // End of Modification and addition by Om Shrivastava on 29-12-23
+          // Reason : Need to check product is active or not
+          // Commented by Om Shrivastava on 14-06-2024
+          // Reason : No need to show this section
+          // <div
+          //   className={styles.sliderContainer}
+          //   style={{
+          //     display: "flex",
+          //     flexDirection: "column",
+          //     padding: "0 8%",
+          //     // Modification and addition by Om Shrivastava on 25-11-23
+          //     // Reason : Set the margin
+          //     // margin: "50px 0",
+          //     margin: "5px 0",
+          //     // End of addition and modification by Om Shrivastava on 25-11-23
+          //     // Reason : Set the margin
+          //   }}
+          // >
+          //   <div
+          //   // Modification and addition by Om Shrivastava on 16-11-23
+          //   // Reason : Apply the css in external file
+          //     // style={{
+          //     //   fontSize: "20px",
+          //     //   lineHeight: "32px",
+          //     //   letterSpacing: "3px",
+          //     //   marginBottom: "20px",
+          //     // }}
+          //     className={styles.likedContain} style={{textAlign:'center',fontWeight:'600'}}
+          //     // End of Modification and addition by Om Shrivastava on 16-11-23
+          //   // Reason : Apply the css in external file
+          //   >
+          //     YOU MAY ALSO LIKE
+          //   </div>
+          //   <Carousel cols={4} rows={1} gap={10} style={{ width: "100%",border:'1px solid blue' }}>
 
-                          src={config.staticBaseURL + cart.img_main}
-                          // Modification and addition by Om Shrivastava on 16-11-23
-                          // Reason : Fix the image height and width
-                          // style={{width:'350px'}}
-                          // style={{ width: "320px",height:'320px' }}
-                          // End of modification and addition by Om Shrivastava on 16-11-23
-                          // Reason : Fix the image height and width
-                          onClick={(e) => {
-                            openDetail(cart);
-                            scrollTop();
-                          }}
-                        />
-                        <div
-                          style={{
-                            textAlign: "center",
-                            textTransform: "capitalize",
-                            fontWeight: "600",
-                            fontSize: ".8rem",
-                            color: "#323232",
-                            // Addition by Om Shrivastava on 29-11-23
-                      // Reason : Add the letterspacing 
-                      letterSpacing:'1px'
-                      // End of Addition by Om Shrivastava on 29-11-23
-                      // Reason : Add the letterspacing
-                          }}
-                          // className={styles.productName}
-                          onClick={(e) => {
-                            openDetail(cart);
-                            scrollTop();
-                          }}
-                        >
-                          {/* Modification and addition by Om Shrivastava on 02-12-23
-                          REason : Add the lowercase   */}
-                          {/* {cart.title} */}
-                          {cart.title.toLowerCase()}
-                          {/* End of Modification and addition by Om Shrivastava on 02-12-23
-                          REason : Add the lowercase */}
-                        </div>
-                        <div
-                          style={{
-                            textAlign: "center",
-                            fontSize: ".9rem",
-                            fontWeight: "500",
-                            color: "#323232",
-                          }}
-                        >
-                          {" "}
-                          {currency.sign}{" "}
-                          {(cart.price * currency.value).toFixed(2)}
-                        </div>
+          //     {CategoryProduct.map((cart, i) => {
+          //       // commented by Rohan - 21/12/22
+          //       //Reason i have to not show same
+          //       if (cart.id != id
+          //         // Addition by Om Shrivastava on 22-12-23
+          //         // Reason : When product is active then this div is show
+          //         && cart.is_active == true
+          //         // End of Addition by Om Shrivastava on 22-12-23
+          //         // Reason : When product is active then this div is show
+          //         )
+          //         return (
 
-                        {/* Commented by Rohan - 16/12/22
-                      Reason - Adding representation of Reading to ship items  */}
+          //           <Carousel.Item
+          //             style={{ cursor: "pointer", padding: "5px auto" }}
+          //           >
+          //               <>
+          //                 <img
+          //                   // className={style.img}
+          //                   className={style.img12}
 
-                        {cart.ready_to_ship ? (
-                          <div
-                            className={styles.readyContainer}
-                            onClick={(e) => {
-                              openDetail(cart);
-                              scrollTop();
-                            }}
-                            style={{ cursor: "pointer" }}
-                          >
-                            <div className={styles.readyBox}>
-                              <img src={logo} className={styles.readyIcon} />
-                              Ready To Ship
-                            </div>
-                          </div>
-                        ) : null}
-                      </>
-                    {/* ) : null} */}
-                    {/* End of code */}
-                  </Carousel.Item>
-                );
-            })}
+          //                   src={config.staticBaseURL + cart.img_main}
+          //                   // Modification and addition by Om Shrivastava on 16-11-23
+          //                   // Reason : Fix the image height and width
+          //                   // style={{width:'350px'}}
+          //                   // style={{ width: "320px",height:'320px' }}
+          //                   // End of modification and addition by Om Shrivastava on 16-11-23
+          //                   // Reason : Fix the image height and width
+          //                   onClick={(e) => {
+          //                     openDetail(cart);
+          //                     scrollTop();
+          //                   }}
+          //                 />
+          //                 <div
+          //                   style={{
+          //                     textAlign: "center",
+          //                     textTransform: "capitalize",
+          //                     fontWeight: "600",
+          //                     fontSize: ".8rem",
+          //                     color: "#323232",
+          //                     // Addition by Om Shrivastava on 29-11-23
+          //               // Reason : Add the letterspacing
+          //               letterSpacing:'1px'
+          //               // End of Addition by Om Shrivastava on 29-11-23
+          //               // Reason : Add the letterspacing
+          //                   }}
+          //                   // className={styles.productName}
+          //                   onClick={(e) => {
+          //                     openDetail(cart);
+          //                     scrollTop();
+          //                   }}
+          //                 >
+          //                   {/* Modification and addition by Om Shrivastava on 02-12-23
+          //                   REason : Add the lowercase   */}
+          //                   {/* {cart.title} */}
+          //                   {cart.title.toLowerCase()}
+          //                   {/* End of Modification and addition by Om Shrivastava on 02-12-23
+          //                   REason : Add the lowercase */}
+          //                 </div>
+          //                 <div
+          //                   style={{
+          //                     textAlign: "center",
+          //                     fontSize: ".9rem",
+          //                     fontWeight: "500",
+          //                     color: "#323232",
+          //                   }}
+          //                 >
+          //                   {" "}
+          //                   {currency.sign}{" "}
+          //                   {(cart.price * currency.value).toFixed(2)}
+          //                 </div>
 
-            {/* <div>.</div> */}
-          </Carousel>
-        </div>
-      ) : null}
+          //                 {/* Commented by Rohan - 16/12/22
+          //               Reason - Adding representation of Reading to ship items  */}
+
+          //                 {cart.ready_to_ship ? (
+          //                   <div
+          //                     className={styles.readyContainer}
+          //                     onClick={(e) => {
+          //                       openDetail(cart);
+          //                       scrollTop();
+          //                     }}
+          //                     style={{ cursor: "pointer" }}
+          //                   >
+          //                     <div className={styles.readyBox}>
+          //                       <img src={logo} className={styles.readyIcon} />
+          //                       Ready To Ship
+          //                     </div>
+          //                   </div>
+          //                 ) : null}
+          //               </>
+          //             {/* ) : null} */}
+          //             {/* End of code */}
+          //           </Carousel.Item>
+          //         );
+          //     })}
+
+          //     {/* <div>.</div> */}
+          //   </Carousel>
+          // </div>
+          // Commented by Om Shrivastava on 14-06-2024
+          // Reason : No need to show this section
+          null
+        : null}
     </>
   );
 };

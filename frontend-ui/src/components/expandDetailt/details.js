@@ -993,13 +993,16 @@ const Details = (props) => {
                           <span style={{ margin: "auto" }}>ADD TO BAG</span>
                         </button>
                       )}
-
-                      <button
+                      {/* Commetned by Om Shrivastava on 14-06-2024
+                      Reason : No need to show this section  */}
+                      {/* <button
                         className={` ${styles["button2"]} `}
                         onClick={(e) => buyNow(details)}
                       >
                         <span style={{ margin: "auto" }}>BUY NOW</span>
-                      </button>
+                      </button> */}
+                      {/* Commetned by Om Shrivastava on 14-06-2024
+                      Reason : No need to show this section  */}
                     </div>
 
                     {like.filter((l) => l.id === details.id).length > 0 ? (
@@ -1033,35 +1036,39 @@ const Details = (props) => {
                           ></div>
                         </div>
                       </button>
-                    ) : (
-                      // <AiOutlineHeart
-                      //   style={{
-                      //     width: "25px",
-                      //     height: "25px",
-                      //   }}
-                      //   onClick={(e) => LikedSave(details)}
-                      // />
-                      <button
-                        className={` ${styles["button3"]} `}
-                        onClick={(e) => LikedSave(details)}
-                      >
-                        <span style={{ margin: "auto" }}>ADD TO WISHLIST</span>
-                        <div class="placement">
-                          <div
-                            class="heart"
-                            /**
-                             * Commented by - Ashish Dewangan on 20-12-2023
-                             * Reason - To reduce api calling because parent button already has onclick listener for api calling
-                             */
-                            // onClick={(e) => LikedSave(details)}
-                            /**
-                             * End of comment by - Ashish Dewangan on 20-12-2023
-                             * Reason - To reduce api calling because parent button already has onclick listener for api calling
-                             */
-                          ></div>
-                        </div>
-                      </button>
-                    )}
+                    ) : // <AiOutlineHeart
+                    //   style={{
+                    //     width: "25px",
+                    //     height: "25px",
+                    //   }}
+                    //   onClick={(e) => LikedSave(details)}
+                    // />
+                    //     Commented by Om Shrivastava on 14-06-2024
+                    // Reason : No need to show this section
+                    // <button
+                    //   className={` ${styles["button3"]} `}
+                    //   onClick={(e) => LikedSave(details)}
+                    // >
+                    //   <span style={{ margin: "auto" }}>ADD TO WISHLIST</span>
+                    //   <div class="placement">
+                    //     <div
+                    //       class="heart"
+                    //       /**
+                    //        * Commented by - Ashish Dewangan on 20-12-2023
+                    //        * Reason - To reduce api calling because parent button already has onclick listener for api calling
+                    //        */
+                    //       // onClick={(e) => LikedSave(details)}
+                    //       /**
+                    //        * End of comment by - Ashish Dewangan on 20-12-2023
+                    //        * Reason - To reduce api calling because parent button already has onclick listener for api calling
+                    //        */
+                    //     ></div>
+                    //   </div>
+                    // </button>
+
+                    //    Commented by Om Shrivastava on 14-06-2024
+                    // Reason : No need to show this section
+                    null}
 
                     {/* <div className={` ${styles["iconButtonsContainer"]} `}> */}
                     {/* {like.filter((l) => l.id === details.id).length > 0 ? (
@@ -1222,20 +1229,23 @@ const Details = (props) => {
                       </span>
                     </div> */}
 
-                  {details.ready_to_ship == true ? (
-                    <div className={styles["detailsContainer"]}>
-                      <span className={styles["textHeading"]}>
-                        Ready to Ship{" "}
-                      </span>
-                      <span className={styles["colon"]}> : </span>
-                      <span
-                        className={styles["textContent"]}
-                        style={{ display: "inline-block", marginRight: "3px" }}
-                      >
-                        {" " + details.ready_to_ship_days}
-                      </span>
-                    </div>
-                  ) : (
+                  {details.ready_to_ship ==
+                  true ? // Reason : No need to show this section // Commented by Om Shrivastava on 14-06-2024
+                  // <div className={styles["detailsContainer"]}>
+                  //   <span className={styles["textHeading"]}>
+                  //     Ready to Ship{" "}
+                  //   </span>
+                  //   <span className={styles["colon"]}> : </span>
+                  //   <span
+                  //     className={styles["textContent"]}
+                  //     style={{ display: "inline-block", marginRight: "3px" }}
+                  //   >
+                  //     {" " + details.ready_to_ship_days}
+                  //   </span>
+                  // </div>
+                  // Commented by Om Shrivastava on 14-06-2024
+                  // Reason : No need to show this section
+                  null : (
                     <>
                       {details.shipping_days ? (
                         <div className={styles["detailsContainer"]}>
@@ -1271,8 +1281,10 @@ const Details = (props) => {
                     </span>
                   </div> */}
                   {/* End of comment */}
-                  <h1 className={styles["subtitle"]}>FOR CUSTOMISATIONS</h1>
-                  <span className={styles["textDescription"]}>
+                  {/* Commented by Om Shrivastava on 14-06-2024
+                  Reason : No need to show this section  */}
+                  {/* <h1 className={styles["subtitle"]}>FOR CUSTOMISATIONS</h1> */}
+                  {/* <span className={styles["textDescription"]}>
                     <span
                       onClick={showCustomTailoredForm}
                       className={styles["textLink"]}
@@ -1285,7 +1297,9 @@ const Details = (props) => {
                       Submit
                     </span>{" "}
                     your customisation details
-                  </span>
+                  </span> */}
+                  {/* Commented by Om Shrivastava on 14-06-2024
+                  Reason : No need to show this section  */}
                   {/* Commented and modified by Ashish Dewangan on 24-11-2022
                       Reason - To have whatsapp chat functionality */}
                   {/* <a
@@ -1517,14 +1531,18 @@ const Details = (props) => {
             <Slider2 scrollTop={scrolling} />
             <Slider scrollTop={scrolling} />
           </div>
-          <div style={{ marginBottom: "12px", marginTop: "12px" }}>
-            <a
-              href="/"
-              class="btn-flip"
-              data-back="Back to Collection"
-              data-front="Back to Collection"
-            ></a>
-          </div>
+          {/* // Commented by Om Shrivastava on 14-06-2024
+                  // Reason : No need to show this section */}
+          {/* <div style={{ marginBottom: "12px", marginTop: "12px" }}>
+              <a
+                href="/"
+                class="btn-flip"
+                data-back="Back to Collection"
+                data-front="Back to Collection"
+              ></a>
+            </div> */}
+          {/* // Commented by Om Shrivastava on 14-06-2024
+            // Reason : No need to show this section */}
           {/* Commented by - Ashish Dewangan on 15-02-2023
             Reason - To hide the text that appear after footer */}
           {/* <div className={styles.foot}> */}

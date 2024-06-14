@@ -114,7 +114,7 @@ Reason : Set the padding and margin of antd notification  */
     margin: 0;
     white-space: wrap;
     /* border-bottom: 1px solid var(--textColorPrimary) ; */
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 
 .span,.span2{

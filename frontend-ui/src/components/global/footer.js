@@ -143,13 +143,21 @@ function Footer() {
             {" "}
             <span className={style.span}>Terms and Conditions</span>
           </Link>
-          <Link to="/FAQ" style={{ textDecoration: "none", color: "white" }}>
+          {/* Commented by Om Shrivastava on 14-06-2024
+          Reason : No need to show this section */}
+          {/* <Link to="/FAQ" style={{ textDecoration: "none", color: "white" }}>
             {" "}
             <span className={style.span}>FAQ</span>
-          </Link>
-          <Link to="/bridal" style={{ textDecoration: "none", color: "white" }}>
+          </Link> */}
+          {/* Commented by Om Shrivastava on 14-06-2024
+          Reason : No need to show this section */}
+          {/* Commented by Om Shrivastava on 14-06-2024
+          Reason : No need to show this section */}
+          {/* <Link to="/bridal" style={{ textDecoration: "none", color: "white" }}>
             <span className={style.span}>Bridal</span>
-          </Link>
+          </Link> */}
+          {/* Commented by Om Shrivastava on 14-06-2024
+          Reason : No need to show this section */}
         </div>
         <div className={style.column2}>
           <h1 className={style.heading}>POLICIES</h1>
@@ -178,20 +186,16 @@ function Footer() {
             <span className={style.span}>Order Cancellation Policy</span>
           </Link>
         </div>
-
-        <div className={style.column3}>
+        {/* Commented by Om Shrivastava on 14-06-2024
+          Reason : No need to show this section */}
+        {/* <div className={style.column3}>
           <h1 className={style.heading}>THE COMPANY</h1>
           <Link
             to="/aboutRR"
             style={{ textDecoration: "none", color: "white" }}
           >
             <span className={style.span}>
-              {/* Modification and addition by Om Shrivastava on 13-06-2024
-                    Reason : Change the name  */}
-              {/* World of RbyR */}
               About us
-              {/* End of modification and addition by Om Shrivastava on 13-06-2024
-                    Reason : Change the name  */}
             </span>
           </Link>
           <Link
@@ -200,8 +204,9 @@ function Footer() {
           >
             <span className={style.span}>Store Locator</span>
           </Link>
-        </div>
-
+        </div> */}
+        {/* End of commented by Om Shrivastava on 14-06-2024
+          Reason : No need to show this section */}
         {socialLinks.length > 0 ? (
           <div className={style.column4}>
             <h1 className={style.heading}>FOLLOW US</h1>
@@ -289,7 +294,9 @@ function Footer() {
       <div className={style.icon}><FaTwitter style={{color:"grey",fontSize:"25px",marginLeft:"5px"}}/><span style={{marginTop:"0"}}className={style.span}> Twitter</span></div> */}
           </div>
         ) : null}
-        <div className={style.column5}>
+        {/* Commented by Om Shrivastava on 14-06-2024
+          Reason : Remove this div  */}
+        {/* <div className={style.column5}>
           <h1 className={style.heading}>SIGN UP FOR UPDATES</h1>
           <div
             style={{ display: "flex", flexDirection: "row", marginTop: "10px" }}
@@ -308,7 +315,9 @@ function Footer() {
               <IoChevronForwardOutline style={{ color: "white" }} />
             </button>
           </div>
-        </div>
+        </div> */}
+        {/* Commented by Om Shrivastava on 14-06-2024
+          Reason : Remove this div  */}
       </div>
 
       <div className={style.copyrightText}>
