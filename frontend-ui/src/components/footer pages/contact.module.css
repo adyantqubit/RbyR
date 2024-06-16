@@ -179,6 +179,55 @@
     background-color: var(--backgroundColorSecondary);
 }
 
+
+
+.instagramContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right,#bcbfaf,#ffffff,#aeae98);
+}
+.instagramLink{
+    width:16.5%;
+    height:200px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+.instagramImage{
+    width:100%;
+    height:200px;
+    display: flex;
+    flex-direction: row;
+}
+
+.instaBox{
+    color: var(--textColorPrimary);
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 1.5px;
+    font-family: var(--pagesFontFamily);
+    padding: 0;
+    margin: 0;
+
+}
+.instaText{
+    color: var(--textColorPrimary);
+    font-size: 16px;
+    line-height: 32px;
+    letter-spacing: 1.7px;
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+}
+.instagramTextContainer{
+    background-color: var(--backgroundColorPrimary);
+    
+}
+
+
 @media screen and (max-width:768px) {
     .contact{
        padding-top:12vh;
@@ -235,4 +284,48 @@
     font-size: 16px;
 
   }
+
+  
+  .instagramContainer{
+    height: 150px;
+    overflow: hidden;
+    
+}
+
+.instagramLink{
+    min-height: 150px;
+
+}
+.instagramImage{
+   min-height: 150px;
+}
+
+.instagramLink{
+    min-width: 33.3%;
+    
+}
+.instagramTextContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:130px;
+    background-color: var(--backgroundColorPrimary);
+    
+}
+.instagramImage{
+    object-fit: cover;
+    width:100%;
+    height:130px;
+}
+.instaBox{
+    font-size: 16px;
+    letter-spacing: 1px;
+    
+}
+.instaText{
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
 }

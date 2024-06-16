@@ -55,7 +55,9 @@ export const Home = () => {
           <Slideshow />
           <div className={style.foot}>
             <Video url={video} />
+          
             <Footer2 />
+          
           </div>
           {/* <Card /> */}
           {/* <CArd2 /> */}
@@ -64,9 +66,11 @@ export const Home = () => {
       <Below /> */}
           {/* <Chat/> */}
         </div>
-      ) : <>
-      <Loader/>
-      </>}
+      ) : (
+        <>
+          <Loader />
+        </>
+      )}
     </>
   );
 };

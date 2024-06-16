@@ -220,27 +220,22 @@ const ShrinkHeader = () => {
             <div className={style.headerMenuitem}>
               <Search className={styles.icons} fontSize={24} />
             </div>
-            <div className={style.headerMenuitem}>
-              {/* Commented and modified by - Ashish Dewangan on 15-02-2023
-                  Reason - To open external links in new browser tab */}
-              {/* <a
-                href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
-              > */}
+            {/* <div className={style.headerMenuitem}>
+              
               <a
                 href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
                 target="_blank"
               >
-                {/* End of code modification */}
                 <BsWhatsapp
                   className={styles.icons}
                   fontSize={24}
                   style={{ color: "green" }}
                 />
               </a>
-            </div>
-            <div className={style.headerMenuitem}>
+            </div> */}
+            {/* <div className={style.headerMenuitem}>
               <LikeDrawer />
-            </div>
+            </div> */}
             <div
               className={style.headerMenuitem}
               style={{ paddingTop: "10px", width: "20px" }}

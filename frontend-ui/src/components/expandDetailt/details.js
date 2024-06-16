@@ -577,7 +577,12 @@ const Details = (props) => {
                   >
                     {" "}
                     {currency.sign}{" "}
-                    {(details.price * currency.value).toFixed(2)}
+                    {/* Modification and addition by Om Shrivastava on 15-06-2024
+                    Reason : Show the price with commas, remove the decimal value  */}
+                    {/* {(details.price * currency.value).toFixed(2)} */}
+                    {(details.price * currency.value).toLocaleString("en-IN")}
+                    {/* End of modification and addition by Om Shrivastava on 15-06-2024
+                    Reason : Show the price with commas, remove the decimal value  */}
                   </span>
                   {/* Added by - Ashish Dewangan on 17-02-2023
                   Reason - To add a horizontal line after price */}
@@ -1230,8 +1235,7 @@ const Details = (props) => {
                     </div> */}
 
                   {details.ready_to_ship ==
-                  true ? // Reason : No need to show this section // Commented by Om Shrivastava on 14-06-2024
-                  // <div className={styles["detailsContainer"]}>
+                  true ? // <div className={styles["detailsContainer"]}> // Reason : No need to show this section // Commented by Om Shrivastava on 14-06-2024
                   //   <span className={styles["textHeading"]}>
                   //     Ready to Ship{" "}
                   //   </span>

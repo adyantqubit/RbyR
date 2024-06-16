@@ -211,6 +211,7 @@ function Footer() {
           <div className={style.column4}>
             <h1 className={style.heading}>FOLLOW US</h1>
             <div className={style.socialLinksTab}>
+
               <div
                 style={{
                   display: "flex",
@@ -238,11 +239,7 @@ function Footer() {
                     })}
                   </>
                 ) : null}
-                {/* <FaFacebookF style={{ color: "var(--iconsColor)", fontSize: "25px" }} />
-              <TiSocialInstagram style={{ color: "var(--iconsColor)", fontSize: "25px" }} /> */}
-                {/* Commented by - Ashish Dewangan on 15-02-2023
-              Reason - To hide twitter link */}
-                {/* <FaTwitter style={{ color: "grey", fontSize: "25px" }} /> */}
+               
               </div>
               <div
                 style={{
@@ -260,15 +257,6 @@ function Footer() {
                           style={{ marginTop: "0" }}
                           className={`${style.span} ${style.span1}`}
                         >
-                          {/* <a
-                          href={socialLink.link}
-                          className={style.span}
-                          style={{
-                            textDecoration: "none",
-                            color: "black",
-                            marginLeft: "10px",
-                          }}
-                        > */}
                           <a
                             href={socialLink.link}
                             className={style.span}

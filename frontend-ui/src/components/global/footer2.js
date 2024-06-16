@@ -8,24 +8,35 @@ import {
   getCopyrightDetails,
   postEmailDetails,
   InstagramCollections,
+  getStoreLocatorDetail,
 } from "../../api/service";
 import { useEffect, useState } from "react";
 import { notification } from "antd";
 import { IoChevronForwardOutline } from "react-icons/io5";
 import config from "../../api/config";
 import "../../context.css";
+import parse from "html-react-parser";
 
 function Footer2() {
   const [socialLinks, setSocialLinks] = useState([]);
   const [copyrights, setCopyrights] = useState([]);
   var [instagramCollections, setInstagramCollections] = useState(null);
-
+  // Addition by Om Shrivastava on 15-06-2024
+  // Reason : Set the store locator details
+  const [storeLocatorDetails, setStoreLocator] = useState([]);
+  // Addition by Om Shrivastava on 15-06-2024
+  // Reason : Set the store locator details
   const nav = useNavigate();
 
   useEffect(() => {
     getSocialLinks();
     getCopyrights();
     instagramApi();
+    // Addition by Om Shrivastava on 15-06-2024
+    // Reason : Create method for set the store locator details
+    getStoreLocator();
+    // Addition by Om Shrivastava on 15-06-2024
+    // Reason : Create method for set the store locator details
   }, []);
 
   const getSocialLinks = async () => {
@@ -40,6 +51,17 @@ function Footer2() {
       setCopyrights(copyrightData);
     }
   };
+
+  // Addition by Om Shrivastava on 15-06-2024
+  // Reason : Get the store locator details
+  const getStoreLocator = async () => {
+    const storeLocatorData = await getStoreLocatorDetail();
+    if (storeLocatorData) {
+      setStoreLocator(storeLocatorData);
+    }
+  };
+  // Addition by Om Shrivastava on 15-06-2024
+  // Reason : Get the store locator details
 
   const subscribeToEmailUpdate = async () => {
     var email = document.getElementById("emailAddress");
@@ -147,7 +169,9 @@ function Footer2() {
       {/* // Adition by Om Shrivastava on 20-10-23
   // Reason : Add the condition when the data is not show  */}
       {/* {instagramCollections .length>0 ? ( */}
-      {isObjectEmpty(instagramCollections) != true ? (
+      {/* Commented by Om Shrivastava on 15-06-2024
+      Reason : Remove the instagram section from home page  */}
+      {/* {isObjectEmpty(instagramCollections) != true ? (
         <div className={style.instagramContainer}>
           <a
             className={style.instagramLink}
@@ -164,7 +188,7 @@ function Footer2() {
                 }}
                 className={style.instaBox}
               >
-                Follow Us
+                Follow Us6
               </h5>
               <h5
                 style={{
@@ -184,68 +208,55 @@ function Footer2() {
             className={style.instagramLink}
             href={instagramCollections?.instagram_post1_link}
           >
-            {/* Added By Rohan kansari
-            reason- This div is not needed. style is not define for this div so i m replacing it.
-            jira issue-RBYR184 */}
-            {/* <div className={style.instagramItem}> */}
-
             <img
               className={style.instagramImage}
               src={config.staticBaseURL + instagramCollections?.instagram_post1}
             ></img>
-            {/* </div> */}
           </a>
           <a
             className={style.instagramLink}
             href={instagramCollections?.instagram_post2_link}
           >
-            {/* <div className={style.instagramItem}> */}
             <img
               className={style.instagramImage}
               src={config.staticBaseURL + instagramCollections?.instagram_post2}
             ></img>
-            {/* </div> */}
           </a>
           <a
             className={style.instagramLink}
             href={instagramCollections?.instagram_post3_link}
           >
-            {/* <div className={style.instagramItem}> */}
             <img
               className={style.instagramImage}
               src={config.staticBaseURL + instagramCollections?.instagram_post3}
             ></img>
-            {/* </div> */}
           </a>
           <a
             className={style.instagramLink}
             href={instagramCollections?.instagram_post4_link}
           >
-            {/* <div className={style.instagramItem}> */}
             <img
               className={style.instagramImage}
               src={config.staticBaseURL + instagramCollections?.instagram_post4}
             ></img>
-            {/* </div> */}
           </a>
           <a
             className={style.instagramLink}
             href={instagramCollections?.instagram_post5_link}
           >
-            {/* <div className={style.instagramItem}> */}
             <img
               className={style.instagramImage}
               src={config.staticBaseURL + instagramCollections?.instagram_post5}
             ></img>
-            {/* </div> */}
 
-            {/* End of the code */}
           </a>
         </div>
-      ) : null}
+      ) : null} */}
+      {/* End of commented by Om Shrivastava on 15-06-2024
+      Reason : Remove the instagram section from home page  */}
       {/* // End of adition by Om Shrivastava on 20-10-23
         // Reason : Add the condition when the data is not show  */}
-      <div style={{ height: "40px", borderBottom: "1px solid #7c7c7c" }}></div>
+      {/* <div style={{ height: "40px", borderBottom: "1px solid #7c7c7c" }}></div> */}
       <div className={style.row}>
         <div className={style.column1}>
           <h1 className={style.heading}>CUSTOMER CARE</h1>
@@ -321,14 +332,63 @@ function Footer2() {
         </div> */}
         {/* End of commented by Om Shrivastava on 14-06-2024
           Reason : No need to show store locator */}
+        {/* // Addition by Om Shrivastava on 15-06-2024 
+           // Reason :  Create the section for address, email and contact number */}
         {socialLinks.length > 0 ? (
           <div className={style.column4}>
-            <h1 className={style.heading}>FOLLOW US</h1>
+            <h1 className={style.heading}>Get in touch</h1>
+
+            {storeLocatorDetails.length > 0 ? (
+              <>
+                {storeLocatorDetails.map((storeLocatorDetail) => {
+                  return (
+                    <div>
+                      <div
+                        style={{ marginTop: "0px", textDecoration: "none" }}
+                        className={style.span}
+                      >
+                        +91 {parse("" + storeLocatorDetail.phoneNumber)}
+                      </div>
+                      <div
+                        style={{ textDecoration: "none" }}
+                        className={style.span}
+                      >
+                        {parse("" + storeLocatorDetail.email)}
+                      </div>
+                      {/* <div className={style.itemText}>
+                            {parse("" + storeLocatorDetail.timing)}
+                          </div> */}
+                      {/* <div className={style.itemText}>
+                            {parse("" + storeLocatorDetail.address)}
+                          </div> */}
+                      <div className={style.span}>
+                        <a
+                          className={style.span}
+                          style={{ textDecoration: "none" }}
+                          target="_blank"
+                          href={`https://www.google.com/maps/search/?api=1&query=${storeLocatorDetail.address.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )}`}
+                        >
+                          {parse("" + storeLocatorDetail.address)}
+                        </a>
+                      </div>
+                    </div>
+                  );
+                })}
+              </>
+            ) : (
+              <div>
+                <div>Details Are Not Available</div>
+              </div>
+            )}
+
             <div className={style.socialLinksTab}>
               <div
                 style={{
                   display: "flex",
-                  flexDirection: "column",
+                  flexDirection: "row",
                   gap: "15px",
                   marginTop: "7px",
                 }}
@@ -338,14 +398,9 @@ function Footer2() {
                     {socialLinks.map((socialLink) => {
                       return (
                         <img
-                          // Modification and addition by Om Shrivastava on 04-11-23
-                          // Reason : Need to set the url of the image
-                          // src={config.staticBaseURL + socialLink.logo}
                           src={
                             config.staticBaseURL + "media/" + socialLink.logo
                           }
-                          // End of Modification and addition by Om Shrivastava on 04-11-23
-                          // Reason : Need to set the url of the image
                           style={{
                             color: "var(--iconsColor)",
                             width: "25px",
@@ -357,14 +412,8 @@ function Footer2() {
                     })}
                   </>
                 ) : null}
-                {/* <FaFacebookF style={{ color: "var(--iconsColor)", fontSize: "25px" }} />
-              <TiSocialInstagram style={{ color: "var(--iconsColor)", fontSize: "25px" }} /> */}
-                {/* Commented by - Ashish Dewangan on 15-02-2023
-              Reason - To hide Twitter link */}
-                {/* <FaTwitter style={{ color: "grey", fontSize: "25px" }} /> */}
-                {/* End of comment */}
               </div>
-              <div
+              {/* <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -380,15 +429,6 @@ function Footer2() {
                           style={{ marginTop: "0" }}
                           className={`${style.span} ${style.span1}`}
                         >
-                          {/* <a
-                          href={socialLink.link}
-                          className={style.span}
-                          style={{
-                            textDecoration: "none",
-                            color: "black",
-                            marginLeft: "10px",
-                          }}
-                        > */}
                           <a
                             href={socialLink.link}
                             className={style.span}
@@ -406,13 +446,12 @@ function Footer2() {
                     })}
                   </>
                 ) : null}
-              </div>
+              </div> */}
             </div>
-            {/* <div className={style.icon}><FaFacebookF style={{color:"grey",fontSize:"25px",marginLeft:"5px"}}/><span style={{marginTop:"0"}}className={style.span} > Facebook</span></div>
-      <div className={style.icon}><TiSocialInstagram style={{color:"grey",fontSize:"25px",marginLeft:"5px"}}/><span style={{marginTop:"0"}}className={style.span}> Instagram</span></div>
-      <div className={style.icon}><FaTwitter style={{color:"grey",fontSize:"25px",marginLeft:"5px"}}/><span style={{marginTop:"0"}}className={style.span}> Twitter</span></div> */}
           </div>
         ) : null}
+        {/* // Addition by Om Shrivastava on 15-06-2024 
+         // Reason : Create the section for address, email and contact number*/}
         {/* Commented by Om Shrivastava on 14-06-2024
           Reason : Remove this div  */}
         {/* <div className={style.column5}>
