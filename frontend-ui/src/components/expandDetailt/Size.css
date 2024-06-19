@@ -51,28 +51,73 @@ input[class="super-duper-happy"]:focus + .span {
 input[class="super-happy"]:hover + .span,
 input[class="super-happy"]:checked + .span,
 input[class="super-happy"]:focus + .span {
-	color: var(--textColorPrimary);
+	/* color: var(--textColorPrimary);
 	border: 2px solid black;
 	padding: 00.2rem;
-	border-radius: 3px;
+	border-radius: 3px; */
+	color: white;
+	background-color: black;
+	padding: 00.2rem;
+	
+}
+input[class="super-happy"]+ .span,
+input[class="super-happy"] + .span,
+input[class="super-happy"] + .span {
+	color: black;
+	font-weight: 600;
+	border: 1px solid rgb(236, 222, 222);;
+	/* background-color:rgb(236, 222, 222); */
+}
+input[class="happy"]+ .span,
+input[class="happy"] + .span,
+input[class="happy"] + .span {
+	color: black;
+	font-weight: 600;
+	border: 1px solid rgb(236, 222, 222);;
+	/* background-color:rgb(236, 222, 222); */
+}
+input[class="super-sad"]+ .span,
+input[class="super-sad"] + .span,
+input[class="super-sad"] + .span {
+	color: black;
+	font-weight: 600;
+	border: 1px solid rgb(236, 222, 222);;
+	/* background-color:rgb(236, 222, 222); */
+}
+input[class="sad"]+ .span,
+input[class="sad"] + .span,
+input[class="sad"] + .span {
+	color: black;
+	font-weight: 600;
+	border: 1px solid rgb(236, 222, 222);;
+	/* background-color:rgb(236, 222, 222); */
 }
 
 input[class="super-happy"]:hover + .span,
 input[class="super-happy"]:checked + .span,
 input[class="super-happy"]:focus + .span {
-	color: var(--textColorPrimary);
+	/* color: var(--textColorPrimary);
 	border: 2px solid black;
 	padding: 00.2rem;
-	border-radius: 3px;
+	border-radius: 3px; */
+	color: white;
+	background-color: black;
+	padding: 00.2rem;
+	padding: 0% 10% 0% 10%;
+
 }
 
 input[class="happy"]:hover + .span,
 input[class="happy"]:checked + .span,
 input[class="happy"]:focus + .span {
-	color: var(--textColorPrimary);
+	/* color: var(--textColorPrimary);
 	border: 2px solid black;
 	padding: 00.2rem;
-	border-radius: 3px;
+	border-radius: 3px; */
+	color: white;
+	background-color: black;
+	padding: 00.2rem;
+
 
 }
 
@@ -89,20 +134,28 @@ input[class="neutral"]:focus + .span {
 input[class="sad"]:hover + .span,
 input[class="sad"]:checked + .span,
 input[class="sad"]:focus + .span {
-	color: var(--textColorPrimary);
+	/* color: var(--textColorPrimary);
 	border: 2px solid black;
 	padding: 00.2rem;
-	border-radius: 3px;
+	border-radius: 3px; */
+	color: white;
+	background-color: black;
+	padding: 00.2rem;
+
 
 }
 
 input[class="super-sad"]:hover + .span,
 input[class="super-sad"]:checked + .span,
 input[class="super-sad"]:focus + .span {
-	color: var(--textColorPrimary);
+	/* color: var(--textColorPrimary);
 	border: 2px solid black;
 	padding: 00.2rem;
-	border-radius: 3px;
+	border-radius: 3px; */
+	color: white;
+	background-color: black;
+	padding: 00.2rem;
+
 }
 
 input[class="super-duper-sad"]:hover + .span,

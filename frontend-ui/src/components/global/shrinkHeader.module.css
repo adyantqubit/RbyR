@@ -160,6 +160,11 @@
     .headerMenu{
         padding-top:6px;
     }
+    .drawerMenu{
+      font-size: 12px;
+      font-weight: 500;
+    
+    }
     
 }
 @media (max-width: 380px) {

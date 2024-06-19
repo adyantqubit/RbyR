@@ -125,10 +125,10 @@ function Slideshow() {
           pagination={{
             clickable: true,
           }}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
+          // autoplay={{
+          //   delay: 2500,
+          //   disableOnInteraction: false,
+          // }}
           modules={[Autoplay, Pagination, Navigation]}
           className="mySwiper"
         >

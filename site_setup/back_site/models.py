@@ -1703,7 +1703,7 @@ class WorldOfRByRContent(models.Model):
     # Added by - Ashish Dewangan on 15-12-2023
     # Reason - To changed display name 
     class Meta:
-            verbose_name_plural = "World of RbyR Section 1"      
+            verbose_name_plural = "About us Section 1"      
     # Added by - Ashish Dewangan on 02-12-2023
     # Reason - To changed display name
 
@@ -1782,7 +1782,7 @@ class worldOfRByRRow(models.Model):
     # Added by - Ashish Dewangan on 15-12-2023
     # Reason - To changed display name 
     class Meta:
-            verbose_name_plural = "World of RbyR Section 2"      
+            verbose_name_plural = "About us Section 2"      
     # Added by - Ashish Dewangan on 02-12-2023
     # Reason - To changed display name 
     

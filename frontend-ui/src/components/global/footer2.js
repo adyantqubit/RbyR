@@ -259,7 +259,7 @@ function Footer2() {
       {/* <div style={{ height: "40px", borderBottom: "1px solid #7c7c7c" }}></div> */}
       <div className={style.row}>
         <div className={style.column1}>
-          <h1 className={style.heading}>CUSTOMER CARE</h1>
+          {/* <h1 className={style.heading}>CUSTOMER CARE</h1> */}
           <Link to="/custom" style={{ textDecoration: "none", color: "white" }}>
             {" "}
             <span className={style.span}>Contact Us</span>
@@ -285,7 +285,7 @@ function Footer2() {
           Reason : No need to show this section */}
         </div>
         <div className={style.column2}>
-          <span className={style.heading}>POLICIES</span>
+          {/* <span className={style.heading}>POLICIES</span> */}
           <Link
             to="/privacy-policy"
             style={{ textDecoration: "none", color: "white" }}
@@ -334,11 +334,11 @@ function Footer2() {
           Reason : No need to show store locator */}
         {/* // Addition by Om Shrivastava on 15-06-2024 
            // Reason :  Create the section for address, email and contact number */}
-        {socialLinks.length > 0 ? (
+        {/* {socialLinks.length > 0 ? ( */}
           <div className={style.column4}>
             <h1 className={style.heading}>Get in touch</h1>
 
-            {storeLocatorDetails.length > 0 ? (
+            {/* {storeLocatorDetails.length > 0 ? ( */}
               <>
                 {storeLocatorDetails.map((storeLocatorDetail) => {
                   return (
@@ -347,13 +347,15 @@ function Footer2() {
                         style={{ marginTop: "0px", textDecoration: "none" }}
                         className={style.span}
                       >
-                        +91 {parse("" + storeLocatorDetail.phoneNumber)}
+                       <i className="fa-solid fa-phone" style={{ fontSize: '14px', position: 'relative', color: 'black' }}></i>
+                       &nbsp;+91 {parse("" + storeLocatorDetail.phoneNumber)}
                       </div>
                       <div
                         style={{ textDecoration: "none" }}
                         className={style.span}
                       >
-                        {parse("" + storeLocatorDetail.email)}
+                        <i className="fa-solid fa-envelope" style={{ fontSize: '14px', position: 'relative', color: 'black' }}></i>
+                        &nbsp;{parse("" + storeLocatorDetail.email)}
                       </div>
                       {/* <div className={style.itemText}>
                             {parse("" + storeLocatorDetail.timing)}
@@ -371,18 +373,19 @@ function Footer2() {
                             ""
                           )}`}
                         >
-                          {parse("" + storeLocatorDetail.address)}
+                        <i className="fa-solid fa-map-marker-alt" style={{ fontSize: '14px', position: 'relative', color: 'black' }}></i>
+                        &nbsp;{parse("" + storeLocatorDetail.address)}
                         </a>
                       </div>
                     </div>
                   );
                 })}
               </>
-            ) : (
+            {/* ) : (
               <div>
                 <div>Details Are Not Available</div>
               </div>
-            )}
+            )} */}
 
             <div className={style.socialLinksTab}>
               <div
@@ -449,7 +452,7 @@ function Footer2() {
               </div> */}
             </div>
           </div>
-        ) : null}
+        {/* // ) : null} */}
         {/* // Addition by Om Shrivastava on 15-06-2024 
          // Reason : Create the section for address, email and contact number*/}
         {/* Commented by Om Shrivastava on 14-06-2024

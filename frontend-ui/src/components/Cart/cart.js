@@ -650,7 +650,13 @@ const CartSItem = (props) => {
                         >
                           {" "}
                           {currency.sign}{" "}
-                          {(pro.price * currency.value).toFixed(2)}
+                           {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                          {/* {(pro.price * currency.value).toFixed(2)} */}
+                          {(pro.price * currency.value).toLocaleString("en-IN")}
+                           {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+
                         </div>
                         <div
                           style={{
@@ -852,7 +858,10 @@ const CartSItem = (props) => {
                         >
                           {" "}
                           {currency.sign}{" "}
-                          {(pro.price * currency.value).toFixed(2)}
+
+                          {/* {(pro.price * currency.value).toFixed(2)} */}
+                          {(pro.price * currency.value).toLocaleString("en-IN")}
+
                         </div>
                         <div
                           style={{
@@ -1043,10 +1052,18 @@ const CartSItem = (props) => {
                   </span>
                   <span style={{ marginRight: "15px", fontWeight: "600" }}>
                     {currency.sign}{" "}
+                     {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                    {/* {(
+                      afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
+                      currency.value
+                    ).toFixed(2)} */}
                     {(
                       afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
                       currency.value
-                    ).toFixed(2)}
+                    ).toLocaleString("en-IN")}
+                     {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
                   </span>
                 </div>
           {(afterColumnTotalOfferAdd(offer, cart, taxRate).shipping)!=0 ? 
@@ -1057,10 +1074,19 @@ const CartSItem = (props) => {
                   </span>
                   <span style={{ marginRight: "15px", fontWeight: "600" }}>
                     {currency.sign}{" "}
-                    {(
+
+                     {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                    {/* {(
                       afterColumnTotalOfferAdd(offer, cart, taxRate).shipping *
                       currency.value
-                    ).toFixed(2)}
+                    ).toFixed(2)} */}
+                     {(
+                      afterColumnTotalOfferAdd(offer, cart, taxRate).shipping *
+                      currency.value
+                    ).toLocaleString("en-IN")}
+                     {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
                   </span>
                 </div>
           :null}
@@ -1095,10 +1121,18 @@ const CartSItem = (props) => {
                     </span>
                     <span style={{ marginRight: "15px", fontWeight: "600" }}>
                       - {currency.sign}{" "}
+                       {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                      {/* {(
+                        afterColumnTotalOfferAdd(offer, cart, taxRate).coupon *
+                        currency.value
+                      ).toFixed(2)} */}
                       {(
                         afterColumnTotalOfferAdd(offer, cart, taxRate).coupon *
                         currency.value
-                      ).toFixed(2)}
+                      ).toLocaleString("en-IN")}
+                       {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
                     </span>
                   </div>
                 ) : null}
@@ -1131,10 +1165,18 @@ const CartSItem = (props) => {
                     }}
                   >
                     {currency.sign}{" "}
-                    {(
+                     {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                    {/* {(
                       afterColumnTotalOfferAdd(offer, cart, taxRate).Grand *
                       currency.value
-                    ).toFixed(2)}
+                    ).toFixed(2)} */}
+                     {(
+                      afterColumnTotalOfferAdd(offer, cart, taxRate).Grand *
+                      currency.value
+                    ).toLocaleString("en-IN")}
+                     {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
                   </span>
                 </div>
 

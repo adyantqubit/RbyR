@@ -309,7 +309,15 @@ const CartCard = (props) => {
                 </Popconfirm>
               </div>
 
-              <div style={{ color: "black", marginLeft: "20px" }} className={styles.price}> {currency.sign}{(pro.price * currency.value).toFixed(2)}</div>
+              <div style={{ color: "black", marginLeft: "20px" }} className={styles.price}>
+                 {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                 {/* {currency.sign}{(pro.price * currency.value).toFixed(2)} */}
+                 {currency.sign}{(pro.price * currency.value).toLocaleString("en-IN")}
+                  {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+
+                 </div>
               {/* Modification and addition by Om Shrivastava on 19-11-23
               Reason : Need to remove the margintop */}
               {/* <div style={{ color: "black", marginLeft: "20px", marginTop: "8px" }}> */}

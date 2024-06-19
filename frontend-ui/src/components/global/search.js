@@ -321,7 +321,13 @@ const Search = () => {
                     </div>
                     <div className={styles.price}> {p.category}</div>
                     <div className={styles.price}>
-                      {currency.sign} {(p.price * currency.value).toFixed(2)}
+                      {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                      {/* {currency.sign} {(p.price * currency.value).toFixed(2)} */}
+                      {currency.sign} {(p.price * currency.value).toLocaleString("en-IN")}
+                       {/* End of modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+
                     </div>
                   </div>
                 );

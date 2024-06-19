@@ -811,7 +811,9 @@ const Billing = () => {
                       </span>
                       <span className={styles.protitle2}>
                         {checkoutDetails.currency_sign}
-                        {(c.price * checkoutDetails.currency_value).toFixed(2)}
+                        {/* {(c.price * checkoutDetails.currency_value).toFixed(2)} */}
+                        {(c.price * checkoutDetails.currency_value).toLocaleString("en-IN")}
+
                       </span>
                       <span
                         className={styles.protitle2}
@@ -823,11 +825,20 @@ const Billing = () => {
                       >
                         {" "}
                         {checkoutDetails.currency_sign}{" "}
+                         {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                        {/* {(
+                          c.price *
+                          c.quantity *
+                          checkoutDetails.currency_value
+                        ).toFixed(2)} */}
                         {(
                           c.price *
                           c.quantity *
                           checkoutDetails.currency_value
-                        ).toFixed(2)}
+                        ).toLocaleString("en-IN")}
+                         {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
                       </span>
                     </div>
                   ))}
@@ -853,13 +864,24 @@ const Billing = () => {
                     >
                       {" "}
                       {checkoutDetails.currency_sign}
-                      {(
+                       {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                      {/* {(
                         afterColumnTotalOfferAdd(
                           offer,
                           checkoutDetails.purchased_products_list,
                           taxRate
                         ).subtotal * checkoutDetails.currency_value
-                      ).toFixed(2)}
+                      ).toFixed(2)} */}
+                       {(
+                        afterColumnTotalOfferAdd(
+                          offer,
+                          checkoutDetails.purchased_products_list,
+                          taxRate
+                        ).subtotal * checkoutDetails.currency_value
+                      ).toLocaleString("en-IN")}
+                       {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
                     </span>
                     {/* End of code modification by - Ashish Dewangan on 27-11-2023
                   Reason - To show details from purchased items tables rather than items table */}
@@ -888,13 +910,24 @@ const Billing = () => {
                       >
                         {" "}
                         {checkoutDetails.currency_sign}
+                         {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                        {/* {(
+                          afterColumnTotalOfferAdd(
+                            offer,
+                            checkoutDetails.purchased_products_list,
+                            taxRate
+                          ).shipping * checkoutDetails.currency_value
+                        ).toFixed(2)} */}
                         {(
                           afterColumnTotalOfferAdd(
                             offer,
                             checkoutDetails.purchased_products_list,
                             taxRate
                           ).shipping * checkoutDetails.currency_value
-                        ).toFixed(2)}
+                        ).toLocaleString("en-IN")}
+                         {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
                       </span>
                       {/* End of code modification by - Ashish Dewangan on 27-11-2023
                   Reason - To show details from purchased items tables rather than items table */}
@@ -949,10 +982,15 @@ const Billing = () => {
                       {/* {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}
                       {/* {checkoutDetails.CouponDiscount ?((afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value)- (checkoutDetails.CouponDiscount* checkoutDetails.currency_value)).toFixed(2) :(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}
                       {checkoutDetails.grand
-                        ? (
+                        ? 
+                        // (
+                        //     checkoutDetails.grand *
+                        //     checkoutDetails.currency_value
+                        //   ).toFixed(2)
+                          (
                             checkoutDetails.grand *
                             checkoutDetails.currency_value
-                          ).toFixed(2)
+                          ).toLocaleString("en-IN")
                         : afterColumnTotalOfferAdd(
                             offer,
                             checkoutDetails.cart,
@@ -993,10 +1031,18 @@ const Billing = () => {
                             )
                         : checkoutDetails.grand
                         ? toWorduS.convert(
+                      //      Modification and addition by Om Shrivastava on 18-06-2024
+                      // Reason : Remove the commas and decimal value  
+                            // (
+                            //   checkoutDetails.grand *
+                            //   checkoutDetails.currency_value
+                            // ).toFixed(2)
                             (
                               checkoutDetails.grand *
                               checkoutDetails.currency_value
-                            ).toFixed(2)
+                            ).toLocaleString("en-IN")
+                      //         Modification and addition by Om Shrivastava on 18-06-2024
+                      // Reason : Remove the commas and decimal value  
                           )
                         : toWorduS.convert(
                             afterColumnTotalOfferAdd(

@@ -175,7 +175,7 @@ const Contact = () => {
             <div
             // style={{border:'1px solid black'}}
             >
-              Contact Details Are Not Available
+              {/* Contact Details Are Not Available */}
             </div>
           </div>
           // End of addition and modification by Om shrivastava on 27-11-23

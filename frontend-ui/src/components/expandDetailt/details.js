@@ -12,6 +12,8 @@ import Navbar from "../global/NavHeader";
 import { bounce } from "react-animations";
 import { StyleSheet, css } from "aphrodite";
 import { BackTop, Modal, notification } from "antd";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 
 // import projectStyles from '.style.module.css'
 import styles from "./detail.module.css";
@@ -45,6 +47,14 @@ import CustomTailoredForm from "./CustomTailoredForm";
 import WomenSizeChart from "./WomenSizeChart";
 import { Link } from "react-router-dom";
 import Chat from "./chat";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+
+import "./styles.css";
+
+// import required modules
+import { Navigation } from "swiper/modules";
 
 const sty = StyleSheet.create({
   bounce: {
@@ -273,6 +283,23 @@ const Details = (props) => {
       setDetails({ ...r });
     });
   }
+
+  const [mainImage, setMainImage] = useState("");
+
+  // Update mainImage when details.img_main changes
+  useEffect(() => {
+    if (details?.img_main && details?.img_main !== "/media/null") {
+      setMainImage(details?.img_main);
+    } else {
+      // Set a default fallback image if img_main is not valid
+      setMainImage("/path/to/fallback/image.jpg"); // Provide a valid fallback image path
+    }
+  }, [details?.img_main]);
+
+  // Function to update the main image
+  const updateMainImage = (newImage) => {
+    setMainImage(newImage);
+  };
 
   // console.log(details, "check all data");
   // Added by Ashish Dewangan on 24-11-2022
@@ -546,18 +573,90 @@ const Details = (props) => {
   return (
     <div style={{ maxHeight: "100vh" }} id="scrolling">
       <Navbar />
+      {/* Omm
+      OmmOmm */}
 
       {details ? (
         <div className={styles["container"]} ref={scroller}>
           <div className={styles["container01"]}>
             <div className={styles["container02"]}>
+              <div className={styles["subImagesContainer"]}>
+                {details.img_sub1 != null ? (
+                  // {details.img_sub1 !== "/media/null" && (
+                  <div className={styles.imageContainer}>
+                    <img
+                      className={styles.subImage}
+                      src={config.staticBaseURL + details.img_sub1}
+                      onClick={() => updateMainImage(details.img_sub1)}
+                      alt="Sub Image 1"
+                    />
+                  </div>
+                ) : // )}
+                null}
+
+                {details.img_sub2 != null ? (
+                  // {details.img_sub2 !== "/media/null" && (
+                  <div className={styles.imageContainer}>
+                    <img
+                      className={styles.subImage}
+                      src={config.staticBaseURL + details.img_sub2}
+                      onClick={() => updateMainImage(details.img_sub2)}
+                      alt="Sub Image 266"
+                    />
+                  </div>
+                ) : // )}
+                null}
+                {details.img_sub3 != null ? (
+                  // {details.img_sub3 !== "/media/null" && (
+                  <div className={styles.imageContainer}>
+                    <img
+                      className={styles.subImage}
+                      src={config.staticBaseURL + details.img_sub3}
+                      onClick={() => updateMainImage(details.img_sub3)}
+                      alt="Sub Image 3"
+                    />
+                  </div>
+                ) : // )}
+                null}
+              </div>
               <div className={styles["image"]}>
-                <InnerImageZoom
-                  src={config.staticBaseURL + details.img_main}
-                  zoomSrc={config.staticBaseURL + details.img_main}
+                <img
+                  className={styles.subImage}
+                  src={config.staticBaseURL + mainImage}
+                  alt="Main"
                 />
               </div>
-              {/* {scroller.current.scrollTop?:null} */}
+              <div
+                className={styles["slideImages"]}
+                style={{ border: "1px dotted black" }}
+              >
+                <Swiper
+                  navigation={true}
+                  modules={[Navigation]}
+                  className="mySwiper"
+                >
+                  <SwiperSlide>
+                    <img src={config.staticBaseURL + details.img_main} />
+                  </SwiperSlide>
+                  {details.img_sub1 != null ? (
+                    <SwiperSlide>
+                      <img src={config.staticBaseURL + details.img_sub1} />
+                    </SwiperSlide>
+                  ) : null}
+
+                  {details.img_sub2 != null ? (
+                    <SwiperSlide>
+                      <img src={config.staticBaseURL + details.img_sub2} />
+                    </SwiperSlide>
+                  ) : null}
+
+                  {details.img_sub3 != null ? (
+                    <SwiperSlide>
+                      <img src={config.staticBaseURL + details.img_sub3} />
+                    </SwiperSlide>
+                  ) : null}
+                </Swiper>
+              </div>
 
               <div className={styles["container03"]}>
                 <div className={styles["container04"]}>
@@ -567,23 +666,28 @@ const Details = (props) => {
                   >
                     {details.title.toLowerCase()}
                   </h1>
+
+                  <span className={styles["text04"]}>
+                    {details.description}
+                  </span>
                   {/* Commented by - Ashish Dewangan on 17-02-2023
                   Reason - To hide description and to have simple UI */}
                   {/* <h1 className={styles["subtitle"]}>{details.about}</h1> */}
                   {/* End of comment */}
-                  <span
+                  <h3
                     style={{ marginTop: "2px" }}
-                    className={styles["subtitle"]}
+                    className={styles["priceLabel"]}
                   >
                     {" "}
-                    {currency.sign}{" "}
+                    MRP: {currency.sign}{" "}
                     {/* Modification and addition by Om Shrivastava on 15-06-2024
                     Reason : Show the price with commas, remove the decimal value  */}
                     {/* {(details.price * currency.value).toFixed(2)} */}
                     {(details.price * currency.value).toLocaleString("en-IN")}
                     {/* End of modification and addition by Om Shrivastava on 15-06-2024
                     Reason : Show the price with commas, remove the decimal value  */}
-                  </span>
+                  </h3>
+
                   {/* Added by - Ashish Dewangan on 17-02-2023
                   Reason - To add a horizontal line after price */}
                   {/* Commented by Om Shrivastava on 24-11-23
@@ -602,13 +706,13 @@ const Details = (props) => {
                     <div
                       class={sizeCond ? sty : "rating-container face"}
                       className={styles.sizeSlection}
-                      style={{ display: "flex" }}
+                      style={{ display: "flex", width: "100%" }}
                     >
                       <span
                         className={`${styles["textLabel"]} ${styles.sizeMargin}`}
                         style={{ alignItems: "flex-start" }}
                       >
-                        Size :{" "}
+                        Size{" "}
                       </span>
 
                       {/* Commented by - Ashish Dewangan on 29-12-2023
@@ -705,6 +809,7 @@ const Details = (props) => {
                         style={{
                           display: "inline-flex",
                           flexDirection: "column",
+                          width: "75%",
                         }}
                       >
                         <div class="rating">
@@ -729,9 +834,11 @@ const Details = (props) => {
                             {/* End of comment */}
                             <label
                               for={details.id}
-                              className={`${styles.subtitle} ${styles.customSubtitle} ${styles.sizeText}`}
+                              className={`
+                              ${styles.customSubtitle} ${styles.sizeText}`}
                               style={{
                                 textDecoration: "none",
+                                padding: "0%",
                               }}
                             >
                               <input
@@ -742,15 +849,22 @@ const Details = (props) => {
                                 // value="Short"
                                 value="Small"
                                 onChange={(e) => onChange(e.target.value)}
+                                // style={{border:'1px solid red'}}
                               />
-                              <span class="span" style={{ margin: 0 }}>
-                                S
+
+                              <span
+                                //  style={{b}
+                                class="span"
+                                // className={styles["sizeContainer"]}
+                                style={{ padding: "9% 15% 9% 15%" }}
+                              >
+                                &nbsp;S&nbsp;
                               </span>
                             </label>
 
                             <label
                               for={details.id * 44}
-                              className={`${styles.subtitle} ${styles.customSubtitle} ${styles.sizeText}`}
+                              className={` ${styles.customSubtitle} ${styles.sizeText}`}
                               style={{
                                 textDecoration: "none",
                               }}
@@ -763,14 +877,17 @@ const Details = (props) => {
                                 value="Medium"
                                 onChange={(e) => onChange(e.target.value)}
                               />
-                              <span class="span" style={{ margin: 0 }}>
-                                M
+                              <span
+                                class="span"
+                                style={{ padding: "9% 15% 9% 15%" }}
+                              >
+                                &nbsp;M&nbsp;
                               </span>
                             </label>
 
                             <label
                               for={details.id * 88}
-                              className={`${styles.subtitle} ${styles.customSubtitle} ${styles.sizeText}`}
+                              className={` ${styles.customSubtitle} ${styles.sizeText}`}
                               style={{
                                 textDecoration: "none",
                               }}
@@ -783,14 +900,17 @@ const Details = (props) => {
                                 value="Large"
                                 onChange={(e) => onChange(e.target.value)}
                               />
-                              <span class="span" style={{ margin: 0 }}>
-                                L
+                              <span
+                                class="span"
+                                style={{ padding: "9% 15% 9% 15%" }}
+                              >
+                                &nbsp;L&nbsp;
                               </span>
                             </label>
 
                             <label
                               for={details.id * 108}
-                              className={`${styles.subtitle} ${styles.customSubtitle} ${styles.sizeText}`}
+                              className={` ${styles.customSubtitle} ${styles.sizeText}`}
                               style={{
                                 textDecoration: "none",
                               }}
@@ -803,7 +923,10 @@ const Details = (props) => {
                                 value="Extra Large"
                                 onChange={(e) => onChange(e.target.value)}
                               />
-                              <span class="span" style={{ margin: 0 }}>
+                              <span
+                                class="span"
+                                style={{ padding: "9% 15% 9% 15%" }}
+                              >
                                 XL
                               </span>
                             </label>
@@ -995,7 +1118,18 @@ const Details = (props) => {
                           className={` ${styles["button"]} `}
                           onClick={(e) => AddToCart(details)}
                         >
-                          <span style={{ margin: "auto" }}>ADD TO BAG</span>
+                          <span style={{ margin: "auto" }}>
+                            <i
+                              class="fa-solid fa-bag-shopping"
+                              style={{
+                                fontSize: "17px",
+                                position: "relative",
+                                color: "white",
+                                paddingRight: "5px",
+                              }}
+                            ></i>{" "}
+                            ADD TO CART
+                          </span>
                         </button>
                       )}
                       {/* Commetned by Om Shrivastava on 14-06-2024
@@ -1125,9 +1259,9 @@ const Details = (props) => {
                   <h1 className={styles["subtitle"]}></h1>
                   {/* End of code modification */}
 
-                  <span className={styles["text04"]}>
+                  {/* <span className={styles["text04"]}>
                     {details.description}
-                  </span>
+                  </span> */}
 
                   {/* <div className={styles["container06"]}>
                     <span className={styles["textLabel"]}>Fabric</span>
@@ -1235,14 +1369,7 @@ const Details = (props) => {
                     </div> */}
 
                   {details.ready_to_ship ==
-                  true ? // <div className={styles["detailsContainer"]}> // Reason : No need to show this section // Commented by Om Shrivastava on 14-06-2024
-                  //   <span className={styles["textHeading"]}>
-                  //     Ready to Ship{" "}
-                  //   </span>
-                  //   <span className={styles["colon"]}> : </span>
-                  //   <span
-                  //     className={styles["textContent"]}
-                  //     style={{ display: "inline-block", marginRight: "3px" }}
+                  true ? //     style={{ display: "inline-block", marginRight: "3px" }} //     className={styles["textContent"]} //   <span //   <span className={styles["colon"]}> : </span> //   </span> //     Ready to Ship{" "} //   <span className={styles["textHeading"]}> // <div className={styles["detailsContainer"]}> // Reason : No need to show this section // Commented by Om Shrivastava on 14-06-2024
                   //   >
                   //     {" " + details.ready_to_ship_days}
                   //   </span>
@@ -1348,7 +1475,10 @@ const Details = (props) => {
                     with us.
                     {/* End of code modification */}
                   </span>
-                  <span className={styles["subtitle"]}>
+                  <span
+
+                  // className={styles["subtitle"]}
+                  >
                     {/* <Link
                       to="/custom"
                       className={styles["subtitle"]}
@@ -1360,7 +1490,7 @@ const Details = (props) => {
                     > Contact Us  </Link> */}
                     <Link
                       to="/refund-policy"
-                      className={styles[("subtitle", "hoverableSubtitle")]}
+                      className={styles["hoverableSubtitle"]}
                       style={{
                         textDecoration: "none",
                         letterSpacing: "1px",
@@ -1376,7 +1506,7 @@ const Details = (props) => {
                     <span> |</span>{" "}
                     <Link
                       to="/delivery-policy"
-                      className={styles[("subtitle", "hoverableSubtitle")]}
+                      className={styles["hoverableSubtitle"]}
                       style={{
                         textDecoration: "none",
                         letterSpacing: "1px",
@@ -1414,13 +1544,14 @@ const Details = (props) => {
           {/* <div className={styles['container13']}>
      <span className={styles['text28']}>Text</span> 
       </div> */}
-          <div className={styles.gal}>
+          {/* Modification and addition by Om Shrivastava on 17-06-2024
+          Reason : No need to show this related image section */}
+
+          {/* <div className={styles.gal}>
             <div className={styles.image_gallery}>
-              {/* Addition by Om Shrivastava on 24-12-23
-              Reason : When no image is present then no need to show this block */}
+             
               {details.img_sub1 ? (
-                // End of addition by Om Shrivastava on 24-12-23
-                // Reason : When no image is present then no need to show this block
+                
                 <div className={styles.column}>
                   <div className={styles.image_item}>
                     {details.img_sub1 != "/media/null" ? (
@@ -1432,17 +1563,12 @@ const Details = (props) => {
                     ) : null}
                   </div>
                 </div>
-              ) : //  Addition by Om Shrivastava on 24-12-23
-              // Reason : When no image is present then no need to show this block
+              ) : 
               null}
-              {/* // End of addition by Om Shrivastava on 24-12-23
-              // Reason : When no image is present then no need to show this block */}
+              
 
-              {/* Addition by Om Shrivastava on 24-12-23
-              Reason : When no image is present then no need to show this block */}
+             
               {details.img_sub2 ? (
-                // End of addition by Om Shrivastava on 24-12-23
-                // Reason : When no image is present then no need to show this block
                 <div className={styles.column}>
                   <div className={styles.image_item}>
                     {details.img_sub2 != "/media/null" ? (
@@ -1454,14 +1580,9 @@ const Details = (props) => {
                     ) : null}
                   </div>
                 </div>
-              ) : //  Addition by Om Shrivastava on 24-12-23
-              // Reason : When no image is present then no need to show this block
+              ) :
               null}
-              {/* // End of addition by Om Shrivastava on 24-12-23
-              // Reason : When no image is present then no need to show this block */}
-
-              {/* Addition by Om Shrivastava on 24-12-23
-              Reason : When no image is present then no need to show this block */}
+              
               {details.img_sub3 ? (
                 // End of addition by Om Shrivastava on 24-12-23
                 // Reason : When no image is present then no need to show this block
@@ -1476,13 +1597,12 @@ const Details = (props) => {
                     ) : null}
                   </div>
                 </div>
-              ) : //  Addition by Om Shrivastava on 24-12-23
-              // Reason : When no image is present then no need to show this block
+              ) :
               null}
-              {/* // End of addition by Om Shrivastava on 24-12-23
-              // Reason : When no image is present then no need to show this block */}
             </div>
-          </div>
+          </div> */}
+          {/* End of modification and addition by Om Shrivastava on 17-06-2024
+          Reason : No need to show this related image section */}
           {/* 
           {CategoryProduct && CategoryProduct.length > 0 ? (  
             <div

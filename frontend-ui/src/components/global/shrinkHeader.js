@@ -408,6 +408,7 @@ const ShrinkHeader = () => {
                 justifyContent: "space-between",
                 width: "100%",
                 display: "flex",
+                alignItems:'center'
               }}
               onClick={(e) => {
                 if (localStorage.getItem("access_token")) {
@@ -420,7 +421,7 @@ const ShrinkHeader = () => {
                 }
               }}
             >
-              <span> My account</span>
+              <span style={{fontWeight:'500'}}> My account</span>
               <AiOutlineRight />
             </div>
           </div>

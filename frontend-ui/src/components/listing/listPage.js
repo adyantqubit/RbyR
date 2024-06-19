@@ -430,7 +430,13 @@ Reason : Need to comment the filter functionality */}
                           </div>
                           <div className={style.price}>
                             {currency.sign}{" "}
-                            {(p.price * currency.value).toFixed(2)}
+                             {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                            {/* {(p.price * currency.value).toFixed(2)} */}
+                            {(p.price * currency.value).toLocaleString("en-IN")}
+ {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                            
                           </div>
                           {p.ready_to_ship ? (
                             <div className={style.readyContainer}>

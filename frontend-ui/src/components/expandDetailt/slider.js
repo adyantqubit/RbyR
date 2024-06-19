@@ -211,7 +211,13 @@ const Slider = ({ scrollTop }) => {
                       >
                         {" "}
                         {currency.sign}{" "}
-                        {(cart.price * currency.value).toFixed(2)}
+                         {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                        {/* {(cart.price * currency.value).toFixed(2)} */}
+                        {(cart.price * currency.value).toLocaleString("en-IN")}
+                         {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+
                       </div>
 
                       {/* Commented by Rohan - 16/12/22

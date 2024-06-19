@@ -8,19 +8,17 @@ Reason - To add filter option when browsing data in tables -->
     </div>
     <ul>
         {% for choice in choices %}
-        <!-- Added by - Ashish Dewangan on 23-12-2023
-        Reason - To hide - on filter -->
-            {% if choice.display != "-" %}
-        <!-- End of code addition by - Ashish Dewangan on 23-12-2023
-        Reason - To hide - on filter -->    
+        <!-- Start of code block by Ashish Dewangan on 23-12-2023 -->
+        <!-- Modification by Om Shrivastava on 04-01-24 -->
+    
+        {% if choice.display != "-" and choice.display != " " %}
             <li{% if choice.selected %} class="text-success selected"{% endif %}>
                 <a href="{{ choice.query_string|iriencode }}" title="{{ choice.display }}">{{ choice.display }}</a>
             </li>
-        <!-- Added by - Ashish Dewangan on 23-12-2023
-        Reason - To hide - on filter -->    
-            {% endif %}
-        <!-- End of code addition by - Ashish Dewangan on 23-12-2023
-        Reason - To hide - on filter -->    
-        {% endfor %}
+        {% endif %}
+    
+        <!-- End of modification and code block -->
+    {% endfor %}
+    
     </ul>
 </div>

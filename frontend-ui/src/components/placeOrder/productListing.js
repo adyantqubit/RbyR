@@ -51,11 +51,16 @@ const ProductListing = () => {
             {currency.sign}
             {/* Modification and addition by Om Shrivastava on 15-12-23
             Reason : When subtotal is not present then show only 0  */}
+            {/* { afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
+              currency.value ? (
+              afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
+              currency.value
+            ).toFixed(2) */}
             { afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
               currency.value ? (
               afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
               currency.value
-            ).toFixed(2)
+            ).toLocaleString("en-IN")
           : "0"
           }
             {/*End of modification and addition by Om Shrivastava on 15-12-23
@@ -114,12 +119,19 @@ const ProductListing = () => {
             {currency.sign}
             {/* Modification and addition by Om Shrivastava on 15-12-23
             Reason : When subtotal is not present then show only 0  */}
+            {/* {afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
+              currency.value?
+            (
+              afterColumnTotalOfferAdd(offer, cart, taxRate).Grand *
+              currency.value
+            ).toFixed(2):'0'} */}
             {afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
               currency.value?
             (
               afterColumnTotalOfferAdd(offer, cart, taxRate).Grand *
               currency.value
-            ).toFixed(2):'0'}
+            ).toLocaleString("en-IN"):'0'}
+            
             {/* End of modification and addition by Om Shrivastava on 15-12-23
             Reason : When subtotal is not present then show only 0  */}
           </div>
@@ -167,7 +179,13 @@ const ProductListing = () => {
                   style={{ color: "black" }}
                 >
                   {currency.sign}
-                  {(c.price * currency.value).toFixed(2)}
+                   {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                  {/* {(c.price * currency.value).toFixed(2)} */}
+                  {(c.price * currency.value).toLocaleString("en-IN")}
+                   {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+
                 </span>
                 <div>
                   <span className={styles.userinfoText}>Qty:</span>

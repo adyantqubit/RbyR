@@ -54,27 +54,19 @@ const BestSeller = () => {
 
     return (
         <>
-            <div className={style.container}>
-            {/* Modification and addition by Om Shrivastava on 28-10-23
-            Reason : Add the condition for best products  */}
+            {/* <div className={style.container}>
             {bestProducts?.length > 0 ?
 
                 <div className={style.branding}>
-                    {/* <img src={image2} className={style.bestImg}/> */}
-                    {/* <div className={style.paragraph}>
-                        Our products
-                    </div> */}
+                   
                     <div className={style.heading}> Best Seller </div>
 
                 </div>
                 :null}
-                 {/* End of modification and addition by Om Shrivastava on 28-10-23
-            Reason : Add the condition for best products  */}
+              
                 <div className={style.sliderContainer}>
 
-                    {/* <Carousel cols={2} rows={1} gap={10}> */}
-
-                    {/* {bestProducts.map(m=>console.log(m))} */}
+                   
                     {imageSwap ? bestProducts.toReversed().map((m, i) => {
                         if (i < 12)
                             return <div className={style.card}
@@ -92,11 +84,7 @@ const BestSeller = () => {
                                     <div className={style.name}>{currency.sign}{(m.price*currency.value).toFixed(2)}</div>
                                 </div>
                             </div>
-                        // <Carousel.Item
-                        //     className={style.card}
-                        // >
-
-                        // </Carousel.Item>
+                       
                     }) : bestProducts.toReversed().map((m, i) => {
                         if (i < 12)
                             return <div className={style.card}
@@ -117,7 +105,6 @@ const BestSeller = () => {
 
 
 
-                    {/* </Carousel> */}
                 </div>
                 <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
                     {bestProducts.length > 12 ?
@@ -125,25 +112,10 @@ const BestSeller = () => {
                         null}
                 </div>
 
-            </div>
+            </div> */}
 
 
-            {/* <div className={style.categoryContainer}>
-        <div className={style.contain}>
-            <img src={image} style={{ width: "100%", height: "100%" }}></img>
-            <div className={style.absolute3}>
-                <div className={style.head}>what the topic written here</div>
-            </div>
-
-            <div className={style.absolute2}>
-                <button className={style.button2}>Shop Now</button>
-            </div>
-        </div>
-        <div className={style.contain}></div>
-        <div className={style.contain}></div>
-        <div className={style.contain}></div>
-
-    </div> */}
+        
         </>)
 }
 

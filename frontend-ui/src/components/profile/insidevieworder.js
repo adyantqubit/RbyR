@@ -743,7 +743,9 @@ const InsideOrder = () => {
                               style={{ whiteSpace: "nowrap", fontSize: "13px" }}
                             >
                               {s.selected_currency_sign}{" "}
-                              {(s.price * s.selected_currency_value).toFixed(2)}
+                              {/* {(s.price * s.selected_currency_value).toFixed(2)} */}
+                              {(s.price * s.selected_currency_value).toLocaleString("en-IN")}
+
                             </span>
                           </div>
                           <div className={style.rowitem2}>
@@ -785,11 +787,20 @@ const InsideOrder = () => {
                           Reason : Need to set the correct value */}
                               {/* {s.selected_currency_sign} {(p.price * s.quantity * s.selected_currency_value).toFixed(2)}</span></div> */}
                               {s.selected_currency_sign}{" "}
-                              {(
+                               {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                              {/* {(
                                 s.price *
                                 s.quantity *
                                 s.selected_currency_value
-                              ).toFixed(2)}
+                              ).toFixed(2)} */}
+                               {(
+                                s.price *
+                                s.quantity *
+                                s.selected_currency_value
+                              ).toLocaleString("en-IN")}
+                               {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
                             </span>
                           </div>
                           {/* End of Modification and addition by Om Shrivastava on 26-11-23
@@ -823,10 +834,18 @@ const InsideOrder = () => {
                           {states[0].selected_currency_sign}
                           {/* End of addition by Om Shirvastava on 03-12-23
                           Reason : Add the currency sign */}
+                           {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                          {/* {(
+                            allData.transaction.subtotal_price *
+                            states[0].selected_currency_value
+                          ).toFixed(2)} */}
                           {(
                             allData.transaction.subtotal_price *
                             states[0].selected_currency_value
-                          ).toFixed(2)}
+                          ).toLocaleString("en-IN")}
+                           {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
                         </span>
                       </div>
                       {allData?.transaction.shipping_price != 0 ? (
@@ -842,10 +861,18 @@ const InsideOrder = () => {
                             style={{ width: "50%", textAlign: "end" }}
                           >
                             {states[0].selected_currency_sign}
-                            {(
+                             {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                            {/* {(
                               allData.transaction.shipping_price *
                               states[0].selected_currency_value
-                            ).toFixed(2)}
+                            ).toFixed(2)} */}
+                             {(
+                              allData.transaction.shipping_price *
+                              states[0].selected_currency_value
+                            ).toLocaleString("en-IN")}
+                             {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
                           </span>
                         </div>
                       ) : null}
@@ -873,10 +900,18 @@ const InsideOrder = () => {
                           }}
                         >
                           {states[0].selected_currency_sign}
-                          {(
+                           {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                          {/* {(
                             allData.transaction.grand_total *
                             states[0].selected_currency_value
-                          ).toFixed(2)}
+                          ).toFixed(2)} */}
+                            {(
+                            allData.transaction.grand_total *
+                            states[0].selected_currency_value
+                          ).toLocaleString("en-IN")}
+                           {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
                         </span>
                       </div>
                       <Button

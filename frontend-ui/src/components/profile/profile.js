@@ -125,7 +125,14 @@ const MyOrders = () => {
                     <div className={`${style.rowText}`}>{o[0].date.split("-").reverse().join("-")}</div>
                     
                     <div className={`${style.rowText} ${style.rowtexthide}`} style={{wordBreak:"break-all"}}>{tran.filter(t=>t.order_no==o[0].order_no)[0]?.firstname} {tran.filter(t=>t.order_no==o[0].order_no)[0]?.lastname}</div>
-                    <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].selected_currency_sign}{(tran.filter(t=>t.order_no==o[0].order_no)[0]?.grand_total*o[0].selected_currency_value).toFixed(2)}</div>
+                    <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].selected_currency_sign}
+                       {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                      {/* {(tran.filter(t=>t.order_no==o[0].order_no)[0]?.grand_total*o[0].selected_currency_value).toFixed(2)} */}
+                      {(tran.filter(t=>t.order_no==o[0].order_no)[0]?.grand_total*o[0].selected_currency_value).toLocaleString("en-IN")}
+ {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                      </div>
                     {/* <div className={`${style.rowText} ${style.rowtexthide}`}>{o[0].selected_currency_sign}{(getPrice(o)*o[0].selected_currency_value).toFixed(2)}</div> */}
                     <div style={{textTransform:'capitalize'}} className={`${style.rowText} ${style.rowtexthide}`}>{o[0].payment_mode.split("p").join(" p")}</div>
                     <div  style={{textTransform:"capitalize"}} className={`${style.rowText} ${style.rowtexthide}`}>{tran.filter(t=>t.order_no==o[0].order_no)[0]?.payment_status}</div>
