@@ -1968,7 +1968,13 @@ class Menu_Detail(admin.ModelAdmin):
         # form.base_fields['category'].widget.attrs['style'] = 'width: 100%;
         return form   
     def has_add_permission(self, request):
-        return not Menus.objects.count()>=4
+        # Modification and addition by Om Shrivastava on 19-06-2024
+        # Reason : User can add only one menu
+        # return not Menus.objects.count()>=4
+        return not Menus.objects.count()>=1
+        # End of modification and addition by Om Shrivastava on 19-06-2024
+        # Reason : User can add only one menu
+    
       
     # Added by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row

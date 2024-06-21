@@ -172,7 +172,7 @@ const Payment = () => {
     // checkoutDetails["promocode"] = offer.promocode
     checkoutDetails['date'] = new Date().toISOString().slice(0, 10)
 
-    await invoiceApi(checkoutDetails, access_token).then(r => {
+    await invoiceApi(checkoutDetails, access_token).then(r => { 
       
       if(r.order_no)
       {

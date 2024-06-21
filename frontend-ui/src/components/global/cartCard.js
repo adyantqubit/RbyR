@@ -313,7 +313,39 @@ const CartCard = (props) => {
                  {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                  {/* {currency.sign}{(pro.price * currency.value).toFixed(2)} */}
-                 {currency.sign}{(pro.price * currency.value).toLocaleString("en-IN")}
+                 {/* Modification and addition by Om Shrivastava on 20-06-2024
+                            Reason : Show the discountant amount which product on_sale  */}
+                 {/* {currency.sign}{(pro.price * currency.value).toLocaleString("en-IN")} */}
+
+                            {pro.is_sale == true ? (
+                              <>
+                                <strike>
+                                  {" "}
+                                  {currency.sign}{" "}
+                                  {(pro.price * currency.value).toLocaleString(
+                                    "en-IN"
+                                  )}
+                                </strike>
+                                <div>
+                                  {" "}
+                                  {currency.sign}{" "}
+                                  {(
+                                    pro.price *
+                                    (1 - pro.sale_discount_percentage / 100) *
+                                    currency.value
+                                  ).toLocaleString("en-IN")}
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                {currency.sign}{" "}
+                                {(pro.price * currency.value).toLocaleString(
+                                  "en-IN"
+                                )}
+                              </>
+                            )}
+                            {/* End of Modification and addition by Om Shrivastava on 20-06-2024
+                            Reason : Show the discountant amount which product on_sale  */}
                   {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
 

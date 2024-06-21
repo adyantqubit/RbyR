@@ -56,13 +56,10 @@ const ProductListing = () => {
               afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
               currency.value
             ).toFixed(2) */}
-            { afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
-              currency.value ? (
-              afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
-              currency.value
-            ).toLocaleString("en-IN")
-          : "0"
-          }
+           {(
+                      afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
+                      currency.value
+                    ).toLocaleString("en-IN")}
             {/*End of modification and addition by Om Shrivastava on 15-12-23
             Reason : When subtotal is not present then show only 0  */}
           </div>
@@ -125,12 +122,10 @@ const ProductListing = () => {
               afterColumnTotalOfferAdd(offer, cart, taxRate).Grand *
               currency.value
             ).toFixed(2):'0'} */}
-            {afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
-              currency.value?
-            (
-              afterColumnTotalOfferAdd(offer, cart, taxRate).Grand *
-              currency.value
-            ).toLocaleString("en-IN"):'0'}
+            {(
+                  afterColumnTotalOfferAdd(offer, cart, taxRate).Grand *
+                  currency.value
+                ).toLocaleString("en-IN")}
             
             {/* End of modification and addition by Om Shrivastava on 15-12-23
             Reason : When subtotal is not present then show only 0  */}
@@ -178,11 +173,42 @@ const ProductListing = () => {
                   className={styles.userinfoText}
                   style={{ color: "black" }}
                 >
-                  {currency.sign}
                    {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                   {/* {(c.price * currency.value).toFixed(2)} */}
-                  {(c.price * currency.value).toLocaleString("en-IN")}
+                  {/* Modification and addition by Om Shrivastava on 20-06-2024
+                            Reason : Show the discountant amount which product on_sale  */}
+                  {/* {(c.price * currency.value).toLocaleString("en-IN")} */}
+
+                            {c.is_sale == true ? (
+                              <>
+                                <strike>
+                                  {" "}
+                                  {currency.sign}{" "}
+                                  {(c.price * currency.value).toLocaleString(
+                                    "en-IN"
+                                  )}
+                                </strike>
+                                <div>
+                                  {" "}
+                                  {currency.sign}{" "}
+                                  {(
+                                    c.price *
+                                    (1 - c.sale_discount_percentage / 100) *
+                                    currency.value
+                                  ).toLocaleString("en-IN")}
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                {currency.sign}{" "}
+                                {(c.price * currency.value).toLocaleString(
+                                  "en-IN"
+                                )}
+                              </>
+                            )}
+                            {/* End of Modification and addition by Om Shrivastava on 20-06-2024
+                            Reason : Show the discountant amount which product on_sale  */}
                    {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
 

@@ -324,7 +324,41 @@ const Search = () => {
                       {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                       {/* {currency.sign} {(p.price * currency.value).toFixed(2)} */}
-                      {currency.sign} {(p.price * currency.value).toLocaleString("en-IN")}
+                      {/* {currency.sign} {(p.price * currency.value).toLocaleString("en-IN")} */}
+                      {/* Modification and addition by Om Shrivastava on 20-06-2024
+                            Reason : Show the discountant amount which product on_sale  */}
+                      {/* {currency.sign} {(p.price * currency.value).toLocaleString("en-IN")} */}
+
+                            {p.is_sale == true ? (
+                              <>
+                                <strike>
+                                  {" "}
+                                  {currency.sign}{" "}
+                                  {(p.price * currency.value).toLocaleString(
+                                    "en-IN"
+                                  )}
+                                </strike>
+                                <div>
+                                  {" "}
+                                  {currency.sign}{" "}
+                                  {(
+                                    p.price *
+                                    (1 - p.sale_discount_percentage / 100) *
+                                    currency.value
+                                  ).toLocaleString("en-IN")}
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                {currency.sign}{" "}
+                                {(p.price * currency.value).toLocaleString(
+                                  "en-IN"
+                                )}
+                              </>
+                            )}
+                            {/* End of Modification and addition by Om Shrivastava on 20-06-2024
+                            Reason : Show the discountant amount which product on_sale  */}
+
                        {/* End of modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
 

@@ -153,8 +153,20 @@ export function DrawerFooter() {
 
   const getTotalPrice = () => {
     var p = 0;
-    cart.map((c) => (p += c.price * c.quantity));
-    return p;
+    // Modification and addition by Om Shrivastava on 20-06-2024
+    // Reason : Set the discount amount also 
+    // cart.map((c) => (p += c.price * c.quantity));
+    var discountAmnt = 0;
+    cart.map((amnt) => (discountAmnt += (amnt.price * amnt.quantity) *
+      (1 - amnt.sale_discount_percentage / 100) *
+      currency.value));
+
+     // End of modification and addition by Om Shrivastava on 20-06-2024
+    // Reason : Set the discount amount also 
+// console.log(p,discountAmnt,'checkk')
+    // return p;
+    return discountAmnt;
+
   };
 
   useEffect(() => {
@@ -396,7 +408,10 @@ export function DrawerFooter() {
                 {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                 {/* {(getTotalPrice() * currency.value).toFixed(2)} */}
-                {(getTotalPrice() * currency.value).toLocaleString("en-IN")}
+                {(
+                      afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
+                      currency.value
+                    ).toLocaleString("en-IN")}
                 {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
               </span>

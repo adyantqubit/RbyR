@@ -634,6 +634,7 @@ const InsideOrder = () => {
                 <hr style={{ color: "black" }}></hr>
 
                 {states?.map((s, i) => {
+                  console.log(states,'checkkkk')
                   var p = product.filter((p) => p.id == s.product_id)[0];
 
                   if (typeof p === "undefined") {

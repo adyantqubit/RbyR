@@ -335,6 +335,12 @@ const ShrinkHeader = () => {
             // }
           })}
 
+<Link to="/sale" className={style.drawerMenu} onClick={toggleDrawer}>
+            Sale
+          </Link>
+          <Link to="/shop" className={style.drawerMenu} onClick={toggleDrawer}>
+            Shop
+          </Link>
           <Link to={`/listing/ready to ship/0`} className={style.drawerMenu}>
             <div
               style={{
@@ -353,6 +359,7 @@ const ShrinkHeader = () => {
             </div>
           </Link>
 
+          
           {/* Commented and modified by - Ashish Dewangan on 15-02-2023
           Reason - To hide submenu of world of rbyr */}
           {/* <Link to="#" className={style.drawerMenu}>

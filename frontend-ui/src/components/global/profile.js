@@ -69,7 +69,7 @@ export const Profile = () => {
           <FaUserCircle style={{ width: "30px", hieght: "30px",color:"var(--iconsColor)"}} />
           {/* <img className={style.img} src="./assets/avatar.jpg" /> */}
         </div>
-        <div className={style.menu2} style={{padding:'2px'}}>
+        <div className={style.menu2} style={{padding:'2px'}} >
           <Popconfirm placement="bottomLeft" 
           // Addition by Om Shrivastava on 31-12-23
           // Reason : Need to remove the zindex property

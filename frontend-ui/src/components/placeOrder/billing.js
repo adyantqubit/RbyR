@@ -122,6 +122,8 @@ const Billing = () => {
     nav("/");
   };
   // End of comment
+  console.log(checkoutDetails.purchased_products_list,'dddddddddddddddddddd')
+
   return (
     <>
       <Navbar />
@@ -810,9 +812,43 @@ const Billing = () => {
                         {c.quantity}
                       </span>
                       <span className={styles.protitle2}>
-                        {checkoutDetails.currency_sign}
                         {/* {(c.price * checkoutDetails.currency_value).toFixed(2)} */}
-                        {(c.price * checkoutDetails.currency_value).toLocaleString("en-IN")}
+                        {/* Modification and addition by Om Shrivastava on 20-06-2024
+                            Reason : Show the discountant amount which product on_sale  */}
+                        {/* {(c.price * checkoutDetails.currency_value).toLocaleString("en-IN")} */}
+
+                            {c.is_sale == true ? (
+                              <>
+                                <strike>
+                                  {" "}
+                                  {checkoutDetails.currency_sign}
+
+                                  {(c.price * checkoutDetails.currency_value).toLocaleString(
+                                    "en-IN"
+                                  )}
+                                </strike>
+                                <div>
+                                  {" "}
+                                  {checkoutDetails.currency_sign}
+
+                                  {(
+                                    c.price *
+                                    (1 - c.sale_discount_percentage / 100) *
+                                    checkoutDetails.currency_value
+                                  ).toLocaleString("en-IN")}
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                                        {checkoutDetails.currency_sign}
+
+                                {(c.price * checkoutDetails.currency_value).toLocaleString(
+                                  "en-IN"
+                                )}
+                              </>
+                            )}
+                            {/* End of Modification and addition by Om Shrivastava on 20-06-2024
+                            Reason : Show the discountant amount which product on_sale  */}
 
                       </span>
                       <span
@@ -873,13 +909,20 @@ const Billing = () => {
                           taxRate
                         ).subtotal * checkoutDetails.currency_value
                       ).toFixed(2)} */}
-                       {(
+                      {/* Modification and addition by Om Shrivastava on 21-06-2024
+                      Reason : Set the subtotal amount  */}
+                       {/* {(
                         afterColumnTotalOfferAdd(
                           offer,
                           checkoutDetails.purchased_products_list,
                           taxRate
                         ).subtotal * checkoutDetails.currency_value
-                      ).toLocaleString("en-IN")}
+                      ).toLocaleString("en-IN")} */}
+                      {checkoutDetails.SubTotal}
+                      {/* {(
+                      afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
+                      checkoutDetails.currency_value
+                    ).toLocaleString("en-IN")} */}
                        {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                     </span>
@@ -919,6 +962,8 @@ const Billing = () => {
                             taxRate
                           ).shipping * checkoutDetails.currency_value
                         ).toFixed(2)} */}
+                         {/* Modification and addition by Om Shrivastava on 21-06-2024
+                      Reason : Set the grand total amount  */}
                         {(
                           afterColumnTotalOfferAdd(
                             offer,
@@ -981,12 +1026,10 @@ const Billing = () => {
                       {checkoutDetails.currency_sign}
                       {/* {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}
                       {/* {checkoutDetails.CouponDiscount ?((afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value)- (checkoutDetails.CouponDiscount* checkoutDetails.currency_value)).toFixed(2) :(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}
-                      {checkoutDetails.grand
+                     
+                      {/* {checkoutDetails.grand
                         ? 
-                        // (
-                        //     checkoutDetails.grand *
-                        //     checkoutDetails.currency_value
-                        //   ).toFixed(2)
+                        
                           (
                             checkoutDetails.grand *
                             checkoutDetails.currency_value
@@ -995,7 +1038,9 @@ const Billing = () => {
                             offer,
                             checkoutDetails.cart,
                             taxRate
-                          ).Grand}
+                          ).Grand} */}
+                        {checkoutDetails.grand}
+
                     </span>
                   </div>
 

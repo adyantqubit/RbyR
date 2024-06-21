@@ -49,11 +49,23 @@ function columnSubtotal(product){
 
 function afterColumnTotalOfferAdd(offer,cart,tax){
     var temp=0;
-
-    cart.map(c=>
-      temp+=c.quantity*c.price
-    )
-
+    console.log(cart, 'chexckkkkk')
+    // Modification and addition by Om Shrivastava on 20-06-2024
+    // Reason : Add sale discount amount also 
+    // cart.map(c=>
+    //   temp+=c.quantity*c.price
+    // )
+    cart.map(item => {
+      if (item.is_sale) {
+        temp += parseFloat(item.price) * item.quantity * (1 - item.sale_discount_percentage / 100);
+      } else {
+        temp += parseFloat(item.price) * item.quantity;
+      }
+    });
+    
+    console.log(temp,'subtotal')
+// End of modification and addition by Om Shrivastava on 20-06-2024
+    // Reason : Add sale discount amount also 
     var shippingCharges=Math.max(...cart.map(c=>{return c.shipping_charges}))
     
     // var gst=((temp+shippingCharges)/100)*tax

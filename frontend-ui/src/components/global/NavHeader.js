@@ -30,6 +30,8 @@ import Liked from "./liked";
 import LikedDrawer from "./liked";
 import Cart from "./cart";
 import { Profile } from "./profile";
+import { SubMenuList } from "./subMenuList";
+
 import Search from "./search";
 import Slideshow from "./slideshow";
 import Converter from "../concepts/convertCurrency";
@@ -115,6 +117,8 @@ const Navbar = () => {
       localStorage.removeItem("register");
     }
   }, []);
+
+  // console.log(menuItems, "ffffffffff");
 
   // useEffect(() => {
   //   // getLogoAndCoverDetail();
@@ -270,22 +274,40 @@ const Navbar = () => {
       >
         {/* Commented by Om Shrivastava on 13-06-2024
         Reason : No need to show header this part  */}
-        {/* <div className={style.whatsappBanner} style={{ color: "white", display: "flex", minHeight: "25px", justifyContent: "center", fontSize: ".75rem", letterSpacing: ".6px", fontStyle: "bold", fontWeight: "600" }}>
-         
-          {whatsappContactNumber ? 
-          <a href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
-           style={{ textDecoration: "none", textTransform: "uppercase", outline: "none", color: "white", fontSize: ".85rem", fontWeight: "700",marginTop:'2px', }}
-            
-            target="_blank"
-          >
-           
-            FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT | +91
-            {whatsappContactNumber ? whatsappContactNumber : " Not added"}
-            
-          </a>
-          :"Welcome to RbyR"}
-          
-        </div> */}
+        <div
+          className={style.whatsappBanner}
+          style={{
+            color: "white",
+            display: "flex",
+            minHeight: "25px",
+            justifyContent: "center",
+            fontSize: ".75rem",
+            letterSpacing: ".6px",
+            fontStyle: "bold",
+            fontWeight: "600",
+          }}
+        >
+          {whatsappContactNumber ? (
+            <a
+              href={`https://wa.me/+91${whatsappContactNumber}?text=Hi! Could you help me with a few queries!`}
+              style={{
+                textDecoration: "none",
+                textTransform: "uppercase",
+                outline: "none",
+                color: "white",
+                fontSize: ".85rem",
+                fontWeight: "700",
+                marginTop: "2px",
+              }}
+              target="_blank"
+            >
+              FOR CUSTOMIZATIONS OR PERSONAL ASSISTANCE, WHATSAPP US AT | +91
+              {whatsappContactNumber ? whatsappContactNumber : " Not added"}
+            </a>
+          ) : (
+            "Welcome to RbyR"
+          )}
+        </div>
         {/* End of commented by Om Shrivastava on 13-06-2024
         Reason : No need to show header this part  */}
         <div className={style.logo}>
@@ -328,7 +350,7 @@ const Navbar = () => {
               >
                 INR
               </div> */}
-               {/* Commented by Om Shrivastava on 13-06-2024
+              {/* Commented by Om Shrivastava on 13-06-2024
               Reason : No need to show INR  */}
               {/* End of code modification by - Ashish Dewangan on 03-12-2023
               Reason - To hide currency selector from header */}
@@ -364,6 +386,18 @@ const Navbar = () => {
                 <li className={style.services} >
                   <Link  className={style.al} to="/listing/world_of_rbyr" onClick={e=>setCategorySelected([])} style={{textTransform:"none"}}>WORLD OF RbyR</Link>
                 </li> */}
+
+                <li className={style.services}>
+                  <Link
+                    className={style.al}
+                    to="/aboutRR"
+                    style={{ fontSize: "16px" }}
+                    onClick={(e) => setCategorySelected([])}
+                  >
+                    About us
+                  </Link>
+                </li>
+
                 <li className={style.services}>
                   <Link
                     className={style.al}
@@ -374,8 +408,9 @@ const Navbar = () => {
                   </Link>
                 </li>
 
-                {menus?.map((m, i) => {
+                {/* {menus?.map((m, i) => {
                   var parent = Object.keys(m);
+                  console.log(menus, "hjhjkhjjh");
 
                   return (
                     <li
@@ -401,26 +436,36 @@ const Navbar = () => {
                         {parent[0].toLowerCase()}
                       </Link>
 
-                      {/* <span id={`${parent}${i+1}`}  className={style.al} href="/" style={{fontWeight:"450",fontSize:"16px"}}>{parent}</span> */}
-                      {/* <ul className={style.dropdown} style={{ padding: m[`${parent}`].length > 0 ? "20px 0" : null }}>
-
-                      {m[`${parent}`].map((s, j) => (
-                      <>
-                        <li id={`li${j}${parent}`} style={{ margin: "0px 15px", border: "none", whiteSpace: "nowrap", position: "relative", left: "auto", }} >
-                          <Link className={style.al2} to={`/listing/${parent}/${s}`} onClick={e => setCategorySelected([])}>{s}</Link>
-                        </li>
-                      </>
-                      ))}
-
-                      {m[`${parent}`].length > 0 ?
-                        <li id={`k${i}`} style={{ margin: "8px 15px", border: "none", whiteSpace: "nowrap", position: "relative", left: "auto", }} >
-                          <Link className={style.al2} to={`/listing/${parent}/0`} onClick={e => setCategorySelected([])}>VIEW ALL</Link>
-                        </li> : null}
-
-                    </ul> */}
+                     
                     </li>
                   );
-                })}
+                })} */}
+                 <div>
+                  <SubMenuList/>
+                </div>
+
+               
+
+                <li className={style.services}>
+                  <Link
+                    className={style.al}
+                    to="/sale"
+                    style={{ fontSize: "16px" }}
+                    // onClick={(e) => setCategorySelected([])}
+                  >
+                    Sale
+                  </Link>
+                </li>
+                <li className={style.services}>
+                  <Link
+                    className={style.al}
+                    to="/shop"
+                    style={{ fontSize: "16px" }}
+                    // onClick={(e) => setCategorySelected([])}
+                  >
+                    Shop
+                  </Link>
+                </li>
 
                 <li className={style.services}>
                   <Link
@@ -433,22 +478,22 @@ const Navbar = () => {
                   </Link>
                 </li>
 
-                <li className={style.services}>
+                {/* <li className={style.services}>
                   <Link
                     className={style.al}
                     to="/aboutRR"
                     style={{ fontSize: "16px" }}
-                  >
-                    {/* Modification and addition by Om Shrivastava on 13-06-2024
+                  > */}
+                {/* Modification and addition by Om Shrivastava on 13-06-2024
                     Reason : Change the name  */}
-                    {/* World of RbyR */}
-                    About us
-                     {/* End of modification and addition by Om Shrivastava on 13-06-2024
+                {/* World of RbyR */}
+                {/* About us */}
+                {/* End of modification and addition by Om Shrivastava on 13-06-2024
                     Reason : Change the name  */}
-                  </Link>
-                  {/* Commented by - Ashish Dewangan on 15-02-2023
+                {/* </Link> */}
+                {/* Commented by - Ashish Dewangan on 15-02-2023
                   Reason - To hide submenu of world of rbyr */}
-                  {/*                 
+                {/*                 
                   <ul className={style.dropdown}>
                   <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none",whiteSpace:"nowrap",paddingLeft:`${left}px`}}>
                       <Link className={style.al2} to="/aboutRR" onClick={e=>setCategorySelected([])}>ABOUT RbyR</Link>
@@ -467,8 +512,8 @@ const Navbar = () => {
                     </li>
                   </ul>     
                   */}
-                  {/* End of comment */}
-                </li>
+                {/* End of comment */}
+                {/* </li> */}
               </div>
 
               {/* {access_token?<li><a className={style.al} href="/changePass">Change Password</a></li>:<li><Link to="/login">Register/Login</Link></li>}

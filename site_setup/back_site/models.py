@@ -300,6 +300,18 @@ class subMenu(models.Model):
          return self.sub
 #End of the code
 
+# Addition by Om Shrivastava on 20-06-2024
+# Reason : Add validation for discount in rupee and discount percentage
+        
+def validate_discount_precentage(value):
+    if value is not None:
+        if (value < 0):
+            raise ValidationError("Discount can't be less the zero")
+        else:
+            return value
+# End of addition by Om Shrivastava on 20-06-2024
+# Reason : Add validation for discount in rupee and discount percentage
+        
 class product_detail(models.Model):
     id=models.AutoField(primary_key=True)
 
@@ -445,6 +457,18 @@ class product_detail(models.Model):
     careTip = models.CharField(max_length=250,null=True,blank=True)
     # End of addition by Om Shrivastava on 04-11-23
     # Reason : Need to add the care tip field in product details page
+    
+    # Addition by Om Shrivastava on 20-06-2024
+    # Reason : Add the is sale feature the product table
+    is_sale = models.BooleanField(default=False)
+    # DISCOUNT_CHOICES = [('Discount in (₹)', 'Discount in (₹)'),
+    #            ('Discount in (%)', 'Discount in (%)')]
+    # discount_in = models.CharField(max_length=255, choices=DISCOUNT_CHOICES, default="Discount in (₹)")
+    # discount_rupees = models.FloatField(default=0.0,blank=True, verbose_name="Discount in (₹)", validators=[validate_discount_rupees])
+    sale_discount_percentage = models.FloatField(default=0.0,blank=True, verbose_name="Discount in (%)", validators=[validate_discount_precentage])
+    # taxable_amount = models.DecimalField(max_digits=13, decimal_places=2,null=True,blank=True)
+    # End of modification and addition by Om Shrivastava on 20-06-2024
+    # Reason : Add the is sale feature the product table
 
     def save(self,*args, **kwargs):
         # self.productName_with_category =  self.product_name+self.category_name.category

@@ -209,12 +209,43 @@ const Slider = ({ scrollTop }) => {
                           color: "var(--textColorPrimary)",
                         }}
                       >
-                        {" "}
-                        {currency.sign}{" "}
+                      
                          {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                         {/* {(cart.price * currency.value).toFixed(2)} */}
-                        {(cart.price * currency.value).toLocaleString("en-IN")}
+                        {/* Modification and addition by Om Shrivastava on 20-06-2024
+                            Reason : Show the discountant amount which product on_sale  */}
+                        {/* {(cart.price * currency.value).toLocaleString("en-IN")} */}
+
+                            {cart.is_sale == true ? (
+                              <>
+                                <strike>
+                                  {" "}
+                                  {currency.sign}{" "}
+                                  {(cart.price * currency.value).toLocaleString(
+                                    "en-IN"
+                                  )}
+                                </strike>
+                                <div>
+                                  {" "}
+                                  {currency.sign}{" "}
+                                  {(
+                                    cart.price *
+                                    (1 - cart.sale_discount_percentage / 100) *
+                                    currency.value
+                                  ).toLocaleString("en-IN")}
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                {currency.sign}{" "}
+                                {(cart.price * currency.value).toLocaleString(
+                                  "en-IN"
+                                )}
+                              </>
+                            )}
+                            {/* End of Modification and addition by Om Shrivastava on 20-06-2024
+                            Reason : Show the discountant amount which product on_sale  */}
                          {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
 

@@ -679,11 +679,42 @@ const Details = (props) => {
                     className={styles["priceLabel"]}
                   >
                     {" "}
-                    MRP: {currency.sign}{" "}
+                    {/* {currency.sign}{" "} */}
                     {/* Modification and addition by Om Shrivastava on 15-06-2024
                     Reason : Show the price with commas, remove the decimal value  */}
                     {/* {(details.price * currency.value).toFixed(2)} */}
-                    {(details.price * currency.value).toLocaleString("en-IN")}
+                    {/* Modification and addition by Om Shrivastava on 20-06-2024
+                            Reason : Show the discountant amount which product on_sale  */}
+                    {/* {(details.price * currency.value).toLocaleString("en-IN")} */}
+                    {details.is_sale == true ? (
+                      <>
+                        MRP: <strike>
+                          {" "}
+                          {currency.sign}{" "}
+                          {(details.price * currency.value).toLocaleString(
+                            "en-IN"
+                          )}
+                        </strike>
+                        <div>
+                          {" "}
+                          MRP: {currency.sign}{" "}
+                          {(
+                            details.price *
+                            (1 - details.sale_discount_percentage / 100) *
+                            currency.value
+                          ).toLocaleString("en-IN")}
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        MRP: {currency.sign}{" "}
+                        {(details.price * currency.value).toLocaleString(
+                          "en-IN"
+                        )}
+                      </>
+                    )}
+                    {/* End of Modification and addition by Om Shrivastava on 20-06-2024
+                            Reason : Show the discountant amount which product on_sale  */}
                     {/* End of modification and addition by Om Shrivastava on 15-06-2024
                     Reason : Show the price with commas, remove the decimal value  */}
                   </h3>
@@ -1368,9 +1399,7 @@ const Details = (props) => {
                       </span>
                     </div> */}
 
-                  {details.ready_to_ship ==
-                  true ? //     style={{ display: "inline-block", marginRight: "3px" }} //     className={styles["textContent"]} //   <span //   <span className={styles["colon"]}> : </span> //   </span> //     Ready to Ship{" "} //   <span className={styles["textHeading"]}> // <div className={styles["detailsContainer"]}> // Reason : No need to show this section // Commented by Om Shrivastava on 14-06-2024
-                  //   >
+                  {details.ready_to_ship == true ? //   > //     style={{ display: "inline-block", marginRight: "3px" }} //     className={styles["textContent"]} //   <span //   <span className={styles["colon"]}> : </span> //   </span> //     Ready to Ship{" "} //   <span className={styles["textHeading"]}> // <div className={styles["detailsContainer"]}> // Reason : No need to show this section // Commented by Om Shrivastava on 14-06-2024
                   //     {" " + details.ready_to_ship_days}
                   //   </span>
                   // </div>

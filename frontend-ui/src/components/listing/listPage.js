@@ -57,7 +57,8 @@ const ListPage = () => {
     setSortUi,
     filterui,
     setfilterUi,
-    productCount,setProductCount,
+    productCount,
+    setProductCount,
   } = CartState();
   const [saveLikeApi, { isLoading }] = useLikedUpdateMutation();
   const [cartsaveApi, { isLoad }] = useCartUpdateMutation();
@@ -77,20 +78,20 @@ const ListPage = () => {
 
   /**
    * Added by - Ashish Dewangan on 11-12-2023
-   * Reason - Method to decide wherter to show menu as images or as instant filter 
+   * Reason - Method to decide wherter to show menu as images or as instant filter
    */
-  useEffect(()=>{
-    if(list!=null){
-        if(list.shownInstFilter==false){
-          if(!category || category=="0"){
-          nav(`/categories/${parent}`)
+  useEffect(() => {
+    if (list != null) {
+      if (list.shownInstFilter == false) {
+        if (!category || category == "0") {
+          nav(`/categories/${parent}`);
         }
       }
     }
-  },[list])
+  }, [list]);
   /**
    * End of code addition by - Ashish Dewangan on 11-12-2023
-   * Reason - Method to decide wherter to show menu as images or as instant filter 
+   * Reason - Method to decide wherter to show menu as images or as instant filter
    */
 
   useEffect(() => {
@@ -137,6 +138,7 @@ const ListPage = () => {
   var [loading, setLoading] = useState(false);
   var [oldscroll, setoldScroll] = useState(0);
   var [showOptions, setShowOptions] = useState(false);
+  console.log(CategoryProduct,'oooooooo')
 
   const handleScroll = (e) => {
     var listHeight = lastref.current.scrollHeight;
@@ -202,12 +204,12 @@ const ListPage = () => {
           setAllColorAvai(r.colors);
           setReload(true);
 
-          setProductCount(r.productsCount)
+          setProductCount(r.productsCount);
         }
       }, 200);
     });
   }
-// console.log(productCount,'productcounnn')
+  // console.log(productCount,'productcounnn')
   function scrollTop() {
     // console.log("top");
     document.getElementById("scrolled").scrollTop = 0;
@@ -247,12 +249,12 @@ const ListPage = () => {
   // console.log(countTrueValues);
   // End of modification and addition by Om Shirvastava on 05-12-23
   // Reason : Show the count, I need to change this logic
-  
-// Addition by Om Shrivastava on 24-12-23
-// Reason : Need to arrange the product name to increasing order 
-const categoryProAscending = [...CategoryProduct].sort((a, b) => a.id - b.id);
-// End of addition by Om Shrivastava on 24-12-23
-// Reason : Need to arrange the product name to increasing order
+
+  // Addition by Om Shrivastava on 24-12-23
+  // Reason : Need to arrange the product name to increasing order
+  const categoryProAscending = [...CategoryProduct].sort((a, b) => a.id - b.id);
+  // End of addition by Om Shrivastava on 24-12-23
+  // Reason : Need to arrange the product name to increasing order
 
   return (
     <>
@@ -294,12 +296,10 @@ const categoryProAscending = [...CategoryProduct].sort((a, b) => a.id - b.id);
                   }}
                 >
                   <div>{parent.split("_").join(" ")}</div>
-                  <div 
-                  className={style.totalProduct}
-                  >
+                  <div className={style.totalProduct}>
                     {CategoryProduct && CategoryProduct.length > 0 ? (
                       <span
-                      className={style.totalProduct}
+                        className={style.totalProduct}
                         // style={{
                         //   fontSize: "17px",
                         //   fontWeight: "lighter",
@@ -368,7 +368,7 @@ Reason : Need to comment the filter functionality */}
           {list != null ? (
             list.shownInstFilter && allCategoryAvai.length > 1 ? (
               <div className={style.instFilter}>
-                <InstantFilter /> 
+                <InstantFilter />
               </div>
             ) : null
           ) : null}
@@ -384,8 +384,9 @@ Reason : Need to comment the filter functionality */}
               // Reason : Arrange the product name according to their id
               // CategoryProduct.map((p, i) => {
               categoryProAscending.map((p, i) => {
-              // End of modification and addition by Om Shrivastava on 24-12-23
-              // Reason : Arrange the product name according to their id
+                console.log(categoryProAscending, "hhhhhhhhhh");
+                // End of modification and addition by Om Shrivastava on 24-12-23
+                // Reason : Arrange the product name according to their id
 
                 var temp = false;
                 if (parent != "ready to ship" && parent != "best seller")
@@ -426,17 +427,45 @@ Reason : Need to comment the filter functionality */}
                           <div className={style.title}>
                             {/* <span>{p.title}</span> */}
                             <span>{p.title.toLowerCase()}</span>
-
                           </div>
                           <div className={style.price}>
-                            {currency.sign}{" "}
-                             {/* Modification and addition by Om Shrivastava on 18-06-2024
+                            {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                             {/* {(p.price * currency.value).toFixed(2)} */}
-                            {(p.price * currency.value).toLocaleString("en-IN")}
- {/* Modification and addition by Om Shrivastava on 18-06-2024
+                            {/* Modification and addition by Om Shrivastava on 20-06-2024
+                            Reason : Show the discountant amount which product on_sale  */}
+                            {/* {(p.price * currency.value).toLocaleString("en-IN")} */}
+                            {p.is_sale == true ? (
+                              <>
+                                <strike>
+                                  {" "}
+                                  {currency.sign}{" "}
+                                  {(p.price * currency.value).toLocaleString(
+                                    "en-IN"
+                                  )}
+                                </strike>
+                                <div>
+                                  {" "}
+                                  {currency.sign}{" "}
+                                  {(
+                                    p.price *
+                                    (1 - p.sale_discount_percentage / 100) *
+                                    currency.value
+                                  ).toLocaleString("en-IN")}
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                {currency.sign}{" "}
+                                {(p.price * currency.value).toLocaleString(
+                                  "en-IN"
+                                )}
+                              </>
+                            )}
+                            {/* End of Modification and addition by Om Shrivastava on 20-06-2024
+                            Reason : Show the discountant amount which product on_sale  */}
+                            {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
-                            
                           </div>
                           {p.ready_to_ship ? (
                             <div className={style.readyContainer}>

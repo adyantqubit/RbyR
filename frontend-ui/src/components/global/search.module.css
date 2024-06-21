@@ -127,10 +127,11 @@
   }
   .price{
     font-size: 1em;
-    text-align: end;
+    text-align: center;
     padding: 0%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     font-weight: 400;
     text-transform: capitalize;
     word-wrap:break-word;

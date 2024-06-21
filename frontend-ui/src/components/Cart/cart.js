@@ -857,10 +857,41 @@ const CartSItem = (props) => {
                           className={style.price}
                         >
                           {" "}
-                          {currency.sign}{" "}
 
                           {/* {(pro.price * currency.value).toFixed(2)} */}
-                          {(pro.price * currency.value).toLocaleString("en-IN")}
+                          {/* Modification and addition by Om Shrivastava on 20-06-2024
+                            Reason : Show the discountant amount which product on_sale  */}
+                          {/* {(pro.price * currency.value).toLocaleString("en-IN")} */}
+
+                            {pro.is_sale == true ? (
+                              <>
+                                <strike>
+                                  {" "}
+                                  {currency.sign}{" "}
+                                  {(pro.price * currency.value).toLocaleString(
+                                    "en-IN"
+                                  )}
+                                </strike>
+                                <div>
+                                  {" "}
+                                  {currency.sign}{" "}
+                                  {(
+                                    pro.price *
+                                    (1 - pro.sale_discount_percentage / 100) *
+                                    currency.value
+                                  ).toLocaleString("en-IN")}
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                {currency.sign}{" "}
+                                {(pro.price * currency.value).toLocaleString(
+                                  "en-IN"
+                                )}
+                              </>
+                            )}
+                            {/* End of Modification and addition by Om Shrivastava on 20-06-2024
+                            Reason : Show the discountant amount which product on_sale  */}
 
                         </div>
                         <div

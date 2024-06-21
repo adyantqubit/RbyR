@@ -46,6 +46,9 @@ import Categories from './components/listing/Categories';
 import Test from './components/test/Test';
 import TermsWithoutHeader from './components/footer pages/tacWithoutHeader';
 import { CartState } from './context';
+import Sale from '../src/components/Sale/Sale'
+import Shop from '../src/components/Shop/Shop'
+
 
 function App() {
   // notification.destroy()
@@ -89,6 +92,13 @@ function App() {
     <Route path='/userprofile' element={<UserProfile/>}/>
 
     <Route path='/privacy-policy' element={<PrivacyPolicy/>}/>
+    {/* Addition by Om Shrivastava on 21-06-2024
+    Reason : Create a new file of sale and shop  */}
+    <Route path='/sale' element={<Sale/>}/>
+    <Route path='/shop' element={<Shop/>}/>
+    {/* End of addition by Om Shrivastava on 21-06-2024
+    Reason : Create a new file of sale and shop  */}
+
     <Route path='/delivery-policy' element={<DeliveryPolicy/>}/>
     <Route path='/refund-policy' element={<RefundPolicy/>}/>
     <Route path='/cancellation-policy' element={<CancellationPolicy/>}/>

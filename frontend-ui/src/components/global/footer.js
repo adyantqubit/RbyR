@@ -167,6 +167,12 @@ function Footer() {
             {" "}
             <span className={style.span}>Terms and Conditions</span>
           </Link>
+          <Link
+            to="/privacy-policy"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            <span className={style.span}>Privacy Policy</span>
+          </Link>
           {/* Commented by Om Shrivastava on 14-06-2024
           Reason : No need to show this section */}
           {/* <Link to="/FAQ" style={{ textDecoration: "none", color: "white" }}>
@@ -185,12 +191,7 @@ function Footer() {
         </div>
         <div className={style.column2}>
           {/* <h1 className={style.heading}>POLICIES</h1> */}
-          <Link
-            to="/privacy-policy"
-            style={{ textDecoration: "none", color: "white" }}
-          >
-            <span className={style.span}>Privacy Policy</span>
-          </Link>
+         
           <Link
             to="/delivery-policy"
             style={{ textDecoration: "none", color: "white" }}
@@ -302,8 +303,8 @@ function Footer() {
                           }
                           style={{
                             color: "var(--iconsColor)",
-                            width: "25px",
-                            height: "25px",
+                            width: "20px",
+                            height: "20px",
                           }}
                           alt=""
                         />
