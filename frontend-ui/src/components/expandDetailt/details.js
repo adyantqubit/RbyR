@@ -69,6 +69,51 @@ const Details = (props) => {
   const nav = useNavigate();
   const [details, setDetails] = useState(null);
   const [size, setSize] = useState("");
+  const [scale, setScale] = useState(1);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const containerRef = useRef(null);
+  const imageRef = useRef(null);
+
+  // Handle pinch-to-zoom on touch devices
+  const handleTouchMove = (e) => {
+    if (e.touches.length === 2) {
+      const distance = Math.sqrt(
+        (e.touches[0].clientX - e.touches[1].clientX) ** 2 +
+          (e.touches[0].clientY - e.touches[1].clientY) ** 2
+      );
+      const newScale = Math.min(Math.max(distance / 100, 1), 3); // Scale between 1 and 3
+      setScale(newScale);
+    }
+  };
+
+  // Handle mouse wheel zoom
+  const handleWheel = (e) => {
+    e.preventDefault();
+    const newScale = Math.min(Math.max(scale + e.deltaY * -0.01, 1), 3);
+    setScale(newScale);
+  };
+
+  // Handle dragging for panning
+  const handleMouseDown = (e) => {
+    const startX = e.clientX;
+    const startY = e.clientY;
+    const initialPos = { ...position };
+
+    const onMouseMove = (moveEvent) => {
+      const dx = moveEvent.clientX - startX;
+      const dy = moveEvent.clientY - startY;
+      setPosition({ x: initialPos.x + dx, y: initialPos.y + dy });
+    };
+
+    const onMouseUp = () => {
+      document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseup", onMouseUp);
+    };
+
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp);
+  };
+
   const {
     con,
     setcon,
@@ -111,6 +156,12 @@ const Details = (props) => {
   // Reason - To display whatsapp contact number
   const [whatsappContactNumber, setWhatsappContactNumber] = useState(false);
   // End of code addition
+
+  const [zoom, setZoom] = useState(false);
+
+  const handleZoomToggle = () => {
+    setZoom(!zoom);
+  };
 
   useEffect(() => {
     /**
@@ -619,12 +670,46 @@ const Details = (props) => {
                 ) : // )}
                 null}
               </div>
-              <div className={styles["image"]}>
+              <div className={styles["image"]}style={{border:'1px solid red'}}>
                 <img
                   className={styles.subImage}
                   src={config.staticBaseURL + mainImage}
                   alt="Main"
                 />
+
+                {/* <div className={styles["zoomContainer"]} >
+                        <div className={`${styles.zoomImage} ${zoom ? styles.zoomed : ''}`}>
+                          <img src={config.staticBaseURL + mainImage} alt="Zoomable" />
+                        </div>
+                        <button className={styles.zoomButton} onClick={handleZoomToggle}>
+                          {zoom ? '-' : '+'}
+                        </button>
+                      </div> */}
+                {/* <div
+                  ref={containerRef}
+                  className={styles.zoomContainer}
+                  onWheel={handleWheel}
+                  onTouchMove={handleTouchMove}
+                  onMouseDown={handleMouseDown}
+                  onTouchStart={(e) => e.preventDefault()}
+                  style={{border:'1px solid green'}}
+                >
+                  <div
+                    ref={imageRef}
+                    className={styles.zoomImage}
+                    style={{
+                      transform: `scale(${scale}) translate(${
+                        position.x / scale
+                      }px, ${position.y / scale}px)`,
+                      transition: "transform 0.1s ease",
+                    }}
+                  >
+                    <img
+                      src={config.staticBaseURL + mainImage}
+                      alt="Zoomable"
+                    />
+                  </div>
+                </div> */}
               </div>
               <div
                 className={styles["slideImages"]}
@@ -688,7 +773,8 @@ const Details = (props) => {
                     {/* {(details.price * currency.value).toLocaleString("en-IN")} */}
                     {details.is_sale == true ? (
                       <>
-                        MRP: <strike>
+                        MRP:{" "}
+                        <strike>
                           {" "}
                           {currency.sign}{" "}
                           {(details.price * currency.value).toLocaleString(
@@ -1399,8 +1485,8 @@ const Details = (props) => {
                       </span>
                     </div> */}
 
-                  {details.ready_to_ship == true ? //   > //     style={{ display: "inline-block", marginRight: "3px" }} //     className={styles["textContent"]} //   <span //   <span className={styles["colon"]}> : </span> //   </span> //     Ready to Ship{" "} //   <span className={styles["textHeading"]}> // <div className={styles["detailsContainer"]}> // Reason : No need to show this section // Commented by Om Shrivastava on 14-06-2024
-                  //     {" " + details.ready_to_ship_days}
+                  {details.ready_to_ship ==
+                  true ? //     {" " + details.ready_to_ship_days} //   > //     style={{ display: "inline-block", marginRight: "3px" }} //     className={styles["textContent"]} //   <span //   <span className={styles["colon"]}> : </span> //   </span> //     Ready to Ship{" "} //   <span className={styles["textHeading"]}> // <div className={styles["detailsContainer"]}> // Reason : No need to show this section // Commented by Om Shrivastava on 14-06-2024
                   //   </span>
                   // </div>
                   // Commented by Om Shrivastava on 14-06-2024

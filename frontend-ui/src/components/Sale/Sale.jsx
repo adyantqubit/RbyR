@@ -148,14 +148,17 @@ console.log(bestProducts,product)
                   </>
                 );
             })
-          ) : nullpage ? null : (
-            <div style={{ width: "100%" }}>
-              <div class="centered">
-                <div class="blob-1"></div>
-                <div class="blob-2"></div>
-              </div>
-            </div>
-          )}
+          ) : nullpage ? null : 
+        //   (
+        //     <div style={{ width: "100%" }}>
+        //       <div class="centered">
+        //         <div class="blob-1"></div>
+        //         <div class="blob-2"></div>
+        //       </div>
+        //     </div>
+        //   )
+        null
+          }
 
           {nullpage && bestProducts.length == 0 ? (
             <div style={{ width: "100%", textAlign: "center" }}>

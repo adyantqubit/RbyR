@@ -94,7 +94,7 @@ class product_detailAdmin(admin.ModelAdmin):
     ordering =("title",)
     exclude=("XS","XXXL","XXL")
     
-    readonly_fields=('search_key','category','menu')
+    readonly_fields=('search_key','category','menu','product_price_after_sale')
     search_fields=("title","category","color")
     list_filter=("category","color")
     list_per_page=10
@@ -141,17 +141,21 @@ class product_detailAdmin(admin.ModelAdmin):
         # Addition by Om Shrivastava on 21-12-23
         # Reason : Need to remove this field from the list 
         field = form.base_fields['available']
+
+        # field = form.base_fields['product_price_after_sale']
         field.widget = field.hidden_widget()
         # End of addition by Om Shrivastava on 21-12-23
         # Reason : Need to remove this field from the list 
 
         return form    
-
+    
     # Added by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to view details of a row
     def __init__(self, model, admin_site): 
         self.request = None
         super().__init__(model, admin_site)
+
+    
 
     def get_queryset(self, request):
         self.request = request      
@@ -605,7 +609,14 @@ class product_ordersAdmin(admin.ModelAdmin):
     # ,"price","total_price","size","payment_mode","date","selected_currency_sign","selected_currency_value")
     readonly_fields=("id","order_no","user_no","product_id","billing_id","shipping_id","quantity"
     ,"price","total_price","size","payment_mode","date","selected_currency_sign"
-    ,"shipping_charges","product_name","product_image")
+    ,"shipping_charges","product_name","product_image",
+    # Addition by Om Shrivastava on 22-06-2024
+    # Reason : Add this field only readonly 
+    'product_price_after_sale')
+    # End of addition by Om Shrivastava on 22-06-2024
+    # Reason : Add this field only readonly 
+    
+
     # End of code modification by - Ashish Dewangan on 29-11-2023
     # Reason - To make shipping_charges, product_name and product_image read only
 

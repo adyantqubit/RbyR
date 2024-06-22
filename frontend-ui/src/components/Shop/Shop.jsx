@@ -67,7 +67,7 @@ console.log(product)
                   whiteSpace: "nowrap",
                 }}
               >
-               Sale
+               Shop
               </span>
             
 

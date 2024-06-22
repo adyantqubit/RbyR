@@ -122,7 +122,7 @@ const Billing = () => {
     nav("/");
   };
   // End of comment
-  console.log(checkoutDetails.purchased_products_list,'dddddddddddddddddddd')
+  console.log(checkoutDetails.purchased_products_list, "dddddddddddddddddddd");
 
   return (
     <>
@@ -149,7 +149,7 @@ const Billing = () => {
                     Added by - Ashish Dewangan on 28-12-2023
                     Reason - To align contents to center
                     */
-                    alignItems: "center", 
+                    alignItems: "center",
                     /*
                     End of code addition by - Ashish Dewangan on 28-12-2023
                     Reason - To align contents to center
@@ -341,11 +341,11 @@ const Billing = () => {
                     backgroundColor: "rgb(243 243 243)",
                     // height: "160px",
                     height: "auto",
-                                      /*
+                    /*
                     Added by - Ashish Dewangan on 28-12-2023
                     Reason - To align contents to center
                     */
-                    alignItems: "center", 
+                    alignItems: "center",
                     /*
                     End of code addition by - Ashish Dewangan on 28-12-2023
                     Reason - To align contents to center
@@ -506,10 +506,9 @@ const Billing = () => {
                           Your payment was successful to above details{" "}
                         </span>
                       </div>
-                    ):null}
+                    ) : null}
                     {/* End of code addition by - Ashish Dewangan on 28-12-2023
                     Reason - To add text indicating that payment was done */}
-
                   </div>
                 </div>
               ) : (
@@ -645,15 +644,17 @@ const Billing = () => {
                          * Reason - To capitalize the text
                          */
                         // style={{ whiteSpace: "nowrap" }}
-                        style={{ whiteSpace: "nowrap",textTransform:"capitalize" }}
+                        style={{
+                          whiteSpace: "nowrap",
+                          textTransform: "capitalize",
+                        }}
                         /**
                          * End of modification by - Ashish Dewangan on 20-12-2023
                          * Reason - To capitalize the text
                          */
                       >
-                        {checkoutDetails.payment
-                          .split("p")
-                          .join(" p")
+                        {
+                          checkoutDetails.payment.split("p").join(" p")
                           /**
                            * Commented by - Ashish Dewangan on 20-12-2023
                            * Reason - To remove upper case becasue each character is converted to capital letter
@@ -815,41 +816,35 @@ const Billing = () => {
                         {/* {(c.price * checkoutDetails.currency_value).toFixed(2)} */}
                         {/* Modification and addition by Om Shrivastava on 20-06-2024
                             Reason : Show the discountant amount which product on_sale  */}
+                            {/* Modification and addition by Om Shrivastava on 22-06-2024
+                              Reason : Set the price and total amount of product  */}
                         {/* {(c.price * checkoutDetails.currency_value).toLocaleString("en-IN")} */}
 
-                            {c.is_sale == true ? (
-                              <>
-                                <strike>
-                                  {" "}
-                                  {checkoutDetails.currency_sign}
+                        {c.is_sale == true ? (
+                          <>
+                            <div>
+                              {" "}
+                              {checkoutDetails.currency_sign}
+                              {(
+                                c.price *
+                                (1 - c.sale_discount_percentage / 100) *
+                                checkoutDetails.currency_value
+                              ).toLocaleString("en-IN")}
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            {checkoutDetails.currency_sign}
 
-                                  {(c.price * checkoutDetails.currency_value).toLocaleString(
-                                    "en-IN"
-                                  )}
-                                </strike>
-                                <div>
-                                  {" "}
-                                  {checkoutDetails.currency_sign}
-
-                                  {(
-                                    c.price *
-                                    (1 - c.sale_discount_percentage / 100) *
-                                    checkoutDetails.currency_value
-                                  ).toLocaleString("en-IN")}
-                                </div>
-                              </>
-                            ) : (
-                              <>
-                                                        {checkoutDetails.currency_sign}
-
-                                {(c.price * checkoutDetails.currency_value).toLocaleString(
-                                  "en-IN"
-                                )}
-                              </>
-                            )}
-                            {/* End of Modification and addition by Om Shrivastava on 20-06-2024
+                            {(
+                              c.price * checkoutDetails.currency_value
+                            ).toLocaleString("en-IN")}
+                          </>
+                        )}
+                        {/* Modification and addition by Om Shrivastava on 22-06-2024
+                              Reason : Set the price and total amount of product  */}
+                        {/* End of Modification and addition by Om Shrivastava on 20-06-2024
                             Reason : Show the discountant amount which product on_sale  */}
-
                       </span>
                       <span
                         className={styles.protitle2}
@@ -860,20 +855,47 @@ const Billing = () => {
                         }}
                       >
                         {" "}
-                        {checkoutDetails.currency_sign}{" "}
-                         {/* Modification and addition by Om Shrivastava on 18-06-2024
+                        {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                         {/* {(
                           c.price *
                           c.quantity *
                           checkoutDetails.currency_value
                         ).toFixed(2)} */}
-                        {(
+                        {/* Modification and addition by Om Shrivastava on 22-06-2024
+                              Reason : Set the price and total amount of product  */}
+                        {/* {(
                           c.price *
                           c.quantity *
                           checkoutDetails.currency_value
-                        ).toLocaleString("en-IN")}
-                         {/* Modification and addition by Om Shrivastava on 18-06-2024
+                        ).toLocaleString("en-IN")} */}
+                        {c.is_sale == true ? (
+                          <>
+                            <div>
+                              {" "}
+                              {checkoutDetails.currency_sign}
+                              {(
+                                c.price *
+                                c.quantity *
+                                (1 - c.sale_discount_percentage / 100) *
+                                checkoutDetails.currency_value
+                              ).toLocaleString("en-IN")}
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            {checkoutDetails.currency_sign}
+
+                            {(
+                              c.price *
+                              c.quantity *
+                              checkoutDetails.currency_value
+                            ).toLocaleString("en-IN")}
+                          </>
+                        )}
+                        {/* Modification and addition by Om Shrivastava on 22-06-2024
+                              Reason : Set the price and total amount of product  */}
+                        {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                       </span>
                     </div>
@@ -900,7 +922,7 @@ const Billing = () => {
                     >
                       {" "}
                       {checkoutDetails.currency_sign}
-                       {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                       {/* {(
                         afterColumnTotalOfferAdd(
@@ -911,7 +933,7 @@ const Billing = () => {
                       ).toFixed(2)} */}
                       {/* Modification and addition by Om Shrivastava on 21-06-2024
                       Reason : Set the subtotal amount  */}
-                       {/* {(
+                      {/* {(
                         afterColumnTotalOfferAdd(
                           offer,
                           checkoutDetails.purchased_products_list,
@@ -923,7 +945,7 @@ const Billing = () => {
                       afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
                       checkoutDetails.currency_value
                     ).toLocaleString("en-IN")} */}
-                       {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                     </span>
                     {/* End of code modification by - Ashish Dewangan on 27-11-2023
@@ -953,7 +975,7 @@ const Billing = () => {
                       >
                         {" "}
                         {checkoutDetails.currency_sign}
-                         {/* Modification and addition by Om Shrivastava on 18-06-2024
+                        {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                         {/* {(
                           afterColumnTotalOfferAdd(
@@ -962,7 +984,7 @@ const Billing = () => {
                             taxRate
                           ).shipping * checkoutDetails.currency_value
                         ).toFixed(2)} */}
-                         {/* Modification and addition by Om Shrivastava on 21-06-2024
+                        {/* Modification and addition by Om Shrivastava on 21-06-2024
                       Reason : Set the grand total amount  */}
                         {(
                           afterColumnTotalOfferAdd(
@@ -971,7 +993,7 @@ const Billing = () => {
                             taxRate
                           ).shipping * checkoutDetails.currency_value
                         ).toLocaleString("en-IN")}
-                         {/* Modification and addition by Om Shrivastava on 18-06-2024
+                        {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                       </span>
                       {/* End of code modification by - Ashish Dewangan on 27-11-2023
@@ -1026,7 +1048,6 @@ const Billing = () => {
                       {checkoutDetails.currency_sign}
                       {/* {(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}
                       {/* {checkoutDetails.CouponDiscount ?((afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value)- (checkoutDetails.CouponDiscount* checkoutDetails.currency_value)).toFixed(2) :(afterColumnTotalOfferAdd(offer, checkoutDetails.cart, taxRate).Grand * checkoutDetails.currency_value).toFixed(2)} */}
-                     
                       {/* {checkoutDetails.grand
                         ? 
                         
@@ -1039,8 +1060,7 @@ const Billing = () => {
                             checkoutDetails.cart,
                             taxRate
                           ).Grand} */}
-                        {checkoutDetails.grand}
-
+                      {checkoutDetails.grand}
                     </span>
                   </div>
 
@@ -1076,8 +1096,8 @@ const Billing = () => {
                             )
                         : checkoutDetails.grand
                         ? toWorduS.convert(
-                      //      Modification and addition by Om Shrivastava on 18-06-2024
-                      // Reason : Remove the commas and decimal value  
+                            //      Modification and addition by Om Shrivastava on 18-06-2024
+                            // Reason : Remove the commas and decimal value
                             // (
                             //   checkoutDetails.grand *
                             //   checkoutDetails.currency_value
@@ -1086,8 +1106,8 @@ const Billing = () => {
                               checkoutDetails.grand *
                               checkoutDetails.currency_value
                             ).toLocaleString("en-IN")
-                      //         Modification and addition by Om Shrivastava on 18-06-2024
-                      // Reason : Remove the commas and decimal value  
+                            //         Modification and addition by Om Shrivastava on 18-06-2024
+                            // Reason : Remove the commas and decimal value
                           )
                         : toWorduS.convert(
                             afterColumnTotalOfferAdd(

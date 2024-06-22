@@ -304,11 +304,15 @@ class subMenu(models.Model):
 # Reason : Add validation for discount in rupee and discount percentage
         
 def validate_discount_precentage(value):
-    if value is not None:
-        if (value < 0):
-            raise ValidationError("Discount can't be less the zero")
-        else:
-            return value
+    # if value is not None:
+    #     if (value < 0):
+    #         raise ValidationError("Discount can't be less the zero")
+    #     else:
+    #         return value
+        
+    if value < 0 or value > 100:
+        raise ValidationError(f'{value} is not a valid discount percentage. It must be between 0 and 100.')
+
 # End of addition by Om Shrivastava on 20-06-2024
 # Reason : Add validation for discount in rupee and discount percentage
         
@@ -469,6 +473,7 @@ class product_detail(models.Model):
     # taxable_amount = models.DecimalField(max_digits=13, decimal_places=2,null=True,blank=True)
     # End of modification and addition by Om Shrivastava on 20-06-2024
     # Reason : Add the is sale feature the product table
+    product_price_after_sale = models.FloatField(default=0.0,blank=True,null=True)
 
     def save(self,*args, **kwargs):
         # self.productName_with_category =  self.product_name+self.category_name.category
@@ -837,6 +842,8 @@ class product_orders(models.Model):
     # End of code addition by - Ashish Dewangan on 29-11-2023
     # Reason - To save image of product
     product_id=models.ForeignKey(product_detail,on_delete=models.CASCADE)
+
+    product_price_after_sale = models.FloatField(default=0.0,blank=True,)
 
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name

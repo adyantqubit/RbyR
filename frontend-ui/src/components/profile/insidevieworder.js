@@ -743,10 +743,33 @@ const InsideOrder = () => {
                               className={style.userinfoText3}
                               style={{ whiteSpace: "nowrap", fontSize: "13px" }}
                             >
-                              {s.selected_currency_sign}{" "}
-                              {/* {(s.price * s.selected_currency_value).toFixed(2)} */}
-                              {(s.price * s.selected_currency_value).toLocaleString("en-IN")}
+                             {/* Modification and addition by Om Shrivastava on 22-06-2024
+                              Reason : Set the price and total amount of product  */}
+                              {/* {(s.price * s.selected_currency_value).toLocaleString("en-IN")} */}
 
+                              {s.is_sale == true ? (
+                          <>
+                            <div>
+                              {" "}
+                              {s.selected_currency_sign}
+                              {(
+                                s.price *
+                                (1 - s.sale_discount_percentage / 100) *
+                                s.selected_currency_value
+                              ).toLocaleString("en-IN")}
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            {s.selected_currency_sign}
+
+                            {(
+                              s.price * s.selected_currency_value
+                            ).toLocaleString("en-IN")}
+                          </>
+                        )}
+                        {/* Modification and addition by Om Shrivastava on 22-06-2024
+                              Reason : Set the price and total amount of product  */}
                             </span>
                           </div>
                           <div className={style.rowitem2}>
@@ -787,7 +810,6 @@ const InsideOrder = () => {
                               {/* Modification and addition by Om Shrivastava on 26-11-23
                           Reason : Need to set the correct value */}
                               {/* {s.selected_currency_sign} {(p.price * s.quantity * s.selected_currency_value).toFixed(2)}</span></div> */}
-                              {s.selected_currency_sign}{" "}
                                {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                               {/* {(
@@ -795,11 +817,40 @@ const InsideOrder = () => {
                                 s.quantity *
                                 s.selected_currency_value
                               ).toFixed(2)} */}
-                               {(
+                              {/* Modification and addition by Om Shrivastava on 22-06-2024
+                              Reason : Set the price and total amount of product  */}
+                               {/* {(
                                 s.price *
                                 s.quantity *
                                 s.selected_currency_value
+                              ).toLocaleString("en-IN")} */}
+                            
+                              {s.is_sale == true ? (
+                          <>
+                            <div>
+                              {" "}
+                              {s.selected_currency_sign}
+                              {(
+                                s.price *
+                                s.quantity *
+                                (1 - s.sale_discount_percentage / 100) *
+                                s.selected_currency_value
                               ).toLocaleString("en-IN")}
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            {s.selected_currency_sign}
+
+                            {(
+                              s.price *
+                              s.quantity *
+                              s.selected_currency_value
+                            ).toLocaleString("en-IN")}
+                          </>
+                        )}
+                        {/* End of modification and addition by Om Shrivastava on 22-06-2024
+                              Reason : Set the price and total amount of product  */}
                                {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                             </span>
