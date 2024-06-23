@@ -2,10 +2,10 @@
 .Container{
   /* position: relative;
   top: 23vh; */
-  padding-top:153px;
+  padding-top:var(--paddingSpace);
   max-height: 100vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  /* overflow-y: scroll;
+  overflow-x: hidden; */
   background-color: var(--backgroundColorSecondary);
 }
 
@@ -125,7 +125,7 @@ Reason : Add the class name for the total product label */
 
 .bottom{
   margin-top:-2px ;
-  height: 50px;
+  /* height: 50px; */
   width:100%;
   display: flex;
   justify-content: space-between;
@@ -742,7 +742,7 @@ Reason : Set the content in left side */
   .bottom{
     margin-top: -15px;
     justify-content: center;
-
+    height : var(--phoneViewHeight)
   }
   
 

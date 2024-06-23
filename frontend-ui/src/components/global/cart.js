@@ -87,7 +87,7 @@ const Cart = () => {
             //   class="fa-solid fa-bag-shopping"
             //   style={{ fontSize: "20px", position: "relative", color: "black" }}
             // ></i>
-            <img className='cartImage' 
+            <img className='cartImageQuantity' 
             src={cartImage}/>
           ) : (
             <img className='cartImage' 

@@ -7,7 +7,9 @@
     /* Modification and addition 
     Reason : Set the padding top */
     /* padding-top: 30vh; */
-    padding-top: 23vh;
+    /* padding-top: 23vh; */
+  padding-top:var(--paddingSpace);
+
  /* End of Modification and addition 
     Reason : Set the padding top */
     max-height: 100vh;
@@ -122,7 +124,7 @@
 
 @media screen and (max-width:768px) {
     .ppContainer{
-       padding-top:12vh;
+       padding-top:8vh;
         
     }
     

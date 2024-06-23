@@ -1,6 +1,7 @@
 @import '../../root.css';
 .container{
- padding-top: 143px;
+    padding-top:var(--paddingSpace);
+
  padding-bottom: 80px;
  background-color: var(--backgroundColorSecondary);
 }
@@ -15,7 +16,7 @@ font-weight: 600;
 text-transform: uppercase;
 }
 .heading{
-    height:15vh;
+    height:8vh;
     width: 100%;
     text-align: center;
     display: flex;
@@ -134,7 +135,7 @@ Reason - To style no result found text
 @media (max-width:767px) {
 
     .heading{
-        height: 8vh;
+        height: 5vh;
         font-size: 18px;
     }
     .headingSection{
@@ -146,6 +147,8 @@ Reason - To style no result found text
         Reason : Set the padding top */
         /* padding-top: 12vh; */
         padding-top: 9vh;
+    /* height : var(--phoneViewHeight) */
+
         /* End of Modificatiojn and addiiton by Om Shrivastava on 30-11-23
         Reason : Set the padding top */
     }

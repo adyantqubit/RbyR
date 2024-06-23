@@ -188,6 +188,11 @@ color:white
     margin-top: -20%;
     object-fit: contain;
 }
+.cartImageQuantity{
+    width: 1.8vw;
+    margin-top: -20%;
+    object-fit: contain;
+}
 
 .ant-drawer-body::-webkit-scrollbar{
     display: none;
@@ -341,5 +346,8 @@ opacity: 1;
 
       .cartImage{
         width: 11vw;
+    }
+    .cartImageQuantity{
+        width: 5vw;
     }
   }

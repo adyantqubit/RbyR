@@ -18,6 +18,7 @@
     Reason : set the height */
     /* padding-top: 35vh; */
     padding-top: 25vh;
+    padding-top:var(--paddingSpace);
 
     max-height: 100vh;
     /* overflow-y: scroll; */
@@ -230,7 +231,7 @@
 
 @media screen and (max-width:768px) {
     .contact{
-       padding-top:12vh;
+       padding-top:8.5vh;
        
     }
     

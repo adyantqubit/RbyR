@@ -52,7 +52,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import "./styles.css";
-import cartImage from "../../images/cartImage.png";
+import cartImage from "../../images/cartDesign.jpeg";
 
 // import required modules
 import { Navigation } from "swiper/modules";
@@ -1237,7 +1237,7 @@ const Details = (props) => {
                           onClick={(e) => AddToCart(details)}
                         >
                           <span style={{ margin: "auto" }}>
-                            <i
+                            {/* <i
                               class="fa simple fa-bag-shopping"
                               style={{
                                 fontSize: "17px",
@@ -1245,12 +1245,10 @@ const Details = (props) => {
                                 color: "white",
                                 paddingRight: "5px",
                               }}
-                            ></i>{" "}
-                             {/* <img className='cartImage' 
-            style={{width:'1.8vw',marginTop:'3%',objectFit:'contain',border:'1px solid red',
-
-            }} 
-            src={cartImage}/> */}
+                            ></i>{" "} */}
+                             <img className='cartDesign' 
+            
+            src={cartImage}/>
                             ADD TO CART
                           </span>
                         </button>

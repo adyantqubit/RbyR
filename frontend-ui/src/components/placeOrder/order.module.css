@@ -46,7 +46,7 @@ Reason - To add hoverable effect  */
 
     border-bottom: 1px solid black;
     padding-bottom: 15px;
-    padding-top: 6vh;
+    padding-top: 2.5vh;
     font-size: 16px;
     font-weight: 500;
 }
@@ -75,7 +75,9 @@ Reason - To add hoverable effect  */
 
 .responsive {
     /* position:relative; */
-    padding-top: 153px;
+    /* padding-top: 153px; */
+    padding-top:var(--paddingSpace);
+    
     max-height: 100vh;
     /* overflow-y: scroll;
     overflow-x: hidden; */
@@ -611,7 +613,8 @@ Reaosn : Add the css  */
 
     .responsive {
         /* position:relative; */
-        padding-top: 70px;
+        padding-top: var(--phoneViewHeight);
+
     }
 
     .row {
@@ -665,6 +668,9 @@ height: 120px;}
     } */
     /* End of addition by Om Shrivastava on 25-11-23
     Reason : Set the height and widht in mobile view  */
+}
+.headText{
+    padding-top: 7vh;
 }
 
 @media (max-width: 768px) {

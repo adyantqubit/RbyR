@@ -49,7 +49,9 @@
 .Container {
     /* position: relative; */
     /* top:24vh; */
-    padding-top: 160px;
+    /* padding-top: 160px; */
+  padding-top:var(--paddingSpace);
+
     /* margin-bottom: 24vh; */
     /* max-height: 120vh;
     overflow: auto; */

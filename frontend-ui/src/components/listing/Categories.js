@@ -95,7 +95,7 @@ const Categories = () => {
                 // paddingLeft:'5%',
                 // flexDirection:'row',justifyContent:
                 // 'space-around',
-                paddingTop:'2.5%'
+                // paddingTop:'2.5%'
             }}
                  className={style.heading}>
                     <div className={style.headingSection} > 

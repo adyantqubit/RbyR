@@ -129,6 +129,8 @@
     top:23vh; */
 
     padding-top:153px;
+  padding-top:var(--paddingSpace);
+
     /* padding-top:120px; */
 
     width:100%;

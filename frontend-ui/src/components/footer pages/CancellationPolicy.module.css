@@ -7,6 +7,9 @@
     width:100%;
     background:var(--backgroundColorSecondary);
     padding-top: 24vh;
+    
+    padding-top:var(--paddingSpace);
+
     max-height: 100vh;
     /* overflow-y: scroll; */
 }
@@ -117,7 +120,7 @@
 
 @media screen and (max-width:768px) {
     .ppContainer{
-       padding-top:80px;    
+       padding-top:8vh;    
     }
     .tacContainer{
         top:5vh;

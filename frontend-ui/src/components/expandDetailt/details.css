@@ -56,3 +56,18 @@ box-shadow: 0 2px 10px 1px #323232;
 .ant-form-item{
   margin-bottom: 10px;
 }
+.cartDesign{
+  width: 1.6vw;
+  padding-right: 2%;
+  margin-bottom: 5%;
+  /* border: 1px solid red; */
+}
+
+@media (max-width: 768px) {
+  .cartDesign{
+    width: 5.5vw;
+    margin-bottom: 5%;
+    padding-right: 2%;
+    /* border: 1px solid red; */
+  }
+}

@@ -4,13 +4,15 @@
 
     position: relative;
     /* top:100px; */
-    top:90px;
+    /* top:90px; */
     
 
     height: auto;
     width:100%;
     background:var(--backgroundColorSecondary);
     padding-top: 100px;
+  padding-top:var(--paddingSpace);
+    
 }
 
 .contain{
@@ -96,7 +98,7 @@
 @media screen and (max-width:768px) {
     .tacContainer{
         /* top:5vh; */
-        top:-2vh;
+        top:-5vh;
 
     }
     .subTitle,.content,.title{
