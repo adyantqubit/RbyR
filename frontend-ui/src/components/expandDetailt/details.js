@@ -52,6 +52,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import "./styles.css";
+import cartImage from "../../images/cartImage.png";
 
 // import required modules
 import { Navigation } from "swiper/modules";
@@ -1237,7 +1238,7 @@ const Details = (props) => {
                         >
                           <span style={{ margin: "auto" }}>
                             <i
-                              class="fa-solid fa-bag-shopping"
+                              class="fa simple fa-bag-shopping"
                               style={{
                                 fontSize: "17px",
                                 position: "relative",
@@ -1245,6 +1246,11 @@ const Details = (props) => {
                                 paddingRight: "5px",
                               }}
                             ></i>{" "}
+                             {/* <img className='cartImage' 
+            style={{width:'1.8vw',marginTop:'3%',objectFit:'contain',border:'1px solid red',
+
+            }} 
+            src={cartImage}/> */}
                             ADD TO CART
                           </span>
                         </button>
@@ -1552,44 +1558,24 @@ const Details = (props) => {
                       href="https://wa.me/916264170187/dfdf"
                       style={{ fontSize: "1rem" }}
                     > */}
-                  <span className={styles["textDescription"]}>
+                  {/* <span className={styles["textDescription"]}>
                     {" "}
                     or share the details on
-                    {/* Commented and modified by - Ashish Dewangan on 15-02-2023
-                  Reason - To open external links in new browser tab */}
-                    {/* <a
-                      className={styles["textLink"]}
-                      style={{
-                        marginLeft: "3px",
-                        marginRight: "3px",
-                        // fontSize: "1em",
-                        // borderBottom:"1px solid grey",
-                      }}
-                      href={`https://wa.me/+91${whatsappContactNumber}?text=Product : ${details.title}  |  Category : ${details.category}`}
-                      
-                    > */}
+                   
                     <a
                       className={styles["textLink"]}
                       style={{
                         marginLeft: "3px",
                         marginRight: "3px",
-                        // fontSize: "1em",
-                        // borderBottom:"1px solid grey",
-                        // Added by Om Shrivastava on 19-11-23
-                        // Reason : Add the color
                         color: "rgb(59, 59, 224)",
-                        // End of addition by Om Shrivastava on 19-11-23
-                        // Reason : Add the color
                       }}
                       href={`https://wa.me/+91${whatsappContactNumber}?text=Product : ${details.title}  |  Category : ${details.category}`}
                       target="_blank"
                     >
-                      {/* End of code modification */}
                       Whatsapp
                     </a>
                     with us.
-                    {/* End of code modification */}
-                  </span>
+                  </span> */}
                   <span
 
                   // className={styles["subtitle"]}

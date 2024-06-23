@@ -21,7 +21,7 @@ import { afterColumnTotalOfferAdd } from "../../Redux-manage/services/billing";
 import { Typography } from "@mui/material";
 import { MdOutlineArrowBack } from "react-icons/md";
 import "../../context.css";
-import cartImage from "../../images/cartIcon.png";
+import cartImage from "../../images/cartImage.png";
 
 const Cart = () => {
   const {
@@ -83,20 +83,24 @@ const Cart = () => {
         {/* <i class="fa" >&#xf07a;</i> */}
         {
           cart && cart.length > 0 ? (
-            <i
-              class="fa-solid fa-bag-shopping"
-              style={{ fontSize: "20px", position: "relative", color: "black" }}
-            ></i>
+            // <i
+            //   class="fa-solid fa-bag-shopping"
+            //   style={{ fontSize: "20px", position: "relative", color: "black" }}
+            // ></i>
+            <img className='cartImage' 
+            src={cartImage}/>
           ) : (
-            // <img className='' style={{width:'2vw',marginTop:'-20%',objectFit:'contain'}} src={cartImage}/>
-            <i
-              class="fa-solid fa-bag-shopping"
-              style={{
-                fontSize: "20px",
-                position: "relative",
-                color: "yellow",
-              }}
-            ></i>
+            <img className='cartImage' 
+            // style={{width:'1.8vw',marginTop:'-20%',objectFit:'contain'}} 
+            src={cartImage}/>
+            // <i
+            //   class="fa-solid fa-bag-shopping"
+            //   style={{
+            //     fontSize: "20px",
+            //     position: "relative",
+            //     color: "black",
+            //   }}
+            // ></i>
           )
           // <img style={{width:'2vw',marginTop:'-20%'}} src={cartImage}/>
         }
@@ -511,7 +515,7 @@ export function DrawerFooter() {
             Reason - To navingate to home page if continue shopping button is clicked */}
               {/* <button className={style.shopbtn1} onClick={e => setCartDrawer(false)}>CONTINUE SHOPPING</button> */}
               <button
-                className={style.shopbtn1}
+                className={style.shopbtn2}
                 onClick={(e) => {
                   setCartDrawer(false);
                   nav("/");
@@ -522,7 +526,7 @@ export function DrawerFooter() {
               {/* End of code modification by - Ashish Dewangan on 16-12-2023
             Reason - To navingate to home page if continue shopping button is clicked */}
               <buton
-                className={style.shopbtn1}
+                className={style.shopbtn2}
                 onClick={(e) => {
                   cartChecking();
                 }}

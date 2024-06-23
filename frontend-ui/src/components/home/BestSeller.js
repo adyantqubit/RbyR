@@ -54,7 +54,7 @@ const BestSeller = () => {
 
     return (
         <>
-            {/* <div className={style.container}>
+            <div className={style.container}>
             {bestProducts?.length > 0 ?
 
                 <div className={style.branding}>
@@ -112,7 +112,7 @@ const BestSeller = () => {
                         null}
                 </div>
 
-            </div> */}
+            </div>
 
 
         

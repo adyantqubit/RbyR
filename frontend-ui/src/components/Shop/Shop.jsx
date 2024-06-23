@@ -10,6 +10,7 @@ import config from '../../api/config'
 import logo from "../../assets/photos/rts-icon.svg";
 
 import '../../context.css';
+import Navbar from "../global/NavHeader";
 
 const Shop = () => {
     const { product,nullpage,
@@ -50,7 +51,7 @@ const Shop = () => {
 console.log(product)
   return (
     <>
-    <NavHeader />
+    <Navbar/>
     <div className={style.Container} id="scrolled" onScroll={handleScroll}>
       <div
         className={style.bottom}

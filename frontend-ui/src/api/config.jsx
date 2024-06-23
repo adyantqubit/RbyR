@@ -1,4 +1,4 @@
-const baseURL = "http://192.168.1.60:8000";
+const baseURL = "http://192.168.1.13:8000";
 
 const config = {
   apiBaseURL: `${baseURL}/api/`,

@@ -77,8 +77,8 @@ Reason - To add hoverable effect  */
     /* position:relative; */
     padding-top: 153px;
     max-height: 100vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    /* overflow-y: scroll;
+    overflow-x: hidden; */
 
 }
 
@@ -97,8 +97,10 @@ Reason - To add hoverable effect  */
     letter-spacing: 2px;
     font-weight: 500;
 
-    background: var(--btnBackgroundColorPrimary);
-    color: var(--btnTextColorPrimary);
+    /* background: var(--btnBackgroundColorPrimary);
+    color: var(--btnTextColorPrimary); */
+    background-color: var(--btnBorderColorSecondary);
+  color: white;
     text-align: center;
     opacity: 1;
     position: relative;
@@ -117,11 +119,11 @@ Reason - To add hoverable effect  */
     text-decoration: none;
 }
 
-.shopbtn2:hover {
+/* .shopbtn2:hover {
     background-color: #fff;
     color: #000;
     border: 2px solid black;
-}
+} */
 
 .responsive::-webkit-scrollbar {
     display: none;

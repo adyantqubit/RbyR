@@ -401,9 +401,11 @@ class Invoice(APIView):
                 if is_sale:
                     discount = sale_discount_percentage / 100
                     product_price_after_sale = price * (1 - discount) * quantity
+                    product_discount_price = price * (1 - discount) 
                 else:
                     product_price_after_sale = price * quantity
-                print(product_price_after_sale,'checkkkk')
+                    product_discount_price = 0.0
+                print(product_price_after_sale,product_discount_price,'checkkkk')
                 
                 cartdata.append(cart)
                 data = {
@@ -436,6 +438,7 @@ class Invoice(APIView):
                     # Reason - To save product sale discount amount in product orders table
                     "sale_discount_percentage":cart["sale_discount_percentage"],
                     "product_price_after_sale":product_price_after_sale,
+                    'product_discount_price' : product_discount_price,
                     "is_sale": cart["is_sale"]
                     # End of code addition by - Om shrivastasva on 21-06-2024
                     # Reason - To save product sale discount amount in product orders table

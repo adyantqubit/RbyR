@@ -612,7 +612,7 @@ class product_ordersAdmin(admin.ModelAdmin):
     ,"shipping_charges","product_name","product_image",
     # Addition by Om Shrivastava on 22-06-2024
     # Reason : Add this field only readonly 
-    'product_price_after_sale')
+    'product_price_after_sale','product_discount_price')
     # End of addition by Om Shrivastava on 22-06-2024
     # Reason : Add this field only readonly 
     

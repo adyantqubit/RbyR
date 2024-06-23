@@ -532,7 +532,7 @@ const Billing = () => {
           }}
         >
           <button
-            className={style.shopbtn1}
+            className={style.shopbtn2}
             style={{ width: "50%" }}
             onClick={(e) => window.print()}
           >
@@ -1141,7 +1141,7 @@ const Billing = () => {
         >
           <Button
             type="primary"
-            className={styles.continueShopbtn}
+            className={styles.shopbtn2}
             onClick={goToHomePage}
           >
             Continue Shopping

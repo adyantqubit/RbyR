@@ -845,6 +845,9 @@ class product_orders(models.Model):
 
     product_price_after_sale = models.FloatField(default=0.0,blank=True,)
 
+    product_discount_price = models.FloatField(default=0.0,blank=True,)
+
+
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
     def __str__(self):
@@ -1368,7 +1371,9 @@ class StoreLocator(models.Model):
     def __str__(self) -> str:
          return "Location, contact and timing detail of RbyR store"
     class Meta:
-            verbose_name_plural = "RbyR Store Details"
+            # verbose_name_plural = "RbyR Store Details"
+            verbose_name_plural = "Footer contact details "
+
     #End of code addition
 
 #Added by Ashish on 16-11-2022

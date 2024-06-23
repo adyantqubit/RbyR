@@ -166,8 +166,11 @@
 	margin: 10px auto;
 	justify-content: center;
 	display: block;
-	background-color: var(--btnBackgroundColorPrimary);
-  color:var(--btnTextColorPrimary);
+	/* background-color: var(--btnBackgroundColorPrimary);
+  color:var(--btnTextColorPrimary); */
+
+  background-color: var(--btnBorderColorSecondary);
+  color: white;
 
 	font-size: 1em;
 	font-weight: bold;

@@ -80,6 +80,8 @@ export const SubMenuList = () => {
               >
                 <Link
                   className={style.al}
+                  style={{ fontSize: "20px" }}
+
                   to={
                     // checking length on menu if 0 then not showing submenu with image page
                     m.shownMenuNImg && m[`${parent[0]}`]?.length > 0

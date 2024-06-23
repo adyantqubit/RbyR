@@ -164,6 +164,10 @@ const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+
+  const [backgroundColor, setBackgroundColor] = useState('transparent');
+  const [textColor, setTextColor] = useState('black');
+
   const { data, isSuccess } = useGetLoggedUserQuery(access_token);
   const [userdata, setUserData] = useState({
     email: "",
@@ -264,17 +268,35 @@ const Navbar = () => {
   // };
 
   var refc = useRef();
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setBackgroundColor('white'); // Change to desired color
+        setTextColor('white');
+      } else {
+        setBackgroundColor('transparent'); // Original color
+        setTextColor('black');
+      }
+    };
 
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup function to remove the event listener
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  
   return (
     <div style={{ width: "100%" }}>
       <ToastContainer key={1} limit={1} enableMultiContainer={false} />
       <div
         className={style.contain}
+        style={{ backgroundColor, color: textColor }}
         // style={{ borderBottom: "1px solid white" }}
       >
         {/* Commented by Om Shrivastava on 13-06-2024
         Reason : No need to show header this part  */}
-        <div
+        {/* <div
           className={style.whatsappBanner}
           style={{
             color: "white",
@@ -307,32 +329,32 @@ const Navbar = () => {
           ) : (
             "Welcome to RbyR"
           )}
-        </div>
+        </div> */}
         {/* End of commented by Om Shrivastava on 13-06-2024
         Reason : No need to show header this part  */}
-        <div className={style.logo}>
-          {/* <img src="https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg" alt="Logo" onClick={openHome}/> */}
-          {/* Modification and addition by Om Shrivastava on 19-10-23
-          Reason : Need to set the path of the store locator image */}
-          {/* <img src={config.staticBaseURL + logo} alt="Logo" onClick={openHome} /> */}
+        {/* <div className={style.logo}>
+          
           <img
             src={config.staticBaseURL + "media/" + logo}
             alt="Logo"
             onClick={openHome}
           />
-          {/* <img src={logoimg}  onClick={openHome} /> */}
-          {/* End of modification and addition by Om Shrivastava on 19-10-23
-          Reason : Need to set the path of the store locator image */}
-        </div>
+         
+        </div> */}
 
-        <nav className={style.navbar}>
+        <nav className={style.navbar} 
+        // style={{border:'1px solid red'}}
+        >
           <ul className={style.nav_links} style={{ marginBottom: "0px" }}>
             <input type="checkbox" id="checkbox_toggle" />
             <label htmlFor="checkbox_toggle" className={style.hamburger}>
               &#9776;
             </label>
 
-            <div style={{ display: "flex", justifyContent: "space-around" }}>
+            <div style={{ display: "flex", 
+            justifyContent: "space-between"
+             ,alignItems:'center',
+              }}>
               {/* Commented and modified by - Ashish Dewangan on 03-12-2023
               Reason - To hide currency selector from header */}
               {/* <Converter /> */}
@@ -354,10 +376,19 @@ const Navbar = () => {
               Reason : No need to show INR  */}
               {/* End of code modification by - Ashish Dewangan on 03-12-2023
               Reason - To hide currency selector from header */}
-              <div className={style.menu}>
+            <div className={style.logo} 
+            >
+            <img
+            src={config.staticBaseURL + "media/" + logo}
+            alt="Logo"
+            onClick={openHome}
+          />
+</div>
+              <div className={style.menu}
+               >
                 {/* <li style={{height:"40px"}}><a className={style.al} href="/">Home</a></li>
                 <li className={style.services} onMouseEnter={openc} onMouseLeave={closec}>
-                  <span  className={style.al} href="/" style={{fontWeight:"450",fontSize:"16px"}}>ETHNIC</span>
+                  <span  className={style.al} href="/" style={{fontWeight:"450",fontSize:"20px"}}>ETHNIC</span>
                 
                   <ul className={style.dropdown}>
                     <li  style={{padding:"0",width:"40px",margin:"20px 15px",border:"none",whiteSpace:"nowrap"}}><Link className={style.al2} to="/listing/partywear" onClick={e=>setCategorySelected([])} >PARTY WEAR</Link></li>
@@ -391,7 +422,7 @@ const Navbar = () => {
                   <Link
                     className={style.al}
                     to="/aboutRR"
-                    style={{ fontSize: "16px" }}
+                    style={{ fontSize: "20px" }}
                     onClick={(e) => setCategorySelected([])}
                   >
                     About us
@@ -402,7 +433,7 @@ const Navbar = () => {
                   <Link
                     className={style.al}
                     to="/"
-                    style={{ fontSize: "16px" }}
+                    style={{ fontSize: "20px" }}
                   >
                     Home
                   </Link>
@@ -450,7 +481,7 @@ const Navbar = () => {
                   <Link
                     className={style.al}
                     to="/sale"
-                    style={{ fontSize: "16px" }}
+                    style={{ fontSize: "20px" }}
                     // onClick={(e) => setCategorySelected([])}
                   >
                     Sale
@@ -460,7 +491,7 @@ const Navbar = () => {
                   <Link
                     className={style.al}
                     to="/shop"
-                    style={{ fontSize: "16px" }}
+                    style={{ fontSize: "20px" }}
                     // onClick={(e) => setCategorySelected([])}
                   >
                     Shop
@@ -471,7 +502,7 @@ const Navbar = () => {
                   <Link
                     className={style.al}
                     to="/listing/ready to ship/0"
-                    style={{ fontSize: "16px" }}
+                    style={{ fontSize: "20px" }}
                     onClick={(e) => setCategorySelected([])}
                   >
                     Ready to ship
@@ -482,7 +513,7 @@ const Navbar = () => {
                   <Link
                     className={style.al}
                     to="/aboutRR"
-                    style={{ fontSize: "16px" }}
+                    style={{ fontSize: "20px" }}
                   > */}
                 {/* Modification and addition by Om Shrivastava on 13-06-2024
                     Reason : Change the name  */}
@@ -519,7 +550,7 @@ const Navbar = () => {
               {/* {access_token?<li><a className={style.al} href="/changePass">Change Password</a></li>:<li><Link to="/login">Register/Login</Link></li>}
                 {access_token?<li><span  className={style.al}  onClick={handleLogout}>Logout</span></li>:null} */}
 
-              <div className={style.system}>
+              <div className={style.system} >
                 <div>
                   <Search className={style.icons} />
                 </div>

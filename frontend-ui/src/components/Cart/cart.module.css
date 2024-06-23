@@ -108,17 +108,19 @@
     height: 40px;
     text-align: center;
     padding:4px 0;
-    background-color: var(--btnBackgroundColorPrimary);
-    color:var(--btnTextColorPrimary);
+    /* background-color: var(--btnBackgroundColorPrimary);
+    color:var(--btnTextColorPrimary); */
+    background-color: var(--btnBorderColorSecondary);
+  color: white;
     margin:5px;
   }
 
-  .shopbtn2:hover{
+  /* .shopbtn2:hover{
     border: 1px solid var(--btnBorderHoverColorPrimary);
     background-color:  var(--btnHoverBackgroundColorPrimary);
     color: var(--btnTextHoverColorPrimary);
     outline: #000;
-  }
+  } */
   
 
 

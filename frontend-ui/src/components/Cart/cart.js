@@ -1216,14 +1216,14 @@ const CartSItem = (props) => {
                   style={{ flexDirection: "column" }}
                 >
                   <buton
-                    className={style.shopbtn1}
+                    className={style.shopbtn2}
                     style={{ width: "100%", margin: "5px" }}
                     onClick={(e) => cartChecking()}
                   >
                     GO TO CHECKOUT
                   </buton>
                   <button
-                    className={style.shopbtn1}
+                    className={style.shopbtn2}
                     style={{ width: "100%", margin: "5px" }}
                     onClick={(e) => {
                       nav("/");

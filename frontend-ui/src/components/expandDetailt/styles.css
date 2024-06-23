@@ -9,9 +9,9 @@
   background: #fff;
 
   /* Center slide text vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 
 .swiper-slide img {
@@ -22,5 +22,9 @@
 }
 .swiper-slide {
     width: 100%;
-    height: 75vh;
+    /* height: 75vh; */
+    /* height: 95vh; */
+    height: 100vh;
+
+
 }

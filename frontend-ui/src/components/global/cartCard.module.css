@@ -344,11 +344,11 @@ Reason : Set the font family  */
   text-decoration: none;
 }
 
-.shopbtn2:hover {
+/* .shopbtn2:hover {
   background-color: var(--btnHoverBackgroundColorSecondary);
   color: var(--btnTextHoverColorSecondary);
   border: 2px solid var(--btnBorderHoverColorSecondary);
-}
+} */
 
 .promo {
   margin: 10px 0;

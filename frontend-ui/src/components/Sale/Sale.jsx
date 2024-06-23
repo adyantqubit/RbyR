@@ -13,6 +13,7 @@ import config from '../../api/config'
 import logo from "../../assets/photos/rts-icon.svg";
 
 import '../../context.css';
+import Navbar from "../global/NavHeader";
 
 const Sale = () => {
     const { product,nullpage,
@@ -59,7 +60,7 @@ const Sale = () => {
 console.log(bestProducts,product)
   return (
     <>
-    <NavHeader />
+    <Navbar />
     <div className={style.Container} id="scrolled" onScroll={handleScroll}>
       <div
         className={style.bottom}
@@ -184,7 +185,7 @@ console.log(bestProducts,product)
         </div>
       </div>
 
-      {loading ? (
+      {/* {loading ? (
         // <div style={{ width: "100%", background: "white" }}>
         <div className={style.loader}>
           <div class="centered">
@@ -192,7 +193,7 @@ console.log(bestProducts,product)
             <div class="blob-2"></div>
           </div>
         </div>
-      ) : null}
+      ) : null} */}
 
       <div className={style.foot}>
         <Footer />
