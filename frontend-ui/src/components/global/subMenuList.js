@@ -101,18 +101,18 @@ export const SubMenuList = () => {
         <div
           className={style.subMenuList}
         >
-          <ul className={style.ul}>
-            <li
+          <ul className={style.ul} >
+            {/* <li
               className={style.l}
-              style={{ marginLeft: "-30px", padding: "2px" }}
-            >
-              <ul>
+              style={{ padding: "2px" }}
+            > */}
+              <ul >
                 {renderCategory == true && list != null
                   ? list[`${parent}`]?.map((s) => (
                       <div className={style.card}>
                         <div
-                          style={{ cursor: "pointer" }}
-                          className={style.menu}
+                          style={{ cursor: "pointer",fontSize:'17px',fontFamily: "var(--pagesFontFamily)"}}
+                          // className={style.menu}
                           onClick={(e) => jumpIntoProductPage(s)}
                         >
                           {s.category}
@@ -122,7 +122,7 @@ export const SubMenuList = () => {
                   : nullPage}
                   {/* hello */}
               </ul>
-            </li>
+            {/* </li> */}
           </ul>
         </div>
       </div>

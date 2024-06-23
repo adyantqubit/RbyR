@@ -139,8 +139,7 @@ function Slideshow() {
                   className={style.dblock}
                   // src={pay[0].src}
 
-                  // src={config.staticBaseURL + item.src}
-                 src="https://cdn.pixelbin.io/v2/black-bread-289bfa/81ub5U/t.resize(w:2000)/manish-banner/1708683043HOME_PAGE_revised-_1531x731_sarees.webp"
+                  src={config.staticBaseURL + item.src}
                   // alt="First slide"
                 />
               </Link>

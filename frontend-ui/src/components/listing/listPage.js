@@ -261,6 +261,8 @@ const ListPage = () => {
       {/* {showOptions?<NavHeader/>:null} */}
       <NavHeader />
       <div className={style.Container} id="scrolled" onScroll={handleScroll}>
+      <div  className={style.divContainer} >
+
         <div
           className={style.bottom}
           // style={sortui?{opacity:"0.7"}:null}
@@ -549,6 +551,8 @@ Reason : Need to comment the filter functionality */}
           {/* End of comment */}
         </div>
       </div>
+      </div>
+
     </>
   );
 };

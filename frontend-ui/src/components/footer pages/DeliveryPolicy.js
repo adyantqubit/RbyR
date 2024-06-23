@@ -5,18 +5,17 @@ import style1 from "./contact.module.css";
 import style from "./DeliveryPolicy.module.css";
 import { getDeliveryAndShippingPoliciesDetail } from "../../api/service";
 import parse from "html-react-parser";
-import { notification } from 'antd';
-import stylee from './globalFooterFile.module.css'
-import '../../context.css'
+import { notification } from "antd";
+import stylee from "./globalFooterFile.module.css";
+import "../../context.css";
 
 const DeliveryPolicy = () => {
-  notification.destroy()
+  notification.destroy();
   const [deliveryAndShippingPolicies, setDeliveryAndShippingPolicies] =
     useState([]);
   useEffect(() => {
     getDeliveryAndShippingPolicies();
-    window.scrollTo(0,0)
-
+    window.scrollTo(0, 0);
   }, []);
 
   const getDeliveryAndShippingPolicies = async () => {
@@ -32,48 +31,60 @@ const DeliveryPolicy = () => {
       <Navbar />
 
       <div className={style.ppContainer}>
-      <div className='headingFooter'
-      > Delivery & Shipping Policy</div> 
-        <div className={style.contain}>
-          {deliveryAndShippingPolicies.length > 0 ? (
-            <>
-              {deliveryAndShippingPolicies.map((deliveryAndShippingPolicy) => {
-                return (
-                  <div className={style.column}>
-                    <span className={style.title}>
-                      {parse(deliveryAndShippingPolicy.title1)}
-                    </span>
-                    <span  dangerouslySetInnerHTML={{__html:deliveryAndShippingPolicy.content1}} className={style.content}>
-                      {/* {parse(deliveryAndShippingPolicy.content1)} */}
-                    </span>
-                    <br />
-                    <span className={style.title}>
-                      {parse(deliveryAndShippingPolicy.title2)}
-                    </span>
-                    <span dangerouslySetInnerHTML={{__html:deliveryAndShippingPolicy.content2}} className={style.content}>
-                      {/* {parse(deliveryAndShippingPolicy.content2)} */}
-                    </span>
-                  </div>
-                );
-              })}
-            </>
-          ) : (
-                  // Addition and modification by Om shrivastava on 27-11-23
-          // Reason : Set the height and width
-          <div className={stylee.footerPrivacyNullContent}
-          // style={{height:'35vh'}}
-          >
-            
-            <div 
-            // style={{border:'1px solid black'}}
-            >
-            Delivery Policy Details Are Not Available
-            </div>
-            </div>
-            // End of addition and modification by Om shrivastava on 27-11-23
-          // Reason : Set the height and width
-          )}
-          {/* <div className={style.column}>
+        <div className={style.divContainer}>
+          <div className="headingFooter"> Delivery & Shipping Policy</div>
+          <div className={style.contain}>
+            {deliveryAndShippingPolicies.length > 0 ? (
+              <>
+                {deliveryAndShippingPolicies.map(
+                  (deliveryAndShippingPolicy) => {
+                    return (
+                      <div className={style.column}>
+                        <span className={style.title}>
+                          {parse(deliveryAndShippingPolicy.title1)}
+                        </span>
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html: deliveryAndShippingPolicy.content1,
+                          }}
+                          className={style.content}
+                        >
+                          {/* {parse(deliveryAndShippingPolicy.content1)} */}
+                        </span>
+                        <br />
+                        <span className={style.title}>
+                          {parse(deliveryAndShippingPolicy.title2)}
+                        </span>
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html: deliveryAndShippingPolicy.content2,
+                          }}
+                          className={style.content}
+                        >
+                          {/* {parse(deliveryAndShippingPolicy.content2)} */}
+                        </span>
+                      </div>
+                    );
+                  }
+                )}
+              </>
+            ) : (
+              // Addition and modification by Om shrivastava on 27-11-23
+              // Reason : Set the height and width
+              <div
+                className={stylee.footerPrivacyNullContent}
+                // style={{height:'35vh'}}
+              >
+                <div
+                // style={{border:'1px solid black'}}
+                >
+                  Delivery Policy Details Are Not Available
+                </div>
+              </div>
+              // End of addition and modification by Om shrivastava on 27-11-23
+              // Reason : Set the height and width
+            )}
+            {/* <div className={style.column}>
             <span className={style.title}>DELIVERY & SHIPPING POLICY</span>
             <span className={style.content}>
             We offer complimentary domestic shipping.
@@ -108,10 +119,11 @@ const DeliveryPolicy = () => {
              We will provide you with an estimated delivery date for your order at the time of placing the order, which will also be noted on your order confirmation email. We do not ship on Saturdays, Sundays and/or on nationally observed holidays. Once shipped, you will receive a shipment confirmation email with a tracking number. Please note : the shipping charge DOES NOT include import duty(s). Please read our tax related T&Cs. Before your parcel leaves our warehouse, it is fully checked by our quality control team. If you receive an item which is damaged, please Contact Us immediately at adyant.org@gmail.com
             </span>
           </div> */}
-        </div>
+          </div>
 
-        <div className={style.footerMargin} style={{ paddingTop: "100px" }}>
-          <Footer />
+          <div className={style.footerMargin} style={{ paddingTop: "100px" }}>
+            <Footer />
+          </div>
         </div>
       </div>
     </div>

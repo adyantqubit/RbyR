@@ -1,9 +1,18 @@
 @import '../../root.css';
+
+.divContainer {
+    background-image: var(--page-background-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
 .container{
     padding-top:var(--paddingSpace);
 
  padding-bottom: 80px;
- background-color: var(--backgroundColorSecondary);
+ /* background-color: var(--backgroundColorSecondary); */
 }
 
 .headingSection{

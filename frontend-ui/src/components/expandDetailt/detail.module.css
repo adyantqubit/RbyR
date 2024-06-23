@@ -24,6 +24,14 @@
   Reason - To adjust margin of size selection codes
   */
 
+  .divContainer {
+    background-image: var(--page-background-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
 .container {
   width: 100%;
   display: flex;
@@ -36,7 +44,7 @@
     overflow-x: hidden; */
   align-items: center;
   flex-direction: column;
-  background-color: var(--backgroundColorSecondary);
+  /* background-color: var(--backgroundColorSecondary); */
 }
 
 /* .container::-webkit-scrollbar{
@@ -56,7 +64,7 @@
   display: flex;
   /* align-items: flex-start; */
   flex-direction: row;
-  background-color: var(--backgroundColorSecondary);
+  /* background-color: var(--backgroundColorSecondary); */
   /* border: 1px solid red; */
   /* padding: 40px 6% 60px; */
   padding: 25px 6% 60px;
@@ -647,7 +655,7 @@
   height: 45px;
   border: 1px solid rgb(177, 175, 175);
   border-right: 0px solid rgb(177, 175, 175);
-  background-color: #fcfcfc;
+  /* background-color: #fcfcfc; */
   padding: 10px;
 }
 .chatInputBox:focus {
@@ -862,7 +870,7 @@
   --tw-border-opacity: 1;
   border-color: rgb(226 226 226 / 1);
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / 1);
+  /* background-color: rgb(255 255 255 / 1); */
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / 1);
   padding: 4%;

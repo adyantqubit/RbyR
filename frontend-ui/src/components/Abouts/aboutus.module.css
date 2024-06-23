@@ -13,13 +13,24 @@
                               'embedded-opentype', and 'svg' */
   }
 
+  .divContainer {
+    background-image: var(--page-background-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
 .container {
-    padding-top: 153px;
+    /* padding-top: 153px; */
+    padding-top:var(--paddingSpace);
+
     padding-bottom: 100px;
     width: 100%;
-    background-color: #fff;
+    /* background-color: #fff; */
     overflow-x: hidden;
 }
+
 
 .contain{
     min-height: 50vh;
@@ -60,7 +71,7 @@
 .header {
     height: 153px;
     width: 100%;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
 }
 
 .TextContainer{
@@ -116,7 +127,9 @@
 
 @media (max-width:768px) {
     .container{
-        padding-top: 10vh;
+        /* padding-top: 10vh; */
+        padding-top: 7vh;
+
     }
     .InnerImgContainer {
         display: flex;

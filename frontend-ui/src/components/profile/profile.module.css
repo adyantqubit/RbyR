@@ -8,6 +8,13 @@
                               'embedded-opentype', and 'svg' */
 }
 
+.divContainer {
+    background-image: var(--page-background-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
 
 .scrolling {
     max-height: 100vh;
@@ -56,9 +63,11 @@
     /* max-height: 120vh;
     overflow: auto; */
     width: 100%;
-    background-color: var(--backgroundColorSecondary);
-    display: flex;
-    justify-content: center;
+    padding-left: 2%;
+    padding-right: 2%;
+    /* background-color: var(--backgroundColorSecondary); */
+    /* display: flex; */
+    /* justify-content: center; */
 }
 
 
@@ -166,7 +175,7 @@
 
 .table {
     width: 100%;
-    background-color: var(--backgroundColorSecondary);
+    /* background-color: var(--backgroundColorSecondary); */
     /* border: #323232 solid 1px; */
 }
 

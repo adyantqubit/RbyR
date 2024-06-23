@@ -270,7 +270,7 @@ const Navbar = () => {
   var refc = useRef();
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 5) {
         setBackgroundColor('white'); // Change to desired color
         setTextColor('white');
       } else {

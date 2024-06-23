@@ -263,6 +263,8 @@ const UserProfile = () => {
       {/* {end of code} */}
 
       <div className={style.Container} >
+      <div className={style.divContainer}  >
+
         <div className={style.centerContainer}>
           <div className={style.containerHeader}>
             {/* Addition by Om Shrivastava on 25-11-23
@@ -488,6 +490,7 @@ const UserProfile = () => {
               </div>
             </div>
           </div>
+        </div>
         </div>
 
       </div>

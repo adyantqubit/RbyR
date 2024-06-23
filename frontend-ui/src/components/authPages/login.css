@@ -7,8 +7,9 @@
 	align-items: center;
 	min-height: 80vh;
 	position: relative;
-	top:20vh;
+	top:14vh;
 	font-family: 'Jost', sans-serif;
+	/* background-color: aqua; */
 	/* background: var(--backgroundColorPrimary); */
 }
 .mai{

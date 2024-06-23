@@ -128,6 +128,7 @@ const Billing = () => {
     <>
       <Navbar />
       <div className={styles.container} id="scrolled">
+        <div  className={styles.divContainer} >
         {checkoutDetails.payment_status == "pending" ? (
           <div className={styles.main}>
             {/* { checkoutDetails.payment == "onlinepay" ? ( */}
@@ -792,7 +793,7 @@ const Billing = () => {
                       id="footer"
                       style={{
                         marginTop: "5px",
-                        background: "var(--backgroundColorSecondary)",
+                        // background: "var(--backgroundColorSecondary)",
                       }}
                     >
                       {/* Commented and modified by - Ashish Dewangan on 29-11-2023
@@ -1155,6 +1156,7 @@ const Billing = () => {
           Reason - To hide the text that appear after footer */}
           {/* <Below /> */}
           {/* End of comment */}
+        </div>
         </div>
       </div>
     </>

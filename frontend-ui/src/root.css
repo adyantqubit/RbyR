@@ -176,7 +176,9 @@ Reason : Set the padding and margin of antd notification */
     Reason : Set the font size globally  */
     --parentHeading: 16px;
     --subHeading : 14px;
-    --paddingSpace : 105px;
+    /* --paddingSpace : 105px; */
+    --paddingSpace : 92px;
+
     --phoneViewHeight : 27px;
     --pagesFontFamily : "Jost-Regular";
     --headerFontFamily : Segoe UI
@@ -184,6 +186,9 @@ Reason : Set the padding and margin of antd notification */
     Segoe UI Light
     Segoe UI Symbol
     Segoe UI Italic;
+
+  --page-background-image: url("../public/backgroundImage3.jpeg");
+
      /* End of addition by Om Shrivastava on 13-06-2024
     Reason : Set the font size globally  */
 

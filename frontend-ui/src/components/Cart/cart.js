@@ -139,9 +139,8 @@ const CartSItem = (props) => {
           `style${CartProduct.id}${CartProduct.size}`
         ).style.display = "none";
       }
-    // } else if (CartProduct.size == "Short") { 
-    } else if (CartProduct.size == "Small") { 
-
+      // } else if (CartProduct.size == "Short") {
+    } else if (CartProduct.size == "Small") {
       if (CartProduct.quantity <= CartProduct.S + 1) {
         document.getElementById(
           `style${CartProduct.id}${CartProduct.size}`
@@ -156,7 +155,7 @@ const CartSItem = (props) => {
     }
     // Addition by Om shrivastava on 10-12-23
     // Reason : When quanitity is decrease then alert message is show
-    // if (CartProduct.quantity == 1) 
+    // if (CartProduct.quantity == 1)
     //   return(
     //   <Popconfirm
     //     placement="bottomLeft"
@@ -250,9 +249,8 @@ const CartSItem = (props) => {
         size: "M",
       };
       await increamentApiMethodCall({ CartProduct, data });
-    // } else if (CartProduct.size == "Short") {
+      // } else if (CartProduct.size == "Short") {
     } else if (CartProduct.size == "Small") {
-
       var data = {
         id: CartProduct.id,
         quantity: CartProduct.quantity,
@@ -416,7 +414,7 @@ const CartSItem = (props) => {
               // End of modification and addition by Om shrivastava on 01-12-23
               // REason : Create the popup class to apply the designing
               duration: 10,
-              key:1
+              key: 1,
             });
           });
         } else if (r.error_user) {
@@ -450,21 +448,20 @@ const CartSItem = (props) => {
         }
         // Addition by Om Shrivastava on 14-12-23
         // Reason : Add condition when product is not active
-        else if(r.error_inactive){
-          cartEnd = r.error_inactive
-          cartEnd.map(c => {
+        else if (r.error_inactive) {
+          cartEnd = r.error_inactive;
+          cartEnd.map((c) => {
             notification.error({
-              message: <div className='popupClass'>Not available</div>,
-              className:'popupClass',
-              style:{backgroundColor:"#f1cdd9"},
-              description:
-              <span>
-                Product {c.name.toLowerCase()} is not available 
-              </span>,
+              message: <div className="popupClass">Not available</div>,
+              className: "popupClass",
+              style: { backgroundColor: "#f1cdd9" },
+              description: (
+                <span>Product {c.name.toLowerCase()} is not available</span>
+              ),
               duration: 10,
-              key:1
+              key: 1,
             });
-          })
+          });
         }
         // End of Addition by Om Shrivastava on 14-12-23
         // Reason : Add condition when product is not active
@@ -627,7 +624,7 @@ const CartSItem = (props) => {
                           <Popconfirm
                             placement="bottomLeft"
                             title={text}
-                            style={{fontFamily:'var(--pagesFontFamily)'}}
+                            style={{ fontFamily: "var(--pagesFontFamily)" }}
                             onConfirm={(e) => confirm(pro)}
                             okText="OK"
                             cancelText="Cancel"
@@ -650,13 +647,12 @@ const CartSItem = (props) => {
                         >
                           {" "}
                           {currency.sign}{" "}
-                           {/* Modification and addition by Om Shrivastava on 18-06-2024
+                          {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                           {/* {(pro.price * currency.value).toFixed(2)} */}
                           {(pro.price * currency.value).toLocaleString("en-IN")}
-                           {/* Modification and addition by Om Shrivastava on 18-06-2024
+                          {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
-
                         </div>
                         <div
                           style={{
@@ -803,11 +799,10 @@ const CartSItem = (props) => {
                             display: "flex",
                             flexDirection: "row",
                             // Modification and addition by Om Shrivastava on 22-12-23
-                            // Reason : Need to give space 
+                            // Reason : Need to give space
                             justifyContent: "space-around",
                             // End of modification and addition by Om Shrivastava on 22-12-23
-                            // Reason : Need to give space 
-
+                            // Reason : Need to give space
                           }}
                         >
                           <h3
@@ -842,8 +837,7 @@ const CartSItem = (props) => {
                             placement="bottomLeft"
                             title={text}
                             onConfirm={(e) => confirm(pro)}
-                            style={{fontFamily:'var(--pagesFontFamily)'}}
-
+                            style={{ fontFamily: "var(--pagesFontFamily)" }}
                             okText="OK"
                             cancelText="Cancel"
                           >
@@ -857,42 +851,39 @@ const CartSItem = (props) => {
                           className={style.price}
                         >
                           {" "}
-
                           {/* {(pro.price * currency.value).toFixed(2)} */}
                           {/* Modification and addition by Om Shrivastava on 20-06-2024
                             Reason : Show the discountant amount which product on_sale  */}
                           {/* {(pro.price * currency.value).toLocaleString("en-IN")} */}
-
-                            {pro.is_sale == true ? (
-                              <>
-                                <strike>
-                                  {" "}
-                                  {currency.sign}{" "}
-                                  {(pro.price * currency.value).toLocaleString(
-                                    "en-IN"
-                                  )}
-                                </strike>
-                                <div>
-                                  {" "}
-                                  {currency.sign}{" "}
-                                  {(
-                                    pro.price *
-                                    (1 - pro.sale_discount_percentage / 100) *
-                                    currency.value
-                                  ).toLocaleString("en-IN")}
-                                </div>
-                              </>
-                            ) : (
-                              <>
+                          {pro.is_sale == true ? (
+                            <>
+                              <strike>
+                                {" "}
                                 {currency.sign}{" "}
                                 {(pro.price * currency.value).toLocaleString(
                                   "en-IN"
                                 )}
-                              </>
-                            )}
-                            {/* End of Modification and addition by Om Shrivastava on 20-06-2024
+                              </strike>
+                              <div>
+                                {" "}
+                                {currency.sign}{" "}
+                                {(
+                                  pro.price *
+                                  (1 - pro.sale_discount_percentage / 100) *
+                                  currency.value
+                                ).toLocaleString("en-IN")}
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              {currency.sign}{" "}
+                              {(pro.price * currency.value).toLocaleString(
+                                "en-IN"
+                              )}
+                            </>
+                          )}
+                          {/* End of Modification and addition by Om Shrivastava on 20-06-2024
                             Reason : Show the discountant amount which product on_sale  */}
-
                         </div>
                         <div
                           style={{
@@ -1083,7 +1074,7 @@ const CartSItem = (props) => {
                   </span>
                   <span style={{ marginRight: "15px", fontWeight: "600" }}>
                     {currency.sign}{" "}
-                     {/* Modification and addition by Om Shrivastava on 18-06-2024
+                    {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                     {/* {(
                       afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
@@ -1093,34 +1084,33 @@ const CartSItem = (props) => {
                       afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
                       currency.value
                     ).toLocaleString("en-IN")}
-                     {/* Modification and addition by Om Shrivastava on 18-06-2024
+                    {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                   </span>
                 </div>
-          {(afterColumnTotalOfferAdd(offer, cart, taxRate).shipping)!=0 ? 
-
-                <div className={style.subTotal}>
-                  <span style={{ marginLeft: "15px", fontWeight: "600" }}>
-                    SHIPPING CHARGES
-                  </span>
-                  <span style={{ marginRight: "15px", fontWeight: "600" }}>
-                    {currency.sign}{" "}
-
-                     {/* Modification and addition by Om Shrivastava on 18-06-2024
+                {afterColumnTotalOfferAdd(offer, cart, taxRate).shipping !=
+                0 ? (
+                  <div className={style.subTotal}>
+                    <span style={{ marginLeft: "15px", fontWeight: "600" }}>
+                      SHIPPING CHARGES
+                    </span>
+                    <span style={{ marginRight: "15px", fontWeight: "600" }}>
+                      {currency.sign}{" "}
+                      {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
-                    {/* {(
+                      {/* {(
                       afterColumnTotalOfferAdd(offer, cart, taxRate).shipping *
                       currency.value
                     ).toFixed(2)} */}
-                     {(
-                      afterColumnTotalOfferAdd(offer, cart, taxRate).shipping *
-                      currency.value
-                    ).toLocaleString("en-IN")}
-                     {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      {(
+                        afterColumnTotalOfferAdd(offer, cart, taxRate)
+                          .shipping * currency.value
+                      ).toLocaleString("en-IN")}
+                      {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
-                  </span>
-                </div>
-          :null}
+                    </span>
+                  </div>
+                ) : null}
 
                 {/* <div className={style.subTotal}>
                   <span style={{ marginLeft: "15px", fontWeight: "600" }}>GST CHARGES</span>
@@ -1152,7 +1142,7 @@ const CartSItem = (props) => {
                     </span>
                     <span style={{ marginRight: "15px", fontWeight: "600" }}>
                       - {currency.sign}{" "}
-                       {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                       {/* {(
                         afterColumnTotalOfferAdd(offer, cart, taxRate).coupon *
@@ -1162,7 +1152,7 @@ const CartSItem = (props) => {
                         afterColumnTotalOfferAdd(offer, cart, taxRate).coupon *
                         currency.value
                       ).toLocaleString("en-IN")}
-                       {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                     </span>
                   </div>
@@ -1196,17 +1186,17 @@ const CartSItem = (props) => {
                     }}
                   >
                     {currency.sign}{" "}
-                     {/* Modification and addition by Om Shrivastava on 18-06-2024
+                    {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                     {/* {(
                       afterColumnTotalOfferAdd(offer, cart, taxRate).Grand *
                       currency.value
                     ).toFixed(2)} */}
-                     {(
+                    {(
                       afterColumnTotalOfferAdd(offer, cart, taxRate).Grand *
                       currency.value
                     ).toLocaleString("en-IN")}
-                     {/* Modification and addition by Om Shrivastava on 18-06-2024
+                    {/* Modification and addition by Om Shrivastava on 18-06-2024
                       Reason : Remove the commas and decimal value  */}
                   </span>
                 </div>
@@ -1249,7 +1239,6 @@ const CartSItem = (props) => {
               className={styles.importantRules}
               // style={{ borderTop: "1px solid rgba(140,140,140,0.7)" }}
             >
-
               {/* Modified by - Ashish Dewangan on 14-12-2023
               Reason - Hide important when cart is empty or important points are not added */}
               {/* <h6
@@ -1264,26 +1253,22 @@ const CartSItem = (props) => {
                 IMPORTANTS
               </h6> */}
 
-              {
-                cart.length > 0 && (
-                  ( ImportantRules.point1 != null ) || 
-                  ( ImportantRules.point2 != null ) || 
-                  ( ImportantRules.point3 != null ) )
-               ?
+              {cart.length > 0 &&
+              (ImportantRules.point1 != null ||
+                ImportantRules.point2 != null ||
+                ImportantRules.point3 != null) ? (
                 <h6
-                style={{
-                  fontSize: "14px",
-                  lineHeight: "22px",
-                  letterSpacing: "1.2px",
-                  marginLeft: "40px",
-                  color: "var(--textColorSecondary)",
-                }}
-              >
-                IMPORTANTS
-              </h6>
-              :
-              null
-              }
+                  style={{
+                    fontSize: "14px",
+                    lineHeight: "22px",
+                    letterSpacing: "1.2px",
+                    marginLeft: "40px",
+                    color: "var(--textColorSecondary)",
+                  }}
+                >
+                  IMPORTANTS
+                </h6>
+              ) : null}
               {/* End of code modification by - Ashish Dewangan on 14-12-2023
               Reason - Hide important when cart is empty or important points are not added */}
               <ul
@@ -1429,7 +1414,7 @@ const CartSItem = (props) => {
       Reason - To reduce margin because footer was overlapping with content */}
       {/* <div className={styles.sliderShow} style={{ marginTop: "-80px" }}> */}
       <div className={styles.sliderShow} style={{ marginTop: "-40px" }}>
-      {/* End of modification by - Ashish Dewangan on 20-12-2023
+        {/* End of modification by - Ashish Dewangan on 20-12-2023
       Reason - To reduce margin because footer was overlapping with content */}
         <div
           className={styles.columnContainer}

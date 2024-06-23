@@ -1,11 +1,19 @@
 
 @import '../../root.css';
+.divContainer {
+    background-image: var(--page-background-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
 .ppContainer{
     /* position: relative;
     top:23vh; */
     height: auto;
     width:100%;
-    background:var(--backgroundColorSecondary);
+    /* background:var(--backgroundColorSecondary); */
     padding-top: 24vh;
     
     padding-top:var(--paddingSpace);
@@ -42,7 +50,7 @@
     flex-direction: row;
     /* padding-top: 7vh; */
     justify-content: space-around;
-    background:var(--backgroundColorSecondary);
+    /* background:var(--backgroundColorSecondary); */
     padding-bottom: 30vh;
   
 }
@@ -50,7 +58,7 @@
 .column{
     height:auto;
     width:100%;
-    background:var(--backgroundColorSecondary);
+    /* background:var(--backgroundColorSecondary); */
     display: flex;
     flex-direction: column;
   
@@ -120,7 +128,7 @@
 
 @media screen and (max-width:768px) {
     .ppContainer{
-       padding-top:8vh;    
+       padding-top:7vh;    
     }
     .tacContainer{
         top:5vh;

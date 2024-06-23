@@ -630,55 +630,59 @@ const Details = (props) => {
 
       {details ? (
         <div className={styles["container"]} ref={scroller}>
-          <div className={styles["container01"]}>
-            <div className={styles["container02"]}>
-              <div className={styles["subImagesContainer"]}>
-                {details.img_sub1 != null ? (
-                  // {details.img_sub1 !== "/media/null" && (
-                  <div className={styles.imageContainer}>
-                    <img
-                      className={styles.subImage}
-                      src={config.staticBaseURL + details.img_sub1}
-                      onClick={() => updateMainImage(details.img_sub1)}
-                      alt="Sub Image 1"
-                    />
-                  </div>
-                ) : // )}
-                null}
+          <div className={styles.divContainer}>
+            <div className={styles["container01"]}>
+              <div className={styles["container02"]}>
+                <div className={styles["subImagesContainer"]}>
+                  {details.img_sub1 != null ? (
+                    // {details.img_sub1 !== "/media/null" && (
+                    <div className={styles.imageContainer}>
+                      <img
+                        className={styles.subImage}
+                        src={config.staticBaseURL + details.img_sub1}
+                        onClick={() => updateMainImage(details.img_sub1)}
+                        alt="Sub Image 1"
+                      />
+                    </div>
+                  ) : // )}
+                  null}
 
-                {details.img_sub2 != null ? (
-                  // {details.img_sub2 !== "/media/null" && (
-                  <div className={styles.imageContainer}>
-                    <img
-                      className={styles.subImage}
-                      src={config.staticBaseURL + details.img_sub2}
-                      onClick={() => updateMainImage(details.img_sub2)}
-                      alt="Sub Image 266"
-                    />
-                  </div>
-                ) : // )}
-                null}
-                {details.img_sub3 != null ? (
-                  // {details.img_sub3 !== "/media/null" && (
-                  <div className={styles.imageContainer}>
-                    <img
-                      className={styles.subImage}
-                      src={config.staticBaseURL + details.img_sub3}
-                      onClick={() => updateMainImage(details.img_sub3)}
-                      alt="Sub Image 3"
-                    />
-                  </div>
-                ) : // )}
-                null}
-              </div>
-              <div className={styles["image"]}style={{border:'1px solid red'}}>
-                <img
-                  className={styles.subImage}
-                  src={config.staticBaseURL + mainImage}
-                  alt="Main"
-                />
+                  {details.img_sub2 != null ? (
+                    // {details.img_sub2 !== "/media/null" && (
+                    <div className={styles.imageContainer}>
+                      <img
+                        className={styles.subImage}
+                        src={config.staticBaseURL + details.img_sub2}
+                        onClick={() => updateMainImage(details.img_sub2)}
+                        alt="Sub Image 266"
+                      />
+                    </div>
+                  ) : // )}
+                  null}
+                  {details.img_sub3 != null ? (
+                    // {details.img_sub3 !== "/media/null" && (
+                    <div className={styles.imageContainer}>
+                      <img
+                        className={styles.subImage}
+                        src={config.staticBaseURL + details.img_sub3}
+                        onClick={() => updateMainImage(details.img_sub3)}
+                        alt="Sub Image 3"
+                      />
+                    </div>
+                  ) : // )}
+                  null}
+                </div>
+                <div
+                  className={styles["image"]}
+                  // style={{ border: "1px solid red" }}
+                >
+                  <img
+                    className={styles.subImage}
+                    src={config.staticBaseURL + mainImage}
+                    alt="Main"
+                  />
 
-                {/* <div className={styles["zoomContainer"]} >
+                  {/* <div className={styles["zoomContainer"]} >
                         <div className={`${styles.zoomImage} ${zoom ? styles.zoomed : ''}`}>
                           <img src={config.staticBaseURL + mainImage} alt="Zoomable" />
                         </div>
@@ -686,7 +690,7 @@ const Details = (props) => {
                           {zoom ? '-' : '+'}
                         </button>
                       </div> */}
-                {/* <div
+                  {/* <div
                   ref={containerRef}
                   className={styles.zoomContainer}
                   onWheel={handleWheel}
@@ -711,131 +715,131 @@ const Details = (props) => {
                     />
                   </div>
                 </div> */}
-              </div>
-              <div
-                className={styles["slideImages"]}
-                style={{ border: "1px dotted black" }}
-              >
-                <Swiper
-                  navigation={true}
-                  modules={[Navigation]}
-                  className="mySwiper"
+                </div>
+                <div
+                  className={styles["slideImages"]}
+                  // style={{ border: "1px dotted black" }}
                 >
-                  <SwiperSlide>
-                    <img src={config.staticBaseURL + details.img_main} />
-                  </SwiperSlide>
-                  {details.img_sub1 != null ? (
-                    <SwiperSlide>
-                      <img src={config.staticBaseURL + details.img_sub1} />
-                    </SwiperSlide>
-                  ) : null}
-
-                  {details.img_sub2 != null ? (
-                    <SwiperSlide>
-                      <img src={config.staticBaseURL + details.img_sub2} />
-                    </SwiperSlide>
-                  ) : null}
-
-                  {details.img_sub3 != null ? (
-                    <SwiperSlide>
-                      <img src={config.staticBaseURL + details.img_sub3} />
-                    </SwiperSlide>
-                  ) : null}
-                </Swiper>
-              </div>
-
-              <div className={styles["container03"]}>
-                <div className={styles["container04"]}>
-                  <h1
-                    className={styles["heading"]}
-                    style={{ wordBreak: "break-all" }}
+                  <Swiper
+                    navigation={true}
+                    modules={[Navigation]}
+                    className="mySwiper"
                   >
-                    {details.title.toLowerCase()}
-                  </h1>
+                    <SwiperSlide>
+                      <img src={config.staticBaseURL + details.img_main} />
+                    </SwiperSlide>
+                    {details.img_sub1 != null ? (
+                      <SwiperSlide>
+                        <img src={config.staticBaseURL + details.img_sub1} />
+                      </SwiperSlide>
+                    ) : null}
 
-                  <span className={styles["text04"]}>
-                    {details.description}
-                  </span>
-                  {/* Commented by - Ashish Dewangan on 17-02-2023
+                    {details.img_sub2 != null ? (
+                      <SwiperSlide>
+                        <img src={config.staticBaseURL + details.img_sub2} />
+                      </SwiperSlide>
+                    ) : null}
+
+                    {details.img_sub3 != null ? (
+                      <SwiperSlide>
+                        <img src={config.staticBaseURL + details.img_sub3} />
+                      </SwiperSlide>
+                    ) : null}
+                  </Swiper>
+                </div>
+
+                <div className={styles["container03"]}>
+                  <div className={styles["container04"]}>
+                    <h1
+                      className={styles["heading"]}
+                      style={{ wordBreak: "break-all" }}
+                    >
+                      {details.title.toLowerCase()}
+                    </h1>
+
+                    <span className={styles["text04"]}>
+                      {details.description}
+                    </span>
+                    {/* Commented by - Ashish Dewangan on 17-02-2023
                   Reason - To hide description and to have simple UI */}
-                  {/* <h1 className={styles["subtitle"]}>{details.about}</h1> */}
-                  {/* End of comment */}
-                  <h3
-                    style={{ marginTop: "2px" }}
-                    className={styles["priceLabel"]}
-                  >
-                    {" "}
-                    {/* {currency.sign}{" "} */}
-                    {/* Modification and addition by Om Shrivastava on 15-06-2024
+                    {/* <h1 className={styles["subtitle"]}>{details.about}</h1> */}
+                    {/* End of comment */}
+                    <h3
+                      style={{ marginTop: "2px" }}
+                      className={styles["priceLabel"]}
+                    >
+                      {" "}
+                      {/* {currency.sign}{" "} */}
+                      {/* Modification and addition by Om Shrivastava on 15-06-2024
                     Reason : Show the price with commas, remove the decimal value  */}
-                    {/* {(details.price * currency.value).toFixed(2)} */}
-                    {/* Modification and addition by Om Shrivastava on 20-06-2024
+                      {/* {(details.price * currency.value).toFixed(2)} */}
+                      {/* Modification and addition by Om Shrivastava on 20-06-2024
                             Reason : Show the discountant amount which product on_sale  */}
-                    {/* {(details.price * currency.value).toLocaleString("en-IN")} */}
-                    {details.is_sale == true ? (
-                      <>
-                        MRP:{" "}
-                        <strike>
-                          {" "}
-                          {currency.sign}{" "}
+                      {/* {(details.price * currency.value).toLocaleString("en-IN")} */}
+                      {details.is_sale == true ? (
+                        <>
+                          MRP:{" "}
+                          <strike>
+                            {" "}
+                            {currency.sign}{" "}
+                            {(details.price * currency.value).toLocaleString(
+                              "en-IN"
+                            )}
+                          </strike>
+                          <div>
+                            {" "}
+                            MRP: {currency.sign}{" "}
+                            {(
+                              details.price *
+                              (1 - details.sale_discount_percentage / 100) *
+                              currency.value
+                            ).toLocaleString("en-IN")}
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          MRP: {currency.sign}{" "}
                           {(details.price * currency.value).toLocaleString(
                             "en-IN"
                           )}
-                        </strike>
-                        <div>
-                          {" "}
-                          MRP: {currency.sign}{" "}
-                          {(
-                            details.price *
-                            (1 - details.sale_discount_percentage / 100) *
-                            currency.value
-                          ).toLocaleString("en-IN")}
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        MRP: {currency.sign}{" "}
-                        {(details.price * currency.value).toLocaleString(
-                          "en-IN"
-                        )}
-                      </>
-                    )}
-                    {/* End of Modification and addition by Om Shrivastava on 20-06-2024
+                        </>
+                      )}
+                      {/* End of Modification and addition by Om Shrivastava on 20-06-2024
                             Reason : Show the discountant amount which product on_sale  */}
-                    {/* End of modification and addition by Om Shrivastava on 15-06-2024
+                      {/* End of modification and addition by Om Shrivastava on 15-06-2024
                     Reason : Show the price with commas, remove the decimal value  */}
-                  </h3>
+                    </h3>
 
-                  {/* Added by - Ashish Dewangan on 17-02-2023
+                    {/* Added by - Ashish Dewangan on 17-02-2023
                   Reason - To add a horizontal line after price */}
-                  {/* Commented by Om Shrivastava on 24-11-23
+                    {/* Commented by Om Shrivastava on 24-11-23
                   Reason : No need to show this line */}
-                  {/* <div
+                    {/* <div
                     style={{
                       borderBottom: "1px solid lightgrey",
                       width: "90%",
                       marginTop: "15px",
                     }}
                   ></div> */}
-                  {/* End of Commented by Om Shrivastava on 24-11-23
+                    {/* End of Commented by Om Shrivastava on 24-11-23
                   Reason : No need to show this line  */}
-                  {/* End of code addition */}
-                  <div className={styles["container05"]}>
-                    <div
-                      class={sizeCond ? sty : "rating-container face"}
-                      className={styles.sizeSlection}
-                      style={{ display: "flex", width: "100%" }}
-                    >
-                      <span
-                        className={`${styles["textLabel"]} ${styles.sizeMargin}`}
-                        style={{ alignItems: "flex-start" }}
+                    {/* End of code addition */}
+                    <div className={styles["container05"]}>
+                      <div
+                        class={sizeCond ? sty : "rating-container face"}
+                        className={styles.sizeSlection}
+                        style={{ display: "flex", width: "100%" }}
                       >
-                        Size{" "}
-                      </span>
+                        <span
+                          className={`${styles["textLabel"]} ${styles.sizeMargin}`}
+                          style={{ alignItems: "flex-start" }}
+                        >
+                          Size{" "}
+                        </span>
 
-                      {/* Commented by - Ashish Dewangan on 29-12-2023
+                        {/* Commented by - Ashish Dewangan on 29-12-2023
                       Reason - Redesigned size selection box */}
-                      {/* {pushData ? (
+                        {/* {pushData ? (
                         <Shake>
                           <div>
                             {" "}
@@ -920,21 +924,21 @@ const Details = (props) => {
                           </div>
                         </Shake>
                       ) : ( */}
-                      {/* End of comment by - Ashish Dewangan on 29-12-2023
+                        {/* End of comment by - Ashish Dewangan on 29-12-2023
                       Reason - Redesigned size selection box */}
 
-                      <div
-                        style={{
-                          display: "inline-flex",
-                          flexDirection: "column",
-                          width: "75%",
-                        }}
-                      >
-                        <div class="rating">
-                          <form class="rating-form">
-                            {/* Commented by - Ashish Dewangan on 17-02-2023
+                        <div
+                          style={{
+                            display: "inline-flex",
+                            flexDirection: "column",
+                            width: "75%",
+                          }}
+                        >
+                          <div class="rating">
+                            <form class="rating-form">
+                              {/* Commented by - Ashish Dewangan on 17-02-2023
                               Reason - To hide sizes that are not required */}
-                            {/* <label
+                              {/* <label
                                 for={details.id * 2}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
                                 style={{ textDecoration: "none" }}
@@ -949,108 +953,108 @@ const Details = (props) => {
                                 />
                                 <span class="span">XS</span>
                               </label> */}
-                            {/* End of comment */}
-                            <label
-                              for={details.id}
-                              className={`
+                              {/* End of comment */}
+                              <label
+                                for={details.id}
+                                className={`
                               ${styles.customSubtitle} ${styles.sizeText}`}
-                              style={{
-                                textDecoration: "none",
-                                padding: "0%",
-                              }}
-                            >
-                              <input
-                                type="radio"
-                                name={details.id}
-                                class="super-happy"
-                                id={details.id}
-                                // value="Short"
-                                value="Small"
-                                onChange={(e) => onChange(e.target.value)}
-                                // style={{border:'1px solid red'}}
-                              />
-
-                              <span
-                                //  style={{b}
-                                class="span"
-                                // className={styles["sizeContainer"]}
-                                style={{ padding: "9% 15% 9% 15%" }}
+                                style={{
+                                  textDecoration: "none",
+                                  padding: "0%",
+                                }}
                               >
-                                &nbsp;S&nbsp;
-                              </span>
-                            </label>
+                                <input
+                                  type="radio"
+                                  name={details.id}
+                                  class="super-happy"
+                                  id={details.id}
+                                  // value="Short"
+                                  value="Small"
+                                  onChange={(e) => onChange(e.target.value)}
+                                  // style={{border:'1px solid red'}}
+                                />
 
-                            <label
-                              for={details.id * 44}
-                              className={` ${styles.customSubtitle} ${styles.sizeText}`}
-                              style={{
-                                textDecoration: "none",
-                              }}
-                            >
-                              <input
-                                type="radio"
-                                name={details.id}
-                                class="happy"
-                                id={details.id * 44}
-                                value="Medium"
-                                onChange={(e) => onChange(e.target.value)}
-                              />
-                              <span
-                                class="span"
-                                style={{ padding: "9% 15% 9% 15%" }}
-                              >
-                                &nbsp;M&nbsp;
-                              </span>
-                            </label>
+                                <span
+                                  //  style={{b}
+                                  class="span"
+                                  // className={styles["sizeContainer"]}
+                                  style={{ padding: "9% 15% 9% 15%" }}
+                                >
+                                  &nbsp;S&nbsp;
+                                </span>
+                              </label>
 
-                            <label
-                              for={details.id * 88}
-                              className={` ${styles.customSubtitle} ${styles.sizeText}`}
-                              style={{
-                                textDecoration: "none",
-                              }}
-                            >
-                              <input
-                                type="radio"
-                                name={details.id}
-                                class="sad"
-                                id={details.id * 88}
-                                value="Large"
-                                onChange={(e) => onChange(e.target.value)}
-                              />
-                              <span
-                                class="span"
-                                style={{ padding: "9% 15% 9% 15%" }}
+                              <label
+                                for={details.id * 44}
+                                className={` ${styles.customSubtitle} ${styles.sizeText}`}
+                                style={{
+                                  textDecoration: "none",
+                                }}
                               >
-                                &nbsp;L&nbsp;
-                              </span>
-                            </label>
+                                <input
+                                  type="radio"
+                                  name={details.id}
+                                  class="happy"
+                                  id={details.id * 44}
+                                  value="Medium"
+                                  onChange={(e) => onChange(e.target.value)}
+                                />
+                                <span
+                                  class="span"
+                                  style={{ padding: "9% 15% 9% 15%" }}
+                                >
+                                  &nbsp;M&nbsp;
+                                </span>
+                              </label>
 
-                            <label
-                              for={details.id * 108}
-                              className={` ${styles.customSubtitle} ${styles.sizeText}`}
-                              style={{
-                                textDecoration: "none",
-                              }}
-                            >
-                              <input
-                                type="radio"
-                                name={details.id}
-                                class="super-sad"
-                                id={details.id * 108}
-                                value="Extra Large"
-                                onChange={(e) => onChange(e.target.value)}
-                              />
-                              <span
-                                class="span"
-                                style={{ padding: "9% 15% 9% 15%" }}
+                              <label
+                                for={details.id * 88}
+                                className={` ${styles.customSubtitle} ${styles.sizeText}`}
+                                style={{
+                                  textDecoration: "none",
+                                }}
                               >
-                                XL
-                              </span>
-                            </label>
-                            {/* Commented by - Ashish Dewangan on 17-02-2023
+                                <input
+                                  type="radio"
+                                  name={details.id}
+                                  class="sad"
+                                  id={details.id * 88}
+                                  value="Large"
+                                  onChange={(e) => onChange(e.target.value)}
+                                />
+                                <span
+                                  class="span"
+                                  style={{ padding: "9% 15% 9% 15%" }}
+                                >
+                                  &nbsp;L&nbsp;
+                                </span>
+                              </label>
+
+                              <label
+                                for={details.id * 108}
+                                className={` ${styles.customSubtitle} ${styles.sizeText}`}
+                                style={{
+                                  textDecoration: "none",
+                                }}
+                              >
+                                <input
+                                  type="radio"
+                                  name={details.id}
+                                  class="super-sad"
+                                  id={details.id * 108}
+                                  value="Extra Large"
+                                  onChange={(e) => onChange(e.target.value)}
+                                />
+                                <span
+                                  class="span"
+                                  style={{ padding: "9% 15% 9% 15%" }}
+                                >
+                                  XL
+                                </span>
+                              </label>
+                              {/* Commented by - Ashish Dewangan on 17-02-2023
                               Reason - To hide sizes that are not required */}
-                            {/* <label
+                              {/* <label
                                 for={details.id * 126}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
                                 style={{ textDecoration: "none" }}
@@ -1080,12 +1084,12 @@ const Details = (props) => {
                                 />
                                 <span class="span">XXXL</span>
                               </label> */}
-                            {/* End of comment */}
-                          </form>
-                        </div>
-                        {/* Modified by - Ashish Dewangan on 29-12-2023
+                              {/* End of comment */}
+                            </form>
+                          </div>
+                          {/* Modified by - Ashish Dewangan on 29-12-2023
                         Reason - Redesigned Size selection box */}
-                        {/* {notAvai ? (
+                          {/* {notAvai ? (
                           <div
                             // id="rating"
                             style={{
@@ -1098,113 +1102,113 @@ const Details = (props) => {
                           </div>
                         ) : null} */}
 
-                        {notAvai ? (
-                          <div
-                            // id="rating"
-                            style={{
-                              color: "red",
-                              fontSize: "0.8rem",
-                              marginLeft: "10px",
-                            }}
-                          >
-                            This size is not available.
-                          </div>
-                        ) : pushData ? (
-                          <div
-                            // class="rating"
-                            style={{
-                              color: "red",
-                              fontSize: "0.8rem",
-                              marginLeft: "10px",
-                            }}
-                          >
-                            Please select your size
-                          </div>
-                        ) : null}
-                        {/* End of code modification by - Ashish Dewangan on 29-12-2023
+                          {notAvai ? (
+                            <div
+                              // id="rating"
+                              style={{
+                                color: "red",
+                                fontSize: "0.8rem",
+                                marginLeft: "10px",
+                              }}
+                            >
+                              This size is not available.
+                            </div>
+                          ) : pushData ? (
+                            <div
+                              // class="rating"
+                              style={{
+                                color: "red",
+                                fontSize: "0.8rem",
+                                marginLeft: "10px",
+                              }}
+                            >
+                              Please select your size
+                            </div>
+                          ) : null}
+                          {/* End of code modification by - Ashish Dewangan on 29-12-2023
                         Reason - Redesigned Size selection box */}
+                        </div>
                       </div>
-                    </div>
 
-                    {/* <div className={styles.charts}> */}
-                    {/* <span  className={styles["text02"]}>Custom Tailored</span> */}
-                    {/* Added by Ashish Dewangan on 24-11-2022
+                      {/* <div className={styles.charts}> */}
+                      {/* <span  className={styles["text02"]}>Custom Tailored</span> */}
+                      {/* Added by Ashish Dewangan on 24-11-2022
                       Reason - To show custom tailored form */}
-                    {/* Commented by - Ashish Dewangan on 17-02-2023
+                      {/* Commented by - Ashish Dewangan on 17-02-2023
                       Reason - To hide custom tailored label and have simple UI */}
-                    {/* <span
+                      {/* <span
                         className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
                         style={{ cursor: "pointer" }}
                         onClick={showCustomTailoredForm}
                       >
                         Custom Tailored
                       </span> */}
-                    {/* End of comment */}
-                    {/* End of code addition */}
-                    {/* Commented and modified by - Ashish Dewangan on 23-11-2022
+                      {/* End of comment */}
+                      {/* End of code addition */}
+                      {/* Commented and modified by - Ashish Dewangan on 23-11-2022
                       Reason - to display size chart when we click on size chart text */}
-                    {/* <span  className={styles["text02"]}>Size Chart</span> */}
-                    {/* <span
+                      {/* <span  className={styles["text02"]}>Size Chart</span> */}
+                      {/* <span
                         className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
                         style={{ cursor: "pointer" }}
                         onClick={showSizeChart}
                       >
                         Size Chart
                       </span> */}
-                    {/* </div> */}
+                      {/* </div> */}
 
-                    <Modal
-                      /**
-                       * Commented and modified by - Ashish Dewangan on 03-12-2023
-                       * Reason - To give some space at top
-                       */
-                      // style={{ top: 0 }}
-                      style={{ top: "5vh" }}
-                      /**
-                       * End of code modification by - Ashish Dewangan on 03-12-2023
-                       * Reason - To give some space at top
-                       */
-                      className={styles["modalStyleCustomTailored"]}
-                      bodyStyle={{
-                        backgroundColor: "var(--modalBodyBackgroundColor)",
-                      }}
-                      footer={null}
-                      title="CUSTOM TAILORED"
-                      visible={isCustomTailoredVisible}
-                      onOk={handleCustomTailoredOk}
-                      onCancel={handleCustomTailoredCancel}
-                    >
-                      <CustomTailoredForm details={details} />
-                    </Modal>
-
-                    {/* Added by - Ashish Dewangan on 17-12-2023
-                    Reason - To show size chart */}
-                    {womenSizeChart.length > 0 && (
-                      <span
-                        className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
-                        style={{
-                          color: "#4c60e5",
-                          cursor: "pointer",
-                          fontSize: "14px",
-                          alignSelf: "flex-start",
+                      <Modal
+                        /**
+                         * Commented and modified by - Ashish Dewangan on 03-12-2023
+                         * Reason - To give some space at top
+                         */
+                        // style={{ top: 0 }}
+                        style={{ top: "5vh" }}
+                        /**
+                         * End of code modification by - Ashish Dewangan on 03-12-2023
+                         * Reason - To give some space at top
+                         */
+                        className={styles["modalStyleCustomTailored"]}
+                        bodyStyle={{
+                          backgroundColor: "var(--modalBodyBackgroundColor)",
                         }}
-                        onClick={showSizeChart}
+                        footer={null}
+                        title="CUSTOM TAILORED"
+                        visible={isCustomTailoredVisible}
+                        onOk={handleCustomTailoredOk}
+                        onCancel={handleCustomTailoredCancel}
                       >
-                        SIZE CHART
-                      </span>
-                    )}
-                    {/* End of code addition by - Ashish Dewangan on 17-12-2023
+                        <CustomTailoredForm details={details} />
+                      </Modal>
+
+                      {/* Added by - Ashish Dewangan on 17-12-2023
+                    Reason - To show size chart */}
+                      {womenSizeChart.length > 0 && (
+                        <span
+                          className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
+                          style={{
+                            color: "#4c60e5",
+                            cursor: "pointer",
+                            fontSize: "14px",
+                            alignSelf: "flex-start",
+                          }}
+                          onClick={showSizeChart}
+                        >
+                          SIZE CHART
+                        </span>
+                      )}
+                      {/* End of code addition by - Ashish Dewangan on 17-12-2023
                       Reason - To show size chart */}
-                    <Modal
-                      style={{ top: "25%" }}
-                      className={styles["modalStyle"]}
-                      footer={null}
-                      title="SIZE CHART"
-                      visible={isWomenSizeChartVisible}
-                      onOk={handleOk}
-                      onCancel={handleCancel}
-                    >
-                      {/* <img
+                      <Modal
+                        style={{ top: "25%" }}
+                        className={styles["modalStyle"]}
+                        footer={null}
+                        title="SIZE CHART"
+                        visible={isWomenSizeChartVisible}
+                        onOk={handleOk}
+                        onCancel={handleCancel}
+                      >
+                        {/* <img
                         style={{ width: "100%", height: "100%" }}
                         src={
                           womenSizeChart.length > 0
@@ -1212,32 +1216,32 @@ const Details = (props) => {
                             : "/women_size_chart.jpg"
                         }
                       /> */}
-                      <WomenSizeChart womenSizeChart={womenSizeChart} />
-                    </Modal>
-                    {/* End of code addition */}
-                  </div>
+                        <WomenSizeChart womenSizeChart={womenSizeChart} />
+                      </Modal>
+                      {/* End of code addition */}
+                    </div>
 
-                  <div
-                    className={` ${styles["customButtonContainer"]} `}
-                    style={{}}
-                  >
-                    <div style={{ display: "flex", gap: "15px" }}>
-                      {check() ? (
-                        <button
-                          className={` ${styles["button"]} `}
-                          onClick={(e) => saveCart(details)}
-                        >
-                          <span style={{ margin: "auto" }}>
-                            REMOVE FROM BAG
-                          </span>
-                        </button>
-                      ) : (
-                        <button
-                          className={` ${styles["button"]} `}
-                          onClick={(e) => AddToCart(details)}
-                        >
-                          <span style={{ margin: "auto" }}>
-                            {/* <i
+                    <div
+                      className={` ${styles["customButtonContainer"]} `}
+                      style={{}}
+                    >
+                      <div style={{ display: "flex", gap: "15px" }}>
+                        {check() ? (
+                          <button
+                            className={` ${styles["button"]} `}
+                            onClick={(e) => saveCart(details)}
+                          >
+                            <span style={{ margin: "auto" }}>
+                              REMOVE FROM BAG
+                            </span>
+                          </button>
+                        ) : (
+                          <button
+                            className={` ${styles["button"]} `}
+                            onClick={(e) => AddToCart(details)}
+                          >
+                            <span style={{ margin: "auto" }}>
+                              {/* <i
                               class="fa simple fa-bag-shopping"
                               style={{
                                 fontSize: "17px",
@@ -1246,92 +1250,90 @@ const Details = (props) => {
                                 paddingRight: "5px",
                               }}
                             ></i>{" "} */}
-                             <img className='cartDesign' 
-            
-            src={cartImage}/>
-                            ADD TO CART
-                          </span>
-                        </button>
-                      )}
-                      {/* Commetned by Om Shrivastava on 14-06-2024
+                              <img className="cartDesign" src={cartImage} />
+                              ADD TO CART
+                            </span>
+                          </button>
+                        )}
+                        {/* Commetned by Om Shrivastava on 14-06-2024
                       Reason : No need to show this section  */}
-                      {/* <button
+                        {/* <button
                         className={` ${styles["button2"]} `}
                         onClick={(e) => buyNow(details)}
                       >
                         <span style={{ margin: "auto" }}>BUY NOW</span>
                       </button> */}
-                      {/* Commetned by Om Shrivastava on 14-06-2024
+                        {/* Commetned by Om Shrivastava on 14-06-2024
                       Reason : No need to show this section  */}
-                    </div>
+                      </div>
 
-                    {like.filter((l) => l.id === details.id).length > 0 ? (
-                      // <AiFillHeart
+                      {like.filter((l) => l.id === details.id).length > 0 ? (
+                        // <AiFillHeart
+                        //   style={{
+                        //     color: "red",
+                        //     width: "25px",
+                        //     height: "25px",
+                        //   }}
+                        //   onClick={(e) => LikedSave(details)}
+                        // />
+                        <button
+                          className={` ${styles["button3"]} `}
+                          onClick={(e) => likeDelete(details)}
+                        >
+                          <span style={{ margin: "auto", paddingLeft: "10px" }}>
+                            REMOVE FROM WISHLIST
+                          </span>
+                          <div class="placement">
+                            <div
+                              class="heart is-active"
+                              /**
+                               * Commented by - Ashish Dewangan on 20-12-2023
+                               * Reason - To reduce api calling because parent button already has onclick listener for api calling
+                               */
+                              // onClick={(e) => LikedSave(details)}
+                              /**
+                               * End of comment by - Ashish Dewangan on 20-12-2023
+                               * Reason - To reduce api calling because parent button already has onclick listener for api calling
+                               */
+                            ></div>
+                          </div>
+                        </button>
+                      ) : // <AiOutlineHeart
                       //   style={{
-                      //     color: "red",
                       //     width: "25px",
                       //     height: "25px",
                       //   }}
                       //   onClick={(e) => LikedSave(details)}
                       // />
-                      <button
-                        className={` ${styles["button3"]} `}
-                        onClick={(e) => likeDelete(details)}
-                      >
-                        <span style={{ margin: "auto", paddingLeft: "10px" }}>
-                          REMOVE FROM WISHLIST
-                        </span>
-                        <div class="placement">
-                          <div
-                            class="heart is-active"
-                            /**
-                             * Commented by - Ashish Dewangan on 20-12-2023
-                             * Reason - To reduce api calling because parent button already has onclick listener for api calling
-                             */
-                            // onClick={(e) => LikedSave(details)}
-                            /**
-                             * End of comment by - Ashish Dewangan on 20-12-2023
-                             * Reason - To reduce api calling because parent button already has onclick listener for api calling
-                             */
-                          ></div>
-                        </div>
-                      </button>
-                    ) : // <AiOutlineHeart
-                    //   style={{
-                    //     width: "25px",
-                    //     height: "25px",
-                    //   }}
-                    //   onClick={(e) => LikedSave(details)}
-                    // />
-                    //     Commented by Om Shrivastava on 14-06-2024
-                    // Reason : No need to show this section
-                    // <button
-                    //   className={` ${styles["button3"]} `}
-                    //   onClick={(e) => LikedSave(details)}
-                    // >
-                    //   <span style={{ margin: "auto" }}>ADD TO WISHLIST</span>
-                    //   <div class="placement">
-                    //     <div
-                    //       class="heart"
-                    //       /**
-                    //        * Commented by - Ashish Dewangan on 20-12-2023
-                    //        * Reason - To reduce api calling because parent button already has onclick listener for api calling
-                    //        */
-                    //       // onClick={(e) => LikedSave(details)}
-                    //       /**
-                    //        * End of comment by - Ashish Dewangan on 20-12-2023
-                    //        * Reason - To reduce api calling because parent button already has onclick listener for api calling
-                    //        */
-                    //     ></div>
-                    //   </div>
-                    // </button>
+                      //     Commented by Om Shrivastava on 14-06-2024
+                      // Reason : No need to show this section
+                      // <button
+                      //   className={` ${styles["button3"]} `}
+                      //   onClick={(e) => LikedSave(details)}
+                      // >
+                      //   <span style={{ margin: "auto" }}>ADD TO WISHLIST</span>
+                      //   <div class="placement">
+                      //     <div
+                      //       class="heart"
+                      //       /**
+                      //        * Commented by - Ashish Dewangan on 20-12-2023
+                      //        * Reason - To reduce api calling because parent button already has onclick listener for api calling
+                      //        */
+                      //       // onClick={(e) => LikedSave(details)}
+                      //       /**
+                      //        * End of comment by - Ashish Dewangan on 20-12-2023
+                      //        * Reason - To reduce api calling because parent button already has onclick listener for api calling
+                      //        */
+                      //     ></div>
+                      //   </div>
+                      // </button>
 
-                    //    Commented by Om Shrivastava on 14-06-2024
-                    // Reason : No need to show this section
-                    null}
+                      //    Commented by Om Shrivastava on 14-06-2024
+                      // Reason : No need to show this section
+                      null}
 
-                    {/* <div className={` ${styles["iconButtonsContainer"]} `}> */}
-                    {/* {like.filter((l) => l.id === details.id).length > 0 ? (
+                      {/* <div className={` ${styles["iconButtonsContainer"]} `}> */}
+                      {/* {like.filter((l) => l.id === details.id).length > 0 ? (
                         <AiFillHeart
                           style={{
                             color: "red",
@@ -1350,13 +1352,13 @@ const Details = (props) => {
                         />
                       )} */}
 
-                    {/* Commented and modified by Ashish Dewangan on 24-11-2022
+                      {/* Commented and modified by Ashish Dewangan on 24-11-2022
                       Reason - To have whatsapp chat functionality */}
-                    {/* <a href="https://wa.me/916264170187"></a> */}
-                    {/* Commented and modified by - Ashish Dewangan on 15-02-2023
+                      {/* <a href="https://wa.me/916264170187"></a> */}
+                      {/* Commented and modified by - Ashish Dewangan on 15-02-2023
                          Reason - To open external links in new browser tab */}
 
-                    {/* <a
+                      {/* <a
                         href={`https://wa.me/send?text=${window.location.href}`} target="_blank"
                       >
                      
@@ -1369,59 +1371,59 @@ const Details = (props) => {
                           }}
                         />
                       </a> */}
-                    {/* End of code modification */}
-                    {/* </div> */}
-                  </div>
+                      {/* End of code modification */}
+                      {/* </div> */}
+                    </div>
 
-                  {/* Commented and modified by - Ashish Dewangan on 17-02-2023
+                    {/* Commented and modified by - Ashish Dewangan on 17-02-2023
                   Reason - To hide unnecessary details
                    */}
-                  {/* <h1 className={styles["subtitle"]}>ABOUT THE PRODUCT</h1> */}
-                  <h1 className={styles["subtitle"]}></h1>
-                  {/* End of code modification */}
+                    {/* <h1 className={styles["subtitle"]}>ABOUT THE PRODUCT</h1> */}
+                    <h1 className={styles["subtitle"]}></h1>
+                    {/* End of code modification */}
 
-                  {/* <span className={styles["text04"]}>
+                    {/* <span className={styles["text04"]}>
                     {details.description}
                   </span> */}
 
-                  {/* <div className={styles["container06"]}>
+                    {/* <div className={styles["container06"]}>
                     <span className={styles["textLabel"]}>Fabric</span>
                     <span className={styles["textLabel"]}>:</span>
                     <span className={styles["textDescription"]}>
                       {details.fabric}
                     </span>
                   </div> */}
-                  {/* Addition by Om Shrivastava on 24-12-23
+                    {/* Addition by Om Shrivastava on 24-12-23
                   Reason : When data is present then div is show */}
-                  {details.fabric ? (
-                    <div className={styles["detailsContainer"]}>
-                      <span className={styles["textHeading"]}>Fabric</span>
-                      <span className={styles["colon"]}>:</span>
-                      <span className={styles["textContent"]}>
-                        {details.fabric}
-                      </span>
-                    </div>
-                  ) : null}
-                  {/* End of addition by Om Shrivastava on 24-12-23
-                  Reason : When data is present then div is show */}
-
-                  {/* Addition by Om Shrivastava on 24-12-23
-                  Reason : When data is present then div is show */}
-                  {details.color ? (
-                    <div className={styles["detailsContainer"]}>
-                      <span className={styles["textHeading"]}>Color </span>
-                      <span className={styles["colon"]}> : </span>
-                      <span className={styles["textContent"]}>
-                        {details.color}
-                      </span>
-                    </div>
-                  ) : null}
-                  {/* End of addition by Om Shrivastava on 24-12-23
+                    {details.fabric ? (
+                      <div className={styles["detailsContainer"]}>
+                        <span className={styles["textHeading"]}>Fabric</span>
+                        <span className={styles["colon"]}>:</span>
+                        <span className={styles["textContent"]}>
+                          {details.fabric}
+                        </span>
+                      </div>
+                    ) : null}
+                    {/* End of addition by Om Shrivastava on 24-12-23
                   Reason : When data is present then div is show */}
 
-                  {/* Commented by - Ashish Dewangan on 17-02-2023
+                    {/* Addition by Om Shrivastava on 24-12-23
+                  Reason : When data is present then div is show */}
+                    {details.color ? (
+                      <div className={styles["detailsContainer"]}>
+                        <span className={styles["textHeading"]}>Color </span>
+                        <span className={styles["colon"]}> : </span>
+                        <span className={styles["textContent"]}>
+                          {details.color}
+                        </span>
+                      </div>
+                    ) : null}
+                    {/* End of addition by Om Shrivastava on 24-12-23
+                  Reason : When data is present then div is show */}
+
+                    {/* Commented by - Ashish Dewangan on 17-02-2023
                   Reason - To hide country of origin and have simple UI */}
-                  {/* <div className={styles["container08"]}>
+                    {/* <div className={styles["container08"]}>
                     <span className={styles["textLabel"]}>
                       Country of Origin
                     </span>
@@ -1431,43 +1433,45 @@ const Details = (props) => {
                     </span>
                   </div> */}
 
-                  {/* End of comment */}
+                    {/* End of comment */}
 
-                  {/* <h1 className={styles["subtitle"]} onClick={check}>
+                    {/* <h1 className={styles["subtitle"]} onClick={check}>
                     PRODUCT DETAILS
                   </h1> */}
 
-                  {/* Addition by Om Shrivastava on 24-12-23
+                    {/* Addition by Om Shrivastava on 24-12-23
                   Reason : When data is present then div is show */}
-                  {details.style_code ? (
-                    <div className={styles["detailsContainer"]}>
-                      <span className={styles["textHeading"]}>Style Code </span>
-                      <span className={styles["colon"]}>:</span>
-                      <span className={styles["textContent"]}>
-                        {details.style_code}
-                      </span>
-                    </div>
-                  ) : null}
-                  {/* End of addition by Om Shrivastava on 24-12-23
+                    {details.style_code ? (
+                      <div className={styles["detailsContainer"]}>
+                        <span className={styles["textHeading"]}>
+                          Style Code{" "}
+                        </span>
+                        <span className={styles["colon"]}>:</span>
+                        <span className={styles["textContent"]}>
+                          {details.style_code}
+                        </span>
+                      </div>
+                    ) : null}
+                    {/* End of addition by Om Shrivastava on 24-12-23
                   Reason : When data is present then div is show */}
 
-                  {/* Addition by Om Shrivastava on 04-11-23
+                    {/* Addition by Om Shrivastava on 04-11-23
                   Reason : Set the Care tip functionality */}
-                  {details?.careTip && details.careTip.length > 0 ? (
-                    <div className={styles["detailsContainer"]}>
-                      <span className={styles["textHeading"]}>Care Tip </span>
-                      <span className={styles["colon"]}>:</span>
-                      <span className={styles["textContent"]}>
-                        {details.careTip}
-                      </span>
-                    </div>
-                  ) : null}
-                  {/* End of Addition by Om Shrivastava on 04-11-23
+                    {details?.careTip && details.careTip.length > 0 ? (
+                      <div className={styles["detailsContainer"]}>
+                        <span className={styles["textHeading"]}>Care Tip </span>
+                        <span className={styles["colon"]}>:</span>
+                        <span className={styles["textContent"]}>
+                          {details.careTip}
+                        </span>
+                      </div>
+                    ) : null}
+                    {/* End of Addition by Om Shrivastava on 04-11-23
                   Reason : Set the Care tip functionality */}
 
-                  {/* Commented and modified by Ashish Dewangan on 23-11-2022
+                    {/* Commented and modified by Ashish Dewangan on 23-11-2022
                   Reason - To have standard shipping and ready to ship functionality */}
-                  {/* <div className={styles["container07"]}>
+                    {/* <div className={styles["container07"]}>
                       <span
                         className={styles["text08"]}
                         style={{ display: "inline-block", marginRight: "3px" }}
@@ -1489,52 +1493,50 @@ const Details = (props) => {
                       </span>
                     </div> */}
 
-                  {details.ready_to_ship ==
-                  true ? //     {" " + details.ready_to_ship_days} //   > //     style={{ display: "inline-block", marginRight: "3px" }} //     className={styles["textContent"]} //   <span //   <span className={styles["colon"]}> : </span> //   </span> //     Ready to Ship{" "} //   <span className={styles["textHeading"]}> // <div className={styles["detailsContainer"]}> // Reason : No need to show this section // Commented by Om Shrivastava on 14-06-2024
-                  //   </span>
-                  // </div>
-                  // Commented by Om Shrivastava on 14-06-2024
-                  // Reason : No need to show this section
-                  null : (
-                    <>
-                      {details.shipping_days ? (
-                        <div className={styles["detailsContainer"]}>
-                          <span
-                            className={styles["textHeading"]}
-                            // style={{ display: "inline-block", marginRight: "3px" }}
-                          >
-                            {/* Standard Shipping{" "} */}
-                            Delivery Time{" "}
-                          </span>{" "}
-                          <span
-                            className={styles["colon"]}
-                            // style={{ display: "inline-block", marginRight: "3px" }}
-                          >
-                            :{" "}
-                          </span>
-                          <span
-                            className={styles["textContent"]}
-                            // style={{ display: "inline-block", marginRight: "3px" }}
-                          >
-                            {" " + details.shipping_days}
-                          </span>
-                        </div>
-                      ) : null}
-                    </>
-                  )}
-                  {/* End of code modification */}
-                  {/* Commented by - Ashish Dewangan on 17-02-2023
+                    {details.ready_to_ship == true ? //   </span> //     {" " + details.ready_to_ship_days} //   > //     style={{ display: "inline-block", marginRight: "3px" }} //     className={styles["textContent"]} //   <span //   <span className={styles["colon"]}> : </span> //   </span> //     Ready to Ship{" "} //   <span className={styles["textHeading"]}> // <div className={styles["detailsContainer"]}> // Reason : No need to show this section // Commented by Om Shrivastava on 14-06-2024
+                    // </div>
+                    // Commented by Om Shrivastava on 14-06-2024
+                    // Reason : No need to show this section
+                    null : (
+                      <>
+                        {details.shipping_days ? (
+                          <div className={styles["detailsContainer"]}>
+                            <span
+                              className={styles["textHeading"]}
+                              // style={{ display: "inline-block", marginRight: "3px" }}
+                            >
+                              {/* Standard Shipping{" "} */}
+                              Delivery Time{" "}
+                            </span>{" "}
+                            <span
+                              className={styles["colon"]}
+                              // style={{ display: "inline-block", marginRight: "3px" }}
+                            >
+                              :{" "}
+                            </span>
+                            <span
+                              className={styles["textContent"]}
+                              // style={{ display: "inline-block", marginRight: "3px" }}
+                            >
+                              {" " + details.shipping_days}
+                            </span>
+                          </div>
+                        ) : null}
+                      </>
+                    )}
+                    {/* End of code modification */}
+                    {/* Commented by - Ashish Dewangan on 17-02-2023
                   Reason - To hide unnecessary details and have simple UI*/}
-                  {/* <div className={styles["container08"]}>
+                    {/* <div className={styles["container08"]}>
                     <span className={styles["textDescription"]}>
                       Additional Charges for International Shipping
                     </span>
                   </div> */}
-                  {/* End of comment */}
-                  {/* Commented by Om Shrivastava on 14-06-2024
+                    {/* End of comment */}
+                    {/* Commented by Om Shrivastava on 14-06-2024
                   Reason : No need to show this section  */}
-                  {/* <h1 className={styles["subtitle"]}>FOR CUSTOMISATIONS</h1> */}
-                  {/* <span className={styles["textDescription"]}>
+                    {/* <h1 className={styles["subtitle"]}>FOR CUSTOMISATIONS</h1> */}
+                    {/* <span className={styles["textDescription"]}>
                     <span
                       onClick={showCustomTailoredForm}
                       className={styles["textLink"]}
@@ -1548,15 +1550,15 @@ const Details = (props) => {
                     </span>{" "}
                     your customisation details
                   </span> */}
-                  {/* Commented by Om Shrivastava on 14-06-2024
+                    {/* Commented by Om Shrivastava on 14-06-2024
                   Reason : No need to show this section  */}
-                  {/* Commented and modified by Ashish Dewangan on 24-11-2022
+                    {/* Commented and modified by Ashish Dewangan on 24-11-2022
                       Reason - To have whatsapp chat functionality */}
-                  {/* <a
+                    {/* <a
                       href="https://wa.me/916264170187/dfdf"
                       style={{ fontSize: "1rem" }}
                     > */}
-                  {/* <span className={styles["textDescription"]}>
+                    {/* <span className={styles["textDescription"]}>
                     {" "}
                     or share the details on
                    
@@ -1574,11 +1576,11 @@ const Details = (props) => {
                     </a>
                     with us.
                   </span> */}
-                  <span
+                    <span
 
-                  // className={styles["subtitle"]}
-                  >
-                    {/* <Link
+                    // className={styles["subtitle"]}
+                    >
+                      {/* <Link
                       to="/custom"
                       className={styles["subtitle"]}
                       style={{
@@ -1587,40 +1589,40 @@ const Details = (props) => {
                         fontSize: "14px",
                       }}
                     > Contact Us  </Link> */}
-                    <Link
-                      to="/refund-policy"
-                      className={styles["hoverableSubtitle"]}
-                      style={{
-                        textDecoration: "none",
-                        letterSpacing: "1px",
-                        fontSize: "14px",
-                        color: "rgb(59, 59, 224)",
-                        borderBottom: "1px solid rgb(59, 59, 224)",
-                        // fontWeight:'500'
-                      }}
-                    >
-                      {" "}
-                      Return Policy{" "}
-                    </Link>{" "}
-                    <span> |</span>{" "}
-                    <Link
-                      to="/delivery-policy"
-                      className={styles["hoverableSubtitle"]}
-                      style={{
-                        textDecoration: "none",
-                        letterSpacing: "1px",
-                        fontSize: "14px",
-                        color: "rgb(59, 59, 224)",
-                        borderBottom: "1px solid rgb(59, 59, 224)",
-                        // fontWeight:'500'
-                      }}
-                    >
-                      Shipping Policy
-                    </Link>
-                  </span>
-                  {/* Commented by - Ashish Dewangan on 17-02-2023
+                      <Link
+                        to="/refund-policy"
+                        className={styles["hoverableSubtitle"]}
+                        style={{
+                          textDecoration: "none",
+                          letterSpacing: "1px",
+                          fontSize: "14px",
+                          color: "rgb(59, 59, 224)",
+                          borderBottom: "1px solid rgb(59, 59, 224)",
+                          // fontWeight:'500'
+                        }}
+                      >
+                        {" "}
+                        Return Policy{" "}
+                      </Link>{" "}
+                      <span> |</span>{" "}
+                      <Link
+                        to="/delivery-policy"
+                        className={styles["hoverableSubtitle"]}
+                        style={{
+                          textDecoration: "none",
+                          letterSpacing: "1px",
+                          fontSize: "14px",
+                          color: "rgb(59, 59, 224)",
+                          borderBottom: "1px solid rgb(59, 59, 224)",
+                          // fontWeight:'500'
+                        }}
+                      >
+                        Shipping Policy
+                      </Link>
+                    </span>
+                    {/* Commented by - Ashish Dewangan on 17-02-2023
                   Reason - To hide unnecessary details and have simple UI */}
-                  {/* <div className={styles["chatBoxContainer"]}>
+                    {/* <div className={styles["chatBoxContainer"]}>
                     <input
                       type="text"
                       id="chatBox"
@@ -1635,18 +1637,18 @@ const Details = (props) => {
                       CHAT WITH US
                     </button>
                   </div> */}
-                  {/* End of comment */}
+                    {/* End of comment */}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          {/* <div className={styles['container13']}>
+            {/* <div className={styles['container13']}>
      <span className={styles['text28']}>Text</span> 
       </div> */}
-          {/* Modification and addition by Om Shrivastava on 17-06-2024
+            {/* Modification and addition by Om Shrivastava on 17-06-2024
           Reason : No need to show this related image section */}
 
-          {/* <div className={styles.gal}>
+            {/* <div className={styles.gal}>
             <div className={styles.image_gallery}>
              
               {details.img_sub1 ? (
@@ -1700,9 +1702,9 @@ const Details = (props) => {
               null}
             </div>
           </div> */}
-          {/* End of modification and addition by Om Shrivastava on 17-06-2024
+            {/* End of modification and addition by Om Shrivastava on 17-06-2024
           Reason : No need to show this related image section */}
-          {/* 
+            {/* 
           {CategoryProduct && CategoryProduct.length > 0 ? (  
             <div
               style={{
@@ -1750,13 +1752,13 @@ const Details = (props) => {
             <Slider />
           </div> */}
 
-          <div style={{ width: "100%", zIndex: "1" }}>
-            <Slider2 scrollTop={scrolling} />
-            <Slider scrollTop={scrolling} />
-          </div>
-          {/* // Commented by Om Shrivastava on 14-06-2024
+            <div style={{ width: "100%", zIndex: "1" }}>
+              <Slider2 scrollTop={scrolling} />
+              <Slider scrollTop={scrolling} />
+            </div>
+            {/* // Commented by Om Shrivastava on 14-06-2024
                   // Reason : No need to show this section */}
-          {/* <div style={{ marginBottom: "12px", marginTop: "12px" }}>
+            {/* <div style={{ marginBottom: "12px", marginTop: "12px" }}>
               <a
                 href="/"
                 class="btn-flip"
@@ -1764,12 +1766,14 @@ const Details = (props) => {
                 data-front="Back to Collection"
               ></a>
             </div> */}
-          {/* // Commented by Om Shrivastava on 14-06-2024
+            {/* // Commented by Om Shrivastava on 14-06-2024
             // Reason : No need to show this section */}
-          {/* Commented by - Ashish Dewangan on 15-02-2023
+            {/* Commented by - Ashish Dewangan on 15-02-2023
             Reason - To hide the text that appear after footer */}
-          {/* <div className={styles.foot}> */}
-          <Footer />
+            {/* <div className={styles.foot}> */}
+            <Footer />
+          </div>
+
           {/* <Below /> */}
           {/* <Chat/> */}
           {/* </div> */}

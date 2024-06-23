@@ -434,10 +434,22 @@ input[type="checkbox"] {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: white;
+  /* background-color: white; */
   z-index: 1000;
+  background: var(--backgroundColorPrimary);
+  width: 200px;
 }
+.subMenuConatiner2 .subMenuList .ul .l {
+  list-style: none;
+  padding: 8px 0;
+  font-family: var(--pagesFontFamily);
 
+  letter-spacing: 1.2px;
+  /* border-top: 1px solid rgba(0, 0, 0, 0.05); */
+  display: flex;
+  align-items: center;
+  /* text-decoration: none; */
+}
 .subMenuConatiner2:hover .subMenuList {
   display: block;
 }
@@ -460,7 +472,7 @@ input[type="checkbox"] {
   position: absolute;
   padding: 10px 20px;
   background: var(--backgroundColorPrimary);
-  width: 200px;
+  width: 100px;
   box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   transition: 0.5s;
@@ -478,7 +490,7 @@ input[type="checkbox"] {
 
 .action:hover .menu2 {
   display: block;
-  top: 90px;
+  top: 70px;
   right: 10px;
   opacity: 1;
 }

@@ -71,7 +71,8 @@ const Orderpage = (props) => {
   return (
     <>
       <Navbar />
-      <div className={styles.responsive}    >
+      <div className={styles.responsive}   >
+        <div  className={styles.divContainer}  >
         <div className={styles.head} ref={scroller}>
           <span className={styles.headText} onClick={e => nav("/cart")}><AiOutlineLeft style={{marginBottom:"2.5px"}}/> {` BACK TO CART`}</span>
         </div>
@@ -113,6 +114,7 @@ const Orderpage = (props) => {
           {/* <Below /> */}
           {/* End of comment */}
         </div>
+      </div>
       </div>
     </>
   )

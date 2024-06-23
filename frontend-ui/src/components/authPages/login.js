@@ -214,6 +214,7 @@ const Login = () => {
 		<>
 			<Navbar />
 			<div class="bod">
+				<div >
 				<ToastContainer key={1} limit={1} enableMultiContainer={false}/>
 
 			
@@ -364,6 +365,7 @@ const Login = () => {
 						</form>
 					</div>
 					
+				</div>
 				</div>
 			</div>
 		</>

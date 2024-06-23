@@ -61,7 +61,8 @@ console.log(bestProducts,product)
   return (
     <>
     <Navbar />
-    <div className={style.Container} id="scrolled" onScroll={handleScroll}>
+    <div className={style.Container}  id="scrolled" onScroll={handleScroll}>
+      <div  className={style.divContainer} >
       <div
         className={style.bottom}
       ></div>
@@ -198,7 +199,7 @@ console.log(bestProducts,product)
       <div className={style.foot}>
         <Footer />
       </div>
-    </div>
+    </div></div>
   </>
 );
 };

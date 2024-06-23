@@ -14,6 +14,14 @@
     /* other formats include: 'woff2', 'truetype, 'opentype',
                               'embedded-opentype', and 'svg' */
 }
+.divContainer {
+    background-image: var(--page-background-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
 
 /* modified by - Ashish Dewangan on 15-12-2023
 Reason - To add hoverable effect  */
@@ -27,7 +35,7 @@ Reason - To add hoverable effect  */
 .head {
     color: var(--textColorSecondary);
     height: auto;
-    background-color: var(--backgroundColorSecondary);
+    /* background-color: var(--backgroundColorSecondary); */
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 1.4px;
@@ -54,7 +62,7 @@ Reason - To add hoverable effect  */
 .row {
     padding: 0 5%;
     color: white;
-    background-color: var(--backgroundColorSecondary);
+    /* background-color: var(--backgroundColorSecondary); */
     display: flex;
     padding-bottom: 100px;
 }
@@ -440,7 +448,7 @@ Reason - To add hoverable effect  */
 
 .columnitem2 {
     width: 100%;
-    background-color: var(--backgroundColorSecondary);
+    /* background-color: var(--backgroundColorSecondary); */
 }
 
 .columnFullName {
