@@ -44,6 +44,10 @@ const ShrinkHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [category, setcategory] = useState(null);
   const [parentmenu, setparentMenu] = useState("");
+
+  const [backgroundColor, setBackgroundColor] = useState('transparent');
+  const [textColor, setTextColor] = useState('black');
+
   const [logo, setLogo] = useState(
     "https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg"
   );
@@ -128,9 +132,25 @@ const ShrinkHeader = () => {
       toggleDrawer();
     }
   }
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 5) {
+        setBackgroundColor('white'); // Change to desired color
+        setTextColor('white');
+      } else {
+        setBackgroundColor('transparent'); // Original color
+        setTextColor('black');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup function to remove the event listener
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <div className={style.responsiveHeader}>
+    <div className={style.responsiveHeader} >
       {/* Modification and addition by Om Shrivastava on 22-12-23
       Reason : Set the div when data is not added */}
       {/* Commented by Om Shrivastava on 13-06-2024
@@ -158,7 +178,9 @@ const ShrinkHeader = () => {
       )} */}
       {/* End of commented by Om Shrivastava on 13-06-2024
         Reason : No need to show header this part  */}
-      <div className={style.headerContainer}>
+      <div className={style.headerContainer}
+      style={{ backgroundColor, color: textColor }}
+      >
         <div style={{ display: "flex" }}>
           <div className={style.humbergerDiv}>
             <GiHamburgerMenu

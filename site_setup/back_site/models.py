@@ -304,14 +304,11 @@ class subMenu(models.Model):
 # Reason : Add validation for discount in rupee and discount percentage
         
 def validate_discount_precentage(value):
-    # if value is not None:
-    #     if (value < 0):
-    #         raise ValidationError("Discount can't be less the zero")
-    #     else:
-    #         return value
+    if value < 0:
+        raise ValidationError("Discount can't be less than zero")
         
-    if value < 0 or value > 100:
-        raise ValidationError(f'{value} is not a valid discount percentage. It must be between 0 and 100.')
+    # if value < 0 or value > 100 or value!=None:
+    #     raise ValidationError(f'{value} is not a valid discount percentage. It must be between 0 and 100.')
 
 # End of addition by Om Shrivastava on 20-06-2024
 # Reason : Add validation for discount in rupee and discount percentage
@@ -469,7 +466,7 @@ class product_detail(models.Model):
     #            ('Discount in (%)', 'Discount in (%)')]
     # discount_in = models.CharField(max_length=255, choices=DISCOUNT_CHOICES, default="Discount in (₹)")
     # discount_rupees = models.FloatField(default=0.0,blank=True, verbose_name="Discount in (₹)", validators=[validate_discount_rupees])
-    sale_discount_percentage = models.FloatField(default=0.0,blank=True, verbose_name="Discount in (%)", validators=[validate_discount_precentage])
+    sale_discount_percentage = models.FloatField(default=0.0,blank=True,null=True, verbose_name="Discount in (%)", validators=[validate_discount_precentage])
     # taxable_amount = models.DecimalField(max_digits=13, decimal_places=2,null=True,blank=True)
     # End of modification and addition by Om Shrivastava on 20-06-2024
     # Reason : Add the is sale feature the product table
