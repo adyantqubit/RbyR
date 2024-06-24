@@ -89,6 +89,7 @@ const Shop = () => {
                         >
                           <img
                             src={config.staticBaseURL + p.img_main}
+                            // src='https://cdn.pixelbin.io/v2/black-bread-289bfa/81ub5U/t.resize(w:1000)/manish-product/MM-P-PR-TUOLD-43355-PL_C-XS/300/MM-P-PR-TUOLD-43355-PL_C-XS_1_8295.webp'
                             className={style.bestSellerImage}
                           ></img>
                           

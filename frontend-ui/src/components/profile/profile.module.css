@@ -389,30 +389,30 @@
 }
 
 .userInfoButton {
-    width: 150px;
+    /* width: 150px; */
     font-size: 14px;
-    cursor: pointer;
+    /* cursor: pointer; */
     letter-spacing: 2px;
     
     text-align: center;
     opacity: 1;
         font-family: var(--pagesFontFamily);
 
-    position: relative;
+    /* position: relative; */
     font-weight: normal;
     text-transform: uppercase;
     padding: 0 18px;
-    -webkit-transition: all 250ms ease 0s;
+    /* -webkit-transition: all 250ms ease 0s;
     -o-transition: all 250ms ease 0s;
-    transition: all 250ms ease 0s;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #323232;
-    -webkit-border-image: initial;
+    transition: all 250ms ease 0s; */
+    /* border-width: 1px; */
+    /* border-style: solid; */
+    /* border-color: #323232; */
+    /* -webkit-border-image: initial;
     -o-border-image: initial;
-    border-image: initial;
-    text-decoration: none;
-    border-radius: 0;
+    border-image: initial; */
+    /* text-decoration: none; */
+    /* border-radius: 0; */
     /* background-color: var(--btnBackgroundColorPrimary);
     color: var(--btnTextColorPrimary); */
     background-color: var(--btnBorderColorSecondary);
@@ -561,11 +561,11 @@
     .box {
         padding-top: 20px;
     }
-    .userInfoButton:hover {
+    /* .userInfoButton:hover {
         background-color: var(--btnHoverBackgroundColorPrimary);
         color: var(--btnTextHoverColorPrimary);
         border: 1px solid var(--btnBorderHoverColorPrimary);
-  }
+  } */
   
 
 }

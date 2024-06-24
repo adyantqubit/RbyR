@@ -20,8 +20,8 @@ Reason : Set the padding and margin of antd notification  */
 .App{
     width:100%;
     /* background-color: var(--backgroundColorPrimary); */
-    background: linear-gradient(to right,#bcbfaf,#ffffff,#aeae98);
-
+    /* background: linear-gradient(to right,#bcbfaf,#ffffff,#aeae98); */
+background-color: #feebed;
     height:auto;
 }
 
@@ -29,10 +29,13 @@ Reason : Set the padding and margin of antd notification  */
     display:flex;
     flex-direction: row;
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     overflow: visible;
    padding: 20px 20px;
-   gap:15px;
+   /* gap:15px; */
+   gap:150px;
+   padding-left: 5%;
+
 }
 
 .column1{
@@ -131,6 +134,8 @@ Reason : Set the padding and margin of antd notification  */
 .span,.span2{
     margin-top: 15px;
     font-size: 13px;
+    font-size: 15px;
+
     line-height: 20px;
     /* letter-spacing: 1px; */
     /* font-family: 'MyFont'; */
@@ -265,7 +270,7 @@ Reason : Set the margin top  */
         margin-top: 60px;
         /* // End of commentd code by Om Shrivastava on 25-11-23
         // Reason : Comment this code */
-    background: linear-gradient(to right,#bcbfaf,#aeae98);
+    /* background: linear-gradient(to right,#bcbfaf,#aeae98); */
 
 
     }

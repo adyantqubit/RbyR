@@ -160,116 +160,127 @@ const Slider = ({ scrollTop }) => {
                      * Reason - To hide currently selected item from recently view
                      */
                     <Carousel.Item
-                      style={{ cursor: "pointer", padding: "5px auto" }}
+                      style={{
+                        cursor: "pointer",
+                        padding: "5px auto",
+                        border: "1px solid red",
+                      }}
                     >
-                      <img
-                        className={style.img12}
-                        src={config.staticBaseURL + cart.img_main}
-                        // Modification and addition by Om Shrivastava on 16-11-23
-                        // Reason : Fix the image height and width
-                        // style={{width:'350px'}}
-                        // style={{ width: "320px",height:'320px' }}
-                        // End of modification and addition by Om Shrivastava on 16-11-23
-                        // Reason : Fix the image height and width
-                        onClick={(e) => {
-                          openDetail(cart);
-                          scrollTop();
-                        }}
-                      />
-                      <div
-                        style={{
-                          textAlign: "center",
-                          textTransform: "capitalize",
-                          fontWeight: "600",
-                          fontSize: ".8rem",
-                          color: "var(--textColorPrimary)",
-                          // Addition by Om Shrivastava on 29-11-23
-                          // Reason : Add the letterspacing
-                          letterSpacing: "1px",
-                          // End of Addition by Om Shrivastava on 29-11-23
-                          // Reason : Add the letterspacing
-                        }}
-                        onClick={(e) => {
-                          openDetail(cart);
-                          scrollTop();
-                        }}
-                      >
-                        {/* Modification and addition by Om Shrivastava on 08-12-23
-                    Reason : Show the product name with lowercase  */}
-                        {/* {cart.title} */}
-                        {cart.title.toLowerCase()}
-                        {/*End of modification and addition by Om Shrivastava on 08-12-23
-                    Reason : Show the product name with lowercase  */}
-                      </div>
-                      <div
-                        style={{
-                          textAlign: "center",
-                          fontSize: ".9rem",
-                          fontWeight: "500",
-                          color: "var(--textColorPrimary)",
-                        }}
-                      >
+                      <div  style={{
+                        // cursor: "pointer",
+                        // padding: "5px auto",
+                        // border: "1px solid red",
+                        
+                      }}
+                      className={style.recentlyViewCard}
                       
-                         {/* Modification and addition by Om Shrivastava on 18-06-2024
-                      Reason : Remove the commas and decimal value  */}
-                        {/* {(cart.price * currency.value).toFixed(2)} */}
-                        {/* Modification and addition by Om Shrivastava on 20-06-2024
-                            Reason : Show the discountant amount which product on_sale  */}
-                        {/* {(cart.price * currency.value).toLocaleString("en-IN")} */}
-
-                            {cart.is_sale == true ? (
-                              <>
-                                <strike>
-                                  {" "}
-                                  {currency.sign}{" "}
-                                  {(cart.price * currency.value).toLocaleString(
-                                    "en-IN"
-                                  )}
-                                </strike>
-                                <div>
-                                  {" "}
-                                  {currency.sign}{" "}
-                                  {(
-                                    cart.price *
-                                    (1 - cart.sale_discount_percentage / 100) *
-                                    currency.value
-                                  ).toLocaleString("en-IN")}
-                                </div>
-                              </>
-                            ) : (
-                              <>
-                                {currency.sign}{" "}
-                                {(cart.price * currency.value).toLocaleString(
-                                  "en-IN"
-                                )}
-                              </>
-                            )}
-                            {/* End of Modification and addition by Om Shrivastava on 20-06-2024
-                            Reason : Show the discountant amount which product on_sale  */}
-                         {/* Modification and addition by Om Shrivastava on 18-06-2024
-                      Reason : Remove the commas and decimal value  */}
-
-                      </div>
-
-                      {/* Commented by Rohan - 16/12/22
-                      Reason - Adding representation of Reading to ship items  */}
-
-                      {cart.ready_to_ship ? (
-                        <div
-                          className={styles.readyContainer}
+                      >
+                        <img
+                          className={style.img12}
+                          src={config.staticBaseURL + cart.img_main}
+                          // Modification and addition by Om Shrivastava on 16-11-23
+                          // Reason : Fix the image height and width
+                          // style={{width:'350px'}}
+                          // style={{ width: "320px",height:'320px' }}
+                          // End of modification and addition by Om Shrivastava on 16-11-23
+                          // Reason : Fix the image height and width
                           onClick={(e) => {
                             openDetail(cart);
                             scrollTop();
                           }}
-                          style={{ cursor: "pointer" }}
+                        />
+                        <div
+                          style={{
+                            textAlign: "center",
+                            textTransform: "capitalize",
+                            fontWeight: "600",
+                            fontSize: ".8rem",
+                            color: "var(--textColorPrimary)",
+                            // Addition by Om Shrivastava on 29-11-23
+                            // Reason : Add the letterspacing
+                            letterSpacing: "1px",
+                            // End of Addition by Om Shrivastava on 29-11-23
+                            // Reason : Add the letterspacing
+                          }}
+                          onClick={(e) => {
+                            openDetail(cart);
+                            scrollTop();
+                          }}
                         >
-                          <div className={styles.readyBox}>
-                            <img src={logo} className={styles.readyIcon} />
-                            Ready To Ship
-                          </div>
+                          {/* Modification and addition by Om Shrivastava on 08-12-23
+                    Reason : Show the product name with lowercase  */}
+                          {/* {cart.title} */}
+                          {cart.title.toLowerCase()}
+                          {/*End of modification and addition by Om Shrivastava on 08-12-23
+                    Reason : Show the product name with lowercase  */}
                         </div>
-                      ) : null}
+                        <div
+                          style={{
+                            textAlign: "center",
+                            fontSize: ".9rem",
+                            fontWeight: "500",
+                            color: "var(--textColorPrimary)",
+                          }}
+                        >
+                          {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                          {/* {(cart.price * currency.value).toFixed(2)} */}
+                          {/* Modification and addition by Om Shrivastava on 20-06-2024
+                            Reason : Show the discountant amount which product on_sale  */}
+                          {/* {(cart.price * currency.value).toLocaleString("en-IN")} */}
 
+                          {cart.is_sale == true ? (
+                            <>
+                              <strike>
+                                {" "}
+                                {currency.sign}{" "}
+                                {(cart.price * currency.value).toLocaleString(
+                                  "en-IN"
+                                )}
+                              </strike>
+                              <div>
+                                {" "}
+                                {currency.sign}{" "}
+                                {(
+                                  cart.price *
+                                  (1 - cart.sale_discount_percentage / 100) *
+                                  currency.value
+                                ).toLocaleString("en-IN")}
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              {currency.sign}{" "}
+                              {(cart.price * currency.value).toLocaleString(
+                                "en-IN"
+                              )}
+                            </>
+                          )}
+                          {/* End of Modification and addition by Om Shrivastava on 20-06-2024
+                            Reason : Show the discountant amount which product on_sale  */}
+                          {/* Modification and addition by Om Shrivastava on 18-06-2024
+                      Reason : Remove the commas and decimal value  */}
+                        </div>
+
+                        {/* Commented by Rohan - 16/12/22
+                      Reason - Adding representation of Reading to ship items  */}
+
+                        {cart.ready_to_ship ? (
+                          <div
+                            className={styles.readyContainer}
+                            onClick={(e) => {
+                              openDetail(cart);
+                              scrollTop();
+                            }}
+                            style={{ cursor: "pointer" }}
+                          >
+                            <div className={styles.readyBox}>
+                              <img src={logo} className={styles.readyIcon} />
+                              Ready To Ship
+                            </div>
+                          </div>
+                        ) : null}
+                      </div>
                       {/* End of code */}
                     </Carousel.Item>
                   )

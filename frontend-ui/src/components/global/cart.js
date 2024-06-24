@@ -74,7 +74,7 @@ const Cart = () => {
   return (
     <>
       {/* < BsCartFill style={{marginTop:"10px",fontSize:"20px",color:"#7c7c7c"}} /> */}
-      <span style={{ height: "20px", width: "20px" }} onClick={openCart}>
+      <div style={{ display:'flex',justifyContent:'center' }} onClick={openCart}>
         {cart && cart.length > 0 ? (
           <span class="badge badge-warning" id="lblCartCount">
             {cart.length}
@@ -104,7 +104,7 @@ const Cart = () => {
           )
           // <img style={{width:'2vw',marginTop:'-20%'}} src={cartImage}/>
         }
-      </span>
+      </div>
       {/* <Button type="primary" onClick={showDrawer}>
         Open
       </Button> */}

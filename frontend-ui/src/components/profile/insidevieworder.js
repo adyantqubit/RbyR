@@ -290,7 +290,7 @@ const InsideOrder = () => {
     <div className={style.scrolling}>
       <Navbar />
       <div className={style.Container}>
-        <div className={style.divContainer}  style={{backgroundColor:'red'}}>
+        <div className={style.divContainer} >
         <div className={style.centerContainer}>
           <div style={{ marginTop: "3%" }}>
             <div className={style.containerHeader}>
@@ -384,6 +384,8 @@ const InsideOrder = () => {
                   {allData?.transaction?.payment_status == "pending" ? (
                     <Button
                       className={style.userInfoButton}
+                      type="primary"
+                      style={{width:'100%'}}
                       onClick={showModal}
                     >
                       UPI Scanner

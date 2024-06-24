@@ -19,6 +19,7 @@
 @media (max-width:767px){
     .foot{
         position: relative;
-        top:13vh;
+        /* top:13vh; */
+        top: -8vh;
     }
 }

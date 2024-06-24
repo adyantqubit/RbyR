@@ -281,8 +281,10 @@ Reason - To add hoverable effect  */
     width: 30%;
     cursor: pointer;
     letter-spacing: 1.3px;
-    background-color: var(--btnBackgroundColorPrimary);
-    color:var(--btnTextColorPrimary);
+    /* background-color: var(--btnBackgroundColorPrimary);
+    color:var(--btnTextColorPrimary); */
+    background-color: #000;
+  color:white;
     text-align: center;
     opacity: 1;
       font-family: var(--pagesFontFamily);
