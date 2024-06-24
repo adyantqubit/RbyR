@@ -580,7 +580,7 @@ class product_ordersAdmin(admin.ModelAdmin):
                 # Reason : Need to arrange the list display
                 #               "billing_id","shipping_id","quantity"
                 # ,"price","size","payment_mode","date",'order_status')
-                "quantity","price","size",'order_status',"payment_mode","billing_id","shipping_id","date")
+                "quantity","price","product_discount_price","size",'order_status',"payment_mode","billing_id","shipping_id","date")
                 # End of Modification and addition by Om Shrivastava on 24-12-23
                 # Reason : Need to arrange the list display
     list_display_links=("action",)

@@ -573,10 +573,10 @@
   /* padding-left: 1%;
   padding-right: 1%; */
 }
-.subtitle:hover {
+/* .subtitle:hover {
   color: white;
   background-color: black;
-}
+} */
 .subtitle:hover .span {
   color: white; /* Change to your desired color */
 }

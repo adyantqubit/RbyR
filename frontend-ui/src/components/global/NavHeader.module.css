@@ -111,7 +111,7 @@ li {
   /* background: linear-gradient(to right, #bcbfaf, #ffffff, #aeae98); */
   /* box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 6px, rgba(0, 0, 0, 0.22) 0px 5px 5px; */
   /* box-shadow: rgb(0 0 0 / 0%) 0px 5px 6px, rgba(0, 0, 0, 0.22) 0px 5px 5px; */
-  box-shadow: rgba(148, 141, 141, 0) 0px 2px 1px, rgba(172, 166, 166, 0.22) 0px 2px 1px;
+  /* box-shadow: rgba(148, 141, 141, 0) 0px 2px 1px, rgba(172, 166, 166, 0.22) 0px 2px 1px; */
 
   /* background:transparent; */
   color: var(--textColorPrimary);
@@ -437,6 +437,7 @@ input[type="checkbox"] {
   /* background-color: white; */
   z-index: 1000;
   background: var(--backgroundColorPrimary);
+  background-color: white;
   width: 200px;
 }
 .subMenuConatiner2 .subMenuList .ul .l {
@@ -472,6 +473,7 @@ input[type="checkbox"] {
   position: absolute;
   padding: 10px 20px;
   background: var(--backgroundColorPrimary);
+  
   width: 100px;
   box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
   border-radius: 3px;

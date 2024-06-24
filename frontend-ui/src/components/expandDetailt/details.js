@@ -1191,6 +1191,7 @@ const Details = (props) => {
                             cursor: "pointer",
                             fontSize: "14px",
                             alignSelf: "flex-start",
+                            width:'11vw'
                           }}
                           onClick={showSizeChart}
                         >

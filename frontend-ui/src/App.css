@@ -187,11 +187,13 @@ input:-webkit-autofill {
     background-color: white;
     border-radius: 100%;
     width: 12% !important;
+  
   }
   .swiper-button-next {
     background-color: white;
     border-radius: 100%;
     width: 12% !important;
+
   }
 }
 
@@ -214,10 +216,12 @@ input:-webkit-autofill {
     background-color: white;
     border-radius: 100%;
     width: 8% !important;
+    height: 4% !important;
   }
   .swiper-button-next {
     background-color: white;
     border-radius: 100%;
     width: 8% !important;
+    height: 4% !important;
   }
 }

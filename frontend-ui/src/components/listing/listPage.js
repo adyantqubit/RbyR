@@ -521,7 +521,7 @@ Reason : Need to comment the filter functionality */}
                 >
                   Please change Your search criteria and try again. If still not
                   finding anything relevant, please visit the Home page and try
-                  out some of our bestsellers!
+                  out some of our catalogs!
                 </span>
               </div>
             ) : null}

@@ -176,7 +176,7 @@ Reason - To add hoverable effect  */
     width: 47%;
     margin: 8px;
     height: auto;
-    background-color: var(--backgroundColorSecondary);
+    /* background-color: var(--backgroundColorSecondary); */
 }
 
 .cancelButtonWithSubmit {
@@ -216,7 +216,7 @@ Reason - To add hoverable effect  */
     padding: 0 8px;
     font-size: 14px;
     color: black;
-    background-color: var(--backgroundColorSecondary) !important;
+    /* background-color: var(--backgroundColorSecondary) !important; */
 }
 
 /* 
@@ -456,7 +456,7 @@ Reason - To add hoverable effect  */
 .columnFullName {
     width: 100%;
     height: auto;
-    background-color: var(--backgroundColorSecondary);
+    /* background-color: var(--backgroundColorSecondary); */
     padding: 2px 5px;
 }
 .addressContainer{
