@@ -73,6 +73,7 @@ const CartSItem = (props) => {
     redirectionPath,
     setRedirectionPath,
   } = CartState();
+  console.log(cart,'jkjjjj')
 
   const [cartsaveApi, { isLoad }] = useCartUpdateMutation();
   let textInput = React.createRef();

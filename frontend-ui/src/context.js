@@ -341,6 +341,7 @@ const Context = ({ children }) => {
           const p = product.filter(p => p.id === lke.product_no)
 
           if (p.length > 0) {
+            console.log(p,'ceffffffffffffffffffffffff')
             const cartData = {
               id: [...p][0].id,
               title: [...p][0].title,
@@ -354,8 +355,13 @@ const Context = ({ children }) => {
               shipping_charges: [...p][0].shipping_charges,
               ready_to_ship_days: [...p][0].ready_to_ship_days,
               shipping_days: [...p][0].shipping_days,
-              ready_to_ship: [...p][0].ready_to_ship
-
+              ready_to_ship: [...p][0].ready_to_ship,
+              // Addition by Om Shrivastava on 25-06-2024
+              // Reason : Set the is sale and sale discount percentage field 
+              is_sale: [...p][0].is_sale,
+              sale_discount_percentage: [...p][0].sale_discount_percentage,
+              // End of addition by Om Shrivastava on 25-06-2024
+              // Reason : Set the is sale and sale discount percentage field 
             }
 
             // if(cart.filter(i=>{if(i.id==cartData.id)if(i.size!=cartData.size)return i}).length==0)

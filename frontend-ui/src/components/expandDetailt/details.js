@@ -12,9 +12,16 @@ import Navbar from "../global/NavHeader";
 import { bounce } from "react-animations";
 import { StyleSheet, css } from "aphrodite";
 import { BackTop, Modal, notification } from "antd";
-import Zoom from "react-medium-image-zoom";
+import {
+  Magnifier,
+  GlassMagnifier,
+  SideBySideMagnifier,
+  PictureInPictureMagnifier,
+  MOUSE_ACTIVATION,
+  TOUCH_ACTIVATION,
+} from "react-image-magnifiers";
+// import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-
 // import projectStyles from '.style.module.css'
 import styles from "./detail.module.css";
 import "./detail.scss";
@@ -681,6 +688,7 @@ const Details = (props) => {
                     src={config.staticBaseURL + mainImage}
                     alt="Main"
                   />
+                  
 
                   {/* <div className={styles["zoomContainer"]} >
                         <div className={`${styles.zoomImage} ${zoom ? styles.zoomed : ''}`}>
@@ -1191,7 +1199,7 @@ const Details = (props) => {
                             cursor: "pointer",
                             fontSize: "14px",
                             alignSelf: "flex-start",
-                            width:'11vw'
+                            width: "11vw",
                           }}
                           onClick={showSizeChart}
                         >
@@ -1494,8 +1502,7 @@ const Details = (props) => {
                       </span>
                     </div> */}
 
-                    {details.ready_to_ship == true ? //   </span> //     {" " + details.ready_to_ship_days} //   > //     style={{ display: "inline-block", marginRight: "3px" }} //     className={styles["textContent"]} //   <span //   <span className={styles["colon"]}> : </span> //   </span> //     Ready to Ship{" "} //   <span className={styles["textHeading"]}> // <div className={styles["detailsContainer"]}> // Reason : No need to show this section // Commented by Om Shrivastava on 14-06-2024
-                    // </div>
+                    {details.ready_to_ship == true ? // </div> //   </span> //     {" " + details.ready_to_ship_days} //   > //     style={{ display: "inline-block", marginRight: "3px" }} //     className={styles["textContent"]} //   <span //   <span className={styles["colon"]}> : </span> //   </span> //     Ready to Ship{" "} //   <span className={styles["textHeading"]}> // <div className={styles["detailsContainer"]}> // Reason : No need to show this section // Commented by Om Shrivastava on 14-06-2024
                     // Commented by Om Shrivastava on 14-06-2024
                     // Reason : No need to show this section
                     null : (
