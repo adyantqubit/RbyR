@@ -436,8 +436,8 @@ input[type="checkbox"] {
   left: 0;
   /* background-color: white; */
   z-index: 1000;
-  background: var(--backgroundColorPrimary);
   background-color: white;
+  background: var(--backgroundColorPrimary);
   width: 200px;
 }
 .subMenuConatiner2 .subMenuList .ul .l {

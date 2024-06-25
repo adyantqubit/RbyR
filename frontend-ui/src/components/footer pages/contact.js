@@ -205,7 +205,7 @@ const Contact = () => {
                     }}
                     className={style.instaText}
                   >
-                    On Instagram
+                    On Instagramy
                   </h5>
                 </div>
               </a>

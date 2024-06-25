@@ -450,7 +450,7 @@ const ShrinkHeader = () => {
                 }
               }}
             >
-              <span style={{fontWeight:'500'}}> My account</span>
+              <h6 style={{fontWeight:'500',fontSize:'14px',color:'var(--textColorSecondary)'}}> My account</h6>
               <AiOutlineRight />
             </div>
           </div>

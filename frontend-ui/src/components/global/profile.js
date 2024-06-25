@@ -66,7 +66,7 @@ export const Profile = () => {
         nav("/login")
       }} >
         <div className={style.profile} >
-          <FaUserCircle style={{ width: "30px", hieght: "30px",color:"var(--iconsColor)"}} />
+          <FaUserCircle style={{ width: "25px", height: "30px",color:"var(--iconsColor)"}} />
           {/* <img className={style.img} src="./assets/avatar.jpg" /> */}
         </div>
         <div className={style.menu2} style={{padding:'2px'}} >
@@ -140,7 +140,7 @@ export const Profile = () => {
 
             {localStorage.getItem('access_token') ? <li className={style.l} style={{ marginLeft: "-30px",cursor:"pointer" ,padding:'2px'}}>
 
-              <span style={{fontSize:'14px',padding:'2px'}} className={style.a}  onClick={e => seLogoutAction(true)} >Logout</span>
+              <span style={{fontSize:'14px',padding:'2px'}} className={style.a}  onClick={e => seLogoutAction(true)} >LOGOUT</span>
 
             </li> : null}
 

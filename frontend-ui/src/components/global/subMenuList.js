@@ -103,12 +103,12 @@ export const SubMenuList = () => {
         </div>
         <div
           className={style.subMenuList}
-          style={{paddingTop:'15%',border:'1px solid var(--backgroundColorPrimary)'}}
+          style={{paddingTop:'15%'}}
         >
               
                 {renderCategory == true && list != null
                   ? list[`${parent}`]?.map((s) => (
-                      <div className={style.card} style={{borderBottom:'2px solid var(--backgroundColorPrimary)'}}>
+                      <div className={style.card} style={{borderBottom:'1px solid rgba(0, 0, 0, 0.05)'}}>
                         <div
                           style={{ cursor: "pointer",padding:'4px',paddingLeft:'5%',fontSize:'17px',fontFamily: "var(--pagesFontFamily)"}}
                           // className={style.menu}

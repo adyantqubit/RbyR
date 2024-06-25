@@ -347,7 +347,7 @@ Reason : When edit button is open then user can't hit the place order button */}
       <button 
       // className={buttonchng ? styles.userInfoButton3 : styles.userInfoButton} 
       className={styles.shopbtn2}
-      style={{ margin: "15px 5px", width: "300px", minHeight: "50px" }} onClick={e => cartChecking()}
+      style={{ margin: "15px 5px", width: "300px", minHeight: "41px" }} onClick={e => cartChecking()}
       >
 
         PLACE YOUR ORDER

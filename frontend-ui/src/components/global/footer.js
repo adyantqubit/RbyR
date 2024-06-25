@@ -292,7 +292,7 @@ function Footer() {
                   display: "flex",
                   flexDirection: "row",
                   gap: "8px",
-                  marginTop: "7px",
+                  marginTop: "10px",
                 }}
               >
                 {socialLinks.length > 0 ? (

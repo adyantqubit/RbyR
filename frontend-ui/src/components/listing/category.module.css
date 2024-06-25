@@ -176,7 +176,7 @@ Reason - To style no result found text
     }
 
     .foot{
-        margin-top: -100px;
+        /* margin-top: 280px; */
     }
     .img{
         width: 220px;
