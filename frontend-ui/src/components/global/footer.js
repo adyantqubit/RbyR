@@ -291,7 +291,7 @@ function Footer() {
                 style={{
                   display: "flex",
                   flexDirection: "row",
-                  gap: "15px",
+                  gap: "8px",
                   marginTop: "7px",
                 }}
               >
@@ -299,7 +299,32 @@ function Footer() {
                   <>
                     {socialLinks.map((socialLink) => {
                       return (
-                        <img
+                        // <img
+                        //   src={
+                        //     config.staticBaseURL + "media/" + socialLink.logo
+                        //   }
+                        //   style={{
+                        //     color: "var(--iconsColor)",
+                        //     width: "20px",
+                        //     height: "20px",
+                        //   }}
+                        //   onClick={{}}
+                        //   alt=""
+                        // />
+                        <span
+                          style={{ marginTop: "0" }}
+                          className={`${style.span} ${style.span1}`}
+                        >
+                          <a
+                            href={socialLink.link}
+                            className={style.span}
+                            style={{
+                              textDecoration: "none",
+                              marginLeft: "10px",
+                            }}
+                            target="_blank"
+                          >
+                           <img
                           src={
                             config.staticBaseURL + "media/" + socialLink.logo
                           }
@@ -308,8 +333,11 @@ function Footer() {
                             width: "20px",
                             height: "20px",
                           }}
+                          onClick={{}}
                           alt=""
                         />
+                          </a>
+                        </span>
                       );
                     })}
                   </>

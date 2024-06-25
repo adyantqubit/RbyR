@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 // import { FiMenu, FiX } from 'react-icons/fi';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import style from "./NavHeader.module.css";
 import {
   Button,
@@ -54,6 +54,10 @@ const Navbar = () => {
   const [cl, setClass] = useState(false);
   const [open, setOpen] = useState(false);
   const { access_token, refresh_token } = getToken();
+  const { parent } = useParams();
+
+  const [list, setList] = useState(null);
+  const [nullPage, setNullPage] = useState(false);
 
   const {
     setReload,
@@ -164,9 +168,10 @@ const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const [renderCategory, setRenderCategory] = useState(false);
 
-  const [backgroundColor, setBackgroundColor] = useState('transparent');
-  const [textColor, setTextColor] = useState('black');
+  const [backgroundColor, setBackgroundColor] = useState("transparent");
+  const [textColor, setTextColor] = useState("black");
 
   const { data, isSuccess } = useGetLoggedUserQuery(access_token);
   const [userdata, setUserData] = useState({
@@ -259,6 +264,36 @@ const Navbar = () => {
     nav("/cart");
   }
 
+  useEffect(() => {
+    setList(menus?.filter((m) => Object.keys(m)[0] === parent)[0]);
+    window.scrollTo(0, 0);
+  }, [parent, menus]);
+
+  useEffect(() => {
+    if (list != null) {
+      if (list.shownInstFilter == true) {
+        nav(`/Listing/${parent}/${0}`);
+      } else {
+        setRenderCategory(true);
+      }
+    }
+
+    if (list == null || list == undefined) {
+      setNullPage(true);
+    } else {
+      if (list != null && list != undefined && list[`${parent}`]?.length == 0) {
+        setNullPage(true);
+      } else {
+        setNullPage(false);
+      }
+    }
+  }, [list]);
+
+  // jump into product listing page according to menu instant filter showing condition
+  function jumpIntoProductPage(s) {
+    nav(`/listing/${parent}/${s.category}`);
+  }
+
   // const getLogoAndCoverDetail = async () => {
 
   //   const coverAndLogoData = await getLogoAndCover();
@@ -271,21 +306,20 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 5) {
-        setBackgroundColor('white'); // Change to desired color
-        setTextColor('white');
+        setBackgroundColor("white"); // Change to desired color
+        setTextColor("white");
       } else {
-        setBackgroundColor('transparent'); // Original color
-        setTextColor('black');
+        setBackgroundColor("transparent"); // Original color
+        setTextColor("black");
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     // Cleanup function to remove the event listener
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  
   return (
     <div style={{ width: "100%" }}>
       <ToastContainer key={1} limit={1} enableMultiContainer={false} />
@@ -342,8 +376,9 @@ const Navbar = () => {
          
         </div> */}
 
-        <nav className={style.navbar} 
-        // style={{border:'1px solid red'}}
+        <nav
+          className={style.navbar}
+          // style={{border:'1px solid red'}}
         >
           <ul className={style.nav_links} style={{ marginBottom: "0px" }}>
             <input type="checkbox" id="checkbox_toggle" />
@@ -351,10 +386,13 @@ const Navbar = () => {
               &#9776;
             </label>
 
-            <div style={{ display: "flex", 
-            justifyContent: "space-between"
-             ,alignItems:'center',
-              }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
               {/* Commented and modified by - Ashish Dewangan on 03-12-2023
               Reason - To hide currency selector from header */}
               {/* <Converter /> */}
@@ -376,16 +414,14 @@ const Navbar = () => {
               Reason : No need to show INR  */}
               {/* End of code modification by - Ashish Dewangan on 03-12-2023
               Reason - To hide currency selector from header */}
-            <div className={style.logo} 
-            >
-            <img
-            src={config.staticBaseURL + "media/" + logo}
-            alt="Logo"
-            onClick={openHome}
-          />
-</div>
-              <div className={style.menu}
-               >
+              <div className={style.logo}>
+                <img
+                  src={config.staticBaseURL + "media/" + logo}
+                  alt="Logo"
+                  onClick={openHome}
+                />
+              </div>
+              <div className={style.menu}>
                 {/* <li style={{height:"40px"}}><a className={style.al} href="/">Home</a></li>
                 <li className={style.services} onMouseEnter={openc} onMouseLeave={closec}>
                   <span  className={style.al} href="/" style={{fontWeight:"450",fontSize:"20px"}}>ETHNIC</span>
@@ -471,11 +507,77 @@ const Navbar = () => {
                     </li>
                   );
                 })} */}
-                 <div>
+                <div>
                   <SubMenuList/>
-                </div>
+                  {/* <div
+                    className={style.subMenuConatiner2}
+                    style={{ border: "1px solid red" }}
+                  >
+                    <div className={style.menuName}>
+                      {menus?.map((m, i) => {
+                        var parent = Object.keys(m);
+                        console.log(menus, "hjhjkhjjh");
 
-               
+                        return (
+                          <li
+                            id={`li${i}`}
+                            ref={refc}
+                            style={{ height: "40px", paddingTop: "0px" }}
+                            onMouseEnter={openc}
+                            onMouseLeave={closec}
+                          >
+                            <Link
+                              className={style.al}
+                              style={{ fontSize: "20px" }}
+                              to={
+                                m.shownMenuNImg && m[`${parent[0]}`]?.length > 0
+                                  ? `/categories/${parent[0]}`
+                                  : m.shownInstFilter
+                                  ? `/listing/${parent[0]}/0`
+                                  : `/listing/${parent[0]}/0`
+                              }
+                              onClick={(e) => setCategorySelected([])}
+                            >
+                              {parent[0].toLowerCase()}
+                            </Link>
+                          </li>
+                        );
+                      })}{" "}
+                    </div>
+                    <div
+                      className={style.subMenuList}
+                      style={{
+                        paddingTop: "15%",
+                        border: "1px solid var(--backgroundColorPrimary)",
+                      }}
+                    >
+                      {renderCategory == true && list != null
+                        ? list[`${parent}`]?.map((s) => (
+                            <div
+                              className={style.card}
+                              style={{
+                                borderBottom:
+                                  "2px solid var(--backgroundColorPrimary)",
+                              }}
+                            >
+                              <div
+                                style={{
+                                  cursor: "pointer",
+                                  padding: "4px",
+                                  paddingLeft: "5%",
+                                  fontSize: "17px",
+                                  fontFamily: "var(--pagesFontFamily)",
+                                }}
+                                onClick={(e) => jumpIntoProductPage(s)}
+                              >
+                                {s.category}
+                              </div>
+                            </div>
+                          ))
+                        : nullPage}
+                    </div>
+                  </div> */}
+                </div>
 
                 <li className={style.services}>
                   <Link
@@ -550,7 +652,7 @@ const Navbar = () => {
               {/* {access_token?<li><a className={style.al} href="/changePass">Change Password</a></li>:<li><Link to="/login">Register/Login</Link></li>}
                 {access_token?<li><span  className={style.al}  onClick={handleLogout}>Logout</span></li>:null} */}
 
-              <div className={style.system} >
+              <div className={style.system}>
                 <div>
                   <Search className={style.icons} />
                 </div>

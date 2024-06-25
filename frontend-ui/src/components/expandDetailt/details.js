@@ -688,7 +688,6 @@ const Details = (props) => {
                     src={config.staticBaseURL + mainImage}
                     alt="Main"
                   />
-                  
 
                   {/* <div className={styles["zoomContainer"]} >
                         <div className={`${styles.zoomImage} ${zoom ? styles.zoomed : ''}`}>
@@ -842,7 +841,7 @@ const Details = (props) => {
                           className={`${styles["textLabel"]} ${styles.sizeMargin}`}
                           style={{ alignItems: "flex-start" }}
                         >
-                          Size{" "}
+                          SIZE :{" "}
                         </span>
 
                         {/* Commented by - Ashish Dewangan on 29-12-2023
@@ -935,11 +934,110 @@ const Details = (props) => {
                         {/* End of comment by - Ashish Dewangan on 29-12-2023
                       Reason - Redesigned size selection box */}
 
-                        <div
+                        
+                      </div>
+
+
+                      {/* <div className={styles.charts}> */}
+                      {/* <span  className={styles["text02"]}>Custom Tailored</span> */}
+                      {/* Added by Ashish Dewangan on 24-11-2022
+                      Reason - To show custom tailored form */}
+                      {/* Commented by - Ashish Dewangan on 17-02-2023
+                      Reason - To hide custom tailored label and have simple UI */}
+                      {/* <span
+                        className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
+                        style={{ cursor: "pointer" }}
+                        onClick={showCustomTailoredForm}
+                      >
+                        Custom Tailored
+                      </span> */}
+                      {/* End of comment */}
+                      {/* End of code addition */}
+                      {/* Commented and modified by - Ashish Dewangan on 23-11-2022
+                      Reason - to display size chart when we click on size chart text */}
+                      {/* <span  className={styles["text02"]}>Size Chart</span> */}
+                      {/* <span
+                        className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
+                        style={{ cursor: "pointer" }}
+                        onClick={showSizeChart}
+                      >
+                        Size Chart
+                      </span> */}
+                      {/* </div> */}
+
+                      <Modal
+                        /**
+                         * Commented and modified by - Ashish Dewangan on 03-12-2023
+                         * Reason - To give some space at top
+                         */
+                        // style={{ top: 0 }}
+                        style={{ top: "5vh" }}
+                        /**
+                         * End of code modification by - Ashish Dewangan on 03-12-2023
+                         * Reason - To give some space at top
+                         */
+                        className={styles["modalStyleCustomTailored"]}
+                        bodyStyle={{
+                          backgroundColor: "var(--modalBodyBackgroundColor)",
+                        }}
+                        footer={null}
+                        title="CUSTOM TAILORED"
+                        visible={isCustomTailoredVisible}
+                        onOk={handleCustomTailoredOk}
+                        onCancel={handleCustomTailoredCancel}
+                      >
+                        <CustomTailoredForm details={details} />
+                      </Modal>
+
+                      {/* Added by - Ashish Dewangan on 17-12-2023
+                    Reason - To show size chart */}
+                      {womenSizeChart.length > 0 && (
+                        <span
+                          className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
+                          style={{
+                            color: "#4c60e5",
+                            cursor: "pointer",
+                            fontSize: "14px",
+                            alignSelf: "flex-start",
+                            // width: "11vw",
+                            width: "100%",
+
+                          }}
+                          onClick={showSizeChart}
+                        >
+                          SIZE CHART
+                        </span>
+                      )}
+                      {/* End of code addition by - Ashish Dewangan on 17-12-2023
+                      Reason - To show size chart */}
+                      <Modal
+                        style={{ top: "25%" }}
+                        className={styles["modalStyle"]}
+                        footer={null}
+                        title="SIZE CHART"
+                        visible={isWomenSizeChartVisible}
+                        onOk={handleOk}
+                        onCancel={handleCancel}
+                      >
+                        {/* <img
+                        style={{ width: "100%", height: "100%" }}
+                        src={
+                          womenSizeChart.length > 0
+                            ? config.staticBaseURL + womenSizeChart
+                            : "/women_size_chart.jpg"
+                        }
+                      /> */}
+                        <WomenSizeChart womenSizeChart={womenSizeChart} />
+                      </Modal>
+                      {/* End of code addition */}
+                    </div>
+
+                    <div
                           style={{
                             display: "inline-flex",
                             flexDirection: "column",
-                            width: "75%",
+                            width: "100%",
+                            // border:'1px solid red'
                           }}
                         >
                           <div class="rating">
@@ -1136,99 +1234,6 @@ const Details = (props) => {
                           {/* End of code modification by - Ashish Dewangan on 29-12-2023
                         Reason - Redesigned Size selection box */}
                         </div>
-                      </div>
-
-                      {/* <div className={styles.charts}> */}
-                      {/* <span  className={styles["text02"]}>Custom Tailored</span> */}
-                      {/* Added by Ashish Dewangan on 24-11-2022
-                      Reason - To show custom tailored form */}
-                      {/* Commented by - Ashish Dewangan on 17-02-2023
-                      Reason - To hide custom tailored label and have simple UI */}
-                      {/* <span
-                        className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
-                        style={{ cursor: "pointer" }}
-                        onClick={showCustomTailoredForm}
-                      >
-                        Custom Tailored
-                      </span> */}
-                      {/* End of comment */}
-                      {/* End of code addition */}
-                      {/* Commented and modified by - Ashish Dewangan on 23-11-2022
-                      Reason - to display size chart when we click on size chart text */}
-                      {/* <span  className={styles["text02"]}>Size Chart</span> */}
-                      {/* <span
-                        className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
-                        style={{ cursor: "pointer" }}
-                        onClick={showSizeChart}
-                      >
-                        Size Chart
-                      </span> */}
-                      {/* </div> */}
-
-                      <Modal
-                        /**
-                         * Commented and modified by - Ashish Dewangan on 03-12-2023
-                         * Reason - To give some space at top
-                         */
-                        // style={{ top: 0 }}
-                        style={{ top: "5vh" }}
-                        /**
-                         * End of code modification by - Ashish Dewangan on 03-12-2023
-                         * Reason - To give some space at top
-                         */
-                        className={styles["modalStyleCustomTailored"]}
-                        bodyStyle={{
-                          backgroundColor: "var(--modalBodyBackgroundColor)",
-                        }}
-                        footer={null}
-                        title="CUSTOM TAILORED"
-                        visible={isCustomTailoredVisible}
-                        onOk={handleCustomTailoredOk}
-                        onCancel={handleCustomTailoredCancel}
-                      >
-                        <CustomTailoredForm details={details} />
-                      </Modal>
-
-                      {/* Added by - Ashish Dewangan on 17-12-2023
-                    Reason - To show size chart */}
-                      {womenSizeChart.length > 0 && (
-                        <span
-                          className={`${styles.subtitle} ${styles.subtitle2} ${styles.customSubtitle}`}
-                          style={{
-                            color: "#4c60e5",
-                            cursor: "pointer",
-                            fontSize: "14px",
-                            alignSelf: "flex-start",
-                            width: "11vw",
-                          }}
-                          onClick={showSizeChart}
-                        >
-                          SIZE CHART
-                        </span>
-                      )}
-                      {/* End of code addition by - Ashish Dewangan on 17-12-2023
-                      Reason - To show size chart */}
-                      <Modal
-                        style={{ top: "25%" }}
-                        className={styles["modalStyle"]}
-                        footer={null}
-                        title="SIZE CHART"
-                        visible={isWomenSizeChartVisible}
-                        onOk={handleOk}
-                        onCancel={handleCancel}
-                      >
-                        {/* <img
-                        style={{ width: "100%", height: "100%" }}
-                        src={
-                          womenSizeChart.length > 0
-                            ? config.staticBaseURL + womenSizeChart
-                            : "/women_size_chart.jpg"
-                        }
-                      /> */}
-                        <WomenSizeChart womenSizeChart={womenSizeChart} />
-                      </Modal>
-                      {/* End of code addition */}
-                    </div>
 
                     <div
                       className={` ${styles["customButtonContainer"]} `}
@@ -1502,8 +1507,8 @@ const Details = (props) => {
                       </span>
                     </div> */}
 
-                    {details.ready_to_ship == true ? // </div> //   </span> //     {" " + details.ready_to_ship_days} //   > //     style={{ display: "inline-block", marginRight: "3px" }} //     className={styles["textContent"]} //   <span //   <span className={styles["colon"]}> : </span> //   </span> //     Ready to Ship{" "} //   <span className={styles["textHeading"]}> // <div className={styles["detailsContainer"]}> // Reason : No need to show this section // Commented by Om Shrivastava on 14-06-2024
-                    // Commented by Om Shrivastava on 14-06-2024
+                    {details.ready_to_ship ==
+                    true ? // Commented by Om Shrivastava on 14-06-2024 // </div> //   </span> //     {" " + details.ready_to_ship_days} //   > //     style={{ display: "inline-block", marginRight: "3px" }} //     className={styles["textContent"]} //   <span //   <span className={styles["colon"]}> : </span> //   </span> //     Ready to Ship{" "} //   <span className={styles["textHeading"]}> // <div className={styles["detailsContainer"]}> // Reason : No need to show this section // Commented by Om Shrivastava on 14-06-2024
                     // Reason : No need to show this section
                     null : (
                       <>

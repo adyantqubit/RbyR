@@ -391,17 +391,77 @@ class Invoice(APIView):
 
             date = 45
             cartdata = []
+            # Modification and addition by Om Shrivastava on 25-06-2024
+            # Reason : Set the total amount, discounted price 
+            # for cart in request.data['cart']:
+
+            #     price = float(cart['price'])
+            #     quantity = cart['quantity']
+            #     sale_discount_percentage = cart['sale_discount_percentage']
+            #     is_sale = cart['is_sale']
+            #     print(price,quantity,sale_discount_percentage,is_sale,'checkkkk')
+            #     if is_sale:
+            #         discount = sale_discount_percentage / 100
+            #         product_price_after_sale = price * (1 - discount) * quantity
+            #         product_discount_price = price * (1 - discount) 
+            #     else:
+            #         product_price_after_sale = price * quantity
+            #         product_discount_price = 0.0
+            #     print(product_price_after_sale,product_discount_price,'checkkkk')
+                
+            #     cartdata.append(cart)
+
+            #     print(cart,'jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj')
+            #     data = {
+            #         "order_no": num,
+            #         "user_no": request.user.id,
+            #         "billing_id": instancebilling.id,
+            #         "shipping_id": instanceshipping.id,
+            #         "product_id": cart['id'],
+            #         "quantity": cart['quantity'],
+            #         "price": cart['price'] ,
+            #         # "total_price":float(cart['price'])*cart['quantity'],
+            #         "total_price": product_price_after_sale if is_sale else price * quantity,
+            #         "size": cart['size'],
+            #         "payment_mode": request.data['payment'],
+            #         "selected_currency_sign": request.data['currency_sign'],
+            #         "selected_currency_value": request.data['currency_value'], 
+            #         # Added by - Ashish Dewangan on 27-11-2023
+            #         # Reason - To add Shipping charges details in purchased items
+            #         "shipping_charges":request.data['ShippingCharges'],
+            #         # End of code addition by - Ashish Dewangan on 27-11-2023
+            #         # Reason - To add Shipping charges details in purchased items
+                    
+            #         # Added by - Ashish Dewangan on 29-11-2023
+            #         # Reason - To save item's name in product orders table
+            #         "product_name":cart["title"],
+            #         # End of code addition by - Ashish Dewangan on 29-11-2023
+            #         # Reason - To save item's name in product orders table
+
+            #         # Added by - Om shrivastasva on 21-06-2024
+            #         # Reason - To save product sale discount amount in product orders table
+            #         "sale_discount_percentage":cart["sale_discount_percentage"],
+            #         "product_price_after_sale":product_price_after_sale,
+            #         'product_discount_price' : product_discount_price,
+            #         "is_sale": cart["is_sale"]
+            #         # End of code addition by - Om shrivastasva on 21-06-2024
+            #         # Reason - To save product sale discount amount in product orders table
+
+                    
+            #     }
             for cart in request.data['cart']:
 
                 price = float(cart['price'])
                 quantity = cart['quantity']
                 sale_discount_percentage = cart['sale_discount_percentage']
                 is_sale = cart['is_sale']
-                print(price,quantity,sale_discount_percentage,is_sale,'checkkkk')
+                print(price, quantity, sale_discount_percentage, is_sale, 'checkkkk')
+
+                # Calculate the product price and discount based on sale status
                 if is_sale:
                     discount = sale_discount_percentage / 100
                     product_price_after_sale = price * (1 - discount) * quantity
-                    product_discount_price = price * (1 - discount) 
+                    product_discount_price = price * (1 - discount)
                 else:
                     product_price_after_sale = price * quantity
                     product_discount_price = 0.0
@@ -417,7 +477,8 @@ class Invoice(APIView):
                     "quantity": cart['quantity'],
                     "price": cart['price'] ,
                     # "total_price":float(cart['price'])*cart['quantity'],
-                    "total_price": product_price_after_sale if is_sale else price * quantity,
+                    # "total_price": product_price_after_sale if is_sale else price * quantity,
+                    "total_price": int(product_price_after_sale),
                     "size": cart['size'],
                     "payment_mode": request.data['payment'],
                     "selected_currency_sign": request.data['currency_sign'],
@@ -445,7 +506,8 @@ class Invoice(APIView):
 
                     
                 }
-                
+                # End of modification and addition by Om Shrivastava on 25-06-2024
+                # Reason : Set the total amount, discounted price 
                 
                 # Commented and modified by - Ashish Dewangan on 29-11-2023
                 # Reason - To copy image of product to product orders table

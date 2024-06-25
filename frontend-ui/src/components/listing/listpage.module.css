@@ -303,10 +303,12 @@ Reason : Set the content in left side */
   }
   .recentlyViewCard{
     width: 70%;
+    /* border: 1px solid red; */
   }
- /* .img12{
-  height: 200px;
- } */
+ .img12{
+  height: 140px;
+  /* border: 1px solid green; */
+ }
  }
 
 
@@ -931,8 +933,9 @@ Reason : Set the content in left side */
   .img12{
     /* height: 300px;
     width: 250px; */
+    /* height: 240px; */
     height: 240px;
-    /* width: 290px; */
+    width: 290px;
   }
   .totalProduct{
     font-size: 13px;

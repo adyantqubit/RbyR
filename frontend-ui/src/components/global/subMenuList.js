@@ -42,8 +42,11 @@ export const SubMenuList = () => {
     if (list != null) {
       if (list.shownInstFilter == true) {
         nav(`/Listing/${parent}/${0}`);
+        // nav('/')
       } else {
         setRenderCategory(true);
+        // nav('/')
+
       }
     }
 
@@ -74,7 +77,7 @@ export const SubMenuList = () => {
               <li
                 id={`li${i}`}
                 ref={refc}
-                style={{ height: "40px", paddingTop: "0px" }}
+                style={{ height: "40px", paddingTop: "3px" }}
                 onMouseEnter={openc}
                 onMouseLeave={closec}
               >
@@ -102,11 +105,6 @@ export const SubMenuList = () => {
           className={style.subMenuList}
           style={{paddingTop:'15%',border:'1px solid var(--backgroundColorPrimary)'}}
         >
-          {/* <ul className={style.ul} > */}
-            {/* <li
-              className={style.l}
-              style={{ padding: "2px" }}
-            > */}
               
                 {renderCategory == true && list != null
                   ? list[`${parent}`]?.map((s) => (
@@ -120,7 +118,7 @@ export const SubMenuList = () => {
                         </div>
                       </div>
                     ))
-                  : nullPage}
+                  : 'No categories show'}
                   {/* hello */}
              
             {/* </li> */}

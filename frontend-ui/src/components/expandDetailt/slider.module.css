@@ -39,7 +39,7 @@
     justify-content: center;
 }
 .sliderContainer{
-    background-color: var(--backgroundColorSecondary);
+    /* background-color: var(--backgroundColorSecondary); */
 }
 
 .readyIcon{
