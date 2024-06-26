@@ -269,7 +269,7 @@ const InsideOrder = () => {
       notification.error({
         message: (
           <div 
-          // style={{ color: "black", fontSize: "13px", fontWeight: "600" }}
+          // style={{ color: "black", fontSize: "16px", fontWeight: "600" }}
           >
             Not available{" "}
           </div>
@@ -677,7 +677,7 @@ const InsideOrder = () => {
                         <div className={style.dataContainer}>
                           <div
                             className={`${style.rowitem2} ${style.itemName}`}
-                            style={{ fontSize: "13px", fontWeight: "bold" }}
+                            style={{ fontSize: "16px", fontWeight: "bold" }}
                           >
                             {/* Commented and modified by - Ashish Dewangan on 29-11-2023
                           Reason - To show product name which was at the time of purchase */}
@@ -706,14 +706,14 @@ const InsideOrder = () => {
                           </div>
                           {/* Modified by - Ashish Dewangan on 16-12-2023
                       Reason - Corrected the spelling of processing */}
-                          {/* <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto",fontSize:'13px',fontWeight:'bold'}}  >Order Status:&nbsp; </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap",fontSize:'13px'}} >{s.order_status}</span></div> */}
+                          {/* <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto",fontSize:'16px',fontWeight:'bold'}}  >Order Status:&nbsp; </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap",fontSize:'16px'}} >{s.order_status}</span></div> */}
                           <div className={style.rowitem2}>
                             <span
                               className={style.userinfoTextHIDE}
                               style={{
                                 whiteSpace: "nowrap",
                                 width: "auto",
-                                fontSize: "13px",
+                                fontSize: "16px",
                                 fontWeight: "bold",
                               }}
                             >
@@ -721,7 +721,7 @@ const InsideOrder = () => {
                             </span>
                             <span
                               className={style.userinfoText3}
-                              style={{ whiteSpace: "nowrap", fontSize: "13px" }}
+                              style={{ whiteSpace: "nowrap", fontSize: "16px" }}
                             >
                               {s.order_status?.toUpperCase() == "PROCCESSING"
                                 ? "Processing"
@@ -736,7 +736,7 @@ const InsideOrder = () => {
                               style={{
                                 whiteSpace: "nowrap",
                                 width: "auto",
-                                fontSize: "13px",
+                                fontSize: "16px",
                                 fontWeight: "bold",
                               }}
                             >
@@ -744,7 +744,7 @@ const InsideOrder = () => {
                             </span>
                             <span
                               className={style.userinfoText3}
-                              style={{ whiteSpace: "nowrap", fontSize: "13px" }}
+                              style={{ whiteSpace: "nowrap", fontSize: "16px" }}
                             >
                              {/* Modification and addition by Om Shrivastava on 22-06-2024
                               Reason : Set the price and total amount of product  */}
@@ -781,7 +781,7 @@ const InsideOrder = () => {
                               style={{
                                 whiteSpace: "nowrap",
                                 width: "auto",
-                                fontSize: "13px",
+                                fontSize: "16px",
                                 fontWeight: "bold",
                               }}
                             >
@@ -789,7 +789,7 @@ const InsideOrder = () => {
                             </span>
                             <span
                               className={style.userinfoText3}
-                              style={{ fontSize: "13px" }}
+                              style={{ fontSize: "16px" }}
                             >
                               {s.quantity}{" "}
                             </span>
@@ -800,7 +800,7 @@ const InsideOrder = () => {
                               style={{
                                 whiteSpace: "nowrap",
                                 width: "auto",
-                                fontSize: "13px",
+                                fontSize: "16px",
                                 fontWeight: "bold",
                               }}
                             >
@@ -808,7 +808,7 @@ const InsideOrder = () => {
                             </span>
                             <span
                               className={style.userinfoText3}
-                              style={{ whiteSpace: "nowrap", fontSize: "13px" }}
+                              style={{ whiteSpace: "nowrap", fontSize: "16px" }}
                             >
                               {/* Modification and addition by Om Shrivastava on 26-11-23
                           Reason : Need to set the correct value */}

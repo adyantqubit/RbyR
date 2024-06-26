@@ -60,6 +60,10 @@ const ProductListing = () => {
                       afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
                       currency.value
                     ).toLocaleString("en-IN")}
+                    {/* {(
+                      afterColumnTotalOfferAdd(offer, cart, taxRate).subtotal *
+                      currency.value
+                    ).toFixed(2)} */}
             {/*End of modification and addition by Om Shrivastava on 15-12-23
             Reason : When subtotal is not present then show only 0  */}
           </div>
@@ -126,7 +130,10 @@ const ProductListing = () => {
                   afterColumnTotalOfferAdd(offer, cart, taxRate).Grand *
                   currency.value
                 ).toLocaleString("en-IN")}
-            
+            {/* {(
+                  afterColumnTotalOfferAdd(offer, cart, taxRate).Grand *
+                  currency.value
+                ).toFixed(2)} */}
             {/* End of modification and addition by Om Shrivastava on 15-12-23
             Reason : When subtotal is not present then show only 0  */}
           </div>

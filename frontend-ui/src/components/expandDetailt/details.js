@@ -21,7 +21,7 @@ import {
   TOUCH_ACTIVATION,
 } from "react-image-magnifiers";
 // import Zoom from "react-medium-image-zoom";
-import "react-medium-image-zoom/dist/styles.css";
+// import "react-medium-image-zoom/dist/styles.css";
 // import projectStyles from '.style.module.css'
 import styles from "./detail.module.css";
 import "./detail.scss";
@@ -795,7 +795,7 @@ const Details = (props) => {
                           </strike>
                           <div>
                             {" "}
-                            MRP: {currency.sign}{" "}
+                            Sales price: {currency.sign}{" "}
                             {(
                               details.price *
                               (1 - details.sale_discount_percentage / 100) *
