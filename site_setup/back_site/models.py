@@ -844,6 +844,7 @@ class product_orders(models.Model):
 
     product_discount_price = models.FloatField(default=0.0,blank=True,)
 
+    grand_total = models.FloatField(default=0.0,blank=True,)
 
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name
