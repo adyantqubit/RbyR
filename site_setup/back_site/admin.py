@@ -580,7 +580,7 @@ class product_ordersAdmin(admin.ModelAdmin):
                 # Reason : Need to arrange the list display
                 #               "billing_id","shipping_id","quantity"
                 # ,"price","size","payment_mode","date",'order_status')
-                "quantity","price","product_discount_price","size",'order_status',"payment_mode","billing_id","shipping_id","date")
+                "quantity","price","product_discount_price","grand_total","size",'order_status',"payment_mode","billing_id","shipping_id","date")
                 # End of Modification and addition by Om Shrivastava on 24-12-23
                 # Reason : Need to arrange the list display
     list_display_links=("action",)
@@ -612,7 +612,7 @@ class product_ordersAdmin(admin.ModelAdmin):
     ,"shipping_charges","product_name","product_image",
     # Addition by Om Shrivastava on 22-06-2024
     # Reason : Add this field only readonly 
-    'product_price_after_sale','product_discount_price')
+    'product_price_after_sale','product_discount_price','grand_total')
     # End of addition by Om Shrivastava on 22-06-2024
     # Reason : Add this field only readonly 
     

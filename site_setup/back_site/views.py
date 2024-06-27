@@ -455,6 +455,10 @@ class Invoice(APIView):
                 quantity = cart['quantity']
                 sale_discount_percentage = cart['sale_discount_percentage']
                 is_sale = cart['is_sale']
+                # Addition by Om 
+                shipping_charge = request.data['ShippingCharges']
+
+
                 print(price, quantity, sale_discount_percentage, is_sale, 'checkkkk')
 
                 # Calculate the product price and discount based on sale status
@@ -466,6 +470,9 @@ class Invoice(APIView):
                     product_price_after_sale = price * quantity
                     product_discount_price = 0.0
                 print(product_price_after_sale,product_discount_price,'checkkkk')
+
+                grand_total = product_price_after_sale + shipping_charge
+                print(grand_total)
                 
                 cartdata.append(cart)
                 data = {
@@ -500,7 +507,8 @@ class Invoice(APIView):
                     "sale_discount_percentage":cart["sale_discount_percentage"],
                     "product_price_after_sale":product_price_after_sale,
                     'product_discount_price' : product_discount_price,
-                    "is_sale": cart["is_sale"]
+                    "is_sale": cart["is_sale"],
+                    "grand_total": grand_total
                     # End of code addition by - Om shrivastasva on 21-06-2024
                     # Reason - To save product sale discount amount in product orders table
 
