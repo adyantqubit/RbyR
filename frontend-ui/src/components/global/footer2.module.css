@@ -20,8 +20,9 @@ Reason : Set the padding and margin of antd notification  */
 .App{
     width:100%;
     /* background-color: var(--backgroundColorPrimary); */
-    /* background: linear-gradient(to right,#bcbfaf,#ffffff,#aeae98); */
-background-color: #feebed;
+    /* background: linear-gradient(to right,#bcbfaf,#ffffff,#aeae98);
+background-color: #feebed; */
+background-color: white;
     height:auto;
 }
 

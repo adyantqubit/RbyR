@@ -275,7 +275,7 @@ const Slider = ({ scrollTop }) => {
                             style={{ cursor: "pointer" }}
                           >
                             <div className={styles.readyBox}>
-                              <img src={logo} className={styles.readyIcon} />
+                              {/* <img src={logo} className={styles.readyIcon} /> */}
                               Ready To Ship
                             </div>
                           </div>

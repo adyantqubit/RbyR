@@ -235,7 +235,7 @@ function Footer() {
         {/* End of commented by Om Shrivastava on 14-06-2024
           Reason : No need to show this section */}
         <div className={style.column4}>
-            <h1 className={style.heading} style={{fontWeight:'bold'}}>Get in touch</h1>
+            {/* <h1 className={style.heading} style={{fontWeight:'bold'}}>Get in touch</h1> */}
 
             {/* {storeLocatorDetails.length > 0 ? ( */}
               <>

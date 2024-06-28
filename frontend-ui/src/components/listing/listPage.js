@@ -472,7 +472,7 @@ Reason : Need to comment the filter functionality */}
                           {p.ready_to_ship ? (
                             <div className={style.readyContainer}>
                               <div className={style.readyBox}>
-                                <img src={logo} className={style.readyIcon} />
+                                {/* <img src={logo} className={style.readyIcon} /> */}
                                 Ready To Ship
                               </div>
                             </div>

@@ -337,7 +337,7 @@ function Footer2() {
            // Reason :  Create the section for address, email and contact number */}
         {/* {socialLinks.length > 0 ? ( */}
           <div className={style.column4}>
-            <h1 className={style.heading} style={{fontWeight:'bold'}}>Get in touch</h1>
+            {/* <h1 className={style.heading} style={{fontWeight:'bold'}}>Get in touch</h1> */}
 
             {/* {storeLocatorDetails.length > 0 ? ( */}
               <>
