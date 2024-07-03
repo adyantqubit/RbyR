@@ -62,7 +62,7 @@ a {
   /* font-family: Noto Serif; */
   font-family: var(--headerFontFamily);
 
-  text-transform: capitalize;
+  text-transform: uppercase;
 }
 
 .al2 {

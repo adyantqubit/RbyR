@@ -159,6 +159,8 @@ function Footer() {
     //  style={{ borderTop: ".1em solid #7c7c7c" }}
      >
       <div className={style.row}>
+      <div className={style.footerDivContainer} >
+
         <div className={style.column1}>
           {/* <h1 className={style.heading}>CUSTOMER CARE</h1> */}
           <Link to="/custom" style={{ textDecoration: "none", color: "white" }}>
@@ -213,6 +215,7 @@ function Footer() {
             <span className={style.span}>Order Cancellation Policy</span>
           </Link>
         </div>
+        </div>
         {/* Commented by Om Shrivastava on 14-06-2024
           Reason : No need to show this section */}
         {/* <div className={style.column3}>
@@ -241,7 +244,7 @@ function Footer() {
               <>
                 {storeLocatorDetails.map((storeLocatorDetail) => {
                   return (
-                    <div>
+                    <div  className={style.footerdiv2Container}>
                       <div
                         style={{ marginTop: "0px", textDecoration: "none" }}
                         className={style.span}
@@ -292,7 +295,7 @@ function Footer() {
                   display: "flex",
                   flexDirection: "row",
                   gap: "8px",
-                  marginTop: "10px",
+                  // marginTop: "10px",
                 }}
               >
                 {socialLinks.length > 0 ? (

@@ -591,7 +591,13 @@ class Head_img(models.Model):
     # src=models.ImageField(upload_to='None/', height_field=None,\
     #        width_field=None, max_length=100) 
     src=models.ImageField(upload_to='Images/', height_field=None,\
-           width_field=None, max_length=100, verbose_name="Cover image")   
+           width_field=None, max_length=100, 
+     # Addition by Om Shrivastava on 02-07-2024
+      # Reason : Change the name   
+    #   verbose_name="Cover image") 
+      verbose_name="Home image") 
+     # End of addition by Om Shrivastava on 02-07-2024
+      # Reason : Change the name  
     # End of code modification by - Ashish Dewangan on 02-12-2023
     # Reason - To change label name of column
 
@@ -611,7 +617,13 @@ class Head_img(models.Model):
     def __str__(self):
          return "Images to display on cover slider at landing page"
     class Meta:
-            verbose_name_plural = "Cover Images"
+            # Addition by Om Shrivastava on 02-07-2024
+            # Reason : Change the name 
+            # verbose_name_plural = "Cover Images"
+            verbose_name_plural = "Home Images"
+            # End of addition by Om Shrivastava on 02-07-2024
+            # Reason : Change the name 
+
     #End of code addition 
     
 # Added by ROhan -31/12/22

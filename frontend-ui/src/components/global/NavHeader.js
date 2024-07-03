@@ -306,8 +306,8 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 5) {
-        setBackgroundColor("white"); // Change to desired color
-        setTextColor("white");
+        setBackgroundColor("#feebed"); // Change to desired color
+        setTextColor("#feebed");
       } else {
         setBackgroundColor("transparent"); // Original color
         setTextColor("black");
@@ -460,7 +460,7 @@ const Navbar = () => {
                   <Link
                     className={style.al}
                     to="/aboutRR"
-                    style={{ fontSize: "20px" }}
+                    style={{ fontSize: "15px" }}
                     onClick={(e) => setCategorySelected([])}
                   >
                     About us
@@ -471,7 +471,7 @@ const Navbar = () => {
                   <Link
                     className={style.al}
                     to="/"
-                    style={{ fontSize: "20px" }}
+                    style={{ fontSize: "15px" }}
                   >
                     Home
                   </Link>
@@ -530,7 +530,7 @@ const Navbar = () => {
                           >
                             <Link
                               className={style.al}
-                              style={{ fontSize: "20px" }}
+                              style={{ fontSize: "15px" }}
                               to={
                                 m.shownMenuNImg && m[`${parent[0]}`]?.length > 0
                                   ? `/categories/${parent[0]}`
@@ -585,7 +585,7 @@ const Navbar = () => {
                   <Link
                     className={style.al}
                     to="/sale"
-                    style={{ fontSize: "20px" }}
+                    style={{ fontSize: "15px" }}
                     // onClick={(e) => setCategorySelected([])}
                   >
                     Sale
@@ -595,7 +595,7 @@ const Navbar = () => {
                   <Link
                     className={style.al}
                     to="/shop"
-                    style={{ fontSize: "20px" }}
+                    style={{ fontSize: "15px" }}
                     // onClick={(e) => setCategorySelected([])}
                   >
                     Shop
@@ -606,7 +606,7 @@ const Navbar = () => {
                   <Link
                     className={style.al}
                     to="/listing/ready to ship/0"
-                    style={{ fontSize: "20px" }}
+                    style={{ fontSize: "15px" }}
                     onClick={(e) => setCategorySelected([])}
                   >
                     Ready to ship
@@ -617,7 +617,7 @@ const Navbar = () => {
                   <Link
                     className={style.al}
                     to="/aboutRR"
-                    style={{ fontSize: "20px" }}
+                    style={{ fontSize: "15px" }}
                   > */}
                 {/* Modification and addition by Om Shrivastava on 13-06-2024
                     Reason : Change the name  */}
@@ -656,7 +656,9 @@ const Navbar = () => {
 
 <div className={style.logo}>
                 <img
+                  // src={config.staticBaseURL + "media/" + logo}
                   src={config.staticBaseURL + "media/" + logo}
+
                   alt="Logo"
                   onClick={openHome}
                 />

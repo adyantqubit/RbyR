@@ -795,7 +795,7 @@ const Details = (props) => {
                           </strike>
                           <div>
                             {" "}
-                            Sales price: {currency.sign}{" "}
+                            Discounted price: {currency.sign}{" "}
                             {(
                               details.price *
                               (1 - details.sale_discount_percentage / 100) *

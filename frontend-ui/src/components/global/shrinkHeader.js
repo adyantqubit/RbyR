@@ -219,7 +219,9 @@ const ShrinkHeader = () => {
             Reason : Need to set the path of the store locator image */}
                     {/* <img src={config.staticBaseURL + logo} alt="Logo" className={style.img} /> */}
                     <img
-                      src={config.staticBaseURL + "media/" + logo}
+                      // src={config.staticBaseURL + "media/" + logo}
+                      src={config.staticBaseURL + "/media/" + logo}
+
                       alt="Logo"
                       className={style.img}
                     />

@@ -207,7 +207,7 @@ const Categories = () => {
           <br/>
         </div>
 
-        <div className={style.foot}>
+        <div className={style.foot} style={{height:'5vh'}}>
           <Footer />
         </div>
       </div>

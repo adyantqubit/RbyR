@@ -20,9 +20,9 @@ Reason : Set the padding and margin of antd notification  */
 .App{
     width:100%;
     /* background-color: var(--backgroundColorPrimary); */
-    /* background: linear-gradient(to right,#bcbfaf,#ffffff,#aeae98);
-background-color: #feebed; */
-background-color: white;
+    /* background: linear-gradient(to right,#bcbfaf,#ffffff,#aeae98); */
+background-color: #feebed;
+/* background-color: white; */
     height:auto;
 }
 
@@ -33,12 +33,24 @@ background-color: white;
     /* justify-content: space-around; */
     overflow: visible;
    padding: 20px 20px;
+   padding: 10px 10px;
+
    /* gap:15px; */
    gap:150px;
    padding-left: 5%;
-
+   /* Addition by Om shrivastava on 02-07-2024
+   Reason : change the design of footer  */
+flex-direction: column;
+gap: 5px;
+/* End of addition by Om shrivastava on 02-07-2024
+   Reason : change the design of footer  */
 }
-
+.footerDivContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
 .column1{
     height: auto;
     width: auto;
@@ -47,10 +59,14 @@ background-color: white;
     overflow: visible;
     word-break:normal;
     gap:10px;
-    gap:5px;
-
+    gap:30px;
+text-transform: uppercase;
     font-weight: 600;
-
+     /* Addition by Om shrivastava on 02-07-2024
+   Reason : change the design of footer  */
+flex-direction: row;
+   /* Addition by Om shrivastava on 02-07-2024
+   Reason : change the design of footer  */
 }
 
 .column2{
@@ -61,10 +77,14 @@ background-color: white;
     overflow: visible;
     word-break:normal;
     gap:10px;
-    gap:5px;
-
+    gap:30px;
+    text-transform: uppercase;
     font-weight: 600;
-
+  /* Addition by Om shrivastava on 02-07-2024
+   Reason : change the design of footer  */
+   flex-direction: row;
+   /* Addition by Om shrivastava on 02-07-2024
+   Reason : change the design of footer  */
 }
 
 .column3{
@@ -86,7 +106,9 @@ background-color: white;
     height: auto;
     width: auto;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
     overflow: visible;
     word-break:normal;
     gap:10px;
@@ -131,9 +153,13 @@ background-color: white;
     /* border-bottom: 1px solid var(--textColorPrimary) ; */
     /* text-decoration: underline; */
 }
-
+.footerdiv2Container{
+    display: flex;
+     /* border: 1px solid green; */
+     gap: 30px;
+}
 .span,.span2{
-    margin-top: 15px;
+    /* margin-top: 15px; */
     font-size: 13px;
     font-size: 15px;
 
@@ -290,6 +316,31 @@ Reason : Set the margin top  */
        
       grid-template-columns: repeat(1, 1fr);
        
+    }
+    .footerDivContainer{
+        /* border: 1px solid red; */
+        display: flex;
+        flex-direction: column;
+        align-items: unset;
+        /* justify-content: center;
+        align-items: center; */
+        gap: 30px;
+    }
+    .column1{
+        flex-direction: column;
+        gap: 5px;
+    }
+    .column2{
+        flex-direction: column;
+        gap: 5px;
+    }
+    .footerdiv2Container{
+        flex-direction: column;
+        gap: 10px;
+    }
+    .column4{
+        flex-direction: column;
+        align-items: unset;
     }
     .socialLinksTab{
         padding-left: 10px;

@@ -258,6 +258,7 @@ function Footer2() {
         // Reason : Add the condition when the data is not show  */}
       {/* <div style={{ height: "40px", borderBottom: "1px solid #7c7c7c" }}></div> */}
       <div className={style.row}>
+        <div className={style.footerDivContainer} >
         <div className={style.column1}>
           {/* <h1 className={style.heading}>CUSTOMER CARE</h1> */}
           <Link to="/custom" style={{ textDecoration: "none", color: "white" }}>
@@ -312,6 +313,7 @@ function Footer2() {
             <span className={style.span}>Order Cancellation Policy</span>
           </Link>
         </div>
+        </div>
         {/* Commented by Om Shrivastava on 14-06-2024
           Reason : No need to show store locator */}
         {/* <div className={style.column3}>
@@ -343,7 +345,7 @@ function Footer2() {
               <>
                 {storeLocatorDetails.map((storeLocatorDetail) => {
                   return (
-                    <div>
+                    <div className={style.footerdiv2Container} >
                       <div
                         style={{ marginTop: "0px", textDecoration: "none" }}
                         className={style.span}
@@ -394,7 +396,7 @@ function Footer2() {
                   display: "flex",
                   flexDirection: "row",
                   gap: "8px",
-                  marginTop: "10px",
+                  // marginTop: "10px",
                 }}
               >
                 {socialLinks.length > 0 ? (

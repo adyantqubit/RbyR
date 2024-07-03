@@ -83,7 +83,7 @@ export const SubMenuList = () => {
               >
                 <Link
                   className={style.al}
-                  style={{ fontSize: "20px" }}
+                  style={{ fontSize: "15px" }}
 
                   to={
                     // checking length on menu if 0 then not showing submenu with image page
@@ -110,7 +110,7 @@ export const SubMenuList = () => {
                   ? list[`${parent}`]?.map((s) => (
                       <div className={style.card} style={{borderBottom:'1px solid rgba(0, 0, 0, 0.05)'}}>
                         <div
-                          style={{ cursor: "pointer",padding:'4px',paddingLeft:'5%',fontSize:'17px',fontFamily: "var(--pagesFontFamily)"}}
+                          style={{ cursor: "pointer",padding:'4px',paddingLeft:'5%',fontSize:'15px',fontFamily: "var(--pagesFontFamily)"}}
                           // className={style.menu}
                           onClick={(e) => jumpIntoProductPage(s)}
                         >
