@@ -321,12 +321,15 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div style={{ width: "100%" }}>
+    <div 
+    style={{ width:'100%',border:'1px solid white' }}
+    
+    >
       <ToastContainer key={1} limit={1} enableMultiContainer={false} />
       <div
         className={style.contain}
-        style={{ backgroundColor, color: textColor }}
-        // style={{ borderBottom: "1px solid white" }}
+        // style={{border:'1px solid wh'}}
+        style={{ backgroundColor, color: textColor, }}
       >
         {/* Commented by Om Shrivastava on 13-06-2024
         Reason : No need to show header this part  */}
@@ -366,19 +369,16 @@ const Navbar = () => {
         </div> */}
         {/* End of commented by Om Shrivastava on 13-06-2024
         Reason : No need to show header this part  */}
-        {/* <div className={style.logo}>
-          
+        <div className={style.logo} >
           <img
             src={config.staticBaseURL + "media/" + logo}
             alt="Logo"
             onClick={openHome}
           />
-         
-        </div> */}
+        </div>
 
         <nav
           className={style.navbar}
-          // style={{border:'1px solid red'}}
         >
           <ul className={style.nav_links} style={{ marginBottom: "0px" }}>
             <input type="checkbox" id="checkbox_toggle" />
@@ -389,8 +389,9 @@ const Navbar = () => {
             <div
               style={{
                 display: "flex",
-                justifyContent: "space-between",
+                justifyContent: "space-around",
                 alignItems: "center",
+                gap:'30px'
               }}
             >
               {/* Commented and modified by - Ashish Dewangan on 03-12-2023
@@ -416,15 +417,14 @@ const Navbar = () => {
               Reason - To hide currency selector from header */}
               {/* <div className={style.logo} style={{border:'1px solid red'}}>
                 <img
-                  src={config.staticBaseURL + "media/" + logo}
+                  src={config.staticBaseURL + "/media/" + logo}
                   alt="Logo"
                   onClick={openHome}
                 />
               </div> */}
-              <div style={{ display:'flex', gap:'72px',alignItems:'center'}}>
-
-              <div className={style.menu}  >
-                {/* <li style={{height:"40px"}}><a className={style.al} href="/">Home</a></li>
+              
+                <div className={style.menu}>
+                  {/* <li style={{height:"40px"}}><a className={style.al} href="/">Home</a></li>
                 <li className={style.services} onMouseEnter={openc} onMouseLeave={closec}>
                   <span  className={style.al} href="/" style={{fontWeight:"450",fontSize:"20px"}}>ETHNIC</span>
                 
@@ -456,28 +456,28 @@ const Navbar = () => {
                   <Link  className={style.al} to="/listing/world_of_rbyr" onClick={e=>setCategorySelected([])} style={{textTransform:"none"}}>WORLD OF RbyR</Link>
                 </li> */}
 
-                <li className={style.services}>
-                  <Link
-                    className={style.al}
-                    to="/aboutRR"
-                    style={{ fontSize: "15px" }}
-                    onClick={(e) => setCategorySelected([])}
-                  >
-                    About us
-                  </Link>
-                </li>
+                  <li className={style.services}>
+                    <Link
+                      className={style.al}
+                      to="/aboutRR"
+                      style={{ fontSize: "15px" }}
+                      onClick={(e) => setCategorySelected([])}
+                    >
+                      About us
+                    </Link>
+                  </li>
 
-                <li className={style.services}>
-                  <Link
-                    className={style.al}
-                    to="/"
-                    style={{ fontSize: "15px" }}
-                  >
-                    Home
-                  </Link>
-                </li>
+                  <li className={style.services}>
+                    <Link
+                      className={style.al}
+                      to="/"
+                      style={{ fontSize: "15px" }}
+                    >
+                      Home
+                    </Link>
+                  </li>
 
-                {/* {menus?.map((m, i) => {
+                  {/* {menus?.map((m, i) => {
                   var parent = Object.keys(m);
                   console.log(menus, "hjhjkhjjh");
 
@@ -509,9 +509,9 @@ const Navbar = () => {
                     </li>
                   );
                 })} */}
-                <div>
-                  <SubMenuList/>
-                  {/* <div
+                  <div>
+                    <SubMenuList />
+                    {/* <div
                     className={style.subMenuConatiner2}
                     style={{ border: "1px solid red" }}
                   >
@@ -579,56 +579,56 @@ const Navbar = () => {
                         : nullPage}
                     </div>
                   </div> */}
-                </div>
+                  </div>
 
-                <li className={style.services}>
-                  <Link
-                    className={style.al}
-                    to="/sale"
-                    style={{ fontSize: "15px" }}
-                    // onClick={(e) => setCategorySelected([])}
-                  >
-                    Sale
-                  </Link>
-                </li>
-                <li className={style.services}>
-                  <Link
-                    className={style.al}
-                    to="/shop"
-                    style={{ fontSize: "15px" }}
-                    // onClick={(e) => setCategorySelected([])}
-                  >
-                    Shop
-                  </Link>
-                </li>
+                  <li className={style.services}>
+                    <Link
+                      className={style.al}
+                      to="/sale"
+                      style={{ fontSize: "15px" }}
+                      // onClick={(e) => setCategorySelected([])}
+                    >
+                      Sale
+                    </Link>
+                  </li>
+                  <li className={style.services}>
+                    <Link
+                      className={style.al}
+                      to="/shop"
+                      style={{ fontSize: "15px" }}
+                      // onClick={(e) => setCategorySelected([])}
+                    >
+                      Shop
+                    </Link>
+                  </li>
 
-                <li className={style.services}>
-                  <Link
-                    className={style.al}
-                    to="/listing/ready to ship/0"
-                    style={{ fontSize: "15px" }}
-                    onClick={(e) => setCategorySelected([])}
-                  >
-                    Ready to ship
-                  </Link>
-                </li>
+                  <li className={style.services}>
+                    <Link
+                      className={style.al}
+                      to="/listing/ready to ship/0"
+                      style={{ fontSize: "15px" }}
+                      onClick={(e) => setCategorySelected([])}
+                    >
+                      Ready to ship
+                    </Link>
+                  </li>
 
-                {/* <li className={style.services}>
+                  {/* <li className={style.services}>
                   <Link
                     className={style.al}
                     to="/aboutRR"
                     style={{ fontSize: "15px" }}
                   > */}
-                {/* Modification and addition by Om Shrivastava on 13-06-2024
+                  {/* Modification and addition by Om Shrivastava on 13-06-2024
                     Reason : Change the name  */}
-                {/* World of RbyR */}
-                {/* About us */}
-                {/* End of modification and addition by Om Shrivastava on 13-06-2024
+                  {/* World of RbyR */}
+                  {/* About us */}
+                  {/* End of modification and addition by Om Shrivastava on 13-06-2024
                     Reason : Change the name  */}
-                {/* </Link> */}
-                {/* Commented by - Ashish Dewangan on 15-02-2023
+                  {/* </Link> */}
+                  {/* Commented by - Ashish Dewangan on 15-02-2023
                   Reason - To hide submenu of world of rbyr */}
-                {/*                 
+                  {/*                 
                   <ul className={style.dropdown}>
                   <li  style={{padding:".1em",width:"auto",margin:"20px 15px",border:"none",whiteSpace:"nowrap",paddingLeft:`${left}px`}}>
                       <Link className={style.al2} to="/aboutRR" onClick={e=>setCategorySelected([])}>ABOUT RbyR</Link>
@@ -647,25 +647,23 @@ const Navbar = () => {
                     </li>
                   </ul>     
                   */}
-                {/* End of comment */}
-                {/* </li> */}
-              </div>
+                  {/* End of comment */}
+                  {/* </li> */}
 
-              {/* {access_token?<li><a className={style.al} href="/changePass">Change Password</a></li>:<li><Link to="/login">Register/Login</Link></li>}
+                {/* {access_token?<li><a className={style.al} href="/changePass">Change Password</a></li>:<li><Link to="/login">Register/Login</Link></li>}
                 {access_token?<li><span  className={style.al}  onClick={handleLogout}>Logout</span></li>:null} */}
 
-<div className={style.logo}>
-                <img
-                  // src={config.staticBaseURL + "media/" + logo}
-                  src={config.staticBaseURL + "media/" + logo}
-
-                  alt="Logo"
-                  onClick={openHome}
-                />
+                {/* <div className={style.logo}>
+                  <img
+                    // src={config.staticBaseURL + "media/" + logo}
+                    src={config.staticBaseURL + "/media/" + logo}
+                    alt="Logo"
+                    onClick={openHome}
+                  />
+                </div> */}
               </div>
-              </div>
 
-              <div className={style.system}  >
+              <div className={style.system}>
                 <div>
                   <Search className={style.icons} />
                 </div>

@@ -22,6 +22,9 @@
     height: 22.5vh;
     font-size: 15px;
     font-family: var(--pagesFontFamily);
+
+    height: 61.9vh;
+
 }
 .footerRefundNullContent{
     display: flex;
@@ -30,6 +33,8 @@
     height: 31vh;
     font-size: 15px;
     font-family: var(--pagesFontFamily);
+    height: 57vh;
+
 }
 .footerOrderCancellationNullContent{
     display: flex;

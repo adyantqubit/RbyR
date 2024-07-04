@@ -6,6 +6,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    
   }
 
 .ppContainer{
@@ -51,7 +52,7 @@
     /* padding-top: 7vh; */
     justify-content: space-around;
     /* background:var(--backgroundColorSecondary); */
-    padding-bottom: 30vh;
+    /* padding-bottom: 30vh; */
   
 }
 

@@ -85,12 +85,14 @@ li {
   position: fixed;
   width: 100%;
   z-index: 20;
+
+  /* height: 19.3vh; */
   /* background: linear-gradient(to right,#bcbfaf,#ffffff,#aeae98); */
   /* height: 143px; */
 }
-.navbar:hover{
+/* .navbar:hover{
   background-color: white;
-}
+} */
 
 
 /* NAVBAR STYLING STARTS */
@@ -142,6 +144,9 @@ li {
   padding: 10px;
   height: 60%;
 }
+.contain:hover{
+  background-color: white !important;
+}
 
 .logo img {
   /* width: 15%; */
@@ -176,9 +181,9 @@ li {
   /* gap: 12px; */
   /* Modification and addition by Om Shrivastava on 03-01-24
     Reason : Need to decrease the gap */
-  /* gap: 50px; */
+  gap: 50px;
   /* gap: 35px; */
-  gap: 18px;
+  /* gap: 18px; */
 
   /* End of modification and addition by Om Shrivastava on 03-01-24
     Reason : Need to decrease the gap  */
@@ -272,6 +277,10 @@ input[type="checkbox"] {
   align-content: flex-end;
   /* margin-left: 5%; */
   gap: 20px;
+  gap: 25px;
+
+  /* gap: 35px; */
+
   margin-right: 4%;
 }
 
@@ -494,8 +503,10 @@ input[type="checkbox"] {
 
 .action:hover .menu2 {
   display: block;
-  top: 70px;
-  right: 10px;
+  /* top: 70px;
+  right: 10px; */
+  top: 130px;
+  right: 120px;
   opacity: 1;
 }
 

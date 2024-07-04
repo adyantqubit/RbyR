@@ -121,7 +121,9 @@ const DeliveryPolicy = () => {
           </div> */}
           </div>
 
-          <div className={style.footerMargin} style={{ paddingTop: "100px" }}>
+          <div className={style.footerMargin} 
+          // style={{ paddingTop: "100px" }}
+          >
             <Footer />
           </div>
         </div>

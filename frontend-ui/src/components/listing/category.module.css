@@ -6,12 +6,17 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    /* Addition by Om Shrivastava on 04-07-2024
+    Reason : Set the page height  */
+    height: var(--pageContainerHeight);
+    /* Addition by Om Shrivastava on 04-07-2024
+    Reason : Set the page height  */
   }
 
 .container{
     padding-top:var(--paddingSpace);
 
- padding-bottom: 80px;
+ /* padding-bottom: 80px; */
  /* background-color: var(--backgroundColorSecondary); */
 }
 

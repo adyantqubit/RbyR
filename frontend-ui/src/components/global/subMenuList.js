@@ -39,9 +39,8 @@ export const SubMenuList = () => {
       const parent = Object.keys(menus[0]); 
       setParentName(parent[0]);
     }
-  }, [menus]); // Run this effect whenever menus changes
+  }, [menus]); 
 
-  // extracting all child menu of parent menu from menu list
   console.log(parentName,'check parent ')
 
   useEffect(() => {

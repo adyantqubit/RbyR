@@ -69,7 +69,9 @@ const CancellationPolicy = () => {
               // Addition and modification by Om shrivastava on 27-11-23
               // Reason : Set the height and width
               <div
-                className={stylee.footerOrderCancellationNullContent}
+                // className={stylee.footerOrderCancellationNullContent}
+                className={stylee.footerPrivacyNullContent}
+
                 // style={{height:'35vh'}}
               >
                 <div
@@ -83,7 +85,7 @@ const CancellationPolicy = () => {
             )}
           </div>
 
-          <div style={{ marginTop: "-20vh" }}>
+          <div>
             <Footer />
           </div>
         </div>

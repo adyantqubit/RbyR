@@ -174,7 +174,9 @@ justify-content: space-between;
 
 .cardContainer{
   margin-top:-2px;
-  min-height: 300px;
+  /* min-height: 300px; */
+  min-height: 478px;
+
   width: 100%;
   /* background-color: var(--backgroundColorSecondary); */
   display: flex;
@@ -304,6 +306,7 @@ Reason : Set the content in left side */
   .cardContainer{
     justify-content: space-evenly;
     padding-left: 0px;
+    padding-top: 12%;
   }
   .recentlyViewCard{
     width: 70%;

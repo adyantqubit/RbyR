@@ -505,7 +505,7 @@ Reason : Need to comment the filter functionality */}
             )}
 
             {nullpage && CategoryProduct.length == 0 ? (
-              <div style={{ width: "100%", textAlign: "center" }}>
+              <div style={{ width: "100%", textAlign: "center",display:'flex',justifyContent:'center',flexDirection:'column',alignItems:'center' }}>
                 <div
                   className={style.noresult}
                   style={{ width: "100%", textAlign: "center" }}

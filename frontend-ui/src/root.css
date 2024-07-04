@@ -177,7 +177,9 @@ Reason : Set the padding and margin of antd notification */
     --parentHeading: 16px;
     --subHeading : 14px;
     /* --paddingSpace : 105px; */
-    --paddingSpace : 92px;
+    /* --paddingSpace : 92px; */
+    --paddingSpace : 135px;
+    --pageContainerHeight : 68.3vh;
 
     --phoneViewHeight : 27px;
     --pagesFontFamily : "Jost-Regular";
