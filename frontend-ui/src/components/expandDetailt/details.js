@@ -79,8 +79,50 @@ const Details = (props) => {
   const [size, setSize] = useState("");
   const [scale, setScale] = useState(1);
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const containerRef = useRef(null);
+ 
+
+
+  const [magnifierStyle, setMagnifierStyle] = useState({
+    display: "none",
+    left: 0,
+    top: 0,
+    backgroundPosition: "0px 0px",
+    backgroundSize: "0px 0px",
+  });
+  
   const imageRef = useRef(null);
+  const containerRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    const container = containerRef.current;
+    const magnifier = imageRef.current;
+    if (!container || !magnifier) return;
+
+    const { top, left, width, height } = container.getBoundingClientRect();
+    const x = e.clientX - left;
+    const y = e.clientY - top;
+
+    // Ensure the magnifier stays within bounds
+    const magnifierX = Math.max(0, Math.min(width - 200, x - 100)); // Adjust the 200 and 100 values as per your magnifier size
+    const magnifierY = Math.max(0, Math.min(height - 200, y - 100));
+
+    // Calculate background position for magnification
+    const bgX = -((magnifierX / width) * magnifier.naturalWidth - 100); // Adjust the 100 value as per your magnifier size
+    const bgY = -((magnifierY / height) * magnifier.naturalHeight - 100);
+
+    setMagnifierStyle({
+      display: "block",
+      left: magnifierX,
+      top: magnifierY,
+      backgroundPosition: `${bgX}px ${bgY}px`,
+      backgroundSize: `${magnifier.naturalWidth}px ${magnifier.naturalHeight}px`,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setMagnifierStyle({ display: "none" });
+  };
+
 
   // Handle pinch-to-zoom on touch devices
   const handleTouchMove = (e) => {
@@ -166,10 +208,31 @@ const Details = (props) => {
   // End of code addition
 
   const [zoom, setZoom] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+const images = [
+  details?.img_main,
+  details?.img_sub1,
+  details?.img_sub2,
+  details?.img_sub3,
+].filter(img => img && img !== "/media/null"); // Filter out null or invalid images
+
 
   const handleZoomToggle = () => {
     setZoom(!zoom);
   };
+
+  const handlePrevImage = () => {
+    setCurrentImageIndex(prevIndex => 
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+  
+  const handleNextImage = () => {
+    setCurrentImageIndex(prevIndex => 
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+  
 
   useEffect(() => {
     /**
@@ -335,6 +398,7 @@ const Details = (props) => {
 
       window.scrollTo(0, 0);
     }
+    
   }, [details]);
 
   async function gettingDetail() {
@@ -356,8 +420,14 @@ const Details = (props) => {
   }, [details?.img_main]);
 
   // Function to update the main image
+  // const updateMainImage = (newImage) => {
+  //   setMainImage(newImage);
+  // };
   const updateMainImage = (newImage) => {
-    setMainImage(newImage);
+    const imageIndex = images.findIndex(image => image === newImage);
+    if (imageIndex !== -1) {
+      setCurrentImageIndex(imageIndex);
+    }
   };
 
   // console.log(details, "check all data");
@@ -682,13 +752,31 @@ const Details = (props) => {
                 <div
                   className={styles["image"]}
                   // style={{ border: "1px solid red" }}
+                  // className="image"
+                  ref={containerRef}
+                  onMouseMove={handleMouseMove}
+                  onMouseLeave={handleMouseLeave}
                 >
                   <img
                     className={styles.subImage}
-                    src={config.staticBaseURL + mainImage}
+                    // src={config.staticBaseURL + mainImage}
+                    src={config.staticBaseURL + images[currentImageIndex]}
+                    // alt="Main"
+                    // className="subImage"
+                    // src={imageSrc}
                     alt="Main"
+                    ref={imageRef}
                   />
+<div
+className={styles.magnifier}
+        // className=""
+        // style={{ ...magnifierStyle, backgroundImage: `url(${config.staticBaseURL + mainImage})` }}
+        style={{
+          ...magnifierStyle,
+          backgroundImage: `url(${config.staticBaseURL + images[currentImageIndex]})`
+        }}
 
+      ></div>
                   {/* <div className={styles["zoomContainer"]} >
                         <div className={`${styles.zoomImage} ${zoom ? styles.zoomed : ''}`}>
                           <img src={config.staticBaseURL + mainImage} alt="Zoomable" />
@@ -722,7 +810,10 @@ const Details = (props) => {
                     />
                   </div>
                 </div> */}
+                 <button className={styles.prevButton} onClick={handlePrevImage}>&lt;</button>
+                 <button className={styles.nextButton} onClick={handleNextImage}>&gt;</button>
                 </div>
+                
                 <div
                   className={styles["slideImages"]}
                   // style={{ border: "1px dotted black" }}

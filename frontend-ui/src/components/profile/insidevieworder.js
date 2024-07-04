@@ -346,7 +346,7 @@ const InsideOrder = () => {
                 <div
                   className={style.column2header1}
                   style={{
-                    whiteSpace: "nowrap",
+                    // whiteSpace: "nowrap",
                     textAlign: "end",
                     color: "#8c8c8cc",
                     textDecoration: "underline",
@@ -493,7 +493,7 @@ const InsideOrder = () => {
                                       style={{
                                         fontSize: "12px",
                                         fontWeight: "bold",
-                                        whiteSpace: "nowrap",
+                                        // whiteSpace: "nowrap",
                                       }}
                                       className={styles.userinfoText}
                                     >
@@ -711,7 +711,7 @@ const InsideOrder = () => {
                             <span
                               className={style.userinfoTextHIDE}
                               style={{
-                                whiteSpace: "nowrap",
+                                // whiteSpace: "nowrap",
                                 width: "auto",
                                 fontSize: "16px",
                                 fontWeight: "bold",
@@ -721,7 +721,7 @@ const InsideOrder = () => {
                             </span>
                             <span
                               className={style.userinfoText3}
-                              style={{ whiteSpace: "nowrap", fontSize: "16px" }}
+                              style={{  fontSize: "16px" }}
                             >
                               {s.order_status?.toUpperCase() == "PROCCESSING"
                                 ? "Processing"
@@ -734,7 +734,7 @@ const InsideOrder = () => {
                             <span
                               className={style.userinfoTextHIDE}
                               style={{
-                                whiteSpace: "nowrap",
+                                // whiteSpace: "nowrap",
                                 width: "auto",
                                 fontSize: "16px",
                                 fontWeight: "bold",
@@ -744,7 +744,7 @@ const InsideOrder = () => {
                             </span>
                             <span
                               className={style.userinfoText3}
-                              style={{ whiteSpace: "nowrap", fontSize: "16px" }}
+                              style={{  fontSize: "16px" }}
                             >
                              {/* Modification and addition by Om Shrivastava on 22-06-2024
                               Reason : Set the price and total amount of product  */}
@@ -779,7 +779,7 @@ const InsideOrder = () => {
                             <span
                               className={style.userinfoTextHIDE}
                               style={{
-                                whiteSpace: "nowrap",
+                                // whiteSpace: "nowrap",
                                 width: "auto",
                                 fontSize: "16px",
                                 fontWeight: "bold",
@@ -798,7 +798,7 @@ const InsideOrder = () => {
                             <span
                               className={style.userinfoTextHIDE}
                               style={{
-                                whiteSpace: "nowrap",
+                                // whiteSpace: "nowrap",
                                 width: "auto",
                                 fontSize: "16px",
                                 fontWeight: "bold",
@@ -808,7 +808,7 @@ const InsideOrder = () => {
                             </span>
                             <span
                               className={style.userinfoText3}
-                              style={{ whiteSpace: "nowrap", fontSize: "16px" }}
+                              style={{  fontSize: "16px" }}
                             >
                               {/* Modification and addition by Om Shrivastava on 26-11-23
                           Reason : Need to set the correct value */}

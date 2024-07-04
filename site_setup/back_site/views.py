@@ -458,7 +458,7 @@ class Invoice(APIView):
                 # Addition by Om 
                 shipping_charge = request.data['ShippingCharges']
 
-
+                print(quantity, 'quanitity checkkkk')
                 print(price, quantity, sale_discount_percentage, is_sale, 'checkkkk')
 
                 # Calculate the product price and discount based on sale status
@@ -939,51 +939,91 @@ class CartRecheck(APIView):
 
         inactive_products = []
         car = []
+        # Modification and addition by Om Shrivastava on 03-07-2024
+        # Reason : If the quantity of product is not available then I need to pass the value 0
+        # for cart in request.data['cart']:
+        #     pro = product_detail.objects.get(id=cart['id'])
+        #     if pro.is_active == False:
+        #         inactive_products.append({"id": pro.id, "name" : pro.title})
+        #     # if (cart['size'] == "Short"):
+        #     if (cart['size'] == "Small"):
+            
+        #         if cart['quantity'] > pro.S:
+        #             car.append(
+        #                 # {"id": pro.id, "size": "Short", "name": pro.title})
+        #                 {"id": pro.id, "size": "Small", "name": pro.title})
+                    
+        #     elif (cart['size'] == "Medium"):
+        #         if cart['quantity'] > pro.M:
+        #             car.append(
+        #                 {"id": pro.id, "size": "Medium", "name": pro.title})
+        #     elif (cart['size'] == "Extra Short"):
+        #         if cart['quantity'] > pro.XS:
+        #             car.append(
+        #                 {"id": pro.id, "size": "Extra Short", "name": pro.title})        
+        #     elif (cart['size'] == "Large"):
+        #         if cart['quantity'] > pro.L:
+        #             car.append(
+        #                 {"id": pro.id, "size": "Large", "name": pro.title})
+        #     elif (cart['size'] == "Extra Large"):
+        #         if cart['quantity'] > pro.XL:
+        #             car.append(
+        #                 {"id": pro.id, "size": "Extra Large", "name": pro.title})
+        #     elif (cart['size'] == "Extra Extra Large"):
+        #         if cart['quantity'] > pro.XXL:
+        #             car.append(
+        #                 {"id": pro.id, "size": "Extra Extra Large", "name": pro.title})
+            
+        #     elif (cart['size'] == "Extra Extra Extra Large"):
+        #         if cart['quantity'] > pro.XXXL:
+        #             car.append(
+        #                 {"id": pro.id, "size": "Extra Extra Extra Large", "name": pro.title})        
+
+        # if len(inactive_products)>0:
+        #     return Response({"error_inactive": inactive_products})
+        # else:
+        #     if len(car) > 0:
+        #         return Response({"error_cart": car})
+        #     else:
+        #         return Response({"Success": "go ahead"})
+
         for cart in request.data['cart']:
             pro = product_detail.objects.get(id=cart['id'])
-            if pro.is_active == False:
-                inactive_products.append({"id": pro.id, "name" : pro.title})
-            # if (cart['size'] == "Short"):
-            if (cart['size'] == "Small"):
-            
-                if cart['quantity'] > pro.S:
-                    car.append(
-                        # {"id": pro.id, "size": "Short", "name": pro.title})
-                        {"id": pro.id, "size": "Small", "name": pro.title})
-                    
-            elif (cart['size'] == "Medium"):
-                if cart['quantity'] > pro.M:
-                    car.append(
-                        {"id": pro.id, "size": "Medium", "name": pro.title})
-            elif (cart['size'] == "Extra Short"):
-                if cart['quantity'] > pro.XS:
-                    car.append(
-                        {"id": pro.id, "size": "Extra Short", "name": pro.title})        
-            elif (cart['size'] == "Large"):
-                if cart['quantity'] > pro.L:
-                    car.append(
-                        {"id": pro.id, "size": "Large", "name": pro.title})
-            elif (cart['size'] == "Extra Large"):
-                if cart['quantity'] > pro.XL:
-                    car.append(
-                        {"id": pro.id, "size": "Extra Large", "name": pro.title})
-            elif (cart['size'] == "Extra Extra Large"):
-                if cart['quantity'] > pro.XXL:
-                    car.append(
-                        {"id": pro.id, "size": "Extra Extra Large", "name": pro.title})
-            
-            elif (cart['size'] == "Extra Extra Extra Large"):
-                if cart['quantity'] > pro.XXXL:
-                    car.append(
-                        {"id": pro.id, "size": "Extra Extra Extra Large", "name": pro.title})        
 
-        if len(inactive_products)>0:
+            # Check if the product is inactive
+            if not pro.is_active:
+                inactive_products.append({"id": pro.id, "name": pro.title})
+
+            # Define a dictionary to map sizes to their corresponding product attributes
+            size_to_attribute = {
+                "Small": pro.S if pro.S is not None else 0,
+                "Medium": pro.M if pro.M is not None else 0,
+                "Extra Short": pro.XS if pro.XS is not None else 0,
+                "Large": pro.L if pro.L is not None else 0,
+                "Extra Large": pro.XL if pro.XL is not None else 0,
+                "Extra Extra Large": pro.XXL if pro.XXL is not None else 0,
+                "Extra Extra Extra Large": pro.XXXL if pro.XXXL is not None else 0
+            }
+
+            # Get the size and quantity from the cart
+            size = cart.get('size')
+            quantity = cart.get('quantity', 0)
+
+            # Check if the quantity exceeds the available stock for the size
+            if size in size_to_attribute and quantity > size_to_attribute[size]:
+                car.append({"id": pro.id, "size": size, "name": pro.title})
+
+        # Check for inactive products or products with insufficient stock
+        if inactive_products:
             return Response({"error_inactive": inactive_products})
+        elif car:
+            return Response({"error_cart": car})
         else:
-            if len(car) > 0:
-                return Response({"error_cart": car})
-            else:
-                return Response({"Success": "go ahead"})
+            return Response({"Success": "go ahead"})
+        
+        # End of modification and addition by Om Shrivastava on 03-07-2024
+        # Reason : If the quantity of product is not available then I need to pass the value 0
+
             
         # End of code modification by - Ashish Dewangan on 09-12-2023
         # Reason - To check if product is inactive or out of stock and also if user is active or not.

@@ -32,11 +32,22 @@ export const SubMenuList = () => {
 
   const [renderCategory, setRenderCategory] = useState(false);
 
-  // extracting all child menu of parent menu from menu list
+  const [parentName, setParentName] = useState('');
+
   useEffect(() => {
-    setList(menus?.filter((m) => Object.keys(m)[0] === parent)[0]);
+    if (menus && menus.length > 0) {
+      const parent = Object.keys(menus[0]); 
+      setParentName(parent[0]);
+    }
+  }, [menus]); // Run this effect whenever menus changes
+
+  // extracting all child menu of parent menu from menu list
+  console.log(parentName,'check parent ')
+
+  useEffect(() => {
+    setList(menus?.filter((m) => Object.keys(m)[0] === parentName)[0]);
     window.scrollTo(0, 0);
-  }, [parent, menus]);
+  }, [ parentName,menus]);
 
   useEffect(() => {
     if (list != null) {
@@ -65,6 +76,8 @@ export const SubMenuList = () => {
   function jumpIntoProductPage(s) {
     nav(`/listing/${parent}/${s.category}`);
   }
+
+  console.log(list,'check list ')
   return (
     <>
       <div className={style.subMenuConatiner2}>
@@ -105,10 +118,14 @@ export const SubMenuList = () => {
           className={style.subMenuList}
           style={{paddingTop:'15%'}}
         >
+          {/* {console.log(list)} */}
               
                 {renderCategory == true && list != null
-                  ? list[`${parent}`]?.map((s) => (
+                  ? list[`${parentName}`]?.map((s) => (
+                  // ? list["Collection"]?.map((s) => (
+
                       <div className={style.card} style={{borderBottom:'1px solid rgba(0, 0, 0, 0.05)'}}>
+                        {/* {console.log("PARENT :",list[`${parent}`])} */}
                         <div
                           style={{ cursor: "pointer",padding:'4px',paddingLeft:'5%',fontSize:'15px',fontFamily: "var(--pagesFontFamily)"}}
                           // className={style.menu}

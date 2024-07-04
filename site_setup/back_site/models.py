@@ -814,10 +814,18 @@ class product_orders(models.Model):
     product_name=models.CharField(max_length=100,null=True,blank=True,default='')
     # End of code addition by - Ashish Dewangan on 29-11-2023
     # Reason - Added column for product name 
+    size=models.CharField(max_length=40)   
+
     quantity=models.BigIntegerField()          
     price=models.BigIntegerField()
+    product_price_after_sale = models.FloatField(default=0.0,blank=True,)
+
+    product_discount_price = models.FloatField(default=0.0,blank=True,)
     total_price=models.BigIntegerField()
-    size=models.CharField(max_length=40)   
+
+    shipping_charges=models.BigIntegerField(default=100,null=True,blank=True)
+    grand_total = models.FloatField(default=0.0,blank=True,)
+
     payment_mode=models.CharField(max_length=20,default="cod")
     # Modification and addition by Om Shrivastava on 11-12-23
     # Reason : Set the created date
@@ -838,7 +846,6 @@ class product_orders(models.Model):
     # Modification and addition by Om Shrivastava on 10-12-23
     # Reason : Need to remove the mandatory field
     # shipping_charges=models.BigIntegerField(default=100)
-    shipping_charges=models.BigIntegerField(default=100,null=True,blank=True)
     # End of modification and addition by Om Shrivastava on 10-12-23
     # Reason : Need to remove the mandatory field
     # End of code addition by - Ashish Dewangan on 27-11-2023
@@ -852,11 +859,7 @@ class product_orders(models.Model):
     # Reason - To save image of product
     product_id=models.ForeignKey(product_detail,on_delete=models.CASCADE)
 
-    product_price_after_sale = models.FloatField(default=0.0,blank=True,)
-
-    product_discount_price = models.FloatField(default=0.0,blank=True,)
-
-    grand_total = models.FloatField(default=0.0,blank=True,)
+   
 
     #Added by Ashish Dewangan on 28-11-2022
     #Reason - To change table's displayed name

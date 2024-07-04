@@ -79,11 +79,86 @@
   flex-direction: column;
   row-gap: 1%;
 }
-.image {
+/* .image {
   width: 50%;
   height: 800px;
   
+} */
+.image {
+  width: 50%;
+  height: 800px;
+  position: relative;
+  overflow: hidden; /* Ensure the magnifier doesn't overflow */
 }
+
+.subImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.magnifier {
+  display: none; /* Hide initially */
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  width: 200px; /* Adjust size */
+  height: 200px; /* Adjust size */
+  background-repeat: no-repeat;
+  pointer-events: none; /* Prevent interference with hover */
+  
+}
+/* .prevButton, .nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 10;
+}
+
+.prevButton {
+  left: 10px;
+}
+
+.nextButton {
+  right: 10px;
+}
+
+.prevButton:hover, .nextButton:hover {
+  background: rgba(255, 255, 255, 0.8);
+} */
+
+.prevButton, .nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5); /* Dark background color */
+  color: white; /* Text color */
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 10;
+  transition: background 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.prevButton {
+  left: 10px;
+}
+
+.nextButton {
+  right: 10px;
+}
+
+.prevButton:hover, .nextButton:hover {
+  background: rgba(255, 255, 255, 0.8); /* Lighter background on hover */
+  color: black; /* Text color on hover */
+  transform: translateY(-50%) scale(1.1); /* Scale effect on hover */
+}
+
 /* .image {
   width: 50%;
   height: 800px;
