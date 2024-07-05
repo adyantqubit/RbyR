@@ -166,7 +166,7 @@ const Categories = () => {
                   // </div>}
                 )
               ) : nullPage ? null : (
-                <div style={{ width: "100%" }}>
+                <div style={{ width: "100%",height:'30vh' }}>
                   <div class="centered">
                     <div class="blob-1"></div>
                     <div class="blob-2"></div>

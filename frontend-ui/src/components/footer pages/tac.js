@@ -139,7 +139,7 @@ const Terms = () => {
             )}
           </div>
 
-          <div style={{ marginTop: "5vh" }}>
+          <div >
             <Footer />
           </div>
         </div>

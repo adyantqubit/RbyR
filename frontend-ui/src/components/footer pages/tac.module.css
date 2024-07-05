@@ -32,6 +32,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    height: 61.9vh;
+    overflow: auto;
     /* background:var(--backgroundColorSecondary); */
 }
 

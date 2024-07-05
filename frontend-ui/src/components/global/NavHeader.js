@@ -389,9 +389,9 @@ const Navbar = () => {
             <div
               style={{
                 display: "flex",
-                justifyContent: "space-around",
+                justifyContent: "center",
                 alignItems: "center",
-                gap:'30px'
+                gap:'30px',
               }}
             >
               {/* Commented and modified by - Ashish Dewangan on 03-12-2023
