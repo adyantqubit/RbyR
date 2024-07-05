@@ -135,8 +135,8 @@ const ShrinkHeader = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 5) {
-        setBackgroundColor('white'); // Change to desired color
-        setTextColor('white');
+        setBackgroundColor('#feebed'); // Change to desired color
+        setTextColor('#feebed');
       } else {
         setBackgroundColor('transparent'); // Original color
         setTextColor('black');

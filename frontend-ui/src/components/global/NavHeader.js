@@ -322,7 +322,7 @@ const Navbar = () => {
 
   return (
     <div 
-    style={{ width:'100%',border:'1px solid white' }}
+    style={{ width:'100%' }}
     
     >
       <ToastContainer key={1} limit={1} enableMultiContainer={false} />

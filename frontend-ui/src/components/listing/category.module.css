@@ -8,7 +8,7 @@
     background-attachment: fixed;
     /* Addition by Om Shrivastava on 04-07-2024
     Reason : Set the page height  */
-    height: var(--pageContainerHeight);
+    /* height: var(--pageContainerHeight); */
     /* Addition by Om Shrivastava on 04-07-2024
     Reason : Set the page height  */
   }
