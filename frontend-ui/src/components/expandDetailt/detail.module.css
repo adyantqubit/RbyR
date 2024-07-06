@@ -141,6 +141,7 @@
   color: white; /* Text color */
   border: none;
   padding: 10px;
+  padding: 0px 7px 7px 7px;
   cursor: pointer;
   font-size: 24px;
   z-index: 10;

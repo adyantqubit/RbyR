@@ -575,6 +575,8 @@ REason : Set the alignment */
 @media (max-width: 480px) {
     .rowitem2{
         padding-left: 10px;
+        padding: 5px;
+        width: 100%;
         /* width: 90vw; */
     }
     .itemName{
