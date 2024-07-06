@@ -497,10 +497,23 @@ Reason : Need to comment the filter functionality */}
               })
             ) : nullpage ? null : (
               <div style={{ width: "100%" }}>
-                <div class="centered">
-                  <div class="blob-1"></div>
-                  <div class="blob-2"></div>
-                </div>
+                 {/* Modification and addition by Om Shrivastava on 06-07-2024
+                  Reason : Change the loader  */}
+                  {/* <div class="centered">
+                    <div class="blob-1"></div>
+                    <div class="blob-2"></div>
+                  </div> */}
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img src="adyant_loader.gif" />
+                  </div>
+                  {/* End of modification and addition by Om Shrivastava on 06-07-2024
+                  Reason : Change the loader  */}
               </div>
             )}
 
@@ -536,10 +549,23 @@ Reason : Need to comment the filter functionality */}
         {loading ? (
           // <div style={{ width: "100%", background: "white" }}>
           <div className={style.loader}>
-            <div class="centered">
-              <div class="blob-1"></div>
-              <div class="blob-2"></div>
-            </div>
+             {/* Modification and addition by Om Shrivastava on 06-07-2024
+                  Reason : Change the loader  */}
+                  {/* <div class="centered">
+                    <div class="blob-1"></div>
+                    <div class="blob-2"></div>
+                  </div> */}
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img src="adyant_loader.gif" />
+                  </div>
+                  {/* End of modification and addition by Om Shrivastava on 06-07-2024
+                  Reason : Change the loader  */}
           </div>
         ) : null}
 

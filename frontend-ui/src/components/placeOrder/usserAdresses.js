@@ -812,6 +812,8 @@ const UsserAdresses = () => {
                                         // style={{width:"70%",marginLeft:"15%"}}
                                         onChange={e=>{validatesNum(e)}} 
                                         limitMaxLength={15}
+                                        // limitMaxLength={10}
+
                                         
                                         />
                                         {/* <input className={styles.firstInput} name='number' id='number' onKeyPress={validatesNum} maxlength={10} defaultValue={checkoutDetails.shippingData.number} /> */}

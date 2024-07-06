@@ -150,8 +150,6 @@ const Categories = () => {
                           View Products
                         </button>
                       </div>
-                     
-
                     </div>
                   )
                   /**
@@ -166,11 +164,24 @@ const Categories = () => {
                   // </div>}
                 )
               ) : nullPage ? null : (
-                <div style={{ width: "100%",height:'30vh' }}>
-                  <div class="centered">
+                <div style={{ width: "100%", height: "30vh" }}>
+                  {/* Modification and addition by Om Shrivastava on 06-07-2024
+                  Reason : Change the loader  */}
+                  {/* <div class="centered">
                     <div class="blob-1"></div>
                     <div class="blob-2"></div>
+                  </div> */}
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img src="adyant_loader.gif" />
                   </div>
+                  {/* End of modification and addition by Om Shrivastava on 06-07-2024
+                  Reason : Change the loader  */}
                 </div>
               )}
               {/* Modified by - Ashish Dewangan on 29-12-2023
@@ -203,11 +214,11 @@ const Categories = () => {
                         Reason - To show no product found text */}
             </div>
           </div>
-          <br/>
-          <br/>
+          <br />
+          <br />
         </div>
 
-        <div className={style.foot} style={{height:'5vh'}}>
+        <div className={style.foot} style={{ height: "5vh" }}>
           <Footer />
         </div>
       </div>
