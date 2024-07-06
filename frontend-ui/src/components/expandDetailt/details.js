@@ -107,8 +107,8 @@ const Details = (props) => {
     const magnifierY = Math.max(0, Math.min(height - 200, y - 100));
 
     // Calculate background position for magnification
-    const bgX = -((magnifierX / width) * magnifier.naturalWidth - 100); // Adjust the 100 value as per your magnifier size
-    const bgY = -((magnifierY / height) * magnifier.naturalHeight - 100);
+    const bgX = -((magnifierX / width) * magnifier.naturalWidth - 4); // Adjust the 100 value as per your magnifier size
+    const bgY = -((magnifierY / height) * magnifier.naturalHeight - 5);
 
     setMagnifierStyle({
       display: "block",

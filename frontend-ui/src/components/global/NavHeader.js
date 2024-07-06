@@ -392,6 +392,7 @@ const Navbar = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 gap:'30px',
+                marginLeft:'3%',
               }}
             >
               {/* Commented and modified by - Ashish Dewangan on 03-12-2023
