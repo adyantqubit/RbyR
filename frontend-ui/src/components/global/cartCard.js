@@ -360,14 +360,13 @@ const CartCard = (props) => {
                 <span className={styles.showSize}> {SizeGetter(pro.size)}</span>
               </div>
               {/* <div style={{ color: "black", marginLeft: "20px", marginTop: "8px" }}> */}
-              <div style={{ color: "black", marginLeft: "20px",letterSpacing:'1.5px' ,lineHeight:'10px',paddingBottom:'4px'}}>
-
-                <span className={styles.shipping} style={{fontSize:'12px',paddingBottom:'10px'}}>Standard Shipping:</span>
+              
+              {/* <div style={{ color: "black", marginLeft: "20px",letterSpacing:'1.5px' ,lineHeight:'10px',paddingBottom:'4px'}}>
                 {pro.ready_to_ship ?
                   <span style={{fontSize:'12px',letterSpacing:'0.5px'}} className={styles.shipping}> {pro.ready_to_ship_days}</span> :
                   <span style={{fontSize:'12px',letterSpacing:'0.5px'}} className={styles.shipping}> {pro.shipping_days}</span>}
 
-              </div>
+              </div> */}
               <div className={styles.gaping} ></div>
               <div className={styles.qtyContainer}>
                 <div className={styles.operatorContainer}>

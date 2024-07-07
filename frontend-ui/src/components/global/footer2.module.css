@@ -326,11 +326,14 @@ Reason : Set the margin top  */
         align-items: unset;
         /* justify-content: center;
         align-items: center; */
-        gap: 30px;
+        /* gap: 30px; */
+        gap: 6px;
+
     }
     .column1{
         flex-direction: column;
         gap: 5px;
+        gap: 3px;
     }
     .column2{
         flex-direction: column;
@@ -422,5 +425,8 @@ Reason : Set the margin top  */
         padding-left: 0px;
  /* Modification and addition by Om Shrivastava on 06-11-23
     Reason : Set the space  */
+    }
+    .span,.span2{
+        font-size: 11px;
     }
 }

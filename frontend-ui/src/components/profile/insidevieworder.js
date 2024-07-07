@@ -713,9 +713,9 @@ const InsideOrder = () => {
                               style={{
                                 // whiteSpace: "nowrap",
                                 // width: "auto",
-                                fontSize: "16px",
+                                fontSize: "15px",
                                 fontWeight: "bold",
-                                paddingRight:'8%'
+                                paddingRight:'18%'
                               }}
                             >
                               Order Status:&nbsp;{" "}

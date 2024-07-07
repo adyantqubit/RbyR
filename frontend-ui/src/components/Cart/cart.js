@@ -676,7 +676,8 @@ const CartSItem = (props) => {
                             {SizeGetter(pro.size)}
                           </span>
                         </div>
-                        <div
+                        
+                        {/* <div
                           style={{
                             color: "black",
                             marginLeft: "20px",
@@ -692,10 +693,8 @@ const CartSItem = (props) => {
                           >
                             Standard Shipping:
                           </span>
-                          {/* {pro.ready_to_ship?
-                <span className={style.shipping}> {pro.ready_to_ship_days}</span>:
-                <span className={style.shipping}> {pro.shipping_days}</span>} */}
-                        </div>
+                        
+                        </div> */}
 
                         <div
                           style={{
@@ -899,7 +898,7 @@ const CartSItem = (props) => {
                             {SizeGetter(pro.size)}
                           </span>
                         </div>
-                        <div
+                        {/* <div
                           style={{
                             color: "black",
                             marginLeft: "20px",
@@ -937,9 +936,9 @@ const CartSItem = (props) => {
                               {" "}
                               {pro.shipping_days}
                             </span>
-                          )}
-                        </div>
 
+                          )}
+                        </div> */}
                         <div className={styles.gaping}></div>
                         {/* <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                       <div style={{ color: "black", alignSelf: "start", marginLeft: "20px", color: "#8c8c8c" }}> Quantity</div>
