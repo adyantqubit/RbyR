@@ -712,9 +712,10 @@ const InsideOrder = () => {
                               className={style.userinfoTextHIDE}
                               style={{
                                 // whiteSpace: "nowrap",
-                                width: "auto",
+                                // width: "auto",
                                 fontSize: "16px",
                                 fontWeight: "bold",
+                                paddingRight:'8%'
                               }}
                             >
                               Order Status:&nbsp;{" "}

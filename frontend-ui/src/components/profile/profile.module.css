@@ -97,6 +97,7 @@
 
 .main {
     width: 100%;
+    width: 115%;
     display: flex;
 
 }
@@ -537,6 +538,7 @@
     .userinfoTextHIDE {
         display: block;
         width: 20%;
+        width: 45%;
     }
     .itemName{
         width:100% !important;
@@ -557,6 +559,7 @@
 
     .userinfoText3 {
         width: 20%;
+        width: 40%;
     }
 
     .box {
