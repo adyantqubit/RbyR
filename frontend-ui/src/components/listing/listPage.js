@@ -27,6 +27,7 @@ import { nextIndexPage } from "../../api/orderApis";
 import { CgEnter } from "react-icons/cg";
 import Chat from "../expandDetailt/chat";
 import InstantFilter from "./InstantFilter";
+import LoaderImg from '../../images/adyant_loader.gif'
 
 const ListPage = () => {
   var {
@@ -510,7 +511,9 @@ Reason : Need to comment the filter functionality */}
                       alignItems: "center",
                     }}
                   >
-                    <img src="adyant_loader.gif" />
+                    {/* <img src="adyant_loader.gif" /> */}
+                    <img style={{height:'30vh'}} src={LoaderImg}/>
+
                   </div>
                   {/* End of modification and addition by Om Shrivastava on 06-07-2024
                   Reason : Change the loader  */}
@@ -562,7 +565,8 @@ Reason : Need to comment the filter functionality */}
                       alignItems: "center",
                     }}
                   >
-                    <img src="adyant_loader.gif" />
+                    {/* <img src="adyant_loader.gif" /> */}
+                    <img style={{height:'30vh'}} src={LoaderImg}/>
                   </div>
                   {/* End of modification and addition by Om Shrivastava on 06-07-2024
                   Reason : Change the loader  */}

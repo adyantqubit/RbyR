@@ -2,6 +2,7 @@ import { notification } from "antd";
 import { createContext, useContext, useEffect, useLayoutEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import { shippingTickGet, TaxGet } from "./api/orderApis";
 import { check2, getCart, getLike, getWhatsappContactDetail, LikeUpdate, regenaratingTokenApi } from "./api/service";
 import { unSetUserToken } from "./Redux-manage/features/authSlice";
@@ -93,7 +94,14 @@ const Context = ({ children }) => {
   const [whatsappContactNumber, setWhatsappContactNumber] = useState(false);
 
     const [cond, setCond] = useState(true)
-
+    const location = useLocation(); // Hook to get the location object
+    // Addition by Om Shrivastava on 08-07-2024
+    // Reason : Set the current path, and backgroun color
+    const [currentPath, setCurrentPath] = useState();
+  const [backgroundColor, setBackgroundColor] = useState("transparent");
+  const [textColor, setTextColor] = useState("black");
+// Addition by Om Shrivastava on 08-07-2024
+    // Reason : Set the current path, and backgroun color
 
   /**
    * Added by - Ashish Dewangan on 07-12-2023
@@ -124,6 +132,39 @@ const Context = ({ children }) => {
    * End of code addition by - Ashish Dewangan on 15-12-2023
    * Reason - To store details of currently selected item
    */
+
+  // useEffect(() => {
+  //   setCurrentPath(location.pathname)
+  // }, [])
+
+  // Addition by Om Shrivastava on 08-07-2024
+    // Reason : Set the current path, and backgroun color
+  useEffect(() => {
+    const handleScroll = () => {
+      if (currentPath == '/') { // Home page
+        
+        setBackgroundColor('transparent')
+      } else { // Other pages
+        setBackgroundColor('#feebed');
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+
+  useEffect(()=>{
+    if (currentPath == '/') { // Home page
+     
+      setBackgroundColor('transparent')
+    } else { // Other pages
+      setBackgroundColor('#feebed');
+    }
+  },[currentPath])
+  // End of addition by Om Shrivastava on 08-07-2024
+    // Reason : Set the current path, and backgroun color
 
   /**
    * Added by - Ashish Dewangan on 23-12-2023
@@ -257,7 +298,7 @@ const Context = ({ children }) => {
     likeGetApi()
   }, [product])
 
-
+  
 
   function Notify() {
 
@@ -553,6 +594,8 @@ const Context = ({ children }) => {
        * End of code additon by - Ashish Dewangan on 15-12-2023
        * Reason - Making currentSelectedItem and setCurrentSelectedItem available to other pages
        */
+     currentPath, setCurrentPath,
+     backgroundColor,setBackgroundColor
     }}>
       {children}
     </Cart.Provider>

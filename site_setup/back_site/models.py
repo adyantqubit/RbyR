@@ -785,7 +785,10 @@ order_status=(
     # Modified by - Ashish Dewangan on 16-12-2023
     # Reason - Spelling of precessing was wrong
     # ("Proccessing","Proccessing"),
-    ("Proccessing","Processing"),
+
+    # ("Proccessing","Processing"),
+    ("Proccessing","In Process"),
+
     # End of modification by - Ashish Dewangan on 16-12-2023
     # Reason - Spelling of precessing was wrong
     ("Accepted","Accepted"),
@@ -838,7 +841,21 @@ class product_orders(models.Model):
     # Modification and addition by Om Shrivastava on 11-12-23
     # Reason : Need to show the capital alphabet
     # order_status=models.CharField(max_length=50,choices=order_status,default="processing",blank=True,null=True)
-    order_status=models.CharField(max_length=50,choices=order_status,default="Processing",blank=True,null=True)
+    order_status=models.CharField(max_length=50,choices=order_status,
+                                #  Modification and addition by Om Shrivastava on 08-07-2024
+                                #  Reason : Change the value 
+                                #   default="Processing",
+                                  default="In Process",
+                                #  End of modification and addition by Om Shrivastava on 08-07-2024
+                                #  Reason : Change the value 
+                                  
+                                  blank=True,null=True,
+                                #  Addition by Om Shrivastava on 08-07-2024
+                                #  Reason : Change the name of the order staus field 
+                                  verbose_name='Item status'
+                                #  End of addition by Om Shrivastava on 08-07-2024
+                                #  Reason : Change the name of the order staus field 
+                                  )
     # End of modification and addition by Om Shrivastava on 11-12-23
     # Reason : Need to show the capital alphabet
     # Added by - Ashish Dewangan on 27-11-2023

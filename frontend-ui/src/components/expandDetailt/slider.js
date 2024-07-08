@@ -93,6 +93,8 @@ const Slider = ({ scrollTop }) => {
     else nav(`/listing/${id.menu}/0/detail/${id.id}`);
   }
 
+  console.log(recentlyViewedItems,'recently itenm')
+
   return (
     <>
       {/* Commented and modified by - Ashish Dewangan on 07-12-2023

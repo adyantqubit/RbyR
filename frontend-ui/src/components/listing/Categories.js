@@ -9,6 +9,7 @@ import config from "../../api/config";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { CartState } from "../../context";
 import Footer from "../global/footer";
+import LoaderImg from '../../images/adyant_loader.gif'
 
 const Categories = () => {
   const { menus } = CartState();
@@ -178,7 +179,7 @@ const Categories = () => {
                       alignItems: "center",
                     }}
                   >
-                    <img src="adyant_loader.gif" />
+                    <img style={{height:'30vh'}} src={LoaderImg}/>
                   </div>
                   {/* End of modification and addition by Om Shrivastava on 06-07-2024
                   Reason : Change the loader  */}

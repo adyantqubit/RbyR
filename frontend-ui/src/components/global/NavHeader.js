@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 // import { FiMenu, FiX } from 'react-icons/fi';
 import { Link, useParams } from "react-router-dom";
 import style from "./NavHeader.module.css";
+import { useLocation } from 'react-router-dom';
+
 import {
   Button,
   CssBaseline,
@@ -69,8 +71,18 @@ const Navbar = () => {
     setWhatsappContactNumber,
     logo,
     setLogo,
+    backgroundColor, setBackgroundColor,
+    currentPath,setCurrentPath
   } = CartState();
   const [left, setLeft] = useState(0);
+
+  // Addition by Om Shrivastava on 08-07-2024
+  // Reason : Set the current path for header color 
+  useEffect(() => {
+    setCurrentPath(location.pathname)
+}, [])
+// End of addition by Om Shrivastava on 08-07-2024
+  // Reason : Set the current path for header color 
 
   useEffect(() => {
     if (localStorage.getItem("login")) {
@@ -170,8 +182,10 @@ const Navbar = () => {
 
   const [renderCategory, setRenderCategory] = useState(false);
 
-  const [backgroundColor, setBackgroundColor] = useState("transparent");
-  const [textColor, setTextColor] = useState("black");
+  // const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  const location = useLocation(); 
+  // const [backgroundColor, setBackgroundColor] = useState("transparent");
+  // const [textColor, setTextColor] = useState("black");
 
   const { data, isSuccess } = useGetLoggedUserQuery(access_token);
   const [userdata, setUserData] = useState({
@@ -303,23 +317,53 @@ const Navbar = () => {
   // };
 
   var refc = useRef();
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 5) {
-        setBackgroundColor("#feebed"); // Change to desired color
-        setTextColor("#feebed");
-      } else {
-        setBackgroundColor("transparent"); // Original color
-        setTextColor("black");
-      }
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (window.scrollY > 5) {
+  //       setBackgroundColor("#feebed"); // Change to desired color
+  //       setTextColor("#feebed");
+  //     } else {
+  //       setBackgroundColor("transparent"); // Original color
+  //       setTextColor("black");
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    // Cleanup function to remove the event listener
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   // Cleanup function to remove the event listener
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
+ 
+console.log(currentPath,'check path')
+  // useEffect(() => {
+  //   const homePageBackground = "#feebed";
+  //   const homePageText = "black";
+  //   const otherPageBackground = "#feebed"; // same as homePageBackground to match your example
 
+  //   const handleScroll = () => {
+  //     if (currentPath == '/') { // Home page
+  //       // if (window.scrollY > 5) {
+  //       //   setBackgroundColor(homePageBackground);
+  //       //   setTextColor(homePageBackground); // Same as background
+  //       // } else {
+  //       //   setBackgroundColor("red");
+  //       //   setTextColor(homePageText);
+  //       // }
+  //       setBackgroundColor('transparent')
+  //     } else { // Other pages
+  //       setBackgroundColor('red');
+  //     }
+  //   };
+
+  //   window.addEventListener("scroll", handleScroll);
+
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, [currentPath]);
+
+  // useEffect(() => {
+  //   setCurrentPath(location.pathname);
+  // }, [location]);
+console.log(backgroundColor)
   return (
     <div 
     style={{ width:'100%' }}
@@ -329,7 +373,9 @@ const Navbar = () => {
       <div
         className={style.contain}
         // style={{border:'1px solid wh'}}
-        style={{ backgroundColor, color: textColor, }}
+        style={{ backgroundColor, 
+          // color: textColor, 
+        }}
       >
         {/* Commented by Om Shrivastava on 13-06-2024
         Reason : No need to show header this part  */}

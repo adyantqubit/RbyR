@@ -38,15 +38,16 @@ import "react-modern-drawer/dist/index.css";
 const text = "Are you sure you want to logout?";
 
 const ShrinkHeader = () => {
-  const { menus } = CartState();
+  const { menus, backgroundColor, setBackgroundColor,
+    currentPath,setCurrentPath } = CartState();
   const [menu, setMenu] = useState(null);
   const nav = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [category, setcategory] = useState(null);
   const [parentmenu, setparentMenu] = useState("");
 
-  const [backgroundColor, setBackgroundColor] = useState('transparent');
-  const [textColor, setTextColor] = useState('black');
+  // const [backgroundColor, setBackgroundColor] = useState('transparent');
+  // const [textColor, setTextColor] = useState('black');
 
   const [logo, setLogo] = useState(
     "https://res.cloudinary.com/dzzdidhrq/image/upload/v1665666532/imageedit_1_8617192145_tkdkvr-removebg-preview_vu0nj5.jpg"
@@ -132,22 +133,22 @@ const ShrinkHeader = () => {
       toggleDrawer();
     }
   }
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 5) {
-        setBackgroundColor('#feebed'); // Change to desired color
-        setTextColor('#feebed');
-      } else {
-        setBackgroundColor('transparent'); // Original color
-        setTextColor('black');
-      }
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (window.scrollY > 5) {
+  //       setBackgroundColor('#feebed'); // Change to desired color
+  //       setTextColor('#feebed');
+  //     } else {
+  //       setBackgroundColor('transparent'); // Original color
+  //       setTextColor('black');
+  //     }
+  //   };
 
-    window.addEventListener('scroll', handleScroll);
+  //   window.addEventListener('scroll', handleScroll);
 
-    // Cleanup function to remove the event listener
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  //   // Cleanup function to remove the event listener
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);
 
   return (
     <div className={style.responsiveHeader} >
@@ -179,7 +180,7 @@ const ShrinkHeader = () => {
       {/* End of commented by Om Shrivastava on 13-06-2024
         Reason : No need to show header this part  */}
       <div className={style.headerContainer}
-      style={{ backgroundColor, color: textColor }}
+      style={{ backgroundColor, }}
       >
         <div style={{ display: "flex" }}>
           <div className={style.humbergerDiv}>

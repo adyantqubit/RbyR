@@ -612,7 +612,8 @@ const InsideOrder = () => {
                       className={style.rowitem2}
                       style={{ color: "black", fontWeight: "500" }}
                     >
-                      Order Status
+                      {/* Order Status */}
+                      Item status
                     </div>
                     <div
                       className={style.rowitem2}
@@ -718,7 +719,9 @@ const InsideOrder = () => {
                                 paddingRight:'18%'
                               }}
                             >
-                              Order Status:&nbsp;{" "}
+                              {/* Order Status:&nbsp;{" "} */}
+                              Item Status:&nbsp;{" "}
+
                             </span>
                             <span
                               className={style.userinfoText3}
