@@ -311,6 +311,29 @@ const ShrinkHeader = () => {
 
           {/* Added by -Rohan 30/12/22
               Reason- showing parent menu coming from backend */}
+              <Link to="/AboutRR" className={style.drawerMenu}>
+            <div
+              style={{
+                justifyContent: "space-between",
+                width: "100%",
+                display: "flex",
+              }}
+              onClick={(e) => {
+                toggleDrawer();
+              }}
+            >
+              <span>
+                {/* Modification and addition by Om Shrivastava on 13-06-2024
+                    Reason : Change the name  */}
+                {/* World of RbyR */}
+                About us
+                {/* End of modification and addition by Om Shrivastava on 13-06-2024
+                    Reason : Change the name  */}
+              </span>
+
+              {/* <AiOutlineRight /> */}
+            </div>
+          </Link>
           <Link to="/" className={style.drawerMenu} onClick={toggleDrawer}>
             Home
           </Link>
@@ -391,29 +414,7 @@ const ShrinkHeader = () => {
               <span>WORLD OF RbyR</span> <AiOutlineRight />
             </div>
           </Link> */}
-          <Link to="/AboutRR" className={style.drawerMenu}>
-            <div
-              style={{
-                justifyContent: "space-between",
-                width: "100%",
-                display: "flex",
-              }}
-              onClick={(e) => {
-                toggleDrawer();
-              }}
-            >
-              <span>
-                {/* Modification and addition by Om Shrivastava on 13-06-2024
-                    Reason : Change the name  */}
-                {/* World of RbyR */}
-                About us
-                {/* End of modification and addition by Om Shrivastava on 13-06-2024
-                    Reason : Change the name  */}
-              </span>
-
-              {/* <AiOutlineRight /> */}
-            </div>
-          </Link>
+          
           {/* End of code modification */}
           {/* End of code */}
 

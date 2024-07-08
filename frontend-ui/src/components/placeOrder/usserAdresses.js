@@ -47,19 +47,53 @@ const UsserAdresses = () => {
      */
     const [selectedShippingAddress,setSelectedShippingAddress]=useState({})
 
-    useEffect(()=>{
-        fillDefaultShippingAddress()
-        setCond(true)
-    },[])
+    // Modification and addition by Om Shrivastava on 08-07-2024.
+    // Reason : Set the shipping address data when user load page 
+    // useEffect(()=>{
+    //     fillDefaultShippingAddress()
+    //     setCond(true)
+    // },[])
 
-    const fillDefaultShippingAddress = async ()=>{
-        var access=localStorage.getItem('access_token')
-        const response = await ShippingGetApi({access})
-       
-        if(response && response?.length>0){
-           setSelectedShippingAddress( response.filter(s=>s.isSelected==true)[0])
+    useEffect(() => {
+        if (access_token) {
+            fillDefaultShippingAddress();
+            setCond(true);
         }
-    }
+    }, [access_token]);  // Add access_token as a dependency
+    
+
+    useEffect(()=>{
+        setCheckoutDetails(checkoutDetails)
+    },[checkoutDetails])
+    console.log(checkoutDetails)
+
+    useEffect(() => {
+        if (selectedShippingAddress && Object.keys(selectedShippingAddress).length > 0) {
+            const updatedCheckoutDetails = { ...checkoutDetails, shippingData: selectedShippingAddress };
+            setCheckoutDetails(updatedCheckoutDetails);
+            console.log("Updated checkoutDetails with shippingData:", updatedCheckoutDetails); // Log for verification
+        }
+    }, [selectedShippingAddress]);  // Add selectedShippingAddress as a dependency
+    
+
+    const fillDefaultShippingAddress = async () => {
+        const access = localStorage.getItem('access_token');
+        if (access) {
+            const response = await ShippingGetApi({ access });
+            if (response && response.length > 0) {
+                const selectedAddress = response.find(s => s.isSelected === true);
+                if (selectedAddress) {
+                    setSelectedShippingAddress(selectedAddress); // Update state
+                }
+            }
+        }
+    };
+
+    // End of Modification and addition by Om Shrivastava on 08-07-2024.
+    // Reason : Set the shipping address data when user load page
+    
+
+    
     /**
      * End of code addition by - Ashish Dewangan on 03-12-2023
      * Reason - To set default shipping address
@@ -104,132 +138,6 @@ const UsserAdresses = () => {
         e.preventDefault();
         const data = new FormData(e.currentTarget);
         var action = true;
-        // firstname:data.get('first'),
-        //     lastname:data.get('last'),
-        //     street:data.get('street'),
-        //     houseno:data.get('flatno'),
-        //     city:data.get('city'),
-        //     state:data.get('state'),
-        //     zipcode:data.get('pincode'),
-        //     country:value,
-        //     number:data.get('number')
-
-        /**
-         * Modified by - Ashish Dewangan on 22-12-2023
-         * Reason - To validate one field after previoues field is validated
-         */
-        // if (data.get('first').length == 0 ) {
-        //     setRequired({ "first": "This field is required." })
-        //     document.getElementById('first').focus()
-        //     // document.getElementById('first').scrollTop(-100)
-        //     action = false
-        // }
-        // else if (data.get('last').length == 0 ) {
-        //     setRequired({ "last": "This field is required." })
-        //     document.getElementById('last').focus()
-        //     // document.getElementById('first').scrollTop(0)
-        //     action = false
-
-        // }
-        // else if (data.get('street').length == 0 ) {
-        //     setRequired({ 'street': "This field is required." })
-        //     document.getElementById('street').focus()
-        //     // document.getElementById('first').scrollTop(0)
-        //     action = false
-
-        // }
-        // else if (data.get('flatno').length == 0 ) {
-        //     setRequired({ 'flatno': "This field is required." })
-        //     document.getElementById('flatno').focus()
-        //     // document.getElementById('first').scrollTop(0)
-        //     action = false
-
-        // }
-        // else if (data.get('city').length == 0 ) {
-        //     setRequired({ 'city': "This field is required." })
-        //     document.getElementById('city').focus()
-        //     // document.getElementById('first').scrollTop(0)
-        //     action = false
-
-        // }
-        // else if (data.get('state').length == 0 ) {
-        //     setRequired({ 'state': "this field is required." })
-        //     document.getElementById('state').focus()
-        //     // document.getElementById('first').scrollTop(0)
-        //     action = false
-
-        // }
-        // else if (data.get('pincode').length == 0 ) {
-        //     setRequired({ 'pincode': "This field is required." })
-        //     document.getElementById('pincode').focus()
-        //     // document.getElementById('pincode').scrollTop(0)
-        //     action = false
-
-        // }
-        // else if (data.get('number').length == 0 ) {
-        //     setRequired({ "number": "This field is required." })
-        //     document.getElementById('number').focus()
-        //     // document.getElementById('number').scrollTop(0)
-        //     action = false
-        // }
-
-        // if (billingInfo) {
-        //     if (data.get('firstb').length == 0 ) {
-        //         setRequired({ "firstb": "This field is required." })
-        //         document.getElementById('firstb').focus()
-        //         // document.getElementById('first').scrollTop(-100)
-        //         action = false
-        //     }
-        //     else if (data.get('lastb').length == 0 ) {
-        //         setRequired({ "lastb": "This field is required." })
-        //         document.getElementById('lastb').focus()
-        //         // document.getElementById('first').scrollTop(0)
-        //         action = false
-
-        //     }
-        //     else if (data.get('streetb').length == 0 ) {
-        //         setRequired({ 'streetb': "This field is required." })
-        //         document.getElementById('streetb').focus()
-        //         // document.getElementById('first').scrollTop(0)
-        //         action = false
-
-        //     }
-        //     else if (data.get('flatnob').length == 0 ) {
-        //         setRequired({ 'flatnob': "This field is required." })
-        //         document.getElementById('flatnob').focus()
-        //         // document.getElementById('first').scrollTop(0)
-        //         action = false
-
-        //     }
-        //     else if (data.get('cityb').length == 0 ) {
-        //         setRequired({ 'cityb': "This field is required." })
-        //         document.getElementById('cityb').focus()
-        //         // document.getElementById('first').scrollTop(0)
-        //         action = false
-
-        //     }
-        //     else if (data.get('stateb').length == 0 ) {
-        //         setRequired({ 'stateb': "this field is required." })
-        //         document.getElementById('stateb').focus()
-        //         // document.getElementById('first').scrollTop(0)
-        //         action = false
-
-        //     }
-        //     else if (data.get('pincodeb').length == 0 ) {
-        //         setRequired({ 'pincodeb': "This field is required." })
-        //         document.getElementById('pincodeb').focus()
-        //         // document.getElementById('pincode').scrollTop(0)
-        //         action = false
-
-        //     }
-        //     else if (data.get('numberb')?.length == 0) {
-        //         setRequired({ "numberb": "This field is required." })
-        //         document.getElementById('numberb').focus()
-        //         // document.getElementById('number').scrollTop(0)
-        //         action = false
-        //     }
-           
-        // }
 
         if (data.get('first').length == 0 && action == true) {
             setRequired({ "first": "This field is required." })
@@ -637,6 +545,10 @@ const UsserAdresses = () => {
         input.setAttribute('name','numberb')
         input.setAttribute('id','numberb')}
     },[billingInfo])
+
+
+console.log(checkoutDetails?.shippingData,'checkout details')
+console.log(selectedShippingAddress,'selected shipping address')
 
 
     return (

@@ -66,7 +66,7 @@ const Orderpage = (props) => {
   //     document.getElementById("scrolled").style.top="23vh";
 
   // },[windowSize])
-
+console.log(shippingflow,'check shipping flow')
 
   return (
     <>
