@@ -139,20 +139,21 @@ const Context = ({ children }) => {
 
   // Addition by Om Shrivastava on 08-07-2024
     // Reason : Set the current path, and backgroun color
-  useEffect(() => {
-    const handleScroll = () => {
-      if (currentPath == '/') { // Home page
+    
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (currentPath == '/') { // Home page
         
-        setBackgroundColor('transparent')
-      } else { // Other pages
-        setBackgroundColor('#feebed');
-      }
-    };
+  //       setBackgroundColor('transparent')
+  //     } else { // Other pages
+  //       setBackgroundColor('#feebed');
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
 
   useEffect(()=>{
