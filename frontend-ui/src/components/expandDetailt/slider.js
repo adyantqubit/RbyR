@@ -188,7 +188,8 @@ const Slider = ({ scrollTop }) => {
                           // Reason : Fix the image height and width
                           onClick={(e) => {
                             openDetail(cart);
-                            scrollTop();
+                            // scrollTop();
+                            window.location.reload();
                           }}
                         />
                         <div

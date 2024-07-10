@@ -63,6 +63,8 @@ import cartImage from "../../images/cartDesign.jpeg";
 
 // import required modules
 import { Navigation } from "swiper/modules";
+import LoaderImg from '../../images/adyant_loader.gif'
+
 
 const sty = StyleSheet.create({
   bounce: {
@@ -79,8 +81,6 @@ const Details = (props) => {
   const [size, setSize] = useState("");
   const [scale, setScale] = useState(1);
   const [position, setPosition] = useState({ x: 0, y: 0 });
- 
-
 
   const [magnifierStyle, setMagnifierStyle] = useState({
     display: "none",
@@ -89,7 +89,7 @@ const Details = (props) => {
     backgroundPosition: "0px 0px",
     backgroundSize: "0px 0px",
   });
-  
+
   const imageRef = useRef(null);
   const containerRef = useRef(null);
 
@@ -116,13 +116,16 @@ const Details = (props) => {
       top: magnifierY,
       backgroundPosition: `${bgX}px ${bgY}px`,
       backgroundSize: `${magnifier.naturalWidth}px ${magnifier.naturalHeight}px`,
+      // backgroundSize:'600px 900px',
+      // backgroundSize:'620px 1000px',
+
+
     });
   };
 
   const handleMouseLeave = () => {
     setMagnifierStyle({ display: "none" });
   };
-
 
   // Handle pinch-to-zoom on touch devices
   const handleTouchMove = (e) => {
@@ -209,30 +212,28 @@ const Details = (props) => {
 
   const [zoom, setZoom] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-const images = [
-  details?.img_main,
-  details?.img_sub1,
-  details?.img_sub2,
-  details?.img_sub3,
-].filter(img => img && img !== "/media/null"); // Filter out null or invalid images
-
+  const images = [
+    details?.img_main,
+    details?.img_sub1,
+    details?.img_sub2,
+    details?.img_sub3,
+  ].filter((img) => img && img !== "/media/null"); // Filter out null or invalid images
 
   const handleZoomToggle = () => {
     setZoom(!zoom);
   };
 
   const handlePrevImage = () => {
-    setCurrentImageIndex(prevIndex => 
+    setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
-  
+
   const handleNextImage = () => {
-    setCurrentImageIndex(prevIndex => 
+    setCurrentImageIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
-  
 
   useEffect(() => {
     /**
@@ -398,7 +399,6 @@ const images = [
 
       window.scrollTo(0, 0);
     }
-    
   }, [details]);
 
   async function gettingDetail() {
@@ -424,7 +424,7 @@ const images = [
   //   setMainImage(newImage);
   // };
   const updateMainImage = (newImage) => {
-    const imageIndex = images.findIndex(image => image === newImage);
+    const imageIndex = images.findIndex((image) => image === newImage);
     if (imageIndex !== -1) {
       setCurrentImageIndex(imageIndex);
     }
@@ -767,16 +767,17 @@ const images = [
                     alt="Main"
                     ref={imageRef}
                   />
-<div
-className={styles.magnifier}
-        // className=""
-        // style={{ ...magnifierStyle, backgroundImage: `url(${config.staticBaseURL + mainImage})` }}
-        style={{
-          ...magnifierStyle,
-          backgroundImage: `url(${config.staticBaseURL + images[currentImageIndex]})`
-        }}
-
-      ></div>
+                  <div
+                    className={styles.magnifier}
+                    // className=""
+                    // style={{ ...magnifierStyle, backgroundImage: `url(${config.staticBaseURL + mainImage})` }}
+                    style={{
+                      ...magnifierStyle,
+                      backgroundImage: `url(${
+                        config.staticBaseURL + images[currentImageIndex]
+                      })`,
+                    }}
+                  ></div>
                   {/* <div className={styles["zoomContainer"]} >
                         <div className={`${styles.zoomImage} ${zoom ? styles.zoomed : ''}`}>
                           <img src={config.staticBaseURL + mainImage} alt="Zoomable" />
@@ -810,10 +811,20 @@ className={styles.magnifier}
                     />
                   </div>
                 </div> */}
-                 <button className={styles.prevButton} onClick={handlePrevImage}>&lt;</button>
-                 <button className={styles.nextButton} onClick={handleNextImage}>&gt;</button>
+                  <button
+                    className={styles.prevButton}
+                    onClick={handlePrevImage}
+                  >
+                    &lt;
+                  </button>
+                  <button
+                    className={styles.nextButton}
+                    onClick={handleNextImage}
+                  >
+                    &gt;
+                  </button>
                 </div>
-                
+
                 <div
                   className={styles["slideImages"]}
                   // style={{ border: "1px dotted black" }}
@@ -1024,10 +1035,7 @@ className={styles.magnifier}
                       ) : ( */}
                         {/* End of comment by - Ashish Dewangan on 29-12-2023
                       Reason - Redesigned size selection box */}
-
-                        
                       </div>
-
 
                       {/* <div className={styles.charts}> */}
                       {/* <span  className={styles["text02"]}>Custom Tailored</span> */}
@@ -1092,7 +1100,6 @@ className={styles.magnifier}
                             alignSelf: "flex-start",
                             // width: "11vw",
                             width: "100%",
-
                           }}
                           onClick={showSizeChart}
                         >
@@ -1124,18 +1131,18 @@ className={styles.magnifier}
                     </div>
 
                     <div
-                          style={{
-                            display: "inline-flex",
-                            flexDirection: "column",
-                            width: "100%",
-                            // border:'1px solid red'
-                          }}
-                        >
-                          <div class="rating">
-                            <form class="rating-form">
-                              {/* Commented by - Ashish Dewangan on 17-02-2023
+                      style={{
+                        display: "inline-flex",
+                        flexDirection: "column",
+                        width: "100%",
+                        // border:'1px solid red'
+                      }}
+                    >
+                      <div class="rating">
+                        <form class="rating-form">
+                          {/* Commented by - Ashish Dewangan on 17-02-2023
                               Reason - To hide sizes that are not required */}
-                              {/* <label
+                          {/* <label
                                 for={details.id * 2}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
                                 style={{ textDecoration: "none" }}
@@ -1150,108 +1157,108 @@ className={styles.magnifier}
                                 />
                                 <span class="span">XS</span>
                               </label> */}
-                              {/* End of comment */}
-                              <label
-                                for={details.id}
-                                className={`
+                          {/* End of comment */}
+                          <label
+                            for={details.id}
+                            className={`
                               ${styles.customSubtitle} ${styles.sizeText}`}
-                                style={{
-                                  textDecoration: "none",
-                                  padding: "0%",
-                                }}
-                              >
-                                <input
-                                  type="radio"
-                                  name={details.id}
-                                  class="super-happy"
-                                  id={details.id}
-                                  // value="Short"
-                                  value="Small"
-                                  onChange={(e) => onChange(e.target.value)}
-                                  // style={{border:'1px solid red'}}
-                                />
+                            style={{
+                              textDecoration: "none",
+                              padding: "0%",
+                            }}
+                          >
+                            <input
+                              type="radio"
+                              name={details.id}
+                              class="super-happy"
+                              id={details.id}
+                              // value="Short"
+                              value="Small"
+                              onChange={(e) => onChange(e.target.value)}
+                              // style={{border:'1px solid red'}}
+                            />
 
-                                <span
-                                  //  style={{b}
-                                  class="span"
-                                  // className={styles["sizeContainer"]}
-                                  style={{ padding: "9% 15% 9% 15%" }}
-                                >
-                                  &nbsp;S&nbsp;
-                                </span>
-                              </label>
+                            <span
+                              //  style={{b}
+                              class="span"
+                              // className={styles["sizeContainer"]}
+                              style={{ padding: "9% 15% 9% 15%" }}
+                            >
+                              &nbsp;S&nbsp;
+                            </span>
+                          </label>
 
-                              <label
-                                for={details.id * 44}
-                                className={` ${styles.customSubtitle} ${styles.sizeText}`}
-                                style={{
-                                  textDecoration: "none",
-                                }}
-                              >
-                                <input
-                                  type="radio"
-                                  name={details.id}
-                                  class="happy"
-                                  id={details.id * 44}
-                                  value="Medium"
-                                  onChange={(e) => onChange(e.target.value)}
-                                />
-                                <span
-                                  class="span"
-                                  style={{ padding: "9% 15% 9% 15%" }}
-                                >
-                                  &nbsp;M&nbsp;
-                                </span>
-                              </label>
+                          <label
+                            for={details.id * 44}
+                            className={` ${styles.customSubtitle} ${styles.sizeText}`}
+                            style={{
+                              textDecoration: "none",
+                            }}
+                          >
+                            <input
+                              type="radio"
+                              name={details.id}
+                              class="happy"
+                              id={details.id * 44}
+                              value="Medium"
+                              onChange={(e) => onChange(e.target.value)}
+                            />
+                            <span
+                              class="span"
+                              style={{ padding: "9% 15% 9% 15%" }}
+                            >
+                              &nbsp;M&nbsp;
+                            </span>
+                          </label>
 
-                              <label
-                                for={details.id * 88}
-                                className={` ${styles.customSubtitle} ${styles.sizeText}`}
-                                style={{
-                                  textDecoration: "none",
-                                }}
-                              >
-                                <input
-                                  type="radio"
-                                  name={details.id}
-                                  class="sad"
-                                  id={details.id * 88}
-                                  value="Large"
-                                  onChange={(e) => onChange(e.target.value)}
-                                />
-                                <span
-                                  class="span"
-                                  style={{ padding: "9% 15% 9% 15%" }}
-                                >
-                                  &nbsp;L&nbsp;
-                                </span>
-                              </label>
+                          <label
+                            for={details.id * 88}
+                            className={` ${styles.customSubtitle} ${styles.sizeText}`}
+                            style={{
+                              textDecoration: "none",
+                            }}
+                          >
+                            <input
+                              type="radio"
+                              name={details.id}
+                              class="sad"
+                              id={details.id * 88}
+                              value="Large"
+                              onChange={(e) => onChange(e.target.value)}
+                            />
+                            <span
+                              class="span"
+                              style={{ padding: "9% 15% 9% 15%" }}
+                            >
+                              &nbsp;L&nbsp;
+                            </span>
+                          </label>
 
-                              <label
-                                for={details.id * 108}
-                                className={` ${styles.customSubtitle} ${styles.sizeText}`}
-                                style={{
-                                  textDecoration: "none",
-                                }}
-                              >
-                                <input
-                                  type="radio"
-                                  name={details.id}
-                                  class="super-sad"
-                                  id={details.id * 108}
-                                  value="Extra Large"
-                                  onChange={(e) => onChange(e.target.value)}
-                                />
-                                <span
-                                  class="span"
-                                  style={{ padding: "9% 15% 9% 15%" }}
-                                >
-                                  XL
-                                </span>
-                              </label>
-                              {/* Commented by - Ashish Dewangan on 17-02-2023
+                          <label
+                            for={details.id * 108}
+                            className={` ${styles.customSubtitle} ${styles.sizeText}`}
+                            style={{
+                              textDecoration: "none",
+                            }}
+                          >
+                            <input
+                              type="radio"
+                              name={details.id}
+                              class="super-sad"
+                              id={details.id * 108}
+                              value="Extra Large"
+                              onChange={(e) => onChange(e.target.value)}
+                            />
+                            <span
+                              class="span"
+                              style={{ padding: "9% 15% 9% 15%" }}
+                            >
+                              XL
+                            </span>
+                          </label>
+                          {/* Commented by - Ashish Dewangan on 17-02-2023
                               Reason - To hide sizes that are not required */}
-                              {/* <label
+                          {/* <label
                                 for={details.id * 126}
                                 className={`${styles.subtitle} ${styles.customSubtitle}`}
                                 style={{ textDecoration: "none" }}
@@ -1281,12 +1288,12 @@ className={styles.magnifier}
                                 />
                                 <span class="span">XXXL</span>
                               </label> */}
-                              {/* End of comment */}
-                            </form>
-                          </div>
-                          {/* Modified by - Ashish Dewangan on 29-12-2023
+                          {/* End of comment */}
+                        </form>
+                      </div>
+                      {/* Modified by - Ashish Dewangan on 29-12-2023
                         Reason - Redesigned Size selection box */}
-                          {/* {notAvai ? (
+                      {/* {notAvai ? (
                           <div
                             // id="rating"
                             style={{
@@ -1299,32 +1306,32 @@ className={styles.magnifier}
                           </div>
                         ) : null} */}
 
-                          {notAvai ? (
-                            <div
-                              // id="rating"
-                              style={{
-                                color: "red",
-                                fontSize: "0.8rem",
-                                marginLeft: "10px",
-                              }}
-                            >
-                              This size is not available.
-                            </div>
-                          ) : pushData ? (
-                            <div
-                              // class="rating"
-                              style={{
-                                color: "red",
-                                fontSize: "0.8rem",
-                                marginLeft: "10px",
-                              }}
-                            >
-                              Please select your size
-                            </div>
-                          ) : null}
-                          {/* End of code modification by - Ashish Dewangan on 29-12-2023
-                        Reason - Redesigned Size selection box */}
+                      {notAvai ? (
+                        <div
+                          // id="rating"
+                          style={{
+                            color: "red",
+                            fontSize: "0.8rem",
+                            marginLeft: "10px",
+                          }}
+                        >
+                          This size is not available.
                         </div>
+                      ) : pushData ? (
+                        <div
+                          // class="rating"
+                          style={{
+                            color: "red",
+                            fontSize: "0.8rem",
+                            marginLeft: "10px",
+                          }}
+                        >
+                          Please select your size
+                        </div>
+                      ) : null}
+                      {/* End of code modification by - Ashish Dewangan on 29-12-2023
+                        Reason - Redesigned Size selection box */}
+                    </div>
 
                     <div
                       className={` ${styles["customButtonContainer"]} `}
@@ -1599,8 +1606,7 @@ className={styles.magnifier}
                     </div> */}
 
                     {details.ready_to_ship ==
-                    true ? // Commented by Om Shrivastava on 14-06-2024 // </div> //   </span> //     {" " + details.ready_to_ship_days} //   > //     style={{ display: "inline-block", marginRight: "3px" }} //     className={styles["textContent"]} //   <span //   <span className={styles["colon"]}> : </span> //   </span> //     Ready to Ship{" "} //   <span className={styles["textHeading"]}> // <div className={styles["detailsContainer"]}> // Reason : No need to show this section // Commented by Om Shrivastava on 14-06-2024
-                    // Reason : No need to show this section
+                    true ? // Reason : No need to show this section // Commented by Om Shrivastava on 14-06-2024 // </div> //   </span> //     {" " + details.ready_to_ship_days} //   > //     style={{ display: "inline-block", marginRight: "3px" }} //     className={styles["textContent"]} //   <span //   <span className={styles["colon"]}> : </span> //   </span> //     Ready to Ship{" "} //   <span className={styles["textHeading"]}> // <div className={styles["detailsContainer"]}> // Reason : No need to show this section // Commented by Om Shrivastava on 14-06-2024
                     null : (
                       <>
                         {details.shipping_days ? (
@@ -1747,8 +1753,8 @@ className={styles.magnifier}
               </div>
             </div>
             {/* <div className={styles['container13']}>
-     <span className={styles['text28']}>Text</span> 
-      </div> */}
+            <span className={styles['text28']}>Text</span> 
+              </div> */}
             {/* Modification and addition by Om Shrivastava on 17-06-2024
           Reason : No need to show this related image section */}
 
@@ -1884,7 +1890,18 @@ className={styles.magnifier}
           {/* End of comment */}
         </div>
       ) : (
-        "loading"
+        // "loading"
+          <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      marginTop:'50%'
+                    }}
+                  >
+                    {/* <img src="adyant_loader.gif" /> */}
+                    <img style={{height:'30vh'}} src={LoaderImg}/>
+                  </div>
       )}
     </div>
   );

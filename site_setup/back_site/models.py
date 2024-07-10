@@ -186,7 +186,11 @@ class User(AbstractBaseUser):
 
 GEEKS_CHOICES =(
     ("1", "Show subMenu with image"),
-    ("2", "Show instant filter for subMenu"),
+    # Commented by Om Shrivastava on 09-07-2024
+    # Reason : Comment this field, because its not use currently 
+    # ("2", "Show instant filter for subMenu"),
+    # End of commented by Om Shrivastava on 09-07-2024
+    # Reason : Comment this field, because its not use currently 
 )
 
 
@@ -897,7 +901,13 @@ class product_orders(models.Model):
 status = (
     ('paid','Paid'),
     ('pending','Pending'),
-    ('cancel','Cancel'),
+    # Modification and addition by Om Shrivastava on 09-07-2024
+    # Reason : Change the status 
+    # ('cancel','Cancel'),
+    ('failed','Failed'),
+    # End of modification and addition by Om Shrivastava on 09-07-2024
+    # Reason : Change the status 
+
 
 )    
 # End of code modification by - Ashish Dewangan on 14-12-2023

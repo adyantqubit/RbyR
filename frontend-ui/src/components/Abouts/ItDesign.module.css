@@ -89,8 +89,11 @@
         gap:10px;
     }
     .sliderImg{
-        width: 100%;
-        max-height: 300px;
+        /* width: 100%; */
+        width: 355px !important;
+        height: 5px !important;
+
+        /* max-height: 300px; */
     }
     .Top2Images {
         padding: 4% 2%;
