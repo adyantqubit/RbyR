@@ -155,15 +155,45 @@ const Context = ({ children }) => {
   //   return () => window.removeEventListener("scroll", handleScroll);
   // }, []);
 
-
-  useEffect(()=>{
-    if (currentPath == '/') { // Home page
+// Modification and addition by Om Shrivastava on 11-07-2024
+// Reason : change the color when user scroll on header 
+  // useEffect(()=>{
+  //   if (currentPath == '/') { // Home page
      
-      setBackgroundColor('transparent')
-    } else { // Other pages
+  //     setBackgroundColor('transparent')
+  //   } else { // Other pages
+  //     setBackgroundColor('#feebed');
+  //   }
+  // },[currentPath])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 5) {
+        setBackgroundColor("#feebed");
+        setTextColor("#feebed");
+      } else {
+        setBackgroundColor("transparent");
+        setTextColor("black");
+      }
+    };
+  
+    if (currentPath === '/') {
+      window.addEventListener('scroll', handleScroll);
+  
+      // Initial check in case the user is already scrolled
+      handleScroll();
+    } else {
       setBackgroundColor('#feebed');
+      setTextColor('black');
     }
-  },[currentPath])
+  
+    // Cleanup on unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [currentPath]);
+  // End of modification and addition by Om Shrivastava on 11-07-2024
+// Reason : change the color when user scroll on header 
   // End of addition by Om Shrivastava on 08-07-2024
     // Reason : Set the current path, and backgroun color
 

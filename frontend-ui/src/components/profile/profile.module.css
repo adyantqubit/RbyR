@@ -241,22 +241,26 @@
 .userinfoText3 {
     color: black;
     font-size: 14px;
-    line-height: 22px;
-    letter-spacing: 1.2px;
+    /* line-height: 22px;
+    letter-spacing: 1.2px; */
         font-family: var(--pagesFontFamily);
     text-transform: capitalize;
+    /* border: 1px solid green; */
 }
 
 .userinfoTextHIDE {
     display: none;
     color: black;
     font-size: 14px;
-    line-height: 22px;
-    letter-spacing: 1.2px;
+    /* line-height: 22px; */
+    /* letter-spacing: 1.2px; */
         font-family: var(--pagesFontFamily);
+         /* border: 1px solid red; */
 
 }
-
+.userinfoColon{
+    display: none;
+}
 .userinfoText2 {
     color: black;
     font-size: 14px;
@@ -537,8 +541,13 @@
 
     .userinfoTextHIDE {
         display: block;
-        width: 20%;
-        width: 45%;
+        width: 65%;
+        /* width: 20%; */
+        /* width: 45%; */
+    }
+    .userinfoColon{
+        display: block;
+        width: 15%;
     }
     .itemName{
         width:100% !important;
@@ -558,8 +567,9 @@
     }
 
     .userinfoText3 {
-        width: 20%;
-        width: 40%;
+        /* width: 20%;
+        width: 40%; */
+        width: 55%;
     }
 
     .box {
@@ -580,6 +590,7 @@ REason : Set the alignment */
         padding-left: 10px;
         padding: 5px;
         width: 100%;
+        text-align: unset;
         /* width: 90vw; */
     }
     .itemName{

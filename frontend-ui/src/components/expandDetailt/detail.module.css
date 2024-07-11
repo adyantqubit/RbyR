@@ -103,7 +103,7 @@
   display: none; /* Hide initially */
   position: absolute;
   border: 1px solid #d4d4d4;
-  /* border-radius: 50%; */
+  border-radius: 50%;
   width: 200px; /* Adjust size */
   height: 200px; /* Adjust size */
   background-repeat: no-repeat;

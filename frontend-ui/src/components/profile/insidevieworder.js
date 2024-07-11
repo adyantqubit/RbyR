@@ -708,7 +708,7 @@ const InsideOrder = () => {
                           {/* Modified by - Ashish Dewangan on 16-12-2023
                       Reason - Corrected the spelling of processing */}
                           {/* <div className={style.rowitem2} ><span className={style.userinfoTextHIDE} style={{whiteSpace:"nowrap",width:"auto",fontSize:'16px',fontWeight:'bold'}}  >Order Status:&nbsp; </span><span className={style.userinfoText3} style={{whiteSpace:"nowrap",fontSize:'16px'}} >{s.order_status}</span></div> */}
-                          <div className={style.rowitem2}>
+                          <div className={style.rowitem2} >
                             <span
                               className={style.userinfoTextHIDE}
                               style={{
@@ -716,13 +716,20 @@ const InsideOrder = () => {
                                 // width: "auto",
                                 fontSize: "15px",
                                 fontWeight: "bold",
-                                paddingRight:'18%'
+                                // paddingRight:'18%'
                               }}
                             >
                               {/* Order Status:&nbsp;{" "} */}
-                              Item Status:&nbsp;{" "}
+                              Item Status&nbsp;{" "}
 
                             </span>
+                            <span
+                              className={style.userinfoColon}
+                              style={{
+                                fontSize: "15px",
+                                fontWeight: "bold",
+                              }}
+                            >: </span>
                             <span
                               className={style.userinfoText3}
                               style={{  fontSize: "16px" }}
@@ -739,13 +746,20 @@ const InsideOrder = () => {
                               className={style.userinfoTextHIDE}
                               style={{
                                 // whiteSpace: "nowrap",
-                                width: "auto",
+                                // width: "auto",
                                 fontSize: "16px",
                                 fontWeight: "bold",
                               }}
                             >
-                              Price :&nbsp;{" "}
+                              Price &nbsp;{" "}
                             </span>
+                            <span
+                              className={style.userinfoColon}
+                              style={{
+                                fontSize: "15px",
+                                fontWeight: "bold",
+                              }}
+                            >: </span>
                             <span
                               className={style.userinfoText3}
                               style={{  fontSize: "16px" }}
@@ -784,13 +798,20 @@ const InsideOrder = () => {
                               className={style.userinfoTextHIDE}
                               style={{
                                 // whiteSpace: "nowrap",
-                                width: "auto",
+                                // width: "auto",
                                 fontSize: "16px",
                                 fontWeight: "bold",
                               }}
                             >
-                              Quantity : &nbsp;
+                              Quantity  &nbsp;
                             </span>
+                            <span
+                              className={style.userinfoColon}
+                              style={{
+                                fontSize: "15px",
+                                fontWeight: "bold",
+                              }}
+                            >: </span>
                             <span
                               className={style.userinfoText3}
                               style={{ fontSize: "16px" }}
@@ -803,13 +824,21 @@ const InsideOrder = () => {
                               className={style.userinfoTextHIDE}
                               style={{
                                 // whiteSpace: "nowrap",
-                                width: "auto",
+                                // width: "auto",
                                 fontSize: "16px",
                                 fontWeight: "bold",
                               }}
                             >
-                              Total : &nbsp;
+                              Total  &nbsp;
                             </span>
+                            <span
+                              className={style.userinfoColon}
+                              style={{
+                                fontSize: "15px",
+                                fontWeight: "bold",
+                              }}
+                            >: </span>
+
                             <span
                               className={style.userinfoText3}
                               style={{  fontSize: "16px" }}

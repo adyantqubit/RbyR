@@ -115,8 +115,8 @@ const Details = (props) => {
       left: magnifierX,
       top: magnifierY,
       backgroundPosition: `${bgX}px ${bgY}px`,
-      backgroundSize: `${magnifier.naturalWidth}px ${magnifier.naturalHeight}px`,
-      // backgroundSize:'600px 900px',
+      // backgroundSize: `${magnifier.naturalWidth}px ${magnifier.naturalHeight}px`,
+      backgroundSize:'550px 850px',
       // backgroundSize:'620px 1000px',
 
 
@@ -709,15 +709,18 @@ const Details = (props) => {
         <div className={styles["container"]} ref={scroller}>
           <div className={styles.divContainer}>
             <div className={styles["container01"]}>
-              <div className={styles["container02"]}>
+              <div className={styles["container02"]} >
                 <div className={styles["subImagesContainer"]}>
                   {details.img_sub1 != null ? (
                     // {details.img_sub1 !== "/media/null" && (
-                    <div className={styles.imageContainer}>
+                    <div className={styles.imageContainer} >
                       <img
                         className={styles.subImage}
                         src={config.staticBaseURL + details.img_sub1}
                         onClick={() => updateMainImage(details.img_sub1)}
+                        style={{
+                          opacity: images[currentImageIndex] === details.img_sub1 ? 1 : 0.5,
+                        }}
                         alt="Sub Image 1"
                       />
                     </div>
@@ -731,6 +734,9 @@ const Details = (props) => {
                         className={styles.subImage}
                         src={config.staticBaseURL + details.img_sub2}
                         onClick={() => updateMainImage(details.img_sub2)}
+                        style={{
+                          opacity: images[currentImageIndex] === details.img_sub2 ? 1 : 0.5,
+                        }}
                         alt="Sub Image 266"
                       />
                     </div>
@@ -743,6 +749,9 @@ const Details = (props) => {
                         className={styles.subImage}
                         src={config.staticBaseURL + details.img_sub3}
                         onClick={() => updateMainImage(details.img_sub3)}
+                        style={{
+                          opacity: images[currentImageIndex] === details.img_sub3 ? 1 : 0.5,
+                        }}
                         alt="Sub Image 3"
                       />
                     </div>
@@ -778,39 +787,7 @@ const Details = (props) => {
                       })`,
                     }}
                   ></div>
-                  {/* <div className={styles["zoomContainer"]} >
-                        <div className={`${styles.zoomImage} ${zoom ? styles.zoomed : ''}`}>
-                          <img src={config.staticBaseURL + mainImage} alt="Zoomable" />
-                        </div>
-                        <button className={styles.zoomButton} onClick={handleZoomToggle}>
-                          {zoom ? '-' : '+'}
-                        </button>
-                      </div> */}
-                  {/* <div
-                  ref={containerRef}
-                  className={styles.zoomContainer}
-                  onWheel={handleWheel}
-                  onTouchMove={handleTouchMove}
-                  onMouseDown={handleMouseDown}
-                  onTouchStart={(e) => e.preventDefault()}
-                  style={{border:'1px solid green'}}
-                >
-                  <div
-                    ref={imageRef}
-                    className={styles.zoomImage}
-                    style={{
-                      transform: `scale(${scale}) translate(${
-                        position.x / scale
-                      }px, ${position.y / scale}px)`,
-                      transition: "transform 0.1s ease",
-                    }}
-                  >
-                    <img
-                      src={config.staticBaseURL + mainImage}
-                      alt="Zoomable"
-                    />
-                  </div>
-                </div> */}
+                 
                   <button
                     className={styles.prevButton}
                     onClick={handlePrevImage}
