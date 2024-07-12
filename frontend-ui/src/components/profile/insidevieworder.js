@@ -780,7 +780,7 @@ const InsideOrder = () => {
                                 s.price *
                                 (1 - s.sale_discount_percentage / 100) *
                                 s.selected_currency_value
-                              ).toLocaleString("en-IN")}diss
+                              ).toLocaleString("en-IN")}
                             </div>
                           </>
                         ) : (
@@ -789,7 +789,7 @@ const InsideOrder = () => {
 
                             {(
                               s.price * s.selected_currency_value
-                            ).toLocaleString("en-IN")}withdiss
+                            ).toLocaleString("en-IN")}
                           </>
                         )}
                         {/* Modification and addition by Om Shrivastava on 22-06-2024
