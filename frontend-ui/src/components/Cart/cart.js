@@ -403,7 +403,9 @@ const CartSItem = (props) => {
                 >
                   Product {c.name.toLowerCase()} size {c.size} is out of stock{" "}
                   <br />
-                  Please move this item to Wishlist.
+                  {/* Please move this item to Wishlist. */}
+                  Please remove this item from cart.
+                
                 </span>
               ),
               // Modification and addition by Om shrivastava on 01-12-23

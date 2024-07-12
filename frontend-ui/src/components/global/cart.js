@@ -299,7 +299,8 @@ export function DrawerFooter() {
                 >
                   Product {c.name.toLowerCase()} size {c.size} is out of stock{" "}
                   <br />
-                  Please move this item to Wishlist.
+                  {/* Please move this item to Wishlist. */}
+                  Please remove this item from cart.
                 </span>
               ),
               // style: { backgroundColor: "var(--bannerColor)", color: "black" },

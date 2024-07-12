@@ -115,8 +115,8 @@ const Details = (props) => {
       left: magnifierX,
       top: magnifierY,
       backgroundPosition: `${bgX}px ${bgY}px`,
-      // backgroundSize: `${magnifier.naturalWidth}px ${magnifier.naturalHeight}px`,
-      backgroundSize:'550px 850px',
+      backgroundSize: `${magnifier.naturalWidth}px ${magnifier.naturalHeight}px`,
+      // backgroundSize:'550px 850px',
       // backgroundSize:'620px 1000px',
 
 
@@ -1314,7 +1314,10 @@ const Details = (props) => {
                       className={` ${styles["customButtonContainer"]} `}
                       style={{}}
                     >
-                      <div style={{ display: "flex", gap: "15px" }}>
+                      <div 
+                      className={styles.cartContainer}
+                      // style={{ display: "flex", gap: "15px",justifyContent:'center' }}
+                      >
                         {check() ? (
                           <button
                             className={` ${styles["button"]} `}
@@ -1869,12 +1872,8 @@ const Details = (props) => {
       ) : (
         // "loading"
           <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      marginTop:'50%'
-                    }}
+                   
+                    className={styles.loaderContainer}
                   >
                     {/* <img src="adyant_loader.gif" /> */}
                     <img style={{height:'30vh'}} src={LoaderImg}/>

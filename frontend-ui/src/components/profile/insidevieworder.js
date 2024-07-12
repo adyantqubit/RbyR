@@ -638,7 +638,7 @@ const InsideOrder = () => {
                 <hr style={{ color: "black" }}></hr>
 
                 {states?.map((s, i) => {
-                  console.log(states,'checkkkk')
+                  console.log(states,'checkkkk data')
                   var p = product.filter((p) => p.id == s.product_id)[0];
 
                   if (typeof p === "undefined") {
@@ -678,7 +678,9 @@ const InsideOrder = () => {
                         <div className={style.dataContainer}>
                           <div
                             className={`${style.rowitem2} ${style.itemName}`}
-                            style={{ fontSize: "16px", fontWeight: "bold" }}
+                            style={{ 
+                              // fontSize: "16px",
+                               fontWeight: "bold" }}
                           >
                             {/* Commented and modified by - Ashish Dewangan on 29-11-2023
                           Reason - To show product name which was at the time of purchase */}
@@ -697,6 +699,7 @@ const InsideOrder = () => {
                                 textAlign: "left",
                               }}
                             >
+                              {console.log(s,'dont refresh dataaaaaaaaa')}
                               {s.product_name.toLowerCase()}
                             </div>
                             <span style={{ textAlign: "left" }}>
@@ -732,10 +735,10 @@ const InsideOrder = () => {
                             >: </span>
                             <span
                               className={style.userinfoText3}
-                              style={{  fontSize: "16px" }}
+                              // style={{  fontSize: "16px" }}
                             >
                               {s.order_status?.toUpperCase() == "PROCCESSING"
-                                ? "Processing"
+                                ? "In Process"
                                 : s.order_status}
                             </span>
                           </div>
@@ -747,7 +750,7 @@ const InsideOrder = () => {
                               style={{
                                 // whiteSpace: "nowrap",
                                 // width: "auto",
-                                fontSize: "16px",
+                                // fontSize: "16px",
                                 fontWeight: "bold",
                               }}
                             >
@@ -762,7 +765,7 @@ const InsideOrder = () => {
                             >: </span>
                             <span
                               className={style.userinfoText3}
-                              style={{  fontSize: "16px" }}
+                              // style={{  fontSize: "16px" }}
                             >
                              {/* Modification and addition by Om Shrivastava on 22-06-2024
                               Reason : Set the price and total amount of product  */}
@@ -777,7 +780,7 @@ const InsideOrder = () => {
                                 s.price *
                                 (1 - s.sale_discount_percentage / 100) *
                                 s.selected_currency_value
-                              ).toLocaleString("en-IN")}
+                              ).toLocaleString("en-IN")}diss
                             </div>
                           </>
                         ) : (
@@ -786,7 +789,7 @@ const InsideOrder = () => {
 
                             {(
                               s.price * s.selected_currency_value
-                            ).toLocaleString("en-IN")}
+                            ).toLocaleString("en-IN")}withdiss
                           </>
                         )}
                         {/* Modification and addition by Om Shrivastava on 22-06-2024
@@ -799,7 +802,7 @@ const InsideOrder = () => {
                               style={{
                                 // whiteSpace: "nowrap",
                                 // width: "auto",
-                                fontSize: "16px",
+                                // fontSize: "16px",
                                 fontWeight: "bold",
                               }}
                             >
@@ -814,7 +817,7 @@ const InsideOrder = () => {
                             >: </span>
                             <span
                               className={style.userinfoText3}
-                              style={{ fontSize: "16px" }}
+                              // style={{ fontSize: "16px" }}
                             >
                               {s.quantity}{" "}
                             </span>
@@ -825,7 +828,7 @@ const InsideOrder = () => {
                               style={{
                                 // whiteSpace: "nowrap",
                                 // width: "auto",
-                                fontSize: "16px",
+                                // fontSize: "16px",
                                 fontWeight: "bold",
                               }}
                             >
@@ -841,7 +844,7 @@ const InsideOrder = () => {
 
                             <span
                               className={style.userinfoText3}
-                              style={{  fontSize: "16px" }}
+                              // style={{  fontSize: "16px" }}
                             >
                               {/* Modification and addition by Om Shrivastava on 26-11-23
                           Reason : Need to set the correct value */}
@@ -928,6 +931,7 @@ const InsideOrder = () => {
                             allData.transaction.subtotal_price *
                             states[0].selected_currency_value
                           ).toFixed(2)} */}
+                          {console.log(allData.transaction,'checkk values ')}
                           {(
                             allData.transaction.subtotal_price *
                             states[0].selected_currency_value

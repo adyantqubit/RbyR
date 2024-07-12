@@ -166,6 +166,8 @@
     height: 60px;
     color: black;
     font-size: 14px;
+    font-size: 16px;
+
     line-height: 24px;
     letter-spacing: 1.4px;
     font-weight: 500;
@@ -231,6 +233,8 @@
 .userinfoText {
     color: black;
     font-size: 14px;
+    font-size: 16px;
+
     line-height: 22px;
     letter-spacing: 1.2px;
         font-family: var(--pagesFontFamily);
@@ -241,6 +245,8 @@
 .userinfoText3 {
     color: black;
     font-size: 14px;
+    font-size: 16px;
+
     /* line-height: 22px;
     letter-spacing: 1.2px; */
         font-family: var(--pagesFontFamily);
@@ -252,6 +258,8 @@
     display: none;
     color: black;
     font-size: 14px;
+    font-size: 16px;
+
     /* line-height: 22px; */
     /* letter-spacing: 1.2px; */
         font-family: var(--pagesFontFamily);
@@ -264,6 +272,8 @@
 .userinfoText2 {
     color: black;
     font-size: 14px;
+    font-size: 16px;
+
     line-height: 22px;
     letter-spacing: 1.2px;
         font-family: var(--pagesFontFamily);
@@ -315,6 +325,7 @@
 .dataContainer{
     display:flex;
     width:80%;
+    font-size: 16px;
 }
 .imgresponsive{
     width: 100%;
@@ -345,6 +356,8 @@
 .userinfoLable {
     color: black;
     font-size: 14px;
+    font-size: 16px;
+
     line-height: 22px;
     letter-spacing: 1.2px;
     /* Modification and addition by Om Shrivastava on 25-11-23
@@ -359,6 +372,8 @@
 .userinfoText {
     color: #212121;
     font-size: 14px;
+    font-size: 16px;
+
     line-height: 22px;
     letter-spacing: 1.2px;
     font-weight: 800;
@@ -377,6 +392,8 @@
     border: 1px solid rgba(140, 140, 140, 0.5);
     padding: 0 8px;
     font-size: 14px;
+    font-size: 16px;
+
     color: black;
     background-color: var(--backgroundColorSecondary) !important;
 }
@@ -397,6 +414,8 @@
 .userInfoButton {
     /* width: 150px; */
     font-size: 14px;
+    font-size: 16px;
+
     /* cursor: pointer; */
     letter-spacing: 2px;
     

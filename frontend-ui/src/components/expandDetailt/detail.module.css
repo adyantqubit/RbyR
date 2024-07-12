@@ -959,6 +959,19 @@
   margin-top: 8px;
 }
 
+.loaderContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50%;
+ 
+}
+.cartContainer{
+  display: flex;
+  gap: 15px;
+
+}
+
 @keyframes shake {
   10%,
   90% {
@@ -1203,5 +1216,12 @@
   }
   .container01{
     width: unset;
+  }
+  .loaderContainer{
+    margin-top: 0%;
+   
+  }
+  .cartContainer{
+    justify-content: center;
   }
 }
