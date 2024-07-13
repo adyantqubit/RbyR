@@ -224,6 +224,7 @@
 
   font-size: 16px;
   font-family: "JosefinSans-Regular";
+  font-family: var(--pagesFontFamily);
   color: #1b1b1b;
   text-transform: uppercase;
   line-height: 150%;
@@ -366,6 +367,7 @@
   color: #777;
   font-weight: 400;
   font-family: "Jost-Regular";
+  font-family: var(--pagesFontFamily);
   padding-bottom: 10px;
   font-size: 14px;
 }
@@ -373,6 +375,8 @@
   margin-right: 10px;
   font-size: 15px;
   font-family: "JosefinSans-Regular";
+  font-family: var(--pagesFontFamily);
+
   color: #303030;
   text-transform: uppercase;
   letter-spacing: -0.01em;

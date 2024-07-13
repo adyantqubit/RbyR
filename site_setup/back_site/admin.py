@@ -192,7 +192,11 @@ def product_name(obj):
 # Reason : Need to change the product name 
     return Truncator(obj.item.title).chars(30) 
 
-@admin.register(Liked)
+# Commented by Om shrivastava on 13-07-2024
+# Reason : Comment this register model 
+# @admin.register(Liked)
+# End of Commented by Om shrivastava on 13-07-2024
+# Reason : Comment this register model
 class LikedAdmin(admin.ModelAdmin):
 
     # Added by - Ashish Dewangan on 13-12-2023
@@ -677,7 +681,12 @@ class product_ordersAdmin(admin.ModelAdmin):
     #Reason - To Register FAQ Model 
     #admin.site.register(FAQ)
     #End of code addition
-@admin.register(FAQ)
+
+# Commented by Om shrivastava on 13-07-2024
+# Reason : Comment this register model 
+# @admin.register(FAQ)
+# End of Commented by Om shrivastava on 13-07-2024
+# Reason : Comment this register model 
 class FAQAdmin(admin.ModelAdmin):
 
     # Added by - Ashish Dewangan on 13-12-2023
@@ -1206,7 +1215,11 @@ def subtitle_one(obj):
     return Truncator(obj.subtitle1).chars(30)
 def subtitle_two(obj):
     return Truncator(obj.subtitle2).chars(30)
-@admin.register(Bridal)
+# Commented by Om shrivastava on 13-07-2024
+# Reason : Comment this register model 
+# @admin.register(Bridal)
+# End of Commented by Om shrivastava on 13-07-2024
+# Reason : Comment this register model 
 class BridalAdmin(admin.ModelAdmin):
 
     # Added by - Ashish Dewangan on 13-12-2023
@@ -1253,7 +1266,11 @@ class BridalAdmin(admin.ModelAdmin):
     #Reason - To register BridalDetails model
     # admin.site.register(BridalForm) 
     #End of code addition
-@admin.register(BridalForm)
+# Commented by Om shrivastava on 13-07-2024
+# Reason : Comment this register model 
+# @admin.register(BridalForm)
+# End of Commented by Om shrivastava on 13-07-2024
+# Reason : Comment this register model 
 class BridalFormAdmin(admin.ModelAdmin):
 
     # Modified by - Ashish Dewangan on 13-12-2023
@@ -1356,7 +1373,11 @@ class CopyrightAdmin(admin.ModelAdmin):
     #Reason - To register EmailSubscription model
     #admin.site.register(EmailSubscription) 
     #End of code addition
-@admin.register(EmailSubscription)
+# Commented by Om shrivastava on 13-07-2024
+# Reason : Comment this register model 
+# @admin.register(EmailSubscription)
+# End of Commented by Om shrivastava on 13-07-2024
+# Reason : Comment this register model   
 class EmailSubscriptionAdmin(admin.ModelAdmin):
 
     # Added by - Ashish Dewangan on 13-12-2023
@@ -1657,7 +1678,11 @@ class Online_QrAdmin(admin.ModelAdmin):
 # Commented and modified by Ashish on 28-11-2022
 # To customize admin panel
     #admin.site.register(ImportantNoticeToBuy)
-@admin.register(ImportantNoticeToBuy)    
+# Commented by Om shrivastava on 13-07-2024
+# Reason : Comment this register model 
+# @admin.register(ImportantNoticeToBuy)    
+# End of Commented by Om shrivastava on 13-07-2024
+# Reason : Comment this register model
 class ImportantNoticeToBuyAdmin(admin.ModelAdmin):
 
     # Added by - Ashish Dewangan on 13-12-2023
@@ -1769,7 +1794,11 @@ class WomenClothSizeChartAdmin(admin.ModelAdmin):
     #End of code addition
 def name_of_user(obj):
     return Truncator(obj.firstName+"  "+obj.lastName).chars(50)    
-@admin.register(CustomTailoredForm)    
+# Commented by Om shrivastava on 13-07-2024
+# Reason : Comment this register model 
+# @admin.register(CustomTailoredForm)  
+# End of Commented by Om shrivastava on 13-07-2024
+# Reason : Comment this register model   
 class CustomTailoredFormAdmin(admin.ModelAdmin):
 
     # Added by - Ashish Dewangan on 13-12-2023

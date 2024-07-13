@@ -61,6 +61,8 @@ a {
   white-space: nowrap;
   /* font-family: Noto Serif; */
   font-family: var(--headerFontFamily);
+  font-family: var(--pagesFontFamily);
+
 
   text-transform: uppercase;
 }

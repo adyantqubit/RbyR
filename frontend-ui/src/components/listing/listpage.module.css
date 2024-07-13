@@ -229,6 +229,8 @@ Reason : Set the content in left side */
   display: flex;
   justify-content: center;
   flex-direction: column;
+  flex-direction: row;
+  gap: 12px;
   
  }
 
@@ -256,6 +258,13 @@ Reason : Set the content in left side */
   text-transform: capitalize;
   /* End of Addition by Om shrivastava on 29-11-23
   Reason : Add the text transform */
+  
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
  }
 
  /* Addition by Om Shrivastava on 15-11-23
@@ -307,6 +316,8 @@ Reason : Set the content in left side */
     justify-content: space-evenly;
     padding-left: 0px;
     padding-top: 12%;
+    padding-top: 1%;
+
   }
   .recentlyViewCard{
     width: 70%;

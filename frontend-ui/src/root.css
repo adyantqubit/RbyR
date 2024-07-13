@@ -182,7 +182,9 @@ Reason : Set the padding and margin of antd notification */
     --pageContainerHeight : 68.3vh;
 
     --phoneViewHeight : 27px;
-    --pagesFontFamily : "Jost-Regular";
+    /* --pagesFontFamily : "Jost-Regular"; */
+    --pagesFontFamily : "system-ui";
+
     --headerFontFamily : Segoe UI
     Segoe UI Bold
     Segoe UI Light

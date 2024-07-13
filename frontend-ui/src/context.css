@@ -28,6 +28,7 @@ display: none;
   color: black;
   text-align: center;
   font-weight: bold;
+  font-weight: 600;
   font-size: 22px;
   font-family: var(--pagesFontFamily);
   /* padding-bottom: 15px; */

@@ -204,6 +204,12 @@ const Slider = ({ scrollTop }) => {
                             letterSpacing: "1px",
                             // End of Addition by Om Shrivastava on 29-11-23
                             // Reason : Add the letterspacing
+                            display:'-webkit-box',
+                            webkitBoxOrient: "vertical",
+                            webkitLineClamp: "1",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            wordBreak: "break-all",
                           }}
                           onClick={(e) => {
                             openDetail(cart);
@@ -223,6 +229,10 @@ const Slider = ({ scrollTop }) => {
                             fontSize: ".9rem",
                             fontWeight: "500",
                             color: "var(--textColorPrimary)",
+                            display:'flex',
+                            justifyContent:'center',
+                            gap:'12px',
+                            fontFamily:'var(--pagesFontFamily)'
                           }}
                         >
                           {/* Modification and addition by Om Shrivastava on 18-06-2024

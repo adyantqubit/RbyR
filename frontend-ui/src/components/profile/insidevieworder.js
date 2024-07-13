@@ -697,12 +697,16 @@ const InsideOrder = () => {
                                 textOverflow: "ellipsis",
                                 wordBreak: "break-all",
                                 textAlign: "left",
+                                fontWeight:'600'
                               }}
                             >
                               {console.log(s,'dont refresh dataaaaaaaaa')}
                               {s.product_name.toLowerCase()}
                             </div>
-                            <span style={{ textAlign: "left" }}>
+                            <span style={{ textAlign: "left" ,
+                                fontWeight:'600'
+
+                            }}>
                               ({SizeGetter(s.size)})
                             </span>
                             {/* Commented and modified by - Ashish Dewangan on 29-11-2023
