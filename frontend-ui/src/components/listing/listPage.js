@@ -121,7 +121,7 @@ const ListPage = () => {
     setReload(true);
     ApiReSet();
 
-    // catApi();
+    catApi();
 
     // console.log(parent);
     document.getElementById("scrolled").scrollTop = 0;
@@ -185,7 +185,7 @@ const ListPage = () => {
 
     await nextIndexPage(data).then((r) => {
       // console.log("response from backend_______", r);
-      setTimeout(() => {
+      // setTimeout(() => {
         if (r.error) {
           setReload(false);
           setLoading(false);
@@ -207,7 +207,7 @@ const ListPage = () => {
 
           setProductCount(r.productsCount);
         }
-      }, 200);
+      // }, 200);
     });
   }
   // console.log(productCount,'productcounnn')
@@ -223,7 +223,6 @@ const ListPage = () => {
       console.log(r.category);
     });
 
-    // console.log(dataCount,'check')
   };
 
   function openDetail(id) {
@@ -256,7 +255,7 @@ const ListPage = () => {
   const categoryProAscending = [...CategoryProduct].sort((a, b) => a.id - b.id);
   // End of addition by Om Shrivastava on 24-12-23
   // Reason : Need to arrange the product name to increasing order
-
+console.log(tempallpro,'prppppppppp')
   return (
     <>
       {/* {showOptions?<NavHeader/>:null} */}
@@ -515,8 +514,7 @@ Reason : Need to comment the filter functionality */}
                     <img style={{height:'30vh'}} src={LoaderImg}/>
 
                   </div>
-                  {/* End of modification and addition by Om Shrivastava on 06-07-2024
-                  Reason : Change the loader  */}
+                 
               </div>
             )}
 
