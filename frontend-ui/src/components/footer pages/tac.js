@@ -30,7 +30,9 @@ const Terms = () => {
       <Navbar />
       <div className={style.tacContainer}>
         <div className={style.divContainer}>
-          <div className="headingFooter"> Terms & Conditions</div>
+          <div className={style.tacHeading} 
+          // className="headingFooter"
+          > Terms & Conditions</div>
           <div className={style.contain}>
             {termsAndConditions.length > 0 ? (
               <>
