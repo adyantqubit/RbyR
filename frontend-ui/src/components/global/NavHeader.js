@@ -334,7 +334,7 @@ const Navbar = () => {
   //   return () => window.removeEventListener("scroll", handleScroll);
   // }, []);
  
-console.log(currentPath,'check path')
+// console.log(currentPath,'check path')
   // useEffect(() => {
   //   const homePageBackground = "#feebed";
   //   const homePageText = "black";
@@ -363,7 +363,7 @@ console.log(currentPath,'check path')
   // useEffect(() => {
   //   setCurrentPath(location.pathname);
   // }, [location]);
-console.log(backgroundColor)
+// console.log(backgroundColor)
   return (
     <div 
     style={{ width:'100%' }}

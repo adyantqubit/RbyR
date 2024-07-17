@@ -818,15 +818,20 @@ class product_orders(models.Model):
     # Reason : Need to rename the field
     # Added by - Ashish Dewangan on 29-11-2023
     # Reason - Added column for product name
-    product_name=models.CharField(max_length=100,null=True,blank=True,default='')
+    product_name=models.CharField(max_length=100,null=True,blank=True,default='') 
     # End of code addition by - Ashish Dewangan on 29-11-2023
     # Reason - Added column for product name 
+
     size=models.CharField(max_length=40)   
 
     quantity=models.BigIntegerField()          
     price=models.BigIntegerField()
     product_price_after_sale = models.FloatField(default=0.0,blank=True,)
-
+    # Addition by Om Shrivastava on 17-07-2024 
+    # Reason : Add is_sale field for product table 
+    is_sale = models.BooleanField(default=False,null=True)
+    # End of addition by Om Shrivastava on 17-07-2024 
+    # Reason : Add is_sale field for product table 
     product_discount_price = models.FloatField(default=0.0,blank=True,)
     total_price=models.BigIntegerField()
 

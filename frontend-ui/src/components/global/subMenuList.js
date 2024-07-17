@@ -41,7 +41,7 @@ export const SubMenuList = () => {
     }
   }, [menus]); 
 
-  console.log(parentName,'check parent ')
+  // console.log(parentName,'check parent ')
 
   useEffect(() => {
     setList(menus?.filter((m) => Object.keys(m)[0] === parentName)[0]);
@@ -76,14 +76,14 @@ export const SubMenuList = () => {
     nav(`/listing/${parent}/${s.category}`);
   }
 
-  console.log(list,'check list ')
+  // console.log(list,'check list ')
   return (
     <>
       <div className={style.subMenuConatiner2}>
         <div className={style.menuName}>
           {menus?.map((m, i) => {
             var parent = Object.keys(m);
-            console.log(menus, "hjhjkhjjh");
+            {/* console.log(menus, "hjhjkhjjh"); */}
 
             return (
               <li

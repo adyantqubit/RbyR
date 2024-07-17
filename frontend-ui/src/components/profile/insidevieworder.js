@@ -638,7 +638,7 @@ const InsideOrder = () => {
                 <hr style={{ color: "black" }}></hr>
 
                 {states?.map((s, i) => {
-                  console.log(states,'checkkkk data')
+                  console.log(states,'order history data')
                   var p = product.filter((p) => p.id == s.product_id)[0];
 
                   if (typeof p === "undefined") {
@@ -700,7 +700,7 @@ const InsideOrder = () => {
                                 fontWeight:'600'
                               }}
                             >
-                              {console.log(s,'dont refresh dataaaaaaaaa')}
+                              {/* {console.log(s,'dont refresh dataaaaaaaaa')} */}
                               {s.product_name.toLowerCase()}
                             </div>
                             <span style={{ textAlign: "left" ,

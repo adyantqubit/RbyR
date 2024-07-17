@@ -498,7 +498,7 @@ class Invoice(APIView):
                     
                     # Added by - Ashish Dewangan on 29-11-2023
                     # Reason - To save item's name in product orders table
-                    "product_name":cart["title"],
+                    "product_name":cart["title"], 
                     # End of code addition by - Ashish Dewangan on 29-11-2023
                     # Reason - To save item's name in product orders table
 
