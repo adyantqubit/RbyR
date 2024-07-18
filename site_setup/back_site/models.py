@@ -832,6 +832,11 @@ class product_orders(models.Model):
     is_sale = models.BooleanField(default=False,null=True)
     # End of addition by Om Shrivastava on 17-07-2024 
     # Reason : Add is_sale field for product table 
+    # Addition by Om Shrivastava on 18-07-2024 
+    # Reason : Add salediscount percentage field for product table 
+    sale_discount_percentage = models.FloatField(default=0.0,blank=True,null=True, verbose_name="Discount in (%)", validators=[validate_discount_precentage])
+    # End of addition by Om Shrivastava on 18-07-2024 
+    # Reason : Add salediscount percentage field for product table 
     product_discount_price = models.FloatField(default=0.0,blank=True,)
     total_price=models.BigIntegerField()
 

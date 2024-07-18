@@ -310,7 +310,7 @@ class invoiceSerializer(serializers.ModelSerializer):
     # End of code addition by - Ashish Dewangan on 27-11-2023
     # Reason - To serialize product title
 
-    sale_discount_percentage=serializers.CharField(source="product_id.sale_discount_percentage",required=False,allow_null=True)
+    # sale_discount_percentage=serializers.CharField(source="product_id.sale_discount_percentage",required=False,allow_null=True)
     # is_sale = serializers.BooleanField(source="product_id.is_sale",required=False,allow_null=True)
 
     class Meta:

@@ -83,7 +83,7 @@ class product_detailAdmin(admin.ModelAdmin):
 
     # Modified by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to see details of a row
-    list_display=("action",short_title,"menu","category","S","M","L","XL","price","color",'is_active','subMenu')
+    list_display=("action",short_title,"menu","category","S","M","L","XL","price","color",'is_active','is_sale','subMenu')
     list_display_links=("action",)
     # End of code modification by - Ashish Dewangan on 13-12-2023
     # Reason - Added a button to see details of a row
@@ -668,7 +668,19 @@ class product_ordersAdmin(admin.ModelAdmin):
         form = super(product_ordersAdmin, self).get_form(request, obj, **kwargs)
         field = form.base_fields['selected_currency_value']
         field.widget = field.hidden_widget()
+        # Addition by Om Shrivastava on 17-07-2024
+        # Reason : Remove this field 
+        data = form.base_fields['is_sale']
+        data.widget = data.hidden_widget()
+        # End of addition by Om Shrivastava on 17-07-2024
+        # Reason : Remove this field 
         
+        # Addition by Om Shrivastava on 18-07-2024
+        # Reason : Remove this field 
+        fiedld = form.base_fields['sale_discount_percentage']
+        fiedld.widget = fiedld.hidden_widget()
+        # End of addition by Om Shrivastava on 18-07-2024
+        # Reason : Remove this field 
         return form 
     # End of addition by Om Shrivastava on 21-12-23
     # Reason : Need to remove the selected_currency_value
