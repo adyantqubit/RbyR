@@ -298,8 +298,10 @@ console.log(tempallpro,'prppppppppp')
                   }}
                 >
                   <div>{parent.split("_").join(" ")}</div>
-                  <div className={style.totalProduct}>
-                    {CategoryProduct && CategoryProduct.length > 0 ? (
+                  {/* Commented by Om Shrivastava on 18-07-2024 
+                  Reason : No need to show product count  */}
+                  {/*<div className={style.totalProduct}>
+                   {CategoryProduct && CategoryProduct.length > 0 ? (
                       <span
                         className={style.totalProduct}
                         // style={{
@@ -315,7 +317,10 @@ console.log(tempallpro,'prppppppppp')
                     ) : (
                       <span></span>
                     )}
-                  </div>
+                  //</div>
+                  */}
+                   {/* Commented by Om Shrivastava on 18-07-2024 
+                  Reason : No need to show product count  */}
                 </div>
               )}
 

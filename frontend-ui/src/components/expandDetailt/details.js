@@ -711,6 +711,21 @@ const Details = (props) => {
             <div className={styles["container01"]}>
               <div className={styles["container02"]} >
                 <div className={styles["subImagesContainer"]}>
+                {details.img_main != null ? (
+                    // {details.img_main !== "/media/null" && (
+                    <div className={styles.imageContainer}>
+                      <img
+                        className={styles.subImage}
+                        src={config.staticBaseURL + details.img_main}
+                        onClick={() => updateMainImage(details.img_main)}
+                        style={{
+                          opacity: images[currentImageIndex] === details.img_main ? 1 : 0.5,
+                        }}
+                        alt="Sub Image 266"
+                      />
+                    </div>
+                  ) : // )}
+                  null}
                   {details.img_sub1 != null ? (
                     // {details.img_sub1 !== "/media/null" && (
                     <div className={styles.imageContainer} >
