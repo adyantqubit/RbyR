@@ -1034,7 +1034,7 @@
 
 @media only screen and (max-width: 1000px) {
   .container {
-    padding-top: 70px;
+    /* padding-top: 70px; */
   }
   /*
       Added by - Ashish Dewangan on 29-12-2023
@@ -1069,7 +1069,7 @@
   
 
   .container {
-    padding-top: 70px;
+    padding-top: 53px;
     width: 100%;
     display: flex;
     margin-bottom: 50px;
