@@ -94,7 +94,7 @@ class product_detailAdmin(admin.ModelAdmin):
     ordering =("title",)
     exclude=("XS","XXXL","XXL")
     
-    readonly_fields=('search_key','category','menu','product_price_after_sale')
+    readonly_fields=('search_key','category','menu')
     search_fields=("title","category","color")
     list_filter=("category","color")
     list_per_page=10
@@ -142,11 +142,14 @@ class product_detailAdmin(admin.ModelAdmin):
         # Reason : Need to remove this field from the list 
         field = form.base_fields['available']
         data = form.base_fields['shipping_days']
+        field2 = form.base_fields['product_price_after_sale']
 
 
         # field = form.base_fields['product_price_after_sale']
         field.widget = field.hidden_widget()
         data.widget = data.hidden_widget()
+        field2.widget = field2.hidden_widget()
+
         # End of addition by Om Shrivastava on 21-12-23
         # Reason : Need to remove this field from the list 
 
@@ -619,7 +622,7 @@ class product_ordersAdmin(admin.ModelAdmin):
     readonly_fields=("id","order_no","user_no","product_id","billing_id","shipping_id","size","quantity"
     ,"price",
     'product_discount_price',"total_price",
-    #   'product_price_after_sale',
+      'product_price_after_sale',
       "shipping_charges",'grand_total',"payment_mode","date","selected_currency_sign"
     ,"product_name","product_image",
     # Addition by Om Shrivastava on 22-06-2024
