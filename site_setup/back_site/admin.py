@@ -103,7 +103,7 @@ class product_detailAdmin(admin.ModelAdmin):
     #Jira issue no - RBYR -194
     shipping_days=models.CharField(max_length=50,default="3-4 weaks")
     ready_to_ship=models.BooleanField(default=False)
-    ready_to_ship_days=models.CharField(max_length=50,default="under 7 working days")
+    # ready_to_ship_days=models.CharField(max_length=50,default="under 7 working days")
     def get_form(self, request, obj, **kwargs):
         print(request)
         form = super(product_detailAdmin, self).get_form(request, obj, **kwargs)
@@ -123,15 +123,15 @@ class product_detailAdmin(admin.ModelAdmin):
         form.base_fields['img_sub1'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['img_sub2'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['img_sub3'].widget.attrs['style'] = 'width: 100%;'
-        form.base_fields['like'].widget.attrs['style'] = 'width: 100%;'
+        # form.base_fields['like'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['description'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['fabric'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['style_code'].widget.attrs['style'] = 'width: 100%;'
-        form.base_fields['made_in'].widget.attrs['style'] = 'width: 100%;'
+        # form.base_fields['made_in'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['date'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['shipping_charges'].widget.attrs['style'] = 'width: 100%;'
         form.base_fields['shipping_days'].widget.attrs['style'] = 'width: 100%;'
-        form.base_fields['ready_to_ship_days'].widget.attrs['style'] = 'width: 100%;'
+        # form.base_fields['ready_to_ship_days'].widget.attrs['style'] = 'width: 100%;'
         # added by rohan- on 18/2/23,reason- to show parent linked menu name on submenu dropdown
         form.base_fields['subMenu'].label_from_instance = lambda inst: "{}:{}".format(inst.Menu.menu,inst.sub)
         form.base_fields['upper_menu'].label_from_instance = lambda inst: "{}".format(inst.menu)
@@ -142,14 +142,22 @@ class product_detailAdmin(admin.ModelAdmin):
         # Reason : Need to remove this field from the list 
         field = form.base_fields['available']
         data = form.base_fields['shipping_days']
+        # Addition by Om Shrivastava on 20-07-2024
+        # Reason : Remove some fields from list
         field2 = form.base_fields['product_price_after_sale']
+        field3 = form.base_fields['ready_to_ship_days']
+        field4 = form.base_fields['made_in']
+        field5 = form.base_fields['like']
 
-
-        # field = form.base_fields['product_price_after_sale']
         field.widget = field.hidden_widget()
         data.widget = data.hidden_widget()
         field2.widget = field2.hidden_widget()
+        field3.widget = field3.hidden_widget()
+        field4.widget = field4.hidden_widget()
+        field5.widget = field5.hidden_widget()
 
+        # End of addition by Om Shrivastava on 20-07-2024
+        # Reason : Remove some fields from list
         # End of addition by Om Shrivastava on 21-12-23
         # Reason : Need to remove this field from the list 
 

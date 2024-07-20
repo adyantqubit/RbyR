@@ -802,19 +802,24 @@ const Details = (props) => {
                       })`,
                     }}
                   ></div>
-                 
+                 {details.img_sub1 != null || details.img_sub2 != null|| details.img_sub3 != null?
                   <button
                     className={styles.prevButton}
                     onClick={handlePrevImage}
                   >
                     &lt;
                   </button>
+                  :null}
+
+                  {details.img_sub1 != null || details.img_sub2 != null|| details.img_sub3 != null?
                   <button
                     className={styles.nextButton}
                     onClick={handleNextImage}
                   >
                     &gt;
                   </button>
+                  :null}
+
                 </div>
 
                 <div
