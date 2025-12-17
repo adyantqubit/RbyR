@@ -1,0 +1,60 @@
+
+.pageFrame {
+  background-image: var(--page-background-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden;
+  background-color: #FFFFE0;
+}
+
+.coloredBackground {
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.pageContainer {
+  margin-left: var(--page-margin-left);
+  margin-right: var(--page-margin-right);
+  margin-top: var(--page-margin-top);
+  margin-bottom: var(--page-margin-bottom);
+  min-height: var(--page-min-height);
+  text-align: left;
+  padding-top: var(--page-padding-top);
+}
+
+.mainHeading {
+  text-align: center;
+  font-size: xx-large;
+  margin-top: 1%;
+}
+
+.subHeading {
+  text-align: center;
+  font-size: x-large;
+  padding-top: 2%;
+}
+
+@media (max-width: 576px) {
+  .pageContainer {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10vh;
+    margin-bottom: 3vh;
+    min-height: var(--page-min-height);
+    text-align: justify;
+    padding-top: var(--page-padding-top);
+  }
+
+  .mainHeading {
+    font-size: x-large;
+  }
+
+  .subHeading {
+    font-size: large;
+    padding-top: 10px;
+  }
+}
+

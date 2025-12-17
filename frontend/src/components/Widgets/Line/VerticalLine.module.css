@@ -1,0 +1,5 @@
+.verticalLine {
+  width: var(--vertical-line-thickness);
+  background-color: var(--vertical-line-background-color);
+  min-height: 100%;
+}

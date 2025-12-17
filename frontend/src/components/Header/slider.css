@@ -1,0 +1,11 @@
+.keen-slider__slide {
+    min-width: 110px !important;
+}
+
+@media (max-width: 720px) {
+
+    .keen-slider__slide {
+        min-width: 90px !important;
+    }
+    
+}

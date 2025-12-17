@@ -1,0 +1,384 @@
+.pageFrame {
+  background-image: var(--page-background-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden;
+  background-color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+}
+.coloredBackground {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.pageContainer {
+  width: auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-left: 29.094px;
+  margin-right: 29.094px;
+}
+.pageTitle {
+  font-size: 100%;
+  color: #282828;
+  font-weight: 500;
+  position: relative;
+  margin-bottom: 15px;
+  text-align: var(--page-heading-text-align);
+}
+.categoryImage {
+  display: block !important;
+}
+.bannerImage {
+  width: 100%;
+  height: 100px;
+  object-fit: fill;
+}
+.viewToggleButtons {
+  padding: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 30px;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  background-color: #f8f8f8;
+  color: #686868;
+}
+.viewButtons {
+  display: flex;
+  margin: 10px;
+}
+.square {
+  background-color: #fff;
+  padding: 5px;
+  height: 35px;
+  width: 35px;
+  border: 1px solid #ccc;
+}
+.squareIcon {
+  font-size: 20px;
+}
+.showProduct {
+  display: flex;
+  align-items: center;
+  margin-left: 40%;
+}
+.labelViews {
+  padding-right: 5px;
+}
+.dropdownpage {
+  border: 1px solid #ccc;
+  outline: none;
+  height: 30px;
+  width: 40px;
+  margin-right: 5px;
+}
+.sortContainer {
+  display: flex;
+  align-items: center;
+  float: right;
+  margin: 10px 15px 10px 50px;
+}
+.sortTitle {
+  font-size: 15px;
+  padding-right: 10px;
+}
+.sortContainer label {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+.sortContainer select {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+.gridContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.gridCard {
+  width: 100%;
+  background-color: white;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.6s ease,
+    box-shadow 0.3s ease;
+}
+.addToCartButton {
+  display: none;
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--button-color);
+  color: var(--button-font-color);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+.listaddToCartButton {
+  display: none;
+
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 50px;
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+}
+.gridCard:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: scaleY(1.1);
+  transform-origin: top;
+}
+.gridCard:hover .addToCartButton {
+  display: block;
+}
+.addToCartButton:hover {
+  background-color: var(--button-color-hover);
+  color: var(--button-font-color-hover);
+}
+.gridImage {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+  background-color: #fff;
+  padding: 1px;
+  border: 1px solid #e5e5e5;
+}
+
+.gridContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  height: 100px;
+  background-color: #fff;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #e5e5e5;
+  border-top: none;
+  position: relative;
+  top: 0;
+  transition: 0.4s;
+  -moz-transition: 0.4s;
+  -webkit-transition: 0.4s;
+}
+
+.listContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.listCard {
+  display: flex;
+
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 30px;
+  border: 1px solid #e5e5e5;
+  transition: transform 0.2s ease;
+}
+.listCard a {
+  height: 400px;
+  width: 100%;
+  display: flex;
+}
+.listImageContainer {
+  width: 30%;
+  display: flex;
+}
+.listImage {
+  width: 100%;
+  height: 400px;
+  object-fit: fill;
+  border-right: 1px solid #e5e5e5;
+  float: left;
+  position: relative;
+}
+.listBrandName {
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 126.461%;
+  display: block;
+  width: 100%;
+  color: var(--page-title-font-color);
+  padding-bottom: 10px;
+}
+.listContent {
+  width: 70%;
+  padding: 30px;
+}
+.brandName {
+  font-size: 14px;
+  color: var(--page-title-font-color);
+  text-align: center;
+}
+.card {
+  width: 100%;
+  height: 400px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.cardLink {
+  display: block;
+  height: 100%;
+}
+
+.cardImage {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  flex-grow: 1;
+  height: 100px;
+}
+.listCardTitle {
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 126.461%;
+  display: block;
+  width: 100%;
+  color: var(--page-title-font-color);
+  padding-bottom: 10px;
+}
+
+.brandName {
+  font-size: 14px;
+  color: var(--page-title-font-color);
+  text-align: center;
+}
+.cardTitle {
+  font-size: 12px;
+  font-weight: normal;
+  margin: 3px 0;
+  text-align: center;
+  color: var(--page-title-font-color);
+}
+
+.cardPrice {
+  font-size: 16px;
+  color: var(--page-title-font-color);
+  font-weight: normal;
+  padding-bottom: 4px;
+  text-align: center;
+}
+@media (max-width: 780px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .filterContainer {
+    width: 88%;
+    order: 3;
+  }
+
+  .productContainer {
+    width: 100%;
+    order: 2;
+  }
+
+  .viewToggleButtons {
+    width: 100%;
+    order: 1;
+  }
+
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .listCard {
+    flex-direction: column;
+  }
+  .listCard a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .listImageContainer {
+    width: 100%;
+    height: auto;
+    border-right: none;
+
+    margin-bottom: 10px;
+  }
+  .listImage {
+    object-fit: contain;
+  }
+  .listContent {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .pageContainer {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .categoryImage {
+    width: 89%;
+    height: 50px;
+  }
+
+  .bannerImage {
+    height: 50px;
+  }
+
+  .viewToggleButtons {
+    width: 89%;
+    padding: 5px;
+    justify-content: space-between;
+  }
+
+  .showProduct {
+    margin-left: 0;
+  }
+
+  .dropdownpage {
+    width: auto;
+  }
+  .addToCartButton {
+    display: block;
+  }
+}
+/**End of code additon by Unnati on 09-08-2024
+*Reason-To have css for brand page
+*/

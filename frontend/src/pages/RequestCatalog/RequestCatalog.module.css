@@ -1,0 +1,157 @@
+.pageFrame {
+  padding: 30px;
+  background-color: #f5f5f5;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pageContainer {
+  margin-left: 20%;
+  display: flex;
+  max-width: 800px;
+  width: 100%;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex-direction: row;
+}
+
+.coloredBackground {
+  padding: 20px;
+}
+
+.formContainer {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  max-width: 150px;
+  margin-right: 20px;
+}
+
+.formHeaderText {
+  flex: 1;
+}
+
+.formHeaderText h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.formHeaderText p {
+  margin-top: 10px;
+  color: #777;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup {
+  margin-bottom: 5px;
+}
+
+.formGroup label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+.label {
+  width: 100%;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 10px;
+}
+
+.input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: var(--page-placeholder-font-size);
+  width: 100%;
+  height: 100px;
+  resize: none;
+  font-family: 'Rubik', sans-serif;
+}
+.inputRow {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: var(--page-placeholder-font-size);
+  width: 50%;
+}
+.submitButton {
+  background-color: var(--button-color);
+  border: none;
+  height: 38px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: var(--button-font-color);
+}
+
+.submitButton:hover {
+  background-color: var(--button-color-hover);
+  color: var(--button-font-color-hover);
+}
+.subTitleColor {
+  color: var(--page-content-subTitle-font-color);
+  padding-bottom: 5px;
+  font-weight: 600;
+  font-size: var(--page-content-subTitle-font-size);
+}
+.mandatoryField {
+  color: red;
+  margin-left: 0.25rem;
+  padding-right: 2px;
+}
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.formInputError {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  min-height: 18px;
+  padding-left: 2px;
+}
+@media (max-width: 1150px) {
+  .pageContainer{
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .coloredBackground{
+    padding: 0px;
+  }
+}
+@media (max-width: 600px) {
+  .inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 14px !important;
+  }
+  .inputRow {
+    width: 100%;
+  }
+  .formInputError{
+  }
+}
+@media (max-width: 520px) {
+.header{
+flex-direction: column;
+}}

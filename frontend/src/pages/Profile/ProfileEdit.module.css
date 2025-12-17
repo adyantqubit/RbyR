@@ -1,0 +1,225 @@
+.pageFrame {
+  background-image: var(--page-background-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden;
+  background-color: #ffffff;
+  font-family: var(--page-font-family);
+}
+
+.coloredBackground {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+.formGroup {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.label {
+  flex: 1;
+  font-weight: bold;
+  margin-right: 1em;
+}
+
+.input {
+  height: 35px;
+  width: 100%;
+  padding: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 0.25rem;
+}
+
+.dateInput{
+  height: 35px;;
+  padding: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 0.25rem;
+}
+
+.formInputError {
+  color: red;
+  margin-top: 0.5em;
+  font-size: var(--page-content-font-size);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+.formGroup {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  flex-wrap: wrap;
+}
+
+.label {
+  flex: 1;
+  font-weight: bold;
+  margin-right: 1em;
+  width: 100%;
+}
+
+.profileImage {
+  width: 150px;
+  height: 150px;
+}
+
+.fieldset {
+  height: 2%;
+}
+.genderContainer {
+  display: flex;
+  border-radius: 5px;
+  padding: 10px 20px;
+  padding-left: 0px;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  gap: 20px;
+}
+.genderButton {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.radioInput {
+  margin-right: 8px;
+}
+.submitButton {
+  width: 20%;
+  background-color: var(--button-color);
+  border: none;
+  margin-right: 8%;
+  height: 38px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: var(--button-font-color);
+}
+.submitButton:hover {
+  background-color: var(--button-color-hover);
+  color: var(--button-font-color-hover);
+}
+.genderButton svg {
+  margin-right: 8px;
+}
+
+.genderButton:hover {
+  background-color: #f0f0f0;
+}
+
+.genderButton.active {
+  background-color: #333;
+  color: #fff;
+}
+.heading {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+  font-size: var(--page-content-subTitle-font-size);
+}
+.profileImageWrapper {
+  text-align: center;
+}
+.mandatoryField {
+  color: red;
+  margin-left: 0.25rem;
+  padding-right: 2px;
+}
+.legend {
+  color: var(--page-content-subTitle-font-color);
+  padding-bottom: 5px;
+  font-weight: 600;
+  font-size: var(--page-content-subTitle-font-size);
+}
+.mandatoryLabel {
+  display: flex;
+  width: 200px;
+}
+.lastNameLabel {
+  display: flex;
+  width: 200px;
+}
+.notMandatoryLabel {
+  display: flex;
+  width: 152px;
+}
+.notMandatoryLabelGender{
+  display: flex;
+  width: 152px;
+}
+.column {
+  display: flex;
+  width: 100%;
+}
+@media (max-width: 950px) {
+  .form {
+    width: 70%;
+  }
+  .submitButton {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 768px) {
+  .pageContainer {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 3vh;
+    min-height: var(--page-min-height);
+    text-align: justify;
+    padding-top: var(--page-padding-top);
+  }
+  .form {
+    width: 100%;
+    border: none;
+  }
+  .genderContainer {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 14px;
+    gap: 10px!important;
+  }
+  .genderButton {
+    width: 33.33%;
+  }
+  .fieldset {
+    margin-bottom: 0.5em;
+  }
+  .input {
+    font-size: var(--page-content-font-size);
+  }
+  .notMandatoryLabel{
+    width: 125px;
+  }
+  .notMandatoryLabelGender{
+    width: 200px;
+  }
+  .dateInput{
+    width: 217.5px;
+  }
+}

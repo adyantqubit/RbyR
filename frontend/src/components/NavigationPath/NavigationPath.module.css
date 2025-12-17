@@ -1,0 +1,12 @@
+
+.navigationPath {
+  margin-bottom: var(--bottom-margin-between-contents);
+  text-align: left;
+}
+.navigationLink {
+  font-size: var(--page-content-font-size);
+  text-decoration: none;
+}
+.navigationLinkText {
+  padding-right: 10px;
+}

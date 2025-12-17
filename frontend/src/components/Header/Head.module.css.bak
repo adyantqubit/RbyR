@@ -1,0 +1,2718 @@
+/**Code added by Unnati on 01-06-2024
+*Reason -To have css for header
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+.pageFrame {
+  background-image: var(--page-background-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  /* margin-left:15px;
+  margin-right: 15px; */
+}
+
+
+.headerTop {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  /* margin-bottom: 10px; */
+  /**Code modified by Unnati on 13-10-2024
+  *Reason-Changed button color
+  */
+  /* background-color: var(--header-background-color); */
+  /**End of code modification by Unnati on 13-10-2024
+  *Reason-Changed button color
+  */
+  height: 43px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  /* background-position: center;
+  background-size: cover;
+  background-image: url(../../../public/headerbg1.jpeg); */
+  background-color: var(--header-background-color);
+  color: var(--header-font-color);
+}
+/* .Title {
+  word-break: break-all;
+} */
+.headerTopLeftMost {
+  display: flex;
+  align-items: center;
+
+  /* Modified by jhamman on 27-10-2024
+  Reason - width of signIn container is very less so decrese it*/
+  /* width: 100%; */
+  /* width: 75%; */
+  /* width: 80%; */
+  /* End of modification by jhamman on 27-10-2024
+  Reason - width of signIn container is very less so decrese it*/
+  padding: 10px;
+}
+/**Code added by Unnati on 12-08-2024
+*Reason-To add cartItem count css
+*/
+.cartItemCount {
+  position: relative;
+}
+/**End of code addition by Unnati on 12-08-2024
+*Reason-To add cartItem count css
+*/
+
+
+
+.header {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  font-size: 13px;
+  color: var(--header-font-color-dark);
+}
+/* .header.scrolled {
+  background-color: #fff; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+} */
+
+/* Default styles for all pages */
+/* .header {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  font-size: 13px;
+  color: var(--header-font-color-dark);
+} */
+
+/* For normal pages */
+.normalHeader {
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* For home page default state */
+.homeHeader {
+  position: fixed;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/* When scroll down on home page */
+.homeHeader.scrolled {
+  background-color: #fef6eb;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* When hover on home page header */
+.homeHeader:hover {
+  background-color: #fef6eb;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.headerMiddle {
+  /* padding: 8px; */
+}
+.headerMiddle .container .row {
+  margin-left: 15px;
+  margin-right: 15px;
+  display: flex;
+  /* flex-wrap: wrap; */
+  /* justify-content: space-between; */
+  align-items: center;
+}
+.headerBottom {
+  height: 100px;
+  height: 38px;
+
+}
+
+
+.headerBottom {
+  position: relative;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.navItem {
+  /* position: relative; */
+  cursor: pointer;
+}
+
+.categoryTitle {
+  padding: 10px 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.categoryTitle:hover {
+  color: #c6a76e;
+}
+
+/* ---------- Mega Menu ---------- */
+/* ===== Mega Menu Base ===== */
+.megaMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  padding: 40px 60px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+  transition: all 0.45s ease;
+  z-index: 999;
+}
+
+.megaMenuShow {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+/* ===== Content Layout ===== */
+.megaMenuContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 90%;
+  gap: 40px;
+  animation: fadeSlide 0.4s ease forwards;
+}
+
+/* ===== Left Section (Submenus) ===== */
+.leftSection {
+  flex: 1;
+}
+
+.leftSection h4 {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #111;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.leftSection ul {
+  list-style: none;
+  padding: 0;
+}
+
+.leftSection li {
+  margin-bottom: 8px;
+  transition: transform 0.2s ease;
+}
+
+.leftSection li:hover {
+  transform: translateX(5px);
+}
+
+.leftSection li a {
+  color: #000;
+  text-decoration: none;
+  transition: color 0.3s;
+  font-size: 0.95rem;
+}
+
+.leftSection li a:hover {
+  color: #c6a76e;
+}
+
+/* ===== Middle Section (Image + Description) ===== */
+.middleSection {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.imagePreview {
+  width: 100%;
+  max-width: 280px;
+  text-align: center;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.previewImage {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.previewImage:hover {
+  transform: scale(1.05);
+}
+
+.descriptionBox {
+  max-width: 280px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.5;
+  animation: slideUp 0.4s ease forwards;
+}
+
+/* ===== Right Section (About Category) ===== */
+.aboutSection {
+  flex: 1;
+  background: #fafafa;
+  padding: 25px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.aboutSection h5 {
+  margin-bottom: 10px;
+  color: #111;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.aboutSection p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+.col3Logo {
+  /* flex: 0 0 25%;
+  max-width: 25%; */
+  /* margin-left: 137px; */
+  /**
+   * Added by - Ashlekh on 26-11-2024
+   * Reason - To add padding from bottom in logo
+   */
+  padding-bottom: 0.4%;
+  margin-left: 12%;
+  /**
+   * End of code - Ashlekh on 26-11-2024
+   * Reason - To add padding from bottom in logo
+   */
+}
+.col9Search {
+  /* flex: 0 0 50%;
+  max-width: 50%; */
+  position: relative;
+  /* width: 100%; */
+
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.middleRightContainerModelButton {
+  display: none;
+}
+.middleRightContainer {
+  display: flex;
+  /* width: 100%; */
+  /* padding-top: 5px; */
+  width: 500px;
+  /* width: 100px; */
+
+  justify-content: space-between;
+}
+
+.middleRightContainerModel {
+  display: none;
+}
+
+.searchWrapper {
+  display: table-cell;
+  vertical-align: top;
+
+  width: 70%;
+}
+.dollar {
+  color: var(--header-font-color-dark);
+}
+/* .container{
+  display:flex;
+} */
+.categories {
+  display: flex;
+  justify-content: center;
+  /**
+   * Added by - Ashlekh on 21-11-2024
+   * Reason - To give gap from bottom
+   */
+   /**Code commenetd by Unnati on 27-11-2024
+   *Reason-This css is not in use
+   */
+  /* padding-bottom: 4px; */
+    /**End of code commented by Unnati on 27-11-2024
+   *Reason-This css is not in use
+   */
+  /**
+   * End of code - Ashlekh on 21-11-2024
+   * Reason - To give gap from bottom
+   */
+}
+.category {
+  display: flex;
+  flex-direction: column;
+  /**Code added by Unnati on 14-10-2024
+  *Reason-Changed width
+  */
+  width: 110px;
+  /**End of code addition by Unnati on 14-10-2024
+  *Reason-Changed width
+  */
+  align-items: center;
+}
+
+.ImageContainer {
+ /**Code modified by Unnati on 30-11-2024
+ *Reason-Modifed width and height
+ */
+  /* width: 80px; */
+  /* width: 85px; */
+  width: 100px;
+   /**Code modified by Unnati on 27-11-2024 
+  *Reason-Modified height
+  */
+    /* height: 77px; */
+    height: 95px;
+  /**End of code modification by Unnati on 30-11-2024
+ *Reason-Modifed width and height
+ */
+   /**End of code modification by Unnati on 27-11-2024 
+  *Reason-Modified height
+  */
+}
+.categoryImage {
+  /**Code modified by Unnati on 30-11-2024
+ *Reason-Modifed width and height
+ */
+  /* width: 85px; */
+  width: 100px;
+     /**Code modified by Unnati on 27-11-2024 
+  *Reason-Modified height
+  */
+   /* height: 77px; */
+   height: 95px;
+    /**End of code modification by Unnati on 30-11-2024
+ *Reason-Modifed width and height
+ */
+   /**End of code modification by Unnati on 27-11-2024 
+  *Reason-Modified height
+  */
+}
+
+.categoryTitle {
+  color: var(--page-content-font-color);
+  font-weight: 600;
+  /* height: 25px; */
+  font-size: 13px;
+  text-align: center;
+}
+.socialIcon {
+  color: var(--header-font-color-light);
+  margin-right: 10px;
+}
+.searchBarInput {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.wishlistAndcart {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 33%;
+
+}
+
+.wishlistContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  height: 45px;
+  cursor: pointer;
+}
+.cartContainer {
+  /* Commented by jhamman on 27-10-2024
+  Reason - price is cutting*/
+  /* width: 50%; */
+  /**
+   * Code changed by - Ashlekh on 11-01-2025
+   * Reason - To increase the width of the cart container (the header gets misaligned when the user increases or decreases the quantity).
+   */
+  /* width: 100%; */
+  width: 11vw;
+  position: relative;
+  /**
+   * End of code - Ashlekh on 11-01-2025
+   * To increase the width of the cart container (the header gets misaligned when the user increases or decreases the quantity).
+   */
+  /* End of commentationby jhamman on 27-10-2024
+  Reason - price is cutting*/
+  display: flex;
+  /**
+   * Added by - Ashlekh on 11-01-2025
+   * Reason - To keep content of cart container in centre
+   */
+  justify-content: center;
+  /**
+   * End of code - Ashlekh on 11-01-2025
+   * Reason - To keep content of cart container in centre
+   */
+  border: 2px solid #ccc;
+  height: 45px;
+  border-radius: 4px;
+}
+/**Code added by Unnati on 12-08-2024
+*Reason-To add cart css
+*/
+.cartcontainer {
+  /* width: 25%; */
+  /* flex: 0 0 25%; */
+  /* max-width: 25%; */
+  display: flex;
+  /* align-items: center; */
+  justify-content: right;
+}
+.cart {
+  position: relative;
+}
+
+.cartImage {
+  width: 20px;
+  height: 20px;
+  color: black;
+}
+/**End of code addition by Unnati on 12-08-2024
+*Reason-To add cart css
+*/
+/**Code added by Unnati on 12-08-2024
+*Reason-To have cart badge css
+*/
+.cartBadge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  /**Code modified by Unnati on 13-10-2024
+  *Reason-Changed button color
+  */
+  background-color: var(--button-color);
+  color: var(--button-font-color);
+  /**End of code modification by Unnati on 13-10-2024
+  *Reason-Changed button color
+  */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+/**End of code addition by Unnati on 12-08-2024
+*Reason-To have cart badge css
+*/
+/**Code added by Unnati on 14-07-2024
+*Reason-To have css for cartdropdown
+*/
+.cartDropdown {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  /**Code added by Unnati on 12-10-2024
+  *Reason-Modified width
+  */
+  width: 320px;
+  /**End of code addition by Unnati on 12-10-2024
+  *Reason-Modified width
+  */
+  /* margin-top: 45px; */
+  margin-top: 10px;
+  margin-right: 2px;
+  /* text-decoration: none; */
+  right: 0;
+  /**Code added by Unnati on 16-01-2025
+  *Reason-Modified padding
+  */
+  padding: 10px;
+   /**End of code addition by Unnati on 16-01-2025
+  *Reason-Modified padding
+  */
+  /**Code added by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+  font-size: var(--page-content-font-size);
+  /**End of code addition by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+}
+
+.cartDropdown.hasItems {
+  height: auto;
+}
+
+.cartDropdown.empty {
+   /**Code commented by Unnati on 16-01-2025
+  *Reason-Commented height
+  */
+  /* height: 70px; */
+  /*End of code commented by Unnati on 16-01-2025
+  *Reason-Commented height
+  */
+}
+/**Code added by Unnati on 12-10-2024
+*Reason-Modified css for mycart dropdown
+*/
+.cartDropdown ul {
+  height: 275px;
+  font-size: var(--page-content-font-size);
+ 
+}
+
+.imageAndOfferLogoContainer {
+  display: flex;
+  position: relative;
+}
+
+.offerContainer {
+  display: flex;
+  position: absolute;
+ 
+  height: 15px;
+  justify-content: center;
+  align-items: center;
+  
+  width: 25px;
+  left: 0px;
+  top: 0px;
+  background-color: #cc0c39;
+  z-index: 2;
+}
+.cartDropdown {
+  pointer-events: auto;
+  transition: opacity 0.2s ease;
+}
+
+.offerPercentage {
+  /* color: var(--button-font-color); */
+  color: var(--offer-percentage-font-color);
+  font-size: 9px;
+  padding: 1px;
+}
+
+.cardPrice {
+  /**Code added by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+  /* color: #666; */
+  /* font-size: 12px; */
+  color: var(--page-content-font-color);
+  font-size: var(--page-content-font-size);
+  /**End of code addition by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+
+  font-weight: normal;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.priceContainer {
+  display: flex;
+  justify-content: space-around;
+}
+.discountedPriceText {
+  color: green;
+  font-weight: var(--card-discounted-price-font-weight);
+  font-size: var(--card-discounted-price-font-size);
+}
+
+.mrpPriceText {
+  font-size: var(--card-price-font-size);
+  font-weight: var(--card-price-font-weight);
+}
+/* End of addition by Jhamman on 11-10-2024
+Reason - Added css to handle image and offer logo*/
+
+.brandLink {
+  display: flex;
+  align-items: center;
+}
+
+.dropdownArrow {
+  margin-left: 6px;
+}
+
+.productDetail {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+.price {
+  /* Modified by jhamman on 23-10-2024
+  Reason - changed design now we have to show both price mrp and discounted*/
+  /* margin-top: 20%; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* color: var(--header-font-color-dark); */
+  /* End of modification by jhamman on 23-10-2024
+  Reason - changed design now we have to show both price mrp and discounted*/
+  /**
+   * Added by - Ashlekh on 13-12-2024
+   * Reason - To hide price detail container
+   */
+  display: none;
+  /**
+   * End of code - Ashlekh on 13-12-2024
+   * Reason - To hide price detail container
+   */
+}
+
+.cartTotal {
+  padding: 10px;
+}
+.cartActions {
+  display: flex;
+  padding: 10px;
+  text-align: center;
+  gap: 10px;
+  justify-content: center;
+}
+.cartContainer:hover .cartDropdown {
+  display:block;
+}
+.cartContainer:hover {
+  border: 2px solid black;
+}
+.cart:hover {
+  border-right: 2px solid black;
+}
+.cart {
+  /* border-right: 2px solid #ccc; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.cartPrice {
+  display: flex;
+  flex-direction: column;
+}
+.navbar ul {
+  list-style: none;
+  display: flex;
+  /* gap: 170px; */
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.img {
+  height: 23px;
+  width: 23px;
+}
+/* .allCategoriesDropdown{
+  display: flex;
+} */
+.arrowIcon {
+  margin-left: 8px;
+  font-size: 12px;
+  vertical-align: middle;
+  color: #333;
+}
+.viewMore {
+  padding: 5px;
+  text-align: center;
+  cursor: pointer;
+  background-color: var(--button-color);
+  color: var(--button-font-color);
+}
+
+.viewMore:hover {
+  background-color: var(--button-color-hover);
+  color: var(--button-font-color-hover);
+}
+.categoryLink {
+  display: flex;
+  align-items: center;
+}
+.SubCategorycategoryLink,
+.subSubCategorycategoryLink {
+  display: flex;
+  align-items: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar ul li {
+  position: relative;
+  color: #333;
+  /* font-weight: bold; */
+  display: flex;
+
+  align-items: center;
+}
+
+.navbar ul li a {
+  font-size: var(--page-content-font-size);
+  color: #333;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar ul li a .subMenu {
+  font-size: var(--page-content-font-size);
+  color: #333;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar ul li .dropdown {
+  font-size: 1px;
+  color: #333;
+  display: block;
+  padding: 0px;
+  z-index: 1000;
+  font-weight: normal !important;
+}
+.navbar ul li:hover {
+  /* background-color: #ff2d37; */
+  color: var(--header-font-color-dark);
+  border-radius: 4px 4px 0 0;
+}
+.navbar ul li:not(.col3Category) a:hover,
+.navbar ul li:not(.col3Category) .dropdown:hover {
+  background-color: var(--page-color);
+  color: var(--header-font-color-dark);
+  font-weight: bold;
+  width: 100%;
+}
+
+.navbar ul li ul {
+  display: none;
+  /* display: grid; */
+  grid-template-columns: repeat(4, 1fr);
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+.navbar ul li .securityDropdown {
+  display: none;
+  /* display: grid; */
+  /* grid-template-columns: repeat(4,1fr); */
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+.navbar ul li .helpDropdown {
+  display: none;
+  /* display: grid; */
+  /* grid-template-columns: repeat(4,1fr); */
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+.navbar ul li ul:hover {
+  display: none;
+}
+.homePage ul li .allCategories {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  /* width: 100%; */
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+.homePage ul li ul li:hover {
+  background-color: var(--page-color);
+}
+.navbar ul li .allCategories li {
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.navbar ul li:hover > ul {
+  display: grid;
+}
+.navbar ul li:hover > .helpDropdown {
+  display: block;
+}
+.navbar ul li .helpDropdown {
+  width: 200px;
+}
+.navbar ul li:hover > .securityDropdown {
+  display: block;
+}
+.navbar ul li:hover > .allCategories {
+  display: block;
+}
+.navbar ul li ul li {
+  width: fit-content;
+  /* border-top: 1px solid rgba(0, 0, 0, 0.1); */
+}
+.navbar ul li .securityDropdown {
+  width: 200px;
+}
+.navbar ul li .securityDropdown li {
+  width: 100%;
+
+  /* border-top: 1px solid rgba(0, 0, 0, 0.1); */
+}
+.navbar ul li ul li ul {
+  left: 100%;
+  top: 0;
+  display: none;
+}
+
+.navbar ul li ul li:hover > ul {
+  display: block;
+}
+
+.menuBar {
+  display: none;
+}
+
+.label {
+  font-size: 10px;
+  color: black;
+  cursor: pointer;
+  display: none;
+}
+
+.logo {
+  height: 75px;
+  /* padding-right: 15px; */
+  display: inline-block;
+  vertical-align: top;
+  /**
+   * Added by - Ashlekh on 26-11-2024
+   * Reason - To apply css in header logo
+   */
+   /**Code commented by Unnati on 27-11-2024
+   *Reason-To remove border from logo
+   */
+  /* width: 100px;
+  border-radius: 0px 50px 50px 0px;
+  border: 1px solid #ccc; */
+    /**End of code commented by Unnati on 27-11-2024
+   *Reason-To remove border from logo
+   */
+  /**
+   * End of code - Ashlekh on 26-11-2024
+   * Reason - To apply css in header logo
+   */
+}
+.searchWrapper {
+  display: flex;
+  vertical-align: top;
+  /* padding-right: 25px; */
+  width: 100%;
+}
+.searchContainer {
+  position: relative;
+  display: flex;
+  /* align-items: center; */
+  border: 2px solid #ede8e8;
+  /* margin-right: 6%; */
+  height: 45px;
+  width: 100%;
+  border-radius: 4px;
+}
+.signInContainer {
+  display: flex;
+  color: var(--page-color);
+  align-items: center;
+  gap: 8px;
+}
+.searchBar {
+  padding-left: 2%;
+  outline: none;
+
+  /**Code added by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+  /* font-size: 13px; */
+  font-size: var(--page-content-font-size);
+  /**End of code addition by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+  background-color: #f4f6f800;
+  /* border-radius: 4px; */
+  width: 100%;
+  height: 100%;
+  padding-right: 40px;
+  border: none;
+  /* margin-top: 10px; */
+}
+
+.searchButton {
+  width: 50px;
+  position: absolute;
+  right: 0;
+  /**Code modified by Unnati on 13-10-2024
+  *Reason-Changed button color
+  */
+  background-color: var(--button-color);
+  border: none;
+  cursor: pointer;
+  padding: 0 10px;
+  font-size: 16px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--button-font-color);
+  /**End of code modification by Unnati on 13-10-2024
+  *Reason-Changed button color
+  */
+  font-weight: 1000;
+}
+.productCount {
+  color: var(--page-content-subTitle-font-color);
+  font-size: var(--page-content-subTitle-font-size);
+  font-weight: 600;
+  padding: 10px;
+}
+.dropdownSearch {
+  display: flex;
+  align-items: center;
+  /* width: 30%; */
+  width: 120px;
+  border-right: 1px solid#ede8e8;
+  color: black;
+}
+.selectCategory {
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  /**Code added by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+  font-size: var(--page-content-font-size);
+  /**End of code addition by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+}
+.selectCategoryValue {
+  border: none;
+  outline: none;
+  margin-top: 10px;
+  /**Code added by Unnati on 18-10-2024
+  *Reason-Commented font size
+  */
+  /* font-size: var(--page-content-font-size); */
+  /**End of code addition by Unnati on 18-10-2024
+  *Reason-Commented font size
+  */
+}
+.dropdownSelect {
+  padding: 8px;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  width: 100%;
+}
+
+.dropdownSelect option {
+  height: 10px;
+}
+
+.dropdownSelect:focus {
+  border-color: #007bff;
+  outline: none;
+}
+.cartText {
+  padding: 7px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  /**Code added by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+  font-size: var(--page-content-font-size);
+  /**End of code addition by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+}
+
+.cartNotification {
+  background-color: var(--page-color);
+  color: var(--header-font-color-light);
+  font-size: 12px;
+  border-radius: 50%;
+  padding: 2px 6px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+.iconContainer {
+  padding-top: 5px;
+  display: flex;
+}
+
+.icons {
+  /* Modified by jhamman on 27-10-2024
+  Reason - width of signIn container is very low*/
+  /* width: 17%; */
+  /* width: 25%; */
+  /* width: 20%; */
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+  /* End of modification by jhamman on 27-10-2024
+  Reason - width of signIn container is very low*/
+  font-size: medium;
+  /* margin-left: 53%; */
+  align-items: center;
+}
+
+/* .profile ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  font-weight: bold;
+  position: relative;
+} */
+.headerBottom .container {
+  margin-left: 15px;
+  margin-right: 15px;
+  height: 100%;
+}
+/* .profileIcon ul {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+}
+
+.profileIcon:hover ul {
+  display: block;
+}
+
+.profileIcon ul li a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+}
+
+.profileIcon ul li a:hover {
+  background-color: var(--button-color);
+  color: white;
+} */
+
+.loginButton {
+  padding: 0.25rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 50%;
+}
+.signIn {
+  color: var(--header-font-color-light);
+  /* font-size: 14px; */
+  font-size: var(--page-content-title-font-size);
+  font-weight: 700;
+}
+.signIn:hover {
+  color: var(--header-background-color-light);
+}
+
+.allCatBurger {
+  color: var(--header-font-color-dark);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 20px;
+  padding-top: 3px;
+}
+
+.col3Category a {
+  /* display: flex;  */
+  display: block;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+}
+/**Code modified by Unnati on 05-10-2024
+*Reason-Modifed category css
+*/
+.col3Category {
+  align-items: center;
+  background-color: var(--page-color);
+  flex: 0 0 11%;
+  max-width: 11%;
+  border-radius: 4px 4px 0 0;
+  margin-right: 18px;
+  display: flex;
+}
+
+.col3Category .allCatBurger .text,
+.iconWrapper {
+  height: 20px;
+  padding-top: 3px;
+}
+/**End of code modification by Unnati on 05-10-2024
+*Reason-Modifed category css
+*/
+.iconWrapper {
+  size: 100px;
+  align-items: center;
+  /* margin-left: 30%; */
+}
+.brands {
+  position: relative;
+}
+.productImage {
+  width: 80px;
+  height: 100px;
+}
+.brandDropdown {
+  /* display: none; */
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: auto !important;
+  height: auto !important;
+  gap: 0 !important;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 10px;
+}
+/* .brands:hover .brandDropdown {
+  display: block;
+} */
+
+.brandDropdown li {
+  display: flex !important;
+  flex-direction: column;
+
+  align-items: center;
+  padding: 10px;
+}
+.brandDropdown li ul {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.brandDropdown li a {
+  font-size: var(--page-content-font-size);
+  color: #333;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.brandImage {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 5px;
+}
+.linkName {
+  font-size: 14px;
+  color: #333;
+  width: 200px;
+}
+.brandName {
+  font-size: 14px;
+  color: #333;
+  width: 100%;
+}
+.productContainer {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  transition: box-shadow 0.3s ease;
+  align-items: flex-start;
+}
+
+.productContainer:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.noProductFound {
+  display: flex;
+  justify-content: center;
+}
+.imageSearchSize {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-right: 20px;
+}
+
+.productInfo {
+  flex-grow: 1;
+  padding: 5px;
+  /**Code added by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+  font-size: var(--page-content-font-size);
+  /**End of code addition by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+}
+
+.productInfo h3 {
+  margin: 0;
+  /* font-size: 18px; */
+  color: var(--page-content-font-color);
+}
+
+.productInfo p {
+  margin: 5px 0;
+  /**Code added by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+  font-size: var(--page-content-font-size);
+  /**End of code addition by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+  color: var(--page-content-title-font-color);
+}
+/**Code added by Unnati on 20-10-2024
+  *Reason-To show availability message */
+.unavailableMessage {
+  /* margin-top: 20px;
+  transform: rotate(-45deg); */
+  font-size: 8px;
+  font-weight: bold;
+  color: red;
+  /* text-transform: uppercase;
+  opacity: 0.7; */
+}
+/*End of code addition by Unnati on 20-10-2024
+  *Reason-To show availability message */
+.productPrice {
+  /**Code added by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+  font-size: var(--page-content-font-size);
+  /**End of code addition by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+  color: #333;
+  text-align: right;
+  min-width: 100px;
+  padding: 5px;
+}
+
+/**Code commented by Unnati Bajaj on 14-06-2024
+*Reason - This css is not in use currently
+*/
+/* .profile .profileIcon:hover + ul,
+.profile .profileLink:hover + ul {
+  display: block;
+}
+
+.profile ul ul {
+  display: none;
+  position: absolute;
+  top: calc(100% + 5px); 
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+  list-style: none;
+}
+
+.profile ul li {
+  position: relative;
+  color: #333;
+  font-weight: bold;
+}
+
+.profile ul li a {
+  font-size: 16px;
+  color: #333;
+  display: block;
+  padding: 10px;
+  cursor: pointer; 
+}
+.profile li:hover {
+  background-color: black; 
+}
+.profile ul li a:hover,
+.profile ul li ul li a:hover {
+  background-color: #333;
+  color: #fff;
+}
+.profile:hover ul {
+  display: block;
+  background-color: #333;
+  color: #fff;
+} */
+
+/**End of code commented by Unnati Bajaj on 14-06-2024
+*Reason - This css is not in use currently
+*/
+
+/*Code added by Unnati on 14-06-2024
+*Reason-To have space between logo and navbar 
+*/
+.navbar {
+  /* margin-right: 25%; */
+  height: 100%;
+}
+.help {
+  gap: 100px;
+}
+.search-bar {
+  margin-left: 20px;
+}
+.col9Search .container {
+  display: none;
+}
+.filteredProduct {
+  margin-top: 3px;
+  background-color: #fff;
+  display: none;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-height: 350px;
+  overflow-y: scroll;
+}
+
+.filteredProduct.show {
+  display: block;
+}
+
+.filteredProduct.noScroll {
+  display: block;
+  max-height: none;
+  overflow-y: unset;
+}
+
+/* Modified by jhammman on 11-10-2024
+Reason - div is adding additional css to all div*/
+/* .filteredProduct div { */
+.filteredProduct {
+  /* End of modification by jhammman on 11-10-2024
+Reason - div is adding additional css to all div*/
+  padding: 10px;
+  background-color: #fff;
+}
+
+.filteredProduct h4 {
+  margin: 0;
+  /**Code added by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+  color: var(--page-content-font-color);
+  /* color: #333; */
+  /**End of code addition by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+}
+
+/* Commented by jhamman on 11-10-2024
+  Reason - p added css in all tag */
+/* .filteredProduct p { */
+.filteredProduct {
+  /* End of commentation by jhamman on 11-10-2024
+  Reason - p added css in all tag */
+  margin: 5px 0;
+  color: #666;
+}
+
+/*End of code addition by Unnati on 14-06-2024
+*Reason-To have space between logo and navbar 
+*/
+
+.deleteButton {
+  border-radius: 50%;
+  height: 14px;
+  margin-left: -6%;
+  /* outline: none; */
+  border: none;
+  width: 12px;
+  background-color: black;
+  color: white;
+  margin-top: -148px;
+  margin-right: -14%;
+}
+
+.deleteButton :hover {
+  background-color: var(--page-color);
+  color: var(--page-color);
+}
+.cartItem {
+  display: flex;
+  /**Code commented by Unnati on 16-01-2025
+  *Reason-This code is not in use
+  */
+  /* padding-bottom: 10%; */
+  /**End of code commneted by Unnati on 16-01-2025
+  *Reason-This code is not in use
+  */
+  gap: 10px;
+  /**Code added by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+  font-size: var(--page-content-font-size);
+  /**End of code addition by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+}
+.viewCartButton,
+.checkoutButton {
+  background-color: var(--button-color);
+  border: none;
+  margin-right: 8%;
+  height: 38px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: var(--button-font-color);
+  border-radius: 4px;
+}
+/**Code modified by Unnati on 13-10-2024
+  *Reason-Changed button color
+  */
+.viewCartButton:hover {
+  background-color: var(--button-color-hover);
+  color: var(--button-font-color-hover);
+}
+.checkoutButton:hover {
+  background-color: var(--button-color-hover);
+  color: var(--button-font-color-hover);
+}
+/**Code added by unnati on 14-10-2024
+*Reason-To add font-weight in marquee
+*/
+.contactNumber {
+  margin-right: 20px;
+  /**Code modified by Unnati on 27-11-2024
+  *Reason-Modified color
+  */
+  /* color: var(--button-font-color); */
+  /**End of code modification by Unnati on 27-11-2024
+  *Reason-Modified color
+  */
+  color: #fff;
+  font-weight: 700;
+  font-size: var(--page-content-title-font-size);
+}
+/**End of code addition by unnati on 14-10-2024
+*Reason-To add font-weight in marquee
+*/
+/**End of code modification by Unnati on 13-10-2024
+  *Reason-Changed button color
+  */
+/* .profileContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.profileIconContainer {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+} */
+
+.profileContainer {
+  display: flex;
+  justify-content: right;
+}
+
+.profileIconContainer {
+  position: relative;
+  cursor: pointer;
+}
+
+.profileIconContainer:hover .dropdownContent {
+  display: block;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: white;
+  width: auto;
+  border-radius: 8px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  padding: 10px 0;
+}
+
+.dropdownContent li {
+  padding: 12px 16px;
+  color: #333;
+
+  /**Code added by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+  /* font-size: 16px; */
+  font-size: var(--page-content-font-size);
+  /**End of code addition by Unnati on 18-10-2024
+  *Reason-Added font size
+  */
+  border-bottom: 1px solid #f0f0f0;
+  list-style-type: none;
+}
+
+.dropdownContent li:last-child {
+  border-bottom: none;
+}
+
+.dropdownContent li:hover {
+  background-color: white;
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+.logoutButton {
+  /**Code modified by Unnati on 27-11-2024
+  *Reason-Modified color
+  */
+  color: black;
+  /**End of code addition by Unnati on 27-11-2024
+  *Reason-Modified color
+  */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.logoutButton:hover {
+  text-decoration: underline;
+}
+.productType {
+  display: flex;
+
+  /* background-color: #007bff; */
+}
+/**
+ * Added by - Ashlekh on 02-12-2024
+ * Reason - To apply css in my order
+ */
+.myOrderContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  height: 45px;
+
+  cursor: pointer;
+}
+.myOrderIcon{
+  width: 20px;
+  height: 20px;
+}
+/**
+ * End of code - Ashlekh on 02-12-2024
+ * Reason - To apply css in my order
+ */
+/**
+ * Added by - Ashlekh on 07-12-2024
+ * Reason - To apply css in customization comment
+ */
+.customizationCommentContainer{
+  font-size: 10px;
+  color: black;
+}
+ /**
+  * End of code - Ashlekh on 07-12-2024
+  * Reason - To apply css in customization comment
+  */
+/**
+ * Added by - Ashlekh on 12-12-2024
+ * Reason - To apply css in contact us text (in profile)
+ */
+.contactUsContainer{
+  color: black;
+}
+/**
+ * End of code - Ashlekh on 12-12-2024
+ * Reason - To apply css in contact us text (in profile)
+ */
+  /* Addition by Om Shrivastava on 12-12-2024
+  Reason : Add css for search  */
+  /* .searchIconPhoneView{
+    display: none;
+  } */
+  .searchIconContainerPhoneview{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    height: 45px;
+    cursor: pointer;
+  }
+  .cancelIconContainerPhoneview{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    height: 45px;
+    cursor: pointer;
+  }
+  .searchIconPhoneView{
+    display: none;
+  }
+  .cancelIconContainerPhoneview{
+    display: none;
+  }
+  .middleRightContainerPhoneView{
+    display: none;
+  }
+  /* End of addition by Om Shrivastava on 12-12-2024
+  Reason : Add css for search */
+/*Code modified by Unnati on 07-08-2024
+*Reason-To make header responsive
+*/
+/**
+  * Added by - Ashlekh on 21-01-2025
+  * Reason - to add css for cross icon
+  */
+ .crossButton{
+  width: 40px;
+  position: absolute;
+  right: 50px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  height: 100%;
+  color: black;
+  font-size: 16px;
+ }
+ .crossButton:hover{
+  background-color: transparent;
+  color: black;
+ }
+ .clearButton{
+  width: 40px;
+  position: absolute;
+  right: 25px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  height: 100%;
+  color: black;
+  font-size: 14px;
+ }
+ .clearButton:hover{
+  background-color: transparent;
+  color: black;
+ }
+ /**
+  * End of code - Ashlekh on 21-01-2025
+  * Reason - to add css for cross icon
+  */
+  /**
+   * Added by - Ashlekh on 23-01-2025
+   * Reason - To add css for product name
+   */
+  .productName{
+    /* word-break: break-all; */
+    word-wrap: break-word;
+  }
+  /**
+   * End of code - Ashlekh on 23-01-2025
+   * Reason - To add css for product name
+   */
+    /* Added by - Ashlekh on 25-02-2025
+    Reason - To add css (for marquee & profile)*/
+   .headerTopLeftMostLoggedIn {
+    width: 100%;
+  }
+  
+  .headerTopLeftMostLoggedOut {
+    width: 90%;
+  }
+  .iconsLoggedIn {
+    width: none;
+  }
+  
+  .iconsLoggedOut {
+    width: 10%;
+  }
+   .drawer{
+    display: none;
+  }
+
+  /* Overlay behind drawer */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+}
+
+/* Main Drawer */
+.menuDrawer {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 85%;
+  height: 100%;
+  background: #fff;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  transition: left 0.4s ease;
+  overflow-y: auto;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.menuDrawer.open {
+  left: 0;
+}
+
+/* Header */
+.menuHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Category List */
+.categoryList {
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f2f2f2;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.categoryItem:hover {
+  background: #f9f9f9;
+}
+
+/* Subcategory View */
+.subCategoryView {
+  animation: slideIn 0.4s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.backHeader {
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.subCategoryList {
+  display: flex;
+  flex-direction: column;
+}
+
+.subItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid #f2f2f2;
+  cursor: pointer;
+}
+
+.subItem:hover {
+  background: #f9f9f9;
+}
+
+.emptyText {
+  text-align: center;
+  color: #777;
+  margin: 20px 0;
+}
+
+/* Image + Description Section */
+.imageSection {
+  padding: 20px;
+}
+
+.imageSection img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  object-fit: cover;
+}
+
+.desc {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.5;
+}
+  /* End of code - Ashlekh on 25-02-2025
+  Reason - To add css (for marquee & profile) */
+@media (max-width: 940px) {
+  /* Commented by jhamman on 27-10-2024
+Reason - dont want to change the design in 940px*/
+  /* .col9Search { */
+  /* Modified by jhamman on 27-10-2024
+    Reason - Change design of footer*/
+  /* max-width: 75%; */
+  /* position: relative; */
+  /* max-width: 100vw; */
+  /* End of modification by jhamman on 27-10-2024
+    Reason - Change design of footer*/
+  /* min-height: 1px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: var(--page-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  } */
+  /* .col9Search .container {
+    display: block;
+    border-radius: 4px;
+  } */
+  /* .searchWrapper {
+    padding-right: 7px;
+    height: 53px;
+    width: 100%;
+  }
+  .menuBar {
+    border-radius: 4px;
+  }
+  .middleRightContainer {
+    padding-top: 0px;
+    align-items: center;
+    gap: 5px;
+  } */
+  /* .headerMiddle .container .row {
+    margin-left: 0px;
+    margin-right: 0px;
+    display: flex;
+    flex-wrap: wrap;
+  } */
+  /* 
+  .header {
+    padding: 2px;
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: none;
+    box-shadow: none;
+  } */
+  /**Code commented by Unnati on 07-08-2024
+  *Reason-This css is not in use
+  */
+  /* .headerTop {
+    width: 100%;
+    padding-left: 0px;
+  } */
+  /**End of code commented by Unnati on 07-08-2024
+  *Reason-This css is not in use
+  */
+  /* .headerTop .iconContainer {
+    display: flex;
+  }
+  .headerTop .icons {
+    margin-left: 0%;
+
+    padding-right: 10px;
+  } */
+  /* .headerMiddle {
+    padding: 5px 0;
+    width: 100%;
+  } */
+
+  /* Modified by jhamman on 27-10-2024
+  Reason - headerMiddle removed*/
+
+  /* End of modification by jhamman on 27-10-2024
+  Reason - headerMiddle removed*/
+  /* .headerMiddle .container .row {
+    .container .row {
+    display: flex;
+    flex-direction: column;
+  } */
+
+  /* .headerBottom {
+    display: none;
+  }
+  .Responsive {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: flex-end;
+  }
+  .logo {
+    order: 1;
+    margin-left: 10%;
+  }
+
+  .searchContainer {
+    order: 2;
+    height: 100%;
+  }
+
+  .icons {
+    order: 3;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .profile ul {
+    width: auto;
+    gap: 10px;
+  }
+
+  .profile ul li a {
+    font-size: 16px;
+  }
+
+  .label {
+    height: 53px;
+    border-radius: 4px;
+    display: flex;
+    order: 4;
+    align-items: center;
+    font-size: 35px;
+    margin-right: 10px;
+    padding-left: 5px;
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    align-content: stretch;
+    flex-wrap: wrap;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .searchButton {
+    background-color: #fff;
+    color: var(--page-title-font-color);
+  }
+  .cartContainer {
+    background-color: #fff;
+    color: var(--page-title-font-color);
+    margin: 2px;
+    height: 53px;
+  }
+  .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    display: none;
+    order: 5;
+    width: 100%;
+    height: 100%;
+  } */
+  /* .col3Logo { */
+
+  /* Modified by jhamman on 27-10-2024
+    Reason - Change design of footer*/
+  /* flex: 0 0 100%; */
+  /* max-width: 100%; */
+  /* display: flex;
+    justify-content: center; */
+  /* width: 100vw; */
+  /* End of modification by jhamman on 27-10-2024
+    Reason - Change design of footer*/
+  /* padding: 10px; */
+
+  /* .navbar ul {
+    flex-direction: column;
+    height: max-content;
+    display: flex;
+  }
+
+  .navbar ul li {
+    display: block;
+  }
+  .navbar ul li a {
+    font-size: var(--page-content-font-size);
+    color: #333;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbar ul li ul {
+    position: relative;
+    width: 100%;
+  }
+
+  .navbar ul li ul li {
+    background-color: #eee;
+    width: 100%;
+  }
+
+  .navbar ul li ul li ul {
+    width: 100%;
+    left: 0;
+  }
+
+  .navbar ul li:hover > ul {
+    display: block;
+  }
+
+  .menuBar:checked ~ .navbar {
+    display: block;
+    height: max-content;
+  }
+
+  .searchBar {
+    width: 100%;
+    outline: none;
+    background-color: white;
+  }
+
+  .searchButton {
+    width: 50px;
+  }
+
+  .loginButton {
+    width: 50px;
+    margin-left: 25%;
+  }
+  .dropdownMenu {
+    display: none;
+  }
+  .dropdown {
+    display: block;
+  }
+  .dropdownSearch.active .dropdownMenu {
+    display: block;
+  }
+  .dropdownSelect {
+    height: 100%;
+  }
+  .arrowIcon {
+    transform: rotate(90deg);
+  }
+} */
+  /**End of code modification by Unnati on 07-08-2024
+  *Reason-To make header responsive
+  */
+  /**Code modified by Unnati on 07-08-2024
+  *Reason-To make header responsive
+  */
+  /* End of commentation by jhamman on 27-10-2024
+Reason - dont want to change the design in 940px*/
+
+  .middleRightContainer {
+    width: 450px;
+  }
+
+  .dropdownSearch {
+    width: 30%;
+  }
+  /* Addition by Om Shrivastava on 12-12-2024
+  Reason : Add css for removing the texts  */
+  .iconNames{
+    display: none;
+  }
+  /* End of addition by Om Shrivastava on 12-12-2024
+  Reason : Add css for removing the texts  */
+}
+
+@media (max-width: 753px) {
+  .headerTopLeftMostLoggedIn {
+    width: 90%;
+  }
+  
+  .headerTopLeftMostLoggedOut {
+    width: 70%;
+  }
+  /* Added by jhamman on 27-10-2024
+Reason - added css to make responsive*/
+  .headerTopLeftMost {
+    /* width: 78%; */
+  }
+
+  .icons {
+    width: 22%;
+  }
+  /* End of addition by jhamman on 27-10-2024
+Reason -  added css to make responsive*/
+  .dropdownSelect {
+    padding: 8px;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    width: 100%;
+    height: 100%;
+  }
+  .headerTopLeftMost {
+    display: flex;
+  }
+  .headerTop .icons {
+    margin-left: 0%;
+    width: auto;
+  }
+  /* .cartContainer .cart {
+    display: block;
+  } */
+  .cartContainer .cartText {
+    display: none;
+  }
+  .col9Search {
+    display: flex;
+    flex-direction: row;
+  }
+  .dropdownMenu {
+    display: none;
+  }
+  .dropdownSearch {
+    display: block;
+  }
+  .dropdownSearch.active .dropdownMenu {
+    display: none;
+  }
+  .arrowIcon {
+    transform: rotate(90deg);
+  }
+  .searchBarInput {
+    width: 70%;
+  }
+  .productContainer {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px;
+  }
+
+  .imageSearchSize {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+  }
+  .filteredProduct div {
+    padding: 5px;
+  }
+  .productInfo {
+    flex-grow: 1;
+  }
+
+  .searchName {
+    font-size: 12px;
+  }
+
+  .productDescription {
+    font-size: 12px;
+  }
+
+  .productPrice {
+    font-size: 12px;
+    margin-left: auto;
+    text-align: right;
+  }
+
+  /* Added by jhamman on 30-10-2024
+  Reason - change the height of logo, search and cart*/
+  /* .headerTopLeftMost {
+    width: 75%;
+  }
+
+  .icons {
+    width: 25%;
+  } */
+
+  .headerMiddle {
+    padding: 0px;
+  }
+
+  .row {
+    align-items: center;
+  }
+  .searchContainer {
+    height: 35px;
+  }
+
+  .cartContainer {
+    height: 35px;
+  }
+
+  .logo {
+    height: 65px;
+  }
+
+  .middleRightContainer {
+    width: 350px;
+  }
+
+  .dropdownSearch {
+    width: 30%;
+  }
+ /* Addition by Om Shrivastava on 12-12-2024
+  Reason : Add css for icons  */
+  /* .wishlistContainer {
+    margin-right: 20px;
+    height: 35px;
+  } */
+  /* End of addition by Om Shrivastava on 12-12-2024
+  Reason : Add css for icons  */
+  
+  /* End of addition by jhamman on 30-10-2024
+  Reason - change the height of logo, search and cart*/
+}
+
+/* Added by jhamman on 30-10-2024
+Reason - change the width of category sections */
+@media (max-width: 720px) {
+  .category {
+    width: 90px;
+  }
+  .ImageContainer {
+    width: 65px;
+    height: 55px;
+  }
+  .categoryImage {
+    width: 65px;
+    height: 55px;
+  }
+}
+/* End of addition by jhamman on 30-10-2024
+Reason - change the width of category sections */
+
+@media (max-width: 700px) {
+  /* Added by jhamman on 27-10-2024
+Reason - added css to make responsive*/
+  .headerTopLeftMost {
+    /* width: 77%; */
+  }
+
+  .icons {
+    width: 23%;
+  }
+  /* End of addition by jhamman on 27-10-2024
+Reason -  added css to make responsive*/
+  .middleRightContainer {
+    width: 350px;
+  }
+
+  .dropdownSearch {
+    width: 30%;
+  }
+  .img {
+    height: 18px;
+    width: 18px;
+  }
+}
+
+
+
+/* @media (max-width: 550px) { */
+@media (max-width: 600px) {
+  /* Added by jhamman on 27-10-2024
+Reason - added css to make responsive*/
+  .headerTopLeftMost {
+    /* width: 72%; */
+  }
+
+  .icons {
+    width: 28%;
+  }
+  /* End of addition by jhamman on 27-10-2024
+Reason -  added css to make responsive*/
+
+  .allCategoryText {
+    font-size: 10px;
+  }
+
+  .row {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+  }
+
+  .headerTop {
+    margin-bottom: 8px;
+  }
+
+  .headerMiddle {
+    padding: 0px;
+    /* padding-top: 6px; */
+  }
+
+  .middleRightContainer {
+    width: 300px;
+  }
+
+  .dropdownSearch {
+    width: 30%;
+  }
+
+  .searchButton {
+    width: 30px;
+  }
+}
+/* @media (max-width: 500px) { */
+@media (max-width: 530px) {
+  .headerTop {
+    padding-left: 0px;
+  }
+
+  .headerTopLeftMost {
+    padding-left: 0px;
+  }
+  /* .middleRightContainer {
+    width: 270px;
+  } */
+
+  .dropdownSearch {
+    width: 30%;
+  }
+  .searchContainer {
+    height: 35px;
+  }
+
+  .cartContainer {
+    height: 35px;
+  }
+  /* .logo {
+    height: 70px;
+  } */
+  .iconContainer {
+    display: none;
+  }
+  .icons {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  /* Addition by Om Shrivastava on 12-12-2024
+  Reason : Add css for search  */
+  .searchIconPhoneView{
+    display: block;
+  }
+  .cancelIconContainerPhoneview{
+    display: flex;
+  }
+ 
+  .middleRightContainer {
+    display: none; /* Hide by default */
+  }
+  .middleRightContainerPhoneView{
+    display: block;
+    width: 430px;
+  }
+   /* End of addition by Om Shrivastava on 12-12-2024
+  Reason : Add css for search */
+
+  .searchIconContainerPhoneview {
+    display: block; /* Show the search icon */
+  }
+
+  .col3Logo {
+    display: block; /* Default for mobile until search is active */
+  }
+
+  .arrowBackIconContainerPhoneview {
+    display: none; /* Hide back icon by default */
+  }
+
+  .allIconssContainers {
+    display: flex; /* Show icons initially */
+    align-items: center;
+  }
+  .wishlistAndcart{
+  margin-left: 42%;}
+
+  .headerBottom{
+    display: none;
+  }
+  .drawer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+  }
+
+}
+
+/* @media (max-width: 470px) { */
+@media (max-width: 500px) {
+  /* Added by jhamman on 27-10-2024
+Reason - added css to make responsive*/
+  .headerTopLeftMost {
+    /* width: 70%; */
+  }
+
+  .icons {
+    width: 30%;
+  }
+  /* End of addition by jhamman on 27-10-2024
+Reason -  added css to make responsive*/
+
+  /* .middleRightContainer {
+    width: 250px;
+  } */
+
+  .dropdownSearch {
+    width: 20%;
+  }
+  .searchContainer {
+    height: 35px;
+  }
+
+  .cartContainer {
+    height: 35px;
+  }
+  /* .logo {
+    height: 70px;
+  } */
+
+  .cart {
+    display: flex;
+    padding: 7px;
+  }
+  .cartContainer.cartContainer {
+    display: flex;
+  }
+  .cartImage {
+    width: 15px;
+    height: 15px;
+  }
+  /**
+   * Added by - Ashlekh on 23-01-2025
+   * Reason - To change position of search/wishlist/cart icon in mobile view
+   */
+  .searchIconContainerPhoneview{
+    margin-right: 7px;
+    margin-top: 3px;
+  }
+  .myOrderContainer{
+    margin-right: 10px;
+  }
+  .wishlistContainer{
+    margin-right: 0;
+  }
+  .col3Logo{
+    margin-left: 0;
+  }
+  /**
+   * End of code - Ashlekh on 23-01-2025
+   * Reason - To change position of search/wishlist/cart icon in mobile view
+   */
+}
+/*End of code modification by Unnati on 07-08-2024
+*Reason-To make header responsive
+*/
+/**End of code addition by Unnati on 01-06-2024
+*Reason -To have css for header
+*/
+
+/* @media (max-width: 420px) { */
+@media (max-width: 470px) {
+  /* .headerTopLeftMost {
+    width: 60%;
+  } 
+  
+  .icons {
+    width: 40%;
+  } */
+  /* Modification and addition by Om Shrivastava on 14-12-2024
+  Reason : Show the search option  */
+  .middleRightContainerPhoneView {
+    width: 370px;
+  }
+  /* End of modification and addition by Om Shrivastava on 14-12-2024
+  Reason : Show the search option  */
+
+  .dropdownSearch {
+    width: 20%;
+  }
+  .searchContainer {
+    height: 35px;
+  }
+
+  .cartContainer {
+    height: 35px;
+  }
+  /* .logo {
+    height: 70px;
+  } */
+}
+
+@media (max-width: 420px) {
+ /* Modification and addition by Om Shrivastava on 14-12-2024
+  Reason : Show the search option  */
+  .middleRightContainerPhoneView {
+    width: 340px;
+  }
+  /* End of modification and addition by Om Shrivastava on 14-12-2024
+  Reason : Show the search option  */
+
+}
+
+@media (max-width: 380px) {
+  .headerTopLeftMostLoggedIn {
+    width: 84%;
+  }
+  
+  .headerTopLeftMostLoggedOut {
+    width: 67%;
+  }
+  
+  .headerTopLeftMost {
+    /* width: 60%; */
+  }
+
+  .icons {
+    width: 40%;
+  }
+
+  /* Modification and addition by Om Shrivastava on 14-12-2024
+  Reason : Show the search option  */
+  .middleRightContainerPhoneView {
+    width: 280px;
+  }
+  /* End of modification and addition by Om Shrivastava on 14-12-2024
+  Reason : Show the search option  */
+
+  .dropdownSearch {
+    width: 20%;
+  }
+  .searchContainer {
+    height: 30px;
+  }
+
+  .cartContainer {
+    height: 30px;
+  }
+  /* .logo {
+    height: 50px;
+  } */
+}
+
+/* Addition by Om Shrivastava on 14-12-2024
+  Reason : Show the search option  */
+@media (max-width: 320px) {
+  .middleRightContainerPhoneView {
+    width: 210px;
+  }
+/* End of Addition by Om Shrivastava on 14-12-2024
+Reason : Show the search option  */
+}

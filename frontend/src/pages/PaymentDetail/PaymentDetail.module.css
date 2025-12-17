@@ -1,0 +1,77 @@
+.paymentContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  min-height: var(--page-min-height);
+}
+
+.paymentSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.paymentScanner,
+.bankDetails {
+  flex: 1;
+}
+
+.instructionText {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.scannerImage {
+  width: 150px;
+  height: 150px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+}
+
+.bankDetails {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.paymentMethodTitle {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.instructionText {
+  font-size: 1.1em;
+  margin-bottom: 8px;
+}
+
+.buttonContainer {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.paymentButton {
+  background-color: var(--button-color);
+  color: var(--button-font-color);
+  font-size: 1.2em;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.paymentButton:hover {
+  background-color: var(--button-color-hover);
+  color: var(--button-font-color-hover);
+}
+
+.modalText {
+  font-size: var(--modal-font-size);
+}

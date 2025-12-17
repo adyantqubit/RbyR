@@ -1,0 +1,506 @@
+.pageHeading {
+  font-size: var(--page-title-font-size);
+  display: flex;
+}
+
+.pageFrame {
+  background-image: var(--page-background-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.pageContainer {
+  margin-left: var(--page-margin-left);
+  margin-right: var(--page-margin-right);
+  margin-top: var(--page-margin-top);
+  margin-bottom: var(--page-margin-bottom);
+  min-height: var(--page-min-height);
+}
+
+.myAccount {
+  display: flex;
+}
+
+.sidebar {
+  color: var(--page-content-title-font-color);
+  font-size: var(--page-subTitle-font-size);
+  width: 200px;
+  border-right: 1px solid #ccc;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 15px;
+  cursor: pointer;
+}
+
+.sidebar li.active {
+  background-color: #f4f4f4;
+  border-left: 4px solid var(--header-background-color-dark);
+}
+
+.content {
+  padding: 15px;
+  width: 100%;
+  background: #fbf6f6;
+  background-image: url(../../../public/bgaccount.jpg);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: var(--page-content-title-font-size);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: var(--page-content-font-color);
+}
+
+.subtitle {
+  font-size: var(--page-content-font-size);
+  color: var(--page-content-subTitle-font-color);
+  padding: 5px;
+  margin-bottom: 0px;
+}
+
+.value {
+  font-size: var(--page-content-font-size);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.Edit {
+  margin-top: 5px;
+  background-color: var(--button-color);
+  color: var(--button-font-color);
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--button-font-size);
+}
+
+.Edit:hover {
+  background-color: var(--button-color-hover);
+  color: var(--button-font-color-hover);
+}
+
+.Address {
+  display: flex;
+}
+
+.addresses {
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+}
+
+.card {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mainHeading {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.AddressBook {
+  padding: 20px;
+}
+
+.addressList {
+  list-style: none;
+  padding: 0;
+}
+
+.addressItem {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.addressDetails {
+  margin-bottom: 10px;
+}
+
+.primaryTag {
+  color: green;
+  font-weight: bold;
+}
+
+.addressActions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.addressBook {
+  padding: 20px;
+}
+
+.addressListContainer {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.addressList {
+  list-style: none;
+  padding: 0;
+}
+
+.addressItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.addressItem.even {
+  background-color: #f9f9f9;
+}
+
+.addressItem.odd {
+  background-color: #f1f1f1;
+}
+
+/* Align the content horizontally */
+.addressContent {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  font-size: var(--page-subTitle-font-size);
+  gap: 40px;
+}
+
+/* Left side: Address details */
+.addressInfo {
+  flex: 1;
+}
+
+.name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Right side: Action buttons */
+.addressActions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.primaryTag {
+  color: green;
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+.primaryRadio {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--page-subTitle-font-size);
+  font-family: var(--page-font-family);
+}
+
+/* Ensure the radio button and action buttons align to the right */
+.addressActions {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.rowContainer {
+  display: flex;
+  padding-top: 10px;
+  flex-direction: column;
+}
+
+.fieldName {
+  display: flex;
+  align-items: center;
+  font-size: small;
+  color: #686868;
+  font-weight: 600;
+}
+
+.inputShipping {
+  font-family: var(--page-font-family);
+  height: 35px;
+  font-size: 13px;
+  border: 1px solid #ddd;
+  line-height: 1.66;
+  background-color: #fff;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  outline: none;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.mandatory {
+  color: #ff2d37;
+}
+
+.formInputError {
+  font-size: var(--page-content-font-size);
+  color: #ff2d37;
+}
+
+/* Modal Overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.modalContent button {
+  margin: 5px;
+}
+
+.modalOverlay .modalContent .buttonYesOrNo {
+  background-color: var(--button-color);
+  color: var(--button-font-color);
+  border: none;
+  padding: 5px;
+}
+
+.modalOverlay .modalContent .buttonYesOrNo:hover {
+  background-color: var(--button-color-hover);
+  color: var(--button-font-color-hover);
+}
+
+.buttonYesOrNo {
+  background-color: var(--button-color);
+  color: var(--button-font-color);
+  border: none;
+  padding: 5px;
+}
+
+.buttonYesOrNo:hover {
+  background-color: var(--button-color-hover);
+  color: var(--button-font-color-hover);
+}
+
+.modalContainer {
+  background-color: #fff;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
+
+/* Modal Header */
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rowContainer {
+  display: flex;
+  padding-top: 10px;
+  flex-direction: column;
+}
+
+.fieldName {
+  display: flex;
+  align-items: center;
+  font-size: small;
+  color: #686868;
+  font-weight: 600;
+}
+
+.mandatory {
+  color: #ff2d37;
+}
+
+.formInputError {
+  font-size: 13px;
+  color: #ff2d37;
+}
+
+/* Close Button */
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.shippingSubmitButton {
+  display: block;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: var(--button-color);
+  color: var(--button-font-color);
+  border: none;
+  cursor: pointer;
+}
+
+.container {
+  width: 60%;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.addressValidationMessageContainer {
+  color: var(--page-validation-font-color);
+  font-size: var(--page-validation-font-size);
+}
+
+.shippingAddressButtonContainer {
+  display: flex;
+  justify-content: end;
+}
+
+.addIcon {
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.shippingAddressButton {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px;
+  background-color: #589723;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 950px) {
+  .container {
+    width: 70%;
+  }
+}
+
+@media (max-width: 850px) {
+  .myAccount {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar ul {
+    display: flex;
+    width: 50vw;
+  }
+
+  .sidebar {
+    border: unset;
+  }
+}
+
+@media (max-width: 750px) {
+  .sidebar ul {
+    display: flex;
+    width: 50vw;
+  }
+
+  .addressContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 650px) {
+  .sidebar ul {
+    display: flex;
+    width: 60vw;
+  }
+}
+
+@media (max-width: 550px) {
+  .sidebar ul {
+    display: flex;
+    width: 70vw;
+  }
+
+  .container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 450px) {
+  .sidebar ul {
+    display: flex;
+    width: 90vw;
+  }
+
+  .container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 340px) {
+  .sidebar ul {
+    display: flex;
+    width: 80vw;
+  }
+
+  .content {
+    padding: 0px;
+    padding-top: 15px;
+  }
+
+  .pageContainer {
+    margin: unset;
+  }
+
+  .mainHeading {
+    margin: unset;
+  }
+}

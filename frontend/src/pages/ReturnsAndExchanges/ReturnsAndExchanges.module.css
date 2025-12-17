@@ -1,0 +1,38 @@
+
+.pageHeading {
+  font-size: var(--page-heading-font-size);
+  margin-bottom: 15px;
+  color: var(--page-content-title-font-color);
+  
+  text-align: var(--page-heading-text-align);
+  
+}
+.pageContainer {
+  margin-left: var(--page-margin-left);
+  margin-right: var(--page-margin-right);
+  margin-top: var(--page-margin-top);
+  margin-bottom: var(--page-margin-bottom);
+  min-height: var(--page-min-height);
+  text-align: var(--page-content-subTitle-text-align);
+  font-size: var(--page-content-subTitle-font-size);
+
+}
+.pageFrame {
+  background-image: var(--page-background-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+.title {
+  margin-bottom: 15px;
+  color: var(--page-content-title-font-color);
+  font-weight: 600;
+}
+.description {
+  color: #686a68;
+  font-size: 13px;
+  font-style: Rubik;
+}

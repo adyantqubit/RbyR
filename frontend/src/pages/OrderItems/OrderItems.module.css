@@ -1,0 +1,100 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+  font-size: var(--page-content-font-size);
+
+  }
+  
+  .card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: #fff;
+  }
+  
+  .orderHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .item {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .itemImage {
+    width: 80px;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .itemDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    word-wrap: break-word;
+  }
+  
+  .buyAgainButton {
+    background-color: #ffd814;
+    color: #111;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .orderActions {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  
+  .orderActions button {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    cursor: pointer;
+  }
+  
+  .orderActions button:hover {
+    background-color: #eaeaea;
+  }
+  .greenStatus{
+    color: #2f972f;
+  }
+  .orderDetailButton{
+  background-color: var(--button-color);
+  color: var(--button-font-color);
+  border: none;
+  padding: 5px 7.5px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  }
+  .orderDetailButton:hover{
+  background-color: var(--button-color-hover);
+  }
+  .orderDetail{
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+  }
+  .notAvailableMessage {
+    font-size: var(--page-content-font-size);
+    color: red;
+    font-weight: 700;
+  }

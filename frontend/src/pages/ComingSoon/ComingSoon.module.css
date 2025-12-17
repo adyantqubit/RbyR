@@ -1,0 +1,36 @@
+
+.pageFrame {
+    background-image: var(--page-background-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: hidden;
+    background-color: #ffffff;
+    font-family: var(--page-font-family);
+    min-height: var(--page-min-height);
+  }
+  .coloredBackground {
+    background-color: #ffffff;
+    border-radius: 10px;
+  }
+  .pageContainer {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    margin-left: 29.094px;
+    margin-right: 29.109px;
+  }
+  .pageContainer .container {
+    display: flex;
+    width: 94%;
+    padding: 0;
+    gap: 30px;
+    justify-content: center;
+  }
+  .comingSoonBanner{
+    width: 100%;
+  }
+  .comingSoonBannerImage{
+    width: 100%;
+  }

@@ -1,0 +1,42 @@
+
+.pageHeading {
+    margin-bottom: 15px;
+    color: var(--page-content-title-font-color);
+    font-size: var(--page-heading-font-size);
+    text-align: var(--page-heading-text-align);
+  }
+  .pageFrame {
+    background-image: var(--page-background-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: hidden;
+    background-color: #ffffff;
+  }
+  .pageContainer {
+    margin-left: var(--page-margin-left);
+    margin-right: var(--page-margin-right);
+    margin-top: var(--page-margin-top);
+    margin-bottom: var(--page-margin-bottom);
+    min-height: var(--page-min-height);
+    text-align: var(--page-content-subTitle-text-align);
+    color: var(--page-content-subTitle-font-color);
+    font-size: var(--page-content-subTitle-font-size);
+  }
+  .title {
+    color: var(--header-background-color-dark);
+    font-weight: normal;
+    margin-bottom: 15px;
+  }
+  .privacyPolicyDescription{
+    word-wrap: break-word;
+  }
+  @media (max-width: 720px) {
+    .pageContainer {
+      margin-left: 5%;
+      margin-right: 5%;
+      margin-bottom: 5%;
+    }
+  }
+  

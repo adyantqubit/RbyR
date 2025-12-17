@@ -1,0 +1,120 @@
+
+
+.pageFrame {
+  background-image: var(--page-background-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+.pageContainer {
+  margin-left: var(--page-margin-left);
+  margin-right: var(--page-margin-right);
+  margin-top: var(--page-margin-top);
+  margin-bottom: var(--page-margin-bottom);
+  min-height: var(--page-min-height);
+  text-align: var(--page-content-subTitle-text-align);
+  color: var(--page-content-subTitle-font-color);
+  font-size: var(--page-content-subTitle-font-size);
+}
+.colouredBackground {
+  display: flex;
+  background-color: #f3f3fe;
+  justify-content: center;
+  align-items: center;
+  padding: 5%;
+}
+
+.formcontainer {
+  max-width: 800px;
+  padding: 30px;
+  background-color: #ffffff;
+}
+
+.formcontainer h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.formcontainer p {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #6c757d;
+}
+
+.formgroup {
+  width: 100%;
+  margin-bottom: 15px;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.formgroup label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.formgroup input,
+.formgroup textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+.formgroup textarea {
+  resize: none;
+  height: 100px;
+}
+.bigAndTallButton {
+  width: 30%;
+  padding: 10px;
+  background-color: var(--button-color);
+  color: var(--button-font-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.formLabel {
+  display: flex;
+}
+.mandatoryField {
+  color: red;
+  margin-left: 0.25rem;
+  padding-right: 2px;
+}
+.formInputError {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  padding-right: 1%;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 991px) {
+  .pageContainer {
+    margin-left: var(--page-margin-left);
+    margin-right: var(--page-margin-right);
+    margin-top: var(--page-margin-top);
+    margin-bottom: 20px;
+    min-height: 50vh;
+    text-align: var(--page-content-subTitle-text-align);
+  }
+  .colouredBackground {
+    background-color: #ffffff;
+    padding: 0%;
+  }
+  .formcontainer {
+    padding: 0%;
+  }
+}

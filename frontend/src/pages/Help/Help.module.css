@@ -1,0 +1,17 @@
+.pageFrame {
+    background-image: var(--page-background-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: hidden;
+    background-color: #ffffff;
+  }
+  .pageContainer {
+    margin-left: var(--page-margin-left);
+    margin-right: var(--page-margin-right);
+    margin-top: var(--page-margin-top);
+    margin-bottom: var(--page-margin-bottom);
+    min-height: var(--page-min-height);
+    text-align: var(--page-content-subTitle-text-align);
+  }

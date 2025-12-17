@@ -1,0 +1,28 @@
+{% extends "admin/base_site.html" %}
+<!--Created by - Ashlekh on 18-02-2024
+    Reason - For JyotReset-->
+    {% load admintemplates %}
+    
+    {% block content %}
+    {% comment %} {% include 'admin/app_list.html' with app_list=available_apps show_changelinks=False %} {% endcomment %}
+    
+                
+                    <form id="jyotForm" action="/api/jyot_reset/" method="post">
+                        {% comment %} <form id="jyotForm" action="{{ SITE_URL }}/api/jyot_reset/" method="post"> {% endcomment %}
+                        {% csrf_token %}
+                        {% getJyot as jyotData %}
+                        {% for jyot in jyotData.totalJyotRequest %}
+                            <label style="margin-right: 30px;">
+                                <input type="radio" name="id" value="{{ jyot.id }}"> {{ jyot.name }} {{"jyot_number"}} {{ jyot.jyot_number}}
+                            </label>
+                        {% endfor %}
+                        <br/><br/>
+                        <label>
+                            <input type="checkbox" name="confirm_reset" required>
+                            Are you sure you want to reset Jyot Number?
+                        </label>
+                        <br/><br/><button type="submit">Submit</button>
+                    </form>
+    
+    {% endblock %}
+    
