@@ -1,9 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap");
+
 /**Code added by Unnati on 23-06-2024
 *Reason-To have css for product detail page
 */
-body {
-  background-color: #fff;
-}
 .pageFrame {
   padding: 30px 0 30px;
   min-height: 500px;
@@ -1216,5 +1215,434 @@ input::-webkit-inner-spin-button {
   }
   .checkBox{
     margin-top: 0px;
+  }
+}
+
+/* ----- Premium editorial UI (visual only; layered after legacy rules) ----- */
+
+.pageFrame {
+  font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #2a2824;
+  background: linear-gradient(180deg, #fdfcfa 0%, #f7f5f1 100%);
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: clamp(1.25rem, 4vw, 3rem) clamp(1rem, 3vw, 2.5rem)
+    clamp(2.5rem, 5vw, 4rem);
+  min-height: 60vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.pageContainer {
+  width: 100%;
+}
+
+.productName {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: clamp(1.75rem, 2.3vw + 1rem, 2.5rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  color: #1f1e1b;
+  margin-bottom: 0.85rem;
+}
+
+.productDescription {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #5c5a55;
+  text-align: left;
+  margin-bottom: 1rem;
+  max-width: 48ch;
+}
+
+.CategoryName {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  color: #6b6a65;
+}
+
+.CategoryType {
+  font-size: 0.95rem;
+  color: #3d3c38;
+}
+
+.categoryContainer {
+  margin-bottom: 1.25rem;
+  gap: 0.35rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.productRating {
+  margin-bottom: 1rem;
+}
+
+.title {
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.productPrice {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 1.5vw + 0.85rem, 1.85rem);
+  font-weight: 600;
+  color: #1f1e1b;
+  margin-bottom: 0;
+}
+
+.cardPrice {
+  margin-bottom: 0;
+  margin-left: 0;
+  padding: 0;
+  align-items: baseline;
+}
+
+.productOfferContainer {
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+  border-radius: 2px;
+}
+
+.productOptions {
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.productColors {
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.colorOption {
+  width: 36px;
+  height: 36px;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 1px rgba(42, 40, 36, 0.22);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.activeColorOption {
+  transform: scale(1.04);
+  box-shadow: 0 0 0 2px #4d4d1a;
+}
+
+.productSizes {
+  margin-bottom: 0.5rem;
+}
+
+.sizeMessage label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: #6b6a65;
+}
+
+.sizeBoxes {
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.sizeBox {
+  min-width: 48px;
+  padding: 0.65rem 1rem;
+  border-radius: 2px;
+  border: 1px solid #d4d0c8;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  margin: 0;
+  background: #fff;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.sizeBox:hover {
+  background: #faf8f5;
+  border-color: #b8b3a9;
+}
+
+.selectedSizeBox {
+  background: #4d4d1a;
+  color: #fef6eb;
+  border-color: #4d4d1a;
+}
+
+.sizeChartBox {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #4d4d1a;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(77, 77, 26, 0.35);
+  margin-top: 0.35rem;
+}
+
+.sizeChartBox:hover {
+  color: #2a2818;
+  border-bottom-color: #2a2818;
+}
+
+.quantityContainer {
+  margin-top: 1.25rem;
+  margin-bottom: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(42, 40, 36, 0.08);
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quantity label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #6b6a65;
+}
+
+.quantityInput {
+  border-radius: 2px;
+  border-color: #d4d0c8;
+  overflow: hidden;
+}
+
+.quantityButton {
+  width: 2.25rem;
+  height: 2.25rem;
+  background: #f3f1ec;
+  border: none;
+  border-radius: 0;
+  font-size: 1.1rem;
+}
+
+.quantityNumber {
+  width: 2.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.addToCartButton {
+  min-width: 180px;
+  padding: 0.9rem 1.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+.addToCart {
+  margin-top: 1.5rem;
+  gap: 1rem;
+  align-items: center;
+}
+
+.shippingDays {
+  padding-top: 1rem;
+  font-size: 0.875rem;
+  color: #5c5a55;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.productInfoDetails {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.subHeadingContainer h2 {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid rgba(42, 40, 36, 0.15);
+  width: 100%;
+  max-width: 28rem;
+  padding-bottom: 0.35rem;
+}
+
+.borderDescription {
+  border-top: none;
+}
+
+.description {
+  margin-top: 1.25rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(42, 40, 36, 0.08);
+}
+
+.reviewContainer {
+  max-width: 900px;
+  margin: clamp(2rem, 4vw, 3.5rem) auto 0;
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  border-top: 1px solid rgba(42, 40, 36, 0.08);
+}
+
+.reviewTitle {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  margin-bottom: 1rem;
+}
+
+.feedBackDetailContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.similarProductSubHeading {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.gridContainer {
+  gap: clamp(1rem, 2vw, 1.75rem);
+}
+
+.gridImage {
+  border-radius: 2px;
+  border-color: rgba(77, 77, 26, 0.12);
+}
+
+.wishListIcon1,
+.wishListIcon2 {
+  font-size: 1.75rem;
+}
+
+@media screen and (min-width: 721px) {
+  .product {
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    padding-top: 0.5rem;
+    border-bottom: 1px solid rgba(74, 77, 26, 0.08);
+    padding-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .imageContainer {
+    flex: 1 1 52%;
+    max-width: 640px;
+    width: 100%;
+    height: auto;
+    min-height: unset;
+    margin-right: 0;
+    gap: 1rem 1.25rem;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .mySwiper {
+    flex: 1;
+    min-width: 0;
+    border-radius: 2px;
+    overflow: hidden;
+    background: #faf8f5;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06), 0 12px 40px rgba(45, 42, 38, 0.06);
+    border: 1px solid rgba(77, 77, 26, 0.12);
+  }
+
+  .mySwiper :global(.swiper-button-next),
+  .mySwiper :global(.swiper-button-prev) {
+    color: #4d4d1a;
+    opacity: 0.85;
+  }
+
+  .mySwiper :global(.swiper-button-next):hover,
+  .mySwiper :global(.swiper-button-prev):hover {
+    opacity: 1;
+  }
+
+  .largeImage {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 420px;
+    max-height: min(72vh, 720px);
+    object-fit: contain;
+    object-position: center;
+    border: none;
+    display: block;
+    background: #faf8f5;
+  }
+
+  .thumbnailContainer {
+    flex-shrink: 0;
+    gap: 0.65rem;
+    padding: 0.35rem;
+    padding-right: 0.15rem;
+  }
+
+  .thumbnailImage {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 2px;
+    border: 1px solid rgba(77, 77, 26, 0.2);
+    margin-bottom: 0;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  }
+
+  .activeThumbnail {
+    transform: none;
+    border-color: #4d4d1a;
+    box-shadow: 0 0 0 1px #4d4d1a;
+  }
+
+  .thumbnailImage:hover {
+    border-color: rgba(77, 77, 26, 0.45);
+  }
+
+  .productInfo {
+    flex: 1 1 44%;
+    max-width: 520px;
+    width: 100%;
+    padding-top: 0.25rem;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .pageFrame {
+    padding-left: clamp(0.75rem, 4vw, 1.25rem);
+    padding-right: clamp(0.75rem, 4vw, 1.25rem);
+  }
+
+  .largeImage {
+    min-height: 280px;
+    max-height: 55vh;
+    object-fit: contain;
+    background: #faf8f5;
+  }
+
+  .mySwiper {
+    border-radius: 2px;
+    background: #faf8f5;
+    border: 1px solid rgba(77, 77, 26, 0.1);
+    box-shadow: 0 8px 28px rgba(45, 42, 38, 0.05);
+  }
+
+  .thumbnailImage {
+    border-radius: 2px;
+  }
+
+  .addToCartButton {
+    letter-spacing: 0.1em;
   }
 }

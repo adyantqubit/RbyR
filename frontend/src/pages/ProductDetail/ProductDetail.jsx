@@ -3022,8 +3022,8 @@ const ProductDetail = () => {
                   <div
                     key={color}
                     className={`${ProductDetailStyle.colorOption} ${pselectedColor === color
-                        ? ProductDetailStyle.activeColorOption
-                        : ""
+                      ? ProductDetailStyle.activeColorOption
+                      : ""
                       }`}
                     style={{ backgroundColor: color }}
                     onClick={() => handleModalColorSelect(color)}
@@ -3049,8 +3049,8 @@ const ProductDetail = () => {
                     <div
                       key={size}
                       className={`${ProductDetailStyle.sizeBox} ${pselectedSize === size
-                          ? ProductDetailStyle.selectedSizeBox
-                          : ""
+                        ? ProductDetailStyle.selectedSizeBox
+                        : ""
                         } ${!isSizeAvailable(size)
                           ? ProductDetailStyle.unavailableSizeBox
                           : ""
@@ -3361,23 +3361,19 @@ const ProductDetail = () => {
   return (
     <div className={ProductDetailStyle.pageFrame}>
       <div className={ProductDetailStyle.pageContainer}>
-        {/* {showModal?
-      <ProductModal/>:null} */}
+
         {showModal && (
           <ProductModal
             product_id={selectedItem}
-          // closeModal={() => setShowModal(false)}
+
           />
         )}
-        {/* Added by - Ashlekh on 09-12-2024
-        Reason - To display navigation path */}
+
         <NavigationPath navigationPathArray={navigationPath} />
-        {/* End of code - Ashlekh on 09-12-2024
-      Reason - To display navigation path */}
+
         <div className={ProductDetailStyle.product}>
           <div className={ProductDetailStyle.imageContainer}>
-            {/**Code added by Unnati on 01-07-2024
-             *Reason To display product images by sliding */}
+
             <Swiper
               navigation={true}
               modules={[Navigation]}
@@ -3391,54 +3387,14 @@ const ProductDetail = () => {
             >
               {images.map((image, index) => (
                 <SwiperSlide key={index}>
-                  {/* Modified by - Ashish Dewangan on 20-12-2024
-                   * Reason - Changed image zoom library */}
-                  {/* <InnerImageZoom
-                    src={
-                      image
-                        ? `${config.baseURL}${image}`
-                        : "https://via.placeholder.com/400"
-                    }
-                    zoomSrc={
-                      image
-                        ? `${config.baseURL}${image}`
-                        : "https://via.placeholder.com/400"
-                    }
-                    zoomType="hover"
-                    className={ProductDetailStyle.largeImage}
-                  /> */}
-
-                  {/* <ImageZoom
-                    width={400}
-                    height={500}
-                    className={ProductDetailStyle.largeImage}
-                    src={
-                      image
-                        ? `${config.baseURL}${image}`
-                        : "https://via.placeholder.com/400"
-                    }
-                    zoom="250"
-                  /> */}
-                  {/* <img 
-                    className={ProductDetailStyle.largeImage}
-                  
-                  src={
-                      image
-                        ? `${config.baseURL}${image}`
-                        : "https://via.placeholder.com/400"
-                    } alt="" /> */}
                   <SimpleMagnifier
                     src={image ? `${config.baseURL}${image}` : 'https://via.placeholder.com/400'}
                     className={ProductDetailStyle.largeImage}
                   />
-
-                  {/* End of modification by - Ashish Dewangan on 20-12-2024
-                   * Reason - Changed image zoom library */}
                 </SwiperSlide>
               ))}
             </Swiper>
-            {/**End of code addition by Unnati on 01-07-2024
-             *Reason To display product images by sliding */}
+
             <div className={ProductDetailStyle.thumbnailContainer}>
               {images.map((image, index) => (
                 <img
@@ -3450,16 +3406,15 @@ const ProductDetail = () => {
                   }
                   alt={`Thumbnail ${index + 1}`}
                   className={`${ProductDetailStyle.thumbnailImage} ${index === currentImageIndex
-                      ? ProductDetailStyle.activeThumbnail
-                      : ""
+                    ? ProductDetailStyle.activeThumbnail
+                    : ""
                     }`}
                   onClick={() => setCurrentImageIndex(index)}
                 />
               ))}
             </div>
           </div>
-          {/**End of code modification by Unnati on 20-09-2024
-           Reason-Need to change the image section designing */}
+
           <div className={ProductDetailStyle.productInfo}>
             <h1 className={ProductDetailStyle.productName}>
               {selectedProductDetails.name}
@@ -3468,63 +3423,22 @@ const ProductDetail = () => {
             <p className={ProductDetailStyle.productDescription}>
               {selectedProductDetails.description}
             </p>
-            {/**Code added by Unnati on 17-10-2024
-             *Reason-Added star rating */}
+
             <div className={ProductDetailStyle.productRating}>
               {selectedProductDetails.rating > 0 && (
-                /**Code commented by Unnati on 18-10-2024
-                 *Reason-Commented star component*/
-                /* <ReactStars
-                                  className={CategoryStyle.star}
-                                  count={5}
-                                  value={product.rating}
-                                  size={12}
-                                  color2={"#ffd700"}
-                                  edit={false}
-                                /> */
-                /**End of code comment by Unnati on 18-10-2024
-                 *Reason-Commented star component*/
-                /**Code added by Unnati on 18-10-2024
-                 *Reason-Calling component*/
+
                 <Rating value={selectedProductDetails.rating} />
-                /**End of code addition by Unnati on 18-10-2024
-                 *Reason-Calling component*/
+
               )}
             </div>
-            {/**End of code addition by Unnati on 17-10-2024
-             *Reason-Added star rating */}
-            {/**Code added by Unnati on 12-09-2024
-             *Reason-Added category and brand */}
 
-            {/* Modified by jhamman on 20-10-2024
-             Reason - we have to change the design of heading*/}
-            {/* <p className={ProductDetailStyle.CategoryName}>
-              Category:{selectedProductDetails.category}
-            </p> */}
             <div className={ProductDetailStyle.categoryContainer}>
               <p className={ProductDetailStyle.CategoryName}>Category:</p>
               <p className={ProductDetailStyle.CategoryType}>
                 {selectedProductDetails.category}
               </p>
             </div>
-            {/* End of modification by jhamman on 20-10-2024
-             Reason - we have to change the design of heading*/}
-            {/**Code commented by Unnati on 06-10-2024
-             *Reason-To remove brand  */}
-            {/* <p className={ProductDetailStyle.BrandName}>
-              Brand:{selectedProductDetails.brand}
-            </p> */}
-            {/*End of code comment by Unnati on 06-10-2024
-             *Reason-To remove brand  */}
-            {/**End of code addition by Unnati on 12-09-2024
-             *Reason-Added category and brand */}
-            {/*<div className={ProductDetailStyle.title}>
-              <p className={ProductDetailStyle.productPrice}>
-                ${selectedProductDetails.sales_rate}
-              </p>
-            </div> */}
-            {/* Modified by Jhamman on 06-10-2024
-            Reason- calculate sale price */}
+
             <div className={ProductDetailStyle.title}>
               {selectedProductDetails.sale_percentage ? (
                 <div className={ProductDetailStyle.productPrice}>
@@ -3575,8 +3489,8 @@ const ProductDetail = () => {
                   <div
                     key={color}
                     className={`${ProductDetailStyle.colorOption} ${selectedColor === color
-                        ? ProductDetailStyle.activeColorOption
-                        : ""
+                      ? ProductDetailStyle.activeColorOption
+                      : ""
                       }`}
                     style={{ backgroundColor: color }}
                     onClick={() => handleColorSelect(color)}
@@ -3623,8 +3537,8 @@ const ProductDetail = () => {
                       <div
                         key={size}
                         className={`${ProductDetailStyle.sizeBox} ${selectedSize === size
-                            ? ProductDetailStyle.selectedSizeBox
-                            : ""
+                          ? ProductDetailStyle.selectedSizeBox
+                          : ""
                           } ${!isSizeAvailable(size)
                             ? ProductDetailStyle.unavailableSizeBox
                             : ""
@@ -3638,31 +3552,15 @@ const ProductDetail = () => {
                     ))}
                   </div>
                 )}
-                {/*End of code addition by Unnati on 02-1-2025
-                 *Reson-Added condition for free size*/}
-                {/* Addition by Om Shrivastava on 18-12-2024
-                Reason : Show the message below the sizes button  */}
+
                 {sizeError && (
                   <p className={ProductDetailStyle.formInputError}>
                     {sizeError}
                   </p>
                 )}
-                {/* End of addition by Om Shrivastava on 18-12-2024
-                Reason : Show the message below the sizes button  */}
 
-                {/**End of code addition by Unnati on 28-08-2024
-                 * Reason-Changed the UI for size display
-                 */}
-                {/* Added by - Ashlekh on 05-10-2024
-                 Reason - To add size chart */}
-                {/**Code added by Unnati on 02-01-2025
-                 *Reason-Added condition for free size*/}
-                {/* Code changed by - Ashlekh on 20-01-2025
-                Reason - If size chart is not added then to hide size chart button */}
-                {/* {!selectedProductDetails.is_free_size ? ( */}
                 {(!selectedProductDetails.is_free_size && sizeChart != null) ? (
-                  // End of code - Ashlekh on 20-01-2025
-                  // Reason - If size chart is not added then to hide size chart button
+
                   <div
                     className={`${ProductDetailStyle.sizeChartBox}`}
                     onClick={showSizeChart}
@@ -3770,7 +3668,7 @@ const ProductDetail = () => {
                     className={ProductDetailStyle.addToCartButton}
                     onClick={handleSubmit}
                   >
-                    Add to Cartww
+                    Add to Cart
                   </button>
                   {user.id != undefined && (
                     <div
