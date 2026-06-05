@@ -716,14 +716,14 @@ const Home = () => {
             {banners.map((item, index) => (
               <div key={index} className={homeStyle.bannerSlide}>
                 <img
-                  src={`${item.banner_image}`}
+                  src={
+                    item.banner_image?.startsWith("http")
+                      ? item.banner_image
+                      : `${config.baseURL}${item.banner_image}`
+                  }
                   alt={`Banner ${index}`}
                   className={homeStyle.bannerImage}
                 />
-                <div className={homeStyle.bannerText}>
-                  <h2>{item.name}</h2>
-                  <p>{item.description}</p>
-                </div>
               </div>
             ))}
           </Slider>

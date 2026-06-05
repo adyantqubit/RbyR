@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState, useRef, useContext } from "react";
+import React, { useEffect, useState, useRef, useContext, useMemo } from "react";
 import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
 import ProductDetailStyle from "./ProductDetail.module.css";
 import {
@@ -26,7 +26,7 @@ import {
   checkIsNotADigit,
 } from "../../utils/validations";
 import notificationObject from "../../components/Widgets/Notification/Notification";
-import { FaShippingFast, FaWindowClose } from "react-icons/fa";
+import { FaWindowClose } from "react-icons/fa";
 import InnerImageZoom from "react-inner-image-zoom";
 import "./styles.css";
 import { calculateDiscountFromProduct } from "../../utils/discountedPrices";
@@ -43,6 +43,45 @@ import { Rate } from "antd";
 import "antd/dist/reset.css";
 import SimpleMagnifier from "./SimpleMagnifier";
 import CartDrawer from "./CartDrawer";
+
+const ACCORDION_FIELD_CONFIG = [
+  { key: "description", label: "Description" },
+  { key: "details", label: "Details", isHtml: true },
+  { key: "shipping_days", label: "Shipping Days" },
+  { key: "category", label: "Category" },
+  { key: "is_ready_to_ship", label: "Shipping Information", isBoolean: true },
+];
+
+const hasAccordionFieldValue = (key, value, isBoolean = false) => {
+  if (value === null || value === undefined || value === "") return false;
+  if (isBoolean && value === false) return false;
+  if (typeof value === "string" && value.trim() === "") return false;
+  return true;
+};
+
+const formatAccordionValue = (key, value, isBoolean = false) => {
+  if (isBoolean) {
+    if (key === "is_ready_to_ship") return "This product is ready to ship.";
+    return String(value);
+  }
+  if (key === "shipping_days") {
+    return `Get it within ${value} days`;
+  }
+  return value;
+};
+
+const getProductAccordionSections = (product) => {
+  if (!product || typeof product !== "object") return [];
+
+  return ACCORDION_FIELD_CONFIG.filter(({ key, isBoolean }) =>
+    hasAccordionFieldValue(key, product[key], isBoolean)
+  ).map(({ key, label, isHtml, isBoolean }) => ({
+    key,
+    label,
+    value: formatAccordionValue(key, product[key], isBoolean),
+    isHtml: !!isHtml,
+  }));
+};
 
 const ProductDetail = () => {
   /**Code added by Unnati Bajaj on 23-06-2024
@@ -66,6 +105,7 @@ const ProductDetail = () => {
   const [availableSizes, setAvailableSizes] = useState({});
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedProductDetails, setSelectedProductDetails] = useState({});
+  const [expandedSections, setExpandedSections] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [availabilityMessage, setAvailabilityMessage] = useState("");
   const [quantityMessage, setQuantityMessage] = useState("");
@@ -138,6 +178,23 @@ const ProductDetail = () => {
     selectedProductDetails.image4,
     selectedProductDetails.image5,
   ].filter(Boolean);
+
+  const accordionSections = useMemo(
+    () => getProductAccordionSections(selectedProductDetails),
+    [selectedProductDetails]
+  );
+
+  const toggleAccordionSection = (key) => {
+    setExpandedSections((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
+
+  useEffect(() => {
+    setExpandedSections({});
+  }, [selectedProductDetails.id]);
+
   // Added by - Ashlekh on 05-10-2024
   // Reason - To display size chart in antd modal and to have useState for similar product
   const [similarProduct, setSimilarProduct] = useState([]);
@@ -3420,25 +3477,7 @@ const ProductDetail = () => {
               {selectedProductDetails.name}
             </h1>
 
-            <p className={ProductDetailStyle.productDescription}>
-              {selectedProductDetails.description}
-            </p>
-
-            <div className={ProductDetailStyle.productRating}>
-              {selectedProductDetails.rating > 0 && (
-
-                <Rating value={selectedProductDetails.rating} />
-
-              )}
-            </div>
-
-            <div className={ProductDetailStyle.categoryContainer}>
-              <p className={ProductDetailStyle.CategoryName}>Category:</p>
-              <p className={ProductDetailStyle.CategoryType}>
-                {selectedProductDetails.category}
-              </p>
-            </div>
-
+            <div className={ProductDetailStyle.priceBlock}>
             <div className={ProductDetailStyle.title}>
               {selectedProductDetails.sale_percentage ? (
                 <div className={ProductDetailStyle.productPrice}>
@@ -3477,47 +3516,33 @@ const ProductDetail = () => {
                 </p>
               </div>
             ) : null}
-            {/* End of addition by jhamman on 14-10-2024
-              Reason - Added offer percentage*/}
-            {/* End of modification by Jhamman on 06-10-2024
-                      Reason- calculate sale price */}
-            <div className={ProductDetailStyle.productOptions}>
-              <div className={ProductDetailStyle.productColors}>
-                {/**Code added by Unnati on 23-05-2024
-                 *Reason-To map product to according to its color*/}
-                {uniqueColors.map((color) => (
-                  <div
-                    key={color}
-                    className={`${ProductDetailStyle.colorOption} ${selectedColor === color
-                      ? ProductDetailStyle.activeColorOption
-                      : ""
-                      }`}
-                    style={{ backgroundColor: color }}
-                    onClick={() => handleColorSelect(color)}
-                  ></div>
-                ))}
-                {/**End of code addition by Unnati on 23-05-2024
-                 *Reason-To map product to according to its color*/}
-              </div>
-              {colorError && (
-                <p className={ProductDetailStyle.formInputError}>
-                  {colorError}
-                </p>
+            </div>
+
+            <div className={ProductDetailStyle.productRating}>
+              {selectedProductDetails.rating > 0 && (
+                <Rating value={selectedProductDetails.rating} />
               )}
-              {/* Commented by Om Shrivastava on 18-12-2024
-              Reason : Size validation is no need to show the upper site */}
-              {/* {sizeError && (
-                <p className={ProductDetailStyle.formInputError} style={{border:'1px solid green'}}>{sizeError}</p>
-              )} */}
-              {/* End of commented by Om Shrivastava on 18-12-2024
-              Reason : Size validation is no need to show the upper site */}
-              <div className={ProductDetailStyle.productSizes}>
+            </div>
+
+            <div className={ProductDetailStyle.productOptions}>
+              <div className={ProductDetailStyle.optionSection}>
+                <div className={ProductDetailStyle.optionHeader}>
+                  <span className={ProductDetailStyle.optionLabel}>Size</span>
+                  {(!selectedProductDetails.is_free_size && sizeChart != null) ? (
+                    <button
+                      type="button"
+                      className={ProductDetailStyle.sizeChartLink}
+                      onClick={showSizeChart}
+                    >
+                      Size chart
+                    </button>
+                  ) : null}
+                </div>
+                <div className={ProductDetailStyle.productSizes}>
                 {/**Code added by Unnati on 02-1-2025
                  *Reson-Added condition for free size*/}
                 {!selectedProductDetails.is_free_size ? (
                   <div className={ProductDetailStyle.sizeMessage}>
-                    <label htmlFor="sizeBoxes">Size</label>
-
                     <p className={ProductDetailStyle.availabilityMessage}>
                       {availabilityMessage}
                     </p>
@@ -3553,21 +3578,21 @@ const ProductDetail = () => {
                   </div>
                 )}
 
+                {selectedProductDetails.is_free_size && (
+                  <div className={ProductDetailStyle.sizeBoxes}>
+                    <div
+                      className={`${ProductDetailStyle.sizeBox} ${ProductDetailStyle.selectedSizeBox}`}
+                    >
+                      OS
+                    </div>
+                  </div>
+                )}
+
                 {sizeError && (
                   <p className={ProductDetailStyle.formInputError}>
                     {sizeError}
                   </p>
                 )}
-
-                {(!selectedProductDetails.is_free_size && sizeChart != null) ? (
-
-                  <div
-                    className={`${ProductDetailStyle.sizeChartBox}`}
-                    onClick={showSizeChart}
-                  >
-                    Size chart
-                  </div>
-                ) : null}
                 {/**End of code addition by Unnati on 02-01-2025
                  *Reason-Added condition for free size*/}
                 {/* Code changed by - Ashlekh on 12-12-2024
@@ -3610,6 +3635,34 @@ const ProductDetail = () => {
                 Reason - To remove size chart from antd and to show it using div (custom modal) */}
                 {/* End of code - Ashlekh on 05-10-2024
                  Reason - To add size chart */}
+              </div>
+              </div>
+
+              <div className={ProductDetailStyle.optionSection}>
+                <div className={ProductDetailStyle.optionHeader}>
+                  <span className={ProductDetailStyle.optionLabel}>Color</span>
+                </div>
+                <div className={ProductDetailStyle.productColors}>
+                  <div className={ProductDetailStyle.colorSwatchGroup}>
+                    {uniqueColors.map((color) => (
+                      <div
+                        key={color}
+                        className={`${ProductDetailStyle.colorOption} ${selectedColor === color
+                          ? ProductDetailStyle.activeColorOption
+                          : ""
+                          }`}
+                        style={{ backgroundColor: color }}
+                        onClick={() => handleColorSelect(color)}
+                        title={color}
+                      ></div>
+                    ))}
+                  </div>
+                </div>
+                {colorError && (
+                  <p className={ProductDetailStyle.formInputError}>
+                    {colorError}
+                  </p>
+                )}
               </div>
 
               {/**Code added by Unnati on 12-09-2024
@@ -3706,22 +3759,6 @@ const ProductDetail = () => {
               {/**End of code addition by Unnati on 25-08-2024
                * Reason-To display quantity message
                */}
-              {/**Code added by Unnati on 12-09-2024
-               *Reason-To add shipping days*/}
-              {selectedProductDetails.shipping_days &&
-                selectedProductDetails.shipping_days.length > 0 && (
-                  <div className={ProductDetailStyle.shippingDays}>
-                    <div>
-                      <FaShippingFast />
-                    </div>
-                    <div>
-                      Get it within {selectedProductDetails.shipping_days} days
-                    </div>
-                  </div>
-                )}
-
-              {/**End of code addition by Unnati on 12-09-2024
-               *Reason-To add shipping days*/}
               {/**End of code addition by Unnati on 12-09-2024
                *Reason-Modified the sequence */}
               {/* Added by jhamman on 14-10-2024
@@ -4027,24 +4064,47 @@ const ProductDetail = () => {
             </div> */}
             {/* End of code - Ashlekh on 30-10-2024
             Reason - To add WishList button */}
+
+            {accordionSections.length > 0 && (
+              <div className={ProductDetailStyle.accordionContainer}>
+                {accordionSections.map((section) => {
+                  const isExpanded = !!expandedSections[section.key];
+                  return (
+                    <div
+                      key={section.key}
+                      className={ProductDetailStyle.accordionItem}
+                    >
+                      <button
+                        type="button"
+                        className={ProductDetailStyle.accordionHeader}
+                        onClick={() => toggleAccordionSection(section.key)}
+                        aria-expanded={isExpanded}
+                      >
+                        <span>{section.label}</span>
+                        <span className={ProductDetailStyle.accordionIcon}>
+                          {isExpanded ? "−" : "+"}
+                        </span>
+                      </button>
+                      {isExpanded && (
+                        <div className={ProductDetailStyle.accordionBody}>
+                          {section.isHtml ? (
+                            <div className={ProductDetailStyle.accordionContent}>
+                              {parse(String(section.value))}
+                            </div>
+                          ) : (
+                            <p className={ProductDetailStyle.accordionText}>
+                              {section.value}
+                            </p>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
-        {/**Code added by Unnati on 01-07-2024
-         *Reason-To show product description like features,product specifications */}
-        {selectedProductDetails.details && (
-          <div className={ProductDetailStyle.productInfoDetails}>
-            <div className={ProductDetailStyle.subHeadingContainer}>
-              <h2 className={ProductDetailStyle.subHeading}>Details</h2>
-              <div className={ProductDetailStyle.borderDescription}>
-                <div className={ProductDetailStyle.description}>
-                  {parse(selectedProductDetails.details)}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-        {/**End of code addition by Unnati on 01-07-2024
-         *Reason-To show product description like features,product specifications */}
 
         {/* Added by - Ashlekh on 04-01-2025
         Reason - To add feedback */}
