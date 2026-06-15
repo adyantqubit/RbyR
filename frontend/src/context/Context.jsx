@@ -356,7 +356,7 @@ x(a)
     const fetchSocialLinks = async () => {
       try {
         const data = await getSocialLinks();
-        setSocial(data.social);
+        setSocial(data?.social ?? []);
       } catch (error) {
         console.error(error.message);
       }

@@ -825,6 +825,23 @@
   gap: 8px;
 }
 
+.signInText {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.signInIconLink {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+.signInIconOnly {
+  font-size: 18px;
+}
+
 .searchBar {
   padding-left: 2%;
   outline: none;
@@ -1396,6 +1413,22 @@
   display: none;
 }
 
+.drawerHidden {
+  display: none !important;
+}
+
+.desktopAuth {
+  display: flex;
+}
+
+.mobileAuth {
+  display: none;
+}
+
+.profileIcon {
+  color: white;
+}
+
 .overlay {
   position: fixed;
   inset: 0;
@@ -1729,7 +1762,96 @@
 
 @media (max-width: 530px) {
   .headerTop {
-    padding-left: 0px;
+    display: none;
+  }
+
+  .headerMiddle .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .drawer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    min-width: 50px;
+    flex-shrink: 0;
+    cursor: pointer;
+    order: 1;
+    z-index: 2;
+  }
+
+  .col9Search {
+    order: 2;
+    flex: 1;
+    min-width: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .col3Logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-left: 0 !important;
+    text-align: center;
+    z-index: 1;
+    order: 3;
+    pointer-events: auto;
+  }
+
+  .col3Logo .logo {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .wishlistAndcart {
+    margin-left: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    min-width: 0;
+    flex-shrink: 0;
+    order: 4;
+    z-index: 2;
+  }
+
+  .mobileAuth {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+  }
+
+  .mobileAuth .signInText {
+    display: none;
+  }
+
+  .mobileAuth .signInIconLink {
+    display: flex;
+    color: var(--header-font-color-dark);
+    padding: 4px;
+  }
+
+  .mobileAuth .signInIconOnly {
+    font-size: 24px;
+    color: var(--header-font-color-dark);
+  }
+
+  .mobileAuth .profileIcon {
+    color: var(--header-font-color-dark);
+  }
+
+  .arrowBackIconContainerPhoneview {
+    order: 1;
+    z-index: 2;
   }
 
   .headerTopLeftMost {
@@ -1774,17 +1896,8 @@
     width: 430px;
   }
 
-
   .searchIconContainerPhoneview {
     display: block;
-  }
-
-  .col3Logo {
-    display: block;
-  }
-
-  .arrowBackIconContainerPhoneview {
-    display: none;
   }
 
   .allIconssContainers {
@@ -1792,19 +1905,8 @@
     align-items: center;
   }
 
-  .wishlistAndcart {
-    margin-left: 42%;
-  }
-
   .headerBottom {
     display: none;
-  }
-
-  .drawer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
   }
 
 }

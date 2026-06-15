@@ -1183,3 +1183,93 @@ button:hover {
     margin-bottom: 0px;
   }
 }
+
+/* Mobile-only product listing card updates */
+@media screen and (max-width: 720px) {
+  .addToCartButton {
+    display: none !important;
+  }
+
+  .listaddToCartButton {
+    display: none !important;
+  }
+
+  .rating {
+    display: none;
+  }
+
+  .productDetailContainer {
+    display: none;
+  }
+
+  .gridCard {
+    gap: 0;
+  }
+
+  .gridImageContainer {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .imageWrapper {
+    height: 280px;
+  }
+
+  .gridImage {
+    height: 280px;
+    padding-left: 0;
+    padding-right: 0;
+    border-bottom: none;
+    object-fit: cover;
+  }
+
+  .gridContent {
+    padding: 0.65rem 0.75rem 0.75rem;
+    border-top: 1px solid #e5e5e5;
+    gap: 0.25rem;
+    margin-top: 0;
+    height: auto;
+  }
+
+  .brandName,
+  .listBrandName {
+    font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    font-size: clamp(1.25rem, 4vw + 0.5rem, 1.75rem);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+    color: #1f1e1b;
+    margin-bottom: 0.35rem;
+    text-transform: none;
+  }
+
+  .priceContainer {
+    align-items: baseline;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0;
+  }
+
+  .cardPrice {
+    font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+    font-size: clamp(1.05rem, 1.1vw + 0.7rem, 1.35rem);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+    color: #1f1e1b;
+    text-transform: none;
+    margin: 0;
+  }
+
+  .discountedPriceText,
+  .mrpPriceText,
+  .listCardPrice {
+    font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+    font-size: clamp(1.05rem, 1.1vw + 0.7rem, 1.35rem);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+    color: #1f1e1b;
+    margin: 0;
+  }
+}

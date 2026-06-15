@@ -319,7 +319,7 @@ useEffect(() => {
         {/**End of code addition by Unnati on 09-08-2024
          * Reason-Added classname in ul tag
          */}
-        {subcategories.map((subcat) => (
+        {subcategories?.map((subcat) => (
           <li className={styles.dropdown} key={subcat.id}>
             <Link
               to={`/category/`}
@@ -380,8 +380,8 @@ useEffect(() => {
     const fetchCategories = async () => {
       try {
         const data = await getCategory();
-        setCategory(data.categoryList);
-        setDropdown(data.dropdown);
+        setCategory(data?.categoryList ?? []);
+        setDropdown(data?.dropdown ?? {});
       } catch (error) {
         console.error(error.message);
       }
@@ -986,6 +986,61 @@ useEffect(() => {
    * Reason - To naviagte in order history and to send orders in state. This will be used to directly open My Order tab
    */
 
+  const renderAuthActions = (wrapperClassName = "") => {
+    if (isUserLoading) {
+      return null;
+    }
+
+    if (user && user.email) {
+      return (
+        <div className={`${styles.profileContainer} ${wrapperClassName}`}>
+          <div className={styles.profileIconContainer}>
+            <CgProfile size={30} className={styles.profileIcon} />
+            <ul className={styles.dropdownContent}>
+              <li>{user.first_name}</li>
+              <li>{user.email}</li>
+              <li>
+                <Link to="/contactus" className={styles.contactUsContainer}>
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link onClick={handleLogout} className={styles.logoutButton}>
+                  Logout
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className={`${styles.signInContainer} ${wrapperClassName}`}>
+        <Link
+          to="/login"
+          className={styles.signInIconLink}
+          aria-label="Log In / Sign Up"
+        >
+          <CgProfile className={styles.signInIconOnly} />
+        </Link>
+        <div className={styles.signInText}>
+          <div className={styles.lockContainer}>
+            <FaLock size={10} className={styles.signInContainer} />
+          </div>
+          <div>
+            <Link className={styles.signIn} to="/login">
+              Log In /{" "}
+            </Link>
+            <Link className={styles.signIn} to="/signup">
+              Sign Up
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <>
       {/**Code added by Unnati on 24-0-2024
@@ -1077,64 +1132,7 @@ useEffect(() => {
             // End of code - Ashlekh on 25-02-2025
             // Reason - To apply condition & handle width in css
             >
-
-              {isUserLoading ? (
-                <></>
-              ) : user && user.email ? (
-                /**Code added by Unnati on 18-09-2024
-                 *Reason-Added profile section (name,email and logout) */
-                <div className={styles.profileContainer}>
-                  <div className={styles.profileIconContainer}>
-                    <CgProfile
-                      size={30}
-                      className={styles.profileIcon}
-                      color="white"
-                    />
-                    <ul className={styles.dropdownContent}>
-                      <li>{user.first_name}</li>
-                      <li>{user.email}</li>
-                      {/* Added by - Ashlekh on 12-12-2024
-                      Reason - To add contact us */}
-                      <li>
-                        <Link to="/contactus" className={`${styles.contactUsContainer}`}>
-                          Contact Us
-                        </Link>
-                      </li>
-                      {/* End of code - Ashlekh on 12-12-2024
-                      Reason - To add contact us */}
-                      <li>
-                        <Link
-                          onClick={handleLogout}
-                          className={styles.logoutButton}
-                        >
-                          Logout
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              ) : (
-                /**End of code addition by Unnati on 18-09-2024
-                 *Reason-Added profile section (name,email and logout) */
-                <div className={styles.signInContainer}>
-                  <div className={styles.lockContainer}>
-                    <FaLock size={10} className={styles.signInContainer} />
-                  </div>
-                  <div>
-                    <Link className={styles.signIn} to="/login">
-                      {/* Sign In /{" "} */}
-                      Log In /{" "}
-                    </Link>
-                    <Link className={styles.signIn} to="/signup">
-                      {/* Create an account */}
-                      Sign Up
-                    </Link>
-                  </div>
-                </div>
-              )}
-
-              {/**End of code modification by Unnati on 14-09-2024
-               *Reason-To check whether user is logged in or not */}
+              {renderAuthActions(styles.desktopAuth)}
             </div>
           </div>
           {/**End of code addition by Unnati on 24-06-2024
@@ -1627,6 +1625,13 @@ useEffect(() => {
                   </div>
                 </div>
 
+                <div
+                  className={`${styles.drawer} ${isSearchActive ? styles.drawerHidden : ""}`}
+                  onClick={() => setMenuOpen(true)}
+                >
+                  <GiHamburgerMenu />
+                </div>
+
                 <div className={styles.col3Logo}
                   style={{
                     display: isSearchActive ? "none" : "block",
@@ -1796,7 +1801,7 @@ useEffect(() => {
                                       </>
                                     ) : (
                                       <>
-                                        {cartData.map((item) => {
+                                        {(cartData ?? []).map((item) => {
                                           return (
                                             <li
                                               /**
@@ -2220,12 +2225,7 @@ useEffect(() => {
                       </div>
                     </div>
                   </div>
-                    <div
-                        className={styles.drawer}
-                        onClick={() => setMenuOpen(true)}
-                      >
-                        <GiHamburgerMenu />
-                      </div>
+                  {renderAuthActions(styles.mobileAuth)}
 
       {/* ===== Overlay ===== */}
       {menuOpen && <div className={styles.overlay} onClick={() => setMenuOpen(false)}></div>}
@@ -2241,7 +2241,7 @@ useEffect(() => {
         {/* ===== Category View ===== */}
         {!selectedCategory && (
           <div className={styles.categoryList}>
-            {category.map((cat) => (
+            {category?.map((cat) => (
               <div
                 key={cat.id}
                 className={styles.categoryItem}

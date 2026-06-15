@@ -2018,7 +2018,11 @@ class HomeBannerAdmin(admin.ModelAdmin):
                     )
 
     def action(self, obj):
-        return format_html("<a style='background-color:  #10b981;color:#fff;padding:3px;border-radius: 4px;' href='"+settings.SITE_URL+"admin/uniform_app/banner/"+str(obj.id)+"/change/'>View</a>")
+        change_url = reverse("admin:uniform_app_banner_change", args=[obj.pk])
+        return format_html(
+            "<a style='background-color: #10b981;color:#fff;padding:3px;border-radius: 4px;' href='{}'>View</a>",
+            change_url,
+        )
     action.allow_tags = True
     pass
 
